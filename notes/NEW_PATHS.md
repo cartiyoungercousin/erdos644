@@ -567,3 +567,114 @@ should be merged with Path 2 (template on a medium-tight union) rather than atta
 stars. The cheapest next test is the Path 2 template game run inside the cluster: anchor E,
 W = E∪F∪P_3 with core sealed as far as the budget allows, requests of size T, with G kept as a
 free centre to absorb outside points via Lemma 6.1.
+
+---------------------------------------------------------------------------------------------
+
+## 8. The complete-like core (Path 2, merged with u ≈ k/2)
+
+Code: `compute/newpaths/relative_theoremA.py`. Lex-min anchor (E,F,G), sorted cells
+u >= v >= w, S = u+v+w, W = E∪F∪G, u* = (2k − T)/3, eps = T/k − 3/4.
+
+### 8.1 Fano criterion  [proved by hand; computed exact by exhaustion over the 128 line-sets]
+> Seven edges indexed by the lines of the Fano plane have no 2-cover **if** for each of the 7
+> points p the three edges on the lines through p have empty common intersection. (Conversely a
+> point lying in three concurrent edges is one half of a 2-cover as soon as some point lies in
+> the other four edges.)
+
+Reason: the 64 line-sets containing no three concurrent lines are pairwise non-covering, and
+every other line-set is completed to all 7 lines by one of them. So a Fano-type bad tuple is
+exactly "seven concurrent triples, all good", and the only thing a request for line L must
+contain is, for each p in L whose other two lines are already placed, the intersection of
+those two edges. Everything else in a request is the requester's choice, made to keep later
+forced sets small. Theorem A, the tight-triple lemma and Lemma 6.1 are three ways of paying
+for the forced sets.
+
+### 8.2 Theorem 8.1 (Theorem A relative to a set W)  [proved by hand; simulation: 0 failures in 3000]
+> Let E be an edge, W ⊇ E any set, and rho_W := max |A∩A'∖W| over pairs of distinct edges.
+> Then tau(H) <= ceil((|W| − k + 2 rho_W)/3) + 2 ceil(k/4) + O(1).
+> (Adaptive form: tau <= ceil((|W| − k)/3) + 2 ceil(k/4) + 2 rho, rho = the largest of the four
+> outside overlaps that actually occur.)
+
+Proof. Theorem A's template on W: W∖E → B_1,B_2,B_3, E → a_1..a_4; group-j requests
+B_j ∪ a_p ∪ a_q. Ask groups 1, 2, then 3; to a group-3 request through a_p, a_q add
+(R∩R'∖W) for the two earlier responses through a_p, and the same for a_q. Check 8.1: at b_j the
+edges E and the two group-j responses have no common point (the two requests cover E). At a_p
+the three responses have no common point in E (their requests cover E), none in W∖E (the
+requests contain B_1, B_2, B_3 respectively), none outside W (forced set). Sizes: groups 1, 2:
+|B_j| + k/2; group 3: |B_3| + k/2 + 2 rho; balance |B_3| = |B_1| − 2 rho. ∎
+W = V gives Theorem A. The point is that *points outside W cost only through pairwise
+overlaps of two specific responses*, counted twice, not through |V∖W|.
+
+**Region covered.** With W = anchor union (|W| = 3k − S): contradiction whenever
+> S >= 7k/2 − 3T + 2 rho_W + O(1),  i.e.  u + v + w >= (5/4 − 3 eps) k + 2 rho_W.
+In (u,v,w,t)-space this is a half-space cut by the unknown rho_W. With rho_W = 0 it contains
+the whole complete-like corner (u,v,w) ≈ (u*,u*,u*) (S = 3u* = (5/4 − eps)k, slack 2 eps k) and
+more generally every profile with S >= (5/4 − 3 eps)k: for instance (0.5, 0.45, 0.3) or the
+§7 clusters if the *cluster's* union is used as W (|W| <= (7/4 + 3 eps)k − 2 rho).
+For comparison the tight-triple lemma needs S >= (3/2 − 2 eps)k. So the gain over what is in
+Lean is the band (5/4 − 3 eps)k + 2 rho_W <= S < (3/2 − 2 eps)k, conditional on rho_W.
+
+### 8.3 Rigidity at a complete-like anchor  [proved by hand]
+Let theta := (2k − T − 2u − w)/2. Minimality gives theta >= −O(1) (this is (8) of the 11/13 repo:
+2u + w <= 2k − T), with equality exactly for the balanced anchor of K_{(1+t)k}.
+> **Lemma 8.2.** Let F, G be the anchor edges with |F∩G| = w. For all D_F ⊆ F∖G, D_G ⊆ G∖F with
+> |D_F| = |D_G| = (T − w)/2, the response K to (F∩G) ∪ D_F ∪ D_G contains all but at most theta
+> points of F∖(G ∪ D_F), or all but at most theta points of G∖(F ∪ D_G).
+
+Proof. (F,G,K) is good with cells w, a = |K∩F|, b = |K∩G|, a, b <= k − w − (T−w)/2 = u + theta.
+Lex-minimality of (u,v,w) forces max(a,b) >= u. ∎
+So when theta = o(k) the family is *locally complete*: the requester can prescribe u points of
+an edge (any (u + theta)-subset of F∖G of the form F∖(G∪D_F), up to theta errors and up to the
+adversary's choice of side). This is the stability statement that is actually available:
+**complete-like profile ⇒ complete-like responses on the anchor**, with no density theorem.
+What it does not give: the remaining k − u − b points of K (k/6 in K_N) may lie outside W.
+
+### 8.4 Does tau > (3/4 + eps)k force H to be far from complete?  [proved by hand, weak]
+Yes, but only at scale eps k. By Theorem 8.1, for every edge E and every W ⊇ E with
+|W| <= (7/4 + 3 eps)k − 2 rho there are two edges sharing more than rho points outside W.
+Taking |W| = 7k/4: some two edges share > 3 eps k/2 points outside any such W. Combined with
+Lemma B (every edge keeps > (3T − |W|)/2 ≈ k/4 points in W) this says H cannot be a subfamily of
+a complete family on about 7k/4 points, and its edges leave any candidate ground set in a
+*correlated* way (large pairwise overlaps outside). It does not say more: all the forced
+quantities are of order eps k, which is also the slack of the template (2 eps k/3 per request).
+
+### 8.5 The remaining gap, and the cheapest decisive test
+Gap: bound the four outside overlaps |R∩R'∖W| (R, R' the group-1 and group-2 responses through
+a common point a_p) by c·eps·k with c < 1/3, at a complete-like anchor, or re-anchor when they
+are large. Known constraints on such a pair: (R,R',R'') is a good triple for the third
+response through a_p (so |R∪R'∪R''| > 2T: tight-triple lemma); Lemma B; Corollary 6.2; and
+Lemma 8.2 if the requests are of sealing type. None of them bounds the overlap yet.
+The natural adversary [heuristic]: answers of the form (prescribed part inside W, of size about
+u) ∪ (points of a fixed outside pool P), all answers using the same pool, so outside overlaps
+are of order k/6. Two such answers and an anchor edge they avoid form a good triple with one
+cell about u and two small ones, so this adversary pushes the position into the lopsided
+regime of §6–7 with the pool as a second "cluster". That is why §7's bottom (u ≈ k/2) and this
+regime are the same problem.
+**Decisive test (small LP, exact).** Position: balanced anchor (u*,u*,u*) at t = 0.76 and 0.78.
+Requester: Theorem 8.1's six requests, with group 1, 2 requests of sealing type where
+possible. Adversary variables: for each of the six responses its masses on the 7 template
+classes and on the cells of an outside Venn diagram generated by the earlier responses.
+Constraints: Lemma B, Corollary 6.2 and lex-minimality for every good triple among the edges
+in play (in particular the seven concurrent triples and the triples (R,R',anchor edge) whose
+core is sealed), tight-triple. Objective: max over the four pairs of the outside overlap.
+If the maximum is <= eps k/3: Theorem 8.1 closes the complete-like corner and the proof is
+linear arithmetic. If it is >= c k with c independent of eps: the witness is a concrete
+pool adversary, to be tested for realizability exactly as in §5.7 (three-block scan with the
+pool as a block).
+
+### 8.6 Is this the real 3/4 barrier?  [heuristic]
+Yes, in my judgement, for three reasons.
+1. Everywhere else there is an eps-independent lever: a gap (§6–7 top), a sparse closure, or a
+   tight triple. Here every available inequality has slack O(eps k), the template has slack
+   2 eps k/3, and the adversary's free parameter (outside overlap) is of order k.
+2. Any proof must produce a near-Fano 7-tuple here (pair law of ROADMAP §2.2), and by 8.1 that
+   means seven good concurrent triples; the anchor contributes at most one edge. So six
+   responses must be mutually consistent to precision eps k, with only "tau > T" to force them.
+3. The lopsided bottom (§7) reduces to it.
+What is new and usable: the cost of leaving W is now a single explicit quantity (four pairwise
+outside overlaps), and Lemma 8.2 shows the inside part of the responses is already forced.
+A proof of 3/4 along this route is "an outside-overlap lemma"; a disproof would be a family
+whose edges share a pool of about k/6 outside points in a way compatible with (7,2).
+I would not put the probability that the overlap lemma follows from the constraints listed in
+8.5 alone above 30%: most likely a second extremal choice (W of minimum size among unions of
+near-minimal triples, or the pool itself as part of the ground set) is needed.
