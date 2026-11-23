@@ -124,3 +124,11 @@ n <= (7/4 + o(1))k and gives tau <= (n+2k)/5 + O(1) there; it is one regime, not
   Classical.choice, Quot.sound). Uses only tau > T, not property (7,2). Statement: with x = |E∩F|,
   y = |E∩G|, y <= x <= k/2, k/2 <= T <= k, x + 2y + T >= 2k + 2, some K in H gives a good triple
   (E, G, K) with all pair cells <= k/2 and every two pair cells summing to < x + y.
+
+## 2026-11-23 — Lemma 6.1 / Corollary 6.2 (Lean); lopsided regime status
+- `Lean644/ThreeCentres.lean`: `three_centres` (petals with empty common intersection + 3 centres
+  whose pairwise intersections avoid the petals' union => no 2-cover) and `trace_pairs` (tau > T,
+  (7,2), <= 4 petals, B1∩B2∩U = ∅ => |B1∩U| + |B2∩U| > T). Axioms: propext, Classical.choice, Quot.sound.
+- NEW_PATHS §6–7: Theorem 6.4 (hand) closes lopsided anchors with u >= ~0.57k at t = 0.825
+  (exact LP: threshold 0.569k; 0.5565k at t = 0.846). Anchors near u = k/2 stay open: the witness
+  looks like a local piece of a complete family -> merge with the complete-like regime (Path 2).

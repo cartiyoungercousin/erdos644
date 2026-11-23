@@ -475,3 +475,95 @@ responses at (0.5,0.15,0.05) were computed without Corollary 6.2, so they are no
 2. Replace the union bound of Theorem 6.4 by an exact LP over the 11 Venn cells of E,F,P_3,P_4
    and G's traces with all constraints of §6.4; its optimum replaces "30".
 3. Lean: Lemma 6.1 and Lemma 6.3 are short and independent of everything unverified.
+
+---------------------------------------------------------------------------------------------
+
+## 7. Exact LP for the escape of Theorem 6.4  — RESULT: the constant is 26, not an artifact; u ≈ 0.5 anchors do NOT close this way
+
+Code: `compute/newpaths/union_lp.py`. Continuum model, k = 1, u = 1 − t/2 − delta.
+
+### 7.1 Model: variables and every constraint
+Edges E, F, P_3, P_4 (petals) and G (far edge), obtained as in the proof of Theorem 6.4.
+Variables: m_c >= 0 for the 14 Venn cells c of the four petals (the 4-wise cell is sealed by
+D_4), g_c >= 0 = mass of G inside cell c, for the cells G can reach.
+
+| constraint | justification |
+|---|---|
+| each petal has mass 1 | uniformity |
+| \|E∩F\| = u | choice of E,F: the lex-min anchor contains a pair meeting in exactly u |
+| \|E∩P_j\|, \|F∩P_j\| >= u (j = 3,4) | minimality: (E,G,P_j), (F,G,P_j) are good (E∩G, F∩G ⊆ S ⊆ D_j) with two far pairs |
+| G∩E, G∩F, G∩P_3, G∩P_4 <= 2 delta | pair gap §1.2 (trace < u forces trace < 2 delta + 2); closed inequality, adversary-favourable |
+| m_{EF3} <= 1 − t | D_3 = S ∪ Q_3, \|S\| = 1 − u, Q_3 ⊆ E∩F, \|Q_3\| = b_3 = t − 1 + u |
+| variant A: m_{EF4} <= 1 − t + g_3, m_{EF3} + g_3 <= b_3, \|P_3∩P_4\| >= u, G∩P_3∩P_4 = ∅ | D_4 also seals G∩P_3; (G,P_3,P_4) good ⇒ close; second row = sealing affordable |
+| variant B: m_{EF4} <= 1 − t; \|P_3∩P_4\| >= u **or** <= 2 delta (two LPs); G may meet P_3∩P_4 | D_4 does not seal G∩P_3; only the gap is available for (P_3,P_4) |
+| g_c <= m_c; g = 0 on cells in (E∪F)∩(P_3∪P_4) | G∩(E∪F) ⊆ S is requested in D_3, D_4 |
+Objective: adversary maximises |U| + beta = Σ m_c + Σ g_c. The requester's 5+2 closure
+(Corollary 6.2) wins iff the maximum is <= 2t.
+Valid but not imposed (checked to be vacuous or non-linear here): tight-triple lemma on the good
+triples through G (reads "close cell <= 3 − 2t", slack); Lemma B; "pairwise-close triples have a
+common point" (a single point; no mass).
+
+### 7.2 Certification
+HiGHS proposes the optimum; the exact rational two-phase simplex of
+`compute/r1/exact_infeasible.py` (Fractions, Bland) then decides feasibility of the constraint
+system together with "objective >= target". Stuck verdict = exact feasibility of
+"|U| + beta >= 2t + 10^-5"; closure verdict = exact infeasibility of the same system; optimum
+values are bracketed exactly within ±10^-5. [computed exact] (The simplex returns a decision,
+not a printed Farkas vector; that is the certificate format, as in R1.)
+
+### 7.3 Results  [computed exact]
+| t | variant A closes iff | variant B closes iff | hand formula (B) |
+|---|---|---|---|
+| 0.825 | delta <= 0.01575, u >= 0.57175 | delta <= 0.01825, u >= 0.56925 | delta <= (3t − 2)/26 = 0.01827 |
+| 0.846 | delta <= 0.01775, u >= 0.55925 | delta <= 0.0205, u >= 0.5565 | 0.02069 |
+(delta on a 1/4000 grid.) In variant B the "P_3, P_4 far" branch is infeasible at every delta tested,
+so closeness of P_3, P_4 is automatic and sealing G∩P_3 is wasted budget.
+
+At u = 0.5 (the anchors (0.5,0.15,0.05), (0.5,0.1,0.05); delta = 0.0875 at t = 0.825):
+| t | max \|U\| + beta (A) | (B) | max \|U\| with beta forced to 0 (B) | 2t |
+|---|---|---|---|---|
+| 0.825 | 13/5 | 51/20 | 1.85 | 1.65 |
+| 0.846 | 63/25 | 303/125 | 1.808 | 1.692 |
+At u = 0.55: 1.975 / 1.90 (t = 0.825) and 1.828 / 1.774 (t = 0.846), also above 2t.
+**Verdict: stuck at u ≈ 0.5 and u = 0.55 for both t, by a wide margin, even if G had no trace
+at all.** The constant 30 of Theorem 6.4 improves only to 26.
+
+### 7.4 Theorem 7.1 (sharp form of Theorem 6.4 for this configuration)  [proved by hand; matches the LP]
+> If tau > T and **3T >= 2k + 26 delta + O(1)**, contradiction. Without traces (beta = 0) the same
+> configuration needs exactly 5u >= 6k − 4T + O(1).
+
+Proof sketch: as Theorem 6.4 with D_4 = S ∪ Q_4, |Q_4| = b_3 (do not seal G∩P_3). P_3 and P_4
+are close: the far branch of the gap is infeasible in the LP at every parameter tested
+[computed exact]; a general hand argument for this step is still missing (variant A, which
+proves closeness by sealing G∩P_3, gives the same theorem with 30 in place of 26). |U| = 4 − Σ_pairs + Σ_triples <= 4 − 5u − p + 2(1 − t) + p = 6 − 5u − 2t
+(p = |P_3∩P_4|; the two triple cells outside E∩F are disjoint subsets of P_3∩P_4), beta <= 8 delta,
+and 6 − 5u − 2t + 8 delta <= 2t is 3t >= 2 + 26 delta. The LP optimum equals this bound, so the
+estimate cannot be improved without changing the requests. ∎
+
+### 7.5 Why u ≈ k/2 escapes, and what that says  [proved by hand / heuristic as marked]
+- The LP witness at u = 1/2, t = 0.825 (beta = 0): cells E 0.175, F 0.025, EF 0.15, P_3 0.175,
+  FP_3 0.15, EFP_3 0.175, P_4 0.175, FP_4 0.15, EFP_4 0.175, EP_3P_4 0.325, FP_3P_4 0.175.
+  Four edges, every pair meeting in at least half, triple cells of size about k/4 or more,
+  union 1.85k. This is what four edges of a complete family K_N, N ≈ 7k/4, look like (pairs k/2,
+  triples k/4). [computed exact for the cells; interpretation heuristic]
+- So at u = k/2 the cluster of E is not a small complete cluster (as in H2) but can be locally
+  complete-like, and "four petals with empty common intersection and small union" is the wrong
+  target: inside a complete-like cluster the bad tuple is the Fano one. This is the same
+  phenomenon as §2 Path 2 (u ≈ u*), now inside one cluster of a gap family.
+- Budget reason, in one line [proved by hand]: sealing the core E∩F costs u and blocking G's
+  cluster costs k − u; both together cost k > T. Theorem 7.1 works only where two partial cuts
+  (T − (k − u) each) exhaust a core of size u, i.e. near u = k − T/2.
+- Gaps: continuum model; all O(1) terms (the +2 in the window, +1 per request, 10^-5 margins)
+  are ignored in §7.3 and favour the adversary in a closure, so Theorem 7.1's O(1) must be
+  tracked before Lean (Theorem 6.4's explicit "+24" is an upper bound for it). Only this
+  requester strategy was optimised: D_3 and D_4 put all free budget on E∩F. Putting part of
+  D_4 on P_3∖(E∩F) changes |U| by at most T − (k − u) − (k − T) ≈ 0.15k at u = k/2, t = 0.825,
+  which does not obviously bridge the 0.2k gap; not computed.
+
+### 7.6 Consequence for the plan
+The lopsided regime splits: **top** (u >= k − T/2 − (3T − 2k)/26): closed, Theorem 7.1, valid for
+all t > 2/3. **Bottom** (u near k/2): open, and it is a complete-like-cluster problem, so it
+should be merged with Path 2 (template on a medium-tight union) rather than attacked with
+stars. The cheapest next test is the Path 2 template game run inside the cluster: anchor E,
+W = E∪F∪P_3 with core sealed as far as the budget allows, requests of size T, with G kept as a
+free centre to absorb outside points via Lemma 6.1.

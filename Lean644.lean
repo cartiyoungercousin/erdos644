@@ -18,3 +18,4 @@ import Lean644.OneCore
 import Lean644.TightTriple
 import Lean644.TheoremA
 import Lean644.SparserTriple
+import Lean644.ThreeCentres
