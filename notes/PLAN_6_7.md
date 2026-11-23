@@ -39,6 +39,14 @@ manuscript statement by `Bridge.six_sevenths_erdos_wording_of` — DONE.
 
 Audit at the end: `Lean644/Audit.lean` with `#print axioms`, blind back-translation, non-vacuity.
 
+## Computational audit of the case logic
+`compute/audit_cases.py`: for every k in 7..400 with T = ceil(6k/7), enumerates all cell sizes
+allowed in Prop 5.1 (local finisher), Lemma 6.1 (endpoints) and Props 6.2–6.4 (three gaps), and
+checks that the lemma invoked in each case has all its integer hypotheses. Result: 0 failures
+(~2M lemma invocations for k <= 120). Mutation test (tightening one inequality of Lemma 3.4 by 1)
+produces 17 failures, so the audit is sensitive. NOT yet audited: Thm 5.2 (finishing), Prop 5.3
+(rank seven), and the internal arithmetic of the adaptive lemmas (Appendix A) — Lean will cover these.
+
 ## Findings log (fidelity / errors found in the manuscript)
 - Lemma 3.1: inequalities `2k+2a+b <= 4T` and `2k+2a+c <= 4T` are redundant (implied by
   `3k+a <= 4T` and `a+b, a+c <= k`); confirmed by the Lean proof of `hall_sizes`, which does not
