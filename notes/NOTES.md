@@ -68,3 +68,26 @@ tau >= (3/4 + eps)k  [counter-construction]. Either one fully settles Q1.
 ## Log
 - 2026-11-23: chose #644. Gathered statement + bounds. Read FKW99 in full. Installed elan;
   Mathlib project erdos644/Lean644 building.
+
+## Phase A results (2026-11-23)
+Tools: compute/typefam.py (block-type families, signature ILP for bad 7-tuples, exact tau),
+compute/validate.py, parity_variants.py, search.py (branch & bound over allowed types),
+coarse.py (asymptotic/normalized version).
+
+- Checker reproduces all FKW99 facts: K_{7k-1}^{(4k)} has (7,2), K_{7k}^{(4k)} fails (k=1,2,3);
+  parity family fails at k=2 (witness brute-force verified).
+- NEW (solver-certified, not yet proof-certified): parity family works at k=3:
+  f(12,7) >= 10. Also k=4,5 confirmed (tau = 13, 16).
+- r=8: no 2-block family (any allowed-type subset, n <= 15) reaches tau = 7. Best 6.
+- r=12: parity variants reaching tau = 10: |X| = 10, 11, 12 on 22 points. None reaches 11
+  (= ceil(7*12/8), the FKW upper bound). So 10 <= f(12,7) <= 11.
+- Coarse 2-block families (quarter grids): best ROBUST tau/r = 1/2 < 3/4. Evidence that
+  beating 3/4 needs more than block structure; parity-type tricks give only +O(1).
+
+## Insight: bad 7-tuples = intersecting families of miss-patterns
+miss(x) = {i : x not in A_i}. Two points cover all 7 sets iff their miss-patterns are disjoint.
+So A_1..A_7 have no 2-point transversal iff {miss(x)} is an intersecting family on [7]
+(and no i lies in every miss-pattern, i.e. all A_i nonempty). WLOG upward closed => maximal
+non-star intersecting families on [7] are the "shapes" of bad 7-tuples. Fano lines = the
+FKW shape. For a fixed shape, existence of a (coarse) bad tuple is an LP => checkable
+Farkas certificates.
