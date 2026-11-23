@@ -9,3 +9,6 @@ anchor (0.5875,0,0) t=0.825 named edges n=6:  STUCK {'why': 'no affordable seal 
 anchor (0.5875 0 0 0.825) n=7: TIMEOUT (240 s), undecided
 anchor (0.5,0.15,0.05) t=0.825 named edges n=5:  STUCK {'why': 'no affordable seal plan', 'iters': 24, 'pairs': 54}
 anchor (0.5 0.15 0.05 0.825) n=6: TIMEOUT (240 s), undecided
+anchor (0.5 0.15 0.05 0.825) n=7: TIMEOUT (240 s), undecided
+anchor (0.5,0.1,0.05) t=0.825 named edges n=5:  STUCK {'why': 'no affordable seal plan', 'iters': 29, 'pairs': 54}
+# note: the lines for (0.5 0.15 0.05) n=6 and n=7 were cut short when all runs were stopped (not full 240 s timeouts); the loop was stopped after (0.5,0.1,0.05) n=5.

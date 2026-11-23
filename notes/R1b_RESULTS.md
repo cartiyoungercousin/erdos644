@@ -149,11 +149,12 @@ adversary is unrestricted (no gap, looseness or Lemma B rows: also toward stuck)
 | anchor | t | n = 5 | n = 6 | n = 7 |
 |---|---|---|---|---|
 | (0.5875,0,0) (lex-min anchor of the two-cluster witness H2) | 0.825 | stuck | stuck | timeout |
-| (0.5,0.15,0.05) | 0.825 | stuck | timeout | not run |
+| (0.5,0.15,0.05) | 0.825 | stuck | stopped, undecided | not run |
+| (0.5,0.1,0.05) | 0.825 | stuck | not run | not run |
 | (0.85,0,0), genuine (7,2) family H2(1.15k) | 0.275 | stuck | stuck | stuck |
 | (0.45)³, genuine (7,2) family K_{1.65k} | 0.625 | stuck | timeout | timeout |
 
-The other lopsided anchors and (0.6,0.05,0.05) at 0.85 were queued and not reached.
+The other four lopsided anchors and (0.6,0.05,0.05) at 0.85 were queued and not reached.
 Diagnostic (NOT a sound rule): if responses are forbidden to meet G, the star wins at
 (0.5875,0,0) with one request (seal E∩F; then E,F,P3 have no common point and G is disjoint from
 all of them). So in the honest model the star fails exactly because of the **petal traces on the
