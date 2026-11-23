@@ -25,7 +25,7 @@ Requests may depend on earlier responses: this is just nested `obtain`s.
 | 8 | Lemma 3.3 boxed triangle (pure integers) | replaced by explicit witness `Symmetric.symmetric_sizes` | DONE |
 | 9 | Lemma 3.4 symmetric allocation | `Symmetric.symmetric_closes` | DONE |
 | 10 | Lemmas 4.1–4.3 one core / split A / split B (adaptive, App. A) | `SplitA.splitA_closes` (4.2) DONE, `SplitB.splitB_closes` (4.3) DONE; 4.1 todo; shared: `Adaptive.no_core_candidate`, `SplitA.no_core_closes` | partial |
-| 11 | Lemmas 4.4–4.6 gap traces / gap core / two cores (App. A) | `Adaptive.*` | todo |
+| 11 | Lemmas 4.4–4.6 gap traces / gap core / two cores (App. A) | `GapTraces.gapTraces_closes` (4.4) DONE, def `IntersectionGap`; 4.5, 4.6 todo | partial |
 | 12 | Lemmas 4.7–4.8 near core / two large (App. A) | `Adaptive.*` | todo |
 | 13 | Prop 5.1 local finisher | `Finish.local_finish` | todo |
 | 14 | Thm 5.2 finishing theorem | `Finish.finish` | todo |

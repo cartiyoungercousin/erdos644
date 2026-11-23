@@ -12,3 +12,4 @@ import Lean644.FourEdges
 import Lean644.Adaptive
 import Lean644.SplitA
 import Lean644.SplitB
+import Lean644.GapTraces
