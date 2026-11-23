@@ -17,7 +17,7 @@ Requests may depend on earlier responses: this is just nested `obtain`s.
 |---|---|---|---|
 | 1 | Lemma 2.1 request-cover principle | `Framework.request_cover` | DONE |
 | 2 | responses exist when τ > T | `Framework.exists_response` | DONE |
-| 3 | candidate pairs of a good triple (eq. 2.1) | `Triple.candidate_cases` | todo |
+| 3 | candidate pairs of a good triple (eq. 2.1) | `Triple.triple_candidate`, `closes_of_four_requests` | DONE |
 | 4 | Lemma 2.4 four edges (candidate pairs of E,F,G,K) | `Triple.four_candidates` | todo |
 | 5 | Lemma 2.2 integral allocation | replaced by explicit splits | n/a |
 | 6 | Lemma 2.5 balanced request; 2.6 capped request | `Seeds.*` | todo |
@@ -33,6 +33,9 @@ Requests may depend on earlier responses: this is just nested `obtain`s.
 | 16 | Lemma 6.1 endpoints (integers) | `Gaps.endpoints` | todo |
 | 17 | Props 6.2–6.4 three gaps | `Gaps.*` | todo |
 | 18 | §7 main proof (k ≥ 7 only; padding step not needed) | `Main.six_sevenths` | todo |
+
+Official wording: `SixSeventhsErdosWording` (frozen, "exactly 7") follows from the
+manuscript statement by `Bridge.six_sevenths_erdos_wording_of` — DONE.
 
 Audit at the end: `Lean644/Audit.lean` with `#print axioms`, blind back-translation, non-vacuity.
 

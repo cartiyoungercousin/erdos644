@@ -33,4 +33,22 @@ def SixSeventhsStatement : Prop :=
     ∀ H : Finset (Finset α), IsUniform H k → HasPropertyAtMost H 7 2 →
       CoverableBy H ⌈(6 * k : ℚ) / 7⌉₊
 
+/-!
+## Same bound in Erdős's own wording
+
+erdosproblems.com/644 and FKW99 phrase the hypothesis as "for every collection of 7 of the
+sets" — i.e. every subfamily of **exactly** seven distinct members can be hit by two points
+(`HasProperty H 7 2`). Plain English: let `k ≥ 7` and let `H` be a finite family of sets, each
+with exactly `k` elements, such that every choice of exactly seven distinct members of `H` can
+be hit by some set of at most two points. Then some set of at most `⌈6k/7⌉` points meets every
+member of `H`. (Families with fewer than seven members satisfy the hypothesis vacuously; the
+conclusion still holds for them since `k ≥ 7`.)
+-/
+
+/-- **Erdős #644, six-sevenths bound, official ("exactly seven") wording (k ≥ 7).** -/
+def SixSeventhsErdosWording : Prop :=
+  ∀ (α : Type) [DecidableEq α] (k : ℕ), 7 ≤ k →
+    ∀ H : Finset (Finset α), IsUniform H k → HasProperty H 7 2 →
+      CoverableBy H ⌈(6 * k : ℚ) / 7⌉₊
+
 end Erdos644
