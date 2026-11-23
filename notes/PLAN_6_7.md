@@ -21,7 +21,7 @@ Requests may depend on earlier responses: this is just nested `obtain`s.
 | 4 | Lemma 2.4 four edges (candidate pairs of E,F,G,K) | `Triple.four_candidates` | todo |
 | 5 | Lemma 2.2 integral allocation | replaced by explicit splits | n/a |
 | 6 | Lemma 2.5 balanced request; 2.6 capped request | `Seeds.*` | todo |
-| 7 | Lemma 3.1 Hall allocation; Cor 3.2 | `Static.triangle_split`, `Static.hall_sizes` (integer core DONE); set-level `hall_closes`, `hall_cor` todo | partial |
+| 7 | Lemma 3.1 Hall allocation; Cor 3.2 | `Static.hall_sizes`, `HallClose.hall_closes`, `HallClose.hall_cor` | DONE |
 | 8 | Lemma 3.3 boxed triangle (pure integers) | `Static.boxed_triangle` | todo |
 | 9 | Lemma 3.4 symmetric allocation | `Static.symmetric` | todo |
 | 10 | Lemmas 4.1–4.3 one core / split A / split B (adaptive, App. A) | `Adaptive.*` | todo |

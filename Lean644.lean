@@ -6,3 +6,4 @@ import Lean644.Framework
 import Lean644.Triple
 import Lean644.Bridge
 import Lean644.Static
+import Lean644.HallClose
