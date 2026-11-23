@@ -16,3 +16,4 @@ import Lean644.GapTraces
 import Lean644.FourClose
 import Lean644.OneCore
 import Lean644.TightTriple
+import Lean644.TheoremA

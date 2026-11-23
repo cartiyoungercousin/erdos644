@@ -91,3 +91,14 @@ So A_1..A_7 have no 2-point transversal iff {miss(x)} is an intersecting family 
 non-star intersecting families on [7] are the "shapes" of bad 7-tuples. Fano lines = the
 FKW shape. For a fixed shape, existence of a (coarse) bad tuple is an LP => checkable
 Farkas certificates.
+
+## Solve track: new results proved in Lean (2026-11-23)
+- `Lean644/TightTriple.lean`: **tight-triple lemma** — a good triple closes with four "Fano line"
+  requests when 3k + 2 <= 2T + S. Corollary `goodTriple_S_le`: if tau > T, every good triple has
+  S <= 3k - 2T + 1. (Roadmap §3(c); size formula checked on 865k triples.)
+- `Lean644/TheoremA.lean`: **Theorem A** — tau(H) <= ceil((n-k)/3) + 2 ceil(k/4) for a k-uniform
+  (7,2)-family with all edges inside an n-set V. Tight for K_{7m-1}^{(4m)} and the FKW parity
+  family. Also `request_cover_V` (request-cover relative to a ground set).
+  Axioms: propext, Classical.choice, Quot.sound only.
+Novelty: neither construction appears in FKW99 (its Lemma 1 is an adaptive good-triple
+construction) nor in the 6/7 manuscript; EFKT92 not yet checked (unavailable).
