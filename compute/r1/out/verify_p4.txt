@@ -1,0 +1,4 @@
+out/grid_poth-4.-1.0_0.84_25_0.5.jsonl: contradiction wins verified exactly: 67; failed: 0; branch LPs solved: 3560
+out/grid_poth-4.-1.0_0.84_25_0.5.jsonl: 158 adaptive wins (67 with empty pool = no admissible response, re-checked); 3640 extreme responses tested against the pools; failures: 0; max (load - t): +1.11e-16
+  a response exists (exact): [25, 21, 17] [0.04, 0.1, 0.34, 0.04, 0.12, 0.2]
+out/grid_poth-4.-1.0_0.84_50_0.5001.jsonl: contradiction wins verified exactly: 609; failed: 1; branch LPs solved: 33993

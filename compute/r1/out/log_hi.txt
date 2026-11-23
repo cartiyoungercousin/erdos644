@@ -1,0 +1,4 @@
+loose 0.875 profiles 274 {'static': 268, 'adaptive': 6} time 6
+maxS 0.875 profiles 274 {'static': 268, 'adaptive': 6} time 4
+loose 0.9 profiles 269 {'static': 269} time 3
+maxS 0.9 profiles 269 {'static': 269} time 3

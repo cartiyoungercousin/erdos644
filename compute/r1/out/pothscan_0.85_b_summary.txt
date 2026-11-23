@@ -1,0 +1,7 @@
+t = 0.85: 27 profiles stuck with no rule; per potential (a,b,c): number still stuck
+  (-3.0, -1.0, 0.0)      stuck  0  err/undecided 0   
+  (1.0, -1.0, 0.0)       stuck  2  err/undecided 0   (0.5,0.2,0.2) (0.5,0.25,0.25)
+  (-2.0, -1.0, 0.0)      stuck  2  err/undecided 0   (0.5,0.2,0.2) (0.5,0.25,0.25)
+  (-3.0, -2.0, 0.0)      stuck  2  err/undecided 0   (0.5,0.2,0.2) (0.5,0.25,0.25)
+  (2.0, -3.0, 0.0)       stuck  2  err/undecided 0   (0.5,0.2,0.2) (0.5,0.25,0.25)
+  (1.0, -2.0, 0.0)       stuck  2  err/undecided 0   (0.5,0.2,0.2) (0.5,0.25,0.25)

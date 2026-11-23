@@ -1,0 +1,14 @@
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+round 0: 136 response types, tau = 35 (T = 34)
+   bad tuple: 0 anchor edges + response types {(0, 8, 0, 2, 7, 9, 14): 1, (5, 5, 0, 4, 12, 1, 13): 1, (8, 0, 0, 4, 15, 0, 13): 1, (9, 10, 0, 0, 1, 7, 13): 3, (17, 0, 3, 0, 2, 0, 18): 1}; deleting (9, 10, 0, 0, 1, 7, 13)
+round 1: 135 response types, tau = 35 (T = 34)
+   bad tuple: 0 anchor edges + response types {(0, 0, 3, 0, 14, 14, 9): 1, (0, 0, 4, 0, 13, 13, 10): 1, (0, 13, 0, 0, 0, 4, 23): 1, (10, 0, 0, 4, 13, 0, 13): 1, (11, 0, 0, 0, 12, 0, 17): 1, (15, 0, 0, 3, 6, 0, 16): 2}; deleting (15, 0, 0, 3, 6, 0, 16)
+round 2: 134 response types, tau = 35 (T = 34)
+   bad tuple: 0 anchor edges + response types {(4, 0, 0, 0, 13, 17, 6): 1, (5, 10, 0, 0, 5, 7, 13): 2, (6, 5, 0, 3, 12, 1, 13): 1, (8, 1, 0, 0, 10, 10, 11): 1, (9, 0, 0, 1, 10, 0, 20): 1, (12, 0, 0, 0, 5, 0, 23): 1}; deleting (5, 10, 0, 0, 5, 7, 13)
+round 3: 133 response types, tau = 35 (T = 34)
+   bad tuple: 0 anchor edges + response types {(0, 0, 4, 0, 13, 13, 10): 1, (0, 10, 0, 4, 0, 13, 13): 1, (0, 13, 0, 0, 0, 14, 13): 1, (0, 18, 0, 0, 0, 3, 19): 1, (14, 0, 0, 0, 3, 0, 23): 1, (15, 12, 0, 0, 0, 3, 10): 2}; deleting (15, 12, 0, 0, 0, 3, 10)
+round 4: 132 response types, tau = 35 (T = 34)
+   bad tuple: 0 anchor edges + response types {(6, 5, 0, 4, 12, 0, 13): 2, (7, 2, 0, 0, 18, 0, 13): 1, (7, 7, 0, 0, 4, 10, 12): 1, (7, 11, 0, 0, 10, 0, 12): 1, (11, 0, 0, 0, 12, 0, 17): 1, (14, 0, 0, 3, 7, 0, 16): 1}; deleting (6, 5, 0, 4, 12, 0, 13)
+round 5: 131 response types, tau = 34 (T = 34)
+   tau <= T: the remaining recorded responses no longer answer every request; stop.

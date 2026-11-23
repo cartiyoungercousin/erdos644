@@ -1,0 +1,2 @@
+loose 0.85 profiles 213 {'static': 13, 'adaptive': 49, 'None': 151} time 907
+maxS 0.85 profiles 213 {'static': 13, 'adaptive': 95, 'None': 105} time 861

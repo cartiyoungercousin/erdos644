@@ -1,0 +1,31 @@
+profile [10, 10, 2]/20 t=17/20 loose: 20796 grid requests, 0 uncovered, 157 (response, seal) pairs used, 94 responses  ->  STUCK verified exactly
+profile [10, 10, 1]/20 t=17/20 loose: 14585 grid requests, 0 uncovered, 83 (response, seal) pairs used, 37 responses  ->  STUCK verified exactly
+profile [10, 9, 2]/20 t=17/20 loose: 61160 grid requests, 0 uncovered, 202 (response, seal) pairs used, 110 responses  ->  STUCK verified exactly
+profile [10, 10, 3]/20 t=17/20 loose: 24010 grid requests, 0 uncovered, 368 (response, seal) pairs used, 290 responses  ->  STUCK verified exactly
+profile [10, 9, 3]/20 t=17/20 loose: 72262 grid requests, 0 uncovered, 348 (response, seal) pairs used, 219 responses  ->  STUCK verified exactly
+profile [9, 9, 3]/20 t=17/20 loose: 119526 grid requests, 0 uncovered, 353 (response, seal) pairs used, 180 responses  ->  STUCK verified exactly
+profile [10, 10, 0]/20 t=17/20 loose: 5530 grid requests, 0 uncovered, 65 (response, seal) pairs used, 53 responses  ->  STUCK verified exactly
+profile [10, 9, 1]/20 t=17/20 loose: 42141 grid requests, 0 uncovered, 144 (response, seal) pairs used, 59 responses  ->  STUCK verified exactly
+    uncovered examples (n vectors, remainder cell None ): [[13, 8, 5, 0, 0, 8], [13, 9, 5, 0, 0, 7], [14, 8, 4, 0, 0, 8]]
+profile [10, 10, 4]/20 t=17/20 loose: 24283 grid requests, 12 uncovered, 546 (response, seal) pairs used, 411 responses  ->  NOT verified
+profile [9, 9, 2]/20 t=17/20 loose: 99000 grid requests, 0 uncovered, 278 (response, seal) pairs used, 123 responses  ->  STUCK verified exactly
+profile [10, 8, 3]/20 t=17/20 loose: 115907 grid requests, 0 uncovered, 388 (response, seal) pairs used, 220 responses  ->  STUCK verified exactly
+profile [10, 9, 0]/20 t=17/20 loose: 15771 grid requests, 0 uncovered, 74 (response, seal) pairs used, 57 responses  ->  STUCK verified exactly
+profile [9, 9, 1]/20 t=17/20 loose: 67150 grid requests, 0 uncovered, 197 (response, seal) pairs used, 79 responses  ->  STUCK verified exactly
+profile [9, 9, 0]/20 t=17/20 loose: 24835 grid requests, 0 uncovered, 69 (response, seal) pairs used, 49 responses  ->  STUCK verified exactly
+profile [10, 8, 0]/20 t=17/20 loose: 24315 grid requests, 0 uncovered, 90 (response, seal) pairs used, 60 responses  ->  STUCK verified exactly
+profile [10, 8, 2]/20 t=17/20 loose: 96401 grid requests, 0 uncovered, 264 (response, seal) pairs used, 119 responses  ->  STUCK verified exactly
+profile [9, 9, 4]/20 t=17/20 loose: 127915 grid requests, 0 uncovered, 528 (response, seal) pairs used, 325 responses  ->  STUCK verified exactly
+profile [10, 8, 1]/20 t=17/20 loose: 65590 grid requests, 0 uncovered, 205 (response, seal) pairs used, 81 responses  ->  STUCK verified exactly
+profile [10, 8, 4]/20 t=17/20 loose: 123359 grid requests, 0 uncovered, 507 (response, seal) pairs used, 292 responses  ->  STUCK verified exactly
+profile [10, 10, 5]/20 t=17/20 loose: 21950 grid requests, 0 uncovered, 947 (response, seal) pairs used, 770 responses  ->  STUCK verified exactly
+    uncovered examples (n vectors, remainder cell None ): [[16, 14, 4, 0, 0, 0]]
+profile [10, 9, 4]/20 t=17/20 loose: 75174 grid requests, 1 uncovered, 868 (response, seal) pairs used, 619 responses  ->  NOT verified
+profile [9, 9, 5]/20 t=17/20 loose: 124075 grid requests, 0 uncovered, 844 (response, seal) pairs used, 622 responses  ->  STUCK verified exactly
+    uncovered examples (n vectors, remainder cell None ): [[20, 0, 10, 4, 0, 0]]
+profile [10, 8, 5]/20 t=17/20 loose: 118769 grid requests, 1 uncovered, 782 (response, seal) pairs used, 553 responses  ->  NOT verified
+profile [10, 4, 4]/20 t=17/20 loose: 195147 grid requests, 0 uncovered, 442 (response, seal) pairs used, 176 responses  ->  STUCK verified exactly
+profile [10, 5, 5]/20 t=17/20 loose: 202773 grid requests, 0 uncovered, 572 (response, seal) pairs used, 266 responses  ->  STUCK verified exactly
+profile [9, 8, 5]/20 t=17/20 loose: 173881 grid requests, 0 uncovered, 674 (response, seal) pairs used, 402 responses  ->  STUCK verified exactly
+profile [10, 9, 5]/20 t=17/20 loose: 70365 grid requests, 0 uncovered, 1139 (response, seal) pairs used, 944 responses  ->  STUCK verified exactly
+verified: 24 failed: 3

@@ -1,0 +1,2 @@
+poth:-3,-1,0 0.85 profiles 1739 {'static': 1176, 'adaptive': 563} time 151
+poth:-3,-1,0 6/7 profiles 281 {'static': 236, 'adaptive': 45} time 6

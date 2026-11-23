@@ -1,0 +1,8 @@
+out/grid_poth-3.-1.0_0.85_20_0.5.jsonl: contradiction wins verified exactly: 40; failed: 0; branch LPs solved: 2504
+out/grid_poth-3.-1.0_0.85_40_0.5001.jsonl: contradiction wins verified exactly: 244; failed: 0; branch LPs solved: 15168
+out/grid_poth-3.-1.0_6_7_21_0.5001.jsonl: contradiction wins verified exactly: 22; failed: 0; branch LPs solved: 1408
+out/grid_poth-4.-1.0_0.85_20_0.5.jsonl: contradiction wins verified exactly: 41; failed: 0; branch LPs solved: 2568
+out/grid_poth-4.-1.0_6_7_21_0.5.jsonl: contradiction wins verified exactly: 22; failed: 0; branch LPs solved: 1408
+out/grid_poth-3.-1.0_0.85_20_0.5.jsonl: 77 adaptive wins (40 with empty pool = no admissible response, re-checked); 2220 extreme responses tested against the pools; failures: 0; max (load - t): +3.33e-16
+out/grid_poth-3.-1.0_6_7_21_0.5001.jsonl: 45 adaptive wins (22 with empty pool = no admissible response, re-checked); 920 extreme responses tested against the pools; failures: 0; max (load - t): +1.11e-10
+out/grid_poth-3.-1.0_0.85_40_0.5001.jsonl: 563 adaptive wins (244 with empty pool = no admissible response, re-checked); 7975 extreme responses tested against the pools; failures: 0; max (load - t): +3.34e-07

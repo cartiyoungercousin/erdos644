@@ -1,0 +1,24 @@
+t=0.8500 a=0.42 phi=0.8520 S=1.26 (S_max 1.300): 1 sealed: looseness excludes the rule
+t=0.8500 a=0.43 phi=0.8550 S=1.29 (S_max 1.300): 1 sealed: beaten by ['T']
+t=0.8400 a=0.41 phi=0.8460 S=1.23 (S_max 1.320): 1 sealed: looseness excludes the rule
+t=0.8400 a=0.42 phi=0.8520 S=1.26 (S_max 1.320): 1 sealed: beaten by ['T']
+t=0.8400 a=0.43 phi=0.8550 S=1.29 (S_max 1.320): 1 sealed: beaten by ['T']
+t=0.8333 a=0.39 phi=0.8340 S=1.17 (S_max 1.333): 1 sealed: looseness excludes the rule
+t=0.8333 a=0.40 phi=0.8400 S=1.20 (S_max 1.333): 1 sealed: looseness excludes the rule
+t=0.8333 a=0.41 phi=0.8460 S=1.23 (S_max 1.333): 1 sealed: looseness excludes the rule
+t=0.8333 a=0.42 phi=0.8520 S=1.26 (S_max 1.333): 1 sealed: beaten by ['T']
+t=0.8333 a=0.43 phi=0.8550 S=1.29 (S_max 1.333): 1 sealed: beaten by ['T']
+t=0.8333 a=0.44 phi=0.8400 S=1.32 (S_max 1.333): 1 sealed: beaten by ['T']
+t=0.8200 a=0.40 phi=0.8400 S=1.20 (S_max 1.360): 1 sealed: looseness excludes the rule
+t=0.8200 a=0.41 phi=0.8460 S=1.23 (S_max 1.360): 1 sealed: beaten by ['T']
+t=0.8200 a=0.42 phi=0.8520 S=1.26 (S_max 1.360): complement rule beats EVERY request
+t=0.8200 a=0.43 phi=0.8550 S=1.29 (S_max 1.360): complement rule beats EVERY request
+t=0.8200 a=0.44 phi=0.8400 S=1.32 (S_max 1.360): complement rule beats EVERY request
+t=0.8200 a=0.45 phi=0.8250 S=1.35 (S_max 1.360): complement rule beats EVERY request
+t=0.8000 a=0.40 phi=0.8400 S=1.20 (S_max 1.400): 1 sealed: beaten by ['T']
+t=0.8000 a=0.41 phi=0.8460 S=1.23 (S_max 1.400): complement rule beats EVERY request
+t=0.8000 a=0.42 phi=0.8520 S=1.26 (S_max 1.400): complement rule beats EVERY request
+t=0.8000 a=0.43 phi=0.8550 S=1.29 (S_max 1.400): complement rule beats EVERY request
+t=0.8000 a=0.44 phi=0.8400 S=1.32 (S_max 1.400): complement rule beats EVERY request
+t=0.8000 a=0.45 phi=0.8250 S=1.35 (S_max 1.400): complement rule beats EVERY request
+t=0.8000 a=0.46 phi=0.8100 S=1.38 (S_max 1.400): complement rule beats EVERY request

@@ -1,0 +1,2 @@
+poth:-3,-1,0 0.85 grid 1/80, 461 profiles with 1.120 <= x+2y <= 1.150: {'static': 193, 'adaptive': 268} stuck: [] time 493
+poth:-4,-1,0 0.85 grid 1/80, 461 profiles with 1.120 <= x+2y <= 1.150: {'static': 193, 'adaptive': 268} stuck: [] time 283

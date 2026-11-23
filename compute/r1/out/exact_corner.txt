@@ -1,0 +1,2 @@
+profile [17, 17, 17]/40 t=17/20 loose: 79233 grid requests (step 1/40), 0 uncovered, 5171 (response, seal) pairs used, 4954 responses  ->  STUCK verified exactly
+verified: 1 failed: 0

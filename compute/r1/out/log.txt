@@ -1,0 +1,16 @@
+loose 0.85 profiles 278 {'static': 201, 'adaptive': 50, 'None': 27} time 175
+none 0.85 profiles 278 {'static': 201, 'adaptive': 50, 'None': 27} time 179
+maxS 0.85 profiles 278 {'static': 201, 'adaptive': 60, 'None': 17} time 140
+loose 0.80 profiles 283 {'static': 107, 'None': 120, 'adaptive': 56} time 258
+maxS 0.80 profiles 283 {'static': 107, 'None': 94, 'adaptive': 82} time 323
+loose 6/7 profiles 281 {'static': 236, 'adaptive': 36, 'None': 8, 'ERR': 1} time 211
+maxS 6/7 profiles 281 {'static': 236, 'adaptive': 40, 'None': 5} time 156
+MS 0.85 profiles 278 {'static': 201, 'adaptive': 51, 'ERR': 6, 'None': 20} time 227
+minS 0.85 profiles 278 {'static': 201, 'adaptive': 59, 'ERR': 18} time 26
+poth:-3,-1,0 0.85 profiles 278 {'static': 201, 'adaptive': 77} time 14
+poth:-3,-1,0 0.825 profiles 281 {'static': 130, 'adaptive': 125, 'None': 26} time 135
+poth:-3,-1,0 0.80 profiles 283 {'static': 107, 'adaptive': 120, 'None': 56} time 161
+poth:-3,-1,0 5/6 profiles 447 {'static': 248, 'adaptive': 194, 'None': 5} time 138
+poth:-3,-1,0 0.84 profiles 450 {'static': 292, 'adaptive': 157, 'None': 1} time 111
+poth:-3,-1,0 0.85 profiles 1739 {'static': 1176, 'adaptive': 563} time 84
+poth:-3,-1,0 6/7 profiles 281 {'static': 236, 'adaptive': 45} time 7

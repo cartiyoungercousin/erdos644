@@ -5,3 +5,5 @@ __pycache__/
 .venv/
 out_*.txt
 notes/sources/
+/compute/r1/cache/
+*.pkl

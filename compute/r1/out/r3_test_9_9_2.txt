@@ -1,0 +1,72 @@
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+k=40 T=34 cells={'X': 18, 'Y': 18, 'Z': 4, 'PE': 4, 'PF': 18, 'PG': 18}; 136 response types, max new points 23
+smallest O with tau > T: 38;  O = T + max new = 57
+--- O = 57: n = 137, 139 types, tau = 35 (T = 34; optimal transversal block counts {'X': 16, 'Y': 12, 'Z': 3, 'PE': 0, 'PF': 3, 'PG': 1, 'O': 0})
+    bad 7-tuple found (independent brute-force check: True).  Edge types:
+       K {'X': 0, 'Y': 8, 'Z': 0, 'PE': 2, 'PF': 7, 'PG': 9, 'O': 14}
+       K {'X': 5, 'Y': 5, 'Z': 0, 'PE': 4, 'PF': 12, 'PG': 1, 'O': 13}
+       K {'X': 8, 'Y': 0, 'Z': 0, 'PE': 4, 'PF': 15, 'PG': 0, 'O': 13}
+       K {'X': 9, 'Y': 10, 'Z': 0, 'PE': 0, 'PF': 1, 'PG': 7, 'O': 13}
+       K {'X': 9, 'Y': 10, 'Z': 0, 'PE': 0, 'PF': 1, 'PG': 7, 'O': 13}
+       K {'X': 9, 'Y': 10, 'Z': 0, 'PE': 0, 'PF': 1, 'PG': 7, 'O': 13}
+       K {'X': 17, 'Y': 0, 'Z': 3, 'PE': 0, 'PF': 2, 'PG': 0, 'O': 18}
+    membership classes (edge-membership bitstring, edge 7..1 -> block counts):
+       0000000 {'Z': 1, 'O': 19}
+       0000001 {'PG': 8}
+       0000011 {'PF': 3, 'PG': 1, 'O': 5}
+       0000101 {'PF': 4}
+       0000110 {'PE': 2, 'PF': 7, 'O': 1}
+       0000111 {'PE': 2}
+       0001011 {'Y': 1}
+       0001100 {'O': 1}
+       0001110 {'PF': 1}
+       0010000 {'PG': 2}
+       0010011 {'Y': 4}
+       0010110 {'PF': 1}
+       0011001 {'Y': 3}
+       0011100 {'X': 1}
+       0100000 {'Y': 1, 'O': 13}
+       0101000 {'Y': 6, 'PG': 2}
+       0110000 {'Y': 3}
+       0111000 {'PG': 5}
+       1000000 {'Z': 3}
+       1000100 {'PF': 1, 'O': 2}
+       1001000 {'X': 3}
+       1001010 {'X': 2, 'O': 3}
+       1010010 {'O': 4}
+       1011101 {'O': 9}
+       1011110 {'X': 3}
+       1100100 {'X': 4, 'PF': 1}
+       1110000 {'X': 5}
+--- O = 38: n = 118, 139 types, tau = 35 (T = 34; optimal transversal block counts {'X': 18, 'Y': 0, 'Z': 1, 'PE': 0, 'PF': 0, 'PG': 16, 'O': 0})
+    bad 7-tuple found (independent brute-force check: True).  Edge types:
+       K {'X': 0, 'Y': 3, 'Z': 0, 'PE': 0, 'PF': 17, 'PG': 14, 'O': 6}
+       K {'X': 0, 'Y': 9, 'Z': 0, 'PE': 3, 'PF': 2, 'PG': 13, 'O': 13}
+       K {'X': 6, 'Y': 13, 'Z': 0, 'PE': 0, 'PF': 9, 'PG': 2, 'O': 10}
+       K {'X': 11, 'Y': 0, 'Z': 0, 'PE': 0, 'PF': 7, 'PG': 0, 'O': 22}
+       K {'X': 11, 'Y': 0, 'Z': 0, 'PE': 0, 'PF': 7, 'PG': 0, 'O': 22}
+       K {'X': 11, 'Y': 0, 'Z': 0, 'PE': 0, 'PF': 7, 'PG': 0, 'O': 22}
+       K {'X': 14, 'Y': 0, 'Z': 0, 'PE': 3, 'PF': 7, 'PG': 0, 'O': 16}
+    membership classes (edge-membership bitstring, edge 7..1 -> block counts):
+       0000000 {'Y': 2, 'Z': 4, 'PE': 1}
+       0000001 {'PG': 3}
+       0000010 {'PG': 2}
+       0000011 {'Y': 3, 'PG': 11}
+       0000100 {'Y': 7, 'PF': 1, 'PG': 2}
+       0000110 {'Y': 6}
+       0010100 {'O': 3}
+       0011000 {'X': 1}
+       0011001 {'PF': 5, 'O': 6}
+       0100101 {'PF': 5}
+       0100110 {'O': 7}
+       0110010 {'O': 6}
+       0111000 {'X': 3}
+       1000010 {'PE': 3}
+       1000101 {'PF': 3}
+       1001001 {'PF': 2}
+       1010100 {'X': 6}
+       1011000 {'O': 7}
+       1101000 {'X': 7, 'O': 9}
+       1110000 {'X': 1}
+       1110011 {'PF': 2}

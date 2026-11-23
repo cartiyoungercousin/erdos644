@@ -1,0 +1,8 @@
+repaired [10, 10, 4]: 12 uncovered -> win=None uncovered=0
+repaired [10, 9, 4]: 1 uncovered -> win=None uncovered=0
+repaired [10, 8, 5]: 1 uncovered -> win=None uncovered=0
+out/grid_loose_0.85_20_0.5.jsonl: 27 stuck records checked exactly, 3 re-solved, 0 still unverified
+repaired [10, 10, 4]: 30 uncovered -> win=None uncovered=0
+repaired [10, 9, 4]: 1 uncovered -> win=None uncovered=0
+out/grid_maxS_0.85_20_0.5.jsonl: 17 stuck records checked exactly, 2 re-solved, 0 still unverified
+repaired [10, 10, 4]: 2 uncovered -> win=None uncovered=0
