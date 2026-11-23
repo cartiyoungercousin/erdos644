@@ -61,3 +61,20 @@ Status key: [READ] read in full, [ABS] abstract / secondhand only, [MISSING] not
   fails k = 2)?
 - **D. Proof via stability**: FKW's claims force any bad 7-tuple in a near-extremal family to be
   near-Fano; aim to show tau > (3/4+eps)r forces such a 7-tuple.
+
+## 5. 2026 AI-assisted claims (found 2026-11-23, after user pointed to arXiv:2610.02945)
+None formally verified or peer-reviewed. Published ceiling is still FKW99's ceil(7k/8).
+- **cubres/erdos-644-research** (2026-10-07): manuscript six_sevenths_v3 claims
+  tau <= ceil(6k/7) for all k >= 2 (hand proof, internal AI audits; 2,008,516 finite branch
+  checks for ranks 7..120).
+- **skyvegetable666/erdos-644-11-over-13** (2026-10-28): claims f(k,7) <= 11k/13 + 8,
+  computer-assisted: written reduction (anchor triples, candidate-pair graph, block covers,
+  fractional covers, rounding) + exact LP/RUP certificate with an independent Python checker.
+  Earlier internal bound 17k/20 + 4.
+- **Ansatz** (Jiang, Zhang, ..., Tao, Wang; arXiv:2610.02945, 2026-11-06): Table 1 lists
+  f(k,7) <= ceil((6k+3)/7) + 1 for k >= 150, status "AI-proposed" (not Lean).
+- grandchallenge/MATH-PROGRAMME issue #1915 also tracks #644.
+Common engine: "general covering principle" — r anchor edges with empty common intersection;
+candidate pairs = pairs meeting all anchors; cover candidate pairs by 7−r blocks of size <= T
+=> tau <= T. This is FKW's Lemma 1 idea, optimized. Omega-institute notes indicate this
+architecture cannot reach 3/4.

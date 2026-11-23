@@ -14,3 +14,5 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - uses: leanprover/lean-action@v1
+      - name: Trust checks (frozen statements, banned constructs, axiom audit)
+        run: bash scripts/check_trust.sh

@@ -8,7 +8,7 @@ in S, property (7,2) is anti-monotone. We look for S maximizing tau(S) subject t
            else ask the ILP for a bad tuple; none -> S is good (record); else its type set is a
            new conflict, branch on removing each of its types.
 
-Usage: py search.py r nblocks [max_n]
+Usage: py search.py r nblocks [max_n] [budget_s] [min_n]
 """
 import itertools
 import sys
@@ -61,10 +61,11 @@ if __name__ == "__main__":
     m = int(sys.argv[2])
     max_n = int(sys.argv[3]) if len(sys.argv) > 3 else 2 * r
     budget = float(sys.argv[4]) if len(sys.argv) > 4 else 120
+    min_n = int(sys.argv[5]) if len(sys.argv) > 5 else r + 1
     target = 3 * r // 4   # complete-family value floor(3r/4) (r = 4k gives 3k)
     print(f"r={r}, blocks={m}, looking for tau > {target} (3r/4)", flush=True)
     results = []
-    for n in range(r + 1, max_n + 1):
+    for n in range(min_n, max_n + 1):
         for sizes in itertools.combinations_with_replacement(range(1, n), m):
             if sum(sizes) != n:
                 continue
