@@ -21,7 +21,7 @@ Requests may depend on earlier responses: this is just nested `obtain`s.
 | 4 | Lemma 2.4 four edges (candidate pairs of E,F,G,K) | `Triple.four_candidates` | todo |
 | 5 | Lemma 2.2 integral allocation | replaced by explicit splits | n/a |
 | 6 | Lemma 2.5 balanced request; 2.6 capped request | `Seeds.*` | todo |
-| 7 | Lemma 3.1 Hall allocation; Cor 3.2 | `Static.hall`, `Static.hall_cor` | todo |
+| 7 | Lemma 3.1 Hall allocation; Cor 3.2 | `Static.triangle_split`, `Static.hall_sizes` (integer core DONE); set-level `hall_closes`, `hall_cor` todo | partial |
 | 8 | Lemma 3.3 boxed triangle (pure integers) | `Static.boxed_triangle` | todo |
 | 9 | Lemma 3.4 symmetric allocation | `Static.symmetric` | todo |
 | 10 | Lemmas 4.1–4.3 one core / split A / split B (adaptive, App. A) | `Adaptive.*` | todo |
@@ -40,4 +40,6 @@ manuscript statement by `Bridge.six_sevenths_erdos_wording_of` — DONE.
 Audit at the end: `Lean644/Audit.lean` with `#print axioms`, blind back-translation, non-vacuity.
 
 ## Findings log (fidelity / errors found in the manuscript)
-- (none yet)
+- Lemma 3.1: inequalities `2k+2a+b <= 4T` and `2k+2a+c <= 4T` are redundant (implied by
+  `3k+a <= 4T` and `a+b, a+c <= k`); confirmed by the Lean proof of `hall_sizes`, which does not
+  use them. Harmless. Also: the remaining hypotheses are exactly feasibility (brute force, k <= 8).
