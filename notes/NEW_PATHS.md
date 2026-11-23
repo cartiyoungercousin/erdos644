@@ -365,3 +365,113 @@ implies tau <= k/2 + O(1)** [heuristic; would follow from G* with much room to s
   (half of G) ∪ (part of the current common intersection of the E-cluster edges). Depth needed
   against H2(N): 2 more responses after the anchor (E, F, F3, F4 + centre G) and no static
   phase; the present engine's drop-and-re-anchor move keeps only three edges and cannot see it.
+
+---------------------------------------------------------------------------------------------
+
+## 6. Petal traces on the centre: a lemma that neutralises them, a partial closure, and what remains
+
+Code: `compute/newpaths/check_double_star.py` (randomized check of Lemma 6.1: 0 failures in 8000
+trials; negative control with two centres finds 2-covers in about half of the trials) **[numerical]**.
+u = largest cell of the lex-min anchor; "far" = intersection < u, "close" = >= u.
+
+### 6.1 Lemma 6.1 (s+3, "three centres")  [proved by hand]
+> Let P_1..P_s be edges with empty common intersection, U their union, and C_1,C_2,C_3 edges with
+> C_i ∩ C_j ∩ U = ∅ for i ≠ j. Then the s+3 edges have no 2-point cover.
+
+Proof. Let {a,b} be a cover. A point in two centres lies outside U, so it is in no P_i. If
+neither a nor b lies in two centres they cover at most two of C_1,C_2,C_3. So say a lies in two
+centres; then a covers no petal and b lies in every P_i, contradiction. ∎
+(s = 3 is Lemma 3+3 of §1.4; s = 4 gives 7 edges. No "far", no cluster, and no sealing of the
+petals' traces on the centres is needed: a point of a single centre cannot help cover the
+other two.)
+
+**Answer to the question.** One centre is the wrong count. With one centre G, every private
+trace point u in G∩P_i creates the cover {u, common point of the other petals}; with three
+centres whose traces on U are pairwise disjoint, no trace matters. The price is no longer
+"seal G" but the following.
+
+> **Corollary 6.2 (trace pairs) [proved by hand].** If tau > T and P_1..P_s (s <= 4) have empty
+> common intersection and union U, then any two edges B_1,B_2 with B_1∩B_2∩U = ∅ satisfy
+> |B_1∩U| + |B_2∩U| > T. In particular (5+2 closure): if some edge G has |G∩U| = beta and
+> |U| + beta <= 2T, contradiction (request (G∩U) ∪ (T − beta points of U) to get C_2, then
+> (G∩U) ∪ (C_2∩U) to get C_3).
+
+So small traces are cheap for the requester; what the adversary must do instead is make the
+union U of four same-cluster petals larger than 2T − beta. Corollary 6.2 holds in every family
+with tau > T and can be added to the R1b engine as a response constraint or as a closure.
+
+### 6.2 Lemma 6.3: the lex-min cell is at most k − T/2 + 1  [proved by hand]
+If u > k − T/2 + 1 the pair-gap window [2k − 2u − T + 2, u) of §1.2 contains [0,u), but
+requesting k − u + 1 <= T points of an edge produces a pair meeting in < u points. ∎
+Write delta := k − T/2 − u >= −1. Then **far pairs meet in fewer than 2 delta + 2 points**.
+H2(N) with N = k + T/2 + 1 has delta = 0: it is the extreme point of the gap regime and its
+far pairs are disjoint. Consequences: the R1b anchor (0.6,0.05,0.05) at t = 0.85 cannot be a
+lex-min anchor (u <= 0.575k); at t = 0.825 lopsided anchors have x <= 0.5875k, as observed.
+
+### 6.3 Theorem 6.4 (top of the gap regime)  [proved by hand; O(1) terms as written, not machine-checked]
+> Let tau(H) > T, u the lex-min cell, delta = k − T/2 − u. If
+> **3T >= 2k + 30 delta + 24**, contradiction (7 edges: 4 petals, 3 centres).
+> Equivalently, every family with tau > T has u <= (16k − 9T)/15 + O(1).
+
+Proof. Take E,F with |E∩F| = u (the lex-min anchor has such a pair). Requesting k − u + 1
+points of E∩F gives G far from E and F, so |G∩E|, |G∩F| < 2 delta + 2.
+(This needs k − u + 1 <= u; automatic under the hypothesis when T <= 0.94k.)
+*Petals.* Let S ⊆ G, |S| = k − u + 1, S ⊇ G∩(E∪F). D_3 = S ∪ Q_3 with Q_3 ⊆ E∩F,
+|Q_3| = b_3 := T − (k−u+1) = T/2 − delta − 1. The response P_3 has |P_3∩G| < u, so it is far from
+G; (E,G,P_3) and (F,G,P_3) are good triples (E∩G, F∩G ⊆ S) with two far pairs, so P_3 is close
+to E and to F (minimality). D_4 = S ∪ (G∩P_3) ∪ Q_4 with Q_4 ⊆ E∩F, Q_4 ⊇ E∩F∩P_3,
+|Q_4| = b_4 := b_3 − 2 delta − 2; possible since |E∩F∩P_3| <= u − b_3 = k − T + 1 <= b_4 by the
+hypothesis. P_4 is far from G, close to E, F and (via the good triple (G,P_3,P_4)) to P_3, and
+E∩F∩P_3∩P_4 = ∅.
+*Union.* U = E∪F∪P_3∪P_4 has no point of degree 4, so |U| = 4k − (sum of pairs) + (sum of
+triples). All six pairs are >= u and |E∩F| = u; the two triple cells inside E∩F total
+<= 2u − b_3 − b_4; the two others are disjoint subsets of P_3∩P_4. Hence
+|U| <= 4k − 5u + (2u − b_3 − b_4) = k + T/2 + 7 delta + 4. (For H2: N = k + T/2 + 1.)
+*Centres.* beta = |G∩U| < 4(2 delta + 2). Corollary 6.2 needs |U| + beta <= 2T, i.e.
+k + T/2 + 15 delta + 12 <= 2T. ∎
+
+| t | closes lex-min anchors with u >= | H2 anchor 1 − t/2 |
+|---|---|---|
+| 0.76 | 0.6107 k | 0.62 k |
+| 0.80 | 0.5867 k | 0.60 k |
+| 0.825 | 0.5717 k | 0.5875 k |
+| 0.846 | 0.5591 k | 0.577 k |
+
+In particular **the pure two-cluster anchor (1 − t/2, 0, 0), where R1b's star is stuck for
+n = 5, 6, is closed for every t > 2/3 with honest traces**, by a 7-edge configuration the
+fixed-plan star search did not reach (n = 7 timed out). This is a result below 11/13 in a
+regime, but only for a sliver of it: (0.5, 0.15, 0.05) and (0.5, 0.1, 0.05) at t = 0.825 have
+delta = 0.0875k and are NOT covered.
+Soundness: for genuine (7,2) families the hypothesis fails. H2(N), N < 6k/5: T < 2k/5 + 2 < 2k/3.
+K_N with T = N − k: delta = k/2 − N/6 and the hypothesis reads N >= 5k/2, where K_N is not
+(7,2).  [proved by hand]
+
+### 6.4 The remaining obstruction, precisely
+An adversary with u in (max(u*, k/2), (16k − 9T)/15) must satisfy all of: C1–C4 of §5.1 with
+"close" = >= u and far < 2 delta + 2; Lemma 6.3; Corollary 6.2 for every 3 or 4 edges with empty
+common intersection; (7,2) on everything shown. It can defeat Theorem 6.4 in one way only:
+**four pairwise-close edges with empty common intersection whose union exceeds 2T − beta.**
+The proof bounds |U| by k + T/2 + 7 delta; the constant 30 has three improvable sources:
+ (i) the traces of G on the four petals are bounded separately (8 delta);
+ (ii) the union bound uses only pair sizes, not Lemma B or Corollary 6.2 on sub-configurations;
+ (iii) b_4 pays 2 delta + 2 to seal G∩P_3; using complementary sets S for P_3 and P_4 is free
+     only when 2(k − u + 1) >= k, i.e. u <= k/2 + 1 (so not at the top of the regime).
+I have no configuration that provably survives all constraints at delta ≈ 0.09k; the R1b stuck
+responses at (0.5,0.15,0.05) were computed without Corollary 6.2, so they are not yet one.
+**Realizability.**
+- Overlapped two-cluster families (far pairs meet inside the overlap): no (7,2) member with
+  tau > k/2 on the §5.7 grid [numerical].
+- Block-type "one trace point per edge" families (profiles (k−1,1) and (1,k−1) on two blocks of
+  size about 11k/8, tau about 3k/4 + 4) are NOT (7,2): four petals with empty common core and
+  three centres that avoid the petals' trace points and have distinct trace points form a bad
+  7-tuple (Lemma 6.1), and the requester can force it, every sealing costing O(1)
+  [proved by hand]. So the O(1)-trace adversary of R1b §3.4 does not extend to a family.
+- Exact SAT is not informative (a counterexample needs tau >= 3k/4 + 2, i.e. k >= 12).
+
+### 6.5 Next steps (cheap, in order)
+1. R1b engine: add the 4+3 closure (Lemma 6.1) and Corollary 6.2 as response constraints; rerun
+   only the six lopsided anchors at t = 0.825. Prediction: (0.5875,0,0) wins; the
+   delta = 0.0875k anchors decide whether the constant 30 is an artifact.
+2. Replace the union bound of Theorem 6.4 by an exact LP over the 11 Venn cells of E,F,P_3,P_4
+   and G's traces with all constraints of §6.4; its optimum replaces "30".
+3. Lean: Lemma 6.1 and Lemma 6.3 are short and independent of everything unverified.
