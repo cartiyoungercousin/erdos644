@@ -7,3 +7,5 @@ import Lean644.Triple
 import Lean644.Bridge
 import Lean644.Static
 import Lean644.HallClose
+import Lean644.Symmetric
+import Lean644.FourEdges

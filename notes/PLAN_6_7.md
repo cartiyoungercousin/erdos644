@@ -18,12 +18,12 @@ Requests may depend on earlier responses: this is just nested `obtain`s.
 | 1 | Lemma 2.1 request-cover principle | `Framework.request_cover` | DONE |
 | 2 | responses exist when τ > T | `Framework.exists_response` | DONE |
 | 3 | candidate pairs of a good triple (eq. 2.1) | `Triple.triple_candidate`, `closes_of_four_requests` | DONE |
-| 4 | Lemma 2.4 four edges (candidate pairs of E,F,G,K) | `Triple.four_candidates` | todo |
+| 4 | Lemma 2.4 four edges (candidate pairs of E,F,G,K) | `FourEdges.four_candidate_core`, `closes_of_three_requests` | DONE |
 | 5 | Lemma 2.2 integral allocation | replaced by explicit splits | n/a |
 | 6 | Lemma 2.5 balanced request; 2.6 capped request | `Seeds.*` | todo |
 | 7 | Lemma 3.1 Hall allocation; Cor 3.2 | `Static.hall_sizes`, `HallClose.hall_closes`, `HallClose.hall_cor` | DONE |
-| 8 | Lemma 3.3 boxed triangle (pure integers) | `Static.boxed_triangle` | todo |
-| 9 | Lemma 3.4 symmetric allocation | `Static.symmetric` | todo |
+| 8 | Lemma 3.3 boxed triangle (pure integers) | replaced by explicit witness `Symmetric.symmetric_sizes` | DONE |
+| 9 | Lemma 3.4 symmetric allocation | `Symmetric.symmetric_closes` | DONE |
 | 10 | Lemmas 4.1–4.3 one core / split A / split B (adaptive, App. A) | `Adaptive.*` | todo |
 | 11 | Lemmas 4.4–4.6 gap traces / gap core / two cores (App. A) | `Adaptive.*` | todo |
 | 12 | Lemmas 4.7–4.8 near core / two large (App. A) | `Adaptive.*` | todo |
