@@ -115,3 +115,12 @@ s = o(k) this is e^{-o(n)}, above (1-eps)^n, so FR yields a pair meeting in exac
 any single l in the linear window — the hypotheses look satisfiable. TODO: confirm the exact
 uniform statement (which paper/theorem) before relying on it. Scope caveat: this only covers
 n <= (7/4 + o(1))k and gives tau <= (n+2k)/5 + O(1) there; it is one regime, not the whole problem.
+
+## 2026-11-23 — R1 result and Lemma A (Lean)
+- R1 (see `notes/R1_RESULTS.md`): looseness and max-S re-anchoring do not beat 6/7 in the one-round
+  game. A sparsest-anchor rule wins on all tested grids at t = 0.85 (numerical evidence, not a
+  proof; 0.84 fails on a fine grid; 0.85 is above the claimed 11/13 record). One-round games cap at 5/6.
+- `Lean644/SparserTriple.lean`: `sparser_response` and `lemmaA` proven (axioms: propext,
+  Classical.choice, Quot.sound). Uses only tau > T, not property (7,2). Statement: with x = |E∩F|,
+  y = |E∩G|, y <= x <= k/2, k/2 <= T <= k, x + 2y + T >= 2k + 2, some K in H gives a good triple
+  (E, G, K) with all pair cells <= k/2 and every two pair cells summing to < x + y.
