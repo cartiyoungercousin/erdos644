@@ -1,0 +1,3 @@
+ERR 0.825_p100_10_1_20_40_all_d1_v1044_11_4_4: RuntimeError('response does not answer its own request [np.float64(0.2), np.float64(0.2), np.float64(0.2), np.float64(0.025), np.float64(0.2), np.float64(0.0)]')
+ERR 0.825_p100_10_1_20_40_all_d1_v886_10_8_0: RuntimeError('response does not answer its own request [np.float64(0.175), np.float64(0.4), np.float64(0.0), np.float64(0.025), np.float64(0.0), np.float64(0.225)]')
+ERR 0.825_p100_10_1_20_40_all_d1_v886_9_8_2: RuntimeError('response does not answer its own request [np.float64(0.125), np.float64(0.4), np.float64(0.1), np.float64(0.075), np.float64(0.0), np.float64(0.125)]')

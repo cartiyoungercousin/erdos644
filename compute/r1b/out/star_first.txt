@@ -1,0 +1,8 @@
+anchor (0.5875,0,0) t=0.825 named edges n=5:  STUCK {'why': 'no affordable seal plan', 'iters': 2, 'pairs': 9}
+anchor (0.5875,0,0) t=0.825 named edges n=6:  STUCK {'why': 'no affordable seal plan', 'iters': 3, 'pairs': 27}
+anchor (0.5875,0,0) t=0.825 named edges n=7:  STUCK {'why': 'no affordable seal plan', 'iters': 4, 'pairs': 81}
+anchor (0.6,0,0) t=0.825 named edges n=5:  STUCK {'why': 'no affordable seal plan', 'iters': 2, 'pairs': 9}
+anchor (0.6,0,0) t=0.825 named edges n=6:  STUCK {'why': 'no affordable seal plan', 'iters': 3, 'pairs': 27}
+anchor (0.6,0,0) t=0.825 named edges n=7:  STUCK {'why': 'no affordable seal plan', 'iters': 4, 'pairs': 81}
+anchor (0.5,0.15,0.05) t=0.825 named edges n=6:  STUCK {'why': 'no affordable seal plan', 'iters': 14, 'pairs': 162}
+anchor (0.5,0.15,0.05) t=0.825 named edges n=7:  STUCK {'why': 'no affordable seal plan', 'iters': 36, 'pairs': 486}

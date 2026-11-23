@@ -1,0 +1,1 @@
+t=0.72 c=4 class=all depth<=3 grid 1/50 (requests 1/50): 1 anchors; won at depth: {}; stuck 1: [(0.42, 0.42, 0.42)]; time 420s
