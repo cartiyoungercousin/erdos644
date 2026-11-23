@@ -102,3 +102,16 @@ Farkas certificates.
   Axioms: propext, Classical.choice, Quot.sound only.
 Novelty: neither construction appears in FKW99 (its Lemma 1 is an adaptive good-triple
 construction) nor in the 6/7 manuscript; EFKT92 not yet checked (unavailable).
+
+## R2 literature check: Frankl–Rödl (2026-11-23)
+Frankl–Rödl 1987 "Forbidden intersections" (TAMS 300): for 0 < eta < 1/4 there is eps > 0 with:
+a family of subsets of [n] with no two members meeting in exactly l points, eta n <= l <= (1/2-eta) n,
+has size <= (2-eps)^n; the k-uniform version (k, l linear in n, l away from 0 and k) gives
+|F| <= (1-eps)^n C(n,k). Surveys: Frankl–Tokushige arXiv:2107.06371; Keevash's dependent-random-
+choice proof (people.maths.ox.ac.uk/keevash/papers/franklrodl-journal.pdf).
+Fit with roadmap L4: tau > T on n = n points makes H a Turán system (every (n-T)-set contains an
+edge), so density |H|/C(n,k) >= 1/C(n-T, k). In the near-complete regime n - T = k + s with
+s = o(k) this is e^{-o(n)}, above (1-eps)^n, so FR yields a pair meeting in exactly l points for
+any single l in the linear window — the hypotheses look satisfiable. TODO: confirm the exact
+uniform statement (which paper/theorem) before relying on it. Scope caveat: this only covers
+n <= (7/4 + o(1))k and gives tau <= (n+2k)/5 + O(1) there; it is one regime, not the whole problem.
