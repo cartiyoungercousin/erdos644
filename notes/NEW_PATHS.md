@@ -678,3 +678,104 @@ whose edges share a pool of about k/6 outside points in a way compatible with (7
 I would not put the probability that the overlap lemma follows from the constraints listed in
 8.5 alone above 30%: most likely a second extremal choice (W of minimum size among unions of
 near-minimal triples, or the pool itself as part of the ground set) is needed.
+
+---------------------------------------------------------------------------------------------
+
+## 9. Outside-overlap LP at the balanced anchor — RESULT: no bound; max overlap = k − u* ≈ 0.59k versus the needed eps·k
+
+Code: `compute/newpaths/overlap_lp.py` (exact rational decisions via the simplex of
+`compute/r1/exact_infeasible.py`); closure values of §9.4 from `compute/r1/game.py` tables
+(floating point). k = 1, eps = t − 3/4, u* = (2 − t)/3, |W| = 1 + t.
+
+### 9.1 Model
+Theorem 8.1's template at the anchor (u*,u*,u*), centre E. Classes a_1∪a_2 ⊇ X = E∩F and
+a_3∪a_4 ⊇ Y = E∩G (so both group-1 requests seal a pair cell; no other request of the template
+can seal one: a class pair holds k/2 of E and one B-class holds about t/3 < u*). B-classes cut
+Z, PF, PG proportionally, |B_1| = |B_2| = (t + 2 rho)/3 with rho = eps, the largest value the budget
+allows (**the requirement is: all four outside overlaps <= eps·k**; the "c < 1/3" of §8.5 is the
+unbalanced adaptive form).
+Edges in play: E, F, G, R (response to B_1∪a_1∪a_2), R' (response to B_2∪a_1∪a_3); these are
+the two earlier responses through a_1. Variables: masses of R and of R' in each of the 17 cells
+(8 in E, 9 in W∖E), of R∩R' in each common cell, o = |R∩R'∖W|, and private outside parts.
+
+| constraint | justification |
+|---|---|
+| R, R' avoid their requests; cell capacities; \|R\| = \|R'\| = 1 | definition |
+| \|R∩W\|, \|R'∩W\| >= t − 1/2 | Lemma B on (E,F,G) |
+| max(\|R∩E\|, \|R∩F\|) >= u* (two branches) | lex-minimality on the good triple (E,F,R) (X sealed) = Lemma 8.2 type rigidity |
+| u* + \|R∩E\| + \|R∩F\| <= 3 − 2t | tight-triple lemma on (E,F,R) |
+| \|R'∩(E∪F∪R)\| >= (3t − \|E∪F∪R\|)/2 | Lemma B on the good triple (E,F,R) |
+Checked and found vacuous here, hence not rows: pair gap (the window is empty at u = u*);
+Corollary 6.2 and Lemma 6.1 closures (they need two traces with empty common part on the
+petal union; under the sealing convention the adversary keeps one common point, and with G as
+centre the condition |U| + beta <= 2t fails by more than k/4); constraints through the third
+response R'' on the line through a_1 ((R,R',R'') is good: tight-triple and minimality are
+satisfied by any R'' that is mostly new); minimality for R' (its request seals nothing).
+
+### 9.2 Result  [computed exact]
+| t | eps | max outside overlap o | o / eps | needed |
+|---|---|---|---|---|
+| 0.76 | 0.01 | 44/75 = 0.5867 (= 1 − u*) | 58.7 | <= 1 |
+| 0.78 | 0.03 | 89/150 = 0.5933 (= 1 − u*) | 19.8 | <= 1 |
+Certified by exact feasibility at the value and exact infeasibility at value + 10^-6.
+The branch |R∩F| >= u* is infeasible (F∖(X∪B_1) is smaller than u*), so R is forced to have
+|R∩E| >= u* inside a_3∪a_4.
+**Binding constraints** (removing either raises the optimum; all others are slack):
+|R| = 1 and minimality on (E,F,R). Lemma B is slack for R' (it would allow 3/2 − t).
+So the only thing limiting the overlap is that R must spend u* of its points inside E;
+everything else of R may lie outside W and R' may contain all of it.
+
+### 9.3 Witness
+R = Y ∪ P (Y = E∩G entirely, P a pool of k − u* points outside W), plus O(1) points elsewhere;
+R' = S' ∪ P with S' any admissible u*-set in W. Outside overlap |P| = k − u*.
+By symmetry the same holds for the pairs through a_2, a_3, a_4.
+
+### 9.4 One added constraint and re-check: the full 4-edge closure  [numerical for the closure values]
+Provable additional constraint: each response K must defeat the closure "E,F,G,K plus three
+static requests" and, when a cell is sealed, "drop the opposite edge plus four requests"
+(R1's Q and T_c). Evaluated on candidate witnesses with R1's pattern tables:
+| edge | closure value at t = 0.76 / 0.78 | status |
+|---|---|---|
+| R = Y ∪ O(1) points ∪ P | 0.806 / 0.804 | survives |
+| R' = (X∩a_2) ∪ (Y∩a_4) ∪ P | 0.752 / 0.752 | **closed** |
+| R' = (t − 1/2 spread over Z, PF, PG) ∪ P | 0.647 / 0.658 | **closed** |
+| R' = (Y∩a_4) ∪ PE-part ∪ Z-part ∪ P | 0.751 / 0.751 | **closed** |
+| R' = (u* points of (Z∪PF)∖B_2) ∪ P | 0.816 / 0.815 | survives |
+So the closure does cut the response polytope (three natural R' die, as does R when part of
+its E-trace is moved from Y to PE at t = 0.78), but one admissible pair (R, R') with the full
+overlap k − u* survives. **Re-solved optimum: unchanged, k − u*.** (This is a check of the
+optimal witness against the added non-convex constraint, not a full MILP re-optimisation; it
+suffices for a stuck verdict.) Shape of the survivors: each is (a dense block of exactly u*
+points on one anchor side) ∪ (pool): R fills E∩G, R' fills u* of F∖E.
+
+### 9.5 Is the witness realizable?  [heuristic, with one proved remark]
+- As a product it is not a counterexample: a family {S ∪ P : S in a u*k-uniform family on W,
+  P a (k − u*k)-subset of a pool} has tau <= the transversal number of its W-part, which is at
+  most (7/8)u*k < k/2 if that part is (7,2), and it inherits a bad tuple otherwise.
+  [proved by hand, sketch]
+- With a single fixed pool P the requester wins trivially (one pool point in every request).
+  So a genuine adversary needs a different pool for (almost) every request that touches the
+  current one, i.e. a covering structure on the outside as rich as the family itself. The LP
+  cannot see this: it has two responses and no request into the pool.
+- I therefore do not regard the witness as a counterexample seed, but it is not refuted by
+  anything proved so far.
+
+### 9.6 Consequences
+1. Theorem 8.1 with the constraints of §8.5 does not close the complete-like corner: the
+   outside overlap is unconstrained at scale k, not eps·k. The 30% estimate of §8.6 is
+   settled negatively for those constraints.
+2. What the witness shows is needed: a *second-round* statement about the pool. The cheapest
+   one to test: after R = Y ∪ P is seen, request D'' = (a design part of W) ∪ P_1 with P_1 ⊆ P of
+   size about t − u* (all the budget that minimality on a sealed triple leaves); the response
+   cannot reuse P_1, and (R, F, ·)-type triples become available because R∩F is O(1):
+   every edge avoiding R∩F meets R or F in >= u* points (minimality on the triple with F,
+   whose third cell is then compared with u* as well). An LP with three responses and
+   requests into the pool (cells: 17 in W, plus P_1, P∖P_1, new) is the next exact test; its
+   size is about 3·20 variables and it needs the Q-closure as a MILP constraint, i.e. the R1b
+   engine with a pool block rather than a hand LP.
+3. Honest status of the 3/4 question: the three regimes are now (i) closed: tight triples,
+   top of the gap regime (Theorem 7.1); (ii) open with an explicit pseudo-adversary: bottom
+   of the gap regime (§7.5, complete-like cluster) and the complete-like corner (pool
+   witness, this section); (iii) not examined here: the sparse regime u < u*. Both open
+   pseudo-adversaries are "locally complete piece + correlated outside part", which supports
+   §8.6: this is the real barrier, and no finite list of 5-edge constraints I know removes it.
