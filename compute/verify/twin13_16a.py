@@ -173,10 +173,10 @@ def part2b(trials=3000, seed=3):
 
 
 # ------------------------------------------------ part 3: Prop 16.A exact
-def prop16A(k, T, n, rnd, cap=None):
+def prop16A(k, T, n, rnd, cap=None, c=0):
     V = list(range(n))
     B1 = frozenset(range(k))
-    alpha = max(0, n - 2 * T)
+    alpha = max(0, n - 2 * T + c)
     a0 = frozenset(range(k, k + alpha))
     assert n - k >= alpha
     need = T - alpha
