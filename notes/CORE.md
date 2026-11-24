@@ -583,3 +583,159 @@ enumeration; 12.2 numbers are exact Fractions, the feasibility range of v_12 is 
 12.3 and 14.1 tables are brute-force on real sets; 13's sizes: |S'| = a* + (a* - omega) + rest with
 S'∩S'' = a* - omega >= 0 outside K, and the parts outside K fit: omega + 2(T - a*) - (a* - omega) = N/2 - k/8 <= k for N <= 9k/4. §14.2's "at least four replies" is a
 consequence of 2.3/8.1 (slack with three useful replies is 4·eps), not of a separate proof.
+
+=============================================================================================
+# Part IV — Barrier 2: the window 11k/6 <= N < 3k - T (fourth time box)
+
+Code: `compute/core/spectrum.py` (patterns), `slackq.py` (slack by number of fully used replies),
+`anchor_design.py` (static value of anchor triples). Units k = 1; tables at t = 3/4.
+**Outcome: CP is NOT proved on this range, and the obstruction is the same one as below 11k/6.**
+- Patterns (§16): the first genuinely non-Fano minimal pattern appears at N = 15/8, not 11/6; the
+  11/6 pattern is still a Fano blow-up (one class carries an extra incidence). K4 and the
+  2-(6,3,2) design both have minimal ground set exactly 2k. Exact rational values per pattern;
+  the ordering and completeness rest on a float MILP, and the enumeration is complete only up to
+  N = 17/9.
+- Count (§17): non-Fano patterns need MORE incidences than Fano ones. Two fully used replies never
+  suffice (proved, all N, T < 4k/5); with three the slack is exactly 4·eps·k and with four exactly
+  (N - 7k/4) + 3·eps·k through the whole window (proved for N < 2k, computed for 2k <= N <= 9k/4).
+  Non-Fano patterns improve the slack only for certificates with at least five fully used replies
+  (from N ≈ 2.2k) or six (from N = 2k, where six co-edges alone can cover all pairs).
+- Anchors (§17.3): on the grid 1/16 the only anchor shape with p > 3/4 and static value <= 0.76 is
+  the Fano point (1/2,1/2,1/2); the next is (5,4,4)/16 at 0.777. So in the window three-reply
+  certificates are still Theorem C (kernel N - 3k/2) and Theorem T, both zero-slack points.
+- Mechanism of REDTEAM §11.3's non-Fano endings (§18): six fully used replies. That is available
+  against a predictable adversary (§13) and only against one; it is not a new forcing mechanism.
+
+## 16. Which patterns exist between 7k/4 and 9k/4
+
+Model: co-types F ⊆ [7] with masses m_F, supports pairwise intersecting, every edge of mass 1
+(Σ_{F ∌ i} m_F = 1); N = Σ m_F. `spectrum.py enum`: repeatedly minimise N by MILP, then exclude every
+support containing an S_7-image of the support found; for each support the minimum is recomputed
+exactly (vertex enumeration in Fractions). [exact per support; order/completeness: float MILP]
+
+| N | co-type sizes | co-types and masses (rounds 1..7) | inside the up-set of a Fano plane? |
+|---|---|---|---|
+| 7/4 | 3⁷ | 125 134 167 236 247 357 456, 1/4 each | yes (the plane) |
+| 11/6 | 3⁶ 4 | 126:1/3 134:1/3 157:1/6 247:1/6 367:1/6 456:1/3 2357:1/3 | yes (2357 ⊃ the seventh line 235) |
+| 15/8 | 3⁵ 4 | 123:1/4 167:1/8 236:1/4 257:3/8 347:3/8 1456:1/2 | **no** |
+| 15/8 | 3⁵ 4² | 136:1/4 157:1/8 256:3/8 345:3/8 467:1/4 1237:1/4 1247:1/4 | yes |
+| 17/9 | 3⁶ 4 | 124:2/9 126:1/9 147:2/9 156:1/3 346:1/3 467:1/9 2357:5/9 | **no** |
+| 17/9 | 3⁶ 4 | 124:1/3 125:1/9 156:1/9 167:1/3 236:1/3 256:1/9 3457:5/9 | **no** |
+| 2 (not reached by the loop; checked directly) | K4: four classes, six co-edges = pairs of classes, seventh free | yes |
+| 2 (checked directly) | 2-(6,3,2): ten blocks on six co-edges, seventh free | **no** |
+
+The loop was stopped after 17/9 (each new pattern adds up to 5040 cuts; about a minute per step).
+Reading.
+- ROADMAP §2.2's "next shape at 11k/6" is confirmed, but it is not a non-Fano shape: every co-type
+  contains a line of one plane. A co-type containing no line can be added to it with small mass
+  (the MILP with "some lineless co-type allowed" also returns 11/6), so non-Fano *supports* exist
+  for every N > 11/6; non-Fano *minimal* patterns start at **15/8**.
+- In the 15/8 pattern the 4-set 1456 is a genuine core (no 3-subset of it meets all five triples)
+  and carries mass 1/2; needed incidences 49/8 against 3N = 45/8.
+- So §1.3 stands as stated (N < 11k/6), and for 11k/6 <= N < 15k/8 every minimal pattern is still
+  Fano-supported.
+
+## 17. The count across the window
+
+### 17.1 Cores, 2-cores, and "two never suffice" [proved by hand]
+
+Fix a pair-covering seven and for each point a minimal core A_x ⊆ I_x (the cores pairwise
+intersect). ℓ_i = mass of points with i in the core; ℓ_i <= |K_i| = N - k, and a reply used only
+through its request has ℓ_i <= T.
+**Lemma.** (i) N < 2k: every core has size >= 3. (ii) A 2-core {i,j} forces K_i ∪ K_j = V
+(B_i ∩ B_j = ∅), its points lie in K_i∩K_j, of mass N - 2k; the 2-cores form a star (a triangle of
+2-cores needs N >= 3k); and ℓ_i + ℓ_j >= N + (mass of that 2-core).
+**Theorem (two free replies never suffice).** Let T < 4k/5 and N > 5T - 2k. In every pair-covering
+seven at least three co-edges have ℓ_i > T.
+*Proof.* Suppose only ℓ_1, ℓ_2 exceed T. If there is no 2-core, Σℓ >= 3N gives 2(N-k) + 5T >= 3N.
+A 2-core {i,j} needs ℓ_i + ℓ_j >= N, impossible with T + (N-k) or 2T unless {i,j} = {1,2}; then
+its mass is at most N - 2k and Σℓ >= 3N - (N - 2k), so 2(N-k) + 5T >= 2N + 2k, i.e. T >= 4k/5. ∎
+This extends 2.2 to all N and all patterns.
+
+### 17.2 Slack by number of fully used replies [computed, float MILP; equals the count for N < 2k]
+
+`slackq.py`: maximise s subject to: intersecting support, Σm = N, q co-edges of mass <= N - 1,
+7 - q co-edges of mass <= 3/4 - s. In brackets the Fano count (q-3)(N - 7/4)/(7-q).
+
+| N | q = 2 | q = 3 | q = 4 | q = 5 | q = 6 |
+|---|---|---|---|---|---|
+| 11/6 | -0.0167 | 0 | 0.0278 | 0.0833 | 0.25 |
+| 1.9 | -0.03 | 0 | 0.05 | 0.15 | 0.45 |
+| 2.0 | -0.05 | 0 | 0.0833 | 0.25 | 0.75 (= t: seventh reply not needed) |
+| 2.1 | -0.07 | 0 | 0.1167 | 0.35 | 0.75 |
+| 2.2 | -0.09 | 0 | 0.15 | **0.50** (0.45) | 0.75 |
+| 2.25 | -0.10 | 0 | 0.1667 | **0.75** (0.50) | 0.75 |
+| 2.3 | -0.11 | 0 | **0.2167** (0.1833) | 0.75 | 0.75 |
+| 2.5 | -0.15 | **0.05** (0) | 0.75 | 0.75 | 0.75 |
+
+So throughout 11k/6 <= N <= 9k/4: with q <= 4 the best pattern is a Fano blow-up and the slack is the
+Fano count; in particular three fully used replies leave exactly 4·eps·k. Non-Fano patterns pay off
+only with five or six fully used replies. (Three replies start to have real slack somewhere
+between 2.3k and 2.5k — outside this window, in the range of Theorem D.)
+
+### 17.3 Static value of anchor triples [computed, float MILP, grid 1/16]
+
+`anchor_design.py`: three co-edges covering V, shape (p_12, p_13, p_23) = masses of the B_a∩B_b,
+q_c = 1 - p_ac - p_bc; four non-adaptive requests; all kill-types allowed (no Fano assumption);
+value D = least maximal load. It depends only on the shape; D <= t is sufficient for a win, and
+exact when the union has at most k + T points. In the window p >= 3k - N > 3k/4.
+Window shapes by value: (8,8,8)/16: 0.7500; (5,4,4): 0.7768; (8,8,7), (9,7,7): 0.7812;
+(5,5,5): 0.7875; (5,5,4): 0.7917; (6,5,5): 0.8000; every other shape with p > 3/4 is above 0.80.
+So at t = 3/4 + eps the anchored static region inside the window is the O(eps)-neighbourhood of the
+Fano point (kernel N - 3k/2, unreachable for N > 5T - 2k by 2.2) plus the O(eps)-neighbourhood of
+(1/4,1/4,1/4) at the top end N = 3k - T. No non-Fano anchor design fills the gap.
+By-product for the spread side (p <= 3/4; cells that are exactly empty are treated as empty, so
+shapes with zeros are optimistic, cf. PETAL K(iii)): D <= 3/4 for 40 shapes of the grid, including
+(8,0,0), (7,0,0), (6,4,0), (5,4,0), (4,4,4), (4,4,0), (4,3,3), (3,3,3); dominant-pair shapes with a
+second positive cell are above 3/4 from p_12 = 7/16 on ((7,1,0): 0.771, (8,1,0): 0.833).
+
+## 18. Mechanism of the non-Fano endings, and the obstruction
+
+**What REDTEAM §11.3 shows.** The lines at 2.1k–2.2k keep six replies and pay D at the last
+request; D has mass 0.63 at budget 0.759. In the count of 17.2 that is q = 6: all six kept replies
+are used in full. With q = 6 the ideal seventh request has mass (6k - 3N)^+ for Fano-type patterns
+and 0 from N = 2k on (K4 or 2-(6,3,2): six co-edges cover all pairs), so there is room t for
+waste; the non-Fano shape (three of the four triples of the quadrangle empty, the fourth heavy and
+paid last) is simply the cheapest way to place the waste that the proportional rule produces. It
+is available because that adversary is predictable (§13): every one of his dumps is "useful".
+**Why this is not a mechanism against a real adversary.** By 17.1 she needs at least three replies
+with core load above T, by 17.2 exactly three leave slack 4·eps·k and four leave N - 7k/4 + 3·eps·k,
+while each unpredictable dump can waste omega = N - k - T: with replies 1, 2 free and every later
+dump wasted, six fully used replies cost 4·omega > 3(N - 7k/4) + eps·k of slack as soon as
+N > 5T - 2k — the same inequality as in Part I, now for all patterns (for N < 2k proved; for
+2k <= N <= 9k/4 from the computed table). The balance lemma 14.1, the reading lemma 9.1 and the
+spoiler 14.2 use only two co-edges and Theorem T / Theorem C, which by 17.3 remain the only
+three-reply certificates here. So Barrier 2 is Barrier 1 with a larger omega: the adversary to beat
+is spread and unpredictable in one parameter per reply; the non-Fano patterns enlarge the set of
+endings once four or more replies are useful, not the set of ways to make a reply useful.
+**What is different in this window (for whoever continues).**
+- From N = 2k, a certificate needs no seventh reply at all if six are useful; from N ≈ 2.2k, five
+  useful replies beat the Fano count. A proof that makes replies useful (Barrier 1) therefore gets
+  cheaper here, not harder: with four useful replies the slack is N - 7k/4 >= k/12.
+- Kernels move left: if he piles a set Y into every reply, the game is the game on N - |Y| points
+  with the same k, T (§9.2 (K)); so a proof for all N' < N handles every piling adversary at N.
+- Theorem P needs a pool of at most N - 3k/2 points, and omega <= N - 3k/2 always; Theorem D needs
+  three replies with union >= 10k/3 - T, which a confined adversary on N < 3k - T never gives.
+  Neither borders the window from inside: both ends (5T - 2k and 3k - T) are zero-slack points of
+  three-reply certificates.
+
+## 19. Exact remaining statement for Barrier 2
+
+For T = (3/4 + eps)k and 5T - 2k < N < 3k - T (both barriers together): every T-covering family of
+(N-k)-subsets of an N-set contains seven members covering all pairs. Necessary (17.1): three
+members whose cores exceed T. Sufficient with slack: four members forming a waste-free quadrangle
+(Theorem Q) or, from N = 2k, six members covering all pairs. Unproved in every case: the existence
+of a third (and fourth) member in exact position against a request-dependent adversary.
+**Next step.** The same as for Barrier 1 — the tilted-spread test — run also at N = 2.1k, 2.2k,
+where the requester's extra endings (q = 5, 6) are available: if she beats the two-mode menu
+there but not at 1.85k–1.9k, the proof should be organised around "many useful replies, non-Fano
+ending" for N >= 2k and the window splits at 2k; if the outcome is the same on both sides, the two
+barriers are one statement. Also worth doing exactly: finish the pattern enumeration between 17/9
+and 9/4 with a dual certificate (finitely many dual vectors y, each excluding a set of co-types,
+plus a SAT check that no intersecting family avoids all excluded sets) to replace the float MILP.
+Not done in this box: that certificate; the enumeration beyond 17/9; any game computation.
+
+Self-check (Part IV): table of §16 — pairwise intersections and all seven co-edge masses of the
+15/8 pattern verified by hand (each co-edge 7/8); exact values from Fractions. 17.1 re-derived;
+the 2-core bound uses |K_i∩K_j| = N - 2k when K_i ∪ K_j = V. 17.2 and 17.3 are float MILPs (HiGHS);
+the q <= 4 columns agree with the hand count to four decimals.
