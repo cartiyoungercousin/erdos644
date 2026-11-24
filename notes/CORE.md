@@ -1566,3 +1566,93 @@ N - 3/2 >= 2ω ⟺ ω <= t - 1/2; requests have mass c - ω = t exactly; H-penci
 integer designs enforce as <= ω - 1. Case exhaustion uses |U| = 2(c - o) >= 2ω. The LP's shape constraints on transversal
 lines are stronger than necessary (a line of mass <= t needs none), so LP-infeasible assignments are not claims.
 Finite instances: n up to 390, exhaustive pair check on the seven replies produced by the rule itself.
+
+## 47. (structural side) Theorem W: class-selected greedy rules — the theorem behind §46, and what escapes it
+
+Brief: one theorem for adversaries whose reply depends on the request through B bits of its traces plus fixed in-cell
+orders, conjectured bound M·2^B <= c·eps·k. Code: `compute/core8/window_thm.py`.
+**Outcome.** The right bound has neither M nor 2^B nor eps in it. What matters is the mass of the set the selector
+*looks at*: **if the class of a request is decided by its trace on a window of at most T - k/2 points, he loses in
+seven requests, for any number of cells, classes and orders** (47.2; exact at finite k; 1200 random adversaries and the
+twelve instances of 46.4 checked on real sets). Pigeonholing is not needed: she requests the whole window, which
+fixes the class, and applies Theorem P to that class. Thresholds and profile selectors are covered by the same frame
+criterion (47.3–47.4). The escape is stated exactly in 47.5.
+
+**47.1 The class of adversaries.** A *greedy rule* consists of a selector σ: requests → classes (any set of classes) and,
+for each class r, a priority order ≺_r on V (any linear order). Reply: S ∪ (the first n - k - T points of V∖S in ≺_r), r = σ(S).
+Cells with in-cell orders are the special case "the points of the cell chosen by r first, in the cell's order"; rules that
+take prescribed amounts d_j(r) from several ordered cells have the same property used below and are included.
+Every member of class r contains an initial segment of ≺_r∖S, so these are exactly the "nested pools switched by the
+request" of 45.4(β) and §46.
+
+**47.2 Theorem W [proved by hand; exact for 4 | k, T >= 3k/4, n >= k + T].**
+*Frame criterion.* Suppose there are a class r, a set Z of n - k - T points and a pencil frame (κ; P_1, P_2, P_3)
+(|κ| = n - 3k/2, |P_i| = k/2, a partition of V) with Z ⊆ κ such that for S_i = (κ ∪ P_i)∖Z:
+ (i) σ(S_i) = r for i = 1, 2, 3, and (ii) Z precedes every point of V∖(S_i ∪ Z) = P_j ∪ P_l in ≺_r.
+Then the replies to S_1, S_2, S_3 are the three pencil lines and four requests of 3k/4 points finish (1.3(ii)). ∎
+*Window theorem.* If σ(S) depends only on S ∩ W for a fixed W with |W| <= T - k/2, the criterion holds: let r = σ of any
+request containing W, Z = the first n - k - T points of V∖W in ≺_r, κ ⊇ W ∪ Z (room: |W| + |Z| <= n - 3k/2), petals arbitrary.
+Every S_i contains W, so (i); everything outside W ∪ Z comes after Z, so (ii). ∎
+Corollaries.
+- *Juntas:* a selector that reads B individual points loses for **B <= T - k/2 = (1/4 + eps)·k**, with 2^B classes if he
+  likes and a different order for each. No eps in the threshold, no dependence on the number of cells.
+- *B bits, each a function of the trace on a set of at most w points:* loses for B·w <= T - k/2.
+- *Thresholds (the rule of §46):* if "σ(S) = r whenever |S ∩ E| >= θ" and ≺_r starts outside E, put x = min(θ, T - k/2)
+  points of E into κ and θ - x into each petal: holds iff |E| >= 3θ - 2x. For §46 (E = O, θ = ω): o >= 3ω - 2·min(ω, T - k/2) —
+  true in all twelve instances. Downward thresholds ("|S ∩ E| < θ", the H-class of §46) are certified by a frame with
+  fewer than θ points of E∖Z on each line: (|E| - |E ∩ Z|)/3 < θ.
+`window_thm.py` [computed exact; the rule applied verbatim, all pairs checked]: (a) (k,T,n) = (40,31,74), (40,31,80),
+(100,76,185), (100,76,190), (100,76,210); window of B = 1, 3, ⌊(T - k/2)/2⌋, T - k/2 random points; an arbitrary (random)
+table {0,1}^B → R classes, R = 2, 8, 64; an independent random order for each class; 20 adversaries per cell of this
+grid: 1200/1200 pencil replies exact, 1200/1200 good sevens (B = T - k/2 is tight for the construction: κ = W ∪ Z exactly at
+n = 76). (b) the twelve instances of 46.4 by the threshold formula, no MILP: 12/12.
+
+**47.3 Why the coordinator's bound M·2^B <= c·eps·k is not the right shape.** The number of classes costs nothing: one
+frame serves one class and she chooses which. The number of cells costs nothing: an order is an order. eps does not
+enter because the kernel has room N - 3/2 - ω = t - 1/2 at first order, whatever eps is. eps·k appears only when the
+frame cannot be exact (S+ parity, 39.4/45.1), i.e. for exchangeable cells, where there is no order to exhaust.
+
+**47.4 Profile selectors [proved at first order; finite-k rounding not done].** Let σ be an arbitrary function of the
+profile of S on a partition (V_j), R classes, Z_r = the first ω points of ≺_r, z^r its profile. A frame for class r in which
+the three requests have a common profile s exists iff s lies in 𝒮_r = {(v - z^r)/3 + 2κ/3 : 0 <= κ <= v - z^r, |κ| = N - 3/2 - ω}
+(per cell: kernel part κ_j, three equal petal parts). If the 𝒮_r have a common point s, then σ(s) is one of the r and that
+class has a frame, so she wins. A common point exists whenever Σ_j (v_j - (3/2)·max_r z^r_j)^+ >= N - 3/2 - 3ω/2; e.g. for cells
+of mass >= 3ω/2 as soon as (R - 1)·ω <= 1. At finite k the profiles must agree exactly, which a parity-sensitive selector
+can prevent; the repair costs O(1) points of the 4·eps·k slack per cell, as in S+. [first-order statement proved;
+the finite version is where eps·k enters again]
+
+**47.5 What an adversary must do to escape [proved: necessity for greedy rules; heuristic: which rules do it].**
+For a greedy rule to survive the pencil, for EVERY class r and every frame (κ; P_1, P_2, P_3) whose kernel contains the
+head Z of ≺_r relative to the requests, at least one of the three requests (κ ∪ P_i)∖Z must be sent to another class. The
+three requests coincide on κ∖Z (mass t - 1/2) and differ only by which petal (mass 1/2) they contain. Hence:
+1. the selector must depend on more than T - k/2 points *essentially*: no set of at most T - k/2 requested points may
+   determine the class (else 47.2);
+2. it must not be decided by monotone thresholds or by the profile on a partition with cells large against ω (47.2
+   thresholds, 47.4), up to O(eps·k) parity effects;
+3. so it must separate petals: among any three requests sharing a (t - 1/2)-kernel and carrying complementary halves of
+   the rest, it must tell at least one apart from the class whose head lies in that kernel. That is a selector that
+   reads the IDENTITY of a positive fraction (> 1/4 + eps of k) of the requested points and is balanced on every large
+   subcube — hash-like on linearly many points; or
+4. he gives up greediness: the dumped points are not an initial segment of an order fixed by the class, i.e. the in-cell
+   choice itself depends on the request (the genuine anti-plan dump of 9.3), or the cells are cut by earlier replies
+   ((α) of 45.3).
+A rule of type 3 is still a family with an explicit description, but it is no longer "bounded information": it is a
+colouring of requests in which every pencil frame around every class head is non-monochromatic. Whether such a
+colouring can also avoid the triangle frames of Theorem T and the four-member frames of Q' is (Σ) for greedy rules.
+**Dead:** every greedy rule with a window of at most T - k/2 points; threshold and (first-order) profile selectors.
+**Exact gap.** (Σ) for (i) greedy rules with hash-like selectors on more than (1/4 + eps)·k points, (ii) non-greedy rules.
+**Next step.** For (i) the pencil is the wrong certificate (one bad request kills it) and the natural one is the count:
+a selector with R classes puts a fraction >= 1/R of the requests of any frame family into one class, and the frames
+around a fixed kernel form a symmetric design in the petals; the density form of Theorem S (39.2: more than 2/3 of
+an orbit ⟹ a pencil) applies verbatim to the class-r requests over a fixed kernel. So: *if for some class r and
+some kernel κ ⊇ head of ≺_r more than 2/3 of the halves P of V∖κ have σ((κ ∪ P)∖Z) = r, she wins* — a selector must
+keep every class below density 2/3 on every such family [proved, same averaging]. Sharpening 2/3 (complementary
+halves P, P' of the same K∖κ must not both be class r for any third member: an intersecting-type condition on the
+class-r halves) is the concrete extremal problem that decides (i).
+
+Self-check (§47): frame criterion: reply to S_i = S_i ∪ (first ω unrequested in ≺_r) = S_i ∪ Z = κ ∪ P_i by (ii), class by (i); sizes
+|S_i| = n - 3k/2 + k/2 - (n - k - T) = T. Window theorem needs only |W| + |Z| <= |κ|, i.e. |W| <= T - k/2. Threshold arithmetic: each line
+holds x + (θ - x) = θ points of E, using x + 3(θ - x) of them. Machine check uses the rule itself, including classes never seen
+before (lazy random table), so (i) is tested, not assumed. 47.4: κ^r = c + z^r/2 gives a common s; first order only.
+The 2/3 statement in "Next step" is 39.2's averaging on the orbit of halves under Sym(V∖κ); it is tagged proved for that
+reason only, and has not been machine-checked.
