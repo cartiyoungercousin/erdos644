@@ -1,0 +1,17 @@
+exact rational LP; True = the requester has a play that beats the adversary policy
+(c, g) with k = 1            both       E only     N only      
+c/g = 2                      True       True       True        
+c/g = 3                      True       True       True        
+c/g = 3.01                   False      True       True        
+c/g = 4                      False      True       True        
+c/g = 6                      False      False      False       
+c/g = 10                     False      False      False       
+c/g = 4, g = 1/1000          False      True       True        
+c/g = 10, g = 1/1000         False      False      False       
+K_N, N<7k/4: c=-1%, g=-2%    False      False      False       
+K_N: c=-2%, g=-5%            False      False      False       
+(LP size: 51 variables, 46 inequality rows)
+adversary restricted to scenario ('E',) : requester wins iff c/g <= 4.99993896484375 (bisection, exact LPs; between 81919/16384 and 40963/8192 )
+adversary restricted to scenario ('N',) : requester wins iff c/g <= 4.99993896484375 (bisection, exact LPs; between 81919/16384 and 40963/8192 )
+c/g = 5 {'E': True, 'N': True}
+c/g = 501/100 {'E': False, 'N': False}

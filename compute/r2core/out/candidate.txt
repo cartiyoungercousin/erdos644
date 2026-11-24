@@ -1,0 +1,2 @@
+(i) closure of the policy on (E, V-E): n=18 k=8 tau=11 (T=7); bad 7-tuple found, brute-force check True -> NOT a (7,2)-family; edge types used: [(3, 5), (4, 4)]
+(ii) block family of one line of play: n=32 k=16 tau=2 (T=13); NO bad 7-tuple -> property (7,2) holds
