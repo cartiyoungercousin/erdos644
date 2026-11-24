@@ -1,0 +1,8 @@
+m=8 keep=7 T=0.76 [T8: freeze Z in A_1 at reply 3, then forced (Theorem 8)]: Optimal min mass(D)-T = -0.2800 (bound -0.2800) discard [] -> requester wins [7s]
+m=8 keep=7 T=0.76 [L: omit lowest degree every round (never frozen)]: Optimal min mass(D)-T = -0.2800 (bound -0.2800) discard [] -> requester wins [27s]
+m=8 keep=7 T=0.76 [H: omit highest degree every round (never frozen)]: Optimal min mass(D)-T = -0.7600 (bound -0.7600) discard [] -> requester wins [12s]
+m=8 keep=7 T=0.76 [LH: alternate lowest / highest]: Optimal min mass(D)-T = -0.7600 (bound -0.7600) discard [] -> requester wins [10s]
+m=8 keep=7 T=0.76 [HL: alternate highest / lowest]: Optimal min mass(D)-T = -0.7600 (bound -0.7600) discard [] -> requester wins [5s]
+m=8 keep=7 T=0.76 [L4: lowest at reply 3, freeze lowest at reply 4, then forced]: Optimal min mass(D)-T = -0.2800 (bound -0.2800) discard [] -> requester wins [6s]
+m=8 keep=7 T=0.76 [H4: highest at reply 3, freeze lowest at reply 4, then forced]: Optimal min mass(D)-T = -0.2800 (bound -0.2800) discard [] -> requester wins [7s]
+m=8 keep=7 T=0.76 [L5: lowest at replies 3-4, freeze lowest at reply 5, then forced]: Optimal min mass(D)-T = -0.7600 (bound -0.7600) discard [] -> requester wins [4s]

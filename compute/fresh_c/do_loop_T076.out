@@ -1,0 +1,14 @@
+=== T=0.76 discards allowed=[1, 2] start 04:06:47
+iter 0: leaves=1 requester-vs-pool value: incumbent -0.2800, certified lower bound -0.2800 (Optimal) [18s]
+  adversary oracle: 40 single-type-first deviations evaluated [82s]; best value +0.2400 at node [omit |L > omit |L] rule omit 23|H; gap (best deviation - pool value) = +0.5200
+    + at node [omit |L > omit |L] add rule omit 23|H (deviation value +0.2400)
+    + at node [omit |L > omit |L] add rule omit 24|L (deviation value +0.2400)
+    + at node [omit |L > omit |L] add rule omit 24|H (deviation value +0.2400)
+  added 3 rules; pool now has 4 rules at 1 nodes
+iter 1: leaves=4 requester-vs-pool value: incumbent -0.0100, certified lower bound -0.7600 (TimeLimit) [1151s]
+  adversary oracle: 89 single-type-first deviations evaluated [103s]; best value +0.2300 at node [omit |L > omit |L > omit |L > omit |L] rule omit 134|L; gap (best deviation - pool value) = +0.2400
+    + at node [omit |L > omit |L > omit |L > omit |L] add rule omit 134|L (deviation value +0.2300)
+    + at node [omit |L > omit |L > omit |L > omit |L] add rule omit 134|H (deviation value +0.2300)
+    + at node [omit |L > omit |L > omit |L > omit |L] add rule omit 156|L (deviation value +0.2300)
+  added 3 rules; pool now has 8 rules at 2 nodes
+=== end 04:29:21

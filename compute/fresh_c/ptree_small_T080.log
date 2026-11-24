@@ -1,0 +1,6 @@
+m=8 one discard, T=0.8, menu=small: leaves=7 vars=9857 status=TimeLimit z*=0.5599999999999911 bound=-1.8225979690171397 [1103s]
+Traceback (most recent call last):
+  File "C:\Users\USER\lean644\compute\fresh_c\pivot_tree.py", line 102, in <module>
+    print("   leaf", path, "discard", [d + 1 for d, p in picks if pulp.value(p) > 0.5])
+                                       ~~^~~
+TypeError: can only concatenate tuple (not "int") to tuple
