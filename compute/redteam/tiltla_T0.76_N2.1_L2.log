@@ -1,0 +1,2 @@
+{"T": 0.76, "N": 2.1, "L": 2, "node": "", "z": 0.5293913068004679, "plan": "nb_0.log:N1.9:[1.0, 1.0, 1.0, 1.0, 1.0, 1.0]"}
+{"SUMMARY": true, "T": 0.76, "N": 2.1, "L": 2, "nodes": 1, "failed_nodes": [""], "leaves_won_exact": 0, "leaves_missing": 64, "worst_exact": null, "root_z": 0.52939, "secs": 180, "detail": []}

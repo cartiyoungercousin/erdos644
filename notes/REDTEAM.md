@@ -489,3 +489,87 @@ No adversary win, hence no certification and no (7,2) test.
 
 Caveats: q is scanned on four values, so her optimum may be better than the table; "wins" are exact for the
 stated rule in the scale-free model with free slivers; classification from float re-simulation.
+
+## 13. The TILTED SPREAD adversary (CORE.md §15) against the free requester
+
+Code: `compute/redteam/tilt.py` (leaf model, exact replay of a leaf, greedy tree), `tilt_seq.py` (all 64
+non-adaptive schedules), `tilt_la.py` (tree with L-bit lookahead nodes), `tilt_fix.py` (resume), `tilt_root.py`.
+Logs: `tiltseq_T*_N*.log`, `tilt_T*_N*.log`, `tiltla_T*_N*_L2.log`, `tilt_root_*.out`.
+
+**Adversary as implemented.** Every reply: half of the dump (omission, mass N - T - 1) is proportional, the
+other half concentrated, in a mode he chooses after seeing the request:
+U = onto unused points first, then lowest reply-degree (into the points lying in many co-edges);
+O = onto highest reply-degree first (out of them). One free bit per reply, 2^6 bit sequences for m = 8.
+**Requester.** Free and adaptive: her request for reply j may depend on the bits of replies < j (a strategy
+tree). Lines come from plan-restricted MILPs (the 27 "plans" read off all earlier winning lines: which types
+are requested completely, and the discard); every leaf is replayed in exact rational arithmetic at T with the
+true rule (MILP budget T - 0.001). All restrictions are on her side.
+
+### 13.1 Result in one paragraph
+
+**Not settled.** (a) Against every NON-adaptive tilt schedule (the 64 bit sequences, known to her) she wins
+at t = 0.76 for every N tested, exactly verified, but with small margins (table). (b) Against the ADAPTIVE
+bit I could build only half of a winning strategy tree at N = 1.8k (32 of 64 leaves, exact); the other half,
+and N = 1.85k, 2.1k, fail in my construction by 0.005–0.02, and the larger joint models that would decide it
+did not solve. So the tilted spread is the first opponent in this file that I could not beat, and equally one
+I cannot certify: there is **no adversary win**, hence no (7,2) coexistence test. m = 9 and t = 0.751 could not
+be resolved (13.4).
+
+### 13.2 Non-adaptive schedules, t = 0.76, m = 8 [computed exact: 64 of 64 leaves at each N]
+
+| N | smallest margin T - mass(D) over the 64 schedules | hardest schedule (replies 2..7) | largest margin | plans used |
+|---|---|---|---|---|
+| 1.78k | 0.0253 | OUOUOO | 0.046 | the certificate's plan (§11.2) for all 64 |
+| 1.80k | 0.0138 | UUOUOO | 0.054 | the certificate's plan for all 64 |
+| 1.85k | **0.0040** | UUUUOU | 0.085 | four different plans (the certificate's, the 1.9k line's, a concentrated-omission line's, the swap lines') |
+| 1.90k | 0.0071 | UOUUUU | 0.115 | the same four plans |
+| 2.10k | **0.0037** | UOUUUU | 0.142 | the 1.9k line's plan 50, the certificate's 14 |
+| 2.20k | 0.0054 | OOUOUO | 0.287 | the 1.9k line's plan 56, the certificate's 8 |
+
+(The certificate's plan ended in class (Q) and the 1.9k line's in (T) against their own opponents, §11; the
+class of the ending was not re-derived for these 384 lines.)
+Margins are those of the first plan that won, not optima; her true margin is at least this.
+Compare pure proportional replies (§1): 0.034–0.27 on the same range. The tilt removes most of that.
+At N = 1.8k the value does not depend on the bit of reply 2 nor on the bit of reply 5 (the discarded reply);
+the bits of replies 3, 4, 6, 7 matter.
+
+### 13.3 Adaptive bit, t = 0.76, m = 8 [computed; exact where "won"]
+
+| N | construction | outcome |
+|---|---|---|
+| 1.80k | nodes with 2-bit lookahead (4 leaves, non-anticipative requests) | root value -0.0085 (MILP optimal); **all 32 leaves with first bit U won exactly, worst margin 0.0116**; node "O" (first bit O): best joint value over 10 plans **+0.0208** — no strategy found for the other 32 leaves |
+| 1.80k | nodes with 1-bit lookahead | root -0.032, then failures at "UU" (+0.011) and "O"; 16 leaves won |
+| 1.80k | root with 3-bit lookahead (8 leaves) | MILP not solved in 420 s (incumbent +0.86): no information |
+| 1.85k | 1-bit lookahead | root -0.028, both children fail (+0.005 best) |
+| 2.10k | 2-bit lookahead | root MILP not solved in 3 x 60 s: no information |
+
+Reading. Every single schedule is beatable, but the lines for different schedules use different requests from
+round 3 on (and different plans at 1.85k and above), and I could not make them agree on the rounds
+before the bit is revealed. The misses are of the size of the non-adaptive margins (0.005–0.02), so this is
+exactly the regime where the answer could go either way. My construction is greedy (a node's request is fixed
+after looking only one or two bits ahead, with one plan for all its leaves); a failure of it is not evidence
+that no strategy tree exists. Deciding it needs the 8- or 16-leaf non-anticipative model solved to
+optimality with all seven discards — a job for C's certified solver, with these files as the instance.
+
+### 13.4 Not resolved
+
+- **t = 0.751.** The exact verification needs a budget margin (0.001), which is the whole of eps here; at
+  N = 1.85k one schedule was won (margin 0.0041) and the next was not found (+0.0058 best over all plans)
+  before I stopped. No table.
+- **m = 9.** Not run: the tree doubles and the m = 8 trees did not close. More requests can only help her,
+  so the m = 8 wins of 13.2 hold for m = 9; whether the extra reply repairs the adaptive failures is unknown.
+- **Barrier 1 vs Barrier 2 (coordinator's addendum).** For non-adaptive schedules the picture at 2.1k–2.2k
+  matches 1.85k–1.9k: she wins everywhere, the smallest margins are equally thin (0.004–0.007), and she
+  needs to switch plan with the schedule. That is consistent with "one request-dependent obstruction",
+  but the adaptive test at 2.1k gave no information, so the identification is not established here.
+- No certification of any adversary win (none occurred), no realizability test.
+
+### 13.5 What the proof side can take from this
+
+The tilt costs her nearly all her margin on the whole range 1.78k–2.2k, and what is left is used by
+choosing the plan to fit the schedule. The statement that would close both barriers is therefore a
+non-anticipative one: *a single request at round j that is simultaneously good for both values of the j-th
+bit.* In the half-tree that I did complete (N = 1.8k, first bit U) one plan — that of the 1.9k line — handles all
+32 continuations with margin >= 0.0116; the open half differs only in the first reply's concentrated dump
+(onto B_1 instead of onto unused points), which suggests looking at how the second reply's overlap with B_1
+enters the (T) plan's round-4 block.

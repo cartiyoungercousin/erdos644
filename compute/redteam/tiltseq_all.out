@@ -1,0 +1,14 @@
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+{"SUMMARY": true, "T": 0.76, "N": 1.9, "sequences_won_exact": 64, "not_won": {}, "smallest_margin": -0.007076605866245379}
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+{"SUMMARY": true, "T": 0.76, "N": 2.1, "sequences_won_exact": 64, "not_won": {}, "smallest_margin": -0.0036617794382577803}
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+{"SUMMARY": true, "T": 0.76, "N": 2.2, "sequences_won_exact": 64, "not_won": {}, "smallest_margin": -0.005410140376606294}
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+{"SUMMARY": true, "T": 0.76, "N": 1.78, "sequences_won_exact": 64, "not_won": {}, "smallest_margin": -0.02530398825444889}
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details

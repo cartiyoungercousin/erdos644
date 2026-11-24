@@ -1,0 +1,3 @@
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+{"SUMMARY": true, "T": 0.76, "N": 1.8, "nodes": 19, "failed_nodes": ["UU", "O"], "leaves_won_exact": 16, "leaves_missing": 48, "worst_exact": [-0.01672695611422086, "UOUUUU", 5], "root_z": -0.03173, "plans_used": {"cert_N2_T076.json:N2.0:[1.0, 1.0, 1.0, 1.0, 1.0, 1.0]": 17}, "secs": 427}
