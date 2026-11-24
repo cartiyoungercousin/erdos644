@@ -407,3 +407,179 @@ Self-check (Part II): 9.1 re-derived with the room condition |(A∪B)∖S_3| >= 
 arithmetic checked symbolically and by `swap_check.py`; 9.2(L) uses |g| = 2k - N + a* and
 |S_3∩g| = T - 2a*; dilution lemma is a one-line count. §10's iteration and all of §11 are
 statements about what is forced, not a strategy with a proof.
+
+=============================================================================================
+# Part III — M1 decided, M2 analysed (third time box)
+
+Code: `compute/core/m1_search.py`, `compute/core/balance_check.py`.
+**Outcome.**
+- **M1 (pile branch):** decided, in two versions. Strict version (every request a line of the
+  target plane, justified by dilution against three earlier piled lines): INFEASIBLE for
+  omega > 4·eps·k, with an explicit combinatorial obstruction (§12.1). Weak version (helper requests
+  allowed): a design exists and is verified in exact rationals at t = 19/25 and t = 751/1000
+  (§12.2) — but it needs |K_1∩K_2| = N - 3k/2 exactly, and, decisively, **the pile is not forced**
+  at its critical request: the adversary has dumps that "pay" in the sense of §10 and give her
+  nothing (§12.3, real sets). So "pile or pay" is a true inequality with no strategic content.
+- **Why:** piling is good for HER, not for him (§13: a predictable dump is exact control; two piled
+  replies after any reply give a Theorem T triangle). The adversary never needs to pile.
+- **M2 ("pay"):** exact criterion (§14.1, proved and checked): after an exact pair, a triangle-type
+  third reply closes with Theorem T iff all but eps·k of its dump lies outside K_1 ∪ K_2. So he
+  spoils every three-useful-reply certificate by keeping 2·eps·k of every dump inside K_i ∪ K_j for
+  the pairs in position — a spread dump does it for all pairs at once (§14.2). Dilution cannot
+  prevent that. The dichotomy is therefore not rescued: neither branch is forced.
+- What survives is §8.1's accounting and one new structural fact: *usefulness is predictability*
+  (§13). The adversary that remains must be simultaneously spread and unpredictable in one real
+  parameter per reply ("tilt"); a testable seed is given in §15. No counterexample is claimed:
+  the seed defeats only certificates of profile (omega, omega, omega, 0, 0, 0, 0).
+
+## 12. M1: the pile branch with the kernel fixed
+
+Model. He answers K_3 = S_3 ∪ Y (S_3 triangle-type against K_1, K_2; Y ⊆ K_1∩K_2, |Y| = omega) and
+piles (D = Y) on every later full request that is *justified*: disjoint from Y and from the
+pairwise intersections of three earlier co-edges whose common intersection is exactly Y. All other
+replies add nothing she can use. On V' = V∖Y (mass k + T, independent of N) piled co-edges are her
+own T-sets, so she is in the complete family on k + T points: total slack 4·eps·k, every
+certificate a Fano blow-up with all lines of mass T - O(eps·k). Y itself must end inside three
+concurrent co-edges.
+
+### 12.1 Strict version: infeasible; the obstruction [proved by hand; computed]
+
+**Lemma (quadrilateral closure).** In the Fano plane the only line missing the three vertices of
+a triangle is the line through the third points of its sides; the four lines so obtained (a
+complete quadrilateral, six intersection points) are closed under this operation, and each of the
+remaining three lines passes through a vertex of every triangle formed by three of the four.
+*Proof.* Seven points: three vertices, three side-midpoints (collinear), one centre; the other three
+lines are {vertex, opposite midpoint, centre}; a triple of the four lines has as vertices three of
+the six non-centre points and the complementary three are the vertices involving the fourth line;
+{v_ab, mid_c, centre} meets {v_ab, ...}, and for the triples containing the medial line it meets
+mid_c. ∎
+Consequence: starting from K_1, K_2, S_3, the justified lines are exactly these four. Y then has
+co-type = a quadrangle, which contains no pencil; the three remaining lines are pencil-type
+against some pair and are answered low. She must request Y herself in one of them:
+that line has mass <= T - omega while the two given lines have mass T, and the LP over class masses is
+feasible iff **omega <= 4·eps·k** (i.e. N <= 5T - 2k; nothing beyond the known range).
+`m1_search.py (a)`: closure size 4 and "Y in no pencil" for all 168 ordered starts; LP feasible at
+omega = 4·eps - 10⁻⁴ and infeasible at 4·eps + 10⁻³ for t = 0.76 and t = 0.751 [float LP].
+
+### 12.2 Weak version: a design exists [computed; exact rational verification]
+
+Allow helper requests (any three classes, mass exactly T, justified the same way, later discarded).
+Shortest sequence found (classes 0..6, lines 012, 034, 056, 135, 146, 236, 245):
+K_1 = 012, K_2 = 034, S_3 = 135 (triangle, vertices 0, 1, 3), helper H = 246 (misses 0, 1, 3), then
+the third line through v_12, 056, is justified by the triple (012, 135, 246) (pairwise
+intersections {1}, {2}, ∅). If he piles there, Y lies in K_1, K_2 and that reply — a pencil — and the
+remaining lines 146, 236, 245 need no help. Eight requests.
+Exact solutions: t = 19/25: classes (6/25, 13/50, 13/50, 13/50, 13/50, 6/25, 6/25);
+t = 751/1000: (249, 251, 251, 251, 251, 249, 249)/1000; all constraints verified in Fractions.
+The class v_12 is forced to mass T - k/2 in both LPs: the design exists only if |K_1∩K_2| =
+N - 3k/2 exactly (the pencil kernel). N does not enter otherwise, so this holds for every N in the
+window. Real-set check at (k,T,N) = (100,76,190): with the pile at 056 the seven co-edges cover all
+pairs.
+
+### 12.3 The pile is not forced [computed on real sets; reason proved in §13–§14]
+
+Same instance, the decisive request S = 056 against the triple A = 012 ∪ Y, B = 135 ∪ Y, C = 246 ∪ Y.
+For each dump the table gives the amount by which Theorem T fails (max load - T, best split of the
+common part) for the three pairs with K = S ∪ D as third co-edge:
+
+| dump D (omega = 14 points) | pair AB | AC | BC |
+|---|---|---|---|
+| inside class 1 = A∩B | 5 | 14 | 38 |
+| inside class 2 = A∩C | 14 | 5 | 38 |
+| inside class 3 (in B only) | 14 | 14 | 38 |
+| inside class 4 (in C only) | 14 | 14 | 38 |
+
+A dump inside class 3 or 4 meets no pairwise intersection at all ("pays" omega against every pair
+in the sense of the dilution lemma), does not contain Y, and no reading closes. So after such a
+reply she has neither the pencil for Y nor a triangle: the M1 design is a design, not a strategy.
+This is the obstruction asked for. It is NOT an adversary's winning certificate for the game: it
+kills the pile branch and every plan whose only free replies are K_1, K_2 and one more.
+
+## 13. Usefulness is predictability [proved by hand]
+
+**Exact-control lemma.** Let K be any co-edge and suppose that for two later full requests S', S''
+she knows the dumps in advance (e.g. D' = D'' = Y for a known Y, Y∩K = ∅). Then she wins in six
+requests after K: choose S', S'' with |S'∩K| = |S''∩K| = a*, |S'∩S''| = a* - |Y|, S'∩S''∩K = ∅ and
+T - 2a* + (something fixed) points outside, so that (K, S' ∪ Y, S'' ∪ Y) has pairwise intersections
+a* = N/2 - 5k/8 and empty common intersection; Theorem T finishes with four non-adaptive requests.
+*Proof.* All three pairwise intersections and the triple intersection are determined by her
+choices once D', D'' are known; the sizes fit because |S'| = |S''| = T and 3a* <= c + (c - a*)
+(room inside and outside K). ∎
+So: a reply is "free" exactly when its dump is known before the request is made. The first reply
+is free because nothing depends on it; the second because one class absorbs any dump; from the
+third on a dump is useful only if predicted. This explains at once why (i) every scripted
+adversary of FRESH_C/REDTEAM loses (proportional, rigid swap, pure modes: all predictable — she
+pre-compensates the class sizes), (ii) piling loses (§9.2 (K)), (iii) the dilution lemma has no
+force: it restricts where an unpredictable dump can be simultaneously "inside" several pair
+intersections, but he needs no such thing.
+
+## 14. M2: what a "payment" would have to be
+
+### 14.1 Balance lemma [proved by hand; computed exact]
+
+Let |K_1∩K_2| = a* (exact pair), g = V∖(K_1∪K_2), and S_3 the triangle-type request with a* points in
+each of K_1∖K_2, K_2∖K_1 and T - 2a* points of g. For the reply K_3 = S_3 ∪ D write
+d_O, d_A, d_B, d_g for the masses of D in K_1∩K_2, K_1∖K_2, K_2∖K_1, g. Then Theorem T applies to
+(K_1, K_2, K_3) iff
+
+    d_g  >=  omega - eps·k + |d_A - d_B|      (in particular  |D ∩ (K_1∪K_2)| <= eps·k).
+
+*Proof.* Cells: a = a* - d_O, κ = d_O, b = a* + d_A, d = a* + d_B, e_1 = c - 2a* - d_A,
+e_2 = c - 2a* - d_B, e_3 = T - 2a* + d_g, g' = |g| - (T - 2a*) - d_g. Loads: a + e_3 + g' + κ_4 =
+3k/4 - d_O + κ_4 (so all of κ goes to round 4); b + e_2 + g' = T + (omega - eps·k) - d_g + (d_A - d_B);
+d + e_1 + g' = the same with A, B exchanged; e_1 + e_2 + e_3 = T - (N - 7k/4) - d_A - d_B + d_g <= T. ∎
+`balance_check.py`, (k,T,N) = (100,76,189), omega = 13, eps·k = 1: dumps (O,A,B,g) = (0,0,0,13) and
+(1,0,0,12) close; (0,1,0,12), (2,0,0,11), (0,1,1,11), (0,6,7,0), (13,0,0,0), (0,13,0,0) do not
+(excess 1, 1, 1, 13, 12, 25).
+Other triangle-type requests are no better: with a* - x points in each private part she needs
+2x + d_g >= omega - eps·k and d_A + d_B >= 4x - omega - eps·k with |d_A - d_B| <= O(eps·k); every request
+has a spoiling dump (all of D in K_1∩K_2), which is 9.1.
+In reply language: the third reply must omit, from the offered set, only points of B_1∩B_2.
+
+### 14.2 The spoiler, and why dilution does not stop it [proved]
+
+To spoil the triangle for a pair he needs only 2·eps·k of the dump inside K_i ∪ K_j. For m pairs in
+position this costs at most 2·eps·k·m of dump if he treats them separately, and nothing extra if
+the dump is spread: a dump proportional on V∖S puts a constant fraction of omega (about 0.7 in the 14.1 position) inside every K_i ∪ K_j. So for
+omega >> eps·k no portfolio of pairs yields a closing triangle against a spread dump. For a pencil-type
+request the same holds with K_i △ K_j in place of K_i ∪ K_j.
+A *known* spread dump is harmless (§13): she shifts her requests by the known amounts. So the
+adversary must be spread and unpredictable. One real parameter suffices: by 14.1 her tolerance in
+d_A - d_B (or in d_g) is eps·k, his freedom is omega.
+**Hence M2 fails as a forcing statement:** against the request-dependent adversary a single reply
+never "pays" in a usable way, with or without a portfolio. Any proof must use certificates in
+which the useful dump of 8.1 is spread over several replies with total slack >> eps·k, i.e. at
+least four replies whose dumps she can absorb whatever their tilt; with three it is impossible.
+
+## 15. Where this leaves the gap
+
+**Seed adversary to test exactly (not a counterexample claim).** "Tilted spread": to each full
+request S reply with the dump D = proportional dump on V∖S, modified by moving omega/2 of it either
+INTO or OUT OF the set of points lying in at least two earlier replies' co-edges (two modes), the
+mode chosen by the adversary. It is spread (spoils Theorems C, T, P and every exact triangle by
+14.1–14.2) and has one unpredictable bit per reply. It is a two-branch menu, so the exact engines of
+FRESH_C/REDTEAM can search it with the requester free: sizes (k,T,N) = (25,19,45..47), (50,38,90..95),
+m = 8, 9. If the requester wins, the winning lines show how four or more replies absorb a tilt
+(the mechanism a proof needs). If she loses for all m the engine can reach, the menu is a serious
+candidate for the family test of 1.2.
+**Exact remaining statement** (unchanged from §11, now with the reason it is hard): for
+3T - k/2 < N < 11k/6 she must reach seven replies whose useful dump in replies 3..7 totals
+>= omega - 4·eps·k in the cells fixed by 8.1; a dump is useful only if its location was known up to
+the slack when the request was made (§13); against a fixed pair or any portfolio of pairs the
+third reply is never useful (9.1, 14.1–14.2).
+**A different route worth one look** [heuristic; literature not checked here]. In the family form
+the "unpredictable" adversary is a fixed map, and T-covering forces |𝒞| >= C(N,c)/C(N-T, c-T), a
+fraction exp(-omega·ln(e/omega)·k(1+o(1))) of all c-sets. For omega below an absolute constant this
+exceeds the Frankl–Rödl forbidden-intersection threshold (1-γ)^N, so 𝒞 contains pairs with
+|K∩K'| equal to any prescribed value such as a*·k or N - 3k/2: the window dodging at reply 2 is
+impossible for a family. A version for the full Venn diagram of three members (pairwise a*, common
+part <= eps·k) would give Theorem T directly for N <= (7/4 + δ_0)k; the obstacle is that the common
+part must be O(eps·k), so the constant δ_0 may degrade with eps — this needs checking against the
+quantitative forms (Keevash–Long) before any claim.
+Not touched: far replies (TWIN 17.3), N >= 11k/6.
+
+Self-check (Part III): 12.1 lemma re-derived from the seven-point picture and confirmed by
+enumeration; 12.2 numbers are exact Fractions, the feasibility range of v_12 is from a float LP;
+12.3 and 14.1 tables are brute-force on real sets; 13's sizes: |S'| = a* + (a* - omega) + rest with
+S'∩S'' = a* - omega >= 0 outside K, and the parts outside K fit: omega + 2(T - a*) - (a* - omega) = N/2 - k/8 <= k for N <= 9k/4. §14.2's "at least four replies" is a
+consequence of 2.3/8.1 (slack with three useful replies is 4·eps), not of a separate proof.
