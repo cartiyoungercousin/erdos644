@@ -1,0 +1,2 @@
+{"i": 2, "d": {"123": 0.133, "12345": 0.007}, "verdict": "broken", "info": ["S2 holds against climb (his best 0.08858 < 0.10000)"]}
+{"i": 102, "d": {"123": 0.103279, "1234": 0.036721}, "verdict": "broken", "info": ["no S2", "S2 holds against climb (his best 0.09912 < 0.10000)"]}

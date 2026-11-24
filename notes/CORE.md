@@ -2042,3 +2042,38 @@ Self-check (Part X):
   against 2.385). The first moment is not a proof.
 - KZ, KL and DF statements are quoted from the HTML texts as read (DF only through KL's Lemma 2.8). ALWZ beyond KZ's
   Theorem 4, FKNP, Park–Pham and KLLM are from memory.
+
+## 60. Five-reply candidate of §41: stronger dumps do not save him; the break is not exact [verdict: UNDECIDED, survives in float]
+
+**Run.** (a) `p5_strong.py` (his dump is hill-climbed at the inner level, 150 outer dumps near cell 123, 10 workers): 17 outer
+spoilers reached the test, 16 "broken" (her S2 held against the climb), 1 "ROBUST" (outer dump index 80,
+{123: 0.13128, 12345: 0.00872}; three S2 each answered by a climbed dump). (b) `p5_verify.py` re-attacked that one dump:
+12 seeds x 15 min, break1 (300 iters, 30 candidates) then climb. (c) `spoil_three.py` (two-step-robust dumps at 3 kept
+replies, one request tested per row). (d) `spoil_exact_p5.py` (new): exact check of the outer dump. Processes were killed at
+the 15-20 min mark.
+
+| item | result | tag |
+|---|---|---|
+| p5_strong, outer spoilers tested | 17: 16 broken, 1 robust (idx 80) | float |
+| p5_verify on idx 80: S2 found / answered by climb / not answered | 43 / 18 / 25 (8 more attempts found no S2) | float |
+| seeds with at least one unanswered S2 | 12 of 12; best climbed need among them 0.0835 to 0.099999 vs base 0.1 | float |
+| spoil_three, N = 1.9, 3 kept replies (4 seeds) | 5 rows, every one robust2 (one request, one robust1 spoiler, robust2) | float |
+| spoil_three, N = 1.82 and 1.85 | 1 row each (robust2); other seeds cut by the time limit, incomplete | float |
+| exact check, 5-reply position, S as stored, D = {123: 131/1000, 12345: 9/1000} (also a = 7/50) | all 180 readings with the new reply and all 70 old readings have need >= 1/10 = base (min exactly 1/10, tight on reading (1,2,3,6) pattern 0; next 0.103) | exact |
+
+Exact part: position and S are rational (denominators 4300), asserted in Fractions (|S| = 19/25, each co-edge 9/10); for each reading
+the bound sum y mu - t sum z + omega sum min(0, 1 - z) with rationalised z and y = min over columns is dual feasible, so it is a
+rigorous lower bound; z came from HiGHS. 159 of the 180 new-reply readings (52 of 70 old) are LP-infeasible, which is
+only established in float. So dump 80's family (cells 123 and 12345 only, a up to 7/50) is an exact spoiler of the stored S.
+
+**Reading.** The stronger dump does not avoid the position: the one ROBUST verdict of the first pass was three lucky
+S2 draws; with 12 independent seeds every one finds a request on which his climb fails (25 of 43), though some climbs end within
+1.5e-6 of base, so those need not be genuine. The candidate break therefore survives both attacks I made. It is NOT
+exact: his side is a menu plus hill-climb at both levels, and her second request is only certified by his failure to
+climb. An exact break would need the box subdivision of §40 on the 6-reply dump polytope (about 20 cells) for one S2; not done.
+Three-level (robust2) runs at 3 kept replies find no break, so the position was not avoided by two-step care at depth 3;
+the two-step-robust test at kept replies 4 was not run.
+
+**Verdict: UNDECIDED. Candidate break not killed (float evidence for it), not exact. §43/§44's "next step" (i)-(ii) is half
+done: the outer level of one spoiler is exact, the inner level is not.**
+Files: `compute/core/p5_verify.py`, `spoil_exact_p5.py`, `logs/p5_verify_80_*.log`, `logs/p5_strong_*.log`, `logs/three_*.log`.
