@@ -1,0 +1,15 @@
+H(k=12,nA=16,nF=15,dA=1,dF=1,m=6,pool_only=True): tau exact = 11 (formula 11)
+  SAT (4A+3F, leaks only in own arena/pool): seven members found 0.0s; classes [[0], [0], [0], [0], [1], [1], [1]]; brute-force 2-cover: None
+  pool points used: [31]
+H(k=12,nA=16,nF=15,dA=1,dF=1,m=6,pool_only=False): tau exact = 11 (formula 11)
+  SAT (4A+3F, leaks only in own arena/pool): seven members found 0.0s; classes [[0], [0], [0], [0], [1], [1], [1]]; brute-force 2-cover: None
+  pool points used: [31]
+H(k=20,nA=26,nF=25,dA=2,dF=2,m=10,pool_only=False): tau exact = 17 (formula 17)
+  SAT (4A+3F, leaks only in own arena/pool): seven members found 0.0s; classes [[0], [0], [0], [0], [1], [1], [1]]; brute-force 2-cover: None
+  pool points used: [51, 52]
+H(k=40,nA=51,nF=50,dA=5,dF=5,m=12,pool_only=False): tau exact = 33 (formula 33)
+  SAT (4A+3F, leaks only in own arena/pool): seven members found 0.2s; classes [[0], [0], [0], [0], [1], [1], [1]]; brute-force 2-cover: None
+  pool points used: [101, 102, 103, 104, 105]
+H(k=20,nA=26,nF=25,dA=2,dF=2,m=40,pool_only=True): tau exact = 17 (formula 17)
+  SAT (4A+3F, leaks only in own arena/pool): seven members found 0.1s; classes [[0], [0], [0], [0], [1], [1], [1]]; brute-force 2-cover: None
+  pool points used: [51, 52, 53, 54]

@@ -45,12 +45,13 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 | Theorem J′ (6μ), Theorem J″ (4μ) | PETAL 14.1, 18.1 | VERIFIED (V4; Step 1 needs t >= 2/3; the third-class branch and integer rounding are not written) |
 | Theorem DS, DS-b | PETAL 20.2, §21 | VERIFIED only when the ground set is the two arenas. DS FAILS if 𝒜 leaks outside them (51–100 of 400 games end in a 2-cover with a 40-point outside pool). AP covers the pool but needs c > θ(t). |
 | Lemma FF, Theorem AP | PETAL 23.1, 23.2 | VERIFIED (V5; 112/151 is sharp; asymmetric arenas replayed; AP's τ_c comes from a direct count, not 'FF with equality') |
+| Theorem PS (pooled 𝒜 loses for δ < 3t/16, no condition on c) | PETAL §26 | HAND + EXACT replay (6000 games), verification pending |
 | Theorem N adversary beats 2+2 | PETAL §12 | VERIFIED (W3) |
 | 12.3 (𝒜 loses to 4+3 when she knows the arenas) | PETAL 12.3 | GAP (W3): assumes the ground set is the two arenas; a leak outside them breaks it. Check whether DS / the 𝒜 kill inherits this, or whether AP's pool covers it |
 | 𝒜(t,δ), 𝒦₂ (c >= 0.5217) as obstructions | PETAL §20, §22 | DEAD |
 
 ## Open
-- Petal: 𝒜(t,δ) with leak outside the arenas, for t > 3/4 and 7/5 - 17t/10 <= δ < t/6 (nothing proved there).
+- Petal: pooled 𝒜 for δ >= 3t/16. §26 states it as open for 3t/16 <= δ < 1 - t, but §19.1 says the known strategies already win for δ >= 7/5 - 17t/10. Reconcile (verifier).
 - The core window is 3t - 1/2 < N < 3 - t (21.2 does not close (3t - 1/2, 5t - 2]).
 - (Σ) for hash-like, non-greedy and self-cut families (core window).
 - Fixed two-class families not of arena-with-pool form (petal).

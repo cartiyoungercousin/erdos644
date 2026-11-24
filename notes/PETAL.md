@@ -1256,3 +1256,111 @@ families with τ > T exist for integrality reasons alone (complete 12-uniform fa
 hit is not news by itself; the news would be a hit whose blow-up keeps τ/k > 3/4 and (7,2) as k grows. Report that at once.
 **Files to reuse:** `compute/petal3/lpw.py` (HiGHS wrapper), `replay43.py` (exact 2-cover test, request-game harness),
 `exclusion.py` (certified exclusion by weights).
+
+---------------------------------------------------------------------------------------------
+## 26. Pooled 𝒜 in the strip 7/5 - 17t/10 <= δ < t/6: closed (tenth time box)
+
+(§25 is left to the structure search of §24.) Code: `compute/petal5/` (`pool_strip.py`, `family72.py`, `run_ps.py`; logs
+`logs/family72.log`, `logs/run_ps.log`). Nothing imported from `compute/verify` or `compute/petal3`.
+
+**Outcome.** The strip is **closed**: pooled 𝒜(t, δ) loses in seven requests for every δ < 3t/16, any pool, any
+leak placement (Theorem PS, 26.2) [proved by hand; exact replay]. The obstruction was not in the family but in AP's
+hypothesis: AP's strategy, accounted directly instead of through c > θ(t), already wins. This also replaces DS
+(the pool-free case) and extends its t/6 to 3t/16.
+
+### 26.1 Family test [computed exact]
+
+H(k; n_A, n_F, d_A, d_F, m) = all k-sets with >= k - d_c points in R_c (|R_c| = n_c), the rest anywhere in
+R_A ∪ R_F ∪ O, |O| = m; variant "pool only": the rest in R_c ∪ O; variant "exact pool": exactly d_c points in O.
+- τ: H is invariant under Sym(R_A) × Sym(R_F) × Sym(O), and "some member avoids S" depends only on the profile
+  (|S ∩ R_A|, |S ∩ R_F|, |S ∩ O|), so τ is the least profile sum with no avoiding member (exhaustive over profiles).
+  Result τ(H) = τ_A + τ_F, τ_c = n_c - k + d_c + 1 points, in every instance; with n_A = k + T/2 - d, n_F = n_A - 1 this is
+  T + 1. (k, T) = (12, 10), d = 1; (20, 16), d = 1, 2; (40, 32), d = 5; all in the strip.
+- (7, 2): **fails**. SAT (CaDiCaL, seven distinct members, pattern 4 of class A + 3 of class F, leaks forced into own
+  arena or pool; with `EXACT_POOL=1` exactly d_c pool points each) finds seven members in < 1 s in every instance;
+  brute-force pair test (all x <= y in the union) confirms no 2-point cover. Without distinctness three equal centres
+  already do it (four petals with empty common intersection + one F-set).
+- As 20.1 warned, this is not decisive alone: every subfamily with τ > T is a legal adversary. Hence 26.2.
+
+### 26.2 Theorem PS (pooled sealing) [proved by hand]
+
+Setting: disjoint regions R_X, R_Y (masses n_X, n_Y), everything else is "pool" (any size). The adversary answers
+request S with any set of mass 1 avoiding S that has >= 1 - ρ_c in R_c for some c (class c); so every subfamily of the
+pooled family is covered. Put τ_c = n_c - 1 + ρ_c (a subset of R_c of mass > τ_c meets every class-c set). Assume
+τ_X + τ_Y > t (else τ(H) <= t) and
+
+    (a) t - τ_Y >= 1/3 + ε,        (b) max(τ_X, 2ρ_Y) + (8/3)ρ_X + ε <= t.
+
+**Theorem PS.** Then seven requests give seven replies with no 2-point cover. No hypothesis on overlaps (no c > θ).
+*Proof.* Petals (requests 1–4). b = t - τ_Y - ε; I_i = common intersection of the first i petals. Request i+1 =
+F ∪ J: F ⊂ R_Y of mass τ_Y + ε containing I_i ∩ R_Y (|I_i ∩ R_Y| <= ρ_X, and ρ_X < τ_Y because (b) gives
+τ_X <= t - 8ρ_X/3 and τ_X + τ_Y > t); J = min(b, |I_i ∖ R_Y|) of I_i ∖ R_Y (pool points included). R_Y ∖ F has mass
+1 - ρ_Y - ε, so the reply is class X. |I_1| <= 1, |I_2 ∖ R_Y| <= 1 - b, |I_3 ∖ R_Y| <= 1 - 2b <= b by (a), so request 4
+contains I_3 and the four petals have empty common intersection. Mass <= τ_Y + ε + b = t.
+Centres (requests 5–7). U = union of petals, B = U ∖ R_X (other arena AND pool), |B| <= 4ρ_X, split into thirds
+B_0, B_1, B_2. Request j = G_j ∪ (B ∖ B_j), G_j ⊂ R_X of mass max(τ_X + ε, |Z_<j ∩ R_X|) containing Z_<j ∩ R_X
+(Z_i = trace of centre i on U). R_X ∖ G_j has mass < 1 - ρ_X, so the reply is class Y, and it has <= ρ_Y outside R_Y,
+so |Z_<j ∩ R_X| <= 2ρ_Y. U ⊂ R_X ∪ B; on R_X the traces are pairwise disjoint (sealed), on B every point is requested
+twice, so lies in at most one centre. P4(c). Mass <= max(τ_X, 2ρ_Y) + ε + (2/3)|B| <= t by (b). ∎
+
+**Corollary (pooled 𝒜).** ρ = δ, τ = t/2 (+ε to have τ(H) > t): (a) is t >= 2/3, (b) is t/2 + 8δ/3 < t, i.e.
+**δ < 3t/16**. Since t/6 < 3t/16, the strip 7/5 - 17t/10 <= δ < t/6 is closed for every t > 3/4, with or without
+pool, symmetric or not as long as (a), (b) hold for one choice of X. [proved by hand]
+- Why AP stopped at c > θ: its last paragraph turns (b) into a condition on c through ρ_c < 1 - θ - τ_c. For 𝒜,
+  (b) holds directly far beyond that. The strategy is AP's forced branch with b = t - τ_Y in place of 1/3.
+- Why DS failed with a pool (DS_FF_AP addendum): DS empties the petals' intersection by arena chunks and seals only
+  V_F-parts, so pool points were never sealed and centres could share them. PS seals the running intersection itself
+  (any region) and puts all of B, pool part included, into the double-seal design. The extra cost is in the centre
+  phase only: (2/3)|B| on top of τ_X, instead of DS's free V_F filler.
+- Not used: arena chunks, overlap thresholds, knowledge of the pool (B and I are read off the replies; she needs R_X,
+  R_Y, as in DS and AP).
+
+### 26.3 Exact replay (`run_ps.py`, 300 adversary games per row) [computed exact]
+
+Adversary: per-reply priority genomes (features: multiplicity in earlier replies, same-class multiplicity, common
+point of all earlier replies / same-class replies, requested before, pool, other arena; class choice when free;
+extra own-arena points), random + hill climbing on (max pair coverage of the seven, request size), plus hand-made
+extremes (petal leaks into fresh pool or other-arena points, maximising |B|; centres on earlier replies' points).
+Harness checks every reply is in H and avoids S, flags any petal of the wrong class, non-empty petal intersection,
+centre of the wrong class, intersecting traces. Independent pair test (all x <= y) on the seven replies.
+| k, T | n_A, n_F | d_A, d_F | pool m (only?) | t | 3t/16·k | τ(H) | X | bound | covers | over-T | centre max |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 40, 32 | 54, 53 | 2, 2 | 12 | 0.800 | 6.0 | 33 | F | 22 | 0/300 | 0 | 22 |
+| 40, 32 | 53, 52 | 3, 3 | 12 | 0.800 | 6.0 | 33 | F | 24 | 0/300 | 0 | 24 |
+| 40, 32 | 52, 51 | 4, 4 | 12 | 0.800 | 6.0 | 33 | F | 27 | 0/300 | 0 | 27 |
+| 40, 32 | 51, 50 | 5, 5 | 0 | 0.800 | 6.0 | 33 | F | 30 | 0/300 | 0 | 30 |
+| 40, 32 | 51, 50 | 5, 5 | 12 | 0.800 | 6.0 | 33 | F | 30 | 0/300 | 0 | 30 |
+| 40, 32 | 51, 50 | 5, 5 | 40 | 0.800 | 6.0 | 33 | F | 30 | 0/300 | 0 | 30 |
+| 40, 32 | 51, 50 | 5, 5 | 40 (pool only) | 0.800 | 6.0 | 33 | F | 30 | 0/300 | 0 | 30 |
+| 40, 32 | 50, 49 | 6, 6 | 40 | 0.800 | 6.0 | 33 | F | 32 | 0/300 | 0 | 32 |
+| 60, 47 | 78, 78 | 5, 5 | 30 | 0.783 | 8.8 | 48 | A | 38 | 0/300 | 0 | 38 |
+| 60, 47 | 77, 77 | 6, 6 | 30 | 0.783 | 8.8 | 48 | A | 40 | 0/300 | 0 | 40 |
+| 60, 47 | 76, 76 | 7, 7 | 30 (pool only) | 0.783 | 8.8 | 48 | A | 43 | 0/300 | 0 | 43 |
+| 100, 80 | 136, 135 | 4, 4 | 60 | 0.800 | 15.0 | 81 | F | 51 | 0/300 | 0 | 51 |
+| 100, 80 | 132, 131 | 8, 8 | 60 | 0.800 | 15.0 | 81 | F | 62 | 0/300 | 0 | 62 |
+| 100, 80 | 127, 126 | 13, 13 | 60 | 0.800 | 15.0 | 81 | F | 75 | 0/300 | 0 | 75 |
+| 100, 80 | 127, 126 | 13, 13 | 120 (pool only) | 0.800 | 15.0 | 81 | F | 75 | 0/300 | 0 | 75 |
+| 40, 34 | 52, 51 | 5, 5 | 30 | 0.850 | 6.4 | 35 | F | 31 | 0/300 | 0 | 31 |
+| 60, 48 | 76, 81 | 3, 7 | 40 | 0.800 | 9.0 | 49 | F | 48 | 0/300 | 0 | 48 |
+| 60, 48 | 76, 78 | 9, 4 | 40 | 0.800 | 9.0 | 49 | F | 34 | 0/300 | 0 | 34 |
+| 80, 64 | 103, 104 | 6, 10 | 60 (pool only) | 0.800 | 12.0 | 65 | A | 46 | 0/300 | 0 | 46 |
+| 100, 80 | 132, 128 | 12, 7 | 80 | 0.800 | 15.0 | 81 | F | 55 | 0/300 | 0 | 55 |
+| 40, 32 | 49, 48 | 7, 7 | 40 | 0.800 | 6.0 | 33 | F | 35 | 0/300 | 154 | 35 |
+| 100, 80 | 124, 123 | 16, 16 | 80 | 0.800 | 15.0 | 81 | F | 83 | 0/300 | 171 | 83 |
+Row d = 6 at (40, 32) is δ = 3t/16 exactly (fits by integer rounding). Last two rows: controls with δ > 3t/16.
+
+Every in-strip row: 0 covers, 0 budget violations, no flags; the largest centre request equals the predicted bound
+(the adversary reaches it), so the accounting is tight. Control rows above 3t/16 overrun exactly as predicted
+(no reply exists to an over-budget request).
+
+### 26.4 Status
+
+- **Closed:** pooled 𝒜(t, δ), δ < 3t/16, all t > 3/4 (the strip and DS's range). With 𝒜's own condition δ < 1 - t, this
+  is all of pooled 𝒜 for t >= 16/19 = 0.842.
+- **Open (pooled 𝒜 only):** 3t/16 <= δ < 1 - t for 3/4 < t < 16/19. PS is sharp there [computed]; the cost is the
+  (2/3)·4δ of the double seal on B. Not examined (outside the brief): sealing only B ∩ U*, or more
+  than three centres.
+- Dead routes: "(7,2) of the fixed pooled family as an obstruction" (fails, 26.1); "AP needs c > θ for 𝒜" (artefact).
+- Barrier F as in 23.4 is unchanged: the remaining question is families that are not arena-with-pool.
+Hand proof re-read once: petal class forcing, ρ_X < τ_Y, the 1 - 2b <= b step, the double seal on B including pool points.
+Checks: `py compute/petal5/family72.py 20 26 25 2 2 10 0`; `py compute/petal5/run_ps.py 30` (fast version).
