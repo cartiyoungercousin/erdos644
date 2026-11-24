@@ -29,6 +29,7 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 | Q' (set form of Theorem Q); reduction CP <= (Σ) | CORE §37, §38 | HAND, verification pending (V3) |
 | Ordered frozen anti-plan has a good seven | CORE §46 | HAND + EXACT (12 instances), verification pending (V2) |
 | Theorem W (window-selected greedy rules lose) | CORE §47 | HAND + EXACT (1200 random), verification pending (V2) |
+| Window lower end: 3t - 1/2 < N <= 5t - 2 closed by a fixed class-(T) plan when omega <= 4·eps | CORE 21.2 | HAND, needs a written proof plus verification (added to V3) |
 | Literal SPOIL false | CORE §40 | EXACT |
 | SPOIL at all depths is not a disproof | CORE §43 | HAND |
 | One-bit rule has a good seven | CORE §44 | EXACT (89 instances) |
@@ -47,3 +48,10 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 - (Σ) for hash-like, non-greedy and self-cut families (core window).
 - Fixed two-class families not of arena-with-pool form (petal).
 - Strategy-form SPOIL; the five-reply candidate break (CORE §41).
+
+## Consistency items (from paper/TODO.md)
+- CORE §1 states the window as 5t - 2 < N; §7 and §33 use 3t - 1/2 < N. The gap interval rests on 21.2 (above).
+- TWIN 16.A vs Lean `TheoremA` (one-anchor Fano template): they are different statements. 16.A stays HAND.
+- The 6/7 main theorem (`SixSeventhsStatement`) is not proved in Lean; only its lemmas 4.1–4.8 are.
+- Not yet scheduled for verification: Theorems J, K, L, T, Q, P, N; TWIN §13; 16.A.
+- Covering numbers C(v,k,2) behind f(6,7) >= 5 and f(7,7) >= 6: our own ILP only; La Jolla tables unchecked.
