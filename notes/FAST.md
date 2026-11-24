@@ -103,3 +103,7 @@ It is still a warning: when a small case has no slack, the requester needs more 
 Side check: 7 eight-sets do cover all pairs of an 18-set (HiGHS feasible). So K_18^(10) itself does not have property (7,2), and the adversary's winning play is a game-level obstruction, not a real (7,2) family with τ > 8.
 
 Update (08:40): (10,8) J=5 (m=9): ADVERSARY wins (1888 s, 1011 anchor-selection states, 57 shapes evaluated, 15 requester wins; not independently certified). J=6 (m=10) running in the same process (`logs/as_k10_T8_J6.log`, limit 7200 s from 07:54), no verdict yet.
+
+Update (10,8) J=6 (m=10): ADVERSARY wins too (319374 anchor-selection states, 7860 s; 87 shapes evaluated, 31 R; total 10381 s). Not independently certified.
+VERDICT: the bounded-request anchored game at (10,8) is lost for m = 8, 9, 10. The state count grows fast (17 -> 1011 -> 319374) with no sign of a requester win. Plain "more requests" at zero slack is DEAD at small k.
+What survives: the losing plays sit in an arena of about k+T = 18 points, and 18 <= 3T - k/2 = 19 is the concentrated regime the skeleton handles separately. The decisive test is the anchored game restricted to spread arenas (union of replies > 3T - k/2).
