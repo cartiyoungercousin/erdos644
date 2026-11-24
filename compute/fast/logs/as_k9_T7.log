@@ -1,0 +1,17 @@
+k=9 T=7 (T/k=0.7778): anchored shapes evaluated on demand (fast engine)
+    shape (5,4,2) |V|=16: A  [8.7s] nodes=36797
+    shape (6,3,2) |V|=16: A  [3.0s] nodes=52738
+    shape (7,2,2) |V|=16: A  [0.1s] nodes=54094
+  anchor selection among J=3 replies (m = 7 requests): ADVERSARY can keep every triple of replies losing   states=2 [11.9s]
+    shapes evaluated so far: 3 (R: 0); anchored-game time 12s; engine nodes 54094, table 254+53840, resets 0/0
+    shape (5,4,4) |V|=14: A  [0.1s] nodes=55694
+    shape (5,4,3) |V|=15: A  [3.0s] nodes=72929
+    shape (5,3,3) |V|=16: A  [10.9s] nodes=104194
+    shape (4,4,4) |V|=15: A  [1.2s] nodes=109007
+    shape (4,4,3) |V|=16: A  [17.2s] nodes=149290
+    shape (6,3,3) |V|=15: A  [0.3s] nodes=151335
+  anchor selection among J=4 replies (m = 8 requests): ADVERSARY can keep every triple of replies losing   states=15 [32.7s]
+    shapes evaluated so far: 9 (R: 0); anchored-game time 45s; engine nodes 151335, table 606+150729, resets 0/0
+  shapes found losing for her: (5,4,2) (6,3,2) (7,2,2) (5,4,4) (5,4,3) (5,3,3) (4,4,4) (4,4,3) (6,3,3)
+  shapes found winning for her: 
+  total 44.7s

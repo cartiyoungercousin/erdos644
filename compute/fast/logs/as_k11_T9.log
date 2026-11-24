@@ -1,0 +1,3 @@
+k=11 T=9 (T/k=0.8182): anchored shapes evaluated on demand (fast engine)
+  anchor selection among J=3 replies (m = 7 requests): ADVERSARY can keep every triple of replies losing   states=2 [6.2s]
+    shapes evaluated so far: 4 (R: 0); anchored-game time 6s; engine nodes 408866, table 631+408235, resets 0/0
