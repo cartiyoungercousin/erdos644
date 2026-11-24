@@ -1,0 +1,2 @@
+spread-restricted anchor selection k=10 T=8: a play whose final union of all J replies is <= 19 (= floor(3T - k/2)) counts as a requester win; otherwise she needs a winning anchor triple
+  J=3 (m = 7): ADVERSARY wins  states=2 shapes=13 (R: 0) engine nodes 835604 [747.6s]

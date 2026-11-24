@@ -107,3 +107,24 @@ Update (08:40): (10,8) J=5 (m=9): ADVERSARY wins (1888 s, 1011 anchor-selection 
 Update (10,8) J=6 (m=10): ADVERSARY wins too (319374 anchor-selection states, 7860 s; 87 shapes evaluated, 31 R; total 10381 s). Not independently certified.
 VERDICT: the bounded-request anchored game at (10,8) is lost for m = 8, 9, 10. The state count grows fast (17 -> 1011 -> 319374) with no sign of a requester win. Plain "more requests" at zero slack is DEAD at small k.
 What survives: the losing plays sit in an arena of about k+T = 18 points, and 18 <= 3T - k/2 = 19 is the concentrated regime the skeleton handles separately. The decisive test is the anchored game restricted to spread arenas (union of replies > 3T - k/2).
+
+---------------------------------------------------------------------------------------------
+# Part 4: spread-restricted anchor selection (union of all replies > 3T - k/2)
+
+## (1) Ground-set size in the existing adversary winning lines (`anchor_strategy.js`, J=4)
+- (9,7): 265 terminal four-reply configurations, ALL have union exactly 16 = k+T (3T - k/2 = 16.5, so every line is concentrated). `logs/adv_strategy_k9_T7_J4.log`.
+- (10,8): 410 terminal configurations: union 18 in 393, 19 in 14, 20 in 3; 3T - k/2 = 19, so 407 of 410 are concentrated (<= 19) and only 3 are spread (union 20). `logs/adv_strategy_k10_T8_J4.log`.
+Union here = union of the J replies at the terminal (the state holds every point of every reply). Not extracted for the J=5, J=6 runs of (10,8) (recomputation too long).
+
+## (2) The spread restriction (`spread_fast.js`)
+Implemented as a TERMINAL CONDITION on the anchor-selection game: if after the J-th reply the requester has no winning anchor triple, she still wins when the union of all J replies is <= floor(3T - k/2) ((10,8): 19; (9,7): 16), i.e. the play is a concentrated arena and the skeleton's separate theorem (N <= 3T - k/2) applies. Otherwise (union > 3T - k/2) she needs a winning triple as before. Why this matches the skeleton: the adversary's real choice is whether to keep the whole play inside a concentrated arena; the theorem handles exactly those plays, so they are requester wins, and every other play is what the old game decides. It is the generous direction for the requester: a play that stays concentrated until reply J is credited to her even though the adversary could still leave the arena later, so an adversary win here is a genuine adversary win of the spread game; a requester win would NOT be conclusive. (Equivalent to constraining the adversary to end with union > 3T - k/2.)
+Sanity: (8,6) stays an adversary win at J=3,4; (8,7) J=4 stays a requester win (J=3 adversary).
+
+## Results (cap 2 h each)
+| (k,T) | bound | J=3 | J=4 | J=5 |
+|---|---|---|---|---|
+| (9,7) | union >= 17 | ADVERSARY, 2 states, 49 s | ADVERSARY, 15 states, 87 s (17 shapes, none requester wins) | ADVERSARY, 644 states, 3 s (incremental) |
+| (10,8) | union >= 20 | ADVERSARY, 2 states, 13 shapes, 748 s | running at time of writing (cap 2 h from ~10:50) | not started |
+Logs `logs/spread_k9_T7.log`, `logs/spread_k10_T8.log`. No certificates (adversary wins; not independently checked).
+
+(9,7) reading, stated plainly: the spread-restricted game is STILL an adversary win. Every terminal line of the adversary's strategy has union exactly 17 (J=4: 243 configurations, J=5: 7358), i.e. he moves to the smallest arena that is just above the threshold (17 vs 16.5). So at (9,7) the win is an integrality effect at the boundary of the concentrated range (O(1) points above 3T - k/2), and (9,7) is a known genuine-family case (14.1: complete 9-uniform family on 16 points, tau = 8), so it is not evidence about a ratio near 3/4.
