@@ -835,7 +835,7 @@ A caution on the brief: non-(7,2) of H alone is not decisive, since he chooses t
 cannot force two bands to coincide (12.2 already had good configurations she could not reach).
 What decides the instance is that the seven sets below are forced against every choice of his.
 
-### 20.2 Theorem P: double sealing [proved by hand]
+### 20.2 Theorem DS: double sealing [proved by hand]
 
 Let δ < t/6 and let the adversary answer in any way inside the family (colour c: at least 1 - δ in
 V_c, the rest in the other arena, slivers included in "the rest").
@@ -894,3 +894,100 @@ adversary violating that hypothesis, starting from 𝒬(c) with c < (3 - t)/4.
 Checks: `py compute/petal3/replay43.py 40 30 4 20`; `py compute/petal3/replay43.py 480 360 48 20`.
 Hand proof re-read once: 20.2 (budgets 3δ <= t/2, 8δ/3 <= t/2 - ε, 2δ <= t/2; each band point in at most
 one centre).
+
+---------------------------------------------------------------------------------------------
+## 21. Arena-blind Theorem DS, and a candidate adversary outside its hypothesis (seventh time box)
+
+Naming: the double-sealing theorem of 20.2 is **Theorem DS** (renamed; "Theorem P" is CORE.md's pool
+theorem). Code: `compute/petal3/exclusion.py`, log `logs/exclusion.log`.
+
+**Outcome.**
+1. Blind DS: **not obtained at the aware range.** What is proved blind, for classes with a common
+   region, is n - 1 + 7δ <= t (21.1), i.e. δ <= t/12 for tight arenas, against t/6 aware. I say exactly
+   which three terms are lost and why my attempt to recover them fails (21.2).
+2. A candidate two-class adversary 𝒦₂(c), θ(t) < c < (3 - t)/4, built on 𝒬(c), survives every attack
+   analysed here: J″ (exact replay, 18.2), double sealing of the single parts, role swap, and
+   certified double exclusion (computed, 21.4). It is **not validated** as a strategy: its
+   out-of-family ("closure") replies are not shown to be sustainable. No adversary win is claimed.
+
+### 21.1 Blind statement for common-region classes [proved by hand]
+
+Hypothesis CR(n, δ): two classes; disjoint regions R_X, R_Y of mass n; every reply of a class has
+at least 1 - δ in its region; she knows t, and a number c below 2(1 - δ) - n and above 2δ (so classes are
+read off overlaps), nothing else.
+**Theorem DS-b.** Under CR(n, δ) she wins in 10 requests if **n - 1 + 7δ <= t**, placing requests only
+from observed replies.
+*Proof.* Step 1 of 14.1 (running intersections) gives four petals of one class, X. Step 2 of 14.1
+with a fixed forcing petal X_a and c just below 2(1 - δ) - n: forcing costs 1 - c = n - 1 + 2δ. A centre
+meets U∖X_a in (i) its part outside R_Y, at most δ, and (ii) points of U ∩ R_Y outside X_a, which lie
+in the parts of the three other petals outside R_X: at most 3δ in total, and once sealed they
+are gone. So |(Z_1 ∪ Z_2)∖X_a| <= 3δ + 2δ, and (J′) holds. ∎
+Tight arenas (n = 1 + t/2 - δ): δ <= t/12. Replay (19.1): realised threshold between 0.083 and 0.092 at
+t = 3/4, because the parts (i) of two centres cannot both avoid the best petal.
+
+### 21.2 Why the aware range t/6 is not reached blind [the three terms are proved; the diagnosis is heuristic]
+
+Aware cost t/2 + 8δ/3; blind cost t/2 + 6δ. The difference:
+- forcing: +δ. The only certificate she has is "1 - c of one petal"; in an arena t/2 anywhere
+  suffices, but she cannot certify that a point lies in R_X (a band point re-used by r of m
+  replies looks the same; mass-level certainty costs mδ/r, never below about δ).
+- centre parts outside R_Y: +2δ (aware: inside the forcing set, which may sit anywhere in V_A).
+- bands: 3δ against 8δ/3 for four bands, or 2δ for three: double sealing needs the band set in
+  advance. Attempt: probe centres, record hits, double-seal the recorded set, restart when new
+  hits exceed ξ. It fails as written: recorded hits mix band points (bounded by 3δ in total) with
+  the centres' own stray parts (δ per probe, unbounded in total), and she cannot tell them apart,
+  so the recorded set grows without bound. Hiding bands from probes does not help him (a probe
+  with no band hits is a good centre), so some version may work; I do not have it.
+So against 𝒜(t, δ) with t/12 < δ < t/6 the proved win is arena-aware only. The arenas are learnable in
+principle (own parts recur, bands do not), but that is exactly the unproved step.
+
+### 21.3 The candidate 𝒦₂(c) [explicit; not validated]
+
+Fix θ(t) < c < (3 - t)/4 (nonempty for t < 23/29 = 0.793; at t = 3/4: 0.5 < c < 0.5625),
+ρ = 1 - 3c/2, μ = ρ/2.
+- Class X: region R_X of mass 2c. Honest reply: 3c/2 in R_X∖S and ρ fresh points. Four replies
+  whose missing blocks partition R_X are exactly 𝒬(c): overlaps c, single parts ρ.
+- Class Y: region R_Y of mass 1 - 3μ + q, 0 <= q <= 1 - 3μ - c. Honest reply: 1 - 3μ in R_Y∖S and a hit part of
+  mass 3μ: μ unrequested points in the single part of each of three X-petals, re-using the hit
+  part of an earlier centre whenever it is not requested, otherwise new points. Roles swap when
+  she takes petals in class Y.
+- A request containing the traces of two centres but no certified exclusion of class X is
+  answered in class X (a class-Y reply would be a third centre with a disjoint trace).
+- If no honest member of either class avoids S, he answers with any set that still meets every
+  earlier reply of one class in more than c ("closure reply", as E in 17.1).
+It violates CR with small leak: the honest leaks are ρ and 3μ = 3ρ/2 (0.19 and 0.285 at c = 0.54), and
+the honest families alone have τ = c/2 + q < t, so the closure replies are essential.
+
+### 21.4 Attacks checked against 𝒦₂
+
+| attack | outcome | tag |
+|---|---|---|
+| J″ (rotation, observed traces) | third request costs 1 - c + 4μ = 3 - 4c > t; replay at c = 0.54: 38 points over at k = 400, 2-cover exists | computed exact (18.2) |
+| double sealing of all single parts outside the forcing petal | 1 - c + (2/3)·3ρ = 3 - 4c > t, same inequality | proved |
+| role swap (Y petals, X centres with leak ρ = 2μ into the Y petals' hit parts) | same count, 1 - c + 4μ | heuristic (count only; not replayed) |
+| third centre without forcing (request = traces of two centres) | he answers in class X | by definition of 𝒦₂ |
+| certified double exclusion, e_X + e_Y <= t | fails: e_X = 1 - c on 𝒬(c); e_Y = 1 - c with two hit types for 2–4 members and every block size q; sums 0.88–0.96 at c = 0.52–0.56 | computed, float, LP duality over a weight grid (`exclusion.py`) |
+| same with three or four hit types | e_Y drops to 0.30–0.42, sums 0.77–0.88, still > t; and a third hit type needs the unaffordable request | computed |
+| many X members with spread blocks | e_X tends to 2c/3 (uniform weights); 2c/3 + 1 - c > t for c < 3(1 - t) | proved for uniform weights only |
+`exclusion.py` gives, for every weight vector, a request that really excludes, so its values are
+rigorous upper bounds on the certified cost at the grid's best point; the claim "fails" rests on
+the grid minimum and is [computed], not proved.
+
+Not checked: whether closure replies can be iterated without lowering some overlap below c or
+opening a good triple; 2+2 with simultaneous serving; petals with triple points; any strategy
+that learns R_X and R_Y first. So 𝒦₂ is a **candidate**, not a counterexample.
+
+### 21.5 Status
+
+Proved: Theorem DS-b (blind, n - 1 + 7δ <= t). Not proved: blind DS at t/6.
+Open, exact:
+(a) blind play against 𝒜(t, δ), t/12 < δ < t/6 (aware play wins; blind proof missing);
+(b) 𝒞(c, μ) with θ(t) < c < (3 - t)/4 and μ = (2 - 3c)/4: the candidate 𝒦₂(c). J″ covers c >= (3 - t)/4 for this μ.
+**Best next step:** validate or kill 𝒦₂(0.54) at t = 3/4 by a mass-level game solver: states are
+atom masses, his move is an LP (honest reply if one exists, else closure reply maximising the
+minimum overlap), her moves are the finitely many request types used above plus exclusion
+requests from `exclusion.py`; depth 10. If every line ends in a certificate, (b) closes; if a
+line survives, it is the first explicit non-arena obstruction and should be replayed on points.
+
+Checks: `py compute/petal3/exclusion.py` (about 1 min). Hand proofs re-read once: 21.1 (3δ + 2δ),
+the two inequalities 3 - 4c > t in 21.4.
