@@ -1102,3 +1102,64 @@ Not done: that test; certification of §30; other S_3 or D_3 at depth 3; N in (5
 Self-check (Part VII): 29.1–29.2 are two-line arguments, re-read once; they use only finiteness of V. §30's
 engine is §26's with five replies (same LP, 70 readings); the depth-2 positions inside it reproduce base. The
 statement about the MILP's failure is from one instrumented run (N = 1.9).
+
+## 33. HANDOVER (self-contained)
+
+**(1) Statement.** Units k = 1 (masses are fractions of k; "first order" = k → ∞ with masses fixed). t = T/k = 3/4 + eps,
+V a ground set of mass N, c = N - 1, omega = N - 1 - t, delta = N - 7/4. A *co-edge* is the complement in V of an
+edge: a set of mass c. A family 𝒞 of co-edges is *T-covering* if every set of mass t lies in a member
+(⟺ τ(H) > T for the edge family H confined to V).
+**(CP)** For 5t - 2 < N < 3 - t: every T-covering 𝒞 has seven members K_1..K_7 covering all pairs of V, i.e. the
+co-types I_x = {i : x ∈ K_i} are nonempty and pairwise intersecting (1.1). For N < 11/6 this is equivalent to: a
+labelling of the seven by the lines of a Fano plane in which every I_x contains a pencil (three concurrent lines)
+(1.3, 8.3 [float MILP]). Game form, equivalent for every finite k (29.2): she names sets of mass t, he answers
+with a co-edge containing each, all replies are kept, she wins when seven of them cover all pairs. Each reply is
+S ∪ D, D the *dump*, mass omega (when |S| = t). Proved outside the window: N <= 3t - 1/2 (TWIN 16.A) and, by a count,
+omega <= 4·eps is the regime where a fixed plan suffices (21.2); N >= 3 - t is PETAL's side.
+
+**(2) Proved tools** (by hand unless tagged).
+- Slack count (2.1–2.3, 8.1, 17.1): Σ_x (|I_x| - 3) = 4·delta for any seven co-edges; lines L_i ⊆ K_i of a certificate
+  satisfy Σ(|L_i| - t) = 3·omega - 4·eps, so the dumps must supply that much on-line mass; two replies are free, hence
+  the others must supply omega - 4·eps =: base. Two fully used replies never suffice; three leave slack 4·eps.
+- Theorem T (§3): three co-edges with pair intersections a, b, d <= (t + N - 2)/2, a + b + d >= (3N - 3 - t)/2 and empty
+  triple intersection are finished by four fixed requests. Zero-slack point a = b = d = N/2 - 5/8.
+- Theorem Q (§4): four co-edges forming a quadrangle are finished by three fixed requests iff W := u_3 + 2u_4 + s_1
+  <= delta + 3·eps and the three matching loads are <= t.
+- Pool theorem P (§5): if his dumps stay in a known set Z, omega <= |Z| <= N - 3/2, she wins in seven requests.
+- Reading lemma 9.1 / balance 14.1: against a fixed pair the third reply can always be made to waste omega; a triangle
+  closes iff all but eps of the dump lies outside K_1 ∪ K_2. Mode lemma 9.2: pure high, pure low, pure pile lose.
+- Potential form (22.1): for a fixed labelling, e(x) = |I_x| - max over completable pencils of |I_x ∩ P| is monotone,
+  and she wins iff Σ_x e(x) <= 4·delta at the end.
+- Fixed-labelling theorem (22.3, bound by float MILP over all 30 labellings): if the seven are kept in order and the
+  labelling follows from her requests, the W-dumper wins whenever omega > 4·eps.
+- need_R (§25): LP giving the on-line dump still required if she keeps the set R; need_R >= (3 - |R|)·omega - 4·eps + waste.
+
+**(3) Computed** (float LP/MILP, Fano-type certificates only; complete for N < 11/6).
+- Tilted spread (half proportional, one free bit per reply): beaten by an exact tree at t = 0.76, N = 1.80 only, which
+  is N = 5t - 2 (REDTEAM §14; CORE §20–21). Every fixed bit schedule is beaten for N = 1.78..2.2 (REDTEAM §13.2).
+- Depth 2 (replies 3, 4, any kept set): value = base exactly at t = 0.76, N = 1.82, 1.85, 1.9, 2.0, 2.1 and t = 0.755,
+  N = 1.9; MILP-certified for the triangle-type third request at all but N = 2.1 (§26).
+- Depth 3: value = base at N = 1.82, 1.85, 1.9 (t = 0.76) and 1.9 (t = 0.755); heuristic, narrow slice (§30).
+- His sufficient rule so far: the whole dump on one unrequested cell of points lying in >= 2 kept co-edges (26.3).
+  Conjecture SPOIL (§27): such a dump exists at every position. If true for all depths, the first-order statement fails.
+
+**(4) A non-game route [heuristic; nothing below is proved].** Work with the reply map F(S) = S ∪ D(S) and ask what
+D must look like, rather than how to beat it. Three structural facts are already forced on a (7,2) family:
+(i) D(S) is never "predictable": if D(S) ⊆ Z for a fixed Z of mass <= N - 3/2 on enough requests, Theorem P wins;
+(ii) for every pair of members (K, K') and every S that is triangle-type for it, D(S) must put >= omega - O(eps) of
+its mass inside K ∪ K' in the balance-inclusive sense (else Theorem T closes; 14.1);
+(iii) exact triangles (Theorem T's point) must not occur among members at all.
+The stability statement to aim for: *a T-covering family with no good seven is, up to O(eps) mass, a pool family —
+there is Y with |Y| ≈ omega contained in almost every member* (the complete family on V∖Y is the model, and it is beaten
+exactly when t > 3/4). This is the analogue, on this side, of a "few arenas" structure theorem.
+**First lemma to try (kernel lemma).** Fix members K_1, K_2 with |K_1∩K_2| = o in the pair window. For every
+triangle-type S (S ∩ K_1 ∩ K_2 = ∅, a* of each private part) (ii) forces |D(S) ∩ (K_1 ∪ K_2)| >= omega - eps, and 9.1's
+count splits this into a part in O = K_1∩K_2 and a part in the private parts. Claim to prove or refute: *the sets
+D(S) ∩ O, over all such S, have a common core of mass >= (1 - o(1))·omega·λ, where λ is the average fraction of the
+dump landing in O.* Method: two triangle-type requests S, S' with S ∪ S' avoiding the private-part mass that D(S), D(S')
+used give a quadruple (K_1, K_2, F(S), F(S')); if D(S) ∩ D(S') ∩ O is small, Theorem Q's waste W = u_3 + 2u_4 + s_1 drops
+below delta + 3·eps and she wins — so large pairwise overlap of the O-parts is forced, and a Δ-system / Kleitman-type
+step turns pairwise overlap into a common core. Then (i) finishes when λ is near 1; the residual case (dumps mostly in
+the private parts) is the pencil reading and should be treated symmetrically with the kernel N - 3/2.
+Cheap numerical pre-check: in `twostage.py` positions, compute need for the reading (K_1, K_2, K_3, K_3') with two
+triangle-type requests and D_3, D_3' ⊆ O disjoint versus nested; the lemma predicts need < base for disjoint.
