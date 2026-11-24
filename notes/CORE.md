@@ -885,3 +885,119 @@ Self-check (Part V): §20 from a float replay of the exactly verified tree (64/6
 relaxation in her favour (it ignores the T-budget of her requests and where exactly inside W_j he dumps), so
 infeasibility is on the safe side, but it is floating point, not a certificate. The "about k/2" in 22.4
 and the omega·omega/(k + omega) in §23 are first-order counts, not optimised bounds.
+
+=============================================================================================
+# Part VI — the two-stage game (replies 3 and 4, discard allowed): no drop below 2·omega (sixth time box)
+
+Code (all in `compute/core`, logs in `compute/core/logs`): `twostage.py` (the game, search), `twostage_cert.py`
+(MILP lower bound with LP-dual cuts), `twostage_menu.py` (which of his dumps are needed), `twostage_test.py`
+(optimiser check against a predictable opponent). Units k = 1.
+**Outcome.** At every point tested the value of the two-stage game is exactly the baseline: replies 3 and 4
+together give her **nothing** (cost 2.00·omega; the question of §24 is answered "it does not drop").
+Status of that sentence: his side holds with a small explicit menu of dumps (a subset of his legal replies);
+her side is a heuristic search, validated, plus a MILP certificate for the triangle-type reply-3 request at
+five of the six points. It is not certified for all reply-3 requests at once (that MILP did not close).
+No request pair to extract. No adversary win for the real game is claimed (§28).
+
+## 25. The game and its value [definitions; inequalities proved by hand]
+
+Position: the co-type masses of the replies so far. After replies 1, 2: O = K_1∩K_2 (mass o), A, B (N-k-o each),
+g (2k-N+o). Reply 3: she requests S_3 (mass T over the 4 types), he adds D_3 (mass omega on unrequested points);
+reply 4 the same over the 8 types. A *reading* R is a set of at least two of the replies with a Fano
+labelling (which triples are pencils; 19 readings for four replies). For a reading put
+    need_R = min Σ_f u_f : every point's final co-type contains a pencil, each of the 7 - |R| future lines has
+             mass <= T + u_f, 0 <= u_f <= omega                       (an LP in the type masses).
+- need_R <= 0 is an outright win: the future lines can be requested as they stand (as in Theorems T, Q).
+- need_R is optimistic for her: it assumes every later reply adds up to omega exactly where she wants it.
+- [proved] need_R >= (3 - |R|)·omega - 4·eps·k + W_R, W_R = total off-line mass of the kept co-edges (count of 8.1:
+  Σ over the seven lines of (|L_i| - T) = 3·omega - 4·eps·k, a kept line has |L_i| <= T + omega - waste_i).
+  So a pair has need >= base := omega - 4·eps·k, with equality for the right o (o = 0.305, 0.33, 0.38, 0.43 at
+  N = 1.85, 1.9, 2.0, 2.1); a reading with r extra replies is no better than base iff those replies waste r·omega
+  in the balance-inclusive sense. "Cost of replies 3, 4 in units of omega" = 2 - (base - value)/omega.
+- Value: V = min_{S_3} max_{D_3} min_{S_4} max_{D_4} min_R need_R; "discard" is the min over R (any kept set).
+- [proved, 9.1 in this form] One stage: for 3·omega <= o <= (N-k)/2 the value after reply 3 is >= base.
+Caveat: only Fano-type certificates (co-types containing a pencil). That is every certificate for N < 11k/6;
+for N >= 11k/6 it is every certificate that 17.2 found optimal with at most four fully used replies
+[float MILP there], not a proved restriction. Of the points below only N = 1.82k is inside the proved range.
+
+## 26. Results
+
+**26.1 Search [computed, float LPs; her side heuristic].** His menu at each reply: the proportional dump, all of
+omega on one type (spill by co-degree), and half-half on two types (1 + 8 + 28 = 37 dumps at reply 4; quarter
+splits and thirds on three types added for the final check of her best request). Her side: 27–51 reply-3 requests per row (triangle family nothing-of-O with a* - j·omega/8 in each
+private part, pencil-type, mixed, random), and for each of his reply-3 dumps a reply-4 optimiser (LP-guided
+line requests for every reading, unions of whole types, compass search from 7 starts). 4–6 million LPs, 5–10 min per row.
+
+| t | N | o | omega | base | need of the pair | value after reply 4 | cost of replies 3, 4 |
+|---|---|---|---|---|---|---|---|
+| 0.76 | 1.82 | 0.29 | 0.06 | 0.02 | 0.02 | 0.0200 | 2.00·omega |
+| 0.76 | 1.85 | 0.305 | 0.09 | 0.05 | 0.05 | 0.0500 | 2.00·omega |
+| 0.76 | 1.90 | 0.33 | 0.14 | 0.10 | 0.10 | 0.1000 | 2.00·omega |
+| 0.76 | 2.00 | 0.38 | 0.24 | 0.20 | 0.20 | 0.2000 | 2.00·omega |
+| 0.76 | 2.10 | 0.43 | 0.34 | 0.30 | 0.30 | 0.3000 | 2.00·omega |
+| 0.755 | 1.90 | 0.3275 | 0.145 | 0.125 | 0.125 | 0.1250 | 2.00·omega |
+| 0.76 | 1.90 | 0.26 (pair too small) | 0.14 | 0.10 | 0.24 | 0.1000 | 2.00·omega |
+| 0.76 | 1.90 | 0.40 (pencil kernel) | 0.14 | 0.10 | 0.12 | 0.1150 | 2.11·omega |
+
+The value equals base to 1e-13 in the first seven rows: not "close to", equal. With an unbalanced pair she
+repairs the pair (row 7) and gains nothing beyond it. For every reply-3 request tried he had a
+reply-3 dump after which no reply-4 request found brought any reading below base against the menu.
+**26.2 Optimiser check [computed].** Against the proportional dump at both replies (predictable, §13) the
+same search reaches need 0.0000 at N = 1.9 (after reply 3 already 0.0019): `twostage_test.py`. So the search does
+find gains when they exist; and "proportional" alone is not his answer.
+**26.3 Which dumps he needs [computed, N = 1.9].** `twostage_menu.py`, reply-4 menu restricted to
+(a) proportional only: value 0.0017 (he loses the stage); (b) one-type dumps only: value = base;
+(c) one-type dumps on types lying in at least two of K_1, K_2, K_3 only: value = base.
+So the reply-4 spoiler is always "all of omega on one cell of co-degree >= 2 among the earlier replies", which
+cell depending on her request; at reply 3 it is 9.1's rule (O if she leaves omega of it, else the private parts) or,
+for some requests, the proportional dump.
+**26.4 Certificate [computed: float MILP (HiGHS, status Optimal), cuts valid by weak duality].**
+`twostage_cert.py`: his menu cut down to piecewise-linear options (proportional; all on J; all of J then J2), her
+S_4 for every reply-3 option as continuous variables, each need_R replaced by LP-dual lower bounds (valid for
+every dual vector, so the MILP optimum is a lower bound for her true optimum against the menu, hence for V).
+With S_3 = the triangle-type request (nothing of O, a* of each private part, the rest of g):
+MILP optimum = base at (t, N) = (0.76; 1.82, 1.85, 1.90, 2.00) and (0.755; 1.90) — 15–90 s each.
+Not certified: (i) all S_3 simultaneously — MILP lower bound still 0 after 2 x 380 s at N = 1.82 and 1.90;
+(ii) N = 2.10 (its S_3 is not of that form; MILP bound 0.213 against 0.300 at the same point: an unresolved
+slack in my encoding of dump availability, which can only favour her). The earlier runs with that slack
+that reported base are unaffected for the same reason.
+
+## 27. Reading
+
+- The fork of §24 is decided on the "no mechanism" side: there is no pair of requests (S_3, S_4) that makes
+  him pay anything, discards included. The numbers are also sharper than §23's o(omega): the saving is 0.
+- Type-relative form of his two-stage rule, as far as the runs determine it: *answer a request by putting the
+  whole dump on one cell of points already lying in two or more kept co-edges and not requested; choose the cell
+  so that no reading through the new reply beats the best reading without it.* The existence of such a cell at
+  every position is the statement
+  **(SPOIL)** for every position and every request there is a dump after which every reading containing the new
+  reply has need >= the least need of a reading not containing it.
+  Proved for reply 3 under 9.1's hypothesis 3·omega <= o <= (N-k)/2 (computed outside it); computed for reply 4 (§26); open beyond. It is false for menus that are fixed in
+  advance (pool, pure high, pure low, proportional: Theorem P, 9.2, 26.2) — the cell must depend on the request.
+- [heuristic] If SPOIL holds at every position, the first-order game with Fano certificates is an adversary
+  win for every number of requests as soon as omega > 4·eps·k: need never falls below base > 0.
+- This is NOT a counterexample to CP and not evidence against it. The spoiler at reply 4 is chosen knowing
+  K_1, K_2, K_3. In the family form (1.2) the reply to S_4 is one fixed set, and she may meet it before, after or
+  without K_3: the same K(S_4) has to spoil against every triple she can assemble. The game gives him the last
+  word at every step; a family has no last word.
+
+## 28. Exact remaining statement and next step
+
+Remaining statement: §24's, with one clause added — a proof must use that the reply to a request does not
+depend on the history (family form), or certificates outside the Fano type for N >= 11k/6; the adaptive game
+with Fano readings shows no gain through four replies.
+**Next step (one computation, same code).** The consistent two-stage game: she holds K_1, K_2 and asks S_3,
+S_3' and S_4; he answers each request once (D_4 may not depend on which of K_3, K_3' she keeps). 16 types
+before reply 4, readings through K_3 or K_3'. If the value is still base, also allow two requests at stage 4.
+A drop there is the mechanism (and is exactly the dilution idea of §10 with balance-inclusive accounting);
+no drop for every finite portfolio would show that even consistency does not help at first order and would
+leave only the density route of §15.
+Not done: that computation; SPOIL at reply 5; an exact (rational) version of the 26.4 certificates; the
+all-S_3 certificate; N = 2.1 certificate; non-Fano readings.
+
+Self-check (Part VI): need LP checked on known cases (Theorem T position: need 0; dump into O, A or A∪B at a
+balanced pair: need = base; pair need as a function of o reproduces the count 3N - 7T). LP duals reproduce the
+LP values on 117 random positions before use as cuts. Two encoding errors in the certificate MILP were found
+and fixed during the runs (dump options droppable on both sides of a threshold; readings with a dead type
+given a finite bound) — both made her stronger, so bounds reported as equal to base were already valid.
+All LP/MILP work is floating point (HiGHS); nothing is an exact rational certificate.

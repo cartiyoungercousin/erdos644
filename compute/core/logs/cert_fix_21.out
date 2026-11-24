@@ -1,0 +1,5 @@
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+{"start": true, "t": 0.76, "N": 2.1, "o": 0.43, "omega": 0.3400000000000001, "base": 0.30000000000000004, "s3fix": {"3": 0.0, "1": 0.2975, "2": 0.2975, "0": 0.165}, "menu3": 13, "menu4": 25}
+{"it": 0, "status": "Optimal", "milp_value": 0.1463405797762238, "milp_lower_bound": 0.1463405797762238, "true_value_at_point": 0.1463405797762246, "new_cuts": 0, "ncuts": 165, "s3": {"-": 0.165, "1": 0.2975, "2": 0.2975}, "worst": {"d3": "(3, 'a')", "d4": "('prop',)", "s4": {"-": 0.0615, "1": 0.0325, "2": 0.0325, "3": 0.0615, "13": 0.194, "23": 0.2745, "123": 0.1035}, "state3": {"-": 0.165, "1": 0.3725, "2": 0.3725, "12": 0.09, "3": 0.165, "13": 0.2975, "23": 0.2975, "123": 0.34}}, "secs": 35}
+{"SUMMARY": true, "t": 0.76, "N": 2.1, "o": 0.43, "omega": 0.3400000000000001, "base": 0.30000000000000004, "certified_lower_bound": 0.1463405797762238, "gap_in_omega": 0.4519394712464006, "last_true_value": 0.1463405797762246, "s3fix": {"3": 0.0, "1": 0.2975, "2": 0.2975, "0": 0.165}, "secs": 35}

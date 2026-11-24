@@ -1,0 +1,5 @@
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+{"start": true, "t": 0.76, "N": 1.85, "o": 0.305, "omega": 0.09000000000000008, "base": 0.050000000000000044, "s3fix": {"3": 0.0, "1": 0.3, "2": 0.3, "0": 0.16}, "menu3": 13, "menu4": 25}
+{"it": 0, "status": "Optimal", "milp_value": 0.04999999999999871, "milp_lower_bound": 0.04999999999999871, "true_value_at_point": 0.05000000000000111, "new_cuts": 0, "ncuts": 242, "s3": {"-": 0.16, "1": 0.3, "2": 0.3}, "worst": {"d3": "(1, 'a')", "d4": "('prop',)", "s4": {"2": 0.155, "12": 0.215, "3": 0.07, "13": 0.3, "23": 0.02}, "state3": {"-": 0.295, "1": 0.155, "2": 0.245, "12": 0.305, "3": 0.16, "13": 0.39, "23": 0.3}}, "secs": 15}
+{"SUMMARY": true, "t": 0.76, "N": 1.85, "o": 0.305, "omega": 0.09000000000000008, "base": 0.050000000000000044, "certified_lower_bound": 0.04999999999999871, "gap_in_omega": 1.4802973661668742e-14, "last_true_value": 0.05000000000000111, "s3fix": {"3": 0.0, "1": 0.3, "2": 0.3, "0": 0.16}, "secs": 15}
