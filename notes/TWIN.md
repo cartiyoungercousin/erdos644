@@ -854,3 +854,117 @@ C3. Configuration 15.5 (three cluster petals, common core c_3, pair-only cells, 
 C4. Selection game: four replies, she wins iff they are triple-free with L*-feasible grids (C1's
     table); can she force it at (8,6), (9,7), (12,9), (12,10), and with five or six replies choosing
     four?
+
+=============================================================================================
+## 16. The concentrated case (eighth time box)
+
+**Outcome: the concentrated-case lemma is NOT proved.** Proved: an exact block form of the Fano
+six-state (16.1), that with unboundedly many requests the lemma is the conjecture for families on
+fewer than 3k - T points (16.2), the lemma for ground sets of at most 3T - k/2 points (16.3), exact
+win conditions and a necessary count for the quadrangle-first labelling (16.4), and the reason the
+line-first labelling stops at 3T - k/2 (16.5). The missing inequality is stated in 16.6. Units:
+k = 1, t = T/k, r = 1 - t; ground set V of mass N, 1 + t <= N < 3 - t, ω = N - 1 - t.
+
+### 16.1 Block form of the six-state [proved by hand]
+
+Label the seven kept rounds by the points of a Fano plane; J_x = set of replies containing x.
+The Fano criterion (7.5) says every J_x must be line-free. For a line-free J put
+T(J) = { c not in J : c is the third point of a line through two points of J }.
+**A point of type J must be requested at every later round c in T(J), and nowhere else.** So the game
+is: at round c request M_c = { x : c in T(J_x) }; she wins iff mass(M_c) <= t at every round; the rest
+of each budget is free. |J| <= 1: never blocked. |J| = 2: blocked once, at the third point of its
+line. A non-collinear triple: blocked at the three third-points of its sides and free at one round
+(it can grow to a quadrangle). A quadrangle: blocked at the three remaining rounds.
+Up to isomorphism the labelling of the first four rounds is one of:
+(L) 1,2,3 collinear (M_3 = B_1∩B_2; the first three replies are anchors);
+(T) 1,2,3 a triangle and 4 on one of its sides (M_3 = ∅, M_4 = B_a∩B_b);
+(Q) 1,2,3,4 a quadrangle (M_3 = M_4 = ∅). Then 5,6,7 are the diagonal points and
+
+    M_5 = B(m_1),  M_6 = B(m_2),  M_7 = B(m_3) ∪ (B_5 ∩ B_6),
+
+where m_1, m_2, m_3 are the three perfect matchings of {1,2,3,4} in an order of her choice and
+B(m) = union of B_a ∩ B_b over the two pairs of m.
+The labelling may be decided after seeing the replies, as long as it is consistent with the blocks
+already made (none before round 3; in (Q) none before round 5).
+
+### 16.2 Stationary adversaries [proved by hand]
+
+If she may repeat requests, a reply that differs from an earlier reply to the same request only adds
+a reply to the pool, and the winning condition (some seven replies uncoverable) is monotone in the
+pool. So with unboundedly many requests the adversary is w.l.o.g. a fixed map S ↦ B(S), i.e. a
+family, and the concentrated-case lemma becomes: *a (7,2)-family on fewer than 3k - T points has
+tau <= T*. With a bound m(eps) it is formally stronger. I know no argument special to bounded
+ground sets beyond those below; in particular the fractional relaxation is useless (the complete
+family on 2k points has fractional transversal number 2).
+
+### 16.3 The lemma for N <= 3t - 1/2 [proved by hand]
+
+**Proposition 16.A.** If all replies lie in a known set V with |V| <= 3T - k/2 - O(1), she wins with
+seven requests and no discard.
+*Proof.* B_1 arbitrary. Fix a_0 ⊂ V∖B_1 of mass α = N - 2t. S_2 = a_0 ∪ (t - α points of B_1), so
+|B_1 ∩ B_2| <= r + α. S_3 = a_0 ∪ (B_1 ∩ B_2), of mass at most 2α + r = 2N + 1 - 5t <= t. Now
+B_1, B_2, B_3 are anchors and none of them meets a_0, so their union has mass <= N - α = 2t, and
+Theorem C finishes with four non-adaptive requests. ∎
+(This is the "first edge arbitrary, then Fano" range of FRESH_C §7.1, now as a seven-request proof.)
+Above 3t - 1/2 the kernel a_0 cannot be both large enough and affordable twice.
+
+### 16.4 Quadrangle-first: exact conditions after four replies [proved by hand]
+
+Let, after four replies, n_3, n_4 = mass of points in exactly three / four of them, c(m) = mass of
+points whose type is exactly a pair of m, σ_0, σ_1 = mass in no / exactly one reply, and
+L(m) = n_3 + n_4 + c(m) = mass of B(m). The certificate of labelling (Q) is completed iff, for some
+order of the matchings,
+    L(m_1) <= t,   L(m_2) <= t,   L(m_3) + e <= t,
+where e = mass of B_5 ∩ B_6 on points in at most one of the first four replies; she caps e with the
+spare budget t - L(m_2) of round 6 (and shapes B_5 with t - L(m_1) at round 5).
+**Count.** Σ_m L(m) = 8 - 3N + 3σ_0 + σ_1 - 2n_4 (from 4 = σ_1 + 2c + 3n_3 + 4n_4 and
+N = σ_0 + σ_1 + c + n_3 + n_4). Hence against an adversary whose fourth reply avoids the common
+points of the first three (n_4 = 0), **labelling (Q) needs N >= 8/3 - t** (1.917 at t = 3/4), with
+equality only if every point lies in two or three of the four replies and the three loads are
+exactly balanced. For N >= 2 no triple points are forced and (Q) is the K4 pattern of §15.4.
+*Example* (N = 2): anchors of shape (r, t/2, t/2) and B_4 = the three single parts give pair-cells
+c_12 = c_34 = r, c_13 = c_24 = c_14 = c_23 = t/2, matching loads (2r, t, t), e = 0: she wins. If
+instead he puts unrequested points of B_1 ∩ B_2 into B_4, triple points appear, the loads can
+become infeasible in (Q), and she has to fall back on labelling (L) with these anchors.
+
+### 16.5 Why (L) stops at 3t - 1/2 and what is left between [proved where stated]
+
+In (L) the first three replies are anchors and the rest is the anchored game on their union.
+Near t = 3/4 the requester region of that game is, by C's exact tables, a neighbourhood of the
+Fano point |U_3| <= 2t together with small-overlap shapes p <= about t (which the concentrated
+hypothesis p > t excludes) [computed, (8,6)]. She controls |U_3| only through the kernel a_0 of
+16.3. So:
+
+| N (units of k, t = 3/4 + eps) | status |
+|---|---|
+| <= 3t - 1/2 ≈ 1.75 + 3eps | proved (16.A) |
+| (3t - 1/2, 8/3 - t) ≈ (1.75, 1.917) | open; (Q) is excluded by the count, (L) needs anchors off the Fano point, (T) not analysed |
+| [8/3 - t, 3 - t) ≈ [1.917, 2.25) | open; (Q) available, needs the inequality below |
+| >= 3 - t | spread case (petals / Theorem D) |
+
+The red team's computed wins at t = 0.76 on N = 1.9 (just below 8/3 - t = 1.907) therefore cannot
+be pure (Q); they must be (T) or (L) with adaptive continuation. Worth reading off their lines.
+
+### 16.6 The exact missing inequality
+
+For N in [8/3 - t, 3 - t): **she can choose S_2, S_3, S_4 so that, whatever the replies, some order of
+the three matchings satisfies L(m_1), L(m_2) <= t and L(m_3) + e <= t.** Equivalent form with
+Φ(state) = min over orders of max(L(m_1), L(m_2), L(m_3) + e*): she forces Φ <= t after four replies,
+where e* is the adversary's best value of e against her caps. Her tools are the window lemma (each
+overlap with one chosen set in a window of width ω) and top-degree requests (n_3 <= p - t, n_4 = 0);
+the adversary's are the choice inside each window and the triple points he creates in B_4. The
+count leaves her total slack 3t - (8 - 3N) - 3σ_0 - σ_1, which is 3eps at N = 23/12; so near the
+lower end she must also keep σ_0 = σ_1 = 0 and the loads balanced to within eps, with windows of
+width ω ≈ 1/6. I do not see how, and I expect the true statement to need the fourth labelling (T)
+there.
+For N in (3t - 1/2, 8/3 - t): the analogous statement for labelling (T) — after three free replies
+and S_4 ⊇ B_a ∩ B_b for a pair of her choice — is not even formulated as a count yet.
+
+### 16.7 Requests for C (exact)
+
+D1. Confined game on N = 1.8k, 1.85k, 1.9k, 2.0k at T = 0.76k-type sizes (e.g. (k,T,N) = (12,9,22),
+    (12,9,23), (12,9,24), (12,10,24), (16,13,30)): for each winning requester line record which of
+    (L), (T), (Q) the kept seven realise (which triples of kept replies have empty intersection).
+D2. Four-reply states: on the same sizes, the set of 4-states from which (Q) wins (16.4) and whether
+    she can force one; this is a 4-round game plus a closed form, far smaller than the 7-round game.
+D3. The same for (T): states after four replies with one blocked pair.
