@@ -101,3 +101,5 @@ So both m = 8 and m = 9 lose at (10,8). J = 6 (m = 10) is running (node pid 4478
 Reading: T = 8 at k = 10 is the exact extremal value (K_17^(10) has τ = 8), so this case tests whether the anchored game is tight at an integrality boundary, not the asymptotic 3/4 threshold (7.5).
 It is still a warning: when a small case has no slack, the requester needs more requests as m grows, or the confined-arena effect persists.
 Side check: 7 eight-sets do cover all pairs of an 18-set (HiGHS feasible). So K_18^(10) itself does not have property (7,2), and the adversary's winning play is a game-level obstruction, not a real (7,2) family with τ > 8.
+
+Update (08:40): (10,8) J=5 (m=9): ADVERSARY wins (1888 s, 1011 anchor-selection states, 57 shapes evaluated, 15 requester wins; not independently certified). J=6 (m=10) running in the same process (`logs/as_k10_T8_J6.log`, limit 7200 s from 07:54), no verdict yet.

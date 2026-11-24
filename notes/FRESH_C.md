@@ -866,3 +866,10 @@ not matter at (6,5), (7,6) — she wins with triple points present — so the se
 (iii) Nothing computed here is at a ratio T/k below 0.83 with an unknown outcome; the first such sizes,
 (10,8) = 0.80 and (14,11) = 0.786, are beyond the present engine (anchored tables at k = 10 need minutes per
 shape; a compiled engine and the four-petal route, whose tables are 100 times cheaper, are the way in).
+
+Update to the 14.5 table (runs that finished after the section was closed):
+- relaxed, (8,7): J = 5 (m = 8) UNDECIDED at the 250 s limit; J = 6 (m = 9): **R**. (The three-anchor route of
+  §13/§14.3 already gives a certified win with m = 8 at this size.)
+- strict, (9,7) control: J = 5 adversary, J = 6 undecided (240 s); still zero triple-free quadruples.
+- strict, (12,9) control: J = 4, 5 adversary, zero triple-free quadruples; J = 6 and (12,10) still running
+  when this line was written (`c4_strict.log`).

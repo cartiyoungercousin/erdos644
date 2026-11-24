@@ -9,3 +9,8 @@ C4  k=9 T=7 (T/k=0.7778): selection of four petals with a requester-winning conf
 C4  k=12 T=9 (T/k=0.7500): selection of four petals with a requester-winning configuration; triple-free quadruples only
   J=4 replies (m = 7 requests): ADVERSARY can keep every four replies losing   states=20, four-petal configurations evaluated 0 (R: 0) [0.0s]
   J=5 replies (m = 8 requests): ADVERSARY can keep every four replies losing   states=2511, four-petal configurations evaluated 0 (R: 0) [50.1s]
+  J=6 replies (m = 9 requests): UNDECIDED (time limit)   states=7926, four-petal configurations evaluated 0 (R: 0) [240.0s]
+C4  k=12 T=10 (T/k=0.8333): selection of four petals with a requester-winning configuration; triple-free quadruples only
+  J=4 replies (m = 7 requests): ADVERSARY can keep every four replies losing   states=18, four-petal configurations evaluated 0 (R: 0) [0.0s]
+  J=5 replies (m = 8 requests): ADVERSARY can keep every four replies losing   states=2113, four-petal configurations evaluated 0 (R: 0) [45.2s]
+  J=6 replies (m = 9 requests): UNDECIDED (time limit)   states=7200, four-petal configurations evaluated 0 (R: 0) [240.1s]
