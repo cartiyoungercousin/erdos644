@@ -991,3 +991,106 @@ line survives, it is the first explicit non-arena obstruction and should be repl
 
 Checks: `py compute/petal3/exclusion.py` (about 1 min). Hand proofs re-read once: 21.1 (3δ + 2δ),
 the two inequalities 3 - 4c > t in 21.4.
+
+---------------------------------------------------------------------------------------------
+## 22. Family test on 𝒦₂(0.54), and its death by a mixed sealing plan (eighth time box)
+
+Code: `compute/petal3/family_k2.py`, `seal_plan.py`, `replay_q.py` (function `run_plan`); logs
+`logs/family_k2.log`, `logs/seal_plan.log`, `logs/replay_q_plan.log`.
+
+**Outcome.**
+1. Family test: 𝒦₂ is **not a consistent family** in the sense required. Its honest replies form a
+   family with τ = c/2 + q < T (47 against 75 at k = 100) [proved; computed]. The smallest threshold
+   family that contains every closure reply has τ > T but is no longer two-class, and fails (7,2)
+   by six explicit edges that he is not obliged to give. So the test neither kills nor confirms
+   𝒦₂ by itself (22.1).
+2. Direct kill: **𝒦₂(0.54) as defined (hits μ = ρ/2) loses.** A mixed plan, designed sealing plus
+   observed traces, costs 1 - c + 2.5μ <= t at the third request (22.2) [proved for the plan's
+   accounting; exact replay]. In general 𝒦₂(c) with hits ρ/2 loses for
+   c >= (2.25 - t)/2.875 = 0.5217 at t = 3/4.
+3. Not killed: 𝒦₂(c) for θ(t) < c < 0.5217, and variants with larger hits (ν up to 0.8ρ) at
+   c = 0.54, where the best plan found misses by 0.003 (22.3). The mass-level solver was not
+   built: the instance it was meant for is dead, and the survivors need a statement first.
+
+### 22.1 Family test [proved by hand; computed exact at k = 100]
+
+k = 100, T = 75, c = 54; R_X of 108 points, R_Y of 89 points (q = 0.175), fresh points unlimited.
+(b) Honest family (X-edges with at least 81 points in R_X, Y-edges with at least 71 in R_Y): a
+request of 28 points of R_X and 19 of R_Y meets every edge, so **τ = 47 < T**. As a fixed family the
+honest part of 𝒦₂ is not an obstruction at all: with H known she simply makes that request.
+Every reply of 𝒦₂ that matters is therefore a closure reply.
+(a) A fixed family containing every closure reply must contain every set with more than c in
+R_X (such a set is a legal closure reply after one honest reply whose R_X-part contains it), and
+likewise for Y. That threshold family H* has τ = 54 + 35 = 89 > T. It fails (7,2), in fact (6,2):
+three X-edges whose R_X-parts have empty common intersection, three such Y-edges, leaks fresh;
+no point lies in three of the six, and no X-edge meets a Y-edge (`family_k2.py`: overlaps
+2, 27, 28 and 21, 28, 27, exact test: no 2-cover).
+Can she force them? Not by anything I can show: inside H* he may answer with near-copies. The six
+edges have same-class overlaps down to 2 points, which the two-class adversary never gives.
+Reading. For 𝒜 the family test was decisive because the family was the adversary. For 𝒦₂ the
+family H* is much larger than the adversary, and 𝒦₂ proper is a path-dependent sub-strategy of
+it, not a family. That is itself a finding: **a two-class adversary with c > θ(t) and big hits is
+never a fixed family with τ > T unless its classes are arenas of the 𝒜 type** — I state this as
+the reading of (b), not as a theorem; the general statement would need the true exclusion
+lemma of 17.2.
+
+### 22.2 The mixed sealing plan [proved for the stated accounting; exact replay]
+
+Setting: petals with single parts of mass ρ; a centre meets each single part in at most ν and
+meets U outside the single parts only in O(1) points (this is 𝒦₂; ν = μ = ρ/2 there). Rotation:
+centre j is forced inside X_{a_j}, and F_j contains the single part of X_{a_j}; b is the fourth petal.
+Plan for ν = ρ/2:
+- request 1: F_1 and the whole single part of X_{a_2} (ρ);
+- request 2: F_2, the observed trace of C_1 (in the single parts of X_{a_3} and X_b: 2ν), and ρ/4
+  further points of the single part of X_b;
+- request 3: F_3 and the observed traces outside X_{a_3}: C_1 in b (ν), C_2 in a_1 (ν) and in b (at most
+  ρ - ν - ρ/4 = ρ/4).
+Surpluses over 1 - c: ρ, 1.25ρ, 1.25ρ. Traces are pairwise disjoint by construction, so P4(c) applies.
+**She wins if 1 - c + 1.25ρ <= t** (ν = ρ/2), i.e. 1 - c + 2.5μ <= t. On 𝒬(c), ρ = 1 - 3c/2:
+c >= (2.25 - t)/2.875. At c = 0.54, t = 3/4: 0.46 + 0.2375 = 0.6975. ∎
+`seal_plan.py` minimises the largest surplus over this plan family (grid 1/40) for other hit
+sizes [computed]: ν/ρ = 0.2: 0.80ρ; 1/3: 1.00ρ; 0.5: 1.25ρ; 0.6: 1.40ρ; 0.8: 1.54ρ; 1: 1.675ρ
+(J″ pays 4ν).
+
+Exact replay (`replay_q.run_plan`, scripted centres as in 18.2, exact 2-cover test) [computed exact]:
+| k, T | c | ν | request sizes | result |
+|---|---|---|---|---|
+| 400, 300 | 216 (0.54) | 38 = ρ/2 | 260, 260, 300 | no 2-cover: she wins |
+| 800, 600 | 432 | 76 | 520, 520, 598 | no 2-cover |
+| 400, 300 | 212 (0.53) | 41 | 270, 283, 300 | no 2-cover |
+| 400, 300 | 210 (0.525) | 42 | 275, 293, 300 | no 2-cover |
+| 400, 300 | 208 (0.52) | 44 | second request 2 over | plan fails |
+| 400, 300 | 204 (0.51) | 47 | 13 over | plan fails |
+| 400, 300 | 216 | 57, 60 (0.75ρ, 0.79ρ) | 17, 20 over with this plan | plan fails |
+(The replay takes the smallest extra sealing in request 2 that works; at c = 0.54 that is 0, the
+third request then sits exactly at T; with ρ/4 extra the sizes are 260, 279, 281.)
+Scope: the centres are scripted (hit ν in every unrequested single part, re-using unsealed
+trace points, one point per block). The accounting in the proof covers any centre obeying the
+setting; it does not cover closure replies that meet U elsewhere in positive mass.
+
+### 22.3 What survives
+
+- 𝒦₂(c), hits ρ/2, for θ(t) < c < (2.25 - t)/2.875 (0.5 < c < 0.5217 at t = 3/4).
+- At c = 0.54: hits ν with 0.75ρ <= ν < (1 - c)/3 = 0.807ρ (the upper limit keeps two centres with
+  disjoint hits in one class). Best plan found: surplus 1.54ρ, cost 0.7526 > 0.75. The margin is
+  inside what a better plan or P2 could recover; I do not count this as an obstruction.
+- Blind play against 𝒜 (21.5(a)): unchanged.
+
+### 22.4 Status
+
+Dead: 𝒦₂(0.54) as defined in 21.3. The family test as a decision procedure for path-dependent
+adversaries (it is decisive only when the family is the adversary).
+**Exact remaining gap:** two-class adversaries with θ(t) < c < 1 - t/2 whose centres' hits ν and
+petals' single parts ρ satisfy 1 - c + s(ν/ρ)·ρ > t, s the plan value above (s(1/2) = 1.25); on 𝒬-type
+petals this is c < 0.5217 for ν = ρ/2. Every such adversary known to me needs closure replies, i.e.
+is not a fixed family.
+**Best next step.** Two cheap things before any solver: (1) prove the reading of 22.1(b) as a
+lemma: a fixed family with τ > T whose edges fall into two classes with pairwise overlaps > c has,
+in each class, true exclusion cost at most 1 - c - (single mass available to centres); with it the
+plan of 22.2 pays e_X instead of 1 - c and the window 0.5 < c < 0.5217 should close; (2) solve the
+plan game exactly (it is a small LP per ν once the plan family is written as mixtures) to replace
+the grid values of `seal_plan.py`.
+
+Checks: `py compute/petal3/family_k2.py`; `py compute/petal3/seal_plan.py` (about 2 min);
+`py -c "import replay_q as r; print(r.run_plan(400,300,216,38,19))"` from `compute/petal3`.
+Hand proofs re-read once: 22.1(b) (28 + 19), 22.2 (the three surpluses).

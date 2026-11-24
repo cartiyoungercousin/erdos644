@@ -1,0 +1,4 @@
+honest tau = 47  closure tau = 89  T = 75
+pairwise overlaps X: [2, 27, 28]  Y: [21, 28, 27]
+common points X: 0  Y: 0
+2-cover of the six edges exists: False
