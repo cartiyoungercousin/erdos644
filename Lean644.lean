@@ -15,6 +15,7 @@ import Lean644.SplitB
 import Lean644.GapTraces
 import Lean644.FourClose
 import Lean644.OneCore
+import Lean644.OneCoreLemma
 import Lean644.TightTriple
 import Lean644.TheoremA
 import Lean644.SparserTriple

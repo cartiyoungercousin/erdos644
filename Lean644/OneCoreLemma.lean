@@ -11,6 +11,19 @@ namespace Erdos644
 
 variable {α : Type*} [DecidableEq α]
 
+section mem
+variable {A B C D : Finset α} {x : α}
+private theorem m4_1 (h : x ∈ A) : x ∈ A ∪ B ∪ C ∪ D :=
+  Finset.mem_union_left _ (Finset.mem_union_left _ (Finset.mem_union_left _ h))
+private theorem m4_2 (h : x ∈ B) : x ∈ A ∪ B ∪ C ∪ D :=
+  Finset.mem_union_left _ (Finset.mem_union_left _ (Finset.mem_union_right _ h))
+private theorem m4_3 (h : x ∈ C) : x ∈ A ∪ B ∪ C ∪ D :=
+  Finset.mem_union_left _ (Finset.mem_union_right _ h)
+private theorem m4_4 (h : x ∈ D) : x ∈ A ∪ B ∪ C ∪ D := Finset.mem_union_right _ h
+private theorem m2_1 (h : x ∈ A) : x ∈ A ∪ B := Finset.mem_union_left _ h
+private theorem m2_2 (h : x ∈ B) : x ∈ A ∪ B := Finset.mem_union_right _ h
+end mem
+
 /-- **Lemma 4.1 (one surviving cell).** With `x = |E∩F|, y = |E∩G|, z = |F∩G|`, `S = x+y+z`,
 a good triple closes at budget `T ≤ k` under the nine inequalities of the manuscript. -/
 theorem onecore_closes {H : Finset (Finset α)} (hprop : HasPropertyAtMost H 7 2) {T k : ℕ}
@@ -227,8 +240,9 @@ theorem onecore_closes {H : Finset (Finset α)} (hprop : HasPropertyAtMost H 7 2
       (Z ∪ C₃) (Q.card + Y.card + A.card) (X.card + B.card + Z.card + c₂) (Z.card + C.card - c₂)
       (u2 _ _) ((QZ _ (by intro v hv; simp [hv])).trans
         ((card_union4_le _ _ _ _).trans (by omega)))
-      ((QZ _ Finset.subset_union_left).trans ((Finset.card_union_le _ _).trans (by omega)))
-      (by omega) (by omega) (by omega) (by omega) ?_ ?_ ?_ ?_
+      ((QZ _ Finset.subset_union_left).trans ((Finset.card_union_le _ _).trans
+        (by clear * - cC₃ hc1; omega)))
+      (by omega) (by omega) (by clear * - hc c2 bd h9 hTk; omega) (by omega) ?_ ?_ ?_ ?_
     · intro u v uE uF vG vK vF
       exact Or.inr (Or.inl ⟨by simp only [Finset.mem_union, true_or, or_true, memX u uE uF], by simp only [Finset.mem_union, true_or, or_true, memB v vG vK vF]⟩)
     · intro u v uE uG vF vK vG
@@ -261,23 +275,23 @@ theorem onecore_closes {H : Finset (Finset α)} (hprop : HasPropertyAtMost H 7 2
       ((Finset.card_union_le _ _).trans (by have := card_union4_le Y A C₁₂ V₂₃; omega))
       ((QZ _ Finset.subset_union_left).trans (Finset.card_union_le _ _))
       (by omega) (by omega) (by omega) (by omega) ?_ ?_ ?_ ?_
-    · intro u v uE uF vG vK vF
-      exact Or.inl ⟨by simp only [Finset.mem_union, true_or, or_true, memX u uE uF], by simp only [Finset.mem_union, true_or, or_true, memB v vG vK vF]⟩
-    · intro u v uE uG vF vK vG
-      exact Or.inr (Or.inl ⟨by simp only [Finset.mem_union, true_or, or_true, memY u uE uG], by simp only [Finset.mem_union, true_or, or_true, memA v vF vK vG]⟩)
-    · intro u v uF uG uK vE vK
-      have uV : u ∈ V := by simp [V, Z, uF, uG, uK]
-      rcases covC v (memC v vE vK) with h | h
-      · rcases covV u uV with h' | h'
-        · exact Or.inl ⟨by simp only [Finset.mem_union, true_or, or_true, h'], by simp only [Finset.mem_union, true_or, or_true, h]⟩
-        · exact Or.inr (Or.inl ⟨by simp only [Finset.mem_union, true_or, or_true, h'], by simp only [Finset.mem_union, true_or, or_true, h]⟩)
-      · exact Or.inr (Or.inr ⟨by simp only [Finset.mem_union, true_or, or_true, memZ u uF uG], by simp only [Finset.mem_union, true_or, or_true, h]⟩)
+    · intro p q pE pF qG qK qF
+      exact Or.inl ⟨m4_1 (memX p pE pF), m4_2 (memB q qG qK qF)⟩
+    · intro p q pE pG qF qK qG
+      exact Or.inr (Or.inl ⟨m4_1 (memY p pE pG), m4_2 (memA q qF qK qG)⟩)
+    · intro p q pF pG pK qE qK
+      have pV : p ∈ V := Finset.mem_sdiff.2 ⟨Finset.mem_inter.2 ⟨pF, pG⟩, pK⟩
+      rcases covC q (memC q qE qK) with h | h
+      · rcases covV p pV with h' | h'
+        · exact Or.inl ⟨m4_4 h', m4_3 h⟩
+        · exact Or.inr (Or.inl ⟨m4_4 h', m4_3 h⟩)
+      · exact Or.inr (Or.inr ⟨m2_1 (memZ p pF pG), m2_2 h⟩)
     · intro e eE he
       rcases he with h | h | h
-      · exact Or.inl (by simp only [Finset.mem_union, true_or, or_true, memX e eE h])
-      · exact Or.inr (Or.inl (by simp only [Finset.mem_union, true_or, or_true, memY e eE h]))
+      · exact Or.inl (m4_1 (memX e eE h))
+      · exact Or.inr (Or.inl (m4_1 (memY e eE h)))
       · rcases covC e (memC e eE h) with h' | h'
-        · exact Or.inl (by simp only [Finset.mem_union, true_or, or_true, h'])
-        · exact Or.inr (Or.inr (by simp only [Finset.mem_union, true_or, or_true, h']))
+        · exact Or.inl (m4_3 h')
+        · exact Or.inr (Or.inr (m2_2 h'))
 
 end Erdos644

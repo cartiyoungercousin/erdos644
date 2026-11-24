@@ -779,3 +779,102 @@ points on one anchor side) ∪ (pool): R fills E∩G, R' fills u* of F∖E.
    witness, this section); (iii) not examined here: the sparse regime u < u*. Both open
    pseudo-adversaries are "locally complete piece + correlated outside part", which supports
    §8.6: this is the real barrier, and no finite list of 5-edge constraints I know removes it.
+
+---------------------------------------------------------------------------------------------
+
+## 10. One hand pass on the pool barrier — RESULT: no overlap lemma; two small lemmas, one improvement by changing the potential, and a partial barrier for one-anchor templates
+
+Setting of §9: balanced lex-min anchor (E,F,G), cells u* = (2k − T)/3, privates of size
+k − 2u* = (2T − k)/3, W the union. Witness: R = Y ∪ P ∪ O(1) (Y = E∩G, P a pool of k − u* points
+outside W), R' = S' ∪ P. No computation was needed in this pass.
+
+### 10.1 What a sampled pool point buys: nothing below cost 1:1  [proved by hand]
+A request D with slack s = T − |D| may add s pool points; the response avoids them, so the
+overlap with an earlier pool response drops by at most s. The adversary's sub-family of answers
+to D only needs transversal number > s, which a pool varying in s + 1 points achieves. In the
+template s = O(eps k). So "one pool point per request" beats a *fixed* pool and nothing else:
+against a pool that moves by s points per request, hitting it costs as much as it removes.
+Blocking the pool completely is always affordable but uses the whole surplus:
+> **Lemma 10.1.** |P| = k − u* <= T, and after requesting P the budget left is exactly
+> T − (k − u*) = (2T − k)/3, the size of one private cell of the anchor.
+So a pool-free response can be forced, but only with about k/6 points of request inside W,
+and the adversary may then answer with a near-copy of an anchor edge (an edge containing all
+but k/6 points of E, F or G), which carries no information.
+
+### 10.2 Why reusing the pool is consistent: the pool is a "side"  [proved by hand]
+> **Lemma 10.2.** Let R be an edge with c_0 := R∩F small. Every edge A avoiding c_0 satisfies
+> max(|A∩F|, |A∩R|) >= u* (lex-minimality on the good triple (F,R,A), whose third cell is |c_0|;
+> strictly more than u* if |c_0| < u*).
+Sealing c_0 costs O(1), so after the first pool response *every* later response is u*-close to
+F or to R. An answer that reuses the pool is u*-close to R for free. This is the mechanism
+that makes the correlated pool admissible: minimality, the only binding constraint of §9,
+is satisfied by the correlation itself. It also means the position after R is a two-sided one
+(F-side / R-side) exactly as in the lopsided regime, but with u* < k/2 and no gap.
+
+### 10.3 The potential matters: with a min-S anchor the pool shrinks to one private cell  [proved by hand]
+The binding row of §9 depends on the extremal rule. For the lex-min rule a sealed response
+needs max(a,b) >= u* (a = |R∩E|, b = |R∩F|). For the rule "anchor = good triple of minimum
+S" (the balanced triple is also the minimiser in complete-like families) the same sealed triple
+(E,F,R) needs u* + a + b >= 3u*, i.e. **a + b >= 2u***, so
+> |R∖W| <= k − 2u* = (2T − k)/3 ≈ k/6 (17 eps k at t = 0.76; 6.2 eps k at t = 0.78),
+down from k − u* ≈ 0.59k. This is exactly the K_N value (there the k/6 points lie in PG instead
+of outside W). It still exceeds eps k, and it constrains only the two sealing requests of the
+template (group 1); R' (group 2) stays unconstrained except by Lemma B. A mixed rule
+s_1 + lambda(s_2 + s_3) interpolates: a >= (1 + lambda)u*. Soundness: min-S at K_N, N < 7k/4, is the
+balanced triple and the game is stuck there (R1b checks, `poth:-1,-1,-1`).
+Consequence for the engine: the complete-like corner should be run with a sum-type potential,
+not lex-min and not 4·s_1 + s_2.
+
+### 10.4 Barrier for one-anchor Fano templates  [proved by hand, for the pseudo-adversary described; its admissibility is checked only against the constraints listed]
+Pseudo-adversary 𝔓 (pool + copies): a request with fewer than |P| − (k − u*) + O(eps k) points in
+the current pool is answered by (an admissible u*-block inside W) ∪ (k − u* pool points);
+a request that blocks the pool has at most (2T − k)/3 + O(eps k) points in W (Lemma 10.1) and is
+answered by a near-copy of an anchor edge.
+Take any 7-tuple of Fano pattern (§8.1) with E on a line L_1 and six responses.
+- At each point a_p off L_1 the three responses must have empty common intersection. Two pool
+  answers share >= k − u* − O(eps k) pool points, so at each a_p either at most one of the three
+  answers is a pool answer or the last of the three requests blocks the pool.
+  Either way **every a_p lies on a line whose request is pool-blocking**.
+- Lines through the four a's that cover all of them: a matching pair (the two lines of one
+  group, both through some b_j), or at least three lines.
+- A pool-blocking request has <= (2T − k)/3 + O(eps k) ≈ k/6 points in W. For a matching pair
+  through b_j the triple (E, N, N') must be good, so the two requests must together contain
+  E∩N, where N is a near-copy of E if the adversary so chooses: cost >= 5k/6 > k/6.
+  With three or more pool-blocking lines the same count is NOT conclusive: two of them meet at
+  some a_p, but the third line there may be a full-budget request and N∩N' can be as small as
+  2k/3 <= T. [open]
+Hence **every Fano template around one kept edge in which the pool-blocking requests are the
+two lines of one group loses to 𝔓**; this includes Theorem 8.1 in every ordering of its groups.
+Templates with three or more pool-blocking (hence W-light) requests are not excluded, but
+they are no longer templates on W: half of their requests carry no class structure.
+What is not shown: that 𝔓 survives closures of other shapes (three centres with a pool edge
+as petal; two kept anchor edges; four-edge tables on (F,R,·,·)). §9.4 checked the four-edge
+tables for the first two responses only.
+
+### 10.5 What a new architecture has to do
+The failure is one of accounting, and it is the same one in §7.5 and §9: a response has
+k − u* points that minimality does not place, the template has surplus O(eps k), and blocking
+the free part costs k − u* while leaving k/6. So any proof at 3/4 + eps must make the free part
+*pay inside the same request budget*, which in a 7-edge argument means: the free parts of
+different responses must be forced to coincide with template classes. Two concrete ways:
+1. **Put the pool into the ground set from the start** (second extremal choice). Choose the
+   anchor edge E and take W := E ∪ (union of the answers to the six template requests), with
+   the answers chosen, among all admissible ones, to minimise |W|. Then Theorem 8.1 has rho = 0 by
+   definition and the question becomes a bound |W| <= (7/4 + 3 eps)k: an *upper bound on the
+   union of six responses*, which by 8.1 is what a near-Fano tuple is. The lemma to aim for:
+   "min over answers of |E ∪ R_1 ∪ … ∪ R_6| <= 7k/4 + O(eps k) at a min-S anchor".
+   With min-S, §10.3 already gives |R_i∖W_0| <= k/6 for sealing requests.
+2. **Two-sided anchor** (Lemma 10.2): keep the almost disjoint pair (F,R) and classify every
+   later response as F-side or R-side; the pool is then inside R, not outside the ground set.
+   This is the lopsided game with u* < k/2, where §6's three-centre closure is available
+   (petals on one side, centres on the other) but Theorem 7.1's union bound is not.
+**Engine-sized test, specified (not run).** R1b engine, potential s_1 + s_2 + s_3, t = 0.76 and
+0.78, start position the balanced anchor, depth 3, with: (a) regions = 13 cells of
+E,F,G,K_1 plus, for the second and third response, the split of K_1's new part into
+"requested / not requested" (one extra block P_1 ⊆ P of size up to T − u*);
+(b) closures: Q, T_c, Lemma 6.1 with petals among {anchor edges, K_1} and centres among the
+other edges, Theorem 8.1 with W := union of the edges in play; (c) adversary constraints:
+min-S on every sealed triple, Lemma 10.2 after every response with an O(1) cell, tight-triple,
+Corollary 6.2. Decision: if the root is won at 0.76, extract the three-response line of play
+and prove it by hand; if stuck, the response list defines the correlated-pool family to test
+for realizability as a 3-block family (W-part, pool, rest) with `overlap_family.py`-style MILP.
