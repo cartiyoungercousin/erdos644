@@ -1,0 +1,252 @@
+sanity (expect False): False  (expect True): True
+12 14 [33] minimal covers 1 ok so far, bad 0 0
+12 15 [29] minimal covers 1 ok so far, bad 0 0
+12 18 [16, 17, 12] minimal covers 40 ok so far, bad 0 3
+8 14 [30] minimal covers 1 ok so far, bad 0 3
+12 18 [26, 3, 12] minimal covers 27 ok so far, bad 0 5
+12 18 [6, 42] minimal covers 1 ok so far, bad 0 6
+8 12 [16, 8, 1] minimal covers 14 ok so far, bad 0 6
+12 17 [25, 9] minimal covers 7 ok so far, bad 0 6
+12 15 [31] minimal covers 1 ok so far, bad 0 7
+12 13 [27] minimal covers 1 ok so far, bad 0 7
+12 17 [11, 9, 13] minimal covers 40 ok so far, bad 0 9
+8 15 [40] minimal covers 1 ok so far, bad 0 9
+12 18 [38] minimal covers 1 ok so far, bad 0 9
+8 15 [13, 19] minimal covers 5 ok so far, bad 0 9
+8 13 [24] minimal covers 1 ok so far, bad 0 9
+8 13 [18, 3] minimal covers 1 ok so far, bad 0 9
+8 12 [13, 1, 8] minimal covers 35 ok so far, bad 0 10
+12 18 [40] minimal covers 1 ok so far, bad 0 10
+12 14 [20, 15] minimal covers 19 ok so far, bad 0 11
+12 17 [21, 5, 14] minimal covers 37 ok so far, bad 0 13
+8 13 [7, 24] minimal covers 1 ok so far, bad 0 13
+8 15 [11, 16] minimal covers 10 ok so far, bad 0 14
+12 19 [21, 20] minimal covers 8 ok so far, bad 0 14
+12 15 [24, 7] minimal covers 6 ok so far, bad 0 15
+12 14 [17, 14] minimal covers 20 ok so far, bad 0 16
+12 15 [4, 1, 29] minimal covers 1 ok so far, bad 0 16
+12 19 [19, 7, 22] minimal covers 40 ok so far, bad 0 20
+12 18 [25, 17] minimal covers 8 ok so far, bad 0 20
+12 17 [32] minimal covers 1 ok so far, bad 0 20
+12 16 [15, 2, 11] minimal covers 1 ok so far, bad 0 20
+8 11 [19, 7] minimal covers 1 ok so far, bad 0 20
+12 18 [22, 16] minimal covers 15 ok so far, bad 0 21
+8 13 [27] minimal covers 1 ok so far, bad 0 21
+8 14 [10, 3, 14] minimal covers 34 ok so far, bad 0 23
+12 19 [21, 19] minimal covers 12 ok so far, bad 0 23
+12 18 [10, 34] minimal covers 1 ok so far, bad 0 23
+12 18 [51] minimal covers 1 ok so far, bad 0 24
+12 19 [37, 12] minimal covers 1 ok so far, bad 0 24
+12 18 [25, 12] minimal covers 12 ok so far, bad 0 24
+12 14 [34] minimal covers 1 ok so far, bad 0 25
+8 14 [23, 4] minimal covers 1 ok so far, bad 0 25
+12 13 [35] minimal covers 1 ok so far, bad 0 25
+12 18 [32, 2] minimal covers 1 ok so far, bad 0 25
+12 17 [27, 3] minimal covers 2 ok so far, bad 0 25
+8 13 [6, 11, 9] minimal covers 40 ok so far, bad 0 26
+12 18 [7, 14, 19] minimal covers 40 ok so far, bad 0 29
+12 16 [6, 29] minimal covers 1 ok so far, bad 0 29
+8 14 [4, 8, 12] minimal covers 40 ok so far, bad 0 30
+12 17 [47] minimal covers 1 ok so far, bad 0 30
+8 14 [11, 25] minimal covers 1 ok so far, bad 0 30
+8 14 [14, 11] minimal covers 7 ok so far, bad 0 30
+8 12 [12, 1, 11] minimal covers 20 ok so far, bad 0 31
+12 15 [16, 6, 10] minimal covers 40 ok so far, bad 0 31
+8 13 [36] minimal covers 1 ok so far, bad 0 31
+8 15 [40] minimal covers 1 ok so far, bad 0 31
+8 14 [38] minimal covers 1 ok so far, bad 0 31
+12 16 [7, 11, 13] minimal covers 40 ok so far, bad 0 32
+12 14 [12, 21] minimal covers 12 ok so far, bad 0 32
+12 14 [34] minimal covers 1 ok so far, bad 0 32
+12 15 [29] minimal covers 1 ok so far, bad 0 32
+12 17 [4, 26, 3] minimal covers 32 ok so far, bad 0 33
+12 15 [5, 22] minimal covers 1 ok so far, bad 0 33
+8 11 [16, 4] minimal covers 3 ok so far, bad 0 33
+12 13 [26] minimal covers 1 ok so far, bad 0 33
+12 19 [35, 7, 1] minimal covers 1 ok so far, bad 0 33
+12 16 [21, 11] minimal covers 17 ok so far, bad 0 33
+8 15 [6, 2, 16] minimal covers 39 ok so far, bad 0 34
+8 12 [21] minimal covers 1 ok so far, bad 0 34
+12 17 [24, 7] minimal covers 9 ok so far, bad 0 34
+8 11 [1, 26] minimal covers 1 ok so far, bad 0 34
+8 12 [31] minimal covers 1 ok so far, bad 0 34
+12 16 [37] minimal covers 1 ok so far, bad 0 34
+8 11 [3, 16] minimal covers 1 ok so far, bad 0 34
+12 18 [6, 7, 20] minimal covers 40 ok so far, bad 0 34
+8 11 [23] minimal covers 1 ok so far, bad 0 34
+8 13 [16, 16] minimal covers 16 ok so far, bad 0 35
+8 14 [2, 15, 6] minimal covers 39 ok so far, bad 0 35
+12 19 [36] minimal covers 1 ok so far, bad 0 35
+8 11 [24, 1] minimal covers 1 ok so far, bad 0 35
+8 13 [17, 14] minimal covers 10 ok so far, bad 0 35
+8 15 [39] minimal covers 1 ok so far, bad 0 35
+8 15 [5, 13, 18] minimal covers 38 ok so far, bad 0 36
+12 15 [42] minimal covers 1 ok so far, bad 0 36
+12 18 [25, 10] minimal covers 11 ok so far, bad 0 36
+12 16 [28, 12] minimal covers 1 ok so far, bad 0 36
+8 15 [5, 24] minimal covers 1 ok so far, bad 0 36
+12 19 [44] minimal covers 1 ok so far, bad 0 36
+8 14 [11, 20] minimal covers 7 ok so far, bad 0 36
+8 12 [6, 15, 5] minimal covers 36 ok so far, bad 0 37
+8 12 [22] minimal covers 1 ok so far, bad 0 37
+12 18 [38] minimal covers 1 ok so far, bad 0 37
+12 18 [1, 28, 1] minimal covers 1 ok so far, bad 0 37
+8 12 [26] minimal covers 1 ok so far, bad 0 37
+12 13 [31] minimal covers 1 ok so far, bad 0 37
+8 13 [1, 9, 18] minimal covers 13 ok so far, bad 0 37
+8 15 [6, 12, 13] minimal covers 40 ok so far, bad 0 37
+8 13 [1, 14, 9] minimal covers 27 ok so far, bad 0 38
+8 14 [28] minimal covers 1 ok so far, bad 0 38
+12 19 [42] minimal covers 1 ok so far, bad 0 38
+8 14 [17, 11] minimal covers 7 ok so far, bad 0 38
+8 13 [24] minimal covers 1 ok so far, bad 0 38
+12 19 [16, 12, 9] minimal covers 40 ok so far, bad 0 38
+8 13 [2, 27] minimal covers 1 ok so far, bad 0 38
+8 15 [26] minimal covers 1 ok so far, bad 0 39
+8 11 [20, 3] minimal covers 1 ok so far, bad 0 39
+12 19 [47] minimal covers 1 ok so far, bad 0 39
+8 11 [21] minimal covers 1 ok so far, bad 0 39
+12 19 [18, 22] minimal covers 12 ok so far, bad 0 39
+12 18 [39] minimal covers 1 ok so far, bad 0 39
+12 14 [3, 24] minimal covers 2 ok so far, bad 0 39
+8 14 [24] minimal covers 1 ok so far, bad 0 39
+8 12 [10, 15] minimal covers 8 ok so far, bad 0 39
+8 13 [4, 5, 15] minimal covers 38 ok so far, bad 0 39
+8 15 [11, 10, 5] minimal covers 40 ok so far, bad 0 40
+12 17 [15, 14] minimal covers 1 ok so far, bad 0 40
+12 16 [41] minimal covers 1 ok so far, bad 0 40
+8 14 [13, 9, 4] minimal covers 40 ok so far, bad 0 40
+12 19 [4, 44] minimal covers 1 ok so far, bad 0 40
+12 19 [20, 19] minimal covers 14 ok so far, bad 0 40
+12 14 [37] minimal covers 1 ok so far, bad 0 40
+8 13 [22, 2] minimal covers 1 ok so far, bad 0 40
+8 13 [31] minimal covers 1 ok so far, bad 0 40
+12 14 [33] minimal covers 1 ok so far, bad 0 40
+8 14 [33] minimal covers 1 ok so far, bad 0 41
+8 14 [14, 8, 3] minimal covers 39 ok so far, bad 0 41
+12 16 [44] minimal covers 1 ok so far, bad 0 41
+8 14 [15, 9] minimal covers 11 ok so far, bad 0 41
+12 19 [38] minimal covers 1 ok so far, bad 0 41
+12 17 [29] minimal covers 1 ok so far, bad 0 41
+8 14 [38] minimal covers 1 ok so far, bad 0 41
+12 15 [28, 7] minimal covers 1 ok so far, bad 0 41
+8 11 [20] minimal covers 1 ok so far, bad 0 41
+8 14 [31] minimal covers 1 ok so far, bad 0 41
+8 15 [20, 5, 5] minimal covers 23 ok so far, bad 0 41
+8 12 [32] minimal covers 1 ok so far, bad 0 41
+12 17 [44] minimal covers 1 ok so far, bad 0 41
+12 18 [22, 8] minimal covers 1 ok so far, bad 0 42
+12 19 [10, 33] minimal covers 1 ok so far, bad 0 42
+12 16 [21, 13, 2] minimal covers 27 ok so far, bad 0 42
+12 18 [33] minimal covers 1 ok so far, bad 0 42
+8 11 [23, 1] minimal covers 1 ok so far, bad 0 42
+8 10 [20] minimal covers 1 ok so far, bad 0 42
+12 17 [7, 37] minimal covers 1 ok so far, bad 0 42
+12 17 [18, 26] minimal covers 17 ok so far, bad 0 43
+8 14 [37] minimal covers 1 ok so far, bad 0 43
+8 14 [14, 19] minimal covers 6 ok so far, bad 0 43
+12 18 [11, 24] minimal covers 14 ok so far, bad 0 43
+12 15 [1, 35] minimal covers 1 ok so far, bad 0 43
+12 19 [34] minimal covers 1 ok so far, bad 0 43
+12 15 [2, 37] minimal covers 1 ok so far, bad 0 43
+8 13 [27, 6] minimal covers 1 ok so far, bad 0 43
+8 12 [28] minimal covers 1 ok so far, bad 0 43
+8 11 [8, 17] minimal covers 6 ok so far, bad 0 43
+8 14 [3, 21, 8] minimal covers 21 ok so far, bad 0 43
+8 13 [22] minimal covers 1 ok so far, bad 0 43
+12 17 [3, 40] minimal covers 1 ok so far, bad 0 43
+8 13 [14, 6, 10] minimal covers 40 ok so far, bad 0 44
+12 16 [25, 17] minimal covers 17 ok so far, bad 0 44
+12 13 [34] minimal covers 1 ok so far, bad 0 44
+12 19 [25, 21] minimal covers 16 ok so far, bad 0 45
+12 19 [43] minimal covers 1 ok so far, bad 0 45
+12 19 [51] minimal covers 1 ok so far, bad 0 45
+12 17 [9, 11, 11] minimal covers 40 ok so far, bad 0 45
+12 19 [32] minimal covers 1 ok so far, bad 0 45
+12 14 [25, 7] minimal covers 7 ok so far, bad 0 46
+12 15 [41] minimal covers 1 ok so far, bad 0 46
+12 14 [10, 18] minimal covers 19 ok so far, bad 0 46
+8 15 [7, 1, 24] minimal covers 1 ok so far, bad 0 46
+12 19 [22, 29] minimal covers 13 ok so far, bad 0 46
+8 15 [28] minimal covers 1 ok so far, bad 0 46
+12 16 [16, 14] minimal covers 22 ok so far, bad 0 47
+12 19 [54] minimal covers 1 ok so far, bad 0 47
+8 11 [21] minimal covers 1 ok so far, bad 0 47
+12 18 [30] minimal covers 1 ok so far, bad 0 47
+12 17 [15, 11, 8] minimal covers 40 ok so far, bad 0 47
+12 18 [15, 15] minimal covers 1 ok so far, bad 0 47
+8 15 [34] minimal covers 1 ok so far, bad 0 47
+12 19 [32] minimal covers 1 ok so far, bad 0 47
+8 11 [24] minimal covers 1 ok so far, bad 0 47
+8 12 [28] minimal covers 1 ok so far, bad 0 47
+8 10 [24] minimal covers 1 ok so far, bad 0 47
+12 14 [28, 2] minimal covers 1 ok so far, bad 0 47
+12 17 [5, 19, 9] minimal covers 40 ok so far, bad 0 48
+12 17 [17, 6, 7] minimal covers 40 ok so far, bad 0 49
+12 19 [37] minimal covers 1 ok so far, bad 0 49
+8 13 [1, 24] minimal covers 1 ok so far, bad 0 49
+12 14 [26] minimal covers 1 ok so far, bad 0 49
+12 16 [2, 28] minimal covers 1 ok so far, bad 0 49
+12 18 [4, 27] minimal covers 3 ok so far, bad 0 49
+12 17 [45] minimal covers 1 ok so far, bad 0 49
+12 14 [3, 23] minimal covers 1 ok so far, bad 0 49
+8 13 [3, 3, 19] minimal covers 12 ok so far, bad 0 49
+8 14 [21, 5] minimal covers 5 ok so far, bad 0 49
+12 14 [11, 21] minimal covers 12 ok so far, bad 0 49
+12 19 [41] minimal covers 1 ok so far, bad 0 49
+12 15 [12, 7, 8] minimal covers 1 ok so far, bad 0 49
+8 15 [23] minimal covers 1 ok so far, bad 0 49
+8 15 [6, 23, 4] minimal covers 1 ok so far, bad 0 49
+12 18 [43] minimal covers 1 ok so far, bad 0 50
+8 14 [18, 8] minimal covers 8 ok so far, bad 0 50
+12 19 [44] minimal covers 1 ok so far, bad 0 50
+12 19 [27, 9] minimal covers 8 ok so far, bad 0 50
+12 18 [13, 16, 5] minimal covers 40 ok so far, bad 0 50
+8 15 [11, 9, 7] minimal covers 40 ok so far, bad 0 51
+12 18 [6, 12, 24] minimal covers 32 ok so far, bad 0 52
+8 14 [1, 21] minimal covers 1 ok so far, bad 0 52
+8 14 [7, 6, 11] minimal covers 40 ok so far, bad 0 52
+8 14 [19, 7, 2] minimal covers 19 ok so far, bad 0 52
+12 19 [24, 3, 21] minimal covers 33 ok so far, bad 0 53
+12 18 [17, 8, 19] minimal covers 40 ok so far, bad 0 54
+12 19 [53] minimal covers 1 ok so far, bad 0 54
+12 17 [30, 1] minimal covers 1 ok so far, bad 0 54
+12 18 [14, 23] minimal covers 15 ok so far, bad 0 55
+12 19 [34, 7] minimal covers 1 ok so far, bad 0 55
+8 15 [8, 16] minimal covers 9 ok so far, bad 0 55
+8 14 [1, 28] minimal covers 1 ok so far, bad 0 55
+12 18 [32] minimal covers 1 ok so far, bad 0 55
+12 19 [24, 22] minimal covers 20 ok so far, bad 0 55
+12 15 [6, 7, 16] minimal covers 40 ok so far, bad 0 56
+12 17 [24, 9] minimal covers 11 ok so far, bad 0 56
+12 18 [6, 14, 22] minimal covers 39 ok so far, bad 0 57
+12 18 [11, 19] minimal covers 1 ok so far, bad 0 57
+12 16 [1, 18, 16] minimal covers 34 ok so far, bad 0 58
+12 15 [2, 36] minimal covers 1 ok so far, bad 0 58
+12 13 [32] minimal covers 1 ok so far, bad 0 58
+8 15 [1, 36] minimal covers 1 ok so far, bad 0 58
+8 10 [18] minimal covers 1 ok so far, bad 0 58
+12 19 [4, 43] minimal covers 1 ok so far, bad 0 58
+12 15 [24, 3] minimal covers 1 ok so far, bad 0 58
+12 16 [12, 20] minimal covers 19 ok so far, bad 0 58
+12 14 [31] minimal covers 1 ok so far, bad 0 58
+12 17 [30, 13] minimal covers 1 ok so far, bad 0 58
+12 18 [22, 11, 12] minimal covers 39 ok so far, bad 0 61
+12 15 [32] minimal covers 1 ok so far, bad 0 61
+12 19 [44] minimal covers 1 ok so far, bad 0 61
+12 17 [34, 6, 2] minimal covers 1 ok so far, bad 0 61
+8 15 [24] minimal covers 1 ok so far, bad 0 61
+8 14 [2, 1, 29] minimal covers 1 ok so far, bad 0 61
+8 11 [26] minimal covers 1 ok so far, bad 0 61
+8 11 [28] minimal covers 1 ok so far, bad 0 61
+8 12 [21, 7] minimal covers 1 ok so far, bad 0 61
+12 18 [6, 26] minimal covers 6 ok so far, bad 0 62
+12 19 [33] minimal covers 1 ok so far, bad 0 62
+12 16 [8, 33] minimal covers 1 ok so far, bad 0 62
+12 19 [52] minimal covers 1 ok so far, bad 0 62
+12 16 [11, 12, 10] minimal covers 40 ok so far, bad 0 64
+12 19 [20, 18] minimal covers 11 ok so far, bad 0 65
+12 18 [32] minimal covers 1 ok so far, bad 0 65
+12 17 [29] minimal covers 1 ok so far, bad 0 65
+12 15 [39] minimal covers 1 ok so far, bad 0 65
+total families 2393 bad 0

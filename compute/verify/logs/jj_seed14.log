@@ -1,0 +1,6 @@
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+t.75 c.5  Jpp bdry {'games': 270, 'wins': 270, 'budget_fail': 0, 'cover': 0, 'stuck': 0, 'maxcost3': 448, 'step1_none': 0, 'T': 450, 'bound': 448}
+t.75 c.5  Jp  bdry {'games': 540, 'wins': 540, 'budget_fail': 0, 'cover': 0, 'stuck': 0, 'maxcost3': 450, 'step1_none': 0, 'T': 450, 'bound': 450}
+t.75 c.6  Jpp bdry {'games': 252, 'wins': 252, 'budget_fail': 0, 'cover': 0, 'stuck': 0, 'maxcost3': 403, 'step1_none': 2, 'T': 450, 'bound': 448}
+t.75 c.6  Jp  bdry {'games': 504, 'wins': 504, 'budget_fail': 0, 'cover': 0, 'stuck': 0, 'maxcost3': 426, 'step1_none': 2, 'T': 450, 'bound': 450}

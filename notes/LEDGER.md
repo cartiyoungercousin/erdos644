@@ -24,9 +24,10 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 | Claim | Where | Status |
 |---|---|---|
 | Theorem S (finite-partition profile families lose) | CORE §36 | HAND, verification pending (V1) |
-| Density form of S | CORE 39.2 | HAND, verification pending (V3) |
+| Density form of S | CORE 39.2 | VERIFIED (V3; the sharpness remark needs some cell at π_j = v_j/3) |
 | Theorem S+ (finite k, <= 4εk - 12 cells) | CORE 39.4, §45 | HAND, verification pending (V1) |
-| Q' (set form of Theorem Q); reduction CP <= (Σ) | CORE §37, §38 | HAND, verification pending (V3) |
+| Q' (set form of Theorem Q) and the pool-family miss of base/2 | CORE §37 | VERIFIED (V3) |
+| Reduction CP <= (Σ) | CORE §38 | VERIFIED (V3) with corrected (b): "union is V and triple intersection >= N - 2t" (not kernel in [N-2t, N-3/2]); "balanced matchings" means Q'’s three per-matching conditions |
 | Ordered frozen anti-plan has a good seven | CORE §46 | HAND + EXACT (12 instances), verification pending (V2) |
 | Theorem W (window-selected greedy rules lose) | CORE §47 | HAND + EXACT (1200 random), verification pending (V2) |
 | Window lower end: 3t - 1/2 < N <= 5t - 2 closed by a fixed class-(T) plan when omega <= 4·eps | CORE 21.2 | HAND, needs a written proof plus verification (added to V3) |
