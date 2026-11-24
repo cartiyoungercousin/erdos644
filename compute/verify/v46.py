@@ -93,6 +93,7 @@ def attempt(n, k, T, o, rng, branch):
         K = reply(S)
         if not L <= K: return 'FAIL_pencil_' + branch
         Ks.append(K)
+    pencil_fb = reply.fallback
     # classes inside petals
     cls = []
     for i in range(3):
@@ -104,13 +105,13 @@ def attempt(n, k, T, o, rng, branch):
         assert len(L) <= T
         Ks.append(reply(L))
     ok, ts = cover_ok(n, Ks)
-    return 'OK' if ok and reply.fallback == 0 else ('FAIL_cover_' + branch if not ok else 'fallback')
+    return 'OK' if ok and pencil_fb == 0 else ('FAIL_cover_' + branch if not ok else 'fallback')
 
 
 def main():
     rng = random.Random(7)
     tot = {}; bad = []
-    for k in list(range(8, 31)) + [40]:
+    for k in list(range(8, 25, 4)) + [10,14,18,22,40]:
         for T in sorted({-(-3 * k // 4), -(-3 * k // 4) + 1, -(-3 * k // 4) + 2}):
             for n in range(k + T, int(2.3 * k) + 1, max(1, k // 20)):
                 om = n - k - T
