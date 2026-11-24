@@ -26,7 +26,7 @@ Requests may depend on earlier responses: this is just nested `obtain`s.
 | 9 | Lemma 3.4 symmetric allocation | `Symmetric.symmetric_closes` | DONE |
 | 10 | Lemmas 4.1–4.3 one core / split A / split B (adaptive, App. A) | `OneCoreLemma.onecore_closes` (4.1) DONE, `SplitA.splitA_closes` (4.2) DONE, `SplitB.splitB_closes` (4.3) DONE; shared: `Adaptive.no_core_candidate`, `SplitA.no_core_closes` | DONE |
 | 11 | Lemmas 4.4–4.6 gap traces / gap core / two cores (App. A) | `GapTraces.gapTraces_closes` (4.4), `GapCore.gapCore_closes` (4.5), `TwoCores.twoCores_closes` (4.6); def `IntersectionGap` | DONE |
-| 12 | Lemmas 4.7–4.8 near core / two large (App. A) | `Adaptive.*` | todo |
+| 12 | Lemmas 4.7–4.8 near core / two large (App. A) | `NearCore.nearCore_closes` (4.7) DONE; 4.8 todo | partial |
 | 13 | Prop 5.1 local finisher | `Finish.local_finish` | todo |
 | 14 | Thm 5.2 finishing theorem | `Finish.finish` | todo |
 | 15 | Prop 5.3 rank seven | `RankSeven.*` | todo |
