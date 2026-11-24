@@ -815,3 +815,82 @@ new strategy as one function.
 
 Checks: `py compute/petal3/replay_q.py 400 300 216 38`; `py compute/petal3/replay43.py 480 360 48 20`.
 Hand proofs re-read once: 17.1 (masses of E), 17.3, 18.1 (the 2μ count and the max).
+
+---------------------------------------------------------------------------------------------
+## 20. 𝒜(3/4, 0.1) decided: requester win (sixth time box)
+
+**Outcome: 𝒜(t, δ) loses for every δ < t/6, in seven requests** [proved by hand; replayed exactly].
+At t = 3/4 that is δ < 0.125, the whole class of 19.1; for t > 3/4 the class (δ < 7/5 - 17t/10) is inside
+it too. So 𝒜 is dead as an obstruction on the whole range where c > θ(t). The reason is an error of
+economy in 12.3, not a new idea: pairwise disjoint traces need every band point in **at most one**
+centre, not in none.
+
+### 20.1 Family test [computed exact]
+
+H = all replies of 𝒜 at k = 40, T = 30, d = 4 (arenas of 51 points). H does **not** have property
+(7,2): `replay43.py 40 30 4` (mode aware2) produces seven members with no 2-point cover (exact test
+over all pairs of membership types, common points included), 20/20 seeds; same at k = 80 and
+k = 480. No SAT search was needed, the construction below gives the seven sets.
+A caution on the brief: non-(7,2) of H alone is not decisive, since he chooses the bands and she
+cannot force two bands to coincide (12.2 already had good configurations she could not reach).
+What decides the instance is that the seven sets below are forced against every choice of his.
+
+### 20.2 Theorem P: double sealing [proved by hand]
+
+Let δ < t/6 and let the adversary answer in any way inside the family (colour c: at least 1 - δ in
+V_c, the rest in the other arena, slivers included in "the rest").
+*Requests 1–4 (petals), as in 12.3:* t/2 + ε in V_F, containing the V_F-parts of the earlier petals
+(<= 3δ + O(1) <= t/2); t/2 - ε in V_A, the four chunks covering V_A. Replies have colour A; empty common
+intersection. Let B = the union of the V_F-parts of the four petals, |B| <= 4δ + O(1).
+*Requests 5–7 (centres):* split B into three parts B_0, B_1, B_2 of equal mass. Request j contains
+B minus B_j (mass 8δ/3 <= t/2 - ε, since δ < 3t/16), and in V_A the V_A-parts of the earlier centres
+(<= 2δ + O(1)) filled up to t/2 + ε. Replies have colour F.
+Every point of B is requested in two of the three requests, so it lies in at most one centre; the
+V_A-parts of the centres are pairwise disjoint. So the traces on U are pairwise disjoint and P4(c)
+gives seven replies with no 2-cover. ∎
+The binding condition is 3δ <= t/2 in the petal phase as written; sealing only the common part of
+the earlier V_F-parts there would extend the range to δ < 3t/16 [not checked, not needed].
+
+### 20.3 Exact replay (`replay43.py`, mode aware2; `logs/replay43_aware2.log`) [computed exact]
+
+Adversary of 19.1 (trace-maximising own parts, bands never re-used and placed outside as many
+petals as possible). 20 seeds per row; exact 2-cover test of the seven replies.
+| k, T | δ | blind J′ | aware (12.3) | aware2 (20.2) |
+|---|---|---|---|---|
+| 40, 30 | 0.100 | 0/20 | 0/20 | **20/20** |
+| 80, 60 | 0.100 | 0/20 | 0/20 | **20/20** |
+| 480, 360 | 0.092 | 0/20 | 20/20 | 20/20 |
+| 480, 360 | 0.100, 0.108, 0.117, 0.125 | 0/20 | 0/20 | **20/20** each |
+| 480, 372 | 0.100, 0.117 | 0/20 | 0/20 | **20/20** each |
+In every aware2 game no request exceeds T and the three traces are pairwise disjoint. The replay
+uses one adversary; the claim for all adversaries in the family is 20.2.
+Limits: the strategy places requests by arena. She can read the arenas off the replies (own
+parts of one colour overlap in more than c, bands do not), but I did not write the blind version.
+
+### 20.4 Consequences and status
+
+- Corrections: 12.3's range t/8 becomes t/6; the "counterexample class" of 19.1 is withdrawn.
+  Theorem N (2+2 fails against 𝒜 for δ <= δ_N) stands; it now says only that the 2+2 architecture is
+  the wrong tool there.
+- **𝒜(t, δ): closed for all δ < t/6**, hence wherever c > θ(t), for every t >= 3/4.
+- Abstract class 𝒞(c, μ): J″ (1 - c + 4μ <= t) is the best general statement. The region
+  θ(t) < c < 1 - t/2, 4μ > t - 1 + c has **no explicit member left**: 𝒜, 𝓑 (15.3) and arena-with-pool
+  classes are all beaten; 𝒬(c) (18.2) is a configuration without a validated adversary.
+- What 20.2 uses beyond J″: (a) traces of centres on the petals' union are confined to a set she
+  knows in advance (the bands), so she can seal by design, each point twice in three requests,
+  instead of sealing observed traces sequentially; (b) forcing costs t/2, placed anywhere in the
+  arena.
+
+**Exact remaining gap.** 𝒞(c, μ) with θ(t) < c < 1 - t/2 and 4μ > t - 1 + c, for adversaries whose
+centres' traces are not confined to a set she can identify in advance (the abstract analogue of
+(a)). I have no inequality for a design-sealing scheme in the abstract class: sealing every single
+point in two of three requests costs up to (2/3)(4 - 6c) per request (17.3), which beats J″ only when
+the singles are small [heuristic, not worked out].
+**Best next step:** write the arena-blind version of 20.2 (classes and bands read off the replies)
+and state it as a theorem about adversaries whose same-class replies share a common region of
+mass >= 1 - δ each (the natural hypothesis under which (a) holds); then look for a two-class
+adversary violating that hypothesis, starting from 𝒬(c) with c < (3 - t)/4.
+
+Checks: `py compute/petal3/replay43.py 40 30 4 20`; `py compute/petal3/replay43.py 480 360 48 20`.
+Hand proof re-read once: 20.2 (budgets 3δ <= t/2, 8δ/3 <= t/2 - ε, 2δ <= t/2; each band point in at most
+one centre).

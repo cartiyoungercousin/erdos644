@@ -7,6 +7,7 @@ Strategies:
   blind  = Theorem J' (14.1): Step 1 by running intersections (t/2 from each class), Step 2 forcing 1-c inside one petal
            (c = a0 - 1 point; forcing points taken from the petal's most shared points) plus the observed traces.
   aware  = 12.3: requests placed by arena.
+  aware2 = section 20: as aware, but each band point of the petals is requested in exactly two of the three centre requests.
 A request that would exceed T is truncated (traces outside the forcing petal are dropped last-in-first-out) and flagged.
 After the 7 replies the EXACT 2-cover test is run (all pairs of membership types; a common point counts).
 usage: py replay43.py k T d [seeds]
@@ -105,6 +106,8 @@ def game(k, T, d, mode, seed):
             fill = sorted(V["A"] - SA); rnd.shuffle(fill)
             SA |= set(fill[:max(0, T // 2 + 1 - len(SA))])
             SF = sorted(bandsF)
+            if mode == "aware2":                       # section 20: every band point is requested in two of the three centre requests
+                SF = [x for i, x in enumerate(SF) if (i % 3) != (j + 2) % 3]
             room = T - len(SA)
             if len(SF) > room: over.append((j + 1, len(SA) + len(SF) - T)); SF = SF[:room]
             E, c = adversary(SA | set(SF)); assert c == "F"; cents.append(E)
@@ -124,7 +127,7 @@ def game(k, T, d, mode, seed):
 
 if __name__ == "__main__":
     k, T, d = map(int, sys.argv[1:4]); seeds = int(sys.argv[4]) if len(sys.argv) > 4 else 5
-    for mode in ("blind", "aware"):
+    for mode in ("blind", "aware", "aware2"):
         res = [game(k, T, d, mode, s) for s in range(seeds)]
         wins = sum(1 for r in res if r["result"].startswith("NO"))
         print("k=%d T=%d d=%d delta=%.4f %-5s wins %d/%d  e.g. %s" % (k, T, d, d / k, mode, wins, seeds, res[0]), flush=True)
