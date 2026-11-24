@@ -1,0 +1,7 @@
+k=400 T=300 rho=40 n=516 tau=156 c=204  bound tau+8rho/3=263  wins 20/20 {'result': 'NO 2-COVER (requester wins)', 'over': [], 'traces': [93, 94, 93], 'disjoint': True, 'requests': 10}
+k=400 T=300 rho=48 n=503 tau=151 c=201  bound tau+8rho/3=279  wins 20/20 {'result': 'NO 2-COVER (requester wins)', 'over': [], 'traces': [112, 112, 112], 'disjoint': True, 'requests': 10}
+k=400 T=300 rho=44 n=510 tau=154 c=202  bound tau+8rho/3=271  wins 20/20 {'result': 'NO 2-COVER (requester wins)', 'over': [], 'traces': [102, 103, 103], 'disjoint': True, 'requests': 10}
+k=400 T=300 rho=30 n=530 tau=160 c=210  bound tau+8rho/3=240  wins 20/20 {'result': 'NO 2-COVER (requester wins)', 'over': [], 'traces': [70, 70, 70], 'disjoint': True, 'requests': 10}
+k=400 T=300 rho=20 n=555 tau=175 c=205  bound tau+8rho/3=228  wins 20/20 {'result': 'NO 2-COVER (requester wins)', 'over': [], 'traces': [46, 47, 47], 'disjoint': True, 'requests': 10}
+k=400 T=300 rho=10 n=570 tau=180 c=210  bound tau+8rho/3=207  wins 20/20 {'result': 'NO 2-COVER (requester wins)', 'over': [], 'traces': [14, 22, 23], 'disjoint': True, 'requests': 10}
+k=400 T=300 rho=45 n=507 tau=152 c=203  bound tau+8rho/3=272  wins 20/20 {'result': 'NO 2-COVER (requester wins)', 'over': [], 'traces': [105, 105, 105], 'disjoint': True, 'requests': 10}

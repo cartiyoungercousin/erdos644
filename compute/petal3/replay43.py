@@ -15,17 +15,19 @@ usage: py replay43.py k T d [seeds]
 import sys, random, itertools
 
 
-def game(k, T, d, mode, seed):
+def game(k, T, d, mode, seed, n=None):
     rnd = random.Random(seed)
-    n = k + T // 2 - d
+    if n is None: n = k + T // 2 - d
+    tau = n - (k - d)                              # true exclusion cost of one colour (section 23: arenas need not be tight)
     V = {"A": set(range(n)), "F": set(range(n, 2 * n))}; OTH = {"A": "F", "F": "A"}
     reps = []                                   # (set, colour)
     over = []                                   # budget overruns (points)
 
     def adversary(S):
+        assert len(S) <= T, ("request over budget", len(S), T)
         xa = len(S & V["A"]); xf = len(S & V["F"])
-        if 2 * xa > T: c = "F"
-        elif 2 * xf > T: c = "A"
+        if xa > tau: c = "F"
+        elif xf > tau: c = "A"
         else:
             ca = sum(1 for _, x in reps if x == "A"); cf = len(reps) - ca
             c = "A" if ca <= cf else "F"
@@ -85,15 +87,45 @@ def game(k, T, d, mode, seed):
             E, c = adversary(S)
             if c == col: return dict(result="forcing failed")
             cents.append(E)
+    elif mode == "ap":
+        # section 23 (Theorem AP): petals by running intersections (unforced; both colours have tau >= T/2 here),
+        # centres forced by tau+1 points of the petals' own arena, petals' other-arena parts sealed twice in three requests.
+        quad = None
+        for _ in range(12):
+            S = set()
+            for colr in "AF":
+                mem = [u for u, x in reps if x == colr][:4]
+                if mem:
+                    I = set.intersection(*mem); lst = sorted(I); rnd.shuffle(lst)
+                    S |= set(lst[:min(T // 2, len(lst))])
+            adversary(S)
+            for colr in "AF":
+                mem = [u for u, x in reps if x == colr][:4]
+                if len(mem) == 4 and not set.intersection(*mem): quad = (colr, mem)
+            if quad: break
+        if not quad: return dict(result="no quad")
+        col, P = quad; o = OTH[col]; cents = []
+        bands = set()
+        for u in P: bands |= (u & V[o])
+        for j in range(3):
+            SA = set()
+            for C in cents: SA |= (C & V[col])
+            fill = sorted(V[col] - SA); rnd.shuffle(fill)
+            SA |= set(fill[:max(0, tau + 1 - len(SA))])
+            SF = [x for i, x in enumerate(sorted(bands)) if (i % 3) != (j + 2) % 3]
+            if len(SA) + len(SF) > T: over.append((j + 1, len(SA) + len(SF) - T)); SF = SF[:T - len(SA)]
+            E, c = adversary(SA | set(SF))
+            if c == col: return dict(result="forcing failed")
+            cents.append(E)
     else:
         col = "A"; P = []
-        chunk = T // 2 - 1
+        chunk = (T // 2 - 1) if mode != "ap" else tau
         va = sorted(V["A"])
         for j in range(4):
             S = set()
             for u in P: S |= (u & V["F"])
             fill = sorted(V["F"] - S); rnd.shuffle(fill)
-            S |= set(fill[:T // 2 + 1 - len(S & V["F"])])
+            S |= set(fill[:max(0, (T // 2 + 1 if mode != "ap" else tau + 1) - len(S & V["F"]))])
             S |= set(va[j * chunk:(j + 1) * chunk]) if j < 3 else set(va[-chunk:])
             E, c = adversary(S); assert c == "A"; P.append(E)
         if set.intersection(*P): return dict(result="no quad")
@@ -104,9 +136,9 @@ def game(k, T, d, mode, seed):
             SA = set()
             for C in cents: SA |= (C & V["A"])
             fill = sorted(V["A"] - SA); rnd.shuffle(fill)
-            SA |= set(fill[:max(0, T // 2 + 1 - len(SA))])
+            SA |= set(fill[:max(0, (T // 2 + 1 if mode != "ap" else tau + 1) - len(SA))])
             SF = sorted(bandsF)
-            if mode == "aware2":                       # section 20: every band point is requested in two of the three centre requests
+            if mode in ("aware2", "ap"):                       # section 20: every band point is requested in two of the three centre requests
                 SF = [x for i, x in enumerate(SF) if (i % 3) != (j + 2) % 3]
             room = T - len(SA)
             if len(SF) > room: over.append((j + 1, len(SA) + len(SF) - T)); SF = SF[:room]

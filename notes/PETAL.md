@@ -1094,3 +1094,122 @@ the grid values of `seal_plan.py`.
 Checks: `py compute/petal3/family_k2.py`; `py compute/petal3/seal_plan.py` (about 2 min);
 `py -c "import replay_q as r; print(r.run_plan(400,300,216,38,19))"` from `compute/petal3`.
 Hand proofs re-read once: 22.1(b) (28 + 19), 22.2 (the three surpluses).
+
+---------------------------------------------------------------------------------------------
+## 23. Fixed-family exclusion, Theorem AP, and the exact plan game (ninth time box)
+
+Code: `compute/petal3/plan_lp.py`, `replay43.py` (mode `ap`, optional arena size); logs
+`logs/plan_lp.log`, `logs/replay43_ap.log`.
+
+**Outcome.**
+1. Exclusion lemma for a fixed family: **true for private mass, false for single mass of a
+   quadruple** (23.1) [both proved].
+2. Consistency does the work one level up. **Theorem AP:** a fixed family made of two
+   arena-with-pool classes with same-class overlaps > θ(t) and τ > t is beaten in at most 10
+   requests, for every t >= 112/151 = 0.742 (23.2) [proved by hand; exact replay]. It contains 𝒜, 𝓑
+   and the honest part of 𝒦₂, and closes the whole region c > θ(t) for such families.
+3. Plan game solved exactly (23.3) [computed exact, LP]: rotation-only value
+   s(x) = min(4x, 1/2 + 3x/2, 1 + 2x/3), x = ν/ρ. The grid values of §22 were exact at x = 1/2. The
+   path-dependent survivors stay: hits ρ/2 for c < 0.5217, large hits for c < (40 - 18t)/49 = 0.5408.
+   Private forcing lowers the value only for x <= 1/2 (to 1 at x = 1/2).
+4. The survivors are not fixed families (22.1). A fixed counterexample would have to be a
+   two-class family that is not arena-with-pool; none is known, and none is excluded.
+
+### 23.1 Lemma FF [proved by hand]
+
+𝓕: a family of sets of mass 1 with all pairwise overlaps > c. For X in 𝓕 let π(X) be the mass of the
+points of X lying in no other member.
+**Lemma FF.** τ(𝓕) <= 1 - c - π(X) + ε for every member X.
+*Proof.* Request 1 - c - π(X) + ε points of X outside its private part. Another member avoiding the
+request meets X in at most c - ε. ∎
+**The single-mass form is false.** Complete family on a ground set of mass 2 - c: all overlaps >= c
+and τ = 1 - c exactly, yet four members whose complements (mass 1 - c each) cover the ground set
+with triple overlaps have single parts of total mass up to (2 - 3c)/2 (c = 0.54: 0.19 in total).
+There the single part of one member lies in other members of the family, so π = 0.
+So "single mass available to centres" lowers the true exclusion cost only when it is private in
+the family. What consistency gives for a two-class family H: τ(H) <= τ_X + τ_Y <= 2 - c_X - c_Y - π_X - π_Y, so
+**π_X + π_Y < 2 - c_X - c_Y - t** for all members; with c near θ(3/4) = 1/2 this allows up to 0.25 in
+total, with c = 0.54 only 0.17, less than the 0.19 that one 𝒬(0.54) petal carries.
+
+### 23.2 Theorem AP: fixed arena-with-pool families [proved by hand; exact replay]
+
+H = H_X ∪ H_Y; disjoint regions R_X, R_Y of masses n_X, n_Y; H_c = all sets with at least 1 - ρ_c in
+R_c, the rest anywhere. Then the least same-class overlap is c_c = 2(1 - ρ_c) - n_c and
+τ_c = n_c - 1 + ρ_c = 1 - c_c - ρ_c (Lemma FF with equality). She knows H.
+**Theorem AP.** If c_X, c_Y > θ(t), τ(H) > t and t >= 112/151, she obtains seven edges with no 2-cover in
+at most 10 requests.
+*Proof.* τ_X + τ_Y >= τ(H) > t. Petals: if both τ_c >= t/2, running intersections as in 14.1 (unforced),
+and X is the class that reaches four members; otherwise τ_Y < t/2 <= τ_X and she forces class X with
+τ_Y + ε in R_Y plus min(1/3, |I|) of the running intersection (t/2 + 1/3 <= t). Either way the petals'
+class has τ_X >= t/2. B = the parts of the petals outside R_X, |B| <= 4ρ_X, split into three equal parts
+B_0, B_1, B_2.
+Centre request j: a set G_j ⊂ R_X of mass max(τ_X + ε, |Z_{<j} ∩ R_X|) containing Z_{<j} ∩ R_X, and B∖B_j. The
+reply has class Y (no member of H_X avoids G_j). A centre has at most ρ_Y outside R_Y, so
+|Z_{<j} ∩ R_X| <= 2ρ_Y. Every point of B is in at most one centre, the centres are pairwise disjoint on
+R_X, and U ⊂ R_X ∪ B: P4(c).
+Cost <= max(τ_X, 2ρ_Y) + (8/3)ρ_X + ε. From c_c > θ: ρ_c < 1 - θ - τ_c. Then
+τ_X + (8/3)ρ_X < (8/3)(1 - θ) - (5/3)τ_X <= (8/3)(1 - θ) - (5/6)t, which is <= t iff 1 - θ <= (11/16)t; and
+2ρ_Y + (8/3)ρ_X < (14/3)(1 - θ) - 2(τ_X + τ_Y) - (2/3)τ_X < (14/3)(1 - θ) - (7/3)t, which is <= t iff
+1 - θ <= (5/7)t. With θ = (6t - 2)/5 the first reads t >= 112/151. ∎
+At t = 3/4: 1 - θ = 0.5 <= 0.5156. Special cases: 𝒜(t, δ) (Theorem DS), 𝓑 (15.3), the honest families of
+𝒦₂ (where τ(H) < t anyway).
+Replay (`replay43.py`, mode `ap`, symmetric arenas of n points, leak into the other arena, the
+adversary of 19.1; the harness now refuses any request above T; exact 2-cover test), k = 400,
+T = 300, 20 seeds each [computed exact]:
+| ρ | n | τ per class | c | τ + 8ρ/3 | wins |
+|---|---|---|---|---|---|
+| 40 | 516 | 156 | 204 | 263 | 20/20 |
+| 48 | 503 | 151 | 201 | 279 | 20/20 |
+| 44 | 510 | 154 | 202 | 271 | 20/20 |
+| 45 | 507 | 152 | 203 | 272 | 20/20 |
+| 30 | 530 | 160 | 210 | 240 | 20/20 |
+| 20 | 555 | 175 | 205 | 228 | 20/20 |
+| 10 | 570 | 180 | 210 | 207 | 20/20 |
+Not replayed: unequal arenas, leak into a pool (the proof does not distinguish).
+
+### 23.3 The plan game, exactly (`plan_lp.py`) [computed exact up to LP tolerance]
+
+Model as in 22.2, single parts of mass ρ = 1, hits at most ν = x per single part. Hitting the
+maximum is dominant for him (every later cost is nondecreasing in the hits), so the game is a
+minimisation with min() terms; each of the 4^4 resolutions is an LP, per mode triple.
+Mode R = rotation (forcing 1 - c inside the petal, its single part included); mode P = private
+forcing (1 - c - ρ, Lemma FF; the centre may then enter that single part).
+| x = ν/ρ | 0.2 | 0.25 | 0.3 | 1/3 | 0.4 | 0.5 | 0.6 | 0.7 | 0.75 | 0.8 | 0.9 | 1 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| R only | 0.800 | 0.875 | 0.950 | 1.000 | 1.100 | 1.250 | 1.400 | 1.467 | 1.500 | 1.533 | 1.600 | 1.667 |
+| R or P | 0.300 | 0.500 | 0.750 | 0.833 | 0.900 | 1.000 | 1.400 | 1.467 | 1.500 | 1.533 | 1.600 | 1.667 |
+R only fits **s(x) = min(4x, 1/2 + 3x/2, 1 + 2x/3)** at all twelve points [computed; not proved as a
+formula]. She wins the plan game iff 1 - c + s·ρ <= t.
+Survivors of §22, re-examined on 𝒬-type petals (ρ = 1 - 3c/2):
+- hits ρ/2, 0.5 < c < 0.5217: s = 1.25 is exact, so rotation alone does not close it. If the single
+  parts are private in a fixed family, s = 1 and the cost is 2 - 5c/2 <= t for c >= (4 - 2t)/5, which is
+  below θ(t) for t >= 3/4: **closed in the fixed-family setting**, open for path-dependent 𝒦₂.
+- large hits at c = 0.54: s(0.8) = 1.5333, cost 0.7513 > 0.75; exact, so the miss of 0.0013 is real for
+  this plan family. Over all admissible hits (ν < (1 - c)/3) rotation alone wins iff
+  c >= (40 - 18t)/49 (0.5408 at 3/4). Private forcing does not help for x >= 0.6.
+Limits of the model: three centres, pairwise disjoint traces, fixed order; no P2 gain, no
+re-selection of petals.
+
+### 23.4 Status
+
+Proved: Lemma FF; Theorem AP; (computed) the plan game.
+Refuted: exclusion lemma with quadruple-single mass, also for fixed families.
+Reading for the actual problem: H is a fixed family there, so a path-dependent adversary such
+as 𝒦₂ is relevant only if it lives inside a fixed two-class family with τ > t. For arena-with-pool
+classes that is impossible when c > θ(t) (Theorem AP).
+**Exact remaining gap (Barrier F).** A fixed family whose edges fall into two classes with
+same-class overlaps > c > θ(t), cross overlaps <= μ, τ > t, and whose classes are **not** of the form
+"at least 1 - ρ in a region". Constraints already forced on it: τ_X, τ_Y <= 1 - c - (private mass)
+(Lemma FF), and it must defeat the plan game: 1 - c + s(ν/ρ)ρ > t with rotation forcing, where the
+single parts used are not private (else mode P applies).
+**Best next step.** A structure lemma. For a family with pairwise overlaps > c >= 1/2 and τ >= t/2,
+let β be the least number such that some set R contains all but β of every member. Theorem AP's
+proof uses only: members have at most β outside R, and some request of mass about τ inside R
+meets every member. If β < 1 - θ - τ always holds, Barrier F closes for fixed families. The two
+extremes I know are the complete family (β = 0) and "at least 1 - ρ in R" (β = ρ). First test: search
+for a pairwise->c family with τ >= 3/8 far from both, on small ground sets (k <= 16, MILP).
+
+Checks: `py compute/petal3/plan_lp.py` (6 s);
+`py -c "import replay43 as r; print(r.game(400,300,48,'ap',0,n=503))"` from `compute/petal3`.
+Hand proofs re-read once: Lemma FF, Theorem AP (both chains of inequalities; the forced petal
+phase), the two closed-form thresholds in 23.3.
