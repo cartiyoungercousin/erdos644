@@ -1,0 +1,10 @@
+k=10 T=8 (T/k=0.8000): anchored shapes evaluated on demand
+    shape (5,5,2) |V|=18: A  [142.6s]
+    shape (6,4,2) |V|=18: A  [208.8s]
+    shape (7,3,2) |V|=18: A  [45.4s]
+    shape (8,2,2) |V|=18: A  [1.6s]
+  anchor selection among J=3 replies (m = 7 requests): ADVERSARY can keep every triple of replies losing   states=2 [398.4s]
+    shapes evaluated so far: 4 (R: 0); anchored-game time 398s
+    shape (5,5,5) |V|=15: R  [0.0s]
+    shape (5,5,4) |V|=16: R  [1.3s]
+    shape (5,5,3) |V|=17: A  [59.9s]

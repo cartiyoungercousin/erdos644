@@ -1,0 +1,11 @@
+k=12 T=9 (T/k=0.7500)
+C1(b) two pairs, cross cells = 0: 169 configurations, prediction "R iff ceil(L*(a,b)) <= T" agrees on 169
+   rows a = 0.., columns b = 0..   a= 0: RRRRRRRRRRRRR | a= 1: RRRRRRRRRRRRR | a= 2: RRRRRRRRRRRRR | a= 3: RRRRRRRRRRRRR | a= 4: RRRRRRRRRRRRR | a= 5: RRRRRRRRRRRRR | a= 6: RRRRRRRRRRAAA | a= 7: RRRRRRRRAAAAA | a= 8: RRRRRRRAAAAAA | a= 9: RRRRRRRAAAAAA | a=10: RRRRRRAAAAAAA | a=11: RRRRRRAAAAAAA | a=12: RRRRRRAAAAAAA
+   disagreements: none
+C1(b) two pairs, cross cells = 1: 121 configurations, prediction "R iff ceil(L*(a,b)) <= T" agrees on 112
+   rows a = 0.., columns b = 0..   a= 0: RRRRRRRRRRR | a= 1: RRRRRRRRRRR | a= 2: RRRRRRRRRRR | a= 3: RRRRRRRRRRR | a= 4: RRRRRRRRRRR | a= 5: RRRRRRRRRAA | a= 6: RRRRRRRRAAA | a= 7: RRRRRRRAAAA | a= 8: RRRRRRAAAAA | a= 9: RRRRRAAAAAA | a=10: RRRRRAAAAAA
+   disagreements: (a=5,b=9: exact A, L*=8.00) (a=5,b=10: exact A, L*=8.33) (a=6,b=8: exact A, L*=8.50) (a=6,b=9: exact A, L*=9.00) (a=7,b=7: exact A, L*=8.75) (a=8,b=6: exact A, L*=8.50) (a=9,b=5: exact A, L*=8.00) (a=9,b=6: exact A, L*=9.00) (a=10,b=5: exact A, L*=8.33)
+C1(c) triple-free configurations on the grid step 2: 231 configurations, requester wins 195; of the 114 with all three loads c12+c34, c13+c24, c14+c23 <= T she wins 114
+C2 one-cluster configurations: (triple cells 0, pair cells 4; pairwise overlap 4): R  (triple cells 1, pair cells 3; pairwise overlap 5): A  (triple cells 2, pair cells 2; pairwise overlap 6): A  (triple cells 3, pair cells 1; pairwise overlap 7): A  (triple cells 4, pair cells 0; pairwise overlap 8): A  (triple cells 1 only, rest singles; pairwise overlap 2): R  (triple cells 2 only, rest singles; pairwise overlap 4): R  (triple cells 3 only, rest singles; pairwise overlap 6): R  (triple cells 4 only, rest singles; pairwise overlap 8): A
+C3 three cluster petals (core c3; columns pair-only cells q = 0,1,2,..) + outside petal: c3=0: RRRRRR | c3=1: RRRRRR | c3=2: RRRRR | c3=3: RRRAA | c3=4: RRAA | c3=5: RAAA | c3=6: AAA | c3=7: AAA | c3=8: AA | c3=9: AA | c3=10: A | c3=11: A   [necessary bound from TWIN 15.5: c3 <= T - k/3 = 5.00]
+  (four-petal configurations evaluated: 244, engine time 25s)

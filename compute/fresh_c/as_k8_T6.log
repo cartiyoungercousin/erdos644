@@ -1,0 +1,5 @@
+k=8 T=6 (T/k=0.7500): anchored table has 55 shapes, 17 requester wins
+  anchor selection among J=3 replies (m = 7 requests): ADVERSARY can keep every triple of replies losing   states=2 [0.0s]
+  anchor selection among J=4 replies (m = 8 requests): ADVERSARY can keep every triple of replies losing   states=14 [0.0s]
+  anchor selection among J=5 replies (m = 9 requests): ADVERSARY can keep every triple of replies losing   states=399 [1.5s]
+  anchor selection among J=6 replies (m = 10 requests): ADVERSARY can keep every triple of replies losing   states=34258 [367.1s]

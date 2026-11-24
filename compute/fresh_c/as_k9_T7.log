@@ -1,0 +1,16 @@
+k=9 T=7 (T/k=0.7778): anchored shapes evaluated on demand
+    shape (5,4,2) |V|=16: A  [45.1s]
+    shape (6,3,2) |V|=16: A  [14.4s]
+    shape (7,2,2) |V|=16: A  [0.7s]
+  anchor selection among J=3 replies (m = 7 requests): ADVERSARY can keep every triple of replies losing   states=2 [60.2s]
+    shapes evaluated so far: 3 (R: 0); anchored-game time 60s
+    shape (5,4,4) |V|=14: A  [0.3s]
+    shape (5,4,3) |V|=15: A  [12.6s]
+    shape (5,3,3) |V|=16: A  [48.8s]
+    shape (4,4,4) |V|=15: A  [4.8s]
+    shape (4,4,3) |V|=16: A  [69.8s]
+    shape (6,3,3) |V|=15: A  [1.2s]
+  anchor selection among J=4 replies (m = 8 requests): ADVERSARY can keep every triple of replies losing   states=15 [137.4s]
+    shapes evaluated so far: 9 (R: 0); anchored-game time 198s
+  shapes found losing for her: (5,4,2) (6,3,2) (7,2,2) (5,4,4) (5,4,3) (5,3,3) (4,4,4) (4,4,3) (6,3,3)
+  shapes found winning for her: 

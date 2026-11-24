@@ -1,0 +1,3 @@
+k=8 T=7 (T/k=0.8750): anchored table has 55 shapes, 41 requester wins
+  anchor selection among J=3 replies (m = 7 requests): ADVERSARY can keep every triple of replies losing   states=3 [0.0s]
+  anchor selection among J=4 replies (m = 8 requests): REQUESTER can always obtain a winning anchor triple   states=10 [0.0s]

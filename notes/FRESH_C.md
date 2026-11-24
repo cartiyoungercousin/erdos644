@@ -648,3 +648,221 @@ Exactness. The search works on membership types of the points still in a coverin
 actual sets agrees for k = 2, 3 and every T; the closed form (v) agrees with plain enumeration on every
 state of the k = 4, 5, 6 searches; the Python and Node versions agree; a pair-counting prune (a sound
 adversary-win certificate) changes no outcome.
+
+**Results (7 requests, A_1 fixed, 2k points; R = requester wins, A = adversary wins) [computed exact]:**
+
+| k | T (T/k) | outcome | states, time |
+|---|---|---|---|
+| 4 | 2, 3 (0.75) | A, A | 770 states, <1 s |
+| 5 | 3, 4 (0.80) | A, A | 5 360, 5 s |
+| 6 | 4 (0.667) / 5 (0.833) | A / **R** | 19 436 / 12 605 |
+| 7 | 6 (0.857) | **R** | 45 448 (T <= 5 is an adversary win: complete family on 12 points) |
+| 8 | 6 (0.75) / 7 (0.875) | **A** / **R** | 346 532 states, 702 s / 38 346 |
+| 9 | 7 (0.778) / 8 (0.889) | UNDECIDED at the 19-min limit / **R** | 354 726 states explored / 22 683 |
+
+So t*(k) = (k-1)/k for k = 6, 7, 8 and there is no win at all for k = 4, 5: at every solved size the
+requester wins only with the largest admissible request T = k - 1. This is NOT evidence of a trend to
+3/4, and not evidence against it either: for k <= 7 the only integer T >= 3k/4 is k - 1, and at k = 8 the
+value T = 6 = 3k/4 is the "+1" case (families with tau = 3k/4 + 1 exist). The first informative instance
+is k = 9, T = 7, which did not finish. Per the coordinator's note this game is a likely-losing anchor
+choice (a kept disjoint pair), so its adversary wins are "bad anchor", not a refutation of the route.
+
+Winning strategy at the largest solved sizes (k = 8, T = 7 and k = 9, T = 8; main line against the reply
+leaving the largest D): after reply 2 she requests so that A_1 ∩ A_2 is small and the untouched points are
+used up; after four edges every surviving point lies in exactly two of them ("K4 state": only pair types,
+e.g. {12:1, 13:3, 23:4, 14:4, 24:3, 34:1} at k = 8); at request 5 she takes two *complementary* pair types
+in full (23 and 14); the last request takes two or three whole triple/pair types plus spare points. The
+2-(6,3,2) six-edge template does NOT appear: no line ends with six uncoverable edges (|D_6| is 4–7, not 0),
+and at k = 5, where the template would use single points, the requester loses. The K4 state is compatible
+with both the Fano and the 2-(6,3,2) template (restricted to four edges both have the six pair types).
+
+## 13. Anchored confined game and anchor selection (exact, real sets, small k)
+
+Code: `anchor.js` (table per shape), `anchor_select.js` (choice of anchors in the open game); both reuse the
+validated engine of `exact7d.js`.
+
+**Anchored game.** Three fixed replies with empty common intersection and pair intersections
+(p12 >= p13 >= p23); V = their union, |V| = 3k - p12 - p13 - p23; four further requests; every reply is any
+k-subset of V avoiding the request; R iff the seven edges have no 2-cover. [computed exact]
+
+| k, T | shapes | R / A | adversary-winning shapes (p12,p13,p23) |
+|---|---|---|---|
+| 4, 3 | 14 | 6 / 8 | 210 211 220 221 300 310 311 400 |
+| 5, 4 | 20 | 8 / 12 | 221 222 300 310 311 320 321 322 400 410 411 500 |
+| 6, 4 | 30 | 6 / 24 | all except 000 100 110 111 200 210 |
+| 6, 5 | 30 | 20 / 10 | 330 331 410 411 420 421 500 510 511 600 |
+| 7, 6 | 40 | 27 / 13 | 422 430 431 500 510 511 520 521 522 600 610 611 700 |
+| 8, 6 | 55 | 17 / 38 | (see `anchor.js 8 6`) every shape with p12 >= 5, most with p12 = 3, 4 |
+| 8, 7 | 55 | 41 / 14 | 440 510 511 520 521 530 610 611 620 621 700 710 711 800 |
+
+- The losing shapes are those in which two anchors overlap heavily while the third is nearly disjoint from
+  both (one large p, the others small): a near-copy among the anchors. Balanced shapes are wins.
+- Check of the hand criteria quoted from TWIN §13 (R if |V| <= 2T or |V| >= 10k/3 - T): no violation except
+  on the boundary |V| = 2T, where the adversary wins shape (3,2,2) at (k,T) = (5,4) and (5,2,2) at (7,6).
+  So the first criterion needs |V| < 2T (or an O(1) correction) in the discrete game.
+
+**Steering with the first three replies as anchors (7 requests in all, open game).** She requests T points of
+A_1, then all of A_1 ∩ A_2 and the rest split between A_1 \ A_2 and A_2 \ A_1; with fresh points the adversary
+may choose any smaller overlaps. Result for every (k, T) above: she FAILS — whatever the split, he can make
+the third reply a near-copy of A_1 or of A_2 (overlap about k - T/2), which is a losing shape.
+
+**Anchor selection among J replies (open game, m = J + 4 requests).** She wins iff the J replies contain a
+triple with empty common intersection and a winning shape; exact AND/OR search over type counts, the
+adversary free to use fresh points. [computed exact; uses TWIN §13 for "continuation = confined to the anchors"]
+
+| k, T (T/k) | J = 3 (m = 7) | J = 4 (m = 8) | J = 5 (m = 9) |
+|---|---|---|---|
+| 4, 3 (0.75) | A | A | A |
+| 5, 4 (0.80) | A | A | A |
+| 6, 5 (0.833) | A | **R** | |
+| 7, 6 (0.857) | A | **R** | |
+| 8, 7 (0.875) | A | **R** | |
+| 8, 6 (0.75) | A | A | see below |
+| 9, 7 (0.778) | see below | | |
+
+So with one spare reply (m = 8) she can always steer into a winning anchor shape at T = k - 1 for
+k = 6, 7, 8: the adversary cannot make all four triples near-copies. For k = 4, 5 nothing works up to
+m = 9, and at T = 3k/4 exactly (k = 8, T = 6) four replies are not enough.
+
+(Added after §13 was written.) Remaining entries of the anchor-selection table: (8,6): adversary also for
+J = 5 and J = 6 (m = 9, 10); (9,7): adversary for J = 3, 4; (10,8) and (11,9): UNDECIDED at the 20-min limit
+(J = 3 is an adversary win at (10,8)).
+
+---------------------------------------------------------------------------------------------
+
+## 14. Sharp tests, integrality, certificates, and the petal checks C1–C4
+
+Code: `complete_int.py`, `anchor_select.js` (+ certificates `cert_k*_T*_J4.json`), `cert_check.py`
+(independent checker), `build_petal.py` → `petal.js` (C1–C3), `petal_select.js` (C4), `exact7N.js`,
+`good_shapes.js`. Logs: `as_k*.log`, `petal_k*.log`, `c4_strict.log`.
+
+### 14.1 Which small (k, T) are informative at all [computed exact ILP]
+
+The complete k-uniform family on N points is (7,2) for N up to (integer version of the Fano count):
+
+| k | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| largest such N | 6 | 9 | 10 | 12 | 13 | 16 | 17 | 19 | 20 | 23 | 24 | 26 | 27 |
+| tau = N-k+1 | 3 | **5** | 5 | 6 | 6 | **8** | 8 | 9 | 9 | **11** | 11 | 12 | 12 |
+
+For k ≡ 1 (mod 4) the family on ⌈7k/4⌉ points is still (7,2): f(5,7) = 5, f(9,7) = 8 = ⌈7k/8⌉, f(13,7) >= 11.
+Together with the FKW examples (tau = 3k/4 + 1 for 4 | k) the adversary has a GENUINE (7,2)-family, hence
+wins for every number of requests and every ground set, at
+(k,T) = (4,3), (5,4), (8,6), (9,7), (12,9), (13,10), (16,12).
+**So (8,6), (9,7) and (12,9) are not tests of 3/4; every requester "win" there would be a bug** (they are
+used below as soundness controls, and one such control caught a bug, see 14.4). The first sizes at which
+the outcome is unknown are (k,T) = (6,5), (7,6), (10,8), (11,9), (12,10), (14,11), (15,12).
+
+### 14.2 Sharp test k = 9, T = 7 (three-anchor selection, J = 4, m = 8): adversary — an integrality artifact
+
+`anchor_select.js 9 7`: the adversary keeps every triple of four replies losing (3.3 min; nine shapes were
+needed, all losing: 542 632 722 544 543 533 444 443 633). Classification: **artifact, not near-copy
+steering.** The complete 9-uniform family on 16 points is (7,2) with tau = 8 (14.1), so he wins at T = 7 for
+any m; the shapes he uses are the tight ones of that family (|V| = 14–16 = k + T), not near-copies. The same
+strategy does not scale: for k ≡ 1 (mod 4) it gives tau = ⌈3k/4⌉ + 1, an O(1) gain. Certificate: the ILP
+infeasibility in `complete_int.py` (one solver; not independently re-checked).
+k = 10, T = 8 and k = 11, T = 9: undecided (the anchored tables are too slow there: single shapes take
+1–4 minutes at k = 10).
+
+### 14.3 Certified requester wins at (6,5), (7,6), (8,7) with m = 8 [computed exact + independently verified]
+
+`anchor_select.js` writes the requester's move at every node (anchor selection and every anchored game
+used); `cert_check.py` — separate Python code sharing nothing with the solver, no closed forms — replays
+every adversary reply and accepts:
+
+| k, T | her nodes checked | winning shapes verified | verdict |
+|---|---|---|---|
+| 6, 5 | 88 | 17 | CERTIFICATE VERIFIED |
+| 7, 6 | 207 | 27 | CERTIFICATE VERIFIED |
+| 8, 7 | 247 | 37 | CERTIFICATE VERIFIED |
+
+Two tampered certificates (T lowered; one request altered) are rejected. The checker uses three hand-proved
+facts (interchangeable points of equal type; points outside D_j and fresh points never matter in an anchored
+game; maximal replies suffice there) and does NOT re-prove TWIN §13 (open continuation = game confined to
+the anchors). **Conditional on TWIN §13**, these are proofs that with 8 requests every 6-, 7-, 8-uniform
+family with tau > k - 1, i.e. tau = k, has an uncoverable 7-subfamily: f(6,7) <= 5 and f(7,7) <= 6 (the
+FKW bound ⌈7k/8⌉ gives 6 and 7), f(8,7) <= 7 (known). With 14.1 this gives f(6,7) = 5, f(7,7) = 6.
+These are the only sizes where the requester was shown to win at the first open value of T; they all have
+T = k - 1, so they say nothing yet about a ratio near 3/4.
+
+### 14.4 C1–C3: four-petal confined game (three further requests) [computed exact]
+
+Soundness note first: a first version of the relaxed selection (C4') dropped points lying in exactly one of
+the four petals; with triple points present those are partners in covering pairs, and the run "proved"
+requester wins at (4,3), (5,4), (8,6), (9,7), which 14.1 forbids. Fixed; the controls now give adversary wins.
+
+**C1(b) two pairs with cores a, b.** Cross cells empty: the twin's criterion "R iff ⌈L*(a,b)⌉ <= T" is exact on
+every configuration: 81/81 at (8,6), 100/100 at (9,7), 169/169 at (12,9), 169/169 at (12,10).
+With one point in each of the four cross cells it fails only next to the boundary, always in the
+adversary's favour (4 of 49, 5 of 64, 9 of 121, 7 of 121 configurations; all with L* within 1.5 of T), i.e.
+the cross points cost about one unit of budget.
+
+**C1(c) general triple-free configurations.** (8,6): 718 configurations, 629 R. (9,7): 1180, 1054 R.
+(12,9), grid step 2: 231, 195 R. (12,10), step 2: 231, 213 R. Every configuration whose three loads
+c12+c34, c13+c24, c14+c23 are all <= T is a requester win (426/426, 725/725, 114/114, 154/154).
+
+**C2 one cluster (each point misses one or two petals), symmetric family.** (9,7): R only for the pure K4
+state (pair cells 3, overlap k/3); A as soon as triple cells are present together with pair cells
+(overlaps 4, 5, 6). (12,9): R for pair cells 4 only; A for overlaps 5–8. (12,10): R up to overlap 5, A from 6.
+Prediction "A for every near-copy configuration" confirmed. (Triple cells alone, the rest of each petal
+private: R up to overlap 4 at (9,7), 6 at (12,9) and (12,10); A at overlap 6, 8, 8.)
+
+**C3 three cluster petals with core c3, pair-only cells q each, plus an outside petal meeting each in one
+point.** Requester wins exactly for small core and small q:
+
+| k, T | c3 = 0 | 1 | 2 | 3 | 4 | 5 | 6 | >= 7 | TWIN bound c3 <= T - k/3 |
+|---|---|---|---|---|---|---|---|---|---|
+| 8, 6 | q<=3 | q<=3 | q<=1 | q=0 | none | none | none | none | 3.33 |
+| 9, 7 | q<=4 | q<=3 | q<=2 | q<=1 | q=0 | none | none | none | 4.00 |
+| 12, 9 | all | all | all | q<=2 | q<=1 | q=0 | none | none | 5.00 |
+| 12, 10 | all | all | all | all | all | q<=1 | q=0 | none | 6.00 |
+
+So the necessary bound c3 <= T - k/3 is also the exact threshold at q = 0, and each unit of pair-only mass
+costs about one unit of core.
+
+### 14.5 C4: can she force four winning petals? [computed exact]
+
+Strict version (the four replies must be triple-free and a C1 win), `c4_strict.log`:
+(8,6): adversary for J = 4, 5 (m = 7, 8), and **no triple-free quadruple is ever reached** (zero four-petal
+configurations evaluated): he always places a point in three replies, because her caps on the overlaps of a
+new reply with two earlier ones sum to 2k - T - p12 > T, so she cannot request all pairwise intersections
+when the fourth petal is created. The same happens at (6,5). Remaining strict runs: see the lines appended
+at the end of this section.
+Relaxed version (any four replies with empty common intersection, exact four-petal value, triple points
+allowed): (4,3), (5,4): adversary for J = 4, 5; (8,6): adversary for J = 4, 5; (9,7): adversary for J = 4
+— all as 14.1 requires. Informative sizes (6,5), (7,6), (8,7): see the lines appended below.
+
+### 14.6 Concentrated case and good-shape tables: partial
+
+- Concentrated ground set (N < 3k - T), 7 requests, NO discard, exact (`exact7N.js`): requester wins at
+  (k,T,N) = (6,5,12), (7,6,14), (8,7,16) — these are the 2k-point games of §12. At (8,6) and (9,7) the
+  adversary wins for every N >= 15 resp. 16 by 14.1. The version with discards and the sizes
+  (12,9) [uninformative by 14.1], (12,10) were not run: the discard search needs all replies in the state
+  and is beyond the present engine at k = 12.
+- Good shapes (all pair intersections <= round(T²/k)): (6,5): 26 shapes, 20 R, 6 A (410 330 411 420 331 421);
+  (8,7): 51 shapes, 41 R, 10 A (510 511 520 610 440 521 530 611 620 621). So "all pairs <= T²/k" is not a
+  requester region even at T = k - 1, in line with TWIN Theorem H. Tables at (9,8), (10,8), (12,10), (14,11)
+  were not run.
+
+Lines appended for 14.5 (state when this section was closed):
+
+| k, T | version | J = 4 (m = 7) | J = 5 (m = 8) | J = 6 (m = 9) |
+|---|---|---|---|---|
+| 6, 5 | relaxed | A | **R** | |
+| 7, 6 | relaxed | A | **R** | |
+| 8, 7 | relaxed | A | running when closed | |
+| 8, 6 (control) | relaxed | A | A | |
+| 9, 7 (control) | relaxed | A | undecided (260 s) | |
+| 8, 6 (control) | strict | A (0 triple-free quadruples) | A (0) | undecided (240 s; still 0) |
+| 9, 7 (control) | strict | A (0) | running when closed | |
+| 12, 9 and 12, 10 | strict | queued in `c4_strict.log` | | |
+
+Reading. (i) At the informative sizes (6,5) and (7,6) the four-petal route and the three-anchor route of §13
+agree: seven requests are not enough, eight are. Two different reductions giving the same answer is the best
+cross-check available here. (ii) The strict, triple-free architecture is never reachable in these runs: the
+adversary always creates a point lying in three of the replies. The relaxed evaluation shows that this does
+not matter at (6,5), (7,6) — she wins with triple points present — so the selection lemma to aim for is
+"some four replies with empty common intersection form a winning configuration", not "triple-free".
+(iii) Nothing computed here is at a ratio T/k below 0.83 with an unknown outcome; the first such sizes,
+(10,8) = 0.80 and (14,11) = 0.786, are beyond the present engine (anchored tables at k = 10 need minutes per
+shape; a compiled engine and the four-petal route, whose tables are 100 times cheaper, are the way in).
