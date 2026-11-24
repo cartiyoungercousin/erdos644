@@ -23,6 +23,7 @@ import Lean644.TwoLarge
 import Lean644.RelTheoremA
 import Lean644.Stability
 import Lean644.TraceLemma
+import Lean644.Fano
 import Lean644.TightTriple
 import Lean644.TheoremA
 import Lean644.SparserTriple
