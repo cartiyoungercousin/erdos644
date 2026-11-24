@@ -1171,3 +1171,111 @@ F2. Same with the swap at reply 5 or 6 instead of 4.
 F3. Check of 18.1: on the saved lines, |M_6| + |W| + |G_4| against 2t and Φ against 2(N+t) - 5.
 F4. For N = 2.1k, 2.2k: the minimum of mass(D) over the last two requests from the saved 4-states
     (exact last-round formula), to see how much the non-Fano ending gains over the best Fano one.
+
+=============================================================================================
+## 19. The two-family ordering problem (eleventh time box)
+
+**Outcome: she cannot prevent the bad ordering, and the reason is exact.** Every 2-colouring of the
+Fano plane has a monochromatic line, so an adversary who keeps a 2-colouring of his replies in
+which every monochromatic triple has a common point defeats every Fano labelling, for any number of
+requests and discards (19.1). A two-arena adversary does this for free (19.2). So the block-form
+route of 17.3 is closed against two families, with or without bands; what beats two families must
+be non-Fano: Theorem J when no pair is banded, and triple-free petals split two-and-two otherwise
+(19.3). For the banded case I prove one positive statement (19.4) and reduce the rest to PETAL §8's
+minimax with re-selection (19.5). Units k = 1.
+
+### 19.1 The two-colouring obstruction [proved by hand]
+
+**Theorem 19.A.** Suppose the replies carry a colouring with two colours such that every three
+replies of the same colour have a common point. Then no seven replies admit a Fano labelling in
+which all seven line-triples have empty intersection. In particular no Fano six-state (16.1, 17.3)
+is ever reached.
+*Proof.* Any 2-colouring of the seven points of the Fano plane has a monochromatic line; its three
+replies have a common point. ∎
+**Enforcing rule.** Write P(u,v) = u ∩ v. Assume the invariants
+(H1) every monochromatic triple has a common point;
+(H2) for every pair u, v of one colour and every pair u', v' of the other, |P(u,v) ∪ P(u',v')| > T.
+Given a request S, by (H2) there is a colour χ none of whose pair-intersections is contained in S.
+He replies with a set E of colour χ containing one point of P(u,v)∖S for every pair u, v of colour χ
+(boundedly many points). Then (H1) holds again. This is exactly the "bad ordering" of 17.3: the
+reply never arrives in the family whose pair she has just paid for. To keep (H2) the bulk of E
+must overlap every earlier reply of its colour heavily enough; 19.2 gives a setting where this is
+automatic.
+
+### 19.2 Two arenas realise it for every number of requests [proved by hand]
+
+**Proposition 19.B.** Let V_A, V_F be disjoint sets of mass n with 1 + t/2 <= n < 3/2, and let the
+adversary answer inside an arena in which at most n - 1 points are requested (one always exists).
+Colour replies by arena. Then two replies of an arena meet in mass >= 2 - n, which exceeds n - 1,
+the largest mass she can have requested in that arena when he answers there; so he can always put
+a point of every earlier same-arena pair-intersection into his reply, and (H1) holds forever.
+Hence **no Fano labelling ever exists among the replies of this adversary.**
+He nevertheless loses in seven requests (§11.4, REDTEAM §8: four same-arena replies with empty
+common intersection plus one reply of the other arena). So the Fano block form is strictly weaker
+than the petal certificates, and "ordering" is not a defect she can repair inside it.
+
+### 19.3 What is forced on the certificates by a two-colouring [proved by hand]
+
+Under (H1):
+- a triple-free set of four petals has exactly two petals of each colour. Its three grids are
+  (core of colour A) × (core of colour F) and two grids of cross cells; this is the configuration
+  of Theorem I / PETAL Theorem K, and nothing else is available at q = 4 without triple points;
+- three anchors always contain a monochromatic pair, so every anchor triple is "pair + one";
+- petals with empty common intersection inside one colour need at least four members
+  (three have a common point), which is the 4 + 3 certificate of PETAL Theorem J.
+So against two colours the complete list of certificates used so far is: (i) Theorem D on a triple
+with small pair mass; (ii) two-and-two triple-free petals; (iii) four monochromatic petals plus
+three centres with disjoint traces. Theorem J is (iii) and needs the centres to be far, i.e. no
+band.
+
+### 19.4 Banded case: one positive statement [proved by hand]
+
+Dominant-pair triple (A, A', F): a = |A ∩ A'|, F meeting A ∪ A' in O(1) points.
+**Proposition 19.C.** Let a <= t - 1/4. At the next request take S = (A ∩ A') ∪ (A ∩ F) ∪ (A' ∩ F) ∪ R,
+R ⊂ F of mass t - a - O(1). If the reply E meets A ∪ A' in O(1) points, she wins with three more
+requests.
+*Proof.* A, A', F, E are triple-free with cores a and b = |F ∩ E| <= 1 - (t - a) and cross cells of
+O(1) points; L*(a, b) <= a + b/3 <= (4a + 1 - t)/3 <= t iff a <= t - 1/4; Theorem I. ∎
+So with a dominant pair of overlap at most t - 1/4 (0.5 at t = 3/4), a second far reply that is
+far from the pair is fatal for him. His remaining answers are: (α) a reply meeting A or A' in
+positive mass outside A ∩ A' while being a near-copy of F — a *mixed* reply, which is exactly the
+losing fourth petal found in PETAL §8 (e.g. a = b = 7/12, band 4/12); (β) a reply that is not a
+near-copy of F: then |E ∩ F| is small and the same four petals have cells a, b' = |E ∩ F|,
+c + c' = |E ∩ (A Δ A')| <= 2(1 - a); the freeze design costs b' + a/3 + (c + c')/3 per round, so she
+wins when b' <= t - (2 - a)/3 [proved: loads of separate grids add; Theorem K(i)].
+Hence after a dominant-pair triple with a <= t - 1/4 the adversary must answer every request of
+this form with a reply E such that
+    |E ∩ F| > t - (2 - a)/3   and   |E ∩ (A Δ A')| is not O(1),
+i.e. heavy on the far reply and banded into the pair. Bands are forced on him, not chosen.
+
+### 19.5 The exact residual problem [statement]
+
+Colour-by-similarity is no longer an equivalence once bands exist, but 19.1 needs only *some*
+2-colouring with (H1), (H2). The adversary to beat is therefore:
+
+    keep a 2-colouring with (H1), (H2); answer every request in a colour none of whose
+    pair-intersections is requested; give the reply a band into the other colour large enough that
+    every two-and-two triple-free quadruple has design value L > t (PETAL Theorem K with positive
+    cross cells), and keep every triple outside the good spread region.
+
+Against it: Fano labellings never exist (19.A); Theorem J returns a banded pair; Theorems D/L need a
+triple without a dominant pair. What is not known is whether he can keep L > t for ALL two-and-two
+quadruples once she may discard and re-select among boundedly many replies. Her leverage is the
+cap: at the arrival of the fourth petal she has t - a left, and she must choose between capping the
+core at b (cost 1 - b inside F) and capping each band at c (cost 1 - a - c inside the corresponding
+single part of the pair); with t - a in hand she cannot do both in one request;
+whether two replies obtained with complementary caps (one with small b, one with small bands) can
+be combined into one winning quadruple or five-petal set is the open step. This is PETAL §8's
+minimax with re-selection, not an ordering problem.
+
+### 19.6 Requests for C
+
+G1. Soundness of 19.B: two disjoint arenas of n = 17k/12 points, (k,T) = (12,9), (12,10): confirm
+    that no seven replies ever admit a Fano labelling (enumerate labellings on the requester's
+    winning lines) while the petal certificate wins.
+G2. Re-selection: dominant pair a in {5k/12, 6k/12}, far reply F; adversary restricted to mixed
+    replies (near-copy of F with a band of size β into A∖A' or A'∖A, β in {k/12,…,4k/12}); she makes
+    up to three further requests with free caps and discards, then needs a triple-free two-and-two
+    quadruple with Theorem K value <= T among all replies. Sizes (12,9) [control: adversary must
+    win], (12,10), (16,13).
+G3. Same as G2 but allowing five petals (one triple point) evaluated by the exact petal engine.
