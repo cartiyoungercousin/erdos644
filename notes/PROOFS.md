@@ -430,3 +430,66 @@ two games have the same value among strategies that keep the anchors; the open g
 smaller value if dropping the anchors helps, so G(V) gives an upper bound on what she needs, not
 a lower bound for the open game. An adversary certificate in G(V) therefore does NOT transfer to
 the open game by itself (she might re-anchor); a requester certificate does.
+
+---------------------------------------------------------------------------------------------
+
+## 9. TWIN §14 (near-copy region, gap lemma, t₁, two arenas) — verdict: F, obligations, S1–S3 correct; Theorem G correct only with an anchor-aware adversary, and its "consequence" is overstated
+
+Scaled units, t = T/k, λ_t = 2 - 2t² - t, t₁ = (√17 - 1)/4 (root of λ_t = 0).
+
+**Errors / gaps.**
+(E9a) **Theorem G's last step uses an adversary who knows the committed anchors.** What the pure
+two-arena adversary achieves (rigorous): cross-arena replies disjoint, same-arena pairs meet in
+>= 2 - n > t², so every anchor triple has a pair-intersection > t². The conclusion "he wins by
+Theorem F" then requires him to *switch* to Theorem F's reply rule for that specific triple, and
+that rule (take as much as possible of (P_12 ∪ B_3) \ S_i) depends on the triple and in general
+leaves the arenas. So G is a statement about the protocol "J replies, **announce** three anchors,
+four more replies" (equivalently: about the anchored game G(V), where anchors are the initial
+position). It is NOT true that the pure two-arena adversary defeats every 7-tuple containing an
+anchor triple: by §11.4 she beats it with four X-replies with empty common intersection plus Y-
+replies, and any two X-replies with one Y-reply in that tuple ARE an anchor triple (cross-arena
+disjointness makes the triple intersection empty). Hence 14.3's "what fails is only the
+three-anchor certificate" is wrong as worded; what fails is "steer to anchors from which the
+anchored game is a requester win against an anchor-aware adversary".
+(E9b) Consequently the bullet "below t₁ a proof cannot have the form steer-then-anchored-game"
+is correct only in this sense: no strategy can guarantee an anchor triple with all pairs <= t²
+(rigorous, pure arena adversary), and triples outside that region have anchored value "adversary
+wins" (Theorem F). It does not exclude strategies that keep an anchor triple but exploit that a
+real adversary cannot play Theorem F against all triples simultaneously.
+(E9c) Legitimacy. Pure two-arena adversary: reply family = all k-subsets of the two arenas (sizes
+N >= k + T/2 each); tau = 2(N - k + 1) >= T + 2 > T ✓, and a reply always exists (one arena has
+<= T/2 requested points). The composite "arenas, then Theorem F" adversary is a legal game
+adversary (any k-set avoiding the request) and stays inside the complete family on the union of
+the arenas (tau > T) only if his fill-up points are taken there — possible; but it is not a
+(7,2)-family, so G says nothing about f(k,7), only about this proof scheme.
+(E9d) Theorem F does not need the anchor property: for ANY three replies with |B_1 ∩ B_2| > t²
+and four later replies answered by F's rule, (x,y) in (B_1 ∩ B_2) × B_3 gives a cover (the mass
+bound |K_i ∩ (P_12 ∪ B_3)| <= max(t, p_12) only improves if P_12 meets B_3). Worth stating.
+(E9e) S2 hypothesis: "t >= 0.747" (root of 18t² + 12t - 19) is needed for 3λ_t <= t - 1/3, and
+the third-class win costs four requests beyond the triple (Theorem D), not seven in total.
+
+**Verified proofs.**
+*Theorem F.* After S_i with s_i = mass(S_i ∩ (P_12 ∪ B_3)): unrequested mass of P_12 ∪ B_3 is
+1 + p_12 - s_i; he takes all of it if s_i >= p_12, else mass 1 of it. So
+mass(K_i ∩ (P_12 ∪ B_3)) = max(s_i, p_12) <= max(t, p_12), rectangle area <= max(t,p_12)²/4. Four
+rectangles cover P_12 × B_3 (area p_12) only if max(t,p_12)² >= p_12: false for t² < p_12 <= t and
+for t < p_12 < 1. For p_12 = 1 he omits 1 - s_i >= 1 - t on the larger side, making each area
+< 1/4 strictly. An uncovered grid point is a 2-cover (Theorem B). Discrete: p_12 > T²/k. ✓
+*Obligations.* (a) if x in P_ab has I_x = {i}, every y in B_c needs i in I_y, i.e. B_c ⊆ K_i; he
+keeps an unrequested point of B_c in E_i (|B_c| = k > T). So every P-point must be killed twice
+(or never appear — zero kills loses to any y kept once). (b) if P_ab ≠ ∅ every y in B_c needs
+I_y ≠ ∅. ✓
+*S1 (gap lemma).* Request B_i ∩ B_j and m = max(0, 1 - t² - p) points of each of B_i \ B_j,
+B_j \ B_i (available: 1 - p >= m). Cost p + 2m: = p <= t² <= t if m = 0; = 2 - 2t² - p <= t iff
+p >= λ_t otherwise. The reply misses B_i ∩ B_j and meets B_i in at most 1 - p - m <= t². ✓
+**Lean:** `Lean644/GapAnchor.lean`, `gap_anchor` (general cap c in place of t²k):
+`IsUniform H k → ¬CoverableBy H T → Bi ∈ H → Bj ∈ H → |Bi ∩ Bj| ≤ c → |Bi ∩ Bj| ≤ T →
+2k ≤ |Bi ∩ Bj| + 2c + T → ∃ Bl ∈ H, Bi ∩ Bj ∩ Bl = ∅ ∧ |Bi ∩ Bl| ≤ c ∧ |Bj ∩ Bl| ≤ c`.
+(This also covers 14.5 item 3: any cap c >= k - (T + p)/2.)
+*S2.* p_il >= p_ij + p_jl - 1 > 2t² - 1 >= λ_t iff (4t - 3)(t + 1) >= 0; with no pair in
+[λ_t, t²] this forces p_il > t²: ~ is transitive; cross pairs have p < λ_t. Requesting B_i ∩ B_j
+(cost < λ_t) for a fixed cross pair, a reply in a third class gives anchors with p < 3λ_t. ✓
+*S3 / t₁.* λ_t <= 0 iff t >= t₁; after S_2 ⊂ B_1 of mass t, p_12 <= 1 - t <= t² (t >= 0.618), so
+S1 applies: replies 1, 2, 3 are anchors with all pairs <= t². ✓
+*Theorem G, arena part.* n with 1 + t/2 <= n < 2 - t² exists iff 2t² + t - 2 < 0 iff t < t₁
+(the hypothesis t >= 3/4 is not used). Same-arena pairs: >= 2 - n > t². ✓ See E9a for the rest.
