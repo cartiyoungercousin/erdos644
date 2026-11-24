@@ -1213,3 +1213,46 @@ Checks: `py compute/petal3/plan_lp.py` (6 s);
 `py -c "import replay43 as r; print(r.game(400,300,48,'ap',0,n=503))"` from `compute/petal3`.
 Hand proofs re-read once: Lemma FF, Theorem AP (both chains of inequalities; the forced petal
 phase), the two closed-form thresholds in 23.3.
+
+---------------------------------------------------------------------------------------------
+## 24. Spec for the small-ground-set search (handover; self-contained)
+
+**Goal.** Find, or fail to find, a fixed two-class family that Theorem AP (23.2) does not beat.
+**Objects.** k-uniform family H on a finite ground set, T = 3k/4 (k = 12, T = 9; k = 16, T = 12). τ(H) = least size of a point
+set meeting every edge. H is *two-class with parameters (c, μ)* if H = H_X ∪ H_Y (disjoint), any two edges of the same class
+share at least c points, any two edges of different classes share at most μ points, μ < c.
+**Range.** θ = (6t - 2)/5 = 1/2 at t = 3/4. Required: c > k/2, c < k - T/2, τ(H) >= T + 1. Integers: k = 12: c = 7; k = 16: c
+= 9. (Then τ(H_X) + τ(H_Y) >= T + 1 and each τ(H_c) <= k - c.)
+**Arena-with-pool form, parameter ρ.** H_c has it w.r.t. a point set R if every edge of H_c has at most ρ points outside R.
+Always true for ρ = 0, R = everything, so regions must be disjoint: for disjoint R_X, R_Y put β_c = max over edges E of H_c of
+|E∖R_c| and h_c = least size of a set inside R_c meeting every edge of H_c (h_c = infinity if none).
+**AP cost.** cost(X; R_X, R_Y) = max(h_X, 2β_Y) + ceil(8β_X/3) + 2; AP(H) = min over disjoint (R_X, R_Y) and over the two
+roles (X or Y as petal class) of that cost. Theorem AP's proof beats H whenever AP(H) <= T (the +2 covers its ε terms; treat T
+- 1 <= AP <= T + 1 as borderline, not as a hit).
+**Structure lemma under test.** "Every two-class family in the range has AP(H) <= T", i.e. each class sits, up to β, in its
+own region and is hit cheaply inside it. Known extremes: complete family on 2k - c points (β = 0, h = k - c); all sets with >=
+k - ρ points in a region of 2(k - ρ) - c points (β = ρ, h = k - c - ρ).
+**A hit** = a family in the range with AP(H) >= T + 2.
+**Search space (blow-up families; keeps the MILP small).** Ground set = m <= 8 atoms of integer sizes s_1..s_m. An edge type
+is a vector e with 0 <= e_i <= s_i, Σ e_i = k; a family is given by a list of types per class and contains ALL k-sets of those
+types. Then, exactly:
+- two edges of types a, b share at least Σ_i max(0, a_i + b_i - s_i) points (two edges of the same type a: use b = a); they
+  can share at most Σ_i min(a_i, b_i);
+- same-class condition: the first quantity >= c for all pairs of types in a class (including a type with itself); cross-class
+  condition: Σ_i min(a_i, b_i) <= μ;
+- a request removing x_i points from atom i (0 <= x_i <= s_i) meets every edge of type e iff e_i > s_i - x_i for some i; τ =
+  least Σ x_i killing all types; h_c: same with x_i = 0 outside R_c;
+- regions are unions of atoms; β_c = max over types of Σ_{i not in R_c} e_i. Variables: sizes, a 0/1 choice of types per class
+  from the enumerated list (prune: types that violate the self-overlap condition). τ >= T + 1 is a "for all requests"
+  condition: enumerate the requests x with Σ x_i = T (they are few after symmetry) and require a surviving type for each, or
+  solve by cut generation. AP(H) >= T + 2 is checked after the fact by enumerating region pairs. Start with m <= 6, at most 4
+  types per class, k = 12; then k = 16.
+**Exact verification of any hit (mandatory, on actual point sets, not types).** (1) rebuild H as a list of k-sets (or sample
+all type pairs) and recheck both overlap conditions; (2) τ(H) by an exact hitting-set ILP; (3) AP(H) by exhaustive region
+pairs; (4) report whether each class is "non-arena": β_c > k - c - τ(H_c) for every region (Lemma FF says private mass is at
+most that).
+**Then, for a verified hit only:** (5) search for 7 edges with no 2-point cover (SAT). Caution: at these k genuine (7,2)
+families with τ > T exist for integrality reasons alone (complete 12-uniform family on 21 points has τ = 10), so (7,2) of a
+hit is not news by itself; the news would be a hit whose blow-up keeps τ/k > 3/4 and (7,2) as k grows. Report that at once.
+**Files to reuse:** `compute/petal3/lpw.py` (HiGHS wrapper), `replay43.py` (exact 2-cover test, request-game harness),
+`exclusion.py` (certified exclusion by weights).
