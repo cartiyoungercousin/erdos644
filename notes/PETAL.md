@@ -1449,10 +1449,12 @@ contain it. Singles of petal a (resp. 4) may have P = {5} (resp. {6}). All other
   P = {5} has N(x) = T_a, and request 5 contains x and all of T_a (R_X part in G_5, B part by its pattern), so centre 5
   misses both. The same holds for petal 4 with request 6. No point lies in all four petals.
 - Cost of request j: |G_j| + (B-load of j) = t/2 + ε + B-load_j (G_j stays at t/2: 2δ <= t/2, and δ + w <= t/2).
-  **B-load <= 2δ** for every leak structure: the least max load, minimised over the S-choice, is a convex function of the
-  masses of B by petal type (singles, and multi-types in the pool, with petal budgets <= δ). So its maximum sits at a vertex
-  of that polytope. All 93 vertices were solved as LPs (`bload_lp.py`) [computed exact]: max = 2δ, attained by all
-  singles. By hand at that vertex: loads δ + δ, δ + δ, 2δ (singles of petals 2 and 3 double-sealed as {5,7}, {6,7}).
+  **B-load <= 2δ** for every leak structure. Fix the S-choice (S_1 = petal 1, S_2 = petal 4). Then the least max load is
+  a convex function of the masses of B by petal type (singles and multi-types, with petal budgets <= δ), so its maximum
+  sits at a vertex of that polytope. All 93 vertices were solved as LPs [computed exact]: max = 2δ, attained by all
+  singles. (Correction, §28: an earlier draft minimised over the S-choice before taking the vertex maximum. A minimum of
+  convex functions is not convex, so that version did not justify the vertex step. With the choice fixed the maximum is
+  2δ for every s1 ∈ {1,2,3} with s2 = 4.) By hand at that vertex: loads δ + δ, δ + δ, 2δ (singles of petals 2 and 3 double-sealed as {5,7}, {6,7}).
   With double seal only, the max is 8/3 δ, as in 27.1.
 So every centre request is <= t/2 + 2δ + ε <= t iff **δ < t/4**. ∎ For t >= 4/5, t/4 >= 1 - t, so pooled 𝒜 is closed on its
 whole range δ < 1 - t.
@@ -1520,3 +1522,119 @@ one point in the petal phase (integer rounding), so it is not covered at k = 16.
   (<= 2δ) are not yet in the account. Not attempted.
 Hand proofs re-read once: 27.1 counting; 27.2 petal budgets (request 4 with the pool trade-off s), the P2 case list, G_j
 sizes. Checks: `py compute/petal5/bload_lp.py`; `py compute/petal5/intload.py 2`; `py compute/petal5/ps2.py 20`.
+
+---------------------------------------------------------------------------------------------
+## 28. The limit of window-and-seal: δ* = t/2 - 1/6; pooled 𝒜 closed for t >= 7/9 (twelfth time box)
+
+Code: `compute/petal5/window_lp.py` (exact LP of the method), `window_int.py` (integer version), `ps3.py` (strategy PS3,
+replay); logs `logs/window_lp.log`, `logs/ps3.log`.
+
+**Outcome.**
+1. **Limit of the method** [computed exact, LP; plan and value proved by hand for the all-singles leak]. "4 forced class-X
+   petals with designed windows + 3 forced class-Y centres, P2 sealing by patterns" beats pooled 𝒜 iff
+   **δ < δ*(t) = t/2 - 1/6** (on 3/4 <= t <= 7/9). δ* is t/4 + (t/4 - 1/6): it beats PS2 for every t > 2/3.
+2. **δ* reaches 1 - t at t = 7/9 = 0.7778.** So pooled 𝒜 is closed for all t >= 7/9 (PS3, 28.2) [proved by hand + computed
+   exact LP over all leak structures; exact replay]. Open: **t/2 - 1/6 <= δ < 1 - t for 3/4 < t < 7/9** (t = 3/4:
+   [0.2083, 0.25)).
+3. The obstruction just below 1 - t (28.3) is the third centre request. It has to seal the R_X-traces of both earlier
+   centres (2δ) and one triple cell (1 - t - δ), on top of the singles. The three requests together need 1 + 6δ > 3t.
+4. **k = 20, d = 4 is not decided.** The method's best integer plan needs 16 > T = 15 even against all-singles leaks
+   (`window_int.py`). An exact solution of the game itself is out of reach at this size (28.4).
+5. 2+2 in the open range: dead for single-serve triples against a copying adversary [heuristic; argument in 28.5].
+   Theorem T/Q′ needs confinement (g = ∅ or a bounded ground set), which a pool breaks [proved: CORE §3 remark]. No other
+   certificate was found.
+
+### 28.1 The LP of the method [computed exact]
+
+Variables (mass units): atoms μ_M of R_X by the set M of petals missing them (M ≠ ∅; Σ μ_M = n = 1 + t/2 - δ; window
+|W_a| = Σ_{M∋a} μ_M <= t/2, and <= t/2 - s for petal 4, where s = the common points of petals 1–3 outside R_X, sealed by
+request 4). Triple cell T_a ∩ R_X = μ_{a}. Assignment: each petal is D (singles sealed twice) or an S-petal of one centre
+request j (singles sealed once in j, with T_a in j). G_j >= t/2 and G_j >= (j - 1)δ + Σ_{S-petals of j} μ_{a}. Load_j =
+seals in j. Value = least max_j (G_j + load_j).
+- Upper bound for the method: the adversary plays all singles (s = 0), and we minimise over all 256 assignments and all
+  windows. Lower bound: fix the best assignment, make the windows of petals 1–3 robust (shared), and let W_4, G and the design
+  adapt to each of the 94 vertices of the leak polytope (petal budgets δ, singles + 6 pair types + 4 triple types). With the
+  assignment fixed, the value is an LP value in the leak masses (they enter the RHS), hence convex, so vertices suffice.
+- Result (bisection, `logs/window_lp.log`): the upper and lower bounds coincide at every t scanned:
+  | t | 0.75 | 0.76 | 0.77 | 0.775 | 0.78 | 0.79 | 0.80 |
+  |---|---|---|---|---|---|---|---|
+  | δ*(t) | 0.20833 | 0.21333 | 0.21833 | 0.22083 | = 1 - t | = 1 - t | = 1 - t |
+  | 1 - t | 0.25 | 0.24 | 0.23 | 0.225 | 0.22 | 0.21 | 0.20 |
+  i.e. δ* = t/2 - 1/6 until it meets 1 - t at t = 7/9. Optimal assignment at every t: one D-petal and three S-petals, one
+  per centre request.
+
+### 28.2 Strategy PS3 [plan proved by hand for all-singles leaks; general leaks computed exact (28.1)]
+
+Petals 1–4, class X forced by F_i ⊂ R_Y of mass t/2 + ε (F_4 also contains the common points of petals 1–3 in R_Y). Windows:
+W_1, W_2 disjoint and private, mass t/2. W_3 = P ∪ Σ_0, W_4 = P' ∪ Σ_0, where P, P' are private of mass p = 1 - t - δ,
+Σ_0 is shared, of mass σ = t/2 - p = 3t/2 - 1 + δ, and ∪W = R_X (check: t + 2p + σ = n). Request 4 also holds the pool common
+points (mass s, with W_4 shrunk by s; covered by the LP). Triple cells: T_1 = W_1, T_2 = W_2 (t/2 each), T_3 = P,
+T_4 = P' (mass p).
+Centres: petal 1 is D; petal 2 is S in request 5 (G_5 = t/2 ⊇ T_2); petal 3 is S in request 6 (G_6 ⊇ z ∪ T_3, mass
+<= δ + p = 1 - t <= t/2); petal 4 is S in request 7 (G_7 ⊇ z ∪ T_4, mass 2δ + p = 1 - t + δ). The singles of petal 1 are
+split l_5 + l_6 + l_7 = 2δ over pairs of requests. Costs: t/2 + δ + l_5, t/2 + δ + l_6, 1 - t + 2δ + l_7. Balanced at
+L = (1 + 6δ)/3 with l_7 = t - 2/3 >= 0 and l_5 = l_6 = 1/3 + δ - t/2 ∈ [0, δ] (needs δ >= t/2 - 1/3). **L <= t iff
+δ <= t/2 - 1/6.** P2: as in 27.2 (every S-single's neighbourhood is its triple cell, sealed with it; everything else is
+in at most one centre). ∎ For δ < t/2 - 1/3 the windows are relaxed (PS2 already covers δ < t/4).
+Petal budgets: requests 1–3: t/2 + t/2; request 4: t/2 + (t/2 - s) + s.
+Replay (`ps3.py`; S-assignment and patterns chosen in-game by MIP on the actual points; harness and adversary of 26.3):
+| k, T | d (δ) | pool m (only?) | δ*·k | τ(H) | covers | over-T | centre max |
+|---|---|---|---|---|---|---|---|
+| 40, 30 | 8 (0.200) | 0 | 8.3 | 31 | 0/80 | 0 | 30 |
+| 40, 30 | 8 (0.200) | 40 | 8.3 | 31 | 0/80 | 0 | 30 |
+| 40, 30 | 8 (0.200) | 40 (pool only) | 8.3 | 31 | 0/80 | 0 | 30 |
+| 80, 60 | 16 (0.200) | 80 | 16.7 | 61 | 0/80 | 0 | 60 |
+| 80, 60 | 16 (0.200) | 0 | 16.7 | 61 | 0/80 | 0 | 60 |
+| 120, 90 | 24 (0.200) | 100 | 25.0 | 91 | 0/80 | 0 | 89 |
+| 120, 90 | 24 (0.200) | 100 (pool only) | 25.0 | 91 | 0/80 | 0 | 89 |
+| 80, 62 | 17 (0.212) | 80 | 17.7 | 63 | 0/80 | 0 | 62 |
+| 100, 78 | 21 (0.210) | 80 | 22.3 | 79 | 0/80 | 0 | 76 |
+| 100, 78 | 21 (0.210) | 100 (pool only) | 22.3 | 79 | 0/80 | 0 | 76 |
+| 40, 30 | 9 (0.225) | 40 | 8.3 | 31 | 0/80 | 45 | 32 |
+| 80, 60 | 17 (0.212) | 80 | 16.7 | 61 | 0/80 | 48 | 62 |
+| 20, 15 | 4 (0.200) | 10 | 4.2 | 16 | 0/80 | 44 | 16 |
+Last three rows: controls above δ* (k = 20, d = 4 among them). In-range rows: 0 covers, 0 over budget, no flags, centre max <= T (= T where the bound is tight).
+
+### 28.3 The obstruction just below 1 - t [computed exact; heuristic reading]
+
+At δ = 1 - t - η: n = 3t/2 + η, so the windows can barely cover R_X. Σ_a |T_a ∩ R_X| >= 2n - Σ|W| >= 2 - t - 2δ (= t at
+δ = 1 - t). Costs of the method, all of which the LP makes tight:
+- every centre request has a forcing set of mass >= t/2 in R_X;
+- the second and third requests seal the R_X-traces of the earlier centres (δ, 2δ). That is forced: an R_X point in two
+  centres has a whole petal as neighbourhood;
+- each petal's singles are sealed once (S, with their triple cell in the same forcing set) or twice (D). At most one
+  S-petal fits per request, because a triple cell is as big as a window or larger than the free room.
+The three requests add up to 1 + 6δ, against a budget of 3t: 1 + 6(1 - t) <= 3t iff t >= 7/9. Below 7/9 this
+architecture cannot reach 1 - t. Changes outside the model (petals of both classes, adaptive release of R_X-trace seals
+when the third centre is known to miss the neighbourhood, more than 7 replies with re-selection) are **not examined**. The
+adaptive release looks useless [heuristic]: the adversary's second centre can always contain singles of every petal,
+which are neighbours of any triple-cell point.
+
+### 28.4 k = 20, T = 15, d = 4
+
+- The method at integer level (`window_int.py`, all-singles leaks, all 256 assignments, both role choices): the best plan
+  needs **16 > 15**. Continuous value 1/3 + 2δ = 14.67 points; rounding (windows <= τ_X - 1 = 7, triple cell p = 2, G_7 =
+  8 + 2) costs the margin. PS3 overruns there (control row of 28.2).
+- Exact game: the requester's choice is a 15-subset of a ground set of 46 + m points at each of 7 rounds, and the adversary
+  has comparable choice. No exact solver is feasible. **Undecided.**
+- Larger k at the same δ = 0.2 (t = 3/4): k = 40, d = 8 and k = 80, d = 16 fit exactly (centre max = T; replay above).
+
+### 28.5 2+2 in the open range [heuristic]
+
+There a_0 = 1 - t/2 - δ < θ(t) and L*(a_0, 1 - t + a_0) <= t, so the copy bound 11.3 alone no longer blocks. But:
+- a class-A pair produced by a request that forces class A has overlap >= 1 - t/2 against a copying adversary: the request
+  has at most t/2 outside R_F, so the second member can copy the rest of the first, pool leak included [proved by hand];
+- an unforced request aimed at a member of class A is answered in class F (refusal). Serving one member of each class splits
+  the budget, and leaves overlap >= 1 - t/2 on whichever class answers.
+So every reachable same-class pair seems to have overlap >= 1 - t/2, and 1 - t/2 <= θ(t) iff t >= 14/17 = 0.82: outside the
+range. Making this a theorem needs an adversary that copies every served member at once (the Theorem N issue). Not done.
+
+### 28.6 Status
+
+- Closed: pooled 𝒜 for δ < t/2 - 1/6 (all t >= 3/4), hence **for all δ when t >= 7/9**.
+- Open: t/2 - 1/6 <= δ < 1 - t, 3/4 < t < 7/9. This is the limit of the 4 + 3 window-and-seal method [computed exact].
+- Dead: improving 4 + 3 sealing further inside the model (the LP is tight); single-serve 2+2 [heuristic]; Theorem T/Q′
+  without confinement.
+- Correction to 27.2: the vertex argument needs a fixed S-choice (done; max 2δ).
+Hand proofs re-read once: 28.2 window arithmetic and the balancing; 28.3 sum. Checks: `py compute/petal5/window_lp.py scan2`
+(about 5 min); `py compute/petal5/window_int.py 20 15 4`; `py compute/petal5/ps3.py 20`.

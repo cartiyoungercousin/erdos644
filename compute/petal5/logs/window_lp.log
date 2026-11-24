@@ -1,0 +1,11 @@
+t | 1-t | t/4 | upper: dmax vs all-singles adversary (best assignment) | lower: dmax robust over all 94 leak vertices, that assignment
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+0.750 | 0.2500 | 0.1875 | 0.20833 ('D', 0, 1, 2) | 0.20833 ('D', 0, 1, 2)
+0.760 | 0.2400 | 0.1900 | 0.21333 ('D', 0, 1, 2) | 0.21333 ('D', 0, 1, 2)
+0.770 | 0.2300 | 0.1925 | 0.21833 ('D', 0, 1, 2) | 0.21833 ('D', 0, 1, 2)
+0.775 | 0.2250 | 0.1938 | 0.22083 ('D', 0, 1, 2) | 0.22083 ('D', 0, 1, 2)
+0.780 | 0.2200 | 0.1950 | 0.22000 ('D', 0, 1, 2) | 0.22000 ('D', 0, 1, 2)
+0.785 | 0.2150 | 0.1963 | 0.21500 ('D', 0, 1, 2) | 0.21500 ('D', 0, 1, 2)
+0.790 | 0.2100 | 0.1975 | 0.21000 ('D', 0, 1, 2) | 0.21000 ('D', 0, 1, 2)
+0.800 | 0.2000 | 0.2000 | 0.20000 ('D', 0, 1, 2) | 0.20000 ('D', 0, 1, 2)
