@@ -739,3 +739,149 @@ Self-check (Part IV): table of §16 — pairwise intersections and all seven co-
 15/8 pattern verified by hand (each co-edge 7/8); exact values from Fractions. 17.1 re-derived;
 the 2-core bound uses |K_i∩K_j| = N - 2k when K_i ∪ K_j = V. 17.2 and 17.3 are float MILPs (HiGHS);
 the q <= 4 columns agree with the hand count to four decimals.
+
+=============================================================================================
+# Part V — Barrier D+E: what the 1.8k strategy tree is, and why it does not extend (fifth time box)
+
+Code: `compute/core/tree_read.py` (`py tree_read.py nodes | leaf BITS`), `tree_leaves.py` (all 64 leaves),
+`fixlab.py` (`py fixlab.py t N...`, fixed-labelling MILP, < 1 min). Input: REDTEAM §14's tree
+`compute/redteam/logs/adaptive_tree_full_T0.76_N1.8.json`. Types below are reply-types (set of replies
+B_i containing the point), as in REDTEAM; co-type = complement.
+**Outcome: CP is NOT proved in the window. No adversary win either.**
+- §20 [computed]: the tree is Theorem T (triangle at replies 1–3, the four lines of §3 afterwards) with a
+  flexible finish; reply 5 is a dummy at all 64 leaves; the Fano labelling is fixed by round 4.
+- §21 [proved]: N = 1.8k at t = 0.76 is exactly N = 5T - 2k, where omega = 4·eps·k. The tree wins because
+  a fixed labelling has slack 4·eps·k = omega there. It says nothing about the interior of the window.
+- §22 [proved + computed]: an exact potential form of the game for a fixed labelling, and the
+  **fixed-labelling theorem**: if the Fano labelling of the seven kept replies is determined by her
+  requests (no discard), the "W-dumper" beats her whenever omega > 4·eps·k, for all 30 labellings.
+- §23: candidate type-relative strategy, what is proved for it, and the exact point where it breaks
+  (a covering condition on "absorbable sets" that fails for every portfolio of three co-edges).
+- §24: exact remaining statement and next step.
+
+## 20. Structure of the 1.8k tree [computed; float re-simulation of the exactly verified tree]
+
+All 64 leaves: discard = reply 5; kept six 1,2,3,4,6,7 plus the eighth reply; the seven classes are
+(kept reply-types) 134, 246, 237, 167 and, inside D, 1236, 1247, 3467 — masses 0.19–0.26 each.
+Branch OU (bits of replies 2,3) uses 136, 246, 237, 147 | 1234, 1267, 3467 instead. Both are Fano blow-ups of class (T).
+Rules, in type-relative form (cells of §3 after three replies: d, b, a = points in B_1, B_2, B_3 only;
+e_3, e_2, e_1 = types 12, 13, 23; g = type 123; κ = points in no reply):
+- R2. Request s of the unused points and T - s of B_1, with s chosen so that |K_1∩K_2| lands in
+  [a* - small, a* + omega/2] for both bits (a* = N/2 - 5k/8 = 0.275; tree: s = 0.258, result 0.269 / 0.290).
+- R3. Triangle-type request: nothing of K_1∩K_2, about half of each of d ∪ e_2-to-be, b ∪ e_1-to-be, and half of
+  B_1∩B_2 (0.26, 0.26, 0.24). After reply 3 all seven cells are 0.22–0.28 and κ = 0.005 (bit O) or 0.026 (bit U).
+- R4. One complete line of Theorem T: d ∪ e_1 ∪ g (branches UU, UO, OO; plus <= 0.02 of e_3, a, κ), or
+  e_1 ∪ e_2 ∪ e_3 (branch OU). Which line goes first is the only place the labelling depends on the bits.
+- R5. Dummy (reply 5 is never kept; the value does not depend on its bit).
+- R6, R7, D. The remaining three lines of Theorem T, each requested as "all points of these three cells,
+  refined by the replies since", slivers (points his dump kept out of an earlier reply) added as budget allows.
+So the describable strategy is: **Theorem T, lines requested in an order chosen after reply 3, class
+membership of dumped points re-decided at the end.** Static Theorem T alone does not suffice at the nodes:
+node UU fails by 0.001 (loads 0.752, 0.744, 0.759, 0.744 plus κ = 0.026 against 4 x 0.76), node UO by 0.014
+(loads 0.774 and 0.765). The difference is absorbed by *flexible points*: a point of class b that his
+reply-4 dump put into K_4 has co-type {1,3,4} and may be finished by L_b or by L_e (pencil of b or of e_1);
+similarly e_3-points in K_4 need L_a and one of L_e, L_b. κ-points that he dumps into a later line
+through a vertex are discharged for free ("pile pays").
+Consistent with REDTEAM §16 (coordinator's note): the tree's absolute masses are meaningless away from
+tilt fraction 1/2; only the rules above are. I did not re-encode or re-test them (another agent's job, §17 there).
+
+## 21. Why it works at 1.8k and not beyond [proved by hand; numbers computed]
+
+**21.1 Six-plus-one identity.** For six kept co-edges let D = {x : I_x ∩ I_y = ∅ for some y} and
+W6 := Σ_{x ∉ D} (|I_x| - 3) + Σ_{x ∈ D} (|I_x| - 2). Then |D| = 3N - 6(N-k) + W6, so the ending "six kept
+replies, then request D" wins iff W6 <= 3(N - 7k/4) + eps·k = 3·omega + 4·eps·k. (Count Σ|I_x| = 6(N-k).)
+**21.2** In a class-(T) ending the dumps of the four kept replies 3, 4, 6, 7 are the only source of W6
+(replies 1, 2 are lines by definition). If all four are wasted, W6 = 4·omega > 3·omega + 4·eps·k iff
+omega > 4·eps·k iff **N > 5T - 2k**. At t = 0.76 that is N > 1.80k: the tree sits exactly on the boundary.
+From the exact margins: W6 = 0.160 - margin lies in 0.127–0.154, against 0.164 if the four dumps
+(0.041 each at budget 0.759) were all wasted. The tilted spread wastes 78–94 % of them; 100 % would win.
+**21.3 Consequence.** The 1.8k win is the statement "Theorem T with a third reply that wastes at most
+~0.65·omega" at the one N where even a fully wasted third reply costs only the whole slack. It is not
+evidence for the interior of the window. At N = 1.85k, bit U at reply 3 alone gives κ >= omega/2 =
+0.045 > 4·eps·k = 0.04, so no class-(T) plan with reply 3 kept survives that bit [proved count]; this
+matches the other agent's failure to build a tree at 1.85k (`adaptive_drv*_N1.85_m8.log`, "constructed": false).
+
+## 22. The game for a fixed labelling: exact potential, and a theorem
+
+Setting: seven replies in time order 1..7, a Fano labelling λ (which triples of replies are pencils).
+For a point x with current co-type I and time τ call a pencil P *completable* if P ∩ [τ] ⊆ I, and put
+e(x) = |I| - max over completable P of |I ∩ P|  (= ∞ if none).
+**22.1 Lemma [proved].** e is non-decreasing in time for every x; at the end e(x) = |I_x| - 3 if I_x
+contains a pencil and ∞ otherwise. Hence she wins with labelling λ iff Σ_x e(x) <= 4N - 7k at the end,
+and then equality holds (2.1). The increment at step j depends only on x's own history:
+c_in = 1 unless a completable pencil through j attains the max; c_out = (drop of the max when pencils
+through j become non-completable). *Proof.* Adding j raises |I| by 1 and the max by at most 1; excluding
+x from K_j only removes pencils from the max. ∎
+Check against §9: step 3, triangle labelling: cost = |K_1∩K_2∩K_3| = W_tri; pencil labelling: cost =
+|O∖K_3| now, and K_3∩(A∪B) has e = 1 from the next step on — W_pen. Step 4 through the vertex a (pencils
+124, 135, 236, 347, 167, 257, 456): b, d, e_1, e_2 have c_in = 1; a∖κ, e_3, g must be requested (c_out >= 1);
+κ is neutral — "pile pays".
+**22.2 W-dumper.** W_j := {x : c_in(x) = 1 at step j}. Adversary rule: put the dump on W_j ∖ S_j first.
+Then the cost of step j is at least min(omega, |W_j|), her own requests inside W_j included.
+**22.3 Fixed-labelling theorem [principle proved by hand; the bound computed, float MILP].** For every one
+of the 30 labellings, every final configuration (masses on co-types containing a pencil, every co-edge
+of mass N - k) that satisfies |K_j ∩ W_j| >= min(omega, |W_j|) for j = 3..7 exists iff omega <= 4·eps·k.
+`fixlab.py`: max of s such that the conditions hold with omega + s in place of omega is exactly
+(4·eps·k - omega)/5 for all 30 planes at (t, N) = (0.76; 1.79, 1.8, 1.82, 1.85, 1.9, 1.95, 2.0) and
+(0.751; 1.76, 1.8, 1.9); the alternative "all of W_j inside K_j" never helps. So:
+*if her seven replies are kept in order and their labelling is a function of what she has requested,
+the W-dumper wins for every N > 5T - 2k (Fano-type certificates; that is all certificates for N < 11k/6).*
+This is the rigorous form of §6's heuristic "5·omega > 4·delta". The 1.8k tree is of this kind (labelling
+fixed by round 4), which is why it lives at omega = 4·eps·k.
+**22.4 Why requests reveal the labelling [proved count].** Under a labelling the points with c_out >= 1 at
+step j ("needy") are the line L_j, mass about 3k/4; for two labellings that differ at step j the needy
+sets differ by about k/2, and a request serving one costs about k/2 under the other, more than the whole
+budget 4N - 7k <= k/2 for N <= 15k/8. So within one kept seven she cannot keep two labellings alive past
+the request. The only freedom left is which replies are kept (discards).
+
+## 23. Candidate general strategy, and where the proof breaks
+
+**Strategy Σ (type-relative).** (1) Any K_1. (2) Request a* of K_1 and T - a* of B_1. (3) Triangle-type
+request against a pair in hand: nothing of K_i∩K_j, a* of each private part, T - 2a* of the rest.
+(4) If the reply satisfies 14.1 (all but eps·k of the dump outside K_i∪K_j), finish with Theorem T, lines in
+any order, κ split by 22.1 (κ is neutral for a line through a vertex). (5) Otherwise keep the reply in the
+portfolio and repeat (3) against other pairs.
+What is proved for Σ: it wins against every adversary whose dump at some reply satisfies 14.1 for some
+pair in position (Theorem T); against pool adversaries (Theorem P) and pure modes (9.2). Nothing else.
+**Where it breaks — the covering condition.** For a request S and a reading R (a set of earlier replies
+to be kept, with labelling) let U^R(S) be the set of unrequested points on which a dump costs nothing
+under R. The useful part of a dump D is at most max_R |D ∩ U^R(S)|, and by 8.1 she needs useful dump
+>= omega - 4·eps·k in total over the kept replies 3..7, plus whatever slack balance consumes.
+- [proved] For three co-edges X_1, X_2, X_3 and a request that is triangle-type for all three pairs, the
+  points lying in at least two of them have mass >= (3(N-k) - N)/2 = N - 3k/2 > omega, are all unrequested,
+  and a dump there is in X_a∩X_b for one pair (waste, 9.1) and in a private part for the other two
+  (fails 14.1 by its full mass). So U^R = points in at most one X_a, and he never needs to touch it.
+  This is 12.3 and 14.2 as one statement: no portfolio of third-line readings covers V∖S.
+- [proved, from 22.1, for clean blow-ups] From step 4 on, under a reading in which S is a line, U^R(S) is the
+  unrequested part of that line plus the neutral points: mass about omega out of k + omega unrequested.
+  Readings with disjoint U^R give him a dump with max_R |D∩U^R| about omega·omega/(k + omega); readings with a
+  common U^R are avoided altogether.
+- [heuristic] Flexible points (§20) relax balance, not waste, and he can deny them: after a line through d,
+  a dump on class b gives the alternatives L_b or L_e, useless whenever L_e is the heavier line.
+So Σ, and every strategy whose kept replies are "lines against a portfolio", gets useful dump o(omega)
+per reply against a spread, request-dependent dump. The missing lemma is exactly:
+**(COVER)** *there are m, a request rule and a family of readings such that for every adversary one
+consistent reading R has Σ over its kept replies of |D_j ∩ U^R(S_j)| >= omega - 4·eps·k + (balance cost).*
+Dead, with reasons: fixed labelling without discard (22.3); third-line portfolios (above); pile-or-pay (§12–14).
+
+## 24. Exact remaining statement and next step
+
+Unchanged in content from §19, now in potential form: for 5T - 2k < N < 3k - T find m and a requester
+strategy such that for every adversary some seven of the m replies and some labelling λ have
+Σ_x e_λ(x) <= 4N - 7k. Known necessary: the kept seven or their labelling must depend on his dumps
+(22.3), i.e. discards are essential; a single kept seven cannot hedge between labellings (22.4).
+Not known, in either direction: whether discards can make a dump useful beyond o(omega) (COVER).
+**Next step.** Decide COVER for two stages exactly. By 22.1 the cost under each reading is linear in the
+type masses, so "she requests S_3, he dumps, she requests S_4 (free to discard reply 3), he dumps; value =
+min over readings of the cost" is a finite max-min over at most 16 types and a few dozen readings. If
+the value stays >= 2·omega - o(omega), the same structure repeats at every later stage and the bounded-m game
+is lost at first order; CP must then be attacked as a family statement (the forbidden-intersection route
+of §15). If it drops to (2 - c)·omega with c > 0 independent of eps, that request pair is the mechanism.
+Not done: that computation; any test of the type-relative rules of §20; non-Fano certificates for
+N >= 11k/6 in 22.3 (the MILP allows only co-types containing a pencil).
+
+Self-check (Part V): §20 from a float replay of the exactly verified tree (64/64 leaves, discard 5);
+21.1 is a count; 22.1 re-derived and checked against W_tri, W_pen and the step-4 table by hand; 22.3 is a
+relaxation in her favour (it ignores the T-budget of her requests and where exactly inside W_j he dumps), so
+infeasibility is on the safe side, but it is floating point, not a certificate. The "about k/2" in 22.4
+and the omega·omega/(k + omega) in §23 are first-order counts, not optimised bounds.
