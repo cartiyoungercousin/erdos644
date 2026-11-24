@@ -337,3 +337,101 @@ Not done: a proof of the lemma, or an adaptive concentrated adversary beating th
 - §8 relies on PETAL Theorem J and TWIN Theorem D as stated; only the disjoint-arena case was re-derived.
 - `node ../fresh_c/anchor.js 9 7` (read-only use of C's solver, to list the winning anchor shapes at
   t = 0.778) did not finish in the time box; nothing is claimed from it.
+
+## 11. What the certified winning lines realise at the end (for TWIN §16–§17, request E3)
+
+Analysis only: the saved lines were re-simulated (`compute/redteam/fano_read.py`; outputs `fano_read.out`,
+`fano_classes.out`, `fano_nonfano.out`, `fano_requests.out`). Seven = the six kept replies plus the eighth
+reply (any k-set avoiding D). A type is "realised" if one point has it (slivers included, tolerance 2e-6).
+For each line all 30 labelled Fano planes on the seven were tested for "every realised type is line-free".
+Classes as in TWIN 16.1, by the first four kept rounds. Masses are float re-simulations at budget 0.759
+(the lines themselves are the exactly verified ones). [computed; classification exhaustive over labellings]
+
+**Answer in one line.** N = 1.9k: a Fano labelling of class **(T)** (triangle + point on a side), unique.
+N = 2.0k (`cert_N2_T076.json`): a Fano labelling of class **(Q)** (quadrangle-first), unique. In both the
+discarded reply is the fifth. No line realises the 2-(6,3,2) pattern (every line has realised 4-fold types).
+Lines at N = 2.1k, 2.2k and two mixture lines at 2.0k are **not Fano** (no labelling), see 11.3.
+
+### 11.1 N = 1.9k, t = 0.76, proportional adversary — class (T)
+
+Kept replies 1,2,3,4,6,7 and the final reply 8; reply 5 discarded; mass(D) = 0.726 at budget 0.759.
+Unique labelling, lines: **234, 146, 137, 267, 128, 368, 478** (these are exactly the seven empty triples).
+So 1,2,3 is a triangle, 4 lies on its side 23, then 6 on 14, 7 = 13 ∩ 26, 8 = 12 ∩ 36 ∩ 47.
+
+| round | block she must pay (16.1) | mass | rest of the request |
+|---|---|---|---|
+| 2 | none | 0 | 0.556 of B_1, 0.203 of the pool |
+| 3 | none (triangle) | 0 | 0.269 of B_1 only, 0.277 of B_2 only, 0.212 of B_1∩B_2 (not sealed: 123 is realised) |
+| 4 | B_2 ∩ B_3 (line 234) | 0.447 (23: 0.292, 123: 0.155) | 0.312 = all points lying only in B_1 |
+| 5 (discarded) | — | — | all of 1-only (0.312), all of 24 (0.279), small singles, part of 34 |
+| 6 | B_1 ∩ B_4 (line 146) | 0.467 (134: 0.262, 124: 0.205) | 0.292, spent on points of B_5 (types 235, 23) |
+| 7 | (B_1∩B_3) ∪ (B_2∩B_6) (lines 137, 267) | **0.759 = whole budget** (134: 0.262, 246: 0.245, 1236: 0.136, …) | 0 |
+| 8 | (B_1∩B_2) ∪ (B_3∩B_6) ∪ (B_4∩B_7) = D | 0.726 | 0.034 spare |
+
+Final types on the six kept replies (mass; * = in D): triples 134 0.262, 237 0.256, 246 0.245, 167 0.239
+(the four heavy classes), 136* 0.032, 247* 0.030, 124* 0.025, 126* 0.025, 347* 346* 467* 367* 0.024 each,
+123* 0.019; 4-fold 1247* 0.180, 3467* 0.171, 1236* 0.136; pairs 23 0.036, 26 0.035, 17 0.034, 16 0.034 and
+dust; no 5-fold type. Degree masses: 1.234 in triples, 0.487 in 4-fold, 0.172 in pairs.
+Reading: the heavy part is the Fano six-state of FRESH_C §8.1 (four transversal triples about 1/4 each,
+three 4-types of total 0.49), but the *order* is (T): the first three replies are NOT anchors (B_1∩B_2 is
+only partly requested at round 3), the first paid block comes at round 4, and the two tight rounds are 7
+and 8. Reply 5 is a real spare: its request strips B_1-only and the 24-cell, and the reply is then used
+only as a place to spend the free budget of round 6.
+
+### 11.2 N = 2.0k, t = 0.76, proportional adversary — class (Q)
+
+Kept 1,2,3,4,6,7 + 8; reply 5 discarded; mass(D) = 0.693. Unique labelling, lines
+**128, 348, 137, 247, 146, 236, 678**: 1,2,3,4 a quadrangle; 6, 7, 8 its diagonal points for the matchings
+(14)(23), (13)(24), (12)(34); 678 the diagonal line.
+
+| round | block | mass | rest of the request |
+|---|---|---|---|
+| 2 | none | 0 | 0.606 of B_1, 0.153 of the pool |
+| 3 | none | 0 | 0.315 each of 1-only, 2-only; 0.130 of B_1∩B_2 |
+| 4 | none | 0 | whole budget on the pair cells 23 (0.296), 13 (0.296), 12 (0.166); 123 is left unrequested |
+| 5 (discarded) | — | — | cells 14 (0.311), 34 (0.206), singles, part of 24 |
+| 6 | B(m_1) = (B_1∩B_4) ∪ (B_2∩B_3) | **0.759 = whole budget** (14: 0.311, 23: 0.296, 1234: 0.122, 123: 0.029) | 0 |
+| 7 | B(m_2) = (B_1∩B_3) ∪ (B_2∩B_4) | **0.759 = whole budget** (246: 0.251, 136: 0.239, 1234: 0.122, 24: 0.060, 13: 0.058, 123: 0.029) | 0 |
+| 8 | B(m_3) ∪ (B_6∩B_7) = D | 0.693 | 0.066 spare |
+
+Final types: triples 246 0.251, 147 0.251, 237 0.239, 136 0.239, 167* 267* 0.049, 467* 367* 347* 346* 0.032,
+123* 0.029, 127* 126* 0.026; 4-fold 3467* 0.134, 1234* 0.122, 1267* 0.108; pairs 14, 24 0.060, 13, 23 0.058,
+small others; degree masses 1.287 / 0.364 / 0.336. So this is TWIN 16.4's labelling with loads
+(L(m_1), L(m_2), L(m_3)+e) = (0.759, 0.759, 0.693) and n_4 = 0.122 > 0: the adversary's rule does put
+common points of the first three replies into B_4 (type 1234), and she still fits, with two loads exactly
+at the budget. Another run at the same (N, t) (`prop_c.log`, all discards free) ends in class (T): both
+labellings are available at 2.0k.
+
+### 11.3 All saved lines
+
+| line | class |
+|---|---|
+| N = 1.9k proportional | (T) |
+| N = 2.0k proportional (cert, budget 0.759, discard fixed) | (Q) |
+| N = 2.0k proportional (prop_c, budget 0.76) and t = 0.80 | (T) |
+| N = 2.15k proportional (discard reply 1) | (Q) |
+| N = 2.0k, concentrated omission at reply 2 or 6; mixture 1,1,.5,1,.5,1 GIFT; all plan-transfer lines (alpha = 0, .25, .5, .8, .9) | (Q) (plan transfer inherits the certificate's plan) |
+| N = 2.0k, concentrated omission at reply 4 or 7; alternating 0,1,0,1,0,1 | (T) |
+| N = 2.0k, alternating 1,0,1,0,1,0 | (L) line-first |
+| N = 2.1k, 2.2k proportional; N = 2.0k half-HIGH mixture; N = 2.0k 1,1,0,1,1,1 HIGH | **no Fano labelling** |
+
+Non-Fano lines (e.g. N = 2.1k, mass(D) = 0.632): nine empty triples instead of seven
+(123, 124, 234, 236, 146, 137, 247, 128, 348), only two realised 4-fold types among the six kept
+(1267 0.124, 3467 0.100), four heavy triples 237, 246, 147, 136 as before, and a heavy triple inside D
+(134 0.166). It is the (Q) picture with the 4-type 1234 absent (three of the four triples of the
+quadrangle are empty) and its mass sitting in a triple that she pays for at the last round; the realised
+types are an intersecting-complement family, but no Fano plane contains it. With more room she is not
+forced onto a Fano labelling, which is consistent with TWIN 17.1 ("D <= t is more general").
+
+### 11.4 What this gives the twin
+
+- At N = 1.9k the pattern is exactly the unanalysed labelling (T) with one discard, not (L) with an
+  adaptive finish and not a non-Fano family. The candidate for the window (3t - 1/2, 8/3 - t) is
+  therefore: **triangle first with nothing sealed; S_4 = (B_a∩B_b) + all points lying only in the third
+  triangle reply; one spare reply; then blocks B_1∩B_4, (B_1∩B_3)∪(B_2∩B_6), and D.** Loads in the
+  realised line: 0.447, 0.467, 0.759, 0.726 at budget 0.759 — rounds 7 and 8 are the binding ones, so the
+  inequality to prove for (T) is about those two blocks.
+- This is one line against one fixed rule (proportional omissions); it shows (T) is feasible at 1.9k for
+  that opponent, not that (T) is forced or sufficient against an adaptive one. The classification was
+  done on float re-simulations of the saved lines; the lines' values are the exactly verified ones, the
+  list of realised types is not separately certified in rationals.

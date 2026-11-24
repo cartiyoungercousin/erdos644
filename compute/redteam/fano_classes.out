@@ -1,0 +1,62 @@
+[nb_0.log] === N=1.9 t(budget)=0.759 alphas=[1.0, 1.0, 1.0, 1.0, 1.0, 1.0] discard reply 5; kept replies ['1', '2', '3', '4', '6', '7'] + final reply 8 mass(D)=0.7259
+[nb_0.log]   Fano labellings with every realised type line-free: 1 of 30
+[nb_0.log]     lines 128 137 146 234 267 368 478   class by the first four kept rounds: (T) triangle + point on a side
+[nb_0.log] === N=2.1 t(budget)=0.759 alphas=[1.0, 1.0, 1.0, 1.0, 1.0, 1.0] discard reply 5; kept replies ['1', '2', '3', '4', '6', '7'] + final reply 8 mass(D)=0.6323
+[nb_0.log]   Fano labellings with every realised type line-free: 0 of 30
+[nb_0.log] === N=2.2 t(budget)=0.759 alphas=[1.0, 1.0, 1.0, 1.0, 1.0, 1.0] discard reply 5; kept replies ['1', '2', '3', '4', '6', '7'] + final reply 8 mass(D)=0.4878
+[nb_0.log]   Fano labellings with every realised type line-free: 0 of 30
+[nb_0.log] === N=2.0 t(budget)=0.759 alphas=[1.0, 1.0, 0.0, 1.0, 1.0, 1.0] discard reply 5; kept replies ['1', '2', '3', '4', '6', '7'] + final reply 8 mass(D)=0.5084
+[nb_0.log]   Fano labellings with every realised type line-free: 1 of 30
+[nb_0.log]     lines 128 136 147 234 267 378 468   class by the first four kept rounds: (T) triangle + point on a side
+[nb_0.log] === N=2.0 t(budget)=0.759 alphas=[1.0, 1.0, 1.0, 1.0, 0.0, 1.0] discard reply 5; kept replies ['1', '2', '3', '4', '6', '7'] + final reply 8 mass(D)=0.5397
+[nb_0.log]   Fano labellings with every realised type line-free: 1 of 30
+[nb_0.log]     lines 128 136 147 237 246 348 678   class by the first four kept rounds: (Q) quadrangle-first
+[nb_0.log] === N=2.0 t(budget)=0.759 alphas=[1.0, 1.0, 1.0, 1.0, 1.0, 0.0] discard reply 5; kept replies ['1', '2', '3', '4', '6', '7'] + final reply 8 mass(D)=0.5953
+[nb_0.log]   Fano labellings with every realised type line-free: 1 of 30
+[nb_0.log]     lines 124 136 178 238 267 347 468   class by the first four kept rounds: (T) triangle + point on a side
+[nb_0.log] === N=2.0 t(budget)=0.759 alphas=[0.0, 1.0, 1.0, 1.0, 1.0, 1.0] discard reply 5; kept replies ['1', '2', '3', '4', '6', '7'] + final reply 8 mass(D)=0.6930
+[nb_0.log]   Fano labellings with every realised type line-free: 1 of 30
+[nb_0.log]     lines 128 136 147 237 246 348 678   class by the first four kept rounds: (Q) quadrangle-first
+[nb_1.log] === N=2.0 t(budget)=0.759 alphas=[0.5, 0.5, 0.5, 0.5, 0.5, 0.5] discard reply 5; kept replies ['1', '2', '3', '4', '6', '7'] + final reply 8 mass(D)=0.6995
+[nb_1.log]   Fano labellings with every realised type line-free: 0 of 30
+[nb_1.log] === N=2.0 t(budget)=0.759 alphas=[1.0, 0.0, 1.0, 0.0, 1.0, 0.0] discard reply 5; kept replies ['1', '2', '3', '4', '6', '7'] + final reply 8 mass(D)=0.4680
+[nb_1.log]   Fano labellings with every realised type line-free: 1 of 30
+[nb_1.log]     lines 123 148 167 246 278 347 368   class by the first four kept rounds: (L) line-first
+[nb_1.log] === N=2.0 t(budget)=0.759 alphas=[0.0, 1.0, 0.0, 1.0, 0.0, 1.0] discard reply 5; kept replies ['1', '2', '3', '4', '6', '7'] + final reply 8 mass(D)=0.4286
+[nb_1.log]   Fano labellings with every realised type line-free: 1 of 30
+[nb_1.log]     lines 128 137 146 234 267 368 478   class by the first four kept rounds: (T) triangle + point on a side
+[nb_1.log] === N=2.0 t(budget)=0.759 alphas=[1.0, 1.0, 0.0, 1.0, 1.0, 1.0] discard reply 5; kept replies ['1', '2', '3', '4', '6', '7'] + final reply 8 mass(D)=0.5338
+[nb_1.log]   Fano labellings with every realised type line-free: 0 of 30
+[nb_1.log] === N=2.0 t(budget)=0.759 alphas=[1.0, 1.0, 0.5, 1.0, 0.5, 1.0] discard reply 5; kept replies ['1', '2', '3', '4', '6', '7'] + final reply 8 mass(D)=0.6289
+[nb_1.log]   Fano labellings with every realised type line-free: 1 of 30
+[nb_1.log]     lines 126 137 148 238 247 346 678   class by the first four kept rounds: (Q) quadrangle-first
+[plan.log] === N=2.0 t(budget)=0.759 alphas=[0.9, 0.9, 0.9, 0.9, 0.9, 0.9] discard reply 5; kept replies ['1', '2', '3', '4', '6', '7'] + final reply 8 mass(D)=0.6963
+[plan.log]   Fano labellings with every realised type line-free: 1 of 30
+[plan.log]     lines 128 137 146 236 247 348 678   class by the first four kept rounds: (Q) quadrangle-first
+[plan.log] === N=2.0 t(budget)=0.759 alphas=[0.5, 0.5, 0.5, 0.5, 0.5, 0.5] discard reply 5; kept replies ['1', '2', '3', '4', '6', '7'] + final reply 8 mass(D)=0.7006
+[plan.log]   Fano labellings with every realised type line-free: 1 of 30
+[plan.log]     lines 128 137 146 236 247 348 678   class by the first four kept rounds: (Q) quadrangle-first
+[plan.log] === N=2.0 t(budget)=0.759 alphas=[0.8, 0.8, 0.8, 0.8, 0.8, 0.8] discard reply 5; kept replies ['1', '2', '3', '4', '6', '7'] + final reply 8 mass(D)=0.6536
+[plan.log]   Fano labellings with every realised type line-free: 1 of 30
+[plan.log]     lines 128 137 146 236 247 348 678   class by the first four kept rounds: (Q) quadrangle-first
+[plan.log] === N=2.0 t(budget)=0.759 alphas=[0.25, 0.25, 0.25, 0.25, 0.25, 0.25] discard reply 5; kept replies ['1', '2', '3', '4', '6', '7'] + final reply 8 mass(D)=0.7028
+[plan.log]   Fano labellings with every realised type line-free: 1 of 30
+[plan.log]     lines 128 137 146 236 247 348 678   class by the first four kept rounds: (Q) quadrangle-first
+[plan.log] === N=2.0 t(budget)=0.759 alphas=[0.0, 0.0, 0.0, 0.0, 0.0, 0.0] discard reply 5; kept replies ['1', '2', '3', '4', '6', '7'] + final reply 8 mass(D)=0.7230
+[plan.log]   Fano labellings with every realised type line-free: 1 of 30
+[plan.log]     lines 128 137 146 236 247 348 678   class by the first four kept rounds: (Q) quadrangle-first
+[plan.log] === N=2.0 t(budget)=0.759 alphas=[0.0, 0.0, 0.0, 0.0, 0.0, 0.0] discard reply 5; kept replies ['1', '2', '3', '4', '6', '7'] + final reply 8 mass(D)=0.7230
+[plan.log]   Fano labellings with every realised type line-free: 1 of 30
+[plan.log]     lines 128 137 146 236 247 348 678   class by the first four kept rounds: (Q) quadrangle-first
+[plan.log] === N=2.0 t(budget)=0.759 alphas=[0.0, 0.0, 0.0, 0.0, 0.0, 0.0] discard reply 5; kept replies ['1', '2', '3', '4', '6', '7'] + final reply 8 mass(D)=0.4820
+[plan.log]   Fano labellings with every realised type line-free: 1 of 30
+[plan.log]     lines 128 137 146 236 247 348 678   class by the first four kept rounds: (Q) quadrangle-first
+[prop_c.log] === N=2.0 t(budget)=0.76 alphas=None discard reply 5; kept replies ['1', '2', '3', '4', '6', '7'] + final reply 8 mass(D)=0.7030
+[prop_c.log]   Fano labellings with every realised type line-free: 1 of 30
+[prop_c.log]     lines 128 134 167 236 247 378 468   class by the first four kept rounds: (T) triangle + point on a side
+[prop_d.log] === N=2.0 t(budget)=0.8 alphas=None discard reply 5; kept replies ['1', '2', '3', '4', '6', '7'] + final reply 8 mass(D)=0.5832
+[prop_d.log]   Fano labellings with every realised type line-free: 1 of 30
+[prop_d.log]     lines 128 134 167 237 246 368 478   class by the first four kept rounds: (T) triangle + point on a side
+[prop_d.log] === N=2.15 t(budget)=0.76 alphas=None discard reply 1; kept replies ['2', '3', '4', '5', '6', '7'] + final reply 8 mass(D)=0.7114
+[prop_d.log]   Fano labellings with every realised type line-free: 1 of 30
+[prop_d.log]     lines 237 246 258 348 356 457 678   class by the first four kept rounds: (Q) quadrangle-first
