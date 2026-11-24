@@ -968,3 +968,108 @@ D1. Confined game on N = 1.8k, 1.85k, 1.9k, 2.0k at T = 0.76k-type sizes (e.g. (
 D2. Four-reply states: on the same sizes, the set of 4-states from which (Q) wins (16.4) and whether
     she can force one; this is a 4-round game plus a closed form, far smaller than the 7-round game.
 D3. The same for (T): states after four replies with one blocked pair.
+
+=============================================================================================
+## 17. Far replies and the concentrated lemma (ninth time box)
+
+**Outcome.** The six-state lemma is still unproved, so G1 (the window) is open. For G2 I prove a
+tolerance lemma (17.2): a strategy for an arena V survives replies that leave V, at an extra cost
+equal to the mass of outside points lying in two fed replies. This closes G2 against "arena plus
+rare far replies" and shows what is left of G2: far replies that re-use each other's outside
+points in bulk, i.e. a second arena. 17.3 gives the block-form certificate that uses such a
+second family (quadrangle + line) and the order condition under which it works. So G1 and G2 are
+NOT one gap: G2 reduces to G1 plus a two-family ordering problem. Units k = 1.
+
+### 17.1 Restatement
+
+A triple of replies with empty common intersection is *good* if she wins from it statelessly
+(Theorem D: p <= t - 1/3; PETAL Theorem L; PETAL's computed region). Target statement:
+**Lemma S (to be proved).** For t >= 3/4 + eps there is m(eps) such that in any play of m(eps) requests
+either a good triple appears, or six of the replies have dangerous set D of mass <= t.
+Hypothesis-free form of the same thing: the non-good triples are the concentrated ones (p > t) and
+the spread ones with a dominant pair. Note that "D <= t" is more general than the Fano six-state of
+16.1 (any intersecting family of complement-types is allowed), and by 16.4–16.5 the Fano labellings
+alone cannot be the whole answer on 1.75k < N < 1.917k.
+
+### 17.2 Tolerance lemma [proved by hand]
+
+**Lemma 17.A.** Let Σ be a requester strategy that wins the confined game on a set V (budget T_Σ,
+discards allowed). In the open game she feeds Σ the padded replies R'_i = (R_i ∩ V) ∪ P_i
+(P_i ⊂ V∖(S_i ∪ R_i), |R'_i| = k) and obeys two rules:
+(ρ) every request also contains all points outside V that lie in two fed replies;
+(π) if R_i shares an outside point with an earlier fed reply R_j, then P_i contains a point of
+    R'_j∖S_i.
+Then the seven real replies corresponding to Σ's winning padded seven have no 2-cover.
+*Proof.* By (ρ) no outside point lies in three fed replies, so an outside point of R_i is shared
+with at most one earlier fed reply; hence (π) needs at most |R_i∖V| padding points and is
+satisfiable (R'_j ⊄ S_i because k > T). Let {x,y} cover the real seven. If x, y are in V they cover
+the padded seven (R_i ∩ V ⊆ R'_i): impossible. If x, y are both outside V, each lies in at most two
+of the seven: impossible. If x is outside V and y in V, then y lies in the at least five kept
+replies not containing x; the at most two kept replies containing x have padded versions with a
+common point z of V by (π) (one such reply: take any z in it); then {y,z} covers the padded
+seven: impossible. ∎
+Cost: |S_i| = T_Σ + ν_i, ν_i = mass of outside points in two fed replies. So:
+**Corollary 17.B.** If Lemma S holds for adversaries confined to V at budget T - δ, it holds for
+every adversary for whom the mass of outside points lying in two replies never exceeds δ — in
+particular for a self-sufficient arena with far replies whose fresh parts are not re-used. Far replies of that kind can be kept or discarded freely.
+What 17.A does not cover: far replies F, F' sharing a large outside part. Then ν is large, and by
+PETAL 9.3 this is forced on him as soon as two far replies exist (|F ∩ F'| > t - 1/3 - small, or
+(A, F, F') is a good triple). So the residual G2 adversary has two families of replies, each
+heavy inside its own region: 17.3.
+
+### 17.3 Two families in block form: quadrangle + line [proved by hand]
+
+Charge lemma (from 16.1): in a Fano labelling the block at round c is the union, over the lines
+ending at c, of the intersection of the line's two earlier members. So a pair of replies is paid
+for only if its line's third member comes last.
+**QL pattern.** Seven replies A_1..A_4 (family 𝒜), F_1, F_2, F_3 (family ℱ); label 𝒜 as a quadrangle
+and ℱ as its diagonal line, F_l on the lines through the two pairs of the l-th matching of 𝒜.
+Charges: the ℱ-line costs |F ∩ F'| for its two earliest members, at the round of the third; a line
+{F_l, A_i, A_j} costs |A_i ∩ A_j| if F_l is its last member and a cross-intersection otherwise.
+**Proposition 17.C.** Let cross-intersections (one reply of each family) have mass at most γ.
+If the replies arrive in an order in which every F_l precedes at least one member of each of its
+two 𝒜-pairs, except possibly one F_l for one pair, and
+
+    |F ∩ F'| <= t  (first two ℱ-replies),   |A_i ∩ A_j| <= t  (the excepted pair),   3γ <= t,
+
+and the first two charges fall in different rounds, then requesting the blocks wins. A G2 triple
+(A, A', F) is exactly the excepted pair: its block A ∩ A' was paid when F was created.
+*Proof.* A line ending at an ℱ-reply is the ℱ-line or the excepted line; a line ending at an
+𝒜-reply has a cross-intersection as its charge, and an 𝒜-reply ends at most three lines; 16.1. ∎
+Worked order after a G2 triple: A, A', F, F', F'', A'', A''' — blocks |F ∩ F'| at F'', cross only at
+A'', A'''. Failing orders: a third 𝒜-reply before the third ℱ-reply makes F'' the last member of a
+line through a near-copy pair in the same round as the ℱ-line, charge |A_• ∩ A''| + |F ∩ F'| > t.
+So against two families the adversary's defence is purely an ordering one: after two replies of
+each family he must answer the next request in the family that already has three members,
+unless she can make that reply impossible. She can, when forcing is available (PETAL "F": cap the
+overlap with one member at c, cost 1 - c) and the capped reply cannot land in a band; with bands
+this is PETAL §5 again. [the reduction of G2 to this ordering problem is proved; the ordering
+problem is not solved]
+
+### 17.4 The window (G1): nothing new proved
+
+Status as in 16.5. Two remarks for whoever continues:
+- Lemma S asks for D <= t, not for a Fano labelling. On 1.75k < N < 1.917k the count of 16.4 excludes
+  quadrangle-first and 16.3 exhausts line-first with a non-adaptive finish, so either labelling
+  (T), or line-first with an adaptive finish inside the O(eps) neighbourhood of the Fano point, or
+  a non-Fano intersecting family must be what the red team's winning lines at N = 1.9k realise.
+- By 16.2 any proof for unboundedly many requests is a proof for families; a natural family-level
+  target is: *a (7,2)-family on N < 3k - T points with tau > T contains three edges with empty
+  common intersection and union at most 2T + o(k)* (then Theorem C finishes). On N <= 3T - k/2 this
+  is 16.A. I could not extend it.
+
+### 17.5 Requests for C
+
+E1. Arena plus far replies, exact: confined game on N = 2k with the adversary additionally allowed
+    to answer with a reply containing f fresh points (f in {k/4, k/2, k}), fresh points re-usable;
+    sizes (10,8), (12,10): does the requester's value change, and does she ever keep three replies
+    sharing fresh points? (Tests 17.A and whether re-use is the adversary's only gain.)
+E2. Two-family ordering: families with within-family overlap α, β in {0.5k, 0.6k, 0.7k} and cross
+    overlap <= 1, adversary free to choose the family of each reply, she free to request and
+    discard, win = QL pattern or any uncoverable seven; sizes (10,8), (12,10), m <= 10.
+E3. For the red team's winning lines at N = 1.9k, t = 0.76 (and C's own at (12,10,24)): list, for the
+    six kept replies, the realised types and which triples have empty intersection; classify as
+    (L), (T), (Q) or non-Fano.
+E4. Family-level target of 17.4 at small sizes: for (k,T,N) with k + T < N < 3k - T and T just above
+    3k/4 where the outcome is open ((10,8,19..21), (12,10,23..25)): does she always reach three
+    replies with empty common intersection and union <= 2T?
