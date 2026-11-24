@@ -1638,3 +1638,38 @@ range. Making this a theorem needs an adversary that copies every served member 
 - Correction to 27.2: the vertex argument needs a fixed S-choice (done; max 2δ).
 Hand proofs re-read once: 28.2 window arithmetic and the balancing; 28.3 sum. Checks: `py compute/petal5/window_lp.py scan2`
 (about 5 min); `py compute/petal5/window_int.py 20 15 4`; `py compute/petal5/ps3.py 20`.
+
+---------------------------------------------------------------------------------------------
+## 29. HANDOVER: pooled 𝒜 on the strip 3/4 < t < 7/9, t/2 - 1/6 <= δ < 1 - t (self-contained)
+
+**Why it matters.** The strip reaches t → 3/4, the asymptotic case (t = 3/4: δ ∈ [5/24, 1/4)).
+**Object.** k = 1, t = T/k. Disjoint arenas R_A, R_F of mass n = 1 + t/2 - δ (+ε), pool O of any size. H = all mass-1 sets
+with >= 1 - δ in R_A (class A) or in R_F (class F), the rest anywhere; τ_c = n - 1 + δ = t/2 (mass > t/2 inside R_c meets
+all of class c); τ(H) = τ_A + τ_F. Game: request |S| <= t, the adversary answers with any member avoiding S (so every
+τ > t subfamily is a legal adversary); win = 7 replies with no 2-point cover, certified by P1/P2 (§1: 4 petals with empty
+common intersection + 3 centres missing every edge of Γ).
+**Closed** (§26–§28): δ < 3t/16 (PS), δ < t/4 (PS2), δ < t/2 - 1/6 (PS3). Code `compute/petal5/`: `ps3.py` (strategy +
+replay), `window_lp.py` (exact LP of the method), `pool_strip.py` (adversary search, brute-force 2-cover).
+**PS3** (§28.2). Class-A petals forced by t/2 + ε in R_F. Windows W_a = S_a ∩ R_A: W_1, W_2 private (t/2); W_3, W_4 (t/2)
+share σ = 3t/2 - 1 + δ, privates p = 1 - t - δ; ∪W = R_A. T_a = points in all petals but a. Class-F centres forced by
+G_j ⊂ R_A (>= t/2), which also seals the earlier centres' R_A-traces (δ, 2δ). Petal 1's singles (its δ outside R_A) are
+sealed twice. Petals 2, 3, 4 are sealed once, in requests 5, 6, 7, each together with its triple cell. Costs
+t/2 + δ + l_5, t/2 + δ + l_6, 1 - t + 2δ + l_7, Σl = 2δ.
+**Why maxed** (§28.1, §28.3). The LP over all windows, assignments and patterns, robust over all 94 leak vertices, gives
+exactly δ* = t/2 - 1/6. Forcing costs t/2 per centre; requests 6 and 7 must seal the R_A-traces (an R_A point in two centres
+has a whole petal as neighbourhood); one triple cell fits per forcing set; Σ triple cells >= 2 - t - 2δ. Total
+1 + 6δ <= 3t, which meets 1 - t only at t = 7/9.
+**Dead** (do not redo): P4(c) double seal above 3t/16 [proved, §27.1]; further 4+3 refinements inside the window model [LP
+exact]; single-serve 2+2 [heuristic, §28.5: forced same-class pairs overlap >= 1 - t/2 by copying, unforced requests get
+the other class; needs 1 - t/2 <= θ = (6t - 2)/5, i.e. t >= 14/17]; Theorem T/Q′ (needs g = ∅ or a bounded ground set,
+which the pool breaks); enumerating minimal τ > T subfamilies (τ* = 2.8 vs τ = 10 at k = 12); k = 20, d = 4 (best integer
+plan 16 > 15, the game is too large to solve exactly).
+**Ideas, ranked.**
+1. Kill the 2δ trace seal of request 7 (largest term near δ = 1 - t): (a) force centre 2 to miss all petal singles, so an
+   R_A point in centres 1 and 3 is harmless once its neighbourhood avoids centre 2; (b) petals of both classes (2A + 2F),
+   so the centres' traces land in cells with small neighbourhoods. Test by adding the option to `window_lp.py`: the
+   request sum shows at once whether 1 - t is reachable.
+2. More than 7 replies with re-selection: 5–6 class-A replies, then choose the 4 petals with the cheapest triple cells and
+   singles (he must spoil every 4-subset). Model as a selection LP over the window design.
+3. If both fail: prove an adversary (fresh-pool leaks, trace-maximising centres, copy pairs) beats every 4+3 and 2+2
+   certificate on the strip (a Theorem-N analogue). Then the strip is a real obstruction at t → 3/4 for Barrier F.
