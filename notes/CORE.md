@@ -1499,3 +1499,70 @@ four instances (one deliberately failing by rounding). 45.2(a): μ values from t
 a quadrangle has no three collinear; five points always contain three collinear). 45.2(c) is the waste identity 2.1.
 45.3 is S+ applied to the replies after the position; it needs the reply SET to be orbit-closed, not the reply map to be
 equivariant (an equivariant map has D(S) a union of whole remainders V_j∖S). 45.4's depth count is 2^d against c·k.
+
+## 46. (structural side) The ordered frozen anti-plan family: it has a good seven — dead as a disproof candidate
+
+Code: `compute/core8/frozen_antiplan.py` (128 shape assignments, float LP), `frozen_antiplan2.py` (`scan t`: parameter
+scan; `finite`: integer design by MILP, then the adversary's actual rule on real sets and brute-force pair cover).
+**Outcome. Not a counterexample.** For every parameter choice in the window the family contains a good seven, by
+Theorem P applied to ONE of its two pools [proved by hand]; confirmed by LP on a scan and by twelve finite instances
+with the real rule [computed exact for the final check]. The winning assignment is "the three pencil lines of one
+shape"; the shapes of the other four lines are irrelevant.
+
+**46.1 The family.** Cells O (mass o), U = A ∪ B (mass 2(c - o)), g, each with a fixed order; O1, U1 = the first ω points
+of O, U. Rule: if |S ∩ O| < ω the dump is the first ω unrequested points of O, otherwise the first ω unrequested points of
+U (the scan keeps o >= 2ω, |U| >= 2ω, |g| >= 0, which makes the rule well defined on the requests used).
+Members as sets [proved by hand]: shape H: K ⊇ O1 and |K ∩ O| < 2ω; shape L: K ⊇ U1 and |K ∩ O| >= ω. (K = S ∪ D with D
+the first ω unrequested points of the cell ⟺ D lies in the largest initial segment of the cell inside K.) A line lies in
+an H-member iff |L ∩ O2| < ω and |L ∪ O1| <= c; in an L-member iff |L ∪ U1| + (ω - |L ∩ O|)^+ <= c. Every line of mass <= t
+lies in a member of one of the two shapes (T-covering).
+
+**46.2 Good seven [proved by hand].** Pencil with kernel class V_o of mass N - 3/2, six classes of mass 1/4.
+- *L-pencil* (ω <= t - 1/2, i.e. N <= 2t + 1/2): V_o ⊇ U1 ∪ (ω points of O) — room: 2ω <= N - 3/2 = ω + t - 1/2. For a pencil line
+  L request S = L∖U1 (mass c - ω = t); |S ∩ O| >= ω, so the dump is the first ω unrequested points of U, which is U1;
+  the reply is L.
+- *H-pencil* (o < 4ω): V_o ⊇ O1, and O∖O1 spread evenly over the three pencil lines outside V_o, so each has
+  (o - ω)/3 < ω of it. Request S = L∖O1; |S ∩ O| < ω, the dump is O1; the reply is L.
+- One of the two always applies: if ω > t - 1/2 and o >= 4ω then o > 1 + 4·eps > c - ω, contradicting |U| >= 2ω.
+The four transversal lines have mass 3/4 <= t; request them, any reply; 1.3(ii). ∎
+So the switch does not help him: each branch of the rule is a pool rule on its own shape class, and Theorem P needs
+only three requests of ONE shape — the other four requests are short and their replies are irrelevant.
+
+**46.3 LP scan [computed float].** `frozen_antiplan2.py scan 0.76`: N = 1.81, 1.84, ..., 2.11, o on a grid of step 0.04 with
+o >= 2ω (104 points): at every point at least 8 of the 128 shape assignments are feasible; all-H or all-L is feasible at
+every point; "pencil L, rest H" (LLLHHHH) at 83 of them, consistent with 46.2 once the (irrelevant)
+shape constraints on the transversals are taken into account. At the positions of §26: N = 1.82, o = 0.29: 64/128
+(all-L yes, all-H no, since o > 3ω); N = 1.85, o = 0.305: 127/128; N = 1.9, o = 0.33: 128/128.
+
+**46.4 Finite k, actual rule [computed exact: integer design by MILP, then the rule applied verbatim to real sets and
+all pairs checked].** (k,T,n,o) = (40,31,74,12), (40,31,76,13), (40,31,80,20), (100,76,182,29), (100,76,185,31),
+(100,76,190,33), (100,76,190,40), (100,76,200,50), (100,76,210,70), (100,76,220,90), (200,151,370,60), (200,151,390,80):
+assignment LLLHHHH in all twelve; every line lies inside the actual reply to its request; the seven actual replies
+cover all pairs. (The MILP only proposes the classes; the verdict is the brute-force check on the replies.)
+
+**46.5 What it means.**
+- Type (β) of 45.3 with a FIXED order is dead: a fixed order inside a cell makes the cell a nested pool, and a
+  shape-dependent switch between finitely many nested pools loses to Theorem P on one shape class. The proof uses
+  nothing about the pair (K_1, K_2) and extends verbatim to any rule "dump = first ω unrequested points of a cell
+  chosen by the profile of S" as soon as one cell Z_1 (first ω points) can be put into a kernel class together with
+  whatever the selection of that cell demands of the request (here: ω points of O, or fewer than ω of O per line).
+  [proved for two cells as above; the general statement is the same argument, not written out]
+- The real anti-plan adversary of 9.3 differs exactly here: on a pencil-type request his low dump is not an initial
+  segment of A ∪ B but depends on which points of A ∪ B the request contains, so the three pencil lines cannot be given
+  one pool. The surviving object is therefore: in-cell choice tied to the REQUEST (not to an order), or cells refined
+  by the play — (α) of 45.3. Stationary + exchangeable (Theorem S/S+) and stationary + ordered (this section) are both dead.
+- For (Σ): the winning certificate is again branch (b) (zero-slack pencil), not a four-member certificate; no
+  first-order-slack mechanism was found.
+**Exact gap.** Unchanged: (Σ) for families whose in-cell choice depends on the request.
+**Next step.** The same finite test for the least request-dependent in-cell rule: dump = the ω unrequested points of
+the chosen cell that come first in an order determined by the request's trace on a SECOND cell (two orders, one bit).
+It is still a family with an explicit member description (two pools per cell, selected by the bit), so the check is
+again a union of pool designs: 2^3 choices of bit for the pencil lines. If every such bit pattern is beaten by a
+pencil with a split kernel, iterate (b bits); the first b at which no pencil exists is where a four-member
+certificate becomes necessary, and that instance is the right test case for (Σ)(a).
+
+Self-check (§46): member description re-derived from the rule (maximal initial segment); L-pencil sizes: kernel
+N - 3/2 >= 2ω ⟺ ω <= t - 1/2; requests have mass c - ω = t exactly; H-pencil needs strict inequality (o - ω)/3 < ω, which the
+integer designs enforce as <= ω - 1. Case exhaustion uses |U| = 2(c - o) >= 2ω. The LP's shape constraints on transversal
+lines are stronger than necessary (a line of mass <= t needs none), so LP-infeasible assignments are not claims.
+Finite instances: n up to 390, exhaustive pair check on the seven replies produced by the rule itself.
