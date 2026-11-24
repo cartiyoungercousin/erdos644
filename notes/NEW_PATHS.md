@@ -1114,3 +1114,99 @@ if the adversary wins for every ratio, his answers are a candidate "complete min
 triples" family on 7k/4 + O(g) points, small enough to test by the parity-type MILP of
 `compute/typefam.py`. This is engine-sized (about 7·16 cell variables per response, six
 responses) and was not run in this pass.
+
+---------------------------------------------------------------------------------------------
+
+## 13. Counting / density architecture — RESULT: it reproduces Theorem A exactly and then stops; precise reasons
+
+Notation: n = |V|, s := n − T − k (tau > T iff every (k+s)-subset of V contains an edge),
+g := T − 3k/4, c := n − 7k/4, so s = c − g. No computation in this pass.
+
+### 13.1 Localisation to a set U, done exactly  [proved by hand]
+The Turán property passes to subsets with no loss: for any U ⊆ V, every (k+s)-subset of U
+contains an edge of H[U], hence tau(H[U]) >= |U| − k − s + 1.
+Take |U| = 2T − 2 (possible when n <= 3T − 2). By Lemma 12.2 H[U] is 3-wise intersecting,
+so tau(H[U]) <= (k+1)/2. Therefore 2T − 2 − k − s + 1 <= (k+1)/2, i.e.
+> s >= 2g − O(1),  equivalently  tau <= (n − k)/3 + k/2 + O(1).
+**This is Theorem A, re-derived in two lines from the tight-triple lemma and Frankl's bound
+for 3-wise intersecting families.** So ingredients (1)+(2)+(3) of the proposed architecture,
+used on one set U, give exactly what is already in Lean and nothing more.
+
+### 13.2 Why size counting on U adds nothing  [proved by hand]
+- Lower bound from the Turán property: |H[U]| >= C(u,k)/C(k+s,s) (u = |U|).
+- Upper bound for 3-wise intersecting families: C(u−1,k−1) = (k/u)·C(u,k) (valid for
+  u >= 3k/2). The two clash only if C(k+s,s) < u/k ≈ 3/2, i.e. s = 0.
+- With the transversal number taken into account the comparison is still slack: the local
+  extremal structure is H[U] ⊇ all k-subsets of Y_U, with Y_U ⊆ U, |Y_U| = u − s < 3k/2,
+  which is 3-wise intersecting, has tau = |Y_U| − k + 1, satisfies the local Turán property
+  (possible exactly when s >= 2g − 1), and has C(3k/2,k)-many edges, exponentially more than the lower bound.
+So for every single U the hypotheses are jointly satisfiable whenever s >= 2g + 1. A clash can
+only come from the *consistency of the sets Y_U over different U* (H may not contain all
+k-subsets of any (2T−2)-set's worth of points with empty triple intersection), which is the
+original problem again: it is not a counting statement about one U.
+Two exact consequences of the local structure that are usable later:
+- deletion invariance: for any X ⊆ V, H − X (edges avoiding X) has the same s on n − |X| points;
+- if x lies in U and no edge through x lies inside U, then the link of x has a transversal of
+  size n − |U|.
+
+### 13.3 Why density (Frankl–Rödl type) arguments are too weak  [proved by hand for the estimates; the FR statements are cited, not re-proved]
+- Density: |H|/C(n,k) >= 1/C(k+s,s) = exp(−s·ln(ek/s)(1+o(1))). In general s = Theta(k) and the
+  density is exp(−Theta(k)): far below the (1 − delta)^n threshold of every forbidden-intersection
+  theorem. Only in the near-complete regime s = o(k) is the density exp(−o(k)).
+- What density can force there: a *pair* with a prescribed intersection in the linear range
+  (non-degenerate). The two-anchor window (ROADMAP 3(b); improved form: no two edges meet in m
+  with k/2 − 2g + 2 <= m <= k/2 + min(2g, 3g − c) − 2, obtained by requesting
+  (A∩B) ∪ (V∖(A∪B) minus f points) and applying the tight-triple lemma) is non-empty iff
+  c < 5g − O(1). With Frankl–Rödl for pairs this gives, for s <= s_0·k (s_0 an absolute constant
+  coming from FR's delta), **g <= c/5 + O(1), i.e. tau <= 3k/4 + s/4 + O(1)** instead of Theorem A's
+  s/2. [conditional on the uniform FR theorem; this is ROADMAP L4, same threshold]
+- What density cannot force: (i) a triple with *empty* core. Exact emptiness of an intersection
+  is never a density statement (stars are dense and 3-wise intersecting); it has to come from
+  the transversal hypothesis, i.e. from a request, and each request costs a free part.
+  (ii) [heuristic] A degenerate cell of size Theta(g): forcing a prescribed Venn diagram with a cell of
+  relative size gamma needs density above exp(−c_1·gamma·ln(1/gamma)·k), while the available
+  density is exp(−s·ln(ek/s)) with s >= 2g: the same order of magnitude as the entropy of the
+  cell one wants to control, with the constants on the wrong side (s >= 2g against a cell of
+  size about g). So the pattern "j exact anchors give g <= c(3−j)/(7−j)" stops at j = 2.
+**The weak parameter is the density: the Turán hypothesis guarantees only a
+1/C(k+s,s) fraction of the k-sets, and s is at least 2g by 13.1.**
+
+### 13.4 Supersaturation of Fano tuples in a noisy complete family  [proved by hand]
+Setting of 11.1(c)/12.1: Q ↦ K_Q with K_Q∩W ⊆ Q and outside part N_Q = K_Q∖W, |N_Q| <= theta'.
+A Fano partition of a subset of W gives seven sets Q_L; the tuple (K_{Q_L}) is bad unless for
+some point p the three outside parts of the lines through p have a common point. A concurrent
+triple of a uniformly random Fano partition is a uniformly random "tight pattern" (three
+k-sets, pairwise k/2, empty triple intersection), so the adversary needs
+> P( N_Q ∩ N_Q' ∩ N_Q'' ≠ ∅ ) >= 1/7 over random tight patterns (Q, Q', Q'').
+This is *not* hard for him: if all answers to requests that avoid a pool P contain P, the
+probability is 1, at no cost in density. The number of Fano partitions is irrelevant
+because they are all blocked by the same correlated outside set. What constrains the pool is
+not counting but the budget: the answers to a request with slack sigma_0 have transversal
+number > sigma_0, so the pool must move by sigma_0 points per request, and min-S caps it at theta.
+The only gain supersaturation gives is against *uncorrelated* outside parts: if the N_Q were
+independent theta'-subsets of a ground set of size much larger than theta'^{3/2}, a random Fano
+partition would be bad with positive probability. A single ladder of outside points
+(answer contains the first ladder point not requested) is beaten at cost O(1) per request.
+So the counting helps exactly when the adversary is not adversarial.
+
+### 13.5 Verdict
+- No lemma closing part of the regime came out; the hand-proved by-products are 13.1 (a
+  two-line proof of Theorem A, showing Theorem A is the complete content of "no tight triple
+  inside one U"), the improved two-anchor window, and the 1/7 criterion of 13.4.
+- Reason the architecture fails: (a) per-U counting is consistent with the local structure
+  "complete on Y_U ⊂ U, |Y_U| < 3k/2" for every U; (b) the density is exponentially small
+  except when s = o(k), and there it controls only non-degenerate pair statistics;
+  (c) emptiness of a core is a transversal fact, not a density fact; (d) supersaturation is
+  neutralised by correlation of the outside parts.
+- What would be needed instead: a statement about the *system* (Y_U)_U, i.e. a stability
+  theorem for 3-wise intersecting families with transversal number close to k/2 ("such a
+  family is contained in the k-subsets of a set of size < 3k/2, up to small error") followed by
+  a consistency argument over overlapping U. The first half is a clean extremal question that
+  can be checked in the literature (Frankl's r-wise intersecting families with large covering
+  number); the second half is where a contradiction would have to appear, and I do not see it.
+- Cheapest decisive step for this route: decide the stability question above in exact form
+  for 3-wise intersecting families with tau >= k/2 − j (literature check, then a small exact
+  search at k = 6, 8: all 3-wise intersecting k-uniform families on 3k/2 + 2 points with
+  tau >= k/2 − 1). If stability fails (there are 3-wise intersecting families with tau near k/2
+  not of the "complete on < 3k/2 points" type), they are the building blocks of a candidate
+  "complete minus tight triples" family and should be tested for (7,2) directly.
