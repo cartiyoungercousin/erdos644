@@ -193,3 +193,61 @@ Reading of the table:
   Phi-decreases. For a Lean proof either the potential itself is used as the minimality
   principle (sound as it is), or each contradiction case must be re-checked to be a lex decrease.
 - Not rerun: t = 0.83 beyond §2.
+
+
+# §4. Towards a certified statement at t = 0.84 (2026-11-24, at most 3 worker processes)
+
+Code: `compute/combine/static_cert.py`, `canon.py`, `d2.py`; data `static_cert_50.json`,
+`canon_out.txt`, `lex_0.84_undecided_r100.jsonl`.
+
+## 4.1 The two undecided profiles
+(0.38,0.38,0.22) and (0.40,0.38,0.24), depth 2, requests 1/100, 2 processes: **still undecided**: neither finished within about 65 minutes (stopped; sub-results stay in `compute/r1b/memo/`, so a rerun of `py d2.py lex_0.84_undecided_r100.jsonl 2 100 "19,19,11;20,19,12"` continues from there).
+The 1/100-profile neighbourhoods were not run (each such anchor needs a fresh depth-2 memo on
+the 1/100 profile grid; out of reach with 2 processes in this session).
+
+## 4.2 Line type A, exact **[E]**
+Region R = {x >= y >= z > 0, x <= 0.56, x + y + z <= 1.32}, t = 21/25. Lattice boxes of side 1/50
+(those meeting x + y + z > 1.32 are left out of numerator and denominator). A box is certified
+when ONE pattern of the 4-request triple table has all its request loads <= t at all 8 corners,
+with the exact rational weights (`tables.exact_weights`, denominators dividing 840). The loads
+are affine in (x,y,z), so the closure holds on the whole box.
+
+**Result: 33.8 % of the volume of R is exactly certified** (certified weight 3520/3 of 10406/3
+box units), using 71 patterns; the six most used cover 900 of the boxes. Pattern ids, their label
+patterns and the list of uncertified boxes are in `static_cert_50.json`.
+- This is a certificate per box (a finite union of boxes, each with one closure), not the exact
+  polytope of each pattern: the exact region of pattern p is the polytope
+  {W_p(lambda) . mass(x,y,z) <= t for all lambda}, and the certified set is an inner
+  approximation of the union of these polytopes by 1/50-boxes. Boxes straddling the boundary
+  of the static region are counted as uncertified, so the true static volume is larger.
+- What it rests on: completeness is not needed here (a pattern that closes is a proof by
+  itself); what is needed is that each table pattern is a valid closure, i.e. the correctness of
+  `tables.py` weights (blocker / compatibility construction), which is a hand argument of
+  R1_RESULTS and is not formalised.
+- The faces z = 0 (a missing pair cell) are not covered by this run (the engine uses a different
+  table there).
+
+## 4.3 Line types B to E: canonical request, **not achieved**
+- Test of three canonical first requests on the 193 type B / B' anchors of the 1/25 grid
+  (floating MILP, `canon_out.txt`): seal Y and Z and put the rest of the budget
+  (c1) into X, overflow to PE, PF, PG: wins 88; (c2) half into PE, half into PF: wins 53;
+  (c3) one third each into PE, PF, PG: wins 67; at least one of the three wins at 118 of 193.
+  So no single affine request serves the region; the winning request depends on the profile in
+  a way I have not parametrised (and 38 + 7 + 5 of these anchors were won with other seals).
+- No exact rational certificate was produced for B to E. For B a certificate is the
+  infeasibility of the adversary system, which contains the disjunctive "no smaller-Phi triple"
+  constraints (binaries): an exact certificate needs a case split over those disjunctions
+  with one Farkas vector per case; not built.
+- Hence: **exactly certified fraction of the region = 33.8 % (type A only)**; the remaining
+  66 % rests on floating-point MILP at grid points (1/25 complete, 1/50 complete up to the two
+  profiles of 4.1), with first requests found by search.
+
+## 4.4 What a certified statement still needs
+1. Decide the two profiles of 4.1.
+2. Type A: finer boxes near the boundary (or the exact polytopes) to push 33.8 % up to the full
+   static region; the faces z = 0.
+3. Types B, B': choose the request per sub-region (c1 on its 88-anchor region first), then a case
+   split with exact Farkas certificates; this is the natural next lemma (one request, no closure).
+4. Types C, D: exact versions of the per-response closure cases (the R1 `exact_check.py`
+   machinery checks stuck profiles, not wins; a win checker has to be written).
+5. Type E (11 anchors at 1/25, more at 1/50): a two-round statement; furthest from a proof.
