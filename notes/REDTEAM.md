@@ -614,3 +614,49 @@ T - 0.001). So every exact margin quoted in §13.2–13.3 is 0.001 too large. Al
 **Unresolved.** Only this one point (t = 0.76, N = 1.8k) was tested. The margin is thin (0.0063), and the tree is
 plan-restricted (so her best margin may be larger). N = 1.85k, 2.1k, t = 0.751 and m = 9 are untested against the
 adaptive bit, as is any opponent with more than one bit per reply. No adversary win anywhere, so no (7,2) test.
+
+## 16. Robustness of the §14 FIXED tree (t = 0.76, N = 1.8k, m = 8) against richer adversaries
+
+Code: `compute/redteam/multimode.js` (float DFS over all mode sequences), `multimode_replay.py` (exact rational replay of
+one mode sequence), `mip_br.py` (best-response MILP along one label path, exact replay of the extracted replies),
+`mip_br_all.sh`. Logs: `logs/multimode_tau*_*.json`, `logs/mip_br_all_alpha0.5.log`, `logs/mip_br_inf16_free.log`.
+Tree: `logs/adaptive_tree_full_T0.76_N1.8.json`, requests literal (absolute masses per type, clipped to availability,
+as in `adaptive_replay.replay`).
+
+**Verdict: the fixed tree breaks under X for essentially every richer X, including the mildest.** This is NOT an
+adversary win in the game (she can re-adapt); it only says the §14 tree is a knife-edge object tuned to
+exactly 0.5 tilt.
+
+**(a) Multi-mode tilt.** Reply rule o_J = (1-f)(1-lam) a_J + f ov_J (ov = the slack poured in an ordering, <= a_J),
+f in {0, 1/4, 1/2, 3/4, 1}, ordering in {U, O, GIFT} (GIFT = pool last, lowest positive degree first, from
+`fresh_c/pivot.py`; WASTE = O). 13 modes, 13^6 = 4.83M sequences per mapping. Mapping to her tree's bit:
+U -> U, O -> O; GIFT and f = 0 each mapped to U or to O (all four combinations run).
+Control: with only U0.5/O0.5 the float DFS reproduces §14 (64/64 won, worst -0.0063). Result, literal requests:
+**4.826M of 4.827M sequences beat the tree (mass(D) = N, margin +1.04) for every mapping.** One deviation
+suffices: reply 3 with f = 0.75 (path U,U,O,O,U,U), exact: mass(D) - T = +1.040000. Sensitivity (exact):
+f = 0.501 at that reply still loses for the adversary (-0.00685), f = 0.51 wins (+1.027); a constant f = 0.25 or
+1 in all rounds wins. Cause: her requests are absolute masses that equal the 0.5-tilt masses; with any other tilt the
+"complete" requests miss by more than the 3e-5 snap and leave real slivers, so every type becomes completable.
+Snap-tolerance variant (request counts as complete if the type's mass <= request + tau, sequences whose requests
+would exceed T are discarded as "tree undefined"): tau = 0.02: ~1M valid sequences per mapping, 93-97% win; tau = 0.05:
+69-97% win (margins up to +1.04). One-deviation wins also with tau = 0.02 (e.g. O0.5,G1,O0.5,U0.5,O0.5,U0.5 along
+O,U,O,U,O,U: exact +0.812).
+
+**(b) General best response** (replies = ANY mass vector r_J <= m_J - s_J, sum r = 1, per round; max-min over her
+7 discards; real types as in the replay rule, r_J > 0 or a_J >= 1e-4; tree requests clipped by binaries). A fixed
+deterministic tree makes adaptivity irrelevant, so the adversary's reply sequence is one path; the label-to-node
+mapping is left to him (relaxation; but note the winning sequences in (a) already use natural U/O/GIFT replies).
+- Free class, path UUOOUU: MILP optimal in 7 s at +1.040 (D = everything); extracted replies replayed exactly
+  in rationals: **+1.040000 (beats tree)**. Run for the 16 paths OOUU.. / OOOO.. : exact +1.0398 to +1.04 each.
+- Floor class (>= half of each dump stays proportional, tot >= T-0.02, lam bounded below): 48 of 64 label paths
+  feasible, all 48 optimal in <= 15 s, all exact replays +1.0397 to +1.0400 (adversary beats tree); the other 16
+  paths only fail the state restriction tot >= T-0.02 and are beaten in the free class (above).
+So some legal adaptive reply sequence beats the fixed tree on every path, by +1.04 = N - T (not a thin margin).
+
+**Reply pattern to seed the next red-team opponent.** Not a different dump rule but a different TILT FRACTION:
+f != 0.5 in even one reply (0.75 in reply 3 suffices), i.e. a tilted spread whose concentrated share is
+chosen per reply (and unknown to her), together with U/O/GIFT orderings. The next opponent should be "tilted
+spread with f in {1/4, 1/2, 3/4, 1} per reply and ordering in {U, O, GIFT}", against a requester whose tree must be
+re-solved robustly (requests keyed on the observed masses, not on a bit), starting from the §14 root/plans with
+margin slack. Whether she re-adapts at f != 0.5 is open; the §14 margin 0.0063 says no robustness was bought.
+Not done: m = 9, N != 1.8k, re-solving her tree under the 13-mode adversary.
