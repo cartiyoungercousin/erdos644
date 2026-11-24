@@ -30,6 +30,7 @@ import Lean644.SparseTriple
 import Lean644.FlatTuple
 import Lean644.FanoBlocks
 import Lean644.Waste
+import Lean644.Anchor
 import Lean644.TightTriple
 import Lean644.TheoremA
 import Lean644.SparserTriple

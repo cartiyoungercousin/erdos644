@@ -343,3 +343,90 @@ need tau(H) = T + 1, which holds for the point-minimal H (7.2) but is not stated
   for rank <= k before being combined with it; Lemma 3's odd step uses |A| <= k only, so it
   survives; statements using |A| = k exactly do not automatically).
 Not formalized.
+
+---------------------------------------------------------------------------------------------
+
+## 8. TWIN §13 (anchored reduction) — verdict: the lemma, Theorems A–D and Prop. E are correct; four statements need added hypotheses
+
+Notation: anchors B_a, B_b, B_c with B_a ∩ B_b ∩ B_c = ∅, V their union, P_ab = B_a ∩ B_b
+(pairwise disjoint), p = |P_12| + |P_13| + |P_23|, Q_c = B_c \ P, |V| = 3k - p.
+
+**Errors / gaps (none affects Theorems A–D).**
+(E8a) Theorem C needs |V| <= 2T - O(1), not |V| <= 2T: the six half-parts of P and twelve quarter
+parts of Q are rounded, so a request can exceed |V|/2 by a bounded amount. (TWIN writes "+O(1)" on
+the wrong side.)
+(E8b) 13.5, third consequence ("three replies meeting pairwise only in O(1) points lose") and the
+bold corollary of Prop. E ("a reply meeting the union of two earlier replies in only O(1) points
+loses in four more requests") both need the triple to be an anchor triple, i.e. empty common
+intersection. This holds if she requested B_i ∩ B_j when the third reply was made (her standard
+S_3), but not for arbitrary earlier replies; the bold corollary also needs |B_i ∩ B_j| <=
+T - k/3 - O(1) (true for her capped pair B_1, B_2 when T >= 2k/3 + O(1), not for "two earlier
+replies" in general), and for a later reply B_j it costs more than seven requests in total.
+(E8c) 13.6, last sentence: the reason given ("he controls every overlap from below: he may answer
+with fresher points") is backwards — fresher points *reduce* overlaps and enlarge V. Correct
+reason: he may choose every overlap anywhere between 0 and her cap; after S_2 (cap k - T on
+P_12) and S_3 ⊇ P_12, at least k unrequested points of B_1 ∪ B_2 remain, so any p_13 + p_23 <= k is
+available to him. Consequently |V| >= k + T > 2T always against her standard opening: **Theorem C
+is never reachable unless the adversary cooperates**; the usable end case is Theorem D only, and
+he avoids it with p > T - k/3. The conclusion (the window cannot be avoided) is right.
+(E8d) 13.3, parenthesis: Lemma 5.1 is not literally a degenerate case of Theorem B (a disjoint
+pair is not an anchor triple); it is an analogue. Harmless.
+
+**Verified proofs.**
+*Anchor lemma (13.1).* A point lies in at most two anchors, so if {x,y} meets all three then each
+of x, y lies in at least one: x, y in V (x = y impossible). Creation: |S_2 ∩ B_1| >= k - T gives
+|B_1 ∩ B_2| <= T; S_3 ⊇ B_1 ∩ B_2 gives empty triple intersection (needs T >= k/2). ✓
+*Theorem A (13.2).* (i) For x, y in V: {x,y} meets E iff it meets E ∩ V; so coverability of
+{anchors} ∪ {E_i} depends only on the traces and is monotone increasing in them. (ii) Real reply
+E_i avoids S_i ⊆ V, so E_i ∩ V ⊆ V \ S_i has size <= min(k, |V \ S_i|) and can be padded inside
+V \ S_i to that size; a confined strategy fed the padded traces ends with an uncoverable padded
+tuple, hence (monotonicity) an uncoverable real tuple. Valid as long as the three anchors are
+among the kept replies. (iii) is (i). ✓
+**Lean:** `Lean644/Anchor.lean`: `anchor_cover_mem`, `anchor_trace_iff`, `anchor_mono`,
+`anchor_coverable_mono`.
+*Theorem B (13.3).* The 2-covers of the anchors are exactly the pairs (x,y) in P_ab × B_c over the
+three splits (one point in two anchors, the other in the third); such a pair misses E_i iff it is
+in (P_ab \ E_i) × (B_c \ E_i). |K_i| = |V| - min(k, |V| - T) = max(T, |V| - k). ✓
+*Theorem C (13.4).* Types: P_12: {4,7},{5,6}; P_13: {4,6},{5,7}; P_23: {4,5},{6,7}; Q_c: the four
+pairs other than the two types of the opposite P_ab. Checked: every type of B_3 = P_13 ∪ P_23 ∪ Q_3
+meets both types of P_12 (and cyclically), since disjoint 2-subsets of a 4-set are complementary;
+every round contains exactly half of each P_ab and two of the four parts of each Q_c, so
+|S_i| = |V|/2 (+ rounding). Omissions only enlarge K_i. ✓ (with E8a)
+*Theorem D (13.5).* All four requests contain P, so no later reply meets P; a cover is then x in P
+and y in Q lying in E_1 ∩ … ∩ E_4. |X_1| <= k, |X_2| <= k - (T-p), |X_3| <= k - 2(T-p) <= T - p
+iff p <= T - k/3; request 7 = P ∪ X_3. ✓ (|V| >= 10k/3 - T iff p <= T - k/3.)
+*Prop. E.* With P_13 = P_23 = ∅ only the grid P_12 × B_3 remains; S_i = P_12 ∪ (quarter of B_3)
+needs p_12 + k/4 <= T; the 2 × 2 cover needs p_12/2 + k/2 <= T. ✓
+*13.6.* 2p <= 3k (each anchor contains two disjoint P's), so 3k/2 <= |V| <= 3k. ✓
+*13.7(a).* If y in B_c is killed only at round i then every x in P_ab needs i in I_x. ✓
+The "missing inequality" is a correct reformulation (by Theorem A), not a result.
+
+**Direction of the reduction (coordinator's question) — CONFIRMED: requester-win(confined G(V)) ⇒
+requester-win(open), with the same requests, budget and number of rounds.**
+Setting: anchors fixed, V their union; G(V) = game starting from the anchors in which a reply to
+S ⊆ V is any subset of V \ S of size exactly m(S) := min(k, |V \ S|). Let Σ be a requester strategy
+winning every play of G(V) (keeping the anchors among her seven).
+1. *Short traces.* An open reply E_i avoids S_i and may have any number of points outside V, so
+   its trace t_i = E_i ∩ V ⊆ V \ S_i has size anywhere in [0, m(S_i)] (at most k and at most
+   |V \ S_i|). It is never larger than a confined reply, only smaller.
+2. *Padding.* She chooses t'_i with t_i ⊆ t'_i ⊆ V \ S_i, |t'_i| = m(S_i). This is a legal reply of
+   G(V).
+3. *Adaptivity.* Her next request is Σ applied to the padded history (S_1, t'_1, …, S_i, t'_i).
+   The sequence of padded replies is a legal play of G(V) whatever rule produced it (real traces
+   plus her own, arbitrary, padding choices), and Σ wins **every** legal play; no assumption that
+   the virtual adversary is a fixed strategy is needed. The real requests are the same S_i, so
+   the real adversary's replies are legal answers to them. Her padding choices influence her
+   later requests, but only through a play that Σ is guaranteed to win.
+4. *Transfer.* At the end the kept padded tuple (anchors + some t'_i) has no 2-cover. A 2-cover
+   {x,y} of the kept real tuple (anchors + the same E_i) lies in V (anchor lemma), meets every
+   t_i = E_i ∩ V (trace equivalence), hence every t'_i ⊇ t_i: contradiction. (Lean:
+   `anchor_mono` with E := real replies, E' := padded traces.)
+5. *Provisos.* (a) The three anchors must be among the kept replies in both games; a strategy
+   that discards an anchor is outside the reduction (re-anchoring = a new V and a new game).
+   (b) Only |E_i| <= k is used. (c) Discards among the non-anchor replies are allowed.
+Converse: every confined adversary is an open adversary with the same traces (if |V \ S| < k, add
+fresh outside points), so open-win ⇒ confined-win **for anchor-keeping strategies**. Hence the
+two games have the same value among strategies that keep the anchors; the open game may have a
+smaller value if dropping the anchors helps, so G(V) gives an upper bound on what she needs, not
+a lower bound for the open game. An adversary certificate in G(V) therefore does NOT transfer to
+the open game by itself (she might re-anchor); a requester certificate does.
