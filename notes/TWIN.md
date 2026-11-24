@@ -636,3 +636,99 @@ and 13.4–13.5 prove it outside the window. Inside the window I have neither a 
 adversary. The confined computation that would now transfer verbatim to general families (by
 Theorem A) is: anchors of prescribed shape, adversary confined to V = their union, requester free
 with re-anchoring — not the game on A_1 ∪ A_2 with a disjoint pair, which is the K4 point (b).
+
+=============================================================================================
+## 14. Near-copy region, steering lemma, and the limit of the three-anchor route (sixth time box)
+
+Scaled units (k = 1, t = T/k). Anchors, P_ab, p_ab, V, B_c, K_i = V∖E_i as in §13.
+**Outcome.**
+- STEP 1 (partial): the near-copy region is quantified from the adversary's side: **max p_ab > t²
+  is an adversary win of the anchored game** (Theorem F, proved; it reproduces the top of every
+  table of FRESH_C §13). Proved requester wins remain Theorems C, D and Prop. E. The claim "balanced
+  shapes are requester wins" is NOT true near 3/4: at (k,T) = (8,6) the balanced window shapes
+  (3,3,3), (3,2,2), (4,3,3), (4,4,3) are adversary wins [computed with C's `anchor.js`].
+- STEP 2: proved with "near-copy" := max p_ab > t². She obtains an anchor triple with all three
+  pair-intersections <= t² in three requests **iff t >= t₁ = (√17 - 1)/4 ≈ 0.7808** (S1, S3).
+  For 3/4 <= t < t₁ a two-arena adversary keeps every triple near-copy for every number J of replies
+  (Theorem G), so the protocol "J replies, commit to three anchors, four more replies" fails there.
+- Consequence: below t₁ a proof cannot have the form "steer to a good anchor triple, then play the
+  anchored game". The same two-arena adversary is beaten by a certificate with FOUR replies having
+  empty common intersection (§11.4), so the next object is a four-anchor version of §13.
+
+### 14.1 Theorem F: one large pair-intersection loses the anchored game [proved by hand]
+
+**Theorem F.** If p_12 > t² (any p_13, p_23), the adversary wins the anchored game: whatever the four
+further requests, anchors plus the four replies have a 2-cover.
+*Proof.* He replies with E_i ⊇ as much as possible of (P_12 ∪ B_3)∖S_i: all of it if its mass
+1 + p_12 - s_i is at most 1 (s_i = mass of S_i inside P_12 ∪ B_3), otherwise a subset of mass 1.
+Then K_i ∩ (P_12 ∪ B_3) has mass max(s_i, p_12) <= max(t, p_12), so the rectangle
+(K_i ∩ P_12) × (K_i ∩ B_3) has area at most max(t, p_12)²/4. Four rectangles cover the grid
+P_12 × B_3 (area p_12·1) only if max(t, p_12)² >= p_12, i.e. p_12 <= t² (for t < p_12 < 1 the inequality
+p_12² >= p_12 fails; for p_12 = 1 he puts the whole omitted part on one side, so the four
+rectangles cannot tile). By Theorem B an uncovered point of the grid is a 2-cover. ∎
+The same holds for each pair. Discrete form: p_ab > T²/k. Check against FRESH_C §13 and my rerun:
+every shape with p_12 >= 3, 4, 5, 6, 5, 7 at (k,T) = (4,3), (5,4), (6,5), (7,6), (8,6), (8,7) is in
+the adversary lists (T²/k = 2.25, 3.2, 4.17, 5.14, 4.5, 6.125). It is necessary, not sufficient:
+e.g. (5,1,0) at (8,7) and (3,3,3) at (8,6) are adversary wins with all pairs below T²/k.
+
+**Obligations lemma [proved by hand].** In the anchored game the adversary can ensure
+(a) every point of P is killed at least twice (if x in P_ab is killed only at round i, then
+B_c ⊆ K_i; he keeps one unrequested point of B_c in E_i, possible as |B_c| > T), and
+(b) if P_ab ≠ ∅ (one point suffices) every point of B_c is killed at least once.
+So O(1) common points between anchors change the game: this is why (5,0,0) is a requester win and
+(5,1,0) an adversary win at (8,7).
+
+### 14.2 Steering lemma [proved by hand]
+
+Let λ_t = 2 - 2t² - t (λ_t > 0 iff t < t₁; λ_{3/4} = 1/8).
+**S1 (gap lemma).** If two replies satisfy λ_t <= p_ij <= t², one more request gives an anchor triple
+(i, j, l) with all three pair-intersections <= t².
+*Proof.* Request B_i ∩ B_j together with max(0, 1 - t² - p_ij) points of each of B_i∖B_j, B_j∖B_i.
+Cost p_ij <= t if p_ij >= 1 - t², else 2 - 2t² - p_ij <= t. The reply meets B_i and B_j in at most
+t² each and misses B_i ∩ B_j. ∎
+**S2 (structure when no pair is in the gap), t >= 3/4.** Call i ~ j if p_ij > t². If no pair has
+λ_t <= p_ij <= t², then ~ is an equivalence relation (p_il >= p_ij + p_jl - 1 > 2t² - 1 >= λ_t, because
+4t² + t - 3 = (4t - 3)(t + 1) >= 0), classes are pairwise λ_t-disjoint, and if she always requests
+B_i ∩ B_j for one fixed pair in different classes, a reply in a third class gives anchors with
+p < 3λ_t <= t - 1/3 (true for t >= 0.747), a win by Theorem D. So the adversary is confined to at
+most two classes of mutual near-copies with small cross-overlap: the "two clusters" of §4.
+**S3.** For t >= t₁, λ_t <= 0, so S1 applies to B_1, B_2 (p_12 <= 1 - t <= t² after S_2 ⊂ B_1):
+three requests give anchors outside the near-copy region.
+
+### 14.3 Theorem G: below t₁ steering out of the near-copy region is impossible [proved by hand]
+
+**Theorem G.** Let 3/4 <= t < t₁ and choose n with 1 + t/2 <= n < 2 - t² (possible exactly when
+t² + t/2 < 1, i.e. t < t₁). The adversary answering inside one of two disjoint arenas of mass n
+(the one with at most t/2 requested points) has, after any number of replies: same-arena pairs
+with p >= 2 - n > t², cross-arena pairs disjoint. Every triple contains two replies of one arena,
+so every anchor triple is near-copy and, once she commits to it, he wins by Theorem F.
+The threshold is the same number t₁ from both sides: 2(1 - t²) <= t is the cost of capping one
+member of each cluster at t², and n = 1 + t/2 < 2 - t² is the room for two arenas.
+Note: the two-arena adversary is not a strong adversary — she beats it in seven requests with four
+same-arena replies of empty common intersection plus one reply of the other arena (§11.4). What
+fails is only the three-anchor certificate.
+
+### 14.4 What the data say about STEP 1 near 3/4 [computed with C's anchor.js; reading is mine]
+
+(8,6), t = 3/4: 17 requester shapes of 55: all shapes with p_12 <= 2, the shapes (3,0,0), (3,1,0),
+(3,1,1), (3,2,0), (3,2,1), (4,0,0), and the Fano-end shape (4,4,4) (|V| = 2T). Every other window
+shape is an adversary win, including balanced ones. (8,7), t = 7/8: 41 of 55, losing only near-copy
+shapes and (4,4,0). So the requester region grows from "small p, plus the Fano point" at 3/4 to
+"everything except near-copies" at 7/8; "balanced shapes win" is a statement about t well above
+3/4. In the proved terms: Theorem D gives p <= t - 1/3 (3.3 of 8 at t = 3/4; the data show about
+p <= 6 with p_12 <= 3), Theorem C gives the Fano point, Theorem F the region p_12 >= 5.
+
+### 14.5 Exact gaps
+
+1. STEP 1: the requester region between Theorem D and Theorem F as a function of t. The data
+   suggest that at t = 3/4 + eps it is a small neighbourhood of the Theorem D region and of the Fano
+   point; I have no proof of either inclusion beyond C, D, E, F.
+2. STEP 2 is settled for the F-definition of near-copy: threshold t₁ ≈ 0.781. A steering lemma for
+   t < t₁ needs a different certificate. The natural one, forced by Theorem G and S2: with two
+   clusters, take FOUR replies of one cluster with empty common intersection and one reply
+   of the other. Not worked out: the four-anchor analogue of the anchor lemma only confines covers
+   to the union of the four, and the cross-overlaps < λ_t must be shown harmless.
+3. For t >= t₁ what is missing for a full hand proof of f(k,7) <= t₁k + O(1)-type bounds is STEP 1
+   on the region {all p_ab <= t²}: by 14.1 it is not all winning, so S1 must be strengthened to
+   steer into the true requester region (the caps in S1 can be lowered: with t >= t₁ she can cap
+   both new intersections at any level c with 2(1 - c) - p_12 <= t, i.e. c >= 1 - (t + p_12)/2).

@@ -1,0 +1,4 @@
+k=8 T=7 (T/k=0.8750): shapes=55  requester wins 41, adversary wins 14, undecided 0;  window 2T < |V| < 10k/3-T = (14, 19.67);  shapes outside the window won by the adversary: 0  [45s, states 64145]
+  adversary-winning shapes (p12,p13,p23;|V|): (4,4,0;16) (5,1,0;18) (5,1,1;17) (5,2,0;17) (5,2,1;16) (5,3,0;16) (6,1,0;17) (6,1,1;16) (6,2,0;16) (6,2,1;15) (7,0,0;17) (7,1,0;16) (7,1,1;15) (8,0,0;16)
+  window shapes: 37, of which requester wins 23
+  steering with the first three replies as anchors (7 requests in all): FAILS: the adversary has a losing shape available when p12 in {0}
