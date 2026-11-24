@@ -10,7 +10,9 @@ def popc(x): return bin(x).count("1")
 ORD = {"LOW": lambda ty: sorted(ty, key=lambda J: (popc(J), J)),
        "HIGH": lambda ty: sorted(ty, key=lambda J: (-popc(J), J)),
        "GIFT": lambda ty: sorted(ty, key=lambda J: (J == 0, popc(J), J))}
-def solve(T, Ns, alphas, order="LOW", tl=300, drops=None, msg=False):
+def solve(T, Ns, alphas, order="LOW", tl=300, drops=None, msg=False, ref=None):
+    # ref: optional list (one per round) of sets of types she is REQUIRED to request completely (a plan taken from
+    # another line); this only restricts the requester, so a negative value is still a requester win.
     E = len(Ns); NM = max(Ns)
     prob = pulp.LpProblem("mix", pulp.LpMinimize); cnt = [0]
     def V(lo=0, hi=None, cat="Continuous"):
@@ -24,6 +26,9 @@ def solve(T, Ns, alphas, order="LOW", tl=300, drops=None, msg=False):
         s = {J: V(0, ub[J]) for J in types}
         for J in types: prob += s[J] <= m[J]
         prob += pulp.lpSum(s.values()) == T
+        if ref is not None:
+            for J in ref[e - 1]:
+                if J in s: prob += s[J] == m[J]
         a = {J: m[J] - s[J] for J in types}
         ov = {J: 0 for J in types}
         if al < 1 and slack > 1e-9:

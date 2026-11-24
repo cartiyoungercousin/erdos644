@@ -1,182 +1,213 @@
 # REDTEAM — strongest opponents against the discard-game route (Erdős #644)
 
-Time box ~90 min. Code: `compute/redteam/prop.py` (exact requester vs mixed-reply adversaries, one MILP,
-plus an independent re-simulation `replay`), `compute/redteam/sim.py` (top-degree requester vs the same
-adversaries). Logs: `compute/redteam/prop_*.log`. Nothing of agent C's was edited.
-Tags: [proved by hand] / [computed exact] / [numerical] / [heuristic].
-Units of k throughout: t = T/k, r = 1 - t, N = mass of the ground set, "conf(N)" as in TWIN §11.
+Code (all in `compute/redteam/`, nothing of agent C's was edited):
+`prop.py` (requester's exact MILP vs the proportional adversary), `mix.py` (same, adversary = round-by-round
+mixture of proportional and vertex replies, requester's discard can be fixed), `exact.py` (exact rational
+re-simulation of a requester line), `nb.py` (neighbourhood driver), `show.py` (terminal position of a line),
+`sim.py` (top-degree requester). Logs `prop_*.log`, `mix_a.log`, `nb_0.log`, `nb_1.log`, `nb_long.log`;
+certified line `cert_N2_T076.json`.
+Tags: [proved by hand] / [computed exact] (exact rational arithmetic) / [numerical] (float MILP) / [heuristic].
+Units of k: t = T/k, r = 1 - t, N = mass of the ground set, conf(N) as in TWIN §11.
 
 ## 0. Bottom line
 
-- **No adversary found that beats the 8-request requester at any t > 3/4.** Every opponent I built either
-  loses outright to a requester line that I can exhibit (rigorous: the line is re-simulated), or is
-  undecided because the MILP did not close (one case: mixed replies on exactly 2k points, t = 0.76, where
-  the requester's best found line misses by 0.0012).
-- **No counterexample lead.** Every adversary here answers from the complete family on N points, which
-  is not (7,2) for N >= 7k/4; none of them is a family, and none survives, so there is nothing to test
-  for coexistence. §4 says exactly what a surviving adversary would have had to look like.
-- New information for the proof side: (i) the adversary's useful range of ground sets is narrow,
-  N in (1+t, about 2.5]; beyond that he loses in 7 requests to plain top-degree requests; growing the
-  ground set during play does not help him; (ii) *mixed* (non-vertex) omissions are a gift to the
-  requester because she sees them before her next request — the dangerous omissions are the
-  concentrated, redundant ones (C's vertex scripts), not the spread ones; (iii) the "many disjoint pairs"
-  idea is capped at m <= 22 and cannot be forced past round 4.
+- **No adversary found that beats the 8-request requester at any t > 3/4, and no counterexample lead.**
+- The one case that looked close (mixed replies on exactly 2k points, t = 0.76, first run: requester's best
+  line missing by 0.0012) **is settled for the requester in exact rational arithmetic**: the miss was an
+  unconverged MILP, not rounding. With her discard fixed to reply 5 the MILP closes in 57 s and the line,
+  re-simulated with fractions at T = 19/25, gives mass(D) - T = -0.0670 exactly negative (§1.1).
+- Neighbourhood of that adversary (N = 1.9, 2.1, 2.15, 2.2; a single concentrated omission at reply
+  2, 4, 6 or 7; alternating proportional / vertex rounds; constant mixing fractions 0, 0.25, 0.5, 0.8, 0.9
+  with three vertex orders; one irregular round-by-round schedule): **all 21 opponents tested lose at
+  T = 19/25 (N = 2.15 at T = 0.761), each to an explicit requester line verified in exact rational arithmetic** (§1.2). Three
+  fractional mixtures were out of reach of the plain MILP and were settled by transferring her "plan"
+  (which types she requests completely) from a neighbouring line. No single plan beats all of them: the
+  plan must follow the adversary's mixing schedule.
+- Every adversary here answers from the complete family on N points; none wins, so there is nothing to
+  realise (§3).
 
-## 1. Adversaries designed
+## 1. Adversaries built and what happened to them
 
-### 1.1 Mixed-reply ("proportional") adversary on N points, constant or growing N
+### 1.1 Mixed-reply ("proportional") adversary on N points
 
-Rule: at round e the active ground set has mass N_e (N_1 <= N_2 <= ...; a growing schedule = fresh
-territory opened round by round); the reply takes the same fraction lam_e = 1/(N_e - t) of every
-unrequested active point class, pool included. This is the extreme non-vertex reply (the coordinator's
-"mixing two replies can hurt more than either"), it is legal in the real game (a generic k-subset of
-the unrequested points), and N_e = 1 + t is the forced complete family (the control).
-Because the unrequested active mass is exactly N_e - t when she spends her whole budget, the dynamics
-are linear and the requester's exact optimum is one MILP (`prop.py`): 7 replies, she discards one,
-terminal test mass(D) <= t for the remaining six (same test as `fresh_c/pivot.py`).
-Restrictions, all on the requester's side (so her wins are rigorous): full budget every round; the win
-"first seven replies already uncoverable" is not modelled in the MILP.
+Rule: at round e the active ground set has mass N_e (non-decreasing; a growing schedule opens fresh
+territory round by round); the reply takes the same fraction lam_e = 1/(N_e - |S_e|) of every unrequested
+active point class, pool included. This is the extreme non-vertex reply; it is legal in the real game (a
+generic k-subset of the unrequested points); N_e = 1 + t is the forced complete family (control).
+With full budget the dynamics are linear, so the requester's optimum is one MILP: 7 replies, she discards
+one, terminal test mass(D) <= t on the remaining six (same test as `fresh_c/pivot.py`).
+Restrictions are all on her side: full budget each round in the MILP; the win "the first seven replies are
+already uncoverable" is not modelled.
 
-Results, m = 8 (z = min over requesters of mass(D) - t; negative = requester wins; every incumbent was
-re-simulated by `replay`, which agrees to 1e-6):
+Certification method. MILP lines are knife-edge (several late requests are unions of whole types of mass
+exactly the budget), so a rounded line cannot be replayed at the same budget. I solve the MILP at budget
+T - 0.001, snap the line to rationals, and replay it with `fractions` at T, the adversary's rule being
+applied with the true unrequested mass. The replayed line is a legal line at T and its value is exact.
 
-| t | ground-set schedule N_1..N_7 | z incumbent | MILP bound | verdict |
-|---|---|---|---|---|
-| 0.76 | 1.76 constant (control) | -0.0400 | (not closed) | requester wins, = 3r - t as in FRESH_C §9.2 |
-| 0.74 | 1.74 constant (control) | +0.353 | -0.74 (not closed, 200 s) | uninformative (known adversary win, value +0.04) |
-| 0.76 | 2.0 constant | **+0.0012** | -1.06 (240 s) | **UNDECIDED** — see PENDING below |
-| 0.76 | 7/3 constant | -0.3315 | -0.90 | requester wins [computed exact line] |
-| 0.76 | 3.0 constant | -0.7600 | -0.76 (optimal) | requester wins with D = empty |
-| 0.76 | 1.76, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0 (growing) | -0.5827 | -0.88 | requester wins |
-PENDING_ROWS
+| t (exact T) | ground set | mass(D) - T of her line | status |
+|---|---|---|---|
+| 0.76 | 1.76 (control) | -0.040 = 3r - t | [numerical], reproduces FRESH_C §9.2 |
+| **0.76 (19/25)** | **2.0** | **-0.0670** (discard reply 5; MILP for that discard optimal, -0.0660 at budget 0.759) | **[computed exact]** requester wins |
+| 0.76 | 1.9 | -0.0341 | [computed exact] requester wins |
+| 0.76 | 2.1 | -0.1278 | [computed exact] requester wins |
+| 0.761 | 2.15 | -0.0496 (discard 1; other discards not optimised) | [computed exact] requester wins |
+| 0.76 | 2.2 | -0.2723 (optimal for discard 5) | [computed exact] requester wins |
+| 0.76 | 7/3 | -0.33 | [numerical] requester wins |
+| 0.76 | 3.0 | -0.76 (D empty, MILP optimal) | [numerical] requester wins |
+| 0.76 | growing 1.76, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0 | -0.58 | [numerical] requester wins |
+| 0.801 | 2.0 | -0.2178 | [computed exact] requester wins |
 
-Top-degree requester alone (`sim.py`, no optimisation, [computed exact for the stated rule]): against the
-constant-N proportional adversary the seven replies are already uncoverable (7-request win, no discard)
-for N >= 2.75 at t = 0.76 and N >= 2.5 at t = 0.80; max degree is 4 for every N (Lemma 3). For
-N in [1+t, 2.5] the top-degree rule fails badly (mass(D) - t up to +1.06 at N = 1.9..2.0): in that
-range she needs the adaptive lines the MILP finds.
+(First all-discards run at N = 2: incumbent +0.0012 after 240 s, -0.057 after 480 s, bound never better
+than -0.82: the monolithic MILP is the problem. Fixing the discard makes it close.)
 
-Threshold vs N for this adversary [computed, from the table]: the requester's margin at t = 0.76 is
--0.04 (N = 1.76), about 0 (N = 2.0, undecided sign), -0.33 (N = 7/3), -0.76 (N = 3). So the
-adversary's power is NOT monotone in N for a fixed rule (monotonicity, TWIN 11.1, is about the best
-adversary on N points): the hardest ground set for her is N close to 2, exactly where the twin's rigidity
-7.3 says the final type family has no slack. Threshold vs m: only m = 8 was computed.
+What her winning line looks like at N = 2 (`show.py cert_N2_T076.json`) [numerical]: kept replies
+1,2,3,4,6,7; four heavy triples 246, 147, 237, 136 (0.24-0.25 each: the transversal triples of one parity
+for the matching (12)(34)(67)), three 4-types 1234, 1267, 3467 (0.11-0.13 each), degree-2 filler 0.34,
+no 5-fold point, 13 of 20 triples realised, mass(D) = 0.693. This is the **Fano six-state** of FRESH_C
+§8.1 with noise, not the 2-(6,3,2) template (which would have no 4-fold type and exactly ten triples).
+Same shape at N = 2.15 and at t = 0.80. So against spread omissions she still plays Fano; I saw no line
+ending in the six-edge template.
 
-### 1.2 Why spread omissions help her — template calculus [proved by hand]
+Top-degree requester alone (`sim.py`) [numerical, exact rule]: against constant-N proportional replies the
+seven replies are already uncoverable (7 requests, no discard) for N >= 2.75 at t = 0.76 and N >= 2.5 at
+t = 0.80; for N in [1+t, 2.5] the top-degree rule fails (mass(D) - t up to +1.06) and the adaptive lines
+above are needed.
 
-By TWIN 7.1 a kept tuple is uncoverable iff the complement types I_x = {i : x not in B_i} are pairwise
-intersecting. On conf(N) each complement C_i = S_i + O_i has mass N - 1, so a terminal position is a
-measure on an intersecting family with every marginal equal to (N-1)/N; the mean type size is
-7(N-1)/N: 3 at N = 7/4, 3.5 at N = 2, 4 at N = 7/3.
-- Fano lines: marginal 3/7. Requests alone suffice iff t >= 3N/7 (non-adaptive Fano).
-- 2-(6,3,2) blocks (coordinator's second template): six indices, every index in exactly half of the
-  blocks, so each of the six complements must contain half of the kept points: possible only for
-  N - 1 >= N/2, i.e. N >= 2 (at N = 2 with every omitted point landing exactly in a block).
-  Requests alone would need t >= N/2 >= (1+t)/2, i.e. t >= 1: **never**. The six-edge template
-  is reachable only through the adversary's omissions.
-- [heuristic from here on] Hence the six-edge template is a weapon exactly against adversaries whose
-  omissions she can *use*: she sees O_i before choosing S_{i+1}, and spends her next requests only on
-  the points that were not omitted. Against the proportional adversary every unrequested class is split
-  by each omission, so she can try to complete pairwise intersection class by class; the incidence
-  count 7(N-1) >= 3N permits it for N >= 7/4, with room at N = 7/3 (9.33 against 7). (Note the
-  non-adaptive count 7t >= 3N fails at N = 7/3, t = 0.76, yet she wins there by -0.33 [computed]: the
-  win necessarily uses his omissions.) A vertex adversary (C's rules L / PF) puts each omission on
-  points that are already in many complements; my reading is that this is why C's scripts hold her to
-  exactly 3r - t = -0.04 while the proportional rule gives her -0.33 at N = 7/3. I did not inspect
-  which template her winning lines end in.
-- Consequence for adversary design: mixing replies is useful to him only if the mixture is over
-  *redundant* omissions. "Mix Fano-type and 2-(6,3,2)-type structure" on the adversary side means: keep
-  the final type family off both templates, i.e. keep some class in at least 4 replies whose
-  complementary triple still has a common point, for every 6- and 7-subset. On N = 2 the excess
-  incidence is exactly 1 (TWIN 7.3(b)); the design template uses excess 0 on six replies and the Fano
-  template excess 1 on seven, so an adversary on 2k points must make her waste strictly more than one
-  unit of complement incidence over the kept replies. I did not find a rule that does so against an
-  adaptive requester; rule L is the natural candidate and loses [C, computed exact].
+Threshold vs N (this adversary, m = 8, t = 0.76): margins -0.040, -0.034, -0.067, -0.128, -0.272, -0.33,
+-0.76 at N = 1.76, 1.9, 2.0, 2.1, 2.2, 7/3, 3. The requester's margin is smallest near N = 1.76-1.9 and
+grows steadily with N: a spread adversary gets weaker, not stronger, with more room. (The margins at
+1.9, 2.1 are incumbents, not optima; the true margins can only be larger.)
 
-### 1.3 "Every kept 7-tuple contains a disjoint pair" (multi-waste adversary)
+### 1.2 Neighbourhood: mixtures of proportional and vertex replies (N = 2, t = 0.76)
 
-Idea: by the rectangle lemma (TWIN 5.1/5.2) a kept tuple containing a disjoint pair A, A' whose other
-members are confined to A + A' is coverable below 4/5. So let the disjointness graph of the m replies
-have independence number <= 6: then every 7-subset contains a disjoint pair and a single discard is
-useless. For m = 8 two disjoint pairs {A_1,A_2}, {A_3,A_4} suffice (grid: rows / columns of a 2x2
-array of cells of mass 1/2).
-- [proved by hand] Cap on m: the disjointness graph is triangle-free (three pairwise disjoint replies
-  are uncoverable), so alpha <= 6 forces m <= R(3,7) - 1 = 22. This adversary type cannot beat every
-  bounded m; it could at best shift t*(m) for m <= 22.
-- [proved by hand] It cannot be forced even at m = 8. Both pairs must be of confined kind with respect
-  to each other, which forces A_1 + A_2 = A_3 + A_4 = V and A_4 = V - A_3. If she puts mass sigma of
-  S_4 inside V - A_3, any reply disjoint from A_3 has mass >= sigma outside V; then the rectangle of A_4
-  in A_1 x A_2 has semi-perimeter >= 1 + sigma (TWIN 11.2), i.e. the pair {A_1,A_2} becomes arena-kind
-  and may be kept. If instead he stays inside V, A_4 meets A_3 in mass >= sigma and there is no second
-  disjoint pair: the play is the ordinary conf(2) pivot game with one disjoint pair, which is agent C's
-  open case and not a new adversary.
-- [heuristic] With sigma = t the reply A_4 = (r inside V) + (t fresh) leaves a rectangle covering all
-  of A_1 x A_2 except a strip of width <= r; I did not compute the continuation, so "she wins after
-  that" is not proved.
+Reply at round e = alpha_e x proportional + (1 - alpha_e) x vertex reply (omit the slack greedily in a fixed
+order: LOW = lowest degree first, pool first; HIGH = highest degree first; GIFT = pool last, then lowest
+degree). alpha = 1 is §1.1; alpha = 0 is C's scripts L / H / G. Requester's MILP per fixed discard at
+budget 0.759, each winning line verified exactly at T = 19/25.
 
-### 1.4 Common 2-cover for all m replies; two arenas; fresh re-use
+| alphas for replies 2..7 | vertex order | result (mass(D) - T, exact) |
+|---|---|---|
+| 0,1,1,1,1,1 (concentrated omission at reply 2) | LOW | -0.0670 requester wins |
+| 1,1,0,1,1,1 (at reply 4) | LOW | -0.2516 requester wins |
+| 1,1,1,1,0,1 (at reply 6) | LOW | -0.2203 requester wins |
+| 1,1,1,1,1,0 (at reply 7) | LOW | -0.1648 requester wins |
+| 1,0,1,0,1,0 (alternating) | LOW | -0.2920 requester wins |
+| 0.5 every round | HIGH | -0.0605 requester wins |
+| 0,1,0,1,0,1 (alternating) | LOW | -0.3314 requester wins |
+| 1,1,0,1,1,1 | HIGH | -0.2262 requester wins |
+| 1,1,0.5,1,0.5,1 | GIFT | -0.1311 requester wins |
+| 0.9 every round | LOW | -0.0637 requester wins (plan transfer; plain MILP: no line in 335 s) |
+| 0.5 every round | LOW | -0.0594 requester wins (plan transfer; plain MILP: no line in 420 s, incumbent +0.24) |
+| 0.25 every round | LOW | -0.0572 requester wins (plan transfer) |
+| 0.8 every round | GIFT | -0.1064 requester wins (plan transfer, and plain MILP with discard 7) |
+| 0 every round (= C's vertex rules) | LOW / HIGH | -0.0370 = 3r - t at budget 0.759 (plan transfer); plain MILP at 0.76, discard 1: -0.0400 optimal, = C's value |
+| 0 every round | GIFT | -0.2780 requester wins (plan transfer) |
+| 0.7,0.2,0.9,0.4,0.6,0.1 (irregular) | LOW | -0.1841 requester wins, with the plan of the alternating line; the plan of the pure proportional line FAILS here by +0.0061 (optimal for that plan) |
 
-- Common cover for all m replies: Theorem 8's method guarantees it only for (m-2)t < 4, i.e. t < 2/3
-  at m = 8 (TWIN §5). Open-game version [proved by hand for the bound per reply; the conclusion is a
-  count, not a strategy proof]: with A_1, A_2 disjoint and a request taking t/2 of each, any reply
-  inside A_1 + A_2 kills at least (t/2)(1 - t/2) = 0.234 (at t = 3/4) of the pair square A_1 x A_2,
-  and a reply with fresh mass kills more; the candidate pairs cannot outlast a bounded number of
-  replies. Not growing in m.
+Plan transfer (`plan.py`, `planall.py`): take a logged winning line, record at each round the set of types
+she requests completely and her discard, impose "request these types completely" as constraints against
+the new adversary and let the MILP re-optimise the rest. This restricts only her, the model closes in
+seconds, and the resulting line is verified exactly as before.
+
+Reading.
+- A concentrated omission at rounds 4, 6 or 7 inside otherwise proportional play *helps* her (margins
+  0.16-0.25 against 0.067).
+- Along the constant-alpha LOW family her margin with one fixed plan is 0.037, 0.057, 0.059, 0.064, 0.067
+  at alpha = 0, 0.25, 0.5, 0.9, 1: monotone, smallest at the pure vertex rule, where it equals the control
+  value 3r - t. In this family mixing does NOT hurt her more than the pure vertex reply; the worst
+  opponent is still C's rule L / the forced family. (These are margins of one plan, i.e. lower bounds on
+  her true margin.)
+- The irregular schedule is the only place where a plan broke (+0.006): an adversary who changes his
+  mixing fraction from round to round forces her to change plan, and an adversary who chooses the fraction
+  *after seeing her request* (not a fixed schedule) is outside everything computed here. That adaptive
+  choice of alpha_e is the natural refinement; with six rounds and a few alpha levels it is a small game
+  tree over plans, and it is what I would hand to C's certified solver next.
+
+### 1.3 Templates [counts proved by hand; interpretation heuristic]
+
+A kept tuple is uncoverable iff the complement types I_x = {i : x not in B_i} are pairwise intersecting
+(TWIN 7.1). On conf(N) each complement has mass N - 1, so a terminal position is a measure on an
+intersecting family with all marginals (N-1)/N; mean type size 7(N-1)/N.
+- Fano lines: marginal 3/7; requests alone suffice iff t >= 3N/7.
+- 2-(6,3,2) blocks: six replies, each complement must contain exactly half of the kept points, so it
+  needs N - 1 >= N/2, i.e. N >= 2; requests alone would need t >= N/2 >= (1+t)/2, i.e. t >= 1 — never.
+  **The six-edge template can only be completed with the adversary's omissions**, at least N/2 - t of
+  each complement; at N = 2 that is all of his slack r, every round, landing exactly on blocks. It
+  has zero tolerance for misplaced omissions, so presumably he can avoid it cheaply [heuristic, not
+  proved]; in any case it is not what her optimal lines use (§1.1).
+- At N = 7/3, t = 0.76 the non-adaptive count 7t >= 3N fails, yet she wins by 0.33: her wins on larger
+  ground sets necessarily use his omissions, which she sees before the next request. Spread omissions
+  are usable; omissions on points already in many complements are not. That is the only sense in which
+  "mixing" helps him, and it points at low-degree-biased mixtures (the undecided rows above).
+
+### 1.4 "Every kept 7-tuple contains a disjoint pair"
+
+Idea: a kept tuple containing a disjoint pair with all other members confined to its union is coverable
+below 4/5 (TWIN 5.2); so make the disjointness graph of the replies have independence number <= 6 — for
+m = 8 two disjoint pairs {A_1,A_2}, {A_3,A_4} (rows and columns of a 2x2 grid of cells of mass 1/2).
+- [proved by hand] Three pairwise disjoint replies are uncoverable, so the graph is triangle-free and
+  alpha <= 6 forces m <= R(3,7) - 1 = 22. The mechanism cannot work for every bounded m.
+- [proved by hand] It cannot be forced at m = 8 either: both pairs confined with respect to each other
+  means A_1 + A_2 = A_3 + A_4 = V, so A_4 = V - A_3. If S_4 has mass sigma inside V - A_3, a reply
+  disjoint from A_3 has mass >= sigma outside V and its rectangle in A_1 x A_2 has semi-perimeter
+  >= 1 + sigma (TWIN 11.2: the pair {A_1,A_2} becomes arena-kind and can be kept); if he stays inside V
+  there is no second disjoint pair and the play is C's ordinary conf(2) pivot game.
+- [heuristic] The continuation after sigma = t was not computed.
+
+### 1.5 Other opponents
+
+- Common 2-cover for all m replies: guaranteed only for (m-2)t < 4 (TWIN §5), t < 2/3 at m = 8. With
+  A_1, A_2 disjoint and a request taking t/2 of each, every reply kills at least (t/2)(1 - t/2) = 0.234
+  of the pair square at t = 3/4, more if it uses fresh points [proved by hand]; not growing in m.
 - Two arenas: TWIN 11.4, loses at 2/3.
-- Growing ground set (fresh territory each round): the proportional version loses by -0.58 (table).
-  Mechanism [proved by hand, spread lemma TWIN 12.4]: fresh mass lowers the 3-fold mass, and once it is
-  <= t at requests 4..7 she wins without a discard.
+- Growing ground set: loses by 0.58 in the proportional version (table); by the spread lemma (TWIN 12.4)
+  fresh mass lowers the 3-fold mass and she wins without a discard once it is <= t.
 
-## 2. Threshold of the best adversary found, vs m and N
+## 2. Threshold vs m and N
 
-| m | N | best adversary I have | level he holds | status |
+| m | N | strongest adversary I have | level he holds | status |
 |---|---|---|---|---|
-| 8 | 1+t | forced complete family (control) | 3/4 exactly | [computed exact], reproduces C |
-| 8 | 2 | proportional omissions | >= 3/4; at 0.76 her best found line misses by 0.0012 | UNDECIDED (see PENDING) |
-| 8 | 7/3 | proportional | < 0.76 | [computed exact line] |
-| 8 | >= 2.75 | proportional | < 0.76, already at m = 7 | [computed exact, top-degree rule] |
-| 8 | growing to 3 | proportional | < 0.76 | [computed exact line] |
-| 9..22 | any | disjoint-pair graph with alpha <= 6 | not forceable (1.3) | [proved by hand] |
-| >= 23 | any | — | that mechanism is void | [proved by hand] |
+| 8 | 1+t | forced complete family | exactly 3/4 | reproduces C |
+| 8 | 1.9 - 2.2 | proportional | below 0.76 | [computed exact] |
+| 8 | 2.0 | 17 fixed mixing schedules proportional / vertex (§1.2) | below 0.76; weakest margin 3r - t at the pure vertex end | [computed exact] |
+| 8 | 2.0 | mixing fraction chosen after seeing the request | unknown | not computed |
+| 8 | 7/3, 3, growing | proportional | below 0.76 | [numerical] |
+| 7 | >= 2.75 | proportional | below 0.76 | [numerical], top-degree rule |
+| 9..22 | any | disjoint-pair graph | not forceable | [proved by hand] |
 
-I have no adversary whose guaranteed level exceeds 3/4 for any m >= 8, and none whose level increases
-with N. The m-dependence was not computed beyond m = 8 (each extra reply doubles the type space).
+No adversary of mine holds a level above 3/4 at m = 8, none gains from larger N, and m >= 9 was not
+computed (more requests can only help her against a fixed rule).
 
 ## 3. Realizability
 
-Nothing to realise: no adversary above won. For the record, the test that would have applied:
-all replies of every adversary in §1 are k-subsets of one N-set avoiding the request, i.e. members of
-the complete family on N points, which has tau = N - k + 1 > T but contains uncoverable 7-tuples as
-soon as N >= 7k/4 (Fano blow-up). A bounded-m win in the scale-free model would therefore be a statement
-about the *depth* of the bad 7-tuples (how many requests are needed to force one), not a family; to
-become a family the reply rule would have to be a function of the request alone, consistent over all
-C(N,T) requests — the proportional rule is as far from that as possible (it depends on the whole
-history through the types).
+No adversary won, so no coexistence test was run. All replies of all adversaries here are k-subsets of one
+N-set, i.e. members of the complete family on N points, which contains uncoverable 7-tuples for
+N >= 7k/4. A bounded-m win in this model would have been a statement about how many requests are needed to
+force a bad 7-tuple, not a family; to be a family the reply would have to depend on the request alone.
 
-## 4. Why these adversaries fail — the statement the proof side needs
+## 4. Why these opponents fail — what the proof side can use
 
-Two facts are proved, one is the missing lemma.
-1. [proved by hand] (Lemma 3 + TWIN 12.4) An adversary survives only if at some request j <= 7 the
-   points in at least three of his replies have mass > t; with spread replies that forces N < about 2.6
-   ([computed] for the proportional rule: N <= 2.5 at t = 0.76).
-2. [counts proved by hand, interpretation heuristic] (§1.2) On conf(N) his omissions have total mass
-   7(N-1-t), and every omitted point she can see is complement incidence she did not pay for. To gain
-   from them he must place them on points whose complement type is already large ("redundant
-   omissions"); how much he can hide this way is what decides the game. On N = 2 the total excess
-   incidence is exactly 1 (TWIN 7.3(b)).
-3. **Missing lemma (my proposed form; not proved, not tested beyond the table).** *For every eps > 0 there is m(eps) such that for all N in
-   [1+t, 5/2] and t >= 3/4 + eps, against any adversary confined to N points the requester can, within
-   m(eps) requests, find seven replies whose complement types are pairwise intersecting, using the
-   adversary's visible omissions: i.e. the mass of omissions that are redundant for every admissible
-   template (Fano on 7, 2-(6,3,2) on 6, and their mixtures of mean type size 7(N-1)/N) is at most
-   (4t - 3) + o(1) per kept tuple.* The forced family (N = 1+t, no omissions), the vertex scripts of C
-   (all omissions redundant, value exactly 3r - t) and the proportional rule (no omission redundant,
-   value far below) are the three corners; the open case is an adversary who chooses adaptively between
-   redundant and non-redundant omissions on N close to 2.
+1. [proved by hand] (Lemma 3 + TWIN 12.4) He survives only if at some request j <= 7 the points in at
+   least three replies have mass > t; for spread replies this confines him to N below about 2.6
+   ([numerical]: 2.5-2.75 for the proportional rule).
+2. [computed exact, for the listed rules] Against spread omissions on N in [1.9, 2.2] she wins at 0.76 with
+   the Fano six-state reached adaptively, with a margin that grows with N; a concentrated omission at one
+   round does not help him.
+3. **Missing statement** (not proved, not refuted): *on conf(N), N in [1+t, 5/2], for an adversary who
+   may bias each omission towards points already lying in many complements, the requester still reaches a
+   Fano six-state with mass(D) <= t within a bounded number of requests when t >= 3/4 + eps.* The three
+   solved corners are: no omissions (N = 1+t, margin 3r - t), all omissions on lowest-degree points
+   (C's rule L, margin exactly 3r - t), all omissions spread (margin larger). The unsolved region is the
+   interior with *adaptive* choice of the bias: every fixed schedule I tried loses, but to different
+   plans, so the open question is exactly whether she can choose her plan before knowing his next bias.
 
-## 5. Not done
+## 5. Not done / caveats
 
-- The N = 2, t = 0.76 proportional MILP did not close (bound -1.06); neither side is certified there.
-- No m >= 9 computation; no certified lower bounds for any adversary win (the MILP bounds are weak).
-- No run with partial budgets, and the 7-reply direct win is not in the MILP (both only weaken her).
-- The continuation after round 4 in §1.3 is heuristic.
+- No adversary win occurred. Every opponent is a fixed (request-independent) mixing schedule; schedules
+  that react to her request were not computed. The plain MILP cannot certify an adversary win (its bounds
+  stay near -0.6 unless all seven fixed-discard models close), so "no win found" for a future opponent
+  would need C's solver.
+- Rows tagged [numerical] rest on float MILP incumbents re-simulated in floats, not on `exact.py`.
+- "Exact" means: exact value of an explicit rational requester line against the stated deterministic rule,
+  in the scale-free model with free slivers. It is not a statement about finite k.
+- m = 8 only; partial budgets and the direct 7-reply win are not in the MILP (both only weaken her).
