@@ -1,0 +1,10 @@
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+vertices of the leak polytope (delta=1): 94 (incl. zero vector: True)
+nonzero vertices: 93
+max over vertices of f_a for each a: {1: 2.0, 2: 2.0, 3: 2.0}
+max over vertices of min_a f_a : 2.0 (Fraction(1, 1), Fraction(1, 1), Fraction(1, 1), Fraction(1, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))
+closed form disagrees with LP at 21 vertex/a pairs
+random convex combinations: max f_a = 1.2203137477740853 closed-form mismatches 0
+integer d=1: structures 51, max over structures of min_a (integer-optimal max load) = 2.0 (2d = 2) arg [0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0]
+integer d=2: structures 987, max over structures of min_a (integer-optimal max load) = 4.0 (2d = 4) arg [0, 2, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0]

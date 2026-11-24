@@ -1,0 +1,28 @@
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+(40, 30, 6, 0.75, 0.15, 'T/4=7.50', 'free') {'games': 678, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 30} [] 15s
+(40, 30, 6, 0.75, 0.15, 'T/4=7.50', 'pool') {'games': 678, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 30} [] 14s
+(40, 30, 7, 0.75, 0.175, 'T/4=7.50', 'free') {'games': 678, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 30} [] 16s
+(40, 30, 7, 0.75, 0.175, 'T/4=7.50', 'pool') {'games': 678, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 30} [] 16s
+(80, 60, 12, 0.75, 0.15, 'T/4=15.00', 'free') {'games': 678, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 60} [] 17s
+(80, 60, 12, 0.75, 0.15, 'T/4=15.00', 'pool') {'games': 678, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 60} [] 17s
+(80, 60, 14, 0.75, 0.175, 'T/4=15.00', 'free') {'games': 678, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 60} [] 16s
+(80, 60, 14, 0.75, 0.175, 'T/4=15.00', 'pool') {'games': 678, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 60} [] 16s
+(80, 60, 15, 0.75, 0.1875, 'T/4=15.00', 'free') {'games': 678, 'over': 0, 'overpred': 58, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 60} [] 17s
+(80, 60, 15, 0.75, 0.1875, 'T/4=15.00', 'pool') {'games': 678, 'over': 0, 'overpred': 47, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 60} [] 17s
+(100, 78, 18, 0.78, 0.18, 'T/4=19.50', 'free') {'games': 678, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 78} [] 16s
+(100, 78, 18, 0.78, 0.18, 'T/4=19.50', 'pool') {'games': 678, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 78} [] 16s
+(100, 78, 19, 0.78, 0.19, 'T/4=19.50', 'free') {'games': 678, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 78} [] 17s
+(100, 78, 19, 0.78, 0.19, 'T/4=19.50', 'pool') {'games': 678, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 78} [] 18s
+(50, 40, 9, 0.8, 0.18, 'T/4=10.00', 'free') {'games': 678, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 40} [] 16s
+(50, 40, 9, 0.8, 0.18, 'T/4=10.00', 'pool') {'games': 678, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 40} [] 16s
+(120, 90, 22, 0.75, 0.1833, 'T/4=22.50', 'free') {'games': 678, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 90} [] 18s
+(120, 90, 22, 0.75, 0.1833, 'T/4=22.50', 'pool') {'games': 678, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 90} [] 19s
+(60, 45, 10, 0.75, 0.1667, 'T/4=11.25', 'free') {'games': 678, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 45} [] 16s
+(60, 45, 10, 0.75, 0.1667, 'T/4=11.25', 'pool') {'games': 678, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 45} [] 16s
+(60, 45, 11, 0.75, 0.1833, 'T/4=11.25', 'free') {'games': 678, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 45} [] 17s
+(60, 45, 11, 0.75, 0.1833, 'T/4=11.25', 'pool') {'games': 678, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 45} [] 16s
+(100, 80, 19, 0.8, 0.19, 'T/4=20.00', 'free') {'games': 678, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 80} [] 17s
+(100, 80, 19, 0.8, 0.19, 'T/4=20.00', 'pool') {'games': 678, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 80} [] 18s
+(150, 117, 28, 0.78, 0.1867, 'T/4=29.25', 'free') {'games': 678, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 117} [] 18s
+(150, 117, 28, 0.78, 0.1867, 'T/4=29.25', 'pool') {'games': 678, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 117} [] 19s

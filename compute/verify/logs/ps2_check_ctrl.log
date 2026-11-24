@@ -1,0 +1,12 @@
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+(40, 30, 8, 0.75, 0.2, 'T/4=7.50', 'free') {'games': 678, 'over': 64, 'overpred': 73, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 31} [] 13s
+(40, 30, 8, 0.75, 0.2, 'T/4=7.50', 'pool') {'games': 678, 'over': 0, 'overpred': 97, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 30} [] 14s
+(80, 60, 16, 0.75, 0.2, 'T/4=15.00', 'free') {'games': 678, 'over': 104, 'overpred': 53, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 62} [] 13s
+(80, 60, 16, 0.75, 0.2, 'T/4=15.00', 'pool') {'games': 678, 'over': 0, 'overpred': 99, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 60} [] 14s
+(80, 60, 18, 0.75, 0.225, 'T/4=15.00', 'free') {'games': 678, 'over': 115, 'overpred': 142, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 66} [] 14s
+(80, 60, 18, 0.75, 0.225, 'T/4=15.00', 'pool') {'games': 678, 'over': 0, 'overpred': 221, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 60} [] 18s
+(16, 12, 3, 0.75, 0.1875, 'T/4=3.00', 'free') {'games': 678, 'over': 26, 'overpred': 59, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 13} [] 16s
+(16, 12, 3, 0.75, 0.1875, 'T/4=3.00', 'pool') {'games': 678, 'over': 31, 'overpred': 47, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 13} [] 15s
+(100, 78, 22, 0.78, 0.22, 'T/4=19.50', 'free') {'games': 678, 'over': 121, 'overpred': 57, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 83} [] 12s
+(100, 78, 22, 0.78, 0.22, 'T/4=19.50', 'pool') {'games': 678, 'over': 0, 'overpred': 115, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'maxreq': 78} [] 14s
