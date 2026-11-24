@@ -245,6 +245,7 @@ class Game:
         return v, bs
 
 
+def nm5(J): return "".join(str(i + 1) for i in range(5) if J >> i & 1) or "-"
 def nm(J): return "".join(str(i + 1) for i in range(4) if J >> i & 1) or "-"
 def fmt(d): return {nm(J): round(v, 4) for J, v in sorted(d.items()) if v > 1e-6}
 

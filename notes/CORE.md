@@ -1001,3 +1001,104 @@ LP values on 117 random positions before use as cuts. Two encoding errors in the
 and fixed during the runs (dump options droppable on both sides of a threshold; readings with a dead type
 given a finite bound) — both made her stronger, so bounds reported as equal to base were already valid.
 All LP/MILP work is floating point (HiGHS); nothing is an exact rational certificate.
+
+=============================================================================================
+# Part VII — "consistency": what it is, what it is not, and one step deeper (seventh time box)
+
+Code: `compute/core/deep.py` (five replies), logs `compute/core/logs/deep_*.log`.
+**Outcome.** (1) There is no separate "consistent game". The exploration game in which every reply is kept
+and any seven may be used is *exactly* the family statement, cut off after m requests (29.2, proved). So Part VI
+already was the consistent game at depth 2, and the last bullet of §27 and the "next step" of §28 were wrong in
+suggesting that a family constrains him more than that game does. (2) One step deeper (K_3, K_3', K_4 all kept,
+he answers each request once): no drop found, value = base at all four points — three replies cost 3·omega.
+[float; her side heuristic; not certified]. (3) None of the earlier adversary wins relies on inconsistent
+answers; all of them rely on a restriction on her (§31).
+
+## 29. The model [proved by hand]
+
+**29.1 Deterministic replies are WLOG.** Let H be k-uniform on V with τ(H) > T and property (7,2). In co-edge
+form: every T-set lies in a co-edge of H, and no seven co-edges cover all pairs. Choose for every T-set S one
+co-edge F(S) ⊇ S of H. The image of F is a subfamily of H, still T-covering, still (7,2). So a counterexample
+exists iff a reply MAP F exists whose image has no seven members covering all pairs.
+**29.2 Proposition.** Let G_m be the game: m rounds; she names a T-set (depending on everything seen), he names a
+co-edge containing it (depending on everything seen); she wins iff some seven of the m replies cover all pairs.
+Then for fixed (k, T, N):  CP holds  ⟺  she wins G_m for m = C(N,T)  ⟺  she wins G_m for some m.
+*Proof.* If CP holds she asks every T-set once, in any order; the replies form a T-covering family, which has a
+good seven. If she wins some G_m and H is T-covering, let him answer from H; her seven lie in H. ∎
+Consequences.
+- An adversary strategy that survives every m gives a family (the replies along "ask everything"). History-
+  dependent answers are therefore legitimate: along one play with distinct requests a history-dependent adversary
+  and a fixed map F cannot be told apart, and repeating a request can only add members.
+- "Branches" of her strategy tree under DIFFERENT answers belong to different families; edges from two such
+  branches never coexist. What coexists is everything she asks in one play — extra requests, i.e. depth.
+  So "her seven may come from different branches" is correct only as "she may ask more and keep everything",
+  which is G_m with larger m. (This corrects the premise of the task as posed to me, and my own §27–§28.)
+- Valid one-sided relaxations: (a) truncating to depth m handicaps HER — her win at any depth proves the first-
+  order statement, his holding at depth m proves nothing beyond m; (b) a non-adaptive portfolio (all requests
+  fixed in advance) handicaps her further. There is no computable relaxation in which his holding is conclusive
+  short of all depths.
+- The first-order (mass) model and the Fano restriction are as in §25; complete only for N < 11k/6.
+
+## 30. Depth 3 [computed, float; her side heuristic at two of three levels]
+
+Game: after K_1, K_2 she asks S_3, then S_3' (knowing K_3), then S_4 (knowing K_3, K_3'); he answers each once;
+value = min over all readings among the five replies (70 readings: 10 pairs, 20 triples, 25 quadruples, 15
+quintuples). This is the game I called "consistent two-stage" in §28.
+Tested slice: S_3 = the triangle-type request (nothing of O, a* of each private part, rest of g); his D_3 = all of
+omega on O; her S_3' over 16 candidates (LP-optimal future lines of every reading among K_1, K_2, K_3, and
+unions of whole cells by co-degree); his D_3' from the piecewise-linear menu, at most four tried; her S_4 over
+16 cells by candidate lines of all 19 readings plus compass search; his D_4 from a numeric priority-fill menu
+(proportional; all on one cell with spill by co-degree; half-half on two cells of co-degree >= 2).
+
+| t | N | o | omega | base | value found after three replies | cost of the three replies |
+|---|---|---|---|---|---|---|
+| 0.76 | 1.82 | 0.29 | 0.06 | 0.02 | 0.0200 | 3.00·omega |
+| 0.76 | 1.85 | 0.305 | 0.09 | 0.05 | 0.0500 | 3.00·omega |
+| 0.76 | 1.90 | 0.33 | 0.14 | 0.10 | 0.1000 | 3.00·omega |
+| 0.755 | 1.90 | 0.3275 | 0.145 | 0.125 | 0.1250 | 3.00·omega |
+
+(N = 1.82k is the only point with N < 11k/6 = 1.833k; 1.85k is just above it.) 3–4 minutes each.
+In all 64 (S_3', position) cases he had a second dump after which neither the four-reply position nor any last
+request found went below base; in 57 of them the dump that sufficed starts on a cell of co-degree >= 2, in 28 on
+K_1∩K_2∩K_3 (the pile again). The menu order favoured those cells, so this shows sufficiency, not necessity.
+**Not certified.** The exact last-level MILP (`deep.last_level`, same construction as 26.4) did not close: against
+the piecewise-linear menu she parks the free mass of the two highest cells exactly at omega, where the two-cell
+fill stops being available, and "gains" 0.03–0.09; the true adversary answers with that fill (or a three-cell
+one just beyond the threshold), which gave 0.100 = base at her point in the instrumented run. So the linear menu
+is too weak at depth 3, and the depth-3 numbers rest on the heuristic search alone. Weak points: one S_3, one D_3,
+16 second requests.
+
+## 31. Do the earlier adversary wins rely on inconsistent answers? No — on restrictions of her.
+
+- **(10,8), m = 8, 9, 10 (FAST Part 3).** In 393 of 410 terminal positions the arena has 18 = k + T points, where
+  the reply to an 8-set is its complement: a function of the request, as consistent as possible. The family behind
+  it is the complete K_18^(10), which is not (7,2) (seven 8-sets cover all pairs of 18 points — FAST's own side
+  check). So that win is an artefact of what the requester of that engine may do (anchored certificates, J kept
+  replies), not of inconsistency and not a family obstruction. [read from FAST; not re-run; the 17 terminals with
+  19–20 points not examined.]
+- **Fixed-labelling W-dumper (22.3).** History- and labelling-dependent, which 29.2 allows. Its win is entirely
+  the restriction "one seven, labelling determined by her requests, no discard". No claim without it.
+- **Part VI and §30.** History-aware, legitimate; evidence for depths 2 and 3 only.
+- General rule: an adversary win at bounded depth is never evidence of a family. Only a strategy for all m is.
+
+## 32. Where this leaves the statement
+
+By 29.2 the fork is now clean. Either
+(a) SPOIL (§27) fails at some depth — then at that position she has a request against which every dump leaves a
+    reading below base; or
+(b) SPOIL holds at every position — then the first-order statement itself fails for 5T - 2k < N < 11k/6 (need never
+    drops below base > 0), and CP can hold only through effects outside the first-order model (integrality; or,
+    for N >= 11k/6, certificates I excluded). I have evidence for (b) only up to depth 3, and none for (a).
+[heuristic] What (b) would need is an invariant. The runs suggest "there is always a cell of points lying in at
+least two kept co-edges, with unrequested mass >= omega, whose filling keeps every reading at base"; the known wins
+against fixed rules (pool, pure high) are exactly the cases where she exhausts that cell. I did not find the invariant.
+**Next step.** A falsification test of SPOIL that needs no game search: sample positions with 5 and 6 replies
+produced by his own rule, and for each solve the one-step problem "her best request against all his priority
+fills" (one level, so the search of §26 applies and the numbers are reliable). A single position with value < base
+settles (a) and gives the request rule. If several hundred positions give none, take SPOIL as the working
+conjecture and move the proof effort to its invariant, and to whether first-order failure is compatible with CP.
+Not done: that test; certification of §30; other S_3 or D_3 at depth 3; N in (5T - 2k, 11k/6) other than 1.82k.
+
+Self-check (Part VII): 29.1–29.2 are two-line arguments, re-read once; they use only finiteness of V. §30's
+engine is §26's with five replies (same LP, 70 readings); the depth-2 positions inside it reproduce base. The
+statement about the MILP's failure is from one instrumented run (N = 1.9).
