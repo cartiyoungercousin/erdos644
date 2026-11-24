@@ -1656,3 +1656,120 @@ holds x + (θ - x) = θ points of E, using x + 3(θ - x) of them. Machine check 
 before (lazy random table), so (i) is tested, not assumed. 47.4: κ^r = c + z^r/2 gives a common s; first order only.
 The 2/3 statement in "Next step" is 39.2's averaging on the orbit of halves under Sym(V∖κ); it is tagged proved for that
 reason only, and has not been machine-checked.
+
+=============================================================================================
+# Part IX — SPOIL tested (disproof side; §40–§44)
+
+Code (all in `compute/core`, logs in `compute/core/logs`): `spoil.py` (engine: any number of kept replies, every
+reading of 2..7 replies, 83 concurrency patterns), `spoil_hunt.py` (her search for a request with no spoiling dump),
+`spoil_exact.py` (exact rational certificate "no dump spoils"), `spoil_two.py`, `two_check*.py` (two levels),
+`spoil_struct.py`, `tri_test.py` (multi-pair design), `spoil_frozen.py` (stationary rule, superseded by §46),
+`onebit.py` (one-bit rule, finite k, exact). Units k = 1, t = 0.76 throughout the float work.
+**Verdict.** (1) SPOIL as written in §27 ("every position, every request") is FALSE: exact counterexample with three
+kept replies (§40). It is false only at positions he need not enter, so this does not contradict §26/§30.
+(2) The meaningful form — *he has a strategy that keeps every need >= base for ever* — is undecided. Up to four
+kept replies nothing breaks it; at five kept replies there is one sampled two-request break of the one-step rule
+(§41). Evidence now leans against it, weakly. (3) No construction. Nothing here is a counterexample to CP or
+evidence that f(k,7) > 3k/4 + o(k). (4) "SPOIL at all depths ⟹ disproof" (task statement, §27, §32(b)) is not an
+implication (§43).
+
+## 40. Literal SPOIL fails at three kept replies [computed exact]
+
+Position (t, N) = (19/25, 19/10), omega = 7/50, base = 1/10; cells by co-type:
+    K1∩K2∖K3 = 33/100, K1∩K3∖K2 = 57/100, K2∩K3∖K1 = 33/100, K2 only = 24/100, outside = 43/100
+(K3 contains all of K1∖K2; |K_i| = 9/10). Existing readings: pairs 0.100, 0.440, 0.100 (>= base proved, §25), both
+triples infeasible [float]. Request S = 212/1000 of "K2 only", 62/1000 of K1∩K2, 274/1000 of K1∩K3, 212/1000 of outside.
+**Claim [computed exact].** For EVERY dump D some reading containing the new reply has need <= 199/2000 < base.
+Certificate (`spoil_exact.py positions/p3a.json`): the dump polytope (5 free cells) is cut into 5 boxes; on each box
+one triangle reading ((2,3,4) on four boxes, (1,2,4) on one) has an explicit feasible LP point with objective
+<= 199/2000 at every vertex of the box, feasibility and objective recomputed in Fractions; need_R is convex in D, so
+the bound holds on the box. Float: his best is 0.072 (gain 0.2·omega) [menu + 4000 random fills].
+Frequency [computed float]: along self-play in which he answers with a RANDOM spoiling dump, her local search
+(objective: number of spoiling dumps in his menu) found a request with no spoiler — menu, rich menu and 3000 random
+priority fills — at 12 of 41 positions with 3 or 4 kept replies (N = 1.9). So SPOIL is a statement about a
+strategy, not about positions: most spoiling dumps are blunders one request later.
+Corrected statement **(SPOIL\*)**: he has a strategy under which min over readings of need stays >= base at every depth.
+
+## 41. Two levels along one-step-robust play [computed float; both sides sampled]
+
+`spoil_two.py`: he answers with a *robust* spoiler = a menu spoiler after which her search (20 candidates, three
+120-step hunts, confirmation against the rich menu and 1500 random fills) finds no request without spoiler; menu
+tried in order of co-degree. A request all of whose menu spoilers are non-robust is a two-request break.
+18 runs (N = 1.82, 1.85, 1.9; six seeds; 45 min each, 24 cores):
+
+| kept replies | requests tested | two-request breaks | first spoiler tried was robust |
+|---|---|---|---|
+| 2 | 180 | 0 | 177 |
+| 3 | 180 | 0 | 173 |
+| 4 | 40 | 0 | most (6 of the first 10 logged) |
+| 5 | few (one run got there) | 1 | — |
+
+Rows 2–3 agree with §26/§30: the highest-co-degree spoiler is almost always the right one, and where it is not
+another is. **The hit** (`positions/p5_level2.json`; N = 1.9, five kept replies, all existing needs >= base): one
+request S for which, of 2364 + 107 dumps sampled (rich menu, random fills, mixtures around the spoilers), 11 spoil —
+all with >= 60% of the dump on the cell "K1, K2, K3 and no other" — and after each of the 11 she has a second request
+with no spoiler found (one of them needed a 600-step hunt). Status: candidate. Not exact (his side is sampled at
+both levels; a spoiler outside the sample at either level would void it); the position was reached against a
+one-step-robust opponent, so it shows only that one-step robustness is not an invariant. A two-step-robust opponent
+was not built (cost: about 1 h per request at five replies). Gain not measured.
+Reading: the depth-2 and depth-3 "value = base" results do not extend unchanged to depth 5–6 for the rule the
+earlier runs suggested ("whole dump on one unrequested cell of co-degree >= 2", 26.3); whether a better rule exists is
+exactly SPOIL\*.
+
+## 42. Dead routes [computed float]
+
+- **Multi-pair triangle exhaustion.** Idea: q disjoint balanced pairs, S triangle-type for all of them, unrequested
+  mass inside all q unions K_i∪K_j below omega, so every dump leaks >= (omega - f)/q outside some union. LP designs exist
+  (`spoil_struct.py`, N = 1.96, q = 3, f = 0.15 < omega = 0.20) but he holds (his best 0.175–0.185 > base 0.16). Reason
+  (`tri_test.py`): for a triangle-type request need = 2·(dump mass inside K_i∪K_j) - 2·eps, so a gain needs more than
+  omega/2 + eps of the dump outside ONE union; q >= 2 pairs cannot force that. Dead.
+- **One-level sampling as a test of SPOIL\*.** §32's "next step" (one-level solves at sampled positions) cannot decide
+  it: literal breaks are frequent after non-robust dumps (§40) and absent after robust ones. Only game depth counts.
+- **Frozen anti-plan, exchangeable in-cell version**: her greedy line wins in 5, 6, 7 replies at N = 1.82, 1.85, 1.9
+  by exhausting O (he is forced onto a cell with exactly omega free) [one line each; his in-cell choices best-response
+  from a menu]. Superseded by Theorems S/S+ and §46; not pursued.
+
+## 43. What SPOIL\* would and would not give [proved by hand where stated]
+
+- [proved, 29.2] A first-order strategy that survives m requests for every fixed m is a statement for k >= k_0(m):
+  after m replies there are up to 2^m cells, and the mass model needs every cell >> 1. A family needs him to survive
+  C(N,T) requests at ONE k. So SPOIL\* at all depths ⟹ "no bounded-depth first-order proof of CP", not ⟹ f(k,7) >=
+  (3/4 + c)k. A disproof needs an explicit family.
+- Theorems S/S+ (§36, §45) and §46 exclude stationary rules, exchangeable or ordered; §44 excludes the first
+  request-dependent one. A SPOIL\* strategy must refine cells without bound or tie the dumped points to the request.
+  The engine's adversary is of the first kind (cells created by the play), which is why it is not covered.
+- (b) of the task: no T-covering family without a good seven was found or attempted beyond §44; every explicit
+  family examined in Parts VIII–IX has one. The known constructions (complete family on k + T points) stop at 3k/4;
+  nothing here beats them by any margin.
+
+## 44. The one-bit rule: it has a good seven [computed exact at finite k; reason by hand, sketch]
+
+Rule (`onebit.py`): cells O, U = A ∪ B, g = gL ∪ gR, each ordered. If |S∩O| < omega: dump = first omega unrequested
+points of O, in forward order if |S∩A| >= |S∩B|, else backward. Otherwise dump = first omega unrequested points of U,
+forward if |S∩gL| >= |S∩gR|, else backward. Four pools O^1, O^0, U^1, U^0 (needs o >= 2·omega, c - o >= omega).
+Test as in 46.4: three pencil lines of ONE shape X ∈ {H1, H0, L1, L0} with the pool of X in the kernel class, four
+transversal lines of mass <= T; integer design by MILP, then the rule applied verbatim to real sets and all pairs
+checked by brute force.
+Result: 89 instances — (k,T) = (40,31), (100,76), (200,151), n/k from 1.81 to 2.14, o on a grid — a good seven in every
+one; L1 and L0 pencils work in all 89, H1/H0 in 55. (A 90th listed instance, (100,76,220,90), has c - o < omega: the
+rule is not defined there; not a failure.)
+Reason [by hand, sketch]: the bit is read on a cell disjoint from the pool, and she chooses the lines, so she gives
+the three pencil lines the same bit (equal traces on the bit cell); the rule then acts on them as the single pool
+rule of 46.2. The same works for any b bits read off profiles of cells she can split evenly among three lines.
+Dead as a disproof candidate. The general bounded-bit statement is the proof side's §47.
+
+**Exact remaining statement (this side).** SPOIL\*: existence of a first-order adversary strategy keeping need >= base
+at every depth. Known: holds to depth 2 (§26, partly certified) and on sampled lines to depth 3–4 (§30, §41);
+one sampled two-request break at five kept replies against the one-step rule (§41).
+**Next step.** Make §41's hit exact or kill it: (i) rationalise `positions/p5_level2.json`; (ii) outer level: box
+subdivision of the dump polytope as in `spoil_exact.py`, with "she has a second request with an exact no-spoiler
+certificate" as the leaf test on the spoiler region (it is small: >= 60% of the dump on one cell); (iii) then ask
+whether he could have avoided the position: rerun `spoil_two.py` with two-step-robust dumps at kept replies 3 and 4.
+If the hit survives (i)–(iii), SPOIL\* is dead at depth 6 and the first-order game has a requester gain to extract.
+Not done: any of that; exactness of §41; N >= 11/6 uses Fano readings only; old triple readings in §40 are float.
+
+Self-check (Part IX): engine reproduces base for the balanced pair at the three N, 0 for D in g and 2w - 2·eps for the
+triangle request (`tri_test.py`), and §26's "spoiler exists" at depth 2 (360 requests). `spoil_exact.py` asserts
+masses (|K_i| = c, |S| = t) in Fractions and never trusts a float objective. The surviving spoiler of the first
+fine scan in §41 was re-attacked with four seeds and broken four times. `onebit.py`'s verdict is the brute-force
+pair check on replies produced by the rule itself; the MILP only proposes classes.
