@@ -20,6 +20,11 @@ import itertools, sys
 import numpy as np
 import highspy
 
+# §30 option: ZFAC[j] = multiple of delta that centre request j must seal of the earlier centres' R_X-traces.
+# Default (0, 1, 2) is the §28 method.  (0, 1, 1), (0, 1, 0), (0, 0, 0) are the "oracle" relaxations of §30.1 (idea 1):
+# they show what killing (part of) request 7's trace seal could buy at most, inside the 4+3 window model.
+ZFAC = (0, 1, 2)
+
 TYPES = [frozenset(M) for r in range(1, 5) for M in itertools.combinations(range(4), r)]
 PAIRS = [frozenset(P) for P in itertools.combinations(range(3), 2)] + [frozenset(range(3))]
 
@@ -60,7 +65,7 @@ def build(t, d, assign_by_s, s_grid):
         for j in range(3):
             c = {mu[frozenset([a])]: 1.0 for a in range(4) if assign[a] == j}
             c[G[j]] = -1.0
-            m.row(c, -INF, -j * d)
+            m.row(c, -INF, -ZFAC[j] * d)
         # D-type masses: singles of D petals, and s-points (type {1,2,3})
         items = [(("sing", a), (d - s) if a < 3 else d) for a in range(4) if assign[a] == 'D']
         items.append((("T4", None), s))
@@ -175,7 +180,7 @@ def robust(t, d, assign, ret_plan=False):
         G = [m.var(t / 2) for _ in range(3)]
         for j in range(3):
             c = {mu[frozenset([a])]: 1.0 for a in range(4) if assign[a] == j}; c[G[j]] = -1.0
-            m.row(c, -INF, -j * d)
+            m.row(c, -INF, -ZFAC[j] * d)
         load = [dict() for _ in range(3)]
         for J, ms in mass.items():
             if ms <= 1e-12: continue
@@ -236,3 +241,69 @@ def scan2(ts):
 
 if __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "scan2":
     scan2([0.75, 0.76, 0.77, 0.775, 0.78, 0.785, 0.79, 0.8])
+
+
+# ---------------- §30.2: split S-petals (singles of one petal sealed once in SEVERAL requests) ----------------
+# A single x of petal a sealed only in request j needs C_j to miss N(x) = T_a, i.e. T_a cap R_X inside G_j.  §28's LP put
+# all of an S-petal's singles into ONE request.  Here Y_a = set of requests containing T_a (any subset of {0,1,2});
+# singles of petal a may use pattern {j} for every j in Y_a, or any pattern of size >= 2.  All-singles adversary (s = 0),
+# so this is an upper bound for the requester inside the model (like build()).  ZFAC applies.
+YSETS = [frozenset(P) for r in range(0, 4) for P in itertools.combinations(range(3), r)]
+
+
+def build_split(t, d, Y, ret=False):
+    m = LP(); L = m.var(-highspy.kHighsInf); INF = highspy.kHighsInf
+    n = 1 + t / 2 - d
+    mu = {M: m.var() for M in TYPES}
+    m.row({mu[M]: 1.0 for M in TYPES}, n, n)
+    for a in range(4):
+        m.row({mu[M]: 1.0 for M in TYPES if a in M}, -INF, t / 2)
+    G = [m.var(t / 2) for _ in range(3)]
+    for j in range(3):
+        c = {mu[frozenset([a])]: 1.0 for a in range(4) if j in Y[a]}; c[G[j]] = -1.0
+        m.row(c, -INF, -ZFAC[j] * d)
+    load = [dict() for _ in range(3)]
+    for a in range(4):
+        pats = [P for P in BPATS if len(P) >= 2 or next(iter(P)) in Y[a]]
+        xs = {P: m.var() for P in pats}
+        m.row({xs[P]: 1.0 for P in pats}, d, d)
+        for P, v in xs.items():
+            for j in P: load[j][v] = load[j].get(v, 0) + 1.0
+    for j in range(3):
+        c = dict(load[j]); c[G[j]] = c.get(G[j], 0) + 1.0; c[L] = -1.0
+        m.row(c, -INF, 0)
+    st, val, sol = m.solve(L)
+    if st != "Optimal": return float("inf") if not ret else (float("inf"), None)
+    if ret:
+        return val, dict(G=[sol[g] for g in G], mu={tuple(sorted(M)): sol[v] for M, v in mu.items() if sol[v] > 1e-9},
+                         x={(a, tuple(sorted(P))): sol[v] for a in range(4) for P, v in []})
+    return val
+
+
+YCOMB = list(itertools.product(YSETS, repeat=4))
+
+
+def split_value(t, d):
+    return min((build_split(t, d, Y), i) for i, Y in enumerate(YCOMB))
+
+
+def split_dmax(t, steps=22):
+    lo, hi = 0.0, 1 - t
+    if split_value(t, hi - 1e-7)[0] <= t + 1e-12: return hi, YCOMB[split_value(t, hi - 1e-7)[1]]
+    best = None
+    for _ in range(steps):
+        mid = (lo + hi) / 2
+        v, i = split_value(t, mid)
+        if v <= t + 1e-12: lo, best = mid, YCOMB[i]
+        else: hi = mid
+    return lo, best
+
+
+if __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "split":
+    zs = [(0, 1, 2), (0, 1, 1), (0, 0, 0)]
+    for z in zs:
+        ZFAC = z
+        for t in [0.75, 0.76, 0.77]:
+            dm, Y = split_dmax(t)
+            print("ZFAC=%s t=%.3f 1-t=%.4f t/2-1/6=%.5f 3t/10=%.4f | split dmax=%.5f Y=%s" % (
+                z, t, 1 - t, t / 2 - 1 / 6, 0.3 * t, dm, [sorted(y) for y in Y] if Y else None), flush=True)

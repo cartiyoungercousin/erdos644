@@ -1673,3 +1673,118 @@ plan 16 > 15, the game is too large to solve exactly).
    singles (he must spoil every 4-subset). Model as a selection LP over the window design.
 3. If both fail: prove an adversary (fresh-pool leaks, trace-maximising centres, copy pairs) beats every 4+3 and 2+2
    certificate on the strip (a Theorem-N analogue). Then the strip is a real obstruction at t → 3/4 for Barrier F.
+
+---------------------------------------------------------------------------------------------
+## 30. Ideas from §29: split singles, what trace release must save, and dead routes (thirteenth time box)
+
+Code: `compute/petal5/window_lp.py`. New in it: the global `ZFAC` (how many multiples of δ of earlier centre traces each
+centre request seals), `build_split`, and the mode `py window_lp.py split`. Log: `logs/window_split.log`. Nothing committed.
+Scope (coordinator; notes/verify/PS3.md): the verified δ* = t/2 - 1/6 covers only single-class 4+3 window-and-seal, with best
+assignment (D, S5, S6, S7). Ideas 1(b), 2 and adaptive trace release lie outside that scope. Below, each one's own coverage is
+stated.
+
+**Outcome.**
+1. **Trace relief on its own is dead for t < 10/13** [computed exact, LP; proved by hand in 30.1]. With every trace seal
+   removed (ZFAC = (0,0,0)), the §28 LP gives δ_max = 3t/10 (t = .75/.76/.77: .225/.228/.231), and 3t/10 < 1 - t iff
+   t < 10/13 = 0.769.
+2. **New lever: split S-petals.** The singles of one petal are sealed once each, spread over several requests, and each of
+   those requests holds that petal's triple cell. This is P2-legal [proved by hand]. With the standard trace seals (0, δ, 2δ)
+   it gains **nothing**: δ_max = t/2 - 1/6 at t = .75, .76, .77 [computed exact]. So the verified limit also holds for this
+   wider sealing model.
+3. **Split singles plus trace release is exactly enough, with no margin** [computed exact, all-singles adversary]. Suppose
+   request 7 seals only δ of the earlier traces (ZFAC = (0,1,1)). Then split plans reach 1 - t at t = .75, .76, .77, which is
+   the whole strip. At the corner t = 3/4, δ → 1/4, take ZFAC = (0,1,c) with c = 1, 1.25, 1.5, 1.75, 2. The max request is
+   then 0.7500, 0.7708, 0.7917, 0.8125, 0.8333 against T = 0.75. So **request 7 must save one full δ** (c = 1, zero margin).
+   The corner plans are Y = ({1},{2},{0},{0,1}) and ({0},{1},{2},{0,1,2}): one petal's tiny triple cell goes into every
+   request, and its singles are spread across them.
+4. Idea 1(a) as stated is dead [proved by hand, 30.2]. Whether some adaptive release saves δ is open; the corner looks
+   negative [heuristic]. Idea 1(b), 2A+2F petals, is dead for t < 4/5 [heuristic, 30.3]. Idea 2, petal re-selection, gives no
+   gain against all-singles [proved by hand, in the model, 30.4]. 6+1 with class-A petals is dead on the strip [proved by
+   hand, 30.4]. Idea 3, a Theorem-N analogue: **not proved** (30.5).
+
+### 30.1 The sum bound behind item 1 [proved by hand; the LP agrees]
+
+The all-singles adversary puts the leaks on fresh R_F points. Its replies are legal:
+- a forced class-A reply takes 1 - δ of R_A ∖ S (mass >= n - t/2 = 1 - δ) plus δ of R_F ∖ S;
+- a forced class-F centre takes 1 - δ of R_F ∖ S, including every unrequested single, plus its R_A-trace.
+
+Each centre is forced class F by |G_j| >= t/2 in R_A, and G_j is disjoint from the singles, which lie in R_F.
+
+Every single is sealed at least once. Otherwise it lies in all three centres and has a neighbour in T_a. T_a is nonempty:
+T_a ∩ R_X ⊇ R_X ∖ ∪_{b≠a} W_b, of mass >= 1 - t - δ > 0 on the strip. A single sealed twice counts its mass twice.
+- Some petal is D: Σ cost >= 3t/2 + 5δ, so the max is >= t/2 + 5δ/3.
+- No petal is D and the S-petals are not split: some request holds the singles of two petals, so it costs >= t/2 + 2δ.
+
+These bounds exceed t iff δ > 3t/10 (resp. δ > t/4). They hold whatever the traces cost. So no trace treatment rescues the
+unsplit model for t < 10/13. Split plans escape this bound (item 3).
+
+### 30.2 Idea 1: trace release
+
+- (a), "make centre 2 miss all petal singles", does not make an R_X point of C_1 ∩ C_3 harmless [proved by hand]:
+  - x in a triple cell T_a: N(x) ⊇ P_a ∩ R_X, of mass >= 1 - δ > t, so C_2 always takes an ε of it outside request 6.
+  - x in a pair cell (missing petals a, b): N(x) ∩ R_X ⊇ R_X ∖ (W_a ∪ W_b), of mass >= 1 - t/2 - δ > t/2. Holding it in
+    request 6 makes that request cost >= 1 - t/2, and the sum bound then gives δ <= t/2 - 1/5 < δ*.
+  - Light cells (points in one petal only; N = one triple cell) have total mass <= (3t/2 - 1 + δ)/2. That is too little to
+    absorb z_1, so the adversary can always put z_1 and z_2 into heavy cells.
+- What item 3 actually needs: request 7's trace overhead, beyond cells it holds anyway, must be <= δ. The only free room is
+  traces overlapping triple cells sealed in the same request, plus the t/2 floor.
+- The corner t = 3/4, δ = 1/4: n = 9/8, non-triple mass <= 3/8, and the all-S budget forces ΣG <= 5/4. Put T_1, T_2 into
+  requests (5,6), (5,7) or (6,7). In every case ΣG >= 13/8, because the adversary puts z_1 into the pair cell or into the
+  triple cell that the next request does not hold [heuristic: hand case analysis for PS3-type and symmetric windows only,
+  not all windows].
+- **Not built:** an exact adaptive LP, in which the adversary allocates traces cell by cell and the requester re-optimises
+  after each centre. It is the computation that decides idea 1.
+
+### 30.3 Idea 1(b): petals 2A + 2F [heuristic]
+
+Main grid X × Y, with X = A1 ∩ A2 ∩ R_A and Y = F1 ∩ F2 ∩ R_F. Both have mass >= 1 - t/2 - δ, which is > t/2 exactly on the
+strip, so X by itself is a class-F forcing set. For each y, the traces of the centres from requests holding y must have
+empty common part on X. Designs and their sums:
+- (β) every centre request ⊇ X, and request 7 ⊇ Y ∖ (r_5 ∪ r_6): Σ >= 3|X| + |Y| + cross;
+- (α) every y sealed twice: Σ >= 3t/2 + 2|Y| + cross;
+- mixed (one class-A centre): Σ >= |X| + |Y| + t + cross.
+
+The second pair of petals can always leak into cross cells (types {A_i, F_j}; complementary pairs are adjacent) or into worse
+places (X or Y, where the neighbourhood is a whole petal). For the leak placements checked, cross >= 4δ. Then (β) needs
+4 - 2t <= 3t, i.e. t >= 4/5, while (α) and mixed fail outright. The capacity limit of class-F centres on R_A cross points was
+not fully accounted for, so this stays heuristic.
+
+### 30.4 Idea 2: more replies
+
+- **Petal re-selection** [proved by hand, in the model]. Against the all-singles adversary every class-A reply has a window of
+  mass exactly t/2, and any four windows of mass <= t/2 can be requested directly (t/2 forcing + t/2 window). So re-selection
+  only reaches plans the window model already contains. It can matter only against structured leaks, and the robust LP already
+  covers those for the chosen four.
+- **Using the extra petals instead** (q > 4 petals; P1-P4 allow q <= 6):
+  - 6 class-A petals + 1 centre is **dead on the strip** [proved by hand]. R_X points in <= 3 windows are active, since any
+    three class-A sets meet in R_X in mass >= 1 - t - δ > 0. Points in >= 4 windows have mass <= (3t - n)/3. Hence
+    |U* ∩ R_X| >= (4 - t - 4δ)/3, which is > t iff δ < 1 - t, and every reply meets U*.
+  - 5 petals + 2 centres: not settled. With two centres every edge must lie inside one kill set, which looks expensive
+    [heuristic].
+
+### 30.5 Idea 3: an adversary [not proved]
+
+Not achieved.
+- Proved parts: the sum bound of 30.1 (forced 4+3, unsplit), 6+1 (30.4), 30.2(a).
+- Missing: unforced centre requests (the adversary's class choice; the Theorem N issue), split plans with adaptive trace
+  release, 2A+2F with capacity, and q = 5.
+
+If an adversary beating every 4+3 and 2+2 certificate on the strip were proved, the strip would be a real obstruction for
+Barrier F at t → 3/4. That is **not** established here.
+
+### 30.6 Status
+
+- **Open:** the strip 3/4 < t < 7/9, t/2 - 1/6 <= δ < 1 - t. The decisive question is now sharp: **can request 7 avoid
+  sealing one full δ of earlier centre traces?** If yes, split singles close the strip in the model. If no, 4+3 stays at δ*.
+- **Dead:**
+  - trace relief without split, for t < 10/13 [LP + hand];
+  - split without trace relief [LP];
+  - 1(a) as stated [hand];
+  - 6+1 with class-A petals [hand];
+  - petal re-selection against all-singles [hand];
+  - 2A+2F below 4/5 [heuristic].
+- No win is claimed, so no replay was run. The split result is a model value against all-singles leaks. A win would also need
+  the robust 94-vertex version, an adaptive trace model, and a ps3-style exact replay.
+- **Next:** build the adaptive trace LP of 30.2, starting at the corner t = 3/4.
+
+Checks: `py compute/petal5/window_lp.py split` (about 10 min). Oracle: set `window_lp.ZFAC` and call `build`.
