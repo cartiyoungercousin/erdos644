@@ -1,0 +1,190 @@
+##### swap at reply 4, q0=0.3, exact mass(D)-T at T=0.76: -0.07881
+=== N=1.8 t(budget)=0.759 alphas=None order=None discard reply 5; kept replies ['1', '2', '3', '4', '6', '7'] + final reply 8;  mass(D)=0.6812
+  degree 2 (mass 0.0337; in D 0.0000): 46=0.011  47=0.011  12=0.011
+  degree 3 (mass 1.1296; in D 0.0457): 467=0.277  236=0.274  127=0.268  134=0.265  237=0.011*  136=0.009*  137=0.009*  124=0.009*  234=0.008*
+  degree 4 (mass 0.6354; in D 0.6354): 1367=0.217*  1246=0.212*  2347=0.206*
+  empty triples among the seven (7 of 35): 123 346 147 267 248 168 378
+  realised 4-fold types: 1246 2347 1367 1348 2368 1278 4678 ; 5-fold or more: 0
+  Fano labellings with every realised type line-free: 1 of 30
+    lines 123 147 168 248 267 346 378   class by the first four kept rounds: (L) line-first
+      reply 3: block M mass 0.5000, of which requested 0.5000; whole request 0.7590 (free part 0.2590)   block types: 12:0.500
+      reply 4: block M mass 0.0000, of which requested 0.0000; whole request 0.7590 (free part 0.7590)   block types: 
+      reply 6: block M mass 0.4795, of which requested 0.4795; whole request 0.7590 (free part 0.2795)   block types: 134:0.265 234:0.215
+      reply 7: block M mass 0.7590, of which requested 0.7590; whole request 0.7590 (free part 0.0000)   block types: 236:0.274 134:0.265 1246:0.212 124:0.009
+      reply 8 (final): block M mass 0.6812 (= D restricted to this labelling; true D 0.6812)   block types: 1367:0.217 1246:0.212 2347:0.206 237:0.011 136:0.009 137:0.009 124:0.009 234:0.008
+   request 2: 1:0.500/1.000 -:0.259/0.800
+   request 3: 12:0.500/0.500 -:0.259/0.300
+   request 4: 23:0.273/0.500 12:0.267/0.500 13:0.220/0.500
+   request 5: 4:0.300/0.300 13:0.235/0.235 23:0.224/0.285
+   request 6: 125:0.268/0.268 1345:0.254/0.254 2345:0.206/0.206 12:0.011/0.011 134:0.010/0.010 234:0.008/0.008
+   request 7: 1345:0.254/0.254 236:0.217/0.217 12456:0.203/0.203 2356:0.057/0.057 134:0.010/0.010 1245:0.008/0.008 1246:0.008/0.008 124:0.000/0.000
+##### swap at reply 4, q0=0.3, exact mass(D)-T at T=0.76: -0.08595
+=== N=1.9 t(budget)=0.759 alphas=None order=None discard reply 5; kept replies ['1', '2', '3', '4', '6', '7'] + final reply 8;  mass(D)=0.6741
+  degree 0 (mass 0.0015; in D 0.0000): -=0.002
+  degree 1 (mass 0.0262; in D 0.0000): 6=0.011  7=0.011  4=0.005
+  degree 2 (mass 0.1843; in D 0.0000): 67=0.077  23=0.035  46=0.032  47=0.032  13=0.005  12=0.003
+  degree 3 (mass 1.1466; in D 0.1327): 124=0.277  136=0.261  237=0.245  467=0.230  137=0.032*  234=0.027*  134=0.025*  126=0.024*  127=0.024*
+  degree 4 (mass 0.5413; in D 0.5413): 2346=0.193*  1347=0.177*  1267=0.171*
+  empty triples among the seven (7 of 35): 123 146 247 367 348 268 178
+  realised 4-fold types: 2346 1347 1267 1248 1368 2378 4678 ; 5-fold or more: 0
+  Fano labellings with every realised type line-free: 1 of 30
+    lines 123 146 178 247 268 348 367   class by the first four kept rounds: (L) line-first
+      reply 3: block M mass 0.5000, of which requested 0.5000; whole request 0.7590 (free part 0.2590)   block types: 12:0.500
+      reply 4: block M mass 0.0000, of which requested 0.0000; whole request 0.7590 (free part 0.7590)   block types: 
+      reply 6: block M mass 0.4795, of which requested 0.4795; whole request 0.7590 (free part 0.2795)   block types: 124:0.277 134:0.202
+      reply 7: block M mass 0.7590, of which requested 0.7590; whole request 0.7590 (free part 0.0000)   block types: 124:0.277 136:0.261 2346:0.193 234:0.027
+      reply 8 (final): block M mass 0.6741 (= D restricted to this labelling; true D 0.6741)   block types: 2346:0.193 1347:0.177 1267:0.171 137:0.032 234:0.027 134:0.025 126:0.024 127:0.024
+   request 2: 1:0.500/1.000 -:0.259/0.900
+   request 3: 12:0.500/0.500 -:0.259/0.400
+   request 4: 13:0.257/0.500 23:0.235/0.500 12:0.167/0.500 -:0.100/0.400
+   request 5: 4:0.300/0.300 23:0.279/0.279 12:0.179/0.223
+   request 6: 23:0.279/0.279 1245:0.243/0.243 1345:0.177/0.177 124:0.034/0.034 134:0.025/0.025
+   request 7: 1245:0.243/0.243 1356:0.229/0.229 23456:0.169/0.169 124:0.034/0.034 136:0.032/0.032 2345:0.024/0.024 2346:0.024/0.024 234:0.003/0.003
+##### swap at reply 5, q0=0.0, exact mass(D)-T at T=0.76: -0.10250
+=== N=1.85 t(budget)=0.759 alphas=None order=None discard reply 5; kept replies ['1', '2', '3', '4', '6', '7'] + final reply 8;  mass(D)=0.6575
+  degree 1 (mass 0.0067; in D 0.0000): 4=0.002  6=0.002  7=0.002
+  degree 2 (mass 0.1015; in D 0.0000): 46=0.025  47=0.025  67=0.025  23=0.024  13=0.002  12=0.002
+  degree 3 (mass 1.1762; in D 0.0920): 136=0.277  124=0.272  467=0.270  237=0.266  137=0.023*  234=0.018*  126=0.017*  127=0.017*  134=0.016*
+  degree 4 (mass 0.5655; in D 0.5655): 2346=0.193*  1267=0.192*  1347=0.181*
+  empty triples among the seven (7 of 35): 123 146 247 367 348 268 178
+  realised 4-fold types: 2346 1347 1267 1248 1368 2378 4678 ; 5-fold or more: 0
+  Fano labellings with every realised type line-free: 1 of 30
+    lines 123 146 178 247 268 348 367   class by the first four kept rounds: (L) line-first
+      reply 3: block M mass 0.5000, of which requested 0.5000; whole request 0.7590 (free part 0.2590)   block types: 12:0.500
+      reply 4: block M mass 0.0000, of which requested 0.0000; whole request 0.7590 (free part 0.7590)   block types: 
+      reply 6: block M mass 0.4691, of which requested 0.4691; whole request 0.7590 (free part 0.2899)   block types: 124:0.272 134:0.197
+      reply 7: block M mass 0.7590, of which requested 0.7590; whole request 0.7590 (free part 0.0000)   block types: 136:0.277 124:0.272 2346:0.193 234:0.018
+      reply 8 (final): block M mass 0.6575 (= D restricted to this labelling; true D 0.6575)   block types: 2346:0.193 1267:0.192 1347:0.181 137:0.023 234:0.018 126:0.017 127:0.017 134:0.016
+   request 2: 1:0.500/1.000 -:0.259/0.850
+   request 3: 12:0.500/0.500 -:0.259/0.350
+   request 4: 13:0.285/0.500 23:0.271/0.500 12:0.204/0.500
+   request 5: 4:0.304/0.321 12:0.228/0.228 134:0.197/0.197 -:0.029/0.029
+   request 6: 235:0.266/0.266 1245:0.249/0.249 134:0.197/0.197 23:0.024/0.024 124:0.023/0.023
+   request 7: 1356:0.254/0.254 1245:0.249/0.249 23456:0.177/0.177 136:0.023/0.023 124:0.023/0.023 2346:0.016/0.016 2345:0.016/0.016 234:0.001/0.001
+##### swap at reply 6, q0=0.0, exact mass(D)-T at T=0.76: -0.06652
+=== N=1.8 t(budget)=0.759 alphas=None order=None discard reply 5; kept replies ['1', '2', '3', '4', '6', '7'] + final reply 8;  mass(D)=0.6935
+  degree 1 (mass 0.0009; in D 0.0000): 7=0.001
+  degree 2 (mass 0.0430; in D 0.0000): 46=0.011  47=0.011  12=0.011  67=0.010
+  degree 3 (mass 1.1069; in D 0.0460): 236=0.268  467=0.266  134=0.264  127=0.263  237=0.011*  124=0.009*  136=0.009*  137=0.009*  234=0.009*
+  degree 4 (mass 0.6475; in D 0.6475): 1246=0.218*  1367=0.218*  2347=0.212*
+  empty triples among the seven (7 of 35): 123 346 147 267 248 168 378
+  realised 4-fold types: 1246 2347 1367 1348 2368 1278 4678 ; 5-fold or more: 0
+  Fano labellings with every realised type line-free: 1 of 30
+    lines 123 147 168 248 267 346 378   class by the first four kept rounds: (L) line-first
+      reply 3: block M mass 0.5000, of which requested 0.5000; whole request 0.7590 (free part 0.2590)   block types: 12:0.500
+      reply 4: block M mass 0.0000, of which requested 0.0000; whole request 0.7590 (free part 0.7590)   block types: 
+      reply 6: block M mass 0.4852, of which requested 0.4852; whole request 0.7590 (free part 0.2738)   block types: 134:0.264 234:0.221
+      reply 7: block M mass 0.7590, of which requested 0.7590; whole request 0.7590 (free part 0.0000)   block types: 236:0.268 134:0.264 1246:0.218 124:0.009
+      reply 8 (final): block M mass 0.6935 (= D restricted to this labelling; true D 0.6935)   block types: 1246:0.218 1367:0.218 2347:0.212 237:0.011 124:0.009 136:0.009 137:0.009 234:0.009
+   request 2: 1:0.500/1.000 -:0.259/0.800
+   request 3: 12:0.500/0.500 -:0.259/0.300
+   request 4: 23:0.270/0.500 12:0.264/0.500 13:0.225/0.500
+   request 5: 23:0.279/0.279 13:0.236/0.236 124:0.227/0.227 4:0.018/0.288
+   request 6: 125:0.263/0.263 1345:0.254/0.254 2345:0.212/0.212 12:0.011/0.011 134:0.010/0.010 234:0.009/0.009 -:0.000/0.000
+   request 7: 236:0.268/0.268 1345:0.254/0.254 1246:0.218/0.218 134:0.010/0.010 124:0.009/0.009
+##### swap at reply 6, q0=0.0, exact mass(D)-T at T=0.76: -0.13084
+=== N=1.9 t(budget)=0.759 alphas=None order=None discard reply 5; kept replies ['1', '2', '3', '4', '6', '7'] + final reply 8;  mass(D)=0.6292
+  degree 0 (mass 0.0014; in D 0.0000): -=0.001
+  degree 1 (mass 0.0201; in D 0.0000): 7=0.010  4=0.005  6=0.005
+  degree 2 (mass 0.1549; in D 0.0000): 47=0.038  46=0.038  12=0.037  67=0.033  23=0.005  13=0.003
+  degree 3 (mass 1.2243; in D 0.1298): 236=0.285  134=0.276  467=0.269  127=0.264  237=0.035*  124=0.025*  137=0.024*  136=0.024*  234=0.022*
+  degree 4 (mass 0.4993; in D 0.4993): 1246=0.174*  1367=0.172*  2347=0.153*
+  empty triples among the seven (7 of 35): 123 346 147 267 248 168 378
+  realised 4-fold types: 1246 2347 1367 1348 2368 1278 4678 ; 5-fold or more: 0
+  Fano labellings with every realised type line-free: 1 of 30
+    lines 123 147 168 248 267 346 378   class by the first four kept rounds: (L) line-first
+      reply 3: block M mass 0.5000, of which requested 0.5000; whole request 0.7590 (free part 0.2590)   block types: 12:0.500
+      reply 4: block M mass 0.0000, of which requested 0.0000; whole request 0.7590 (free part 0.7590)   block types: 
+      reply 6: block M mass 0.4512, of which requested 0.4512; whole request 0.7590 (free part 0.3078)   block types: 134:0.276 234:0.175
+      reply 7: block M mass 0.7590, of which requested 0.7590; whole request 0.7590 (free part 0.0000)   block types: 236:0.285 134:0.276 1246:0.174 124:0.025
+      reply 8 (final): block M mass 0.6292 (= D restricted to this labelling; true D 0.6292)   block types: 1246:0.174 1367:0.172 2347:0.153 237:0.035 124:0.025 137:0.024 136:0.024 234:0.022
+   request 2: 1:0.500/1.000 -:0.259/0.900
+   request 3: 12:0.500/0.500 -:0.259/0.400
+   request 4: 23:0.300/0.500 12:0.274/0.500 13:0.185/0.500
+   request 5: 4:0.351/0.351 13:0.224/0.224 12:0.184/0.302
+   request 6: 1345:0.242/0.242 12:0.199/0.199 2345:0.153/0.153 125:0.103/0.103 134:0.034/0.034 234:0.022/0.022 -:0.006/0.006
+   request 7: 2356:0.250/0.250 1345:0.242/0.242 12456:0.152/0.152 236:0.035/0.035 134:0.034/0.034 1246:0.021/0.021 1245:0.021/0.021 124:0.003/0.003
+##### swap at reply 4, q0=0.3, exact mass(D)-T at T=0.76: -0.08162
+=== N=1.85 t(budget)=0.759 alphas=None order=None discard reply 5; kept replies ['1', '2', '3', '4', '6', '7'] + final reply 8;  mass(D)=0.6784
+  degree 1 (mass 0.0097; in D 0.0000): 6=0.004  7=0.004  4=0.002
+  degree 2 (mass 0.1148; in D 0.0000): 67=0.042  12=0.023  46=0.023  47=0.023  23=0.002  13=0.002
+  degree 3 (mass 1.1398; in D 0.0931): 134=0.271  236=0.267  127=0.256  467=0.252  237=0.022*  124=0.018*  136=0.017*  137=0.017*  234=0.017*
+  degree 4 (mass 0.5853; in D 0.5853): 1246=0.202*  1367=0.192*  2347=0.191*
+  empty triples among the seven (7 of 35): 123 346 147 267 248 168 378
+  realised 4-fold types: 1246 2347 1367 1348 2368 1278 4678 ; 5-fold or more: 0
+  Fano labellings with every realised type line-free: 1 of 30
+    lines 123 147 168 248 267 346 378   class by the first four kept rounds: (L) line-first
+      reply 3: block M mass 0.5000, of which requested 0.5000; whole request 0.7590 (free part 0.2590)   block types: 12:0.500
+      reply 4: block M mass 0.0000, of which requested 0.0000; whole request 0.7590 (free part 0.7590)   block types: 
+      reply 6: block M mass 0.4795, of which requested 0.4795; whole request 0.7590 (free part 0.2795)   block types: 134:0.271 234:0.208
+      reply 7: block M mass 0.7590, of which requested 0.7590; whole request 0.7590 (free part 0.0000)   block types: 134:0.271 236:0.267 1246:0.202 124:0.018
+      reply 8 (final): block M mass 0.6784 (= D restricted to this labelling; true D 0.6784)   block types: 1246:0.202 1367:0.192 2347:0.191 237:0.022 124:0.018 136:0.017 137:0.017 234:0.017
+   request 2: 1:0.500/1.000 -:0.259/0.850
+   request 3: 12:0.500/0.500 -:0.259/0.350
+   request 4: 23:0.265/0.500 12:0.251/0.500 13:0.194/0.500 -:0.050/0.350
+   request 5: 12:0.280/0.280 124:0.220/0.220 234:0.208/0.208 -:0.050/0.050 4:0.001/0.300
+   request 6: 12:0.280/0.280 1345:0.249/0.249 234:0.208/0.208 134:0.023/0.023
+   request 7: 1345:0.249/0.249 2356:0.245/0.245 1246:0.202/0.202 134:0.023/0.023 236:0.022/0.022 124:0.018/0.018
+##### swap at reply 5, q0=0.0, exact mass(D)-T at T=0.76: -0.06698
+=== N=1.8 t(budget)=0.759 alphas=None order=None discard reply 5; kept replies ['1', '2', '3', '4', '6', '7'] + final reply 8;  mass(D)=0.6930
+  degree 2 (mass 0.0435; in D 0.0000): 46=0.011  47=0.011  67=0.011  13=0.011
+  degree 3 (mass 1.1073; in D 0.0460): 126=0.268  467=0.266  234=0.264  137=0.263  127=0.011*  134=0.009*  236=0.009*  237=0.009*  124=0.009*
+  degree 4 (mass 0.6470; in D 0.6470): 1346=0.217*  2367=0.217*  1247=0.212*
+  empty triples among the seven (7 of 35): 123 246 347 167 148 368 278
+  realised 4-fold types: 1346 1247 2367 2348 1268 1378 4678 ; 5-fold or more: 0
+  Fano labellings with every realised type line-free: 1 of 30
+    lines 123 148 167 246 278 347 368   class by the first four kept rounds: (L) line-first
+      reply 3: block M mass 0.5000, of which requested 0.5000; whole request 0.7590 (free part 0.2590)   block types: 12:0.500
+      reply 4: block M mass 0.0000, of which requested 0.0000; whole request 0.7590 (free part 0.7590)   block types: 
+      reply 6: block M mass 0.4854, of which requested 0.4854; whole request 0.7590 (free part 0.2736)   block types: 234:0.264 124:0.221
+      reply 7: block M mass 0.7590, of which requested 0.7590; whole request 0.7590 (free part 0.0000)   block types: 126:0.268 234:0.264 1346:0.217 134:0.009
+      reply 8 (final): block M mass 0.6930 (= D restricted to this labelling; true D 0.6930)   block types: 1346:0.217 2367:0.217 1247:0.212 127:0.011 134:0.009 236:0.009 237:0.009 124:0.009
+   request 2: 1:0.500/1.000 -:0.259/0.800
+   request 3: 12:0.500/0.500 -:0.259/0.300
+   request 4: 12:0.270/0.500 13:0.264/0.500 23:0.225/0.500
+   request 5: 12:0.279/0.279 134:0.226/0.226 124:0.221/0.221 4:0.021/0.288 -:0.012/0.012
+   request 6: 135:0.263/0.263 2345:0.254/0.254 124:0.221/0.221 13:0.011/0.011 234:0.010/0.010
+   request 7: 126:0.268/0.268 2345:0.254/0.254 1346:0.217/0.217 234:0.010/0.010 134:0.009/0.009
+##### swap at reply 5, q0=0.0, exact mass(D)-T at T=0.76: -0.13690
+=== N=1.9 t(budget)=0.759 alphas=None order=None discard reply 5; kept replies ['1', '2', '3', '4', '6', '7'] + final reply 8;  mass(D)=0.6231
+  degree 0 (mass 0.0008; in D 0.0000): -=0.001
+  degree 1 (mass 0.0161; in D 0.0000): 4=0.005  7=0.005  6=0.005
+  degree 2 (mass 0.1599; in D 0.0000): 47=0.038  46=0.038  67=0.038  13=0.038  12=0.005  23=0.003
+  degree 3 (mass 1.2290; in D 0.1288): 126=0.285  234=0.279  467=0.269  137=0.267  127=0.035*  134=0.024*  237=0.024*  236=0.024*  124=0.022*
+  degree 4 (mass 0.4943; in D 0.4943): 1346=0.171*  2367=0.170*  1247=0.153*
+  empty triples among the seven (7 of 35): 123 246 347 167 148 368 278
+  realised 4-fold types: 1346 1247 2367 2348 1268 1378 4678 ; 5-fold or more: 0
+  Fano labellings with every realised type line-free: 1 of 30
+    lines 123 148 167 246 278 347 368   class by the first four kept rounds: (L) line-first
+      reply 3: block M mass 0.5000, of which requested 0.5000; whole request 0.7590 (free part 0.2590)   block types: 12:0.500
+      reply 4: block M mass 0.0000, of which requested 0.0000; whole request 0.7590 (free part 0.7590)   block types: 
+      reply 6: block M mass 0.4542, of which requested 0.4542; whole request 0.7590 (free part 0.3048)   block types: 234:0.279 124:0.175
+      reply 7: block M mass 0.7590, of which requested 0.7590; whole request 0.7590 (free part 0.0000)   block types: 126:0.285 234:0.279 1346:0.171 134:0.024
+      reply 8 (final): block M mass 0.6231 (= D restricted to this labelling; true D 0.6231)   block types: 1346:0.171 2367:0.170 1247:0.153 127:0.035 134:0.024 237:0.024 236:0.024 124:0.022
+   request 2: 1:0.500/1.000 -:0.259/0.900
+   request 3: 12:0.500/0.500 -:0.259/0.400
+   request 4: 12:0.300/0.500 13:0.277/0.500 23:0.182/0.500
+   request 5: 12:0.313/0.325 23:0.221/0.221 124:0.175/0.175 -:0.049/0.049
+   request 6: 135:0.267/0.267 2345:0.245/0.245 124:0.175/0.175 13:0.038/0.038 234:0.034/0.034
+   request 7: 126:0.276/0.276 2345:0.245/0.245 13456:0.150/0.150 234:0.034/0.034 1345:0.021/0.021 1346:0.021/0.021 1256:0.009/0.009 134:0.003/0.003
+##### swap at reply 6, q0=0.0, exact mass(D)-T at T=0.76: -0.10007
+=== N=1.85 t(budget)=0.759 alphas=None order=None discard reply 5; kept replies ['1', '2', '3', '4', '6', '7'] + final reply 8;  mass(D)=0.6599
+  degree 1 (mass 0.0086; in D 0.0000): 7=0.004  4=0.002  6=0.002
+  degree 2 (mass 0.0993; in D 0.0000): 46=0.025  47=0.025  12=0.024  67=0.022  23=0.002  13=0.002
+  degree 3 (mass 1.1741; in D 0.0923): 236=0.277  134=0.270  467=0.270  127=0.265  237=0.023*  124=0.018*  136=0.018*  137=0.018*  234=0.016*
+  degree 4 (mass 0.5676; in D 0.5676): 1246=0.194*  1367=0.193*  2347=0.181*
+  empty triples among the seven (7 of 35): 123 346 147 267 248 168 378
+  realised 4-fold types: 1246 2347 1367 1348 2368 1278 4678 ; 5-fold or more: 0
+  Fano labellings with every realised type line-free: 1 of 30
+    lines 123 147 168 248 267 346 378   class by the first four kept rounds: (L) line-first
+      reply 3: block M mass 0.5000, of which requested 0.5000; whole request 0.7590 (free part 0.2590)   block types: 12:0.500
+      reply 4: block M mass 0.0000, of which requested 0.0000; whole request 0.7590 (free part 0.7590)   block types: 
+      reply 6: block M mass 0.4679, of which requested 0.4679; whole request 0.7590 (free part 0.2911)   block types: 134:0.270 234:0.197
+      reply 7: block M mass 0.7590, of which requested 0.7590; whole request 0.7590 (free part -0.0000)   block types: 236:0.277 134:0.270 1246:0.194 124:0.018
+      reply 8 (final): block M mass 0.6599 (= D restricted to this labelling; true D 0.6599)   block types: 1246:0.194 1367:0.193 2347:0.181 237:0.023 124:0.018 136:0.018 137:0.018 234:0.016
+   request 2: 1:0.500/1.000 -:0.259/0.850
+   request 3: 12:0.500/0.500 -:0.259/0.350
+   request 4: 23:0.285/0.500 12:0.269/0.500 13:0.205/0.500
+   request 5: 12:0.289/0.289 124:0.211/0.211 234:0.197/0.197 13:0.062/0.230
+   request 6: 12:0.289/0.289 1345:0.248/0.248 234:0.197/0.197 134:0.023/0.023 -:0.002/0.002
+   request 7: 2356:0.254/0.254 1345:0.248/0.248 1246:0.194/0.194 236:0.023/0.023 134:0.023/0.023 124:0.018/0.018

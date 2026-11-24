@@ -39,7 +39,7 @@ def simulate(d, eps=2e-6):
     return m, real, hist
 def ts(J, names): return "".join(names[i] for i in range(len(names)) if (J >> i) & 1) or "-"
 def report(d):
-    m, real, hist = simulate(d); E = 7; full = 127; drop = d["drop"][0] - 1
+    m, real, hist = (d.get("_sim") or simulate)(d); E = 7; full = 127; drop = d["drop"][0] - 1
     kept = [i for i in range(E) if i != drop]                      # original indices, time order
     I = full & ~(1 << drop)
     pos = {i: n for n, i in enumerate(kept)}                       # kept index 0..5 ; the eighth reply = 6

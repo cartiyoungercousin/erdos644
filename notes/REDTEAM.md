@@ -435,3 +435,57 @@ forced onto a Fano labelling, which is consistent with TWIN 17.1 ("D <= t is mor
   that opponent, not that (T) is forced or sufficient against an adaptive one. The classification was
   done on float re-simulations of the saved lines; the lines' values are the exactly verified ones, the
   list of realised types is not separately certified in rationals.
+
+## 12. The swap adversary of TWIN 18.6 (F1, F2, F3) against the free 8-request requester
+
+Code `compute/redteam/swap.py` (MILP per discard; exact rational replay with the true rule), `swap_read.py`
+(endings, same report as §11), `f3_check.py`. Logs `swap_0.log`, `swap_1.log`, `swap_read.out`, `f3_check.out`.
+
+**Adversary (as specified).** Replies 2 and 3: omit unused points first (then lowest degree). Swap round w:
+take every unrequested unused point, then every unrequested point lying only in B_1, then the rest
+proportionally. All other rounds proportional. F1: w = 4; F2: w = 5, 6.
+**Model.** Requester free (any requests, any discard). The swap round is bilinear in
+q = unrequested unused + unrequested B_1-only mass, so the MILP fixes q = q0 in {0, 0.05, 0.15, 0.3} — a
+restriction on her only. Lines are found at budget 0.759 and replayed with fractions at T = 19/25 with the true
+rule (any q). [computed exact for every "wins" entry]
+
+**Result: the free requester wins in all nine cases, with a line-first (L) Fano ending and reply 5 discarded.**
+
+| swap round | N = 1.8k | N = 1.85k | N = 1.9k |
+|---|---|---|---|
+| 4 (F1) | -0.0788 (q0 = 0.3) | -0.0816 (q0 = 0.3) | -0.0859 (q0 = 0.3) |
+| 5 (F2) | -0.0670 | -0.1025 | -0.1369 |
+| 6 (F2) | -0.0665 | -0.1001 | -0.1308 |
+
+(entries: exact mass(D) - T at T = 0.76; negative = requester wins.) For w = 4 and discard 5 the restricted
+models with q0 = 0, 0.05, 0.15 are optimal with POSITIVE value (+0.003, +0.010, +0.072 at 1.8k; +0.044, +0.040,
++0.070 at 1.85k; +0.080 at 1.9k for q0 = 0): if she requests the unused and B_1-only points at the swap round
+(the realised (T) line's priorities) she loses, as the twin derived. She wins by doing the opposite: leaving
+mass 0.3 of them unrequested, so that the swap fills the reply with points she wants there.
+
+**Ending (identical in all nine lines, `swap_read.out`).** Unique Fano labelling, e.g. at 1.8k lines
+123, 147, 168, 248, 267, 346, 378 (kept replies 1,2,3,4,6,7 and the final reply 8): replies 1,2,3 are a line.
+- request 2 = half of B_1 + 0.259 of the unused points; since his rule omits unused points, B_1∩B_2 = 0.5 exactly;
+- request 3 = all of B_1∩B_2 (0.5, the only block of the round) + 0.259 unused: the first three replies are anchors;
+- request 4: no block; 0.759 spread over the cells 12, 13, 23 (and, for w = 4, nothing on unused / B_1-only);
+- reply 5 is the spare;
+- round 6: block 0.45-0.49 (two triple cells); round 7: block = 0.759, the whole budget (binding);
+  round 8: D = 0.62-0.69 (three 4-types of about 0.2 each plus small triples), slack 0.07-0.14.
+Final heavy types at 1.8k, w = 4: triples 467 0.277, 236 0.274, 127 0.268, 134 0.265; 4-fold 1367 0.217,
+1246 0.212, 2347 0.206; everything else below 0.012 — an almost exact Fano blow-up.
+
+**Reading.** The swap defeats the fixed class-(T) plan (confirmed by the positive restricted values) but not
+the free requester: his own rule at replies 2 and 3 (always omit unused points) hands her an exact window —
+B_1∩B_2 = k/2 — and with it the (L) ending that 16.A needs a known kernel for. So this adversary is too rigid
+in rounds 2–3, not too strong in round 4. A sharper version must make the round-2/3 omissions depend on her
+request (e.g. omit inside B_1 when she requests half of B_1); that request-dependent opponent is not computed
+here and is the same open item as in §1.2 and §9.
+No adversary win, hence no certification and no (7,2) test.
+
+**F3 (check of TWIN 18.1–18.2 on the saved (T) line, N = 1.9k, budget 0.759)** [numerical]:
+|M_6| = 0.7590, |W| = 0.6441, |G_4| = 0.0933, sum 1.4965 <= 2t = 1.5180; incidences 5.0000, mass 1.9000;
+Φ = 0.2965 against the allowance 2(N+t) - 5 = 0.3180. (E) holds with slack 0.0215, all of it in the last round.
+**F4** not done.
+
+Caveats: q is scanned on four values, so her optimum may be better than the table; "wins" are exact for the
+stated rule in the scale-free model with free slivers; classification from float re-simulation.
