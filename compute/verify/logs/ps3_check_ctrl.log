@@ -1,0 +1,14 @@
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+(40, 30, 9, 0.75, 'delta*k=8.33', 'free') {'games': 332, 'over': 0, 'overpred': 102, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'param': 0, 'maxreq': 30} [] 4s
+(40, 30, 9, 0.75, 'delta*k=8.33', 'pool') {'games': 332, 'over': 0, 'overpred': 106, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'param': 0, 'maxreq': 30} [] 5s
+(80, 60, 17, 0.75, 'delta*k=16.67', 'free') {'games': 332, 'over': 0, 'overpred': 60, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'param': 0, 'maxreq': 60} [] 5s
+(80, 60, 17, 0.75, 'delta*k=16.67', 'pool') {'games': 332, 'over': 0, 'overpred': 45, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'param': 0, 'maxreq': 60} [] 5s
+(80, 60, 18, 0.75, 'delta*k=16.67', 'free') {'games': 332, 'over': 0, 'overpred': 107, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'param': 0, 'maxreq': 60} [] 4s
+(80, 60, 18, 0.75, 'delta*k=16.67', 'pool') {'games': 332, 'over': 0, 'overpred': 79, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'param': 0, 'maxreq': 60} [] 4s
+(100, 78, 24, 0.78, 'delta*k=22.33', 'free') {'games': 332, 'over': 0, 'overpred': 53, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'param': 166, 'maxreq': 78} [] 3s
+(100, 78, 24, 0.78, 'delta*k=22.33', 'pool') {'games': 332, 'over': 0, 'overpred': 43, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'param': 166, 'maxreq': 78} [] 3s
+(100, 80, 22, 0.8, 'delta*k=23.33', 'free') {'games': 332, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'param': 166, 'maxreq': 80} [] 3s
+(100, 80, 22, 0.8, 'delta*k=23.33', 'pool') {'games': 332, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'param': 166, 'maxreq': 80} [] 3s
+(20, 15, 4, 0.75, 'delta*k=4.17', 'free') {'games': 332, 'over': 0, 'overpred': 64, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'param': 0, 'maxreq': 15} [] 4s
+(20, 15, 4, 0.75, 'delta*k=4.17', 'pool') {'games': 332, 'over': 0, 'overpred': 36, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'param': 0, 'maxreq': 15} [] 4s

@@ -1,0 +1,8 @@
+Q: vertices 42
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+t=0.750  delta_PS3 (vertex LP) = 0.20833   t/2-1/6 = 0.20833   (1+6d)/3 at that delta = 0.75000 ; worst vertex [([1], '1'), ([2, 3], '1/2'), ([2, 4], '1/2'), ([3, 4], '1/2')]
+t=0.760  delta_PS3 (vertex LP) = 0.21333   t/2-1/6 = 0.21333   (1+6d)/3 at that delta = 0.76000 ; worst vertex [([1], '1'), ([2, 3], '1/2'), ([2, 4], '1/2'), ([3, 4], '1/2')]
+t=0.770  delta_PS3 (vertex LP) = 0.21833   t/2-1/6 = 0.21833   (1+6d)/3 at that delta = 0.77000 ; worst vertex [([1], '1'), ([2, 3], '1/2'), ([2, 4], '1/2'), ([3, 4], '1/2')]
+t=0.775  delta_PS3 (vertex LP) = 0.22083   t/2-1/6 = 0.22083   (1+6d)/3 at that delta = 0.77500 ; worst vertex [([1], '1'), ([4], '1'), ([2, 3], '1')]
+t=0.780  max over vertices <= t up to delta=1-t

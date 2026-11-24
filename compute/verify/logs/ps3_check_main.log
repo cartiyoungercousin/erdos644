@@ -1,0 +1,20 @@
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+(40, 30, 8, 0.75, 'delta*k=8.33', 'free') {'games': 332, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'param': 0, 'maxreq': 30} [] 4s
+(40, 30, 8, 0.75, 'delta*k=8.33', 'pool') {'games': 332, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'param': 0, 'maxreq': 30} [] 4s
+(80, 60, 16, 0.75, 'delta*k=16.67', 'free') {'games': 332, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'param': 0, 'maxreq': 60} [] 5s
+(80, 60, 16, 0.75, 'delta*k=16.67', 'pool') {'games': 332, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'param': 0, 'maxreq': 60} [] 5s
+(120, 90, 24, 0.75, 'delta*k=25.00', 'free') {'games': 332, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'param': 0, 'maxreq': 90} [] 5s
+(120, 90, 24, 0.75, 'delta*k=25.00', 'pool') {'games': 332, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'param': 0, 'maxreq': 90} [] 5s
+(100, 78, 21, 0.78, 'delta*k=22.33', 'free') {'games': 332, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'param': 0, 'maxreq': 78} [] 5s
+(100, 78, 21, 0.78, 'delta*k=22.33', 'pool') {'games': 332, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'param': 0, 'maxreq': 78} [] 5s
+(80, 62, 17, 0.775, 'delta*k=17.67', 'free') {'games': 332, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'param': 0, 'maxreq': 62} [] 5s
+(80, 62, 17, 0.775, 'delta*k=17.67', 'pool') {'games': 332, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'param': 0, 'maxreq': 62} [] 5s
+(60, 45, 12, 0.75, 'delta*k=12.50', 'free') {'games': 332, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'param': 0, 'maxreq': 45} [] 5s
+(60, 45, 12, 0.75, 'delta*k=12.50', 'pool') {'games': 332, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'param': 0, 'maxreq': 45} [] 5s
+(100, 80, 19, 0.8, 'delta*k=23.33', 'free') {'games': 332, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'param': 0, 'maxreq': 80} [] 6s
+(100, 80, 19, 0.8, 'delta*k=23.33', 'pool') {'games': 332, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'param': 0, 'maxreq': 80} [] 5s
+(50, 40, 9, 0.8, 'delta*k=11.67', 'free') {'games': 332, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'param': 0, 'maxreq': 40} [] 5s
+(50, 40, 9, 0.8, 'delta*k=11.67', 'pool') {'games': 332, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'param': 0, 'maxreq': 40} [] 5s
+(80, 60, 12, 0.75, 'delta*k=16.67', 'free') {'games': 332, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'param': 0, 'maxreq': 60} [] 5s
+(80, 60, 12, 0.75, 'delta*k=16.67', 'pool') {'games': 332, 'over': 0, 'overpred': 0, 'covers': 0, 'noreply': 0, 'struct': 0, 'wrong': 0, 'param': 0, 'maxreq': 60} [] 5s

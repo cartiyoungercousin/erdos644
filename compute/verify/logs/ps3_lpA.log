@@ -1,0 +1,14 @@
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+t=0.750  delta*(method, all singles, 256 assignments) = 0.20833   t/2-1/6 = 0.20833   1-t = 0.250   best assignment just above: ('D', 5, 6, 7)
+t=0.760  delta*(method, all singles, 256 assignments) = 0.21333   t/2-1/6 = 0.21333   1-t = 0.240   best assignment just above: ('D', 5, 6, 7)
+t=0.770  delta*(method, all singles, 256 assignments) = 0.21833   t/2-1/6 = 0.21833   1-t = 0.230   best assignment just above: ('D', 5, 6, 7)
+t=0.775  delta*(method, all singles, 256 assignments) = 0.22083   t/2-1/6 = 0.22083   1-t = 0.225   best assignment just above: ('D', 5, 6, 7)
+t=0.780  delta*(method, all singles, 256 assignments) = 0.22000   t/2-1/6 = 0.22333   1-t = 0.220   best assignment just above: ('D', 5, 6, 7)
+t=0.790  delta*(method, all singles, 256 assignments) = 0.21000   t/2-1/6 = 0.22833   1-t = 0.210   best assignment just above: ('D', 5, 6, 7)
+t=0.800  delta*(method, all singles, 256 assignments) = 0.20000   t/2-1/6 = 0.23333   1-t = 0.200   best assignment just above: ('D', 5, 6, 7)
+t=0.75 delta=0.1800 best value 0.69333 (T=0.75, (1+6d)/3=0.69333)  assignment ('D', 5, 6, 7)
+t=0.75 delta=0.2000 best value 0.73333 (T=0.75, (1+6d)/3=0.73333)  assignment ('D', 5, 6, 7)
+t=0.75 delta=0.2083 best value 0.74993 (T=0.75, (1+6d)/3=0.74993)  assignment ('D', 5, 6, 7)
+t=0.75 delta=0.2100 best value 0.75333 (T=0.75, (1+6d)/3=0.75333)  assignment ('D', 5, 6, 7)
+t=0.75 delta=0.2300 best value 0.79333 (T=0.75, (1+6d)/3=0.79333)  assignment ('D', 5, 6, 7)
