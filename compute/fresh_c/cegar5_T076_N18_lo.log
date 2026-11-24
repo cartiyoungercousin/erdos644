@@ -1,0 +1,5 @@
+iter 0: menu5=['lo', 'hi'] status=TimeLimit z*=0.22000 bound=-0.44000 [201s]
+   state after 4: {'pool': 0.04, '1': 0.26, '2': 0.13, '124': 0.37, '34': 0.26, '13': 0.24, '234': 0.37, '123': 0.13}  request5: {'1': 0.26, '123': 0.13, '234': 0.37}
+   best single-type-first response at round 5: 124>asc  value z=0.22000
+   no candidate improves on the current menu: requester's tree is robust to all single-type-first round-5 responses
+total 201s

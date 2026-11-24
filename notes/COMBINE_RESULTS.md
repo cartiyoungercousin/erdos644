@@ -59,3 +59,64 @@ below 0.72, and no template or tight-triple closure appears. Minimum S does not 
 large pair cell, which is exactly what the potential 4*s1 + s2 of R1/R1b was designed to do; the
 sum potential gives up that leverage, and Theorem 11.1 does not constrain the profile of the
 sparsest anchor (only the value of min S), so the two tools do not combine directly.
+
+
+# §2. Near-lex anchor below the Theorem 6.4 threshold (run of 2026-11-24)
+
+Code: `compute/combine/run_lex.py` (calls `compute/r1b/multi.py`); outputs
+`compute/combine/out_lex_*.txt`, `soundness_lex.txt`, `lex_0.84_g50_d2_part1.jsonl`,
+`compute/r1b/out/multi_0.8{3,4}_p2000_40_1_*`. Floating MILP on grids: evidence **[C]**, no proof.
+
+## Verdict
+**t = 0.84: clean on the 1/25 grid** (all 609 anchors with largest cell <= 0.56 win within two
+adaptive rounds). On the 1/50 grid 4022 of 4087 win at depth 1; of the 65 others, 34 have
+finished depth 2 and all of them win; 31 were still unfinished when I stopped (none found
+stuck). **t = 0.83:** 590 of 609 win at depth 1; depth 2 on the 19 others: 5 finished, all
+win, 14 unfinished. So 0.84 is a candidate, not yet a clean statement.
+
+## Setup, and what exactly is sound
+- Anchor = minimiser of Phi = 2000*s1 + 40*s2 + s3 over all good triples (class all), cells
+  sorted. Contradiction = a response that creates a good triple of strictly smaller Phi; this is
+  sound for the Phi-minimiser (fixed big-M of `game2.py`). It is NOT the true lexicographic
+  order. Fresh weights were used because the memo of the old (1600,40,1) runs predates the
+  big-M fix.
+- Link to Theorem 6.4: if the lex-min largest cell is u, the Phi-minimiser has
+  s1 <= u * (1 + 41/2000). So a family not closed by 6.4 at t = 0.84 (u < 0.5627) has a
+  Phi-anchor with s1 < 0.5743 (0.5715 with the LP constant 26). **Gap:** the grids stop at
+  s1 = 0.56; the strip 0.56 < s1 < 0.574 is not tested (the layer s1 = 0.58 of the 1/50 grid
+  would cover it; not run). At t = 0.83 the 6.4 threshold is u >= 0.5687, Phi-anchor s1 < 0.580;
+  tested up to 0.56 only.
+- Closures used by the engine: static, adaptive Q / T_c, Phi-contradiction, re-anchoring at
+  depth 2 (a response whose new triple, rounded to the grid in every admissible way, is a
+  depth-1 win at the same Phi level). Lemma A is not applied (it is coded for two-weight
+  potentials only); Lemma B / pair gap not switched on.
+- Depth 1 on the 1/50 grid uses requests on the same 1/50 grid (coarse).
+
+## Soundness (passed)
+Phi = (2000,40,1), class all, depth <= 2: the balanced anchors of K_1.65k (t = 0.625),
+K_1.68k (t = 0.64), K_1.74k (t = 0.72) are all stuck (`soundness_lex.txt`).
+
+## t = 0.84
+Grid 1/25 (requests 1/50), 609 anchors with s1 <= 0.56: 597 win at depth 1. The 12 stuck at
+depth 1, all won at depth 2:
+(0.40,0.36,0.08), (0.40,0.40,0.24), (0.44,0.40,0.28), (0.44,0.44,0.28), (0.44,0.44,0.32),
+(0.48,0.40,0.28), (0.52,0.16,0), (0.52,0.16,0.12), (0.52,0.28,0.12), (0.52,0.32,0.28),
+(0.52,0.36,0.32), (0.56,0.04,0.04).
+
+Grid 1/50 (requests 1/50), 4087 anchors: 4022 win at depth 1, 65 stuck at depth 1
+(`out_lex_0.84_d1_g50.txt` has the list). Regions: 29 with s1 = 0.54 or 0.56 and small y, z
+(y <= 0.14 or z = 0); 2 with (0.50, 0.40 / 0.46, 0); the other 34 have s1 in [0.38, 0.54] with
+two or three large cells. Depth 2 status: 34 of the 65 finished, all win at depth 2. Unfinished (31, stopped for time, none found stuck): (0.38,0.38,0.22), (0.40,0.34,0.20), (0.40,0.38,0.24), (0.40,0.40,0.24), (0.42,0.34,0.10), (0.42,0.34,0.14), (0.42,0.42,0.26), (0.52,0.16,0), (0.54,0.04,0.02..0.04), (0.54,0.06,0.02..0.06), (0.54,0.08,0..0.08), (0.54,0.10,0.02), (0.54,0.10,0.04), (0.54,0.10,0.06), (0.54,0.10,0.10), (0.54,0.14,0), (0.56,0.02,0.02), (0.56,0.04,0.02), (0.56,0.04,0.04), (0.56,0.06,0..0.06), (0.56,0.08,0.02). Finished results: `compute/combine/lex_0.84_g50_d2_part1.jsonl` and `compute/r1b/out/multi_0.84_p2000_40_1_50_50_all_depth2_list.jsonl`.
+
+## t = 0.83
+Grid 1/25 (requests 1/100), 609 anchors: 590 win at depth 1. Stuck at depth 1 (19):
+(0.36,0.36,0.20), (0.40,0.36,0.04), (0.40,0.36,0.24), (0.40,0.40,0.36), (0.44,0.36,0.28),
+(0.44,0.40,0.28), (0.48,0.36,0.32), (0.52,0.04,0.04), (0.52,0.08,0.04), (0.52,0.08,0.08),
+(0.52,0.12,0.04), (0.52,0.12,0.08), (0.52,0.12,0.12), (0.52,0.16,0.04), (0.52,0.24,0),
+(0.52,0.32,0), (0.52,0.36,0), (0.56,0.04,0.04), (0.56,0.08,0).
+Depth 2 status: 5 of the 19 finished, all win at depth 2: (0.52,0.36,0), (0.52,0.32,0), (0.52,0.24,0), (0.48,0.36,0.32), (0.56,0.08,0). The other 14 are unfinished (stopped for time).
+
+## What a Lean proof would need
+The depth-1 region is the bulk and uses static / Q / T_c / Phi-contradiction; the depth-2 wins
+need the re-anchoring step per profile (use `compute/r1b/explain.py` on a profile to list the
+closures per response). I did not extract the per-region closure lists.
