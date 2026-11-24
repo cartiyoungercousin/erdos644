@@ -30,7 +30,7 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 | Reduction CP <= (Σ) | CORE §38 | VERIFIED (V3) with corrected (b): "union is V and triple intersection >= N - 2t" (not kernel in [N-2t, N-3/2]); "balanced matchings" means Q'’s three per-matching conditions |
 | Ordered frozen anti-plan has a good seven | CORE §46 | VERIFIED (V2; finite-k H-branch needs o <= 4ω - 3) |
 | Theorem W (window-selected greedy rules lose) | CORE §47 | VERIFIED (V2; finite k needs 4 \| k; selectors reading \|S\| are outside W; threshold corollary holds for upward thresholds only) |
-| Window lower end: 3t - 1/2 < N <= 5t - 2 closed by a fixed class-(T) plan when omega <= 4·eps | CORE 21.2 | HAND, needs a written proof plus verification (added to V3) |
+| Window lower end: 3t - 1/2 < N <= 5t - 2 closed by a fixed class-(T) plan when omega <= 4·eps | CORE 21.2 | GAP (V4): it assumes zero base waste for every adversary, with no steering lemma; static Theorem T tolerates only about 2ε of deficit. So the open window starts at 3t - 1/2, not 5t - 2. |
 | Literal SPOIL false | CORE §40 | EXACT |
 | SPOIL at all depths is not a disproof | CORE §43 | HAND |
 | One-bit rule has a good seven | CORE §44 | EXACT (89 instances) |
@@ -39,13 +39,14 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 ## Petal side (Barrier F)
 | Claim | Where | Status |
 |---|---|---|
-| Theorem J′ (6μ), Theorem J″ (4μ) | PETAL 14.1, 18.1 | HAND, verification pending (V4) |
+| Theorem J′ (6μ), Theorem J″ (4μ) | PETAL 14.1, 18.1 | VERIFIED (V4; Step 1 needs t >= 2/3; the third-class branch and integer rounding are not written) |
 | Theorem DS, DS-b | PETAL 20.2, §21 | HAND + EXACT replay, verification pending (V5) |
 | Lemma FF, Theorem AP | PETAL 23.1, 23.2 | HAND + EXACT replay, verification pending (V5) |
 | Theorem N adversary beats 2+2 | PETAL §12 | HAND |
 | 𝒜(t,δ), 𝒦₂ (c >= 0.5217) as obstructions | PETAL §20, §22 | DEAD |
 
 ## Open
+- The core window is 3t - 1/2 < N < 3 - t (21.2 does not close (3t - 1/2, 5t - 2]).
 - (Σ) for hash-like, non-greedy and self-cut families (core window).
 - Fixed two-class families not of arena-with-pool form (petal).
 - Strategy-form SPOIL; the five-reply candidate break (CORE §41).
