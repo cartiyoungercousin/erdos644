@@ -1,0 +1,17 @@
+k=3: three_centres configuration exists iff N >= 6   formula k+ceil(2*ceil(4k/3)/3) = 6   17k/9 = 5.67   OK
+      T=2: 5+2 closable configuration exists iff N >= 7   formula max(ceil(4k/3), k+2ceil(4k/3)-2T) = 7   (k+T = 5; 11k/3-2T = 7.00)   OK
+k=4: three_centres configuration exists iff N >= 8   formula k+ceil(2*ceil(4k/3)/3) = 8   17k/9 = 7.56   OK
+      T=3: 5+2 closable configuration exists iff N >= 10   formula max(ceil(4k/3), k+2ceil(4k/3)-2T) = 10   (k+T = 7; 11k/3-2T = 8.67)   OK
+k=5: three_centres configuration exists iff N >= 10   formula k+ceil(2*ceil(4k/3)/3) = 10   17k/9 = 9.44   OK
+      T=4: 5+2 closable configuration exists iff N >= 11   formula max(ceil(4k/3), k+2ceil(4k/3)-2T) = 11   (k+T = 9; 11k/3-2T = 10.33)   OK
+k=6: three_centres configuration exists iff N >= 12   formula k+ceil(2*ceil(4k/3)/3) = 12   17k/9 = 11.33   OK
+      T=5: 5+2 closable configuration exists iff N >= 12   formula max(ceil(4k/3), k+2ceil(4k/3)-2T) = 12   (k+T = 11; 11k/3-2T = 12.00)   OK
+k=7: three_centres configuration exists iff N >= 14   formula k+ceil(2*ceil(4k/3)/3) = 14   17k/9 = 13.22   OK
+      T=6: 5+2 closable configuration exists iff N >= 15   formula max(ceil(4k/3), k+2ceil(4k/3)-2T) = 15   (k+T = 13; 11k/3-2T = 13.67)   OK
+k=8: three_centres configuration exists iff N >= 16   formula k+ceil(2*ceil(4k/3)/3) = 16   17k/9 = 15.11   OK
+      T=6: 5+2 closable configuration exists iff N >= 18   formula max(ceil(4k/3), k+2ceil(4k/3)-2T) = 18   (k+T = 14; 11k/3-2T = 17.33)   OK
+      T=7: 5+2 closable configuration exists iff N >= 16   formula max(ceil(4k/3), k+2ceil(4k/3)-2T) = 16   (k+T = 15; 11k/3-2T = 15.33)   OK
+k=9: three_centres configuration exists iff N >= 17   formula k+ceil(2*ceil(4k/3)/3) = 17   17k/9 = 17.00   OK
+      T=7: 5+2 closable configuration exists iff N >= 19   formula max(ceil(4k/3), k+2ceil(4k/3)-2T) = 19   (k+T = 16; 11k/3-2T = 19.00)   OK
+      T=8: 5+2 closable configuration exists iff N >= 17   formula max(ceil(4k/3), k+2ceil(4k/3)-2T) = 17   (k+T = 17; 11k/3-2T = 17.00)   OK
+mismatches: 0

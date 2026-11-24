@@ -211,3 +211,129 @@ force a bad 7-tuple, not a family; to be a family the reply would have to depend
 - "Exact" means: exact value of an explicit rational requester line against the stated deterministic rule,
   in the scale-free model with free slivers. It is not a statement about finite k.
 - m = 8 only; partial budgets and the direct 7-reply win are not in the MILP (both only weaken her).
+
+=============================================================================================
+# Part II — red team on the PETAL architecture (second job)
+
+Read: TWIN §13–§14, PETAL.md (its §1–§6), `Lean644/ThreeCentres.lean`. Code:
+`compute/redteam/petal_room.py` (SAT, exact), `petal_touch.py` (exhaustive). Outputs `petal_room.out`,
+`petal_touch.out`. Units of k; t = T/k.
+
+## 6. Bottom line
+
+- **The adversary that defeats the four-petal certificates is not an arena construction; it is the
+  single self-sufficient arena: any adversary confined to N points with k + T <= N < 2k.** On such a
+  ground set neither four-petal certificate of PETAL.md exists or can be forced: triple-free four petals
+  do not exist at all (they need N >= 2k), and "four petals + three centres with pairwise disjoint
+  traces" does not exist for N < 17k/9 and cannot be closed for N < 11k/3 - 2T [proved by hand, §7; both
+  existence thresholds confirmed by SAT / exhaustion]. For 2k <= N < 3k - T a one-line adversary rule
+  ("touch every triple") still prevents every triple-free four-petal set [proved by hand]. This is
+  PETAL §5's adversary (b) in exact form, and it is a route (i) defeat: no good four-petal configuration
+  is ever reachable, for any number of requests.
+- **Every arena-type variant I tried loses to PETAL's Theorem J or to Theorem D** (§8): two disjoint
+  arenas of any sizes, overlapped arenas with small overlap, three or more arenas, nested arenas,
+  near-copy chains. The reason is uniform: an arena that is not self-sufficient (mass < 1 + t) can be
+  emptied by a request, so she can force far centres; a self-sufficient arena makes the others
+  irrelevant and is the single-arena case.
+- **It is not a counterexample.** The single arena is a sub-family of the complete family K_N,
+  N >= k + T, which is not (7,2) (N >= 7k/4). In Part I she beat every such opponent I tried, but with
+  *six* petals (the Fano six-state, mass(D) = |U*| <= T), never four. So Part II shows that the
+  four-petal layer is empty exactly on the ground sets where Part I's opponents live, and that the proof
+  needs the q = 6 lemma there (§9).
+
+## 7. Room lemmas [proved by hand; checked exact]
+
+**7.1 (triple-free four petals need 2k points).** Four k-sets with no point in three of them have union
+>= 2k. Hence on N < 2k points the matching-load certificate and the Theorem I shapes (TWIN 15.4) do not
+exist. [count; exhaustive check k = 3, 4: they exist iff N >= 2k]
+
+**7.2 (touch every triple).** Let all replies lie in N < 3k - T points (or, in the open game, let every
+three replies with empty common intersection have union < 3k - T). Three replies with empty common
+intersection have a pair set P of size exactly 3k - |union| > T, so no request contains P, and the
+adversary may put one unrequested point of P into his reply — for every such earlier triple at once
+(O(1) points per reply). Then no reply is ever the latest member of a triple-free petal set: among four
+triple-free petals the three earliest have empty common intersection and the latest would have to avoid
+their pair set. So **triple-free four-petal configurations never arise, for any number of requests.**
+[`petal_touch.py`: the minimum pair-set size over triples with empty common intersection equals 3k - N,
+all k-subsets, (k,N) = (3,6), (4,7), (4,8), (5,9), (5,10). Without "empty common intersection" the bound
+is only (3k - N)/2; the first version of my check caught that slip.]
+This is the exact form of PETAL §5(b): "he pushes p above t" is automatic below 3k - T = 2.25k.
+
+**7.3 (three centres with disjoint traces need room).** Petals (at most four, empty common
+intersection, union U, |U| = u >= 4k/3) and centres C_1, C_2, C_3 with C_i ∩ C_j ∩ U = ∅, all inside an
+N-set: the traces are disjoint in U and each centre has at most N - u points outside U, so
+3k <= u + 3(N - u), i.e. u <= 3(N - k)/2 and **N >= 17k/9**. Integer form N >= k + ceil(2·ceil(4k/3)/3).
+[`petal_room.py`, SAT, k = 3..9: a configuration exists iff N >= 6, 8, 10, 12, 14, 16, 17 — equal to the
+formula in every case.] I did not redo the count with the active set U* in place of U (PETAL P4(c)).
+
+**7.4 (forcing the centres needs more room).** To force the second and third centre she requests the
+traces: she needs |C_1 ∩ U| + |C_2 ∩ U| <= T, and the adversary chooses C_2 with the largest trace
+available. On N points every k-set has trace >= k - (N - u), and after a request of T points of U he can
+still take min(k, u - T). So the closure needs u + (k - N + u) <= 2T, i.e. N >= k + 2u - 2T
+**>= 11k/3 - 2T** (2.17k at t = 3/4). [SAT: a configuration with |U| + |G ∩ U| <= 2T exists iff
+N >= max(ceil(4k/3), k + 2ceil(4k/3) - 2T), k = 3..9, T near 3k/4 and T = k - 1; no mismatch.]
+In the open game the same defence is the invariant "every reply meets the union of any four earlier
+replies with empty common intersection in more than 2T - |U| points". A single arena gives it for
+free. It is exactly what Theorem J's forcing request F (cost 1 - c) is meant to break; on a
+self-sufficient arena the reply to F cannot be far (overlap >= 2k - N), so it lands in the band and
+Theorem J returns "banded pair", not a win.
+
+**7.5 Summary by ground-set size (t = 3/4 + eps, units of k).**
+
+| N | triple-free four petals | four petals + three centres | what is left for her |
+|---|---|---|---|
+| [1+t, 17/9) | do not exist | do not exist | q = 6 (Fano six-state); three anchors at the Fano point |
+| [17/9, 2) | do not exist | exist, cannot be closed | same |
+| [2, 11/3 - 2t) ≈ [2, 2.17) | exist, never reachable (7.2) | cannot be closed | same |
+| [2.17, 3 - t) ≈ [2.17, 2.25) | never reachable (7.2) | closable only if he lets a trace drop | same |
+| >= 10/3 - t ≈ 2.58 | — | — | she wins by Theorem D / spread lemma |
+
+## 8. Arena-type adversaries: all lose [proved by hand, using PETAL Thm J and TWIN Thm D as stated there]
+
+- **Two disjoint arenas, any sizes.** Direct argument, 7 requests: request T/2 of the current common
+  intersection of the replies of each arena; every reply removes T/2 > k/3 from its arena's core, so the
+  fourth reply of an arena has empty common intersection with the first three; seven replies contain
+  four from one arena and at least one from the other; a cover would need a point in all four. Arena
+  sizes never enter. (If he never uses the second arena he is a single-arena adversary.)
+- **Different sizes / an arena that is not self-sufficient.** She can force him out of an arena of mass
+  n < 1 + t by requesting n - 1 of it; this only adds options for her.
+- **Overlapped arenas with overlap o.** Cross overlaps are at most o. If o < λ (PETAL: λ = 0.05 at
+  t = 3/4) Theorem J applies verbatim. If o is in the band, the pair is banded and we are in PETAL §5;
+  to stop triple-free petals he must then keep every three replies inside 3k - T points (7.2), i.e. the
+  two arenas together form one ground set of fewer than 2.25k points: the single-arena case with extra
+  restrictions on him.
+- **Three or more arenas with small cross overlaps.** A reply in a third class gives anchors with
+  p < 3λ <= t - 1/3 and loses to Theorem D; an arena he never uses does not exist.
+- **Nested arenas.** A reply in the inner arena is a reply in the outer one: single arena.
+- **Near-copy chains** (each reply a near-copy of the previous one, drifting). Either the chain stays
+  inside 2.25k points (single-arena case), or three members with empty common intersection have union
+  >= 3k - T, hence pair mass <= T, and a fourth triple-free petal becomes affordable; if it drifts to
+  union >= 10k/3 - T she wins by Theorem D outright. [the middle case is "affordable", not "won":
+  the matching loads are still his to fight — PETAL §5(i),(ii)]
+So arenas are not the weapon. The structure that defeats the four-petal layer is concentration of ALL
+replies on fewer than about 2.2k points.
+
+## 9. Why it is not a counterexample, and the lemma the proof needs
+
+Part I: at t = 0.76 on N = 1.9k, 2.0k, 2.1k, 2.2k she beats every mixing schedule I tried with eight
+requests, ending in six kept replies whose active set D = U* has mass <= T [computed exact]. In PETAL's
+language that is the one-centre certificate P4(a) with q = 6.
+**Lemma needed.** *For t >= 3/4 + eps: if every three replies with empty common intersection have pair
+mass > T (in particular if all replies lie in fewer than 3k - T points), then within m(eps) requests the
+requester obtains six replies with |U*(P)| <= T — the Fano six-state: a perfect matching of the six
+whose three pair-intersections have total mass <= T, and the four transversal triples of one parity with
+empty intersection (TWIN 7.5).* The case split that makes the architecture exhaustive is by the size of
+three-reply unions: below 3k - T (this lemma; no four-petal certificate is available), or at least
+3k - T (a fourth triple-free petal is affordable and PETAL §4–§5 applies).
+Not done: a proof of the lemma, or an adaptive concentrated adversary beating the q = 6 requester
+(Part I §1.2: every fixed schedule loses; request-dependent schedules were not computed).
+
+## 10. Realizability and caveats
+
+- No winning adversary, so no (7,2) coexistence test. K_N is (7,2) only for N < 7k/4, where
+  tau = N - k + 1 <= 3k/4: consistent with the conjecture.
+- 7.3–7.4 concern the certificate "three centres with pairwise disjoint traces on U"; four petals with
+  triple points under the general criterion P2, and q = 5, were not analysed.
+- §8 relies on PETAL Theorem J and TWIN Theorem D as stated; only the disjoint-arena case was re-derived.
+- `node ../fresh_c/anchor.js 9 7` (read-only use of C's solver, to list the winning anchor shapes at
+  t = 0.778) did not finish in the time box; nothing is claimed from it.
