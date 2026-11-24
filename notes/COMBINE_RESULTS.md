@@ -120,3 +120,76 @@ Depth 2 status: 5 of the 19 finished, all win at depth 2: (0.52,0.36,0), (0.52,0
 The depth-1 region is the bulk and uses static / Q / T_c / Phi-contradiction; the depth-2 wins
 need the re-anchoring step per profile (use `compute/r1b/explain.py` on a profile to list the
 closures per response). I did not extract the per-region closure lists.
+
+
+# §3. Completion at t = 0.84 and proof blueprint (2026-11-24)
+
+Code: `compute/combine/d2.py`, `blueprint.py`; data `blueprint_0.84.jsonl`,
+`lex_0.84_g50_d2_part{1,2}.jsonl`, `lex_0.84_strip_d2.jsonl`, `out_lex_0.84_strip_d1.txt`,
+`out_lex_0.84_d1_g50_r100.txt`. All **[C]** (floating MILP on grids). No exact certificates were
+produced in this round (see 3.4).
+
+
+## 3.0 Verdict of this round
+**t = 0.84: no stuck profile found, two profiles undecided.** On the 1/50 grid every anchor with
+s1 <= 0.58 (4087 + 244 anchors) wins within two adaptive rounds, except (0.38,0.38,0.22) and
+(0.40,0.38,0.24), whose depth-2 runs did not finish (not shown stuck, not shown won). The 1/25
+grid is completely clean. So: clean up to two undecided grid points; still grid evidence only.
+
+## 3.1 The 31 unfinished 1/50 profiles
+- With requests on the 1/100 grid, 16 of the 31 win already at depth 1 (so their depth-1
+  failure was a request-grid effect).
+- The other 15: (0.38,0.38,0.22), (0.40,0.38,0.24), (0.40,0.40,0.24), (0.54,0.04,0.02),
+  (0.54,0.04,0.04), (0.54,0.06,0.02..0.06), (0.54,0.08,0.02..0.08), (0.56,0.02,0.02),
+  (0.56,0.04,0.02), (0.56,0.04,0.04). Depth 2 (requests 1/50): 13 finished: 12 win at depth 2; (0.56, 0.02, 0.02) is stuck at depth 2 with 1/50 requests but **wins at depth 2 with 1/100 requests** (`lex_0.84_g50_d2_r100.jsonl`), so that was a request-grid effect. Two did not finish in about an hour each: **(0.38,0.38,0.22) and (0.40,0.38,0.24)** (both were also among the six stuck profiles of R1 at 0.84; their neighbour (0.40,0.40,0.24) wins at depth 2).
+- Note: `compute/r1b/out/multi_0.84_p2000_40_1_50_50_all_depth1_list.jsonl` was overwritten by
+  the strip run (same file name); the full 4087-anchor result survives in
+  `out_lex_0.84_d1_g50.txt` (summary line with the complete stuck list).
+
+## 3.2 The strip s1 = 0.58 (1/50 grid, 244 anchors)
+238 win at depth 1. The 6 others, (0.58,0.02,0), (0.58,0.02,0.02), (0.58,0.06,0),
+(0.58,0.22,0.08), (0.58,0.32,0), (0.58,0.38,0), all win at depth 2. **The strip is clean**, so
+the difference between the Phi-minimiser and the true lex-min anchor does not matter on the grid.
+
+## 3.3 Blueprint (from the 1/25 grid, 609 anchors with s1 <= 0.56, depth 1 re-solved with the
+winning line recorded)
+
+Cells: X >= Y >= Z pair cells of the anchor (E n F, E n G, F n G), PE, PF, PG private parts.
+"Seal" = request the whole cell. Five line types cover 598 anchors; 11 need a second round.
+
+| # | line | anchors | region on the grid |
+|---|---|---|---|
+| A | static: the 4-request closure of the anchor itself (phi_static <= t) | 299 | all anchors with x <= 0.32; for x >= 0.36 a subset that is not an interval in S (it interleaves with B to D) |
+| B | one request sealing Y and Z (plus arbitrary filling), no closure needed: EVERY admissible response creates a good triple of smaller Phi | 125 | x in [0.40, 0.56], y in [0.08, 0.48], z >= 0.04, S in [0.68, 1.28] |
+| B' | same with other seals: X and Z (38), Y only (18, z = 0 mostly), X only (7), Z only (5) | 68 | X,Z: x in [0.44,0.56], y in [0.40,0.48]; Y only: x >= 0.44, z small |
+| C | seal X, Y, Z, then a Q-closure (quadruple E,F,G,K) per response case; up to 12 patterns | 67 | x in [0.36, 0.52], y <= 0.36, z <= 0.20, S in [0.48, 0.84] |
+| D | seal two cells (or fewer), response cases closed by Q, in 8 anchors also by T_X / T_Y | 39 | x in [0.36, 0.56], S in [0.56, 1.00]; up to 15 patterns |
+| E | second adaptive round (re-anchoring) | 11 | the depth-1 stuck list of §2 (one anchor of that list won on this re-run: the request search is randomised) |
+
+Reading of the table:
+- Type A is a single LP statement in (x,y,z): one 4-request pattern per sub-region; the exact
+  pattern tables of `compute/r1/tables.py` give the piecewise-linear phi_static exactly, so this
+  region can be certified exactly with the existing `exact_check.py` machinery.
+- Types B, B' are the cleanest new statements: "if the lex-min anchor has profile in the region,
+  the request (Y u Z u filler) has no admissible answer". The recorded filler is not canonical
+  (the search takes the first winning request), so the request as a function of the profile is
+  still to be chosen; natural candidate: the Lemma-A request (seal Y, Z, split the rest evenly
+  between PE-side and PF-side). This is a Lemma A / pair-gap type argument and should be
+  provable by hand per case of which anchor edges the response replaces.
+- Types C, D are R1-style adaptive wins: finite case split over response regions with one
+  closure pattern (a row of the quad or triple table) per case; 3 to 15 cases per anchor.
+- Type E needs a two-round statement; this is the part furthest from a hand proof.
+
+## 3.4 What is NOT done (honest list)
+- **No polytope partition with exact rational certificates.** The table above is a
+  classification of grid points by line type, with coordinate ranges, not a partition into
+  polytopes; the regions of types B to E interleave on the grid, partly because the search
+  returns the first winning request, not a canonical one. Every region other than A therefore
+  **depends on the grid** at present.
+- The first request as an explicit function of the profile is not fixed for B to E.
+- Depth-2 wins use the re-anchoring lookup with grid rounding (every admissible rounding of
+  the new triple must be a depth-1 win): grid dependent by construction.
+- The potential is 2000 s1 + 40 s2 + s3, not true lex; contradictions found by the engine are
+  Phi-decreases. For a Lean proof either the potential itself is used as the minimality
+  principle (sound as it is), or each contradiction case must be re-checked to be a lex decrease.
+- Not rerun: t = 0.83 beyond §2.
