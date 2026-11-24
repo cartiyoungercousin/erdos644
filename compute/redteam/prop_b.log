@@ -1,0 +1,8 @@
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+{"T": 0.76, "Ns": [2.3333, 2.3333, 2.3333, 2.3333, 2.3333, 2.3333, 2.3333], "status": "TimeLimit", "z": -0.3315247280349342, "bound": -0.9042058362835329, "drop": [7], "replay": -0.3315237280349352, "secs": 240}
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+{"T": 0.76, "Ns": [1.76, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0], "status": "TimeLimit", "z": -0.5826591595728381, "bound": -0.8775696238094117, "drop": [2], "replay": -0.5826591595728394, "secs": 240}
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details

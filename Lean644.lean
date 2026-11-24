@@ -27,6 +27,9 @@ import Lean644.Fano
 import Lean644.PairGap
 import Lean644.LopsidedTop
 import Lean644.SparseTriple
+import Lean644.FlatTuple
+import Lean644.FanoBlocks
+import Lean644.Waste
 import Lean644.TightTriple
 import Lean644.TheoremA
 import Lean644.SparserTriple
