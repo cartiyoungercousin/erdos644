@@ -1,0 +1,20 @@
+k=480 T=360 d=24 delta=0.0500 blind wins 20/20  e.g. {'result': 'NO 2-COVER (requester wins)', 'over': [], 'traces': [120, 24, 24], 'disjoint': True, 'requests': 10}
+k=480 T=360 d=24 delta=0.0500 aware wins 20/20  e.g. {'result': 'NO 2-COVER (requester wins)', 'over': [], 'traces': [23, 24, 24], 'disjoint': True, 'requests': 7}
+k=480 T=360 d=28 delta=0.0583 blind wins 20/20  e.g. {'result': 'NO 2-COVER (requester wins)', 'over': [], 'traces': [140, 28, 28], 'disjoint': True, 'requests': 10}
+k=480 T=360 d=28 delta=0.0583 aware wins 20/20  e.g. {'result': 'NO 2-COVER (requester wins)', 'over': [], 'traces': [27, 28, 28], 'disjoint': True, 'requests': 7}
+k=480 T=360 d=32 delta=0.0667 blind wins 20/20  e.g. {'result': 'NO 2-COVER (requester wins)', 'over': [], 'traces': [160, 32, 32], 'disjoint': True, 'requests': 10}
+k=480 T=360 d=32 delta=0.0667 aware wins 20/20  e.g. {'result': 'NO 2-COVER (requester wins)', 'over': [], 'traces': [31, 32, 32], 'disjoint': True, 'requests': 7}
+k=480 T=360 d=36 delta=0.0750 blind wins 20/20  e.g. {'result': 'NO 2-COVER (requester wins)', 'over': [], 'traces': [180, 36, 36], 'disjoint': True, 'requests': 10}
+k=480 T=360 d=36 delta=0.0750 aware wins 20/20  e.g. {'result': 'NO 2-COVER (requester wins)', 'over': [], 'traces': [35, 36, 36], 'disjoint': True, 'requests': 7}
+k=480 T=360 d=40 delta=0.0833 blind wins 20/20  e.g. {'result': 'NO 2-COVER (requester wins)', 'over': [], 'traces': [200, 40, 40], 'disjoint': True, 'requests': 10}
+k=480 T=360 d=40 delta=0.0833 aware wins 20/20  e.g. {'result': 'NO 2-COVER (requester wins)', 'over': [], 'traces': [39, 40, 40], 'disjoint': True, 'requests': 7}
+k=480 T=360 d=44 delta=0.0917 blind wins 0/20  e.g. {'result': '2-cover exists', 'over': [(2, 9), (3, 15)], 'traces': [220, 53, 59], 'disjoint': False, 'requests': 10}
+k=480 T=360 d=44 delta=0.0917 aware wins 20/20  e.g. {'result': 'NO 2-COVER (requester wins)', 'over': [], 'traces': [44, 44, 43], 'disjoint': True, 'requests': 7}
+k=480 T=360 d=48 delta=0.1000 blind wins 0/20  e.g. {'result': '2-cover exists', 'over': [(2, 17), (3, 27)], 'traces': [240, 65, 75], 'disjoint': False, 'requests': 10}
+k=480 T=360 d=48 delta=0.1000 aware wins 0/20  e.g. {'result': '2-cover exists', 'over': [(1, 13), (2, 13), (3, 13)], 'traces': [60, 61, 61], 'disjoint': False, 'requests': 7}
+k=480 T=360 d=52 delta=0.1083 blind wins 0/20  e.g. {'result': '2-cover exists', 'over': [(2, 40), (3, 47)], 'traces': [260, 92, 99], 'disjoint': False, 'requests': 10}
+k=480 T=360 d=52 delta=0.1083 aware wins 0/20  e.g. {'result': '2-cover exists', 'over': [(1, 29), (2, 29), (3, 29)], 'traces': [81, 81, 80], 'disjoint': False, 'requests': 7}
+k=480 T=360 d=56 delta=0.1167 blind wins 0/20  e.g. {'result': '2-cover exists', 'over': [(2, 58), (3, 64)], 'traces': [280, 114, 120], 'disjoint': False, 'requests': 10}
+k=480 T=360 d=56 delta=0.1167 aware wins 0/20  e.g. {'result': '2-cover exists', 'over': [(1, 45), (2, 45), (3, 45)], 'traces': [100, 101, 101], 'disjoint': False, 'requests': 7}
+k=480 T=360 d=60 delta=0.1250 blind wins 0/20  e.g. {'result': '2-cover exists', 'over': [(2, 70), (3, 74)], 'traces': [300, 130, 134], 'disjoint': False, 'requests': 10}
+k=480 T=360 d=60 delta=0.1250 aware wins 0/20  e.g. {'result': '2-cover exists', 'over': [(1, 61), (2, 61), (3, 61)], 'traces': [121, 120, 121], 'disjoint': False, 'requests': 7}

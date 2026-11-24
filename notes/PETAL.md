@@ -685,3 +685,133 @@ rather than one core.
 
 Hand proofs re-read once: 14.1 (Step 1 budget 2·t/2; (J′)), 14.2 (3μ/2 count), 14.3 (5δ; c < a_0 iff
 δ < t/12), 15.1, 15.3 (4.2 - 4.6t <= t iff t >= 3/4).
+
+---------------------------------------------------------------------------------------------
+## 17. The single-mass exclusion lemma (fifth time box) — outcome first
+
+Brief: prove or refute "single mass σ in a class gives exclusion cost about 1 - c - σ", redo 15.3 for
+general two-class adversaries, otherwise build the counterexample class and replay.
+Code: `compute/petal3/replay_q.py`, `replay43.py`; logs `logs/replay_q.log`, `logs/replay43.log`.
+
+**Outcome.**
+1. The lemma is **false in the form she can use** (17.1) and true only as a statement about a
+   family she is told (17.2). So it cannot be the tool.
+2. Something better is true: singles are bounded by c alone (17.3), and rotating the forcing petal
+   removes one single part per centre. **Theorem J″: 1 - c + 4μ <= t suffices** (18.1) [proved];
+   replayed exactly on the extremal configuration (18.2) [computed exact].
+3. **Correction to §16.** The cap "μ <= (t - 1/3)/3" there is wrong for strict two-class adversaries
+   (it is the condition for opening a third class). The arena adversary 𝒜(t, δ) of §12 with larger
+   δ lies in the open region. It is the explicit counterexample class asked for (19.1): for
+   **t/8 <= δ < 7/5 - 17t/10** (0.094 <= δ < 0.125 at t = 3/4; nonempty iff t < 0.767) every strategy in these
+   notes fails against it, by exact replay. Whether he wins there is not decided.
+Remaining gap, exact: θ(t) < c < 1 - t/2 and 4μ > t - 1 + c; sharpest instance 𝒜(3/4, 0.1).
+
+### 17.1 The certified form is false [proved by hand]
+
+From the hypothesis of 𝒞(c, μ) she can conclude that S excludes class X only if no set E of mass 1
+outside S meets every X-class reply in more than c ("certified exclusion").
+**Configuration 𝒬(c)**, 1/2 < c <= 2/3: V = four blocks of mass c/2; X_i = (V minus block i) plus a
+private part of mass ρ = 1 - 3c/2. Then |X_i ∩ X_j| = c, the four have empty common intersection, each
+has single mass ρ.
+Claim: a request of mass 1 - c - ρ + ε inside X_1 ∩ V does not exclude class X in the certified sense.
+*Proof.* Spread S over blocks 2, 3, 4. Take E = (X_1 ∩ V)∖S (mass c - ε), plus c/3 + 2ε of block 1, plus
+2ε of the private part of X_1. Mass 4c/3 + 3ε <= 1. |E ∩ X_1| = c + ε; for i = 2, 3, 4:
+|E ∩ X_i| = (2/3)(c - ε) + c/3 + 2ε > c. ∎ (c = 0.6: ρ = 0.1, S of mass 0.3, E of mass 0.8.)
+So singles of mass ρ do not lower the price she can rely on below 1 - c.
+
+### 17.2 The true form holds in arena-with-pool families [proved by hand]
+
+Family 𝓖: all sets with 1 - ρ in an arena of mass n and ρ in a large pool. Then c = 2(1 - ρ) - n,
+τ(𝓖) = n - 1 + ρ = 1 - c - ρ, and replies with fresh pool points have single mass ρ. Same for a kernel
+family (at least κ_0 in a kernel, rest anywhere). In these the lemma is an identity, and it is
+what made 𝓑 lose in 15.3. In 17.1 the set E is not a member of 𝓖 (it has 4c/3 < 1 - ρ in V): the
+exclusion is real but she cannot know it from overlaps. I have no proof and no counterexample
+for the true form in general; by 18.1 it is no longer needed for the constant 6.
+
+### 17.3 Singles are bounded by c [proved by hand]
+
+Four petals, empty common intersection, pairwise overlaps > c; s = total single mass, p = total
+mass of the six pair cells, T = total mass of the four triple cells. Then s + 2p + 3T = 4 and
+p + 3T > 6c, hence **s + p < 4 - 6c**. 𝒬(c) is extremal (p = 0, s = 4 - 6c).
+Also each single part has mass < 1 - c, so a forcing set can contain a whole single part.
+
+## 18. Theorem J″ and its replay
+
+### 18.1 Theorem J″ [proved by hand]
+
+Setting 𝒞(c, μ), petals X_1..X_4 from Step 1 of 14.1. Step 2 with **rotation**: centre j is forced
+inside a different petal a_j (a_1, a_2, a_3 distinct), and F_j, of mass at least 1 - c inside X_{a_j},
+contains the whole single part of X_{a_j} and Z_{<j} ∩ X_{a_j}; S_j = F_j ∪ (Z_{<j}∖X_{a_j}).
+Then C_j has no point in the single part of X_{a_j}. For i < j every point of Z_i outside X_{a_j} lies
+in one of the two petals other than a_i, a_j (the only remaining possibility, the single part of
+X_{a_i}, is excluded), so |Z_i∖X_{a_j}| <= 2μ.
+Cost of the third request: at most max(1 - c + 4μ, s_{a_3} + |Z_1| + |Z_2|) with |Z_i| <= 3μ; taking a_3
+with the smallest single part, s_{a_3} < 1 - 3c/2 (17.3), and 1 - 3c/2 + 6μ <= 1 - c + 4μ since μ <= c/4.
+
+**Theorem J″.** In 𝒞(c, μ) she wins in 10 requests if **1 - c + 4μ <= t**. ∎
+At t = 3/4: μ <= (c - 1/4)/4, i.e. 0.0625 at c = 1/2 and 0.094 at c = 5/8 (J′: 0.042 and 0.0625).
+Redo of 15.3: 𝓑 and every arena-with-pool class were already beaten by J′ in the region c > θ(t);
+J″ covers them with room and needs no information about the family.
+
+### 18.2 Exact replay on 𝒬(c) (`replay_q.py`) [computed exact]
+
+Point sets, k = 400; petals 𝒬(c); scripted centres: a fixed core, μ unrequested points from every
+private part (re-using earlier trace points when not sealed), one unrequested point of every block
+(the slivers of 15.1). Requester: Step 2 with the forcing petal chosen to minimise the outside
+trace and its private part put into F (this is the rotation). Exact 2-cover test of the seven sets.
+| T | c | μ | 1 - c + 4μ (points) | result |
+|---|---|---|---|---|
+| 300 | 216 | 10, 19, 20 | 224, 260, 264 | no 2-cover (she wins) |
+| 300 | 216 | 38 (= ρ/2) | 336 | third request 38 over; 2-cover exists |
+| 308 | 216 | 38 | 336 | 30 over; 2-cover exists |
+| 300 | 232 | 26 (= ρ/2) | 272 | no 2-cover |
+| 300 | 240 | 10, 20 | 200, 240 | no 2-cover |
+The wins are verified wins of those seven sets. The two failures are failures of J″ against a
+scripted line, not adversary wins: on 𝒬(c) J″ fails iff 3 - 4c > t (μ = ρ/2), i.e. c < 0.5625 at 3/4.
+The centres there are not produced by a validated adversary (I did not check that a class
+containing them can answer every request), so 𝒬 is a configuration, not a counterexample class.
+
+## 19. The counterexample class, and status
+
+### 19.1 𝒜(t, δ) with t/8 <= δ < 7/5 - 17t/10 [computed exact for the two 4+3 strategies; 2+2 by 11.3]
+
+𝒜 is strict two-class with c = 1 - t/2 - δ and μ = 2δ; c > θ(t) iff δ < 7/5 - 17t/10. Replay on point sets
+(`replay43.py`, k = 480, T = 360, 20 seeds per row; adversary as in §12 with trace-maximising own
+parts and bands placed outside as many petals as possible; exact 2-cover test):
+| δ | J′ arena-blind (c = a_0 known) | 12.3 arena-aware |
+|---|---|---|
+| 0.050 – 0.083 | wins 20/20 | wins 20/20 |
+| 0.092 | fails 20/20 (third request 15 points over) | wins 20/20 |
+| 0.100 – 0.125 | fails 20/20 | fails 20/20 (13–61 points over) |
+"Fails" = the strategy's request does not fit, and with the truncated request the seven replies
+have a 2-cover. The blind strategy does better than its bound t/12 because the realised traces
+outside the forcing petal are about 4δ, not 5δ. Rotation (J″) does not help here: the single parts
+are the petals' bands, δ each, and the cost is dominated by t/2 + δ plus the bands of the other
+petals.
+So for t/8 <= δ < 7/5 - 17t/10:
+- every 2+2 quadruple from a triple served alone fails (11.3, exact inequality
+  1 - t/2 - δ > (6t - 2)/5);
+- 4+3 with pairwise disjoint traces fails for both request schemes (exact inequality
+  t/2 + 4δ > t for the aware scheme, 12.3);
+- not excluded: simultaneous serving in 2+2; 4+3 with a whole triple cell T_d in the request
+  (15.1; my count gives a gain up to about δ = 0.095 only) [heuristic]; choosing the four petals among
+  many replies so that their bands overlap (he can keep bands of different covering types disjoint
+  for about n/δ replies) [heuristic]; certificates with triple points.
+I do not claim he wins. An adversary win here for all request numbers would defeat the request
+game itself at that t, which is a far stronger statement than anything checked.
+
+### 19.2 Status
+
+Proved: J″ (1 - c + 4μ <= t); singles bound; certified exclusion lemma false.
+Dead: the exclusion lemma as a tool; 𝓑-type (arena with pool) adversaries.
+Corrected: §16's upper limit on μ.
+**Exact remaining gap:** 𝒞(c, μ) with θ(t) < c < 1 - t/2 and 4μ > t - 1 + c. One explicit member, with all
+constants fixed: 𝒜(3/4, 0.1) (arenas of mass 1.275, c = 0.525, μ = 0.2).
+**Best next step:** decide 𝒜(3/4, 0.1) alone. Requester side: a 4+3 line that requests one triple cell
+T_d (mass about 0.26) inside the forcing set, so that the band of petal d need not be sealed, and
+picks petals whose bands overlap. Adversary side: show that with bands kept disjoint across the
+four covering types every seven replies keep a 2-cover; the replay harness `replay43.py` takes a
+new strategy as one function.
+
+Checks: `py compute/petal3/replay_q.py 400 300 216 38`; `py compute/petal3/replay43.py 480 360 48 20`.
+Hand proofs re-read once: 17.1 (masses of E), 17.3, 18.1 (the 2μ count and the max).

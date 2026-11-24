@@ -1,0 +1,8 @@
+k=400 T=300 c=216 mu=38: {'rho': 76, 'need_C3': 412, 'T': 300, 'over': [(3, 38)], 'traces': [117, 118, 118], 'result': "2-cover exists (J' fails)"}
+k=400 T=300 c=216 mu=10: {'rho': 76, 'need_C3': 244, 'T': 300, 'over': [], 'traces': [33, 34, 34], 'result': 'NO 2-COVER (requester wins)'}
+k=400 T=300 c=216 mu=19: {'rho': 76, 'need_C3': 298, 'T': 300, 'over': [], 'traces': [60, 61, 61], 'result': 'NO 2-COVER (requester wins)'}
+k=400 T=300 c=216 mu=20: {'rho': 76, 'need_C3': 304, 'T': 300, 'over': [], 'traces': [63, 64, 64], 'result': 'NO 2-COVER (requester wins)'}
+k=400 T=300 c=232 mu=26: {'rho': 52, 'need_C3': 324, 'T': 300, 'over': [], 'traces': [81, 82, 56], 'result': 'NO 2-COVER (requester wins)'}
+k=400 T=300 c=240 mu=20: {'rho': 40, 'need_C3': 280, 'T': 300, 'over': [], 'traces': [63, 64, 44], 'result': 'NO 2-COVER (requester wins)'}
+k=400 T=300 c=240 mu=10: {'rho': 40, 'need_C3': 220, 'T': 300, 'over': [], 'traces': [33, 34, 34], 'result': 'NO 2-COVER (requester wins)'}
+k=400 T=308 c=216 mu=38: {'rho': 76, 'need_C3': 412, 'T': 308, 'over': [(3, 30)], 'traces': [117, 118, 110], 'result': "2-cover exists (J' fails)"}
