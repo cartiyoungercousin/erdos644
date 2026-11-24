@@ -878,3 +878,239 @@ min-S on every sealed triple, Lemma 10.2 after every response with an O(1) cell,
 Corollary 6.2. Decision: if the root is won at 0.76, extract the three-response line of play
 and prove it by hand; if stuck, the response list defines the correlated-pool family to test
 for realizability as a 3-block family (W-part, pool, rest) with `overlap_family.py`-style MILP.
+
+---------------------------------------------------------------------------------------------
+
+## 11. New architecture, first pass: min-S rigidity gives a stability inequality  tau <= (17k − 7 sigma)/11
+
+sigma = sigma(H) := min of S = x+y+z over all good triples of H; S_max := the max.
+Code for the side check: `compute/newpaths/pool_family.py`.
+
+### 11.1 Three lemmas on sigma  [proved by hand]
+Let tau(H) > T.
+- **(a) sigma <= 2k − T.** For any two edges A, B with m = |A∩B| <= T and any D ⊆ A∪B of size T
+  containing A∩B, the response K gives a good triple with S = m + |K∩(AΔB)| <= m + (2k − m − T).
+  Equality for K_{k+T}.
+- **(b) every two edges meet in at least sigma − k points** (S(A,B,K) <= m + k for the same K).
+- **(c) rigidity for every pair.** Write theta := 2k − T − sigma >= 0. In (a), |K∩(AΔB)| >= sigma − m,
+  so K contains all of (A∪B)∖D except at most theta + (m − (k − T)) points, and has at most
+  that many points outside A∪B. For a pair with m = k − T − nu (0 <= nu <= theta; such a pair
+  exists: request T points of an edge, then use (b)) and any Q ⊆ AΔB with |Q| = k + nu:
+  **there is an edge K with K∩(A∪B) ⊆ Q and |K∖Q| <= theta − nu.**
+So when theta is small the family is a theta-noisy complete family on the 2T + 2nu points of
+AΔB, with all the noise *outside A∪B*: the pool is at most theta. This is the "pool into the
+ground set" step of §10.5, obtained by anchoring on a sparse pair (intersection about k/4)
+instead of the anchor's own pairs (intersection u*, where the free part is k/6, §10.3).
+
+### 11.2 Theorem 11.1 (stability inequality)  [proved by hand; O(1) explicit]
+> For every k-uniform (7,2)-family:  **tau <= (17k − 7 sigma + 16)/11.**
+> Equivalently, with T = tau − 1 and theta = 2k − T − sigma: there is a good triple with
+> |union| <= 3k/2 + 7 theta/2 + 1/2, i.e. S_max >= 3k/2 − 7 theta/2 − 1/2.
+
+Proof. Take A, B with m = k − T − nu as in (c), eta := theta − nu. Let M ⊆ AΔB with
+|M| = ceil((3k + 3nu + eta)/2) (|AΔB| = 2T + 2nu; if M does not fit, then theta > 4T − 3k, so tau < k − sigma/5 + 1, which
+is below the claimed bound when sigma <= 5k/4; and for sigma >= 5k/4 the claimed bound already
+follows from 11.1(a), tau <= 2k − sigma + 1).
+Choose Q_1, Q_2, Q_3 ⊆ M with |Q_1| = |Q_2| = k + nu, |Q_3| = k + nu + eta and
+Q_1∩Q_2∩Q_3 = ∅. Requests D_i = (A∪B)∖Q_i for i = 1, 2 (size T) and
+D_3 = (A∪B)∖Q_3 ∪ (K_1∩K_2∖(A∪B)) (size <= T − eta + eta). By (c) each response K_i has
+K_i∩(A∪B) ⊆ Q_i and at most eta points outside A∪B. So K_1∩K_2∩K_3 = ∅ and
+|K_1∪K_2∪K_3| <= |M| + 3 eta <= 3k/2 + 7 theta/2 + 1/2. Tight-triple lemma (Lean): a good
+triple with union <= 2T − 2 is impossible, so 3k/2 + 7 theta/2 + 1/2 > 2T − 2, i.e.
+11T < 17k − 7 sigma + 5, for every T < tau. ∎
+
+Checks [proved by hand]: K_N has sigma = 3k − N, tau = N − k + 1; the bound reads
+N − k + 1 <= (7N − 4k + 16)/11, i.e. N <= 7k/4 + 5/4: **tight (up to O(1)) exactly at the
+extremal complete family**, and never violated by a genuine one. H2(N), N < 6k/5: sigma = 2k − N <= k, bound >= 0.9k,
+tau < 0.4k.
+
+What it says:
+| sigma/k | 1.25 | 1.2 | 1.1 | 1.0 | 0.83 |
+|---|---|---|---|---|---|
+| tau/k <= | 0.750 | 0.782 | 0.845 | 0.909 | 1.02 |
+- **The complete-like corner is closed**: if tau > (3/4 + eps)k then
+  sigma < (5/4 − 11 eps/7)k + O(1), i.e. the family has a good triple strictly sparser (in S)
+  than every triple of the complete family K_{k+T}, by a margin 4 eps k/7. No pool can prevent
+  this, because the argument never uses a request whose response has a large free part.
+- Together with the tight-triple lemma: tau <= min((3k − S_max)/2, (17k − 7 sigma)/11) + O(1).
+  A counterexample to 3/4 must have BOTH S_max < (3/2 − 2 eps)k and sigma < (5/4 − 11 eps/7)k.
+- sigma >= 1.1k already gives tau <= 0.846k (the 11/13 level) by a five-edge argument.
+- Region in the language of §8: the hypothesis is on the min-S triple, not the lex-min one.
+  The §9 pool witness has triples (E,F,R) with S = 2u* ≈ 0.83k, so it lies far outside the
+  region; it is not refuted, it is *relocated*: its min-S anchor is a triple with one empty
+  (or O(1)) cell.
+
+### 11.3 Target lemma of part A, and the local version
+- Local version suffices [proved by hand]: by the Fano criterion §8.1 only the seven chosen
+  edges matter; Theorem 8.1 with W := E ∪ R_1 ∪ … ∪ R_6 has rho = 0. So the target is exactly
+  "seven edges, all seven concurrent triples good", and the union need not be bounded for its
+  own sake.
+- What 11.2 proves of the target: three of the seven (a tight concurrent triple) can be
+  placed with all free parts <= theta. The remaining four are then requests of size |U|/2 on the
+  triple's union; this is why the loss is (7/4) theta and not O(theta) with a smaller constant.
+- Not proved: the target lemma for theta of order k. The swap idea (many answers per request)
+  gives nothing beyond 11.1(c): the answers to D only need transversal number > T − |D|.
+
+### 11.4 Part B: the two-sided anchor after relocation  [proved by hand, partial]
+If the min-S anchor has an empty cell, say F∩R = ∅:
+> **Lemma 11.2.** Every edge A satisfies |A∩F| + |A∩R| >= sigma. (In general: every edge
+> avoiding F∩R has at least sigma − |F∩R| points in FΔR.)
+(The triple (F,R,A) is good for every A.) So the whole family lives on F∪R up to
+k − sigma points per edge: a ground set of 2k points, with outside parts <= k − sigma.
+Theorem 8.1 with W = F∪R then gives tau <= 3k/2 − 2 sigma/3 + O(1), which is <= 3k/4 only for
+sigma >= 9k/8 (impossible here, sigma <= k). So confinement to 2k points is not enough; one needs
+the Fano tuple inside F∪R to discard F or R (a disjoint pair cannot be in a Fano tuple) and
+use a pair meeting in about k/2: by Lemma 11.2, a request (k/2 of F) ∪ (T − k/2 of R) gives A
+with |A∩F| in [sigma − 3k/2 + T, k/2], which pins |A∩F| near k/2 only when sigma is near k.
+Three-centre closures (petals on one side, centres on the other) were not developed in this
+pass. Status: open; this is where the pool witness now sits.
+
+### 11.5 Part C: block-type "core + pool" families  [numerical; floating MILP, targeted points only]
+H(w,p,c): all k-subsets of a block W_0 (|W_0| = wk) together with all k-sets having ck points in
+W_0 and (1−c)k points in a pool block of size pk. `pool_family.py`; sanity: reproduces K_N (7,2)
+iff N < 7k/4. The full grid scan was started and stopped unfinished (`out_pool_family.txt`): the only
+(7,2) members with tau > k/2 found before it was stopped are degenerate (a pool-only family with
+tau = 0.55k and the pure complete families K_{1.6k}, K_{1.7k}); the partial run proves nothing more. Targeted points:
+| (w, p, c) | tau/k of the family | bad 7-tuple found with j pool edges |
+|---|---|---|
+| (1.7, 0.7, 0.4) | 0.8 | j = 1 |
+| (1.7, 1.0, 0.4) | 1.1 | j = 1 |
+| (1.5, 1.0, 0.5) | 1.0 | j = 2 |
+| (1.2, 1.2, 0.5) | 0.7 | j = 4 |
+| (1.0, 1.0, 0.5) | 0.5 | j = 6 |
+None is (7,2). Structural reason for j = 1 [proved by hand]: by the link lemma §1.4 the core
+edges disjoint from a pool edge R must be 6-wise intersecting, which fails as soon as
+W_0∖R has at least 6k/5 points, i.e. w − c >= 6/5. A block-type family contains near-copies of
+core edges that are *independent of the pool edge*; the pseudo-adversary of §10.4 needs every
+near-copy to meet every pool edge in a correlated way, which no profile-defined family
+provides. So pool-plus-near-copies is not realizable as a block-type family at these
+parameters; a realization, if one exists, must be non-block-type (the trace of a pool edge on
+W_0 must determine which near-copies are present).
+
+### 11.6 What remains, and the next decisive step
+- Proved: tau <= min((3k − S_max)/2 + 1, (17k − 7 sigma + 16)/11). Open: families with
+  sigma < (5/4 − 11 eps/7)k and S_max < (3/2 − 2 eps)k, i.e. a very sparse triple and no tight one.
+- The constant 7/11 comes from closing the noisy-complete structure through a tight triple
+  only. The structure of 11.1(c) is richer: every (k+nu)-subset of AΔB is an edge up to theta
+  outside points, for EVERY pair with intersection near k − T. **Next step (hand + small LP):**
+  feed 11.1(c) into the general position: pick the min-S anchor (x,y,z), sigma = x+y+z, and
+  compute, as an LP in (x,y,z,theta), the best closure that uses (i) rigidity 11.1(c) on each
+  of the anchor's three pairs and on the pair of intersection k − T − nu, (ii) Theorem 8.1 with
+  W = a union of such pairs, (iii) Lemma 6.1. The decisive question is whether the bound
+  tau <= 3k/4 + c·theta can be replaced by a bound that does not degrade as sigma decreases,
+  e.g. tau <= 3k/4 + c·min(theta, something that vanishes for sparse anchors); the sparse end
+  (sigma near 0, three almost disjoint edges) is trivially closed, so the bad range is the
+  middle, sigma between about k/3 and 5k/4.
+- Then Part B (Lemma 11.2: families with an empty min-S cell live on F∪R up to k − sigma points
+  per edge) is the special case z = 0 of that LP.
+
+---------------------------------------------------------------------------------------------
+
+## 12. The middle range k/3 <= sigma <= 5k/4 — RESULT: no non-degrading bound; a second rigidity source (noisy copy of K_{k+T}); the middle range identified with "complete family minus tight triples"
+
+No LP was run: the hand analysis below shows that the LP of §11.6 cannot give a bound that is
+uniform in theta. Every constraint in it is satisfied by the answers of a complete family K_N
+played at a budget below its transversal number, and against those answers the only winning
+tuples are a tight triple or a full Fano tuple; the LP's closures (rigidity with free parts
+bounded by theta, then Theorem 8.1 or a three-centre closure) are neither.
+theta = 2k − T − sigma as in §11.
+
+### 12.1 What theta measures  [proved by hand]
+For K_N and any T < tau = N − k + 1: sigma = 3k − N, so **theta = N − k − T = (tau − 1) − T**: theta is
+the *slack between the budget and the transversal number*, not a measure of sparseness. Every
+rigidity statement of §11.1(c) is exactly tight for K_N: a response to a T-request inside A∪B
+may omit theta of the unrequested points because the complete family really has that freedom.
+Consequences:
+- sigma is small in the middle range not because the family is exotic but because it may be
+  *larger than needed*: K_{2k} at T = 0.76k has sigma = k, theta = 0.24k, and is beaten only by
+  its tight triples (S_max = 3k/2).
+- The arguments of §11 bound the free part of a response by theta and then pay for it; played
+  against K_N's answers (free part exactly theta available) they lose Theta(theta) by
+  construction. K_N itself is no counterexample to any theorem (it is not (7,2) for
+  N >= 7k/4); it shows that **a proof which does not degrade in theta must output, against
+  K_N-like answers, either a tight triple or a Fano tuple with defect points**, and with tight
+  triples excluded by hypothesis only the second remains. [heuristic as a statement about
+  methods; the K_N computation is proved]
+- The honest two-parameter statement is therefore the one of §11.2:
+  tau <= min((3k − S_max)/2 + 1, (17k − 7 sigma + 16)/11), and the middle range is
+  {S_max < (3/2 − 2 eps)k} ∩ {sigma < (5/4 − 11 eps/7)k}.
+
+### 12.2 Second rigidity source: a noisy copy of K_{k+T}  [proved by hand, sketch; constants not optimised]
+Let A, B be the sparse pair of §11.1(c), m = k − T − nu, W := A∪B, |W| = k + T + nu.
+> **Proposition 12.1.** For every k-subset Q of W there is an edge K with |K∖Q| <= 3 theta + O(1).
+Sketch. Depth 1 (§11.1(c)): every (k+nu)-subset of AΔB is an edge up to theta points, the
+errors lying outside W. Depth 2: Q misses T + nu points of W, and since 4T >= 3k it misses at
+least k − T points of A∖B or of B∖A; say of A∖B. Take a depth-1 edge X that contains k − T of
+those missed points of A∖B and T points of B∖A including Q∩(B∖A)... (possible up to theta
+errors). Then |A∩X| = k − T up to theta, so (A,X) is again a sparse pair, AΔX contains A∩B, and
+11.1(c) for (A,X) with the target Q gives K: inside A∪X it lies in Q up to theta, it may pick up
+the at most nu + theta points of W∖(A∪X) and at most theta + |X∖W| <= 2 theta points outside W. ∎
+So sigma >= 2k − T − theta forces a 3 theta-noisy copy of the *whole* complete family on k + T
+points, not just one tight triple inside AΔB. With Theorem 8.1 on W (outside overlaps
+rho <= 3 theta) this gives tau <= 3k/4 + 3 theta + O(1): worse than the 7 theta/4 of Theorem 11.1,
+so no new bound; its value is structural (it is the stability statement "sigma near 2k − T
+⇒ H contains a noisy K_{k+T}" in full), and it shows that iterating rigidity over several
+sparse pairs costs theta per level and cannot beat the one-level argument.
+
+### 12.3 What the absence of tight triples gives  [proved by hand]
+> **Lemma 12.2.** For every set M with |M| <= 2T − 2 the edges inside M are 3-wise
+> intersecting; in particular tau(H[M]) <= (k+1)/2.
+> **Corollary (free parts are pinned from both sides).** For edges A, B with m = |A∩B| <= T and
+> every edge K avoiding A∩B:  |K∖(A∪B)| >= m − (2k − 2T) − 1.  If K answers a T-request
+> inside A∪B, also  |K∖(A∪B)| <= m − (k − T) + theta.
+The lower bound is the tight-triple lemma applied to (A,B,K); the upper bound is 11.1(c).
+For m = k/2 the free part lies in [2 eps k, k/4 + eps k + theta]. For the sparse pair
+(m = k − T) the lower bound is vacuous: this is why §11 could work inside AΔB.
+Two readings:
+- In a family that is (k+s)-complete on a ground set of at least 2T points (every (k+s)-subset
+  contains an edge), Lemma 12.2 gives s >= 2T − 3k/2 − O(1) = 2 eps k. For n = 7k/4 + c this is
+  g <= c/3, the same as Theorem A. So "complete on W up to slack s" is consistent with tau > T
+  only for s >= 2 eps k, and theta >= 4 eps k/7 (Theorem 11.1): both are noise floors of order
+  eps k, not contradictions.
+- The middle-range adversary is thus: **a subfamily H of some K_N, 7k/4 + 3 eps k <= N, in which
+  every (N − T)-set contains an edge, every 3 edges inside any (2T − 2)-set have a common
+  point, and no 7 edges form a bad tuple.** All of sigma, theta, lex-min profiles, pools are
+  coordinates on this one object; N is free (the "pool" is just N − |W|).
+
+### 12.4 Obstruction, stated precisely, and its realizability
+Configuration satisfying every constraint proved so far (C1–C5 of §5.1 where applicable,
+Lemma B, Corollary 6.2, Lemma 6.3, Theorems 6.4/7.1, 8.1, 11.1, Lemmas 10.2, 11.2, 12.2):
+the complete family K_N, 7k/4 + 3 eps k < N <= 2k, **with its tight triples deleted**, i.e. the
+pseudo-family whose answers are those of K_N except that no three shown edges with empty
+common intersection may have union <= 2T − 2. Against it:
+- sparsest-anchor arguments see K_N's balanced triple with theta = N − k − T of order k;
+- Theorem A / 8.1 on any W needs |W| <= 7k/4 + 3 eps k < N, and the answers leave W freely;
+- the tight-triple lemma is switched off by definition.
+Realizability [heuristic + what is proved]: as a genuine family it would be a Turán-type
+system (every (N−T)-set contains an edge) with the 3-wise-intersecting property of Lemma 12.2
+on all (2T−2)-sets. Proved obstacles to the obvious constructions: threshold families
+"|A∩V_0| > 2|V_0|/3" are 3-wise intersecting globally, hence have tau <= (k+1)/2; modular
+(parity-type) conditions are repaired by O(1) low-degree points as soon as
+N − 7k/4 exceeds the number of conditions (ROADMAP §2.5); block-type families with 2–3 blocks
+were scanned in §5.7 and §11.5 with nothing above the complete family. No construction is
+known; none is excluded. Exact search is out of reach at the sizes where the question is
+non-trivial (k >= 12).
+
+### 12.5 What a proof must now do, and the next decisive step
+The reductions of §6–§12 leave one statement, free of pools and anchors:
+> **Core conjecture (equivalent to the 3/4 conjecture up to the regimes closed above).**
+> If every T-set misses an edge, T >= (3/4 + eps)k, and every good triple has union > 2T − 2,
+> then H has 7 edges whose seven concurrent triples (in some Fano labelling) are good.
+The seven good concurrent triples then each have union > 2T − 2, i.e. about 1.5k + 2 eps k,
+while a Fano tuple on 7k/4 points has concurrent unions exactly 1.5k: so the target tuple must
+itself be spread by Theta(eps k) per triple, and the hypothesis "no tight triple" and the
+conclusion pull in the same direction only if the tuple lives on about 7k/4 + Theta(eps k)
+points. That is a quantitative near-Fano existence statement in a Turán system; none of
+the request-game tools in this file produces such a tuple without either a tight triple
+(excluded) or completeness up to o(eps k) (not available: the noise floors are 2 eps k and
+4 eps k/7).
+**Next decisive step.** Decide the near-complete instance, where everything is
+finite-dimensional: n = 7k/4 + c, c in (3g, C g) for a constant C, tau = 3k/4 + g.
+Concretely the adaptive template game of ROADMAP R2 test (i) with the extra rule
+"no shown triple is tight", solved exactly as an LP over the 7 Fano classes plus defect
+cells, for c/g = 4, 6, 10. If the requester wins for some fixed ratio c/g, the method is
+Theorem A plus a defect-accounting lemma and extends by Proposition 12.1-type propagation;
+if the adversary wins for every ratio, his answers are a candidate "complete minus tight
+triples" family on 7k/4 + O(g) points, small enough to test by the parity-type MILP of
+`compute/typefam.py`. This is engine-sized (about 7·16 cell variables per response, six
+responses) and was not run in this pass.

@@ -20,6 +20,7 @@ import Lean644.GapCore
 import Lean644.TwoCores
 import Lean644.NearCore
 import Lean644.TwoLarge
+import Lean644.RelTheoremA
 import Lean644.TightTriple
 import Lean644.TheoremA
 import Lean644.SparserTriple
