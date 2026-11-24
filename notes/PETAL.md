@@ -352,3 +352,199 @@ bookkeeping of the selection phase.
 Checks: `py compute/petal/design.py design a1 a2 a3 b1 b2 b3`; `py compute/petal/design.py table 12 9`
 (about 1 min), `table 16 12` (about 8 min). Hand proofs re-read: Theorem K(ii) (the under-request
 step), Theorem L (sub-sum condition), 9.3 bullets.
+
+=============================================================================================
+# Part III — Barrier F: the petal re-selection minimax (third time box)
+
+Brief: decide the 2+2 triple-free petal re-selection minimax (TWIN 19.5, §8, §10.3).
+Code: `compute/petal3/` (`lstar.py`, `quadmin.py`, `sim_arena.py`, `lpw.py`; logs in `compute/petal3/logs/`).
+Units k = 1. Tags as before.
+
+**Verdict.** The minimax, as posed, is an **adversary win**, by an explicit adversary, and re-selection
+does not change that. It is NOT a counterexample to the conjecture: the same adversary loses to the
+4+3 certificate of Theorem J when the requests are tailored to it. So Barrier F is not closed; it is
+re-located from "re-select a 2+2 quadruple" to "make the 4+3 certificate tolerate bands".
+1. [proved] **Serving lemma (11.2).** Against an adversary who plants one point of every
+   unrequested pair-intersection in his reply, a triple-free quadruple exists only as T + E where
+   the request answered by E contained all of P(T). One request serves only triples whose pair
+   masses fit into t together; discards and re-selection give nothing else.
+2. [proved] **Copy bound (11.3).** If E re-uses the unrequested part of the member of T opposite
+   its heaviest pair a, the quadruple has a grid (a, b) with b >= 1 - t + a. Hence a single-served
+   quadruple can win only if **a <= θ(t) = (6t - 2)/5** (0.5 at t = 3/4). This is TWIN 19.C made
+   two-sided, with the exact constant for t >= 3/4.
+3. [proved] **Theorem N (§12).** Two disjoint arenas of mass 1 + t/2 - δ, replies with leak δ,
+   slivers, proportional replies: every triple-free quadruple that ever appears, for any number of
+   requests, discards and simultaneous servings, has design value > t, whenever
+   L*(1 - t/2 - δ, β(t,δ)) > t, β = (1-δ)(2 - 3t/2 - 2δ)/(2 - t - 2δ). At t = 3/4: all δ <= 0.0510;
+   for δ = 0 (pure arenas plus O(1) leak): all t < 0.7903, which contains (3/4, t₁].
+4. [proved] Theorem J as stated beats this adversary only for δ <= t/26 (0.0288 at 3/4). So for
+   3/4 <= t < 0.7670 and t/26 < δ <= δ_N(t) the adversary escapes Theorem J's dichotomy AND every
+   2+2 quadruple. A 4+3 certificate with arena-aware requests beats him for all δ < t/8 (12.3).
+5. Remaining gap, exact form (§13): a **structure-agnostic** 4+3 strategy for two-class adversaries
+   with within-class overlap > c and cross overlap <= μ in the region
+   c > θ(t), μ > (t - 1 + c)/7. Not solved here.
+
+## 11. The game, restated and checked against §8 / TWIN 19.5
+
+**11.1 Game 𝓡(t, m).** Open request game, m requests. A *quad certificate* is a set of four replies,
+no point in three of them, with design value L(a,b) <= t (Theorem K(i); zero cells opposite positive
+cells count as slivers, K(iii)); she then wins with three more requests. The re-selection minimax
+is: does she have a strategy producing a quad certificate among the m replies, against every
+adversary? ("Discard" = she may choose the four afterwards.) §8 is the special case "the four are
+a fixed triple T plus the next reply"; TWIN 19.5 asks whether choosing the four afterwards, or
+combining replies obtained with complementary caps, changes the outcome. Check of the
+restatement: for a fixed triple and one more reply, 11.2 gives S ⊇ P(T), so S = P ∪ R, |R| <= t - p,
+and the cells of E are bounded by q_i - r_i: this is §8's min_r max_b L(a,b). ✓
+Conventions used: masses are real; O(1) points are free for both players (the adversary may add
+them to a reply, she may add them to a request); this is the convention of K(iii), P4(b), 19.1.
+
+**11.2 Serving lemma [proved by hand].** *Sliver rule:* the reply to S contains one point of
+(u ∩ v)∖S for every pair u, v of earlier replies with u ∩ v ⊄ S (boundedly many points).
+Against any adversary obeying the sliver rule: if four replies are triple-free, T is the set of the
+first three in time order and E the last, then P(T) ⊆ S_E, in particular p(T) <= t, and T has empty
+common intersection. *Proof.* If u, v in T and u ∩ v ⊄ S_E, E contains a point of u ∩ v: a point in
+three of the four. ∎
+Consequences. (a) Each request serves the set 𝒯(S) = {T : P(T) ⊆ S}; a quad certificate is
+T + E with T in 𝒯(S_E). (b) "Two replies obtained with complementary caps" (19.5) cannot be combined
+into one quadruple unless the later of them was itself the reply to a request containing all
+three pair-intersections of the other three. (c) A member of T that arrived after the other two
+needed its own sealing at that time.
+I did not prove that the sliver rule is free for the adversary in general; it is not needed: the
+rule is part of the explicit adversary of §12, which is analysed as a whole.
+
+**11.3 Copy bound [proved by hand].** Let T = (B_1, B_2, B_3) be served by S (P(T) ⊆ S, |S| <= t),
+a = p_12, Q_3 = B_3∖(B_1 ∪ B_2). Then |Q_3∖S| >= 1 - (p_13 + p_23) - (t - p) = 1 - t + a. If the reply E
+contains Q_3∖S, the quadruple has the grid (c_12, c_34) with c_34 >= 1 - t + a, so its design value is
+at least L*(a, 1 - t + a) (restrict the design to one grid; L* of TWIN 15.4, increasing in both
+arguments). With s = 1 - t: L*(a, a + s) = min(4a/3 + s/3, 5a/4 + s/2), so
+
+    L*(a, 1 - t + a) <= t   iff   a <= t - 1/4   or   a <= (6t - 2)/5,
+
+and for t >= 3/4 the second is the weaker requirement: **θ(t) = (6t - 2)/5**. (19.C is the first
+branch, the freeze design; at t = 3/4 both give 1/2.) So against "sliver rule + copy the member
+opposite the heaviest pair", a triple served alone yields a certificate only if all three of its
+pairs are <= θ(t). L* formula re-checked against the MILP design on 7 grids (`logs/lstar.log`)
+[computed].
+Reading: §8's table (dominant pair >= 7/16–1/2 loses at t = 3/4) is this bound plus cross cells.
+What re-selection could add is only simultaneous serving: several triples with a common heavy
+pair and different third members, so that one reply cannot copy all of them. Theorem N shows this
+fails against arenas, because all third members of one class overlap heavily anyway.
+
+## 12. Theorem N: an explicit adversary beats every 2+2 quadruple [proved by hand; simulated]
+
+**Adversary 𝒜(t, δ)**, 0 <= δ < 1 - t. Disjoint arenas V_A, V_F of mass n = 1 + t/2 - δ.
+A reply of colour c has mass 1 - δ in V_c∖S, mass δ in the other arena outside S, plus slivers.
+- Colour: c = F if |S ∩ V_A| > t/2, else c = A if |S ∩ V_F| > t/2, else either. Always possible:
+  the chosen arena keeps at least n - t/2 = 1 - δ points and the other at least n - t >= δ.
+- Own part: proportional, i.e. a fraction (1-δ)/|V_c∖S| of every atom of V_c∖S (atoms with respect
+  to the earlier replies).
+- Sliver rule of 11.2.
+Write a_0 = 1 - t/2 - δ (two own parts in one arena meet in at least 2(1-δ) - n = a_0).
+
+**Theorem N.** Against 𝒜(t, δ), every triple-free quadruple of replies, at any time, has a grid
+(a, b) with a >= a_0 and b >= β(t, δ) = (1-δ)(2 - 3t/2 - 2δ)/(2 - t - 2δ). Hence if
+
+    (N)   L*(a_0, β(t, δ)) > t,
+
+no quad certificate ever exists: 𝓡(t, m) is an adversary win for every m.
+*Proof.* (i) Same-colour triples always have a common point: when he answers in colour c at most
+t/2 < a_0 of V_c is requested (δ < 1 - t), so no same-colour pair-intersection is inside S and
+the sliver rule applies. (ii) So a triple-free quadruple is T + E (11.2) with T = (X, X', Y), X, X'
+of one colour, say A, and Y of colour F. P(T) ⊆ S gives |S ∩ V_A| >= |X ∩ X' ∩ V_A| >= a_0 > t/2, so E has
+colour F and y := |S ∩ V_F| <= t - a_0. (iii) Proportional own part:
+|E ∩ Y| >= (1-δ) |(Y ∩ V_F)∖S| / |V_F∖S| >= (1-δ)(1 - δ - y)/(n - y), decreasing in y (1 - δ < n); at
+y = t - a_0 this is β. (iv) In a triple-free quadruple |X ∩ X'| and |Y ∩ E| are the two cells of one
+grid; L >= L*(a, b) >= L*(a_0, β). The case of a heavy pair of colour F is symmetric. ∎
+The bound does not depend on how many triples the request serves, on m, or on which four she
+selects: re-selection is covered.
+
+**Range of (N)** (`lstar.py`, exact rational bisection) [computed exact]:
+
+| t | δ_N(t) = sup{δ : (N)} | t/26 (Thm J) | single-serve bound 7/5 - 17t/10 (11.3 with a = a_0) |
+|---|---|---|---|
+| 0.75 | 0.0510 | 0.0288 | 0.125 |
+| 0.76 | 0.0383 | 0.0292 | 0.108 |
+| 0.77 | 0.0257 | 0.0296 | 0.091 |
+| 0.78 | 0.0130 | 0.0300 | 0.074 |
+| 0.79 | 0.0004 | 0.0304 | 0.057 |
+
+(N) holds at δ = 0 iff t < 0.7903; δ_N(t) > t/26 iff t < 0.7670. For δ between δ_N(t) and
+7/5 - 17t/10 a quadruple from a triple served alone still fails (11.3, with the copy reply in place
+of the proportional one); whether simultaneous serving wins there is **not decided**
+[heuristic: no — serving m third members costs her their m bands, mδ, in the heavy arena].
+Corollary: pure two arenas with O(1) leak (δ = 0) defeat the 2+2 architecture on all of (3/4, t₁].
+Theorem I's "a = b <= 4t/5" is a statement about shapes; the shape a = b = 1 - t/2 is not reachable
+once he may leak O(1) points, because sealing the first core leaves only 3t/2 - 1 for the second.
+
+**12.1 Simulation** (`sim_arena.py`, `logs/sim_arena.log`) [simulated, not a proof]. Point sets,
+k = 800; the adversary's own part maximises the minimum overlap with all earlier same-colour
+replies (small ILP; at least the proportional value); requester: randomised targeted lines (colour
+forcing with shaped complements, sealing a pair plus the bands of 1–3 opposite replies, remainder
+aimed at the served replies), 9 requests, 400 games per row; every quadruple tested, design MILP
+with exact zero cells (favourable to her) whenever the L* bound is within one point of T.
+(T, d) = (600,20), (600,32), (600,40), (608,20), (616,16): 3228 triple-free quadruples in total,
+none with L <= T; smallest L - T = 47, 31, 21, 31, 19 points (theory: >= 28, 12, 1, 14, 6 minus O(1)).
+The random requester is far from the bound, so this checks the mechanism (11.2, colours, cells),
+not the constant. Rows with δ = 0.08, 0.13 (outside (N)) also show no good quadruple; that is not
+evidence about that range. (The last row of the log, δ = 0.17, has 11 triple-free quadruples and
+no recorded margin: a reporting defect I did not chase; it is outside every claim here.)
+
+**12.2 Family level without slivers** (`quadmin.py`: one MILP over quadruple shapes and designs)
+[computed, float MILP]. In the exact-leak family (no slivers, empty cells really empty) the best
+2+2 quadruple has value (5/4)(1 - t/2) - (3/4)δ (fits the scanned points with δ <= 0.15 at
+t = 0.75, 0.76, 0.78, `logs/quadmin_scan.log`), i.e. good quadruples *exist* iff
+δ >= 5/3 - 13t/6 (0.0417 at 3/4). So below that leak there is not even a good quadruple to select;
+between 0.0417 and 0.0510 (t = 3/4) they exist in the family and the adversary's play (slivers,
+proportional replies) keeps her from them.
+
+**12.3 The same adversary loses to 4+3 with arena-aware requests** [proved by hand]. Let δ < t/8
+and let the adversary answer in any way inside the family (colour c: at least 1 - δ in V_c).
+Requests 1–4: t/2 + ε in V_F, containing the V_F-parts of the earlier replies (<= 3δ + O(1)); the reply
+has colour A; her t/2 - ε in V_A are chosen so that the four requests cover V_A (4·t/2 >= n). The four
+petals have empty common intersection. Requests 5–7: t/2 + ε in V_A, containing the V_A-parts of the
+earlier centres (<= 2δ + O(1)); in V_F the V_F-parts of the four petals (<= 4δ + O(1) < t/2). The replies
+have colour F, miss U ∩ V_F, and are pairwise disjoint on V_A: P4(c). Seven requests. ∎
+So 𝒜(t, δ) is not a (7,2) obstruction; it is an obstruction to the 2+2 architecture and to
+Theorem J's present constants only. Theorem J loses here because it pays 1 - c + 7λ with worst-case
+traces (3λ outside X_1 per centre); the real traces are δ per centre.
+
+## 13. What is dead, what is left
+
+Dead [proved]:
+- Re-selection of triple-free quadruples as the tool against two-class adversaries with small
+  bands: Theorem N. In particular "combine a small-core reply with a small-band reply" (19.5)
+  is impossible by 11.2(b).
+- G2/G3 as specified in TWIN 19.6 as a test of this barrier: the restricted mixed adversary
+  (replies inside F ∪ (A Δ A'), disjoint far reply, no second arena) cannot plant a point of A ∩ A', so
+  she never has to seal the core and caps b for free; that is why `g2_restricted.log` shows
+  immediate requester wins at t = 3/4. The band-start runs that timed out test the same class. I
+  did not re-run them: no outcome would bear on 𝓡. The informative finite check would be
+  𝒜(t, δ) itself on point sets, and FAST Parts 3–4 show that at reachable k (<= 12) the O(1) terms
+  (slivers cost one point per pair) swamp a margin of 0.02k–0.07k.
+
+Not decided:
+- 𝒜(t, δ) for δ_N(t) < δ < 7/5 - 17t/10 against simultaneous serving (irrelevant for the conjecture
+  when δ < t/8, by 12.3; relevant only as a statement about the 2+2 architecture).
+- Quadruples with unsealed pair cells (a sliver triple point makes one whole petal active, at the
+  price of one kill of its single part): not covered by 11.2. Not needed against 𝒜 (12.3).
+- No potential-function or LP-duality proof of a requester win was found, and by Theorem N none
+  exists for the 2+2 certificate alone.
+
+**Exact remaining gap (Barrier F, re-posed).** Two-class adversaries: an equivalence on replies
+with same-class overlaps > c and cross overlaps <= μ, not given as arenas. Known:
+Theorem J wins if 1 - c + 7μ <= t (and (J1), (J2), (J4)); a single-served 2+2 quadruple needs
+c <= θ(t) = (6t - 2)/5 (11.3); arenas are beaten for μ = 2δ < t/4 when she knows them (12.3). Open:
+
+    c > θ(t)  and  μ > (t - 1 + c)/7:   a 4+3 strategy that does not know the arenas.
+
+Two concrete sub-questions: (i) in Step 2 of Theorem J replace the worst-case trace bound 3λ per
+centre by the observed traces, and pairwise disjointness by P2 (only edges of Γ(P) with an
+endpoint in two traces survive); (ii) force the far reply at cost about t/2 (as in an arena)
+instead of 1 - c, by requesting inside the common part of two same-class petals.
+RI in Step 1 already tolerates μ <= t - 2/3 (0.083 at 3/4, i.e. δ <= 0.042), so Step 2 is the only
+place where the constant t/26 arises.
+
+Checks: `py compute/petal3/lstar.py` (L* vs MILP, table of §12); `py compute/petal3/quadmin.py t δ`;
+`py compute/petal3/sim_arena.py 800 600 20 400 7` (about 15 s per row). Hand proofs re-read once:
+11.2, 11.3 (the count |Q_3∖S| >= 1 - t + a), Theorem N steps (i)–(iv), 12.3 (budgets: 3δ <= t/2 + ε,
+4δ < t/2 - ε, 4(t/2 - ε) >= n).
