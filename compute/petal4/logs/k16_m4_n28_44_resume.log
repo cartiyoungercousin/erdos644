@@ -1,0 +1,5 @@
+k 16 c 9 mu 8 T 12 size vectors 8111
+7500 (27, 16, 1) INFEAS {'status': 'INFEAS', 'reason': 'request kills every self-overlapping type', 'N': 8} X None Y None 0.0s
+8000 (17, 12, 10, 5) NO_HIT_RANGE_FEASIBLE {'N': 135, 'nreq': 367, 'cegar': 11, 'status': 'NO_HIT_RANGE_FEASIBLE', 'range_models': 11} X None Y None 4.9s
+DONE all size vectors
+STATS {'NO_HIT_RANGE_FEASIBLE': 390, 'INFEAS': 523} elapsed 934s

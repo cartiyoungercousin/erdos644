@@ -1364,3 +1364,38 @@ Every in-strip row: 0 covers, 0 budget violations, no flags; the largest centre 
 - Barrier F as in 23.4 is unchanged: the remaining question is families that are not arena-with-pool.
 Hand proof re-read once: petal class forcing, ρ_X < τ_Y, the 1 - 2b <= b step, the double seal on B including pool points.
 Checks: `py compute/petal5/family72.py 20 26 25 2 2 10 0`; `py compute/petal5/run_ps.py 30` (fast version).
+
+---------------------------------------------------------------------------------------------
+## 25. Result of the §24 small-ground-set search (code: `compute/petal4/search.py`, `verify.py`; logs: `compute/petal4/logs/`)
+
+**Model (exact, no MILP).** Atom-size multisets s_1>=...>=s_m (sorted = symmetry breaking, each s_i <= 2k, n >= T+k since
+tau <= n-k+1). For each size vector: SAT (Glucose4) over ALL type subsets (no cap on types per class; strictly more generous
+than "<= 4"): types e<=s, sum k, self-overlap sum max(0,2e_i-s_i) >= c; same-class pair clause if min-overlap < c; cross clause
+if sum min(a_i,b_i) > mu; one clause per request x (sum x = T, x<=s) demanding a surviving type (e<=s-x); both classes
+nonempty; smallest-index chosen type lies in X (X/Y symmetry). Then CEGAR on the AP condition: a model is accepted only if
+AP >= T+2; otherwise a sound no-good (monotone in the chosen set: allowed = types with out-mass <= current bounds and killed
+by the witness request) is added and the SAT is re-solved. So "NO_HIT" for a size vector is a PROOF (SAT UNSAT after cuts).
+**Readings chosen (generous to the adversary).** mu = c-1 (k=12: c=7, mu=6; k=16: c=9, mu=8); no cap on #types; the
+spec's "each tau(H_c) <= k-c" is NOT imposed (the true bound is k-c+1, e.g. complete family on 2k-c points; only tau(H) >= T+1 is
+imposed). AP uses TRUE point-set regions: regions may split atoms; by symmetry only counts matter and larger regions only help
+the petal class, so it suffices to range over partitions r^X+r^Y=s (exact). The atom-union reading of the search space gives
+a strictly larger AP and produced one false hit, see below.
+**Pseudo-hit (rejected by the mandatory verification).** s=(13,13,2,2), k=12: X = types (0,9,2,1),(0,10,0,2),(0,10,1,1),(0,10,2,0),
+(0,11,0,1),(0,11,1,0),(0,12,0,0),(1,10,1,0),(1,11,0,0); Y = same with atoms 1,2 swapped. `verify.py` on actual point sets
+(11921+11921 edges): overlaps X-X min 7, Y-Y min 7, cross max 2; tau(H)=10=T+1 (ILP), tau_X=tau_Y=5. Atom-union AP = 11
+(= T+2, would be a hit) but splitting an atom gives AP = 10 (witness recomputed on the explicit edges: cost 10) = T+1,
+borderline, NOT a hit. Not an arena violation.
+
+| k | atoms m | n range | size vectors | range-feasible (tau>=T+1 and overlaps OK) | hit (AP>=T+2) | status |
+|---|---|---|---|---|---|---|
+| 12 | <=4 | 21-48 | 9780 | 2002 | 0 | PROVED none (all solved) |
+| 12 | <=4 | 49-72 | 8855 | 1974 (1550+424) | 0 | PROVED none |
+| 12 | <=4 | 73-96 | 1123 | 147 | 0 | PROVED none (96 = 4*24, so m<=4 with s_i<=24 is COMPLETE) |
+| 12 | 5-6 | 21-34, first 4925 of 10070 vectors | 4925 | 655 | 0 | partial: remaining vectors not run (time) |
+| 16 | <=4 | 28-44 | 8111 | 1683 | 0 | PROVED none for n<=44; n>44 (to 128) not run |
+
+(the single TIMEOUT line in each of three chunked runs was re-solved from that index in the resume log.)
+**Verdict.** No hit found at k=12 (m<=4 exhaustive over all sizes <=24: PROVED none; m=5,6 only partly covered, NOT proved) and
+none at k=16 (m<=4, n<=44, PROVED within those bounds; larger n and m>4 not run). Nothing reached steps (5)-(7); the only
+candidate was killed by exact verification. Many range-feasible families exist (e.g. two disjoint complete families) but
+every one has AP <= T+1: the structure lemma holds on all searched blow-up families.

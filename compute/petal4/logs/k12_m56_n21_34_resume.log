@@ -1,0 +1,4 @@
+k 12 c 7 mu 6 T 9 size vectors 10070
+4925 (8, 8, 6, 5, 2, 1) TIMEOUT {'N': 488, 'nreq': 803, 'cegar': 5, 'status': 'TIMEOUT'} X None Y None 5.1s
+STOPPED_TIME at idx 4925
+STATS {'NO_HIT_RANGE_FEASIBLE': 263, 'INFEAS': 24, 'TIMEOUT': 1} elapsed 1750s

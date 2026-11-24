@@ -1,0 +1,8 @@
+k 12 c 7 mu 6 T 9 size vectors 8855
+6500 (22, 22, 15, 4) INFEAS {'status': 'INFEAS', 'reason': 'request kills every self-overlapping type', 'N': 4} X None Y None 0.0s
+7000 (24, 24, 14, 3) INFEAS {'status': 'INFEAS', 'reason': 'request kills every self-overlapping type', 'N': 6} X None Y None 0.0s
+7500 (21, 21, 13, 11) INFEAS {'status': 'INFEAS', 'reason': 'request kills every self-overlapping type', 'N': 29} X None Y None 0.0s
+8000 (22, 19, 16, 11) INFEAS {'status': 'INFEAS', 'reason': 'request kills every self-overlapping type', 'N': 20} X None Y None 0.0s
+8500 (18, 18, 18, 16) INFEAS {'status': 'INFEAS', 'reason': 'request kills every self-overlapping type', 'N': 1} X None Y None 0.0s
+DONE all size vectors
+STATS {'NO_HIT_RANGE_FEASIBLE': 424, 'INFEAS': 2097} elapsed 1414s

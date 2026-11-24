@@ -1,0 +1,17 @@
+k 12 c 7 mu 6 T 9 size vectors 8855
+0 (24, 24, 1) INFEAS {'status': 'INFEAS', 'reason': 'no self-overlapping type', 'N': 0} X None Y None 0.0s
+500 (15, 13, 11, 10) INFEAS {'N': 49, 'nreq': 220, 'cegar': 0, 'status': 'INFEAS', 'range_models': 0} X None Y None 0.0s
+1000 (16, 13, 13, 8) INFEAS {'N': 36, 'nreq': 219, 'cegar': 0, 'status': 'INFEAS', 'range_models': 0} X None Y None 0.0s
+1500 (16, 16, 11, 8) NO_HIT_RANGE_FEASIBLE {'N': 36, 'nreq': 219, 'cegar': 1, 'status': 'NO_HIT_RANGE_FEASIBLE', 'range_models': 1} X None Y None 0.3s
+2000 (17, 13, 11, 11) NO_HIT_RANGE_FEASIBLE {'N': 49, 'nreq': 220, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE', 'range_models': 2} X None Y None 1.1s
+2500 (16, 16, 15, 6) NO_HIT_RANGE_FEASIBLE {'N': 6, 'nreq': 210, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE', 'range_models': 4} X None Y None 1.8s
+3000 (15, 15, 15, 9) NO_HIT_RANGE_FEASIBLE {'N': 37, 'nreq': 220, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE', 'range_models': 4} X None Y None 2.4s
+3500 (24, 20, 11, 1) INFEAS {'status': 'INFEAS', 'reason': 'request kills every self-overlapping type', 'N': 15} X None Y None 0.0s
+4000 (24, 15, 14, 4) INFEAS {'status': 'INFEAS', 'reason': 'request kills every self-overlapping type', 'N': 8} X None Y None 0.0s
+4500 (23, 18, 16, 1) INFEAS {'status': 'INFEAS', 'reason': 'request kills every self-overlapping type', 'N': 2} X None Y None 0.0s
+5000 (22, 19, 10, 8) INFEAS {'status': 'INFEAS', 'reason': 'request kills every self-overlapping type', 'N': 31} X None Y None 0.0s
+5500 (20, 20, 20) INFEAS {'status': 'INFEAS', 'reason': 'no self-overlapping type', 'N': 0} X None Y None 0.0s
+6000 (24, 22, 14, 2) INFEAS {'status': 'INFEAS', 'reason': 'request kills every self-overlapping type', 'N': 5} X None Y None 0.0s
+6334 (17, 17, 14, 14) TIMEOUT {'N': 10, 'nreq': 220, 'cegar': 5, 'status': 'TIMEOUT'} X None Y None 5.7s
+STOPPED_TIME at idx 6334
+STATS {'INFEAS': 4784, 'NO_HIT_RANGE_FEASIBLE': 1550, 'TIMEOUT': 1} elapsed 1750s

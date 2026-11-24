@@ -1,0 +1,19 @@
+k 16 c 9 mu 8 T 12 size vectors 8111
+0 (28,) INFEAS {'status': 'INFEAS', 'reason': 'no self-overlapping type', 'N': 0} X None Y None 0.0s
+500 (10, 9, 7, 3) INFEAS {'status': 'INFEAS', 'reason': 'request kills every self-overlapping type', 'N': 153} X None Y None 0.0s
+1000 (15, 11, 3, 2) INFEAS {'status': 'INFEAS', 'reason': 'request kills every self-overlapping type', 'N': 67} X None Y None 0.0s
+1500 (28, 3, 2) INFEAS {'status': 'INFEAS', 'reason': 'no self-overlapping type', 'N': 0} X None Y None 0.0s
+2000 (20, 8, 4, 2) INFEAS {'status': 'INFEAS', 'reason': 'request kills every self-overlapping type', 'N': 19} X None Y None 0.0s
+2500 (18, 8, 7, 2) INFEAS {'status': 'INFEAS', 'reason': 'request kills every self-overlapping type', 'N': 53} X None Y None 0.0s
+3000 (17, 11, 4, 4) INFEAS {'status': 'INFEAS', 'reason': 'request kills every self-overlapping type', 'N': 100} X None Y None 0.0s
+3500 (17, 12, 8) INFEAS {'status': 'INFEAS', 'reason': 'request kills every self-overlapping type', 'N': 28} X None Y None 0.0s
+4000 (18, 12, 6, 2) INFEAS {'status': 'INFEAS', 'reason': 'request kills every self-overlapping type', 'N': 60} X None Y None 0.0s
+4500 (20, 9, 7, 3) INFEAS {'status': 'INFEAS', 'reason': 'request kills every self-overlapping type', 'N': 72} X None Y None 0.0s
+5000 (22, 12, 6) INFEAS {'status': 'INFEAS', 'reason': 'request kills every self-overlapping type', 'N': 18} X None Y None 0.0s
+5500 (26, 10, 3, 2) INFEAS {'status': 'INFEAS', 'reason': 'request kills every self-overlapping type', 'N': 25} X None Y None 0.0s
+6000 (13, 11, 9, 8) NO_HIT_RANGE_FEASIBLE {'N': 203, 'nreq': 424, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE', 'range_models': 4} X None Y None 2.0s
+6500 (18, 12, 9, 3) NO_HIT_RANGE_FEASIBLE {'N': 104, 'nreq': 280, 'cegar': 5, 'status': 'NO_HIT_RANGE_FEASIBLE', 'range_models': 5} X None Y None 1.2s
+7000 (22, 12, 6, 3) NO_HIT_RANGE_FEASIBLE {'N': 74, 'nreq': 238, 'cegar': 1, 'status': 'NO_HIT_RANGE_FEASIBLE', 'range_models': 1} X None Y None 0.3s
+7198 (18, 14, 8, 3) TIMEOUT {'N': 80, 'nreq': 270, 'cegar': 9, 'status': 'TIMEOUT'} X None Y None 2.7s
+STOPPED_TIME at idx 7198
+STATS {'INFEAS': 5905, 'NO_HIT_RANGE_FEASIBLE': 1293, 'TIMEOUT': 1} elapsed 1750s
