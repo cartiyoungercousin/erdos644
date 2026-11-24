@@ -1163,3 +1163,169 @@ step turns pairwise overlap into a common core. Then (i) finishes when λ is nea
 the private parts) is the pencil reading and should be treated symmetrically with the kernel N - 3/2.
 Cheap numerical pre-check: in `twostage.py` positions, compute need for the reading (K_1, K_2, K_3, K_3') with two
 triangle-type requests and D_3, D_3' ⊆ O disjoint versus nested; the lemma predicts need < base for disjoint.
+
+=============================================================================================
+# Part VIII — the kernel lemma tested; what a structural proof can and cannot use (eighth time box)
+
+Code: `compute/core8/` — `lpx.py` (LP helper on highspy; pulp 4.x changed its API), `kernel_precheck.py`, `tri_class.py`,
+`pool_class.py`, `scale_rule.py`, `sym_check.py`. All LPs float (HiGHS) unless tagged exact. Units k = 1.
+**Outcome. CP is NOT proved. The kernel lemma of §33(4) is dead as a route** — not because a T-covering family
+without a core was built (that would disprove CP), but because (a) its method is false at the first step, (b) what the
+zero-slack certificates really force on the triangle-type class is satisfied by coreless rules, and (c) even a
+perfect core on that class is worth exactly nothing. New and proved: Theorem S (no family that is symmetric under
+any fixed finite partition is a counterexample), the pencil-through-one-member lemma, the triple-overlap bound, and a
+set form of Theorem Q (Q'). CP is reduced one-way to a four-member extremal statement (Σ, §38), which is open.
+
+## 34. The pre-check of §33 [computed float; exact for each reading]
+
+Method. For a fixed reading R the need LP of §25 has right-hand sides linear in her request variables, so
+"min over all her requests of need_R" is ONE joint LP; the minimum over the readings is then exact for the model
+(no search on her side). Position: pair K_1, K_2 with the balanced o of §26; requests avoid O; dumps lie in O.
+
+**34.1 Two triangle-type requests, as the lemma states them** (a* of A, a* of B, t - 2a* of g, nothing of O; mutual
+position free), dumps D, D' ⊆ O with |D ∩ D'| = θ. `kernel_precheck.py t N o sym`:
+
+| t, N, o | base | θ = 0 (disjoint) | ω/4 | ω/2 | 3ω/4 | ω (nested) |
+|---|---|---|---|---|---|---|
+| 0.76, 1.90, 0.33 | 0.100 | 0.100 | 0.100 | 0.100 | 0.100 | 0.100 |
+| 0.76, 1.85, 0.305 | 0.050 | 0.050 | 0.050 | 0.050 | 0.050 | 0.050 |
+| 0.76, 1.82, 0.29 | 0.020 | 0.020 | 0.020 | 0.020 | 0.020 | 0.020 |
+
+**The prediction "need < base for disjoint dumps" is false:** need = base for every overlap; the best reading is
+the bare pair. Reason [proved by hand]: in the quadruple (K_1, K_2, K_3, K_4) the points of D∖D', D'∖D, D∩D' have
+co-types 123, 124, 1234, so u_3 + 2u_4 gets |D| + |D'| = 2ω from O **whatever the overlap**. Theorem Q's W does not
+see the overlap at all. The first step of the lemma's method ("small overlap ⟹ W drops") is wrong.
+
+**34.2 The same with the request shape free** (only S ∩ O = ∅), `kernel_precheck.py t N o`: value 0 at θ = 0 AND at
+θ = ω at all three points; in between 0.030 (N = 1.9, θ = ω/2), 0.005 (N = 1.85), 0 (N = 1.82). Here she knows θ when she
+chooses the shapes (max over θ of min over requests), so these are lower bounds for a rule that picks θ after seeing
+S'. Both extremes are wins, and neither uses K_2: disjoint dumps give a Theorem-T triangle (K_1, K_3, K_4) with
+|S ∩ A| = a* - ω; nested dumps give a pencil (35.1). Shape dependence, q = 2, she chooses the overlaps (`tri_class.py`,
+a* - shift in each private part): N = 1.9: need 0.100, 0.100, 0.060, 0.013, 0.020 at shift 0, ω/4, ω/2, 3ω/4, ω;
+N = 1.85: 0.050, 0.050, 0.027, 0, 0. So everything depends on the SHAPE of the request, which is exactly the parameter
+the anti-plan adversary (9.3) switches on.
+
+**34.3 Three or more triangle-type requests, dumps in O, she chooses all overlaps** (`tri_class.py`, q = 3, 4):
+need 0 at all three points, by a Theorem-T triangle among the three class members, K_1 and K_2 discarded. With all
+pairwise overlaps forced >= θ the value is 0 up to θ = 0.5ω (N = 1.9) / 0.7ω (N = 1.85) and reaches base at 0.9ω / ω;
+with a common core of mass >= θ forced it is 0 up to 0.2ω / 0.4ω and reaches base at 0.9ω / ω. So the lemma's
+*conclusion* (large overlap) does appear in the optimistic need model, but through triples and Theorem T, not through
+pairs and Theorem Q — and "need < base" is not a contradiction for a family; only need = 0 is (next section).
+
+## 35. What is forced, what is not
+
+**35.1 Pencil through one member [proved by hand; = Theorem C in family form].** Let K be a member, B = V∖K (mass 1),
+B = P ⊔ P' with |P| = |P'| = 1/2, A_0 ⊆ K with |A_0| = t - 1/2, Y ⊆ K∖A_0 with |Y| = ω. If A_0 ∪ P ∪ Y and A_0 ∪ P' ∪ Y
+are members, she wins: the three members pairwise meet in κ = A_0 ∪ Y, |κ| = N - 3/2, their petals K∖κ, P, P' have
+mass 1/2 and partition V∖κ; halve each petal, the four transversal lines have mass 3/4 <= t; 1.3(ii). ∎
+So two requests of that shape with THE SAME dump inside K are fatal for him. A common core is not something he is
+forced into and she must then exploit: it is something he must avoid on this shape.
+
+**35.2 Triple-overlap bound [proved by hand].** In Theorem T the four loads sum to 3N - 3c + |κ| = 3 + |κ|, so the
+certificate needs |K_1 ∩ K_2 ∩ K_3| <= 4·eps (and then balance). Hence in a (7,2) family: any three members whose
+pairwise intersections are within eps/2 of a* have common part > 4·eps or fail balance. For three requests avoiding a
+set O with dumps inside O this reads: s_ij + θ_ij = a* for all pairs and S_1∩S_2∩S_3 = ∅ ⟹ |D_1∩D_2∩D_3| > 4·eps (★).
+This is everything the zero-slack certificates say about the class.
+
+**35.3 (★) does not give a core [proved by hand; threshold confirmed by LP].** Let O' ⊆ O, ω < |O'| < 3ω/2 - 2·eps, and
+let the dumps of the class be arbitrary ω-subsets of O'. Any three of them share >= 3ω - 2|O'| > 4·eps, so no triangle
+exists among class members; with K_1 (or K_2) a triangle needs |K_1∩K_3| = a* + ω > a* + eps/2 and a pencil needs
+a* + ω = N - 3/2, i.e. ω = eps. The dumps have no common core at all and pairwise overlaps as low as 2ω - |O'| ≈ ω/2.
+`pool_class.py` (she picks any ω-subsets of O' for q = 3, 4, 5 strictly triangle-type requests; |O'| = σω):
+no static certificate (need > 0) for σ = 1.2 at N = 1.9 (need = base) and 1.85 (need 0.014); static win at N = 1.82,
+where 1.2ω > 3ω/2 - 2·eps = 1.167ω — the hand threshold. So the kernel lemma's statement cannot be derived from
+certificates among K_1, K_2 and replies to triangle-type requests. (This is a rule on one class of requests, not a
+family; no counterexample to CP is claimed.)
+
+**35.4 A perfect core on the class is worth nothing [computed float].** σ = 1 (every triangle-type request gets the
+same Y ⊆ O): for q = 3, 4, 5 and all readings among K_1, K_2 and the q replies, need = base exactly at N = 1.82, 1.85,
+1.9, and the static LP (no future dump) is infeasible. To use Y she needs requests of ANOTHER shape (35.1: t - 1/2 in
+K_1, 1/2 outside; `pool_class.py ... free`: need 0), or requests meeting O (Theorem P: S ⊇ Z∖Z''). About those the
+lemma is silent, and no certificate links the two classes with first-order slack: the links are 35.1 and Theorem T,
+both of tolerance O(eps). **Transfer gap:** "core on triangle-type requests" ⇏ "pool rule on the requests P needs".
+The anti-plan adversary is by definition shape-dependent, so this is not a technicality: it is the adversary.
+
+**35.5 Coreless but regular rules die [computed float].** `scale_rule.py`: D(S) = ψ(S) for a measure-scaling map
+ψ: V∖O → O' (so D(S)∩D(S') = ψ(S∩S'), never disjoint, never nested, no core). q = 2: need 0.011 < base; q = 3, 4: need 0
+at N = 1.9 (triangle among three class members; she pre-compensates). §13 again: predictable ⟹ free.
+
+**Verdict on the route.** Dead: "kernel lemma ⟹ pool ⟹ Theorem P". (i) The two-request step is false (34.1).
+(ii) The correct three-request statement is (★), which coreless small-pool rules satisfy (35.3). (iii) A core on one
+shape class does not transfer (35.4). What survives: pool-like behaviour on a *shape* is refuted directly by 35.1 or
+Theorem T, so a (7,2) family must have, on every shape class and relative to every pair of members, dumps that are
+neither (nearly) equal where 35.1 applies nor (nearly) triple-disjoint where (★) applies. These are measure-zero
+conditions on a map and can be dodged (for 35.1 the bad pairs form a perfect matching on requests). A structural
+proof therefore needs a certificate with first-order slack, i.e. at least four members used in full (2.3).
+
+## 36. Theorem S: symmetric families lose [proved by hand; computed exact on small cases]
+
+**Theorem S.** Let V = V_1 ⊔ ... ⊔ V_m (masses v_j, m fixed) and let 𝒞 be a T-covering family of co-edges that is
+invariant under all mass-preserving bijections of V fixing every V_j (i.e. membership depends only on the profile
+(|K∩V_j|)_j). Then for t >= 3/4 and 3/2 <= N <= 9/4 (first order) 𝒞 contains a good seven.
+*Proof.* v/3 has mass N/3 <= t, so there is a profile s with v/3 <= s <= v, |s| = t, and by T-covering a member K with
+profile π >= s >= v/3. Put κ_j = (3π_j - v_j)/2 >= 0 and split each V_j into a part of mass κ_j and three parts of mass
+(v_j - π_j)/2 >= 0 (total v_j). Let κ be the union of the first parts and P_1, P_2, P_3 the unions of the others:
+|κ| = (3c - N)/2 = N - 3/2, |P_i| = 1/2, and κ ∪ P_i has profile π, so all three are members. They form a pencil with
+kernel κ; finish as in 35.1. ∎
+`sym_check.py` [computed exact, brute force over every choice of the four later replies inside the family]:
+(k,T,N) = (4,3,8), partitions (5,3), (5,3), (4,4), (3,3,2) with profile sets {31,13}, {31,22,13}, {22,40,04},
+{112,310,130,211,121,220}: 3, 375, 27, 375 reply choices, 0 failures. (At finite k the proof needs 3π_j - v_j even.)
+Consequences.
+- No counterexample to CP is a profile family of a fixed partition, for any bounded number of classes: the pool
+  family (m = 2, classes Y and V∖Y), every "pool with switch" or anti-plan rule frozen to the four cells of ONE pair
+  with exchangeable choices inside the cells, every threshold family. This is the rigorous form of §13 for families,
+  and it holds across the whole window with one certificate.
+- A (7,2) family must therefore break exchangeability inside every cell of every finite partition: the identity of
+  the dumped points, not their profile, has to depend on the request. The first-order game of §25–§30 models him
+  by profiles only relative to cells created by the play; Theorem S says a first-order description relative to a
+  FIXED partition with exchangeable cells is never enough for him.
+- The certificate is the zero-slack pencil; in a symmetric family all seven lines can be members (slack 4·delta), so a
+  robust version (families close to symmetric) is plausible but not proved here [heuristic].
+
+## 37. Theorem Q in set form (Q') [proved by hand]
+
+For four co-edges put σ = s_0 + s_1 = mass of the points lying in at most one of them (in at least three of the four
+edges). From 4c = s_1 + 2p + 3u_3 + 4u_4 and N = s_0 + s_1 + p + u_3 + u_4:  W = u_3 + 2u_4 + s_1 = 2N - 4 + 2σ. Hence
+**Q'.** Four members with σ <= (3t - N)/2 and, for each of the three matchings, (pair-only mass of the matching) + σ <= t,
+are finished by three fixed requests. (The τ-distribution of Theorem Q exists iff the first inequality holds.)
+- Any four members of the pool family have σ >= 1 - t (edges live on mass 1 + t: 4 <= 2(1 + t - σ) + 4σ), and
+  1 - t - (3t - N)/2 = (ω - 4·eps)/2 = base/2. So Q' fails for the pool family by at least base/2, for every quadruple.
+- A quadruple in which replies 3 and 4 are fully wasted (W = 2ω) has σ = 1 - t as well: at the level of four members
+  the anti-plan adversary and the pool family are indistinguishable; "value = base at depth 2" (§26) is σ = 1 - t.
+
+## 38. Exact remaining gap, and the next step
+
+**Reduction (one-way) [proved: Q', 35.1, Theorem T].** CP in the window follows from
+**(Σ)** every T-covering family contains (a) four members with σ <= (3t - N)/2 and balanced matchings, or (b) three
+members forming a pencil with kernel in [N - 2t, N - 3/2], or (c) three members satisfying Theorem T.
+(Σ) is open; it is true for symmetric families (Theorem S, via (b)) and for pool-rule adversaries (Theorem P).
+It is not known to be equivalent to CP: a good seven may need five or more members used in full.
+**What is known about (Σ) [computed float, depth 2 only]:** against the adaptive adversary every quadruple reachable
+in two further requests has σ >= 1 - t (= the pool value), i.e. misses (a) by base/2 (§26 read through §37).
+**The gap, stated without a game.** Call σ*(𝒞) the least σ over balanced quadruples of members. Pool families have
+σ* = 1 - t and are beaten only by (b), with margin O(eps). (Σ) asks for: σ*(𝒞) > (3t - N)/2 ⟹ (b) or (c). Nothing in
+Parts I–VIII proves any implication of this kind for a family that is not exchangeable; the kernel lemma was the
+candidate and is dead (§35).
+**Dead routes (this part).** Kernel lemma via two requests and Theorem Q (34.1); core from triple exclusions (35.3);
+transfer of a core between request shapes (35.4); any counterexample search among fixed-partition profile families
+(Theorem S — relevant to SPOIL: a first-order counterexample cannot be stationary and exchangeable).
+**Next step.** Prove or refute the robust form of Theorem S, which is the first statement that would reach beyond
+exchangeable families with first-order slack: *if for some partition into boundedly many cells the profile of D(S)
+is a function φ of the profile of S (the points inside the cells chosen adversarially), she wins.* For continuous φ
+the natural proof is exhaustion by a fixed point (choose s with s + φ(s) = v on the support of φ(s), so the dump is
+forced as a set and the reply is free; seven free replies have slack 4·delta) [heuristic]; the anti-plan rule is the
+discontinuous case (switch at |S∩O| = ω), where exhaustion fails by a count (the low cell A∪B cannot be filled to
+within ω by a request of mass t). So the single test case is: **the anti-plan rule frozen to the four cells of one
+pair, in-cell choices adversarial** — a finite-dimensional first-order game in which he has no freedom of profile at
+all. A win for her there is the mechanism (Σ) needs; a win for him is a stationary first-order adversary and should
+be handed to the SPOIL side.
+Not done: that test; any proof of (Σ); exact (rational) versions of the LPs of §34–§35; N >= 11/6 uses Fano-type
+readings only (as in §25).
+
+Self-check (Part VIII): 34.1's invariance is a three-line count and agrees with the LP at 15 points; the joint LP
+reproduces base for the bare pair and 0 at the Theorem-T and pencil positions (hand constructions 35.1, 34.2). 35.2's
+load sum re-derived from 3c = 2(a+b+d) + Σe + 3κ. 35.3's threshold 3ω/2 - 2·eps is matched by the LP on both sides
+(σ = 1.2: no certificate at N = 1.85, 1.9; certificate at N = 1.82). Theorem S: the profile arithmetic checked by hand and
+by brute force on four families; it uses only T-covering for the one profile s >= v/3 and for the four transversal
+requests. Q' checked against the load identity of §4. Everything in §34–§35 is first-order and float; none of it is
+a statement about a complete family except Theorem S, 35.1, 35.2 and Q'.
