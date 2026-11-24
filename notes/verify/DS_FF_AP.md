@@ -92,3 +92,9 @@ instance), so the accounting is tight, not merely safe. This covers the "not rep
 6. 23.2 defines c_c as the least same-class overlap = 2(1-rho_c)-n_c; this formula needs room outside R_c for the two leak parts (pool or other arena, 2 rho_c <= room). If room is short the true least overlap is larger and the
    hypothesis c_c > theta would have to be about the formula, not the true minimum; the proof uses only the formula, so it is consistent as written.
 7. The remark "sealing only the common part would extend to 3t/16 [not checked]" in 20.2 was not examined.
+
+## Addendum: leaks/slivers outside the two arenas (coordinator follow-up)
+
+**DS 20.2 inherits the gap: FAIL as written when 𝒜 may leak outside the arenas.** Mechanism: the petals' outside-V_A parts may lie in a pool O. Requests 1–4 only seal V_F-parts, so an O-point can lie in all four petals (empty common intersection fails), and requests 5–7 only seal B inside V_F, so centres can share O-points of U (traces not disjoint). Sealing O-parts costs extra mass on top of the forced t/2+eps in V_F and t/2-eps in V_A, so the budget t is exceeded.
+Test (`compute/verify/ds_pool.py`, k=80, T=60, pool of 40 points, d = 4, 8, 10): DS verbatim yields seven replies WITH a 2-cover in 51/400, 92/400, 100/400 games ("traces of centres intersect on U"); with pool 0 it never does. So 20.2 holds only for ground set = the two arenas (slivers inside them).
+**AP 23.2 does cover the pool**, because its petals use running intersections (no arena sealing), B = all petal parts outside R_X (pool included), forcing uses G_j inside R_X only. The AP strategy run on the same pooled 𝒜 family (d = 4, 8, 10): 0 covers, 0 budget violations. But AP's hypothesis c > theta(t) restricts 𝒜 to delta < 7/5-17t/10 (equal to t/6 only at t = 3/4). So with outside leaks, 𝒜 is killed for delta < 7/5-17t/10 (the 19.1 class), NOT proven for 7/5-17t/10 <= delta < t/6 when t > 3/4. Replace "closed for all delta < t/6" accordingly.
