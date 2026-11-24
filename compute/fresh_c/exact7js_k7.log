@@ -1,0 +1,6 @@
+k=7 T=6 (T/k=0.8571): REQUESTER wins   states=45448  [78.5s]
+  after 1 edges: |D| = 14 types {-:7, 1:7}  request {-:2, 1:4}
+  after 2 edges: |D| = 14 types {-:2, 1:5, 2:5, 12:2}  request {1:2, 2:2, 12:2}
+  after 3 edges: |D| = 14 types {1:2, 2:2, 12:3, 3:3, 13:2, 23:2}  request {12:3, 13:2, 23:1}
+  after 4 edges: |D| = 14 types {12:2, 13:2, 23:3, 14:3, 24:2, 34:2}  request {23:3, 14:3}
+  after 5 edges: |D| = 8 types {12:1, 123:1, 134:2, 235:2, 345:2}  FINAL request: all of types [12, 123, 134] + spare budget on addable points -> |D_6| <= T

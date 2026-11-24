@@ -590,3 +590,61 @@ adversary. What follows is what was tried, why it failed, and what is certified.
 
 See the table appended below (`ntable.log`). Scripts on a ground set of mass N (untouched pool N-1 after
 reply 1): reply 2 disjoint ("W"), then T8 / L / H / G as in §9, and PF (never a fresh point).
+
+Table for §11.3 (T = 0.76; value = mass(D) - T, requester free, discards 1 or 2; `ntable.log`; the run was
+stopped before the T = 0.80 rows finished):
+
+| script | N = 2 | N = 2.15 | N = 7/3 |
+|---|---|---|---|
+| W,T8 (disjoint reply 2, freeze Z, forced) | -0.28 | -0.43 | -0.76 |
+| W,L (disjoint reply 2, then omit lowest degree) | -0.28 | -0.28 | -0.28 |
+| W,H (disjoint reply 2, then omit highest degree) | <= -0.52 | -0.76 | -0.76 |
+| W,G (disjoint reply 2, fresh points first) | -0.28 | -0.43 | -0.61 |
+| PF (never a fresh point) | -0.04 | -0.04 | -0.04 |
+
+All are requester wins at every N; against these scripts a larger ground set only helps him. As everywhere
+in §9–§11, this says nothing about an adaptive adversary.
+
+---------------------------------------------------------------------------------------------
+
+## 12. Which earlier results assumed a restricted adversary; exact small-k solution of the 7-request game
+
+### 12.1 Audit of §6–§11: what kind of adversary each result is against
+
+"Optimistic" = the requester's win or value was obtained against a scripted / menu / vertex-reply
+adversary and may disappear against an adversary who mixes (replies that are not corner points of his
+reply polytope, or that switch rule after seeing the request).
+
+| result | adversary | status |
+|---|---|---|
+| §1 Lemma 3, Cor. 3a/3b/4; §2 Lemma 2; §8 Thm 8; §8.3; §9.3; §11.2 reduction | arbitrary (hand proofs) | unaffected |
+| §3 block-symmetric families (bad 7-tuple MILP) | the family itself; the 7 edges are chosen freely | unaffected (statement about families) |
+| §6.3 control: complete family on 1.745k beats requester at 0.74 | scripted, but the claim is an adversary win | unaffected |
+| §6.3 top-degree requester loses at every T; §7.3 Fano-steering policies beaten | adversary FREE (continuous replies), requester scripted | unaffected (rigorous losses of those policies) |
+| §6.3 free requester reaches 3(1-T) against degree-greedy / low-degree-first | scripted | **optimistic** |
+| §7.2 tree solver: 3(1-T) on N = 1.77, 1.80, 2.00 at T = 0.76, 0.78 | menu of 1–2 corner rules (last round exact) | **optimistic** |
+| §8.2 exact value 5/3 - T against Theorem 8's adversary; §10 thresholds 5/6, 11/13, 7/8 at m = 7 | deterministic by definition (forced replies) | exact for those adversaries; as statements about the 7-request game they are valid LOWER bounds on its threshold |
+| §9.2(a) m = 8: 3(1-T) / 2(1-T) against forced adversaries; control wins at 0.74 | forced | requester wins **optimistic**; the 0.74 control unaffected |
+| §9.2(b), §11.3 scripted pivots, all N | scripted corner rules | **optimistic** |
+| §9.6 loop: requester still <= -0.01 against the 4-rule pool | adaptive choice among corner rules | **optimistic** (and not even closed) |
+| §10 "t*(m) = 3/4 for m >= 8" | forced + scripted classes only | **optimistic**; only "t*(m) >= 3/4" is solid |
+
+So every piece of "exactly 3/4" evidence above 3/4 is optimistic. The solid facts are: thresholds 5/6,
+11/13, 7/8 are lower bounds for the 7-request game; 3/4 is a lower bound for every m; nothing rigorous
+bounds the m >= 8 games from above below 7/8.
+
+### 12.2 Exact solution of the simplified game for small k
+
+Game: ground set of 2k points, A_1 = k of them fixed; six requests of at most T points; each reply is ANY
+k-subset avoiding the request; requester wins iff the seven edges have no 2-cover. This is exactly the
+m = 8 confined game after committing to discard the second of the two disjoint replies (§11.2).
+Solvers: `exact7.py` (reference), `exact7.js`/`exact7d.js` (Node ports; identical results), `exact7_naive.py`
+(brute force over actual point sets, no reductions).
+
+Exactness. The search works on membership types of the points still in a covering pair, uses only
+(i) interchangeability of points of equal type, (ii) "points outside D_j never matter again",
+(iii) monotonicity (requests of full size inside D_j; the adversary takes as many points of D_j as he can),
+(iv) canonical relabelling of edges, (v) a closed form for the last request. Checks: brute force on
+actual sets agrees for k = 2, 3 and every T; the closed form (v) agrees with plain enumeration on every
+state of the k = 4, 5, 6 searches; the Python and Node versions agree; a pair-counting prune (a sound
+adversary-win certificate) changes no outcome.

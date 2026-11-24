@@ -97,6 +97,7 @@ class Game:
         self.memo = {}
         self.best = {}       # winning request at winning nodes
         self.nodes = 0
+        self.fast_last = True
 
     def children(self, state, i, s):
         """all distinct successor states (canonical) after request s; state = tuple of (mask, count)."""
@@ -140,6 +141,11 @@ class Game:
         if key in self.memo:
             return self.memo[key]
         self.nodes += 1
+        if i == 5 and self.fast_last:
+            r = self.last_round(state)
+            if r is not None:
+                self.memo[key] = r
+                return r
         caps = [c for _, c in state]
         full = (1 << i) - 1
         # neighbour weights for ordering the requests
@@ -168,6 +174,51 @@ class Game:
         self.memo[key] = result
         return result
 
+    def last_round(self, state):
+        """Exact evaluation of the final request (5 edges so far) without enumerating requests and replies.
+        The requester fully requests a set B of types (cost = their sizes) and spends the rest of the budget on
+        points the adversary could add outside N(Theta); the adversary then touches every remaining type Theta
+        (one point each is enough to keep all of N(Theta) alive) and fills his edge with further points of Theta.
+        Returns None (fall back to enumeration) in the rare case that he cannot touch all of Theta."""
+        k, T = self.k, self.T
+        n = len(state)
+        masks = [m for m, _ in state]
+        cnt = [c for _, c in state]
+        full = 31
+        adj = [0] * n
+        for a in range(n):
+            need = full & ~masks[a]
+            for b in range(n):
+                if (masks[b] & need) == need:
+                    adj[a] |= 1 << b
+        best_fail = False
+        for B in range(1 << n):
+            cost = 0
+            for j in range(n):
+                if (B >> j) & 1:
+                    cost += cnt[j]
+            if cost > T:
+                continue
+            theta = ((1 << n) - 1) & ~B
+            nb = 0
+            for j in range(n):
+                if (theta >> j) & 1:
+                    nb |= adj[j]
+            ntheta = bin(theta).count("1")
+            if ntheta > k:
+                return None
+            dn = sum(cnt[j] for j in range(n) if (nb >> j) & 1)
+            out_types = theta & ~nb
+            t_in = bin(theta & nb).count("1")
+            n_out = bin(out_types).count("1")
+            u_out = sum(cnt[j] for j in range(n) if (out_types >> j) & 1)
+            u_left = max(n_out, u_out - (T - cost))
+            d6 = dn + min(k - t_in, u_left)
+            if d6 <= T:
+                self.best[(5, state)] = ("block", tuple(masks[j] for j in range(n) if (B >> j) & 1))
+                return True
+        return False
+
     def root(self):
         k = self.k
         items = relevant([(1, k), (0, k)], 1)
@@ -186,6 +237,10 @@ class Game:
                 lines.append(f"  after {i} edges: |D| = {tot}  types {fmt(state)}  -> requester requests D and wins" if tot <= self.T else f"  after {i} edges: |D| = {tot}")
                 break
             s = self.best.get((i, state))
+            if isinstance(s, tuple) and len(s) == 2 and s[0] == "block":
+                lines.append(f"  after {i} edges: |D| = {tot}  types {fmt(state)}  final request: all points of types "
+                             + ", ".join("".join(str(b + 1) for b in bits(m)) for m in s[1]) + " (+ spare budget on addable points) -> |D_6| <= T")
+                break
             if s is None:
                 lines.append("  (no stored move)")
                 break

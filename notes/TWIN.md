@@ -496,3 +496,143 @@ certificate shows either
 (ii) the bound mass(M_c) <= T on its blocks holds for arbitrary real replies, with caps paid on
     real points (the ground-set-free form of 11.6(ii)).
 Without one of these the confined certificate does not transfer.
+
+=============================================================================================
+## 13. Reduction of the open game to a confined game on at most 3k points (fifth time box)
+
+Code: `compute/twin/anchors.py`.
+**Outcome: the reduction IS proved, in an anchored form, with no loss of budget and no extra
+requests** (13.1–13.2). Its ground set is the union V of three replies with empty common
+intersection, so |V| <= 3k. Two ends of the range of |V| are solved by hand (13.4, 13.5):
+she wins when |V| <= 2T and when |V| >= 10k/3 - T (about 2.58k at T = 3k/4, matching the red team's
+"N >= about 2.5k loses"). What is NOT proved is the window 2T < |V| < 10k/3 - T; there the game is a
+concrete four-rectangle covering problem (13.3), stated as the missing inequality in 13.7.
+This supersedes the negative conclusions of §11–§12: those concerned black-box simulation of an
+arbitrary confined strategy; anchoring avoids simulation altogether.
+
+### 13.1 Anchor lemma [proved by hand; checked exact]
+
+**Lemma.** Let B_a, B_b, B_c be replies with B_a ∩ B_b ∩ B_c = ∅ and V = B_a ∪ B_b ∪ B_c. Every
+2-cover of any family of replies containing these three consists of two points of V.
+*Proof.* No point lies in all three, so each of the two covering points lies in at least one. ∎
+She can always create such a triple: any S_2 with |S_2 ∩ B_1| >= k - T gives |B_1 ∩ B_2| <= T, and
+S_3 ⊇ B_1 ∩ B_2 then gives B_1 ∩ B_2 ∩ B_3 = ∅ (single points included). More generally replies
+i < j < l are anchors as soon as S_l ⊇ B_i ∩ B_j.
+Write P_ab = B_a ∩ B_b (three pairwise disjoint sets), P = their union, p = mass(P),
+Q_c = B_c∖P (points in exactly one anchor). Then |V| = 3k - p.
+
+### 13.2 Exact reduction [proved by hand; checked exact]
+
+**Theorem A.** For families of replies that contain the anchors:
+(i) coverability depends only on the traces E ∩ V of the other replies, and is monotone in them
+    (a larger trace can only create covers);
+(ii) hence against an open adversary she may run verbatim any strategy for the *anchored confined
+    game* G(V): requests inside V, adversary answers with a subset of V∖S of mass min(k, |V∖S|);
+    same requests, same budget, same number of rounds; outside points never need to be requested;
+(iii) conversely the adversary loses nothing by confining every later reply to V.
+*Proof.* (i) By the lemma a cover is a pair in V, and it covers E iff it meets E ∩ V. (ii) Feed
+the strategy the traces, padded inside V∖S when shorter than min(k, |V∖S|); by (i) padding can only
+create covers, so an uncoverable padded tuple is uncoverable in reality. (iii) is (i). ∎
+So every open adversary is, from the moment anchors exist, an adversary confined to at most 3k
+points, as long as she keeps the anchors among her seven. She may discard and re-anchor on any
+other triple; each re-anchoring costs at most three requests.
+`anchors.py` check A: lemma, trace equivalence and 13.3 agree with brute force on 2000 random
+7-tuples (ground sets with points outside the anchors).
+
+### 13.3 The anchored game is a three-grid, four-rectangle covering game [proved by hand; checked]
+
+**Theorem B.** Anchors plus four further replies E_1..E_4 have no 2-cover iff for each of the three
+splits (ab|c)
+
+    union over i of (P_ab∖E_i) × (B_c∖E_i)  =  P_ab × B_c .
+
+*Proof.* A cover has one point x in two anchors (x in some P_ab) and the other point y in the third
+(y in B_c); it covers E_i iff x or y is in E_i. ∎
+With K_i = V∖E_i ⊇ S_i ("killed at round i") and I_x = {i : x in K_i}: she needs
+I_x ∩ I_y ≠ ∅ for all x in P_ab, y in B_c = P_ac ∪ P_bc ∪ Q_c. Nothing is required between two points
+of the same P_ab, between Q's, or between Q_c and P_ac. mass(K_i) = max(T, |V| - k) when she spends
+her budget: for |V| > k + T the adversary must add omissions, for |V| <= k + T he adds none.
+(The disjoint-pair Lemma 5.1 is the degenerate case P_ab = ∅ with five rectangles.)
+
+### 13.4 Small union: |V| <= 2T [proved by hand; table checked]
+
+**Theorem C.** If |V| <= 2T (+O(1)) she wins with four more requests, non-adaptively.
+*Proof.* Rounds 4,5,6,7. Split P_12 into halves with request-types {4,7}, {5,6}; P_13 into {4,6},
+{5,7}; P_23 into {4,5}, {6,7}; split Q_c into four equal parts carrying the four pairs that are not
+the two types of the opposite P_ab. Two 2-subsets of a 4-set are disjoint only if complementary,
+i.e. only inside one P_ab, so all required intersections hold already for the requests. Each round
+requests half of every part: mass |V|/2 <= T. ∎
+At T = 3k/4, |V| = 3k/2 this is the Fano blow-up with a pencil as anchors (classes of mass k/4).
+
+### 13.5 Large union: |V| >= 10k/3 - T [proved by hand; checked exhaustively at k = 3]
+
+**Theorem D.** If p <= T - k/3, i.e. |V| >= 10k/3 - T, she wins with four more requests and no
+discard.
+*Proof.* Every later request contains P; then points of P lie in no later reply. A cover needs
+x in some P_ab and then y in Q_c lying in all four later replies. Let X_1 = E_1 ∩ Q (mass <= k),
+X_2 = X_1 ∩ E_2, X_3 = X_2 ∩ E_3. Requests 5 and 6 contain T - p points of X_1, resp. X_2, so
+mass(X_3) <= k - 2(T - p) <= T - p, and request 7 contains X_3. No such y exists. ∎
+Consequences [proved]:
+- an adversary whose first three replies (after her two blocking requests) span at least
+  10k/3 - T points loses in seven requests; ground-set growth after the anchors is irrelevant by
+  Theorem A, and growth before them only enlarges |V|;
+- after a disjoint (or nearly disjoint) pair, the next reply must take more than T - k/3 from the
+  pair's union or he loses in seven: "waste" cannot be repeated;
+- three replies meeting pairwise only in O(1) points lose (p = O(1)), which is the rigorous form of
+  "intersecting in slivers behaves like disjoint" (§11.4).
+`anchors.py` check D: at k = 3, T = 2, p = 1 the strategy beats every reply sequence (all maximal
+traces, four rounds; 310000 leaves each), for two anchor shapes [computed exact]. A k = 4 run was
+too slow and is not claimed.
+
+**Proposition E (shape matters) [proved by hand].** If the third anchor is exactly disjoint from the
+other two (p_13 = p_23 = 0, no common point at all), the only grid is P_12 × B_3 and she wins when
+p_12 <= max(T - k/4, 2T - k): request P_12 plus a quarter of B_3 four times, or use the 2×2 cover
+(half of P_12 with half of B_3). So the constant T - k/3 of Theorem D is not optimal for every shape.
+Caveat: a single common point of B_3 with B_1 or B_2 re-creates the grids P_13 × B_2, P_23 × B_1
+(every point of B_2, B_1 must then be killed once), and the adversary gets such points for free; in
+that case use Theorem D: with p_12 capped at k - T by S_2, p <= k - T + O(1) <= T - k/3 for
+T >= 2k/3 + O(1). Hence **a reply meeting the union of two earlier replies in only O(1) points
+loses in four more requests** [proved, via Theorem D].
+
+### 13.6 What this says about N₀
+
+With anchors the game lives on V with 3k/2 <= |V| <= 3k (each anchor contains two of the P_ab, so
+2p <= 3k; in particular Theorem C applies to some anchors only when T >= 3k/4), and only
+
+    2T  <  |V|  <  10k/3 - T        (1.5k < |V| < 2.58k at T = 3k/4)
+
+is undecided. So N₀ = 10k/3 - T works in the following exact sense: **every adversary is, after
+three requests, equivalent to one confined to the union V of the anchors; if |V| >= N₀ he has
+already lost.** The red team's observations are instances: proportional adversaries on N >= 2.5k
+give large |V|; growing ground sets only increase |V|; disjoint pairs are capped because the third
+anchor must re-enter the pair's union.
+The adversary can always place |V| inside the window (he controls every overlap from below: he may
+always answer with fresher points), so the window cannot be avoided by her choice of S_2, S_3.
+
+### 13.7 The exact missing statement
+
+In the window she needs I_x ∩ I_y ≠ ∅ on the three grids with four kill-sets K_i ⊇ S_i,
+mass(K_i) = max(T, |V| - k), where the adversary chooses K_i∖S_i. Two facts bound what a proof must
+do [proved by hand]:
+(a) Each point of P_ab must be killed at every round at which some y in B_c is killed for the only
+    time; the adversary never omits a point of P voluntarily and re-includes a killed Q-point unless
+    it is requested again. So freezing is forced, but only for the pair-part opposite to the Q_c
+    being killed: she may specialise rounds by c (Proposition E is the extreme case, valid only without
+    stray common points). I did not
+    optimise this; T - k/3 in Theorem D is sufficient, not shown necessary, and the true lower end
+    of the window depends on the shape (p_12, p_13, p_23).
+(b) [heuristic] For |V| = 2k, p = k (e.g. a disjoint pair and a third reply inside its union, or
+    §8.3's pencil) the natural template is K4 with zero slack: mass(K_i) = k = |V|/2 exactly, so
+    redundant omissions should defeat it. This is the obstruction behind Theorem 8 and 8.3, now
+    seen as a property of the anchors rather than of the ground set.
+**Missing inequality.** Let val(p_12, p_13, p_23) be the smallest T/k at which she wins the
+three-grid game for anchors of that shape, with re-anchoring allowed (m requests in total). The
+general bound f(k,7) <= T + O(1) follows from
+
+    for every adversary there is, within boundedly many requests, an anchor triple with
+    val(p_12, p_13, p_23) <= T/k,
+
+and 13.4–13.5 prove it outside the window. Inside the window I have neither a strategy nor an
+adversary. The confined computation that would now transfer verbatim to general families (by
+Theorem A) is: anchors of prescribed shape, adversary confined to V = their union, requester free
+with re-anchoring — not the game on A_1 ∪ A_2 with a disjoint pair, which is the K4 point (b).
