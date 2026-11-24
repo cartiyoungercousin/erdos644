@@ -1416,3 +1416,86 @@ Self-check (§39): 39.1 is monotonicity plus Theorem S. 39.2: transitivity of �
 39.4 construction; averaging gives 2/3. 39.4: sizes re-derived (|κ| = (3c - n - u)/2 with c = n - k, |Q_1| = (k+u)/2), bound
 u <= m; four instances checked by machine, including singleton cells. 39.3 is a restatement of 29.2 in the limit and
 uses first-order masses only. The entropy numbers in 39.2 are hand arithmetic.
+
+## 45. (structural side; §40–§44 are reserved for the SPOIL agent) Can the cell bound of S+ reach c(N)·k, and does it touch SPOIL?
+
+Brief: raise the S+ bound from about 4·eps·k/3 cells to c(N)·k using a seven of members with slack 4·delta; compare with
+the partition complexity of SPOIL-type adversaries. Code: `compute/core8/sym_plus2_check.py`.
+**Outcome. Not achieved, and it would not matter.** (1) The bound improves only to 4·eps·k - 12 cells, and that is
+optimal for the pencil certificate (45.1). (2) A bound c(N)·k with c independent of eps cannot come from slack: the
+premise "an all-members seven has slack 4·delta" is false for symmetric families in general — the pool family is
+symmetric and every good seven in it has slack exactly 4·eps·k (45.2). (3) No cell bound short of m = n beats a
+SPOIL-type rule: such a rule creates new cells at every reply and passes any bound c·k at depth log2(c·k) (45.4).
+What S+ does exclude is stated exactly in 45.3. **SPOIL is not killed as a disproof route by this line.**
+
+**45.1 S+ with rotating overlaps [proved by hand; construction computed exact].** In 39.4 let the shared point y_j of
+the r-th odd cell lie in petals r and r+1 (mod 3) and be assigned to line r. Then |Q_i| = k/2 + u/6 up to rounding, the
+transversals have size <= 3k/4 + u/4 + 3, and the theorem holds for **m <= 4(T - 3k/4) - 12 = 4·eps·k - 12** cells
+(with n/3 + m <= T). Optimal for this certificate: each odd cell forces one point of co-type size 4 (one wasted
+incidence), and a certificate with three members used in full has exactly 4·eps·k spare incidences (2.3).
+`sym_plus2_check.py`: (k,T,n; cells; π; u) = (16,14,31; 9,9,9,4; 4,4,4,3; 4), (16,14,34; 7,7,7,5,5,3; 4,4,4,2,2,2; 6),
+(20,17,38; 5⁷,3; 2⁶,3,3; 6): transversals 14, 14, 17 <= T, all pairs covered; at (16,13,31), u = 4 the largest
+transversal is 14 > T (the additive constant is real).
+
+**45.2 Why slack 4·delta is not available [proved by hand].**
+(a) *One orbit.* Seven sets of one profile π form a Fano-type good seven iff in every cell the v_j points can be given
+pencils with every line used at most π_j times; this needs π_j >= μ(v_j), μ(v) = least possible maximum number of
+chosen points on a line, 3v/7 <= μ(v) <= 3v/7 + 2 (μ = 1, 2, 2, 2, 3, 3, 3 for v = 1..7). No parity condition, and the slack
+is 4·delta. But she cannot force such a member: she would have to request μ(v_j) points of every cell, total
+>= 3n/7 > T throughout the window (N > 7t/3 ⟺ delta > 7·eps/3), and he leaves the unrequested cells below 3v_j/7.
+(b) *Several orbits.* For members with profiles π^1..π^q and 7 - q requested lines the condition is cell-wise: class
+sizes w^j in Z^7, Σ_p w^j_p = v_j, line sums <= π^i_j for the member lines, Σ_j (line sum) <= T for the requested ones
+(sufficient; exact for N < 11/6). A real solution with 6 spare points per line and cell rounds to an integer one. So:
+*a first-order certificate whose member lines all have slack η·k survives m <= η·k/6 cells* (conditional S++).
+(c) *The condition of (b) cannot hold uniformly.* The pool family (all co-edges containing Y, |Y| = ω) is symmetric
+under every partition refining {Y, V∖Y}; all seven members of any good seven contain Y, so Y alone consumes 4ω of the
+4·delta of 2.1 and the total slack is 4·eps·k, for every certificate type. Hence no argument "symmetric ⟹ certificate
+with slack independent of eps" exists; a c(N)·k bound, if true, needs a dichotomy (pool-like part exact, rest with
+slack) — which is (Σ) again, restricted to symmetric families of linear complexity. Not proved; no counterexample
+either: for cell size b the question is a finite profile game (he chooses π >= s in his profile set, she places the
+sets), open for 1 << b << 1/eps.
+
+**45.3 What S+ excludes on the SPOIL side [proved by hand, from S+ and 39.2].**
+*Stabilisation lemma.* Suppose that from some position with q kept co-edges on, the set of his replies is closed under
+permutations inside the 2^q Venn cells (profile rule, in-cell points exchangeable). If 2^q <= 4·eps·k - 12 and
+n/3 + 2^q <= T, she wins using replies made after that position only. More generally, if more than 2/3 of the sets
+with the profile of one such reply (to a request taking a third of every cell) are replies, she wins.
+So a SPOIL-type rule can never become stationary with exchangeable cells: either (α) every reply keeps cutting the
+cells that later dumps depend on, without bound in the depth, or (β) the points chosen inside a cell are tied to an
+order or to the request. The first-order model of §25–§30 is of type (α) by construction (a dump on part of a cell
+splits it, and the next rule refers to the pieces).
+
+**45.4 Comparison of complexities; the precise statement about SPOIL.**
+- SPOIL rule (26.3, §27): "whole dump on one unrequested cell of points lying in >= 2 kept co-edges". After d replies
+  it distinguishes up to 2^d cells, so the family generated by a play of depth d has partition complexity up to 2^d,
+  and exceeds any bound c·k at d = log2(c·k) (about 9 replies for eps·k = 100). The evidence for SPOIL is at depth 2–3;
+  S+ with any linear bound says nothing there, and nothing later.
+- A bound that kills SPOIL by complexity alone would have to be m = n (cells = points), which is CP.
+- Therefore: **Theorem S / S+ do not kill SPOIL. They kill exactly the stationary exchangeable adversaries** (39.4,
+  45.3), in particular any attempt to turn a bounded-depth SPOIL invariant into a family by freezing the cells and
+  letting the in-cell choice be arbitrary.
+- The simplest object left on his side is of type (β) with bounded cells: a stationary profile rule on the cells of
+  boundedly many members with a FIXED order of the points inside each cell (dump = first unrequested points of the
+  chosen cell: one nested pool per cell, switched by the request). Complexity n; not covered by S+ (not exchangeable)
+  nor by Theorem P (several pools, shape-dependent switch). This is the frozen anti-plan rule already handed to the
+  SPOIL agent; nothing here decides it.
+
+**45.5 Status.** (Σ) unchanged for general families. Proved in this section: S+ for m <= 4·eps·k - 12 cells (sharp for
+the pencil); the one-orbit criterion μ and why it cannot be forced; the rounding lemma; the stabilisation lemma.
+**Dead:** "all-members seven ⟹ c(N)·k" (pool family, 45.2c); "complexity bound ⟹ SPOIL dead" (45.4).
+**Exact gap.** (i) Symmetric families with cells of bounded size b, 1 << b << 1/eps (a finite profile game);
+(ii) non-exchangeable families: nested pools per cell with a shape-dependent switch, and history-refining rules.
+**Next step.** Decide (ii) in its smallest instance by hand, because it is a family and no game is needed: cells
+O, A, B, g of one pair, each with a fixed order; dump = first ω unrequested points of O if |S∩O| < ω, else first
+unrequested points of A∪B. Every member then contains an initial segment of O or of A∪B, so the members are the
+co-edges K with K∩O ⊇ I_O(K) or K∩(A∪B) ⊇ I_AB(K) for explicit initial segments; a good seven is a Fano blow-up whose
+seven lines each contain the initial segment their own shape demands. That is one LP in the class masses per
+assignment of shapes to lines (2^7 cases), exact in rationals. Feasible ⟹ this adversary is dead and the mechanism
+(mixing high-shape and low-shape lines in one seven) is a candidate proof of (Σ)(a); infeasible ⟹ it is a stationary
+first-order counterexample candidate and belongs to §40+.
+
+Self-check (§45): 45.1 sizes: Σ|Q_i| = 3k/2 + u/2, transversal total = 2Σ|Q_i| = 3k + u <= 4T ⟺ u <= 4·eps·k; machine check on
+four instances (one deliberately failing by rounding). 45.2(a): μ values from the Fano plane (two points share a line;
+a quadrangle has no three collinear; five points always contain three collinear). 45.2(c) is the waste identity 2.1.
+45.3 is S+ applied to the replies after the position; it needs the reply SET to be orbit-closed, not the reply map to be
+equivariant (an equivariant map has D(S) a union of whole remainders V_j∖S). 45.4's depth count is 2^d against c·k.
