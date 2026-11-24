@@ -548,3 +548,140 @@ Checks: `py compute/petal3/lstar.py` (L* vs MILP, table of §12); `py compute/pe
 `py compute/petal3/sim_arena.py 800 600 20 400 7` (about 15 s per row). Hand proofs re-read once:
 11.2, 11.3 (the count |Q_3∖S| >= 1 - t + a), Theorem N steps (i)–(iv), 12.3 (budgets: 3δ <= t/2 + ε,
 4δ < t/2 - ε, 4(t/2 - ε) >= n).
+
+---------------------------------------------------------------------------------------------
+## 14. Rework of Theorem J, Step 2 (fourth time box) — outcome first
+
+Brief: observed traces and P2 in place of worst-case 3λ and pairwise disjointness; forcing at about
+t/2 instead of 1 - c; target: two-class adversaries with same-class overlap > c > θ(t), cross overlap
+<= μ, all 3/4 < t <= t₁. No new code; everything below is by hand.
+
+**Outcome: the gap is NOT closed in the abstract (c, μ) model, and I have no explicit adversary
+for it either.** What is proved:
+1. Theorem J′ (14.1): for strict two-class adversaries the condition improves from
+   1 - c + 7λ <= t to **1 - c + 6μ <= t**, and to a condition on the *observed* traces,
+   1 - c + |(Z_1 ∪ Z_2)∖X_a| <= t. With small singles the 6μ becomes 3μ + 2σ (14.2).
+2. One fixed, arena-blind strategy (c = 1 - 7t/12, b = t/2) beats the Part III adversary 𝒜(t, δ)
+   for **every δ < t/12** (14.3). Since δ_N(t) <= 0.0510 < t/12, the explicit window of Part III
+   (t/26 < δ <= δ_N(t)) is closed without knowledge of the arenas.
+3. P2 gives nothing over pairwise disjoint traces in the worst case (15.1), and forcing below
+   1 - c is not available in general (15.2). Both proposed levers are dead as worst-case gains.
+4. The worst case of J′ (traces 3μ outside every petal) needs single parts of mass >= 3μ in the
+   petals. The natural realisation, arenas with private parts (𝓑, 15.3), then has
+   c <= 1 - t/2 - 3μ and loses to J′ whenever c > θ(t) and t >= 3/4. So I could not build a two-class
+   adversary in the open region; I also could not prove none exists.
+Remaining gap, exact (§16): abstract two-class adversaries with c > θ(t) and 6μ > t - 1 + c whose
+replies are not of arena-plus-private form.
+
+### 14.1 Theorem J′ [proved by hand]
+
+Setting 𝒞(c, μ): at all times the replies fall into at most two classes; same-class overlaps > c,
+cross overlaps <= μ < c. (A third class costs the standing request λ and (J2) as in §3; omitted.)
+Necessarily c < 1 - t/2: otherwise 1 - c of X_1 plus 1 - c of Y_1 is a legal request with no reply.
+
+*Forcing.* If S contains 1 - c of some X-class reply, the reply is of class Y.
+*Step 1 (7 requests).* Request min(t/2, |I^X|) points of I^X and min(t/2, |I^Y|) of I^Y. A class with
+j <= 3 members has |I| <= 1 - (j-1)t/2, and 1 - t <= t/2, so its fourth member misses I: one class, X,
+has four members X_1..X_4 with empty common intersection. No λ is needed. U = their union.
+*Step 2 (3 requests).* For j = 1, 2, 3 let Z_{<j} be the union of the traces C_i ∩ U of the centres so
+far, choose a petal X_a, and request S_j = F_j ∪ (Z_{<j}∖X_a), F_j ⊂ X_a of mass 1 - c containing
+Z_{<j} ∩ X_a (mass <= 2μ <= 1 - c). The reply is of class Y and misses Z_{<j}, so the traces are pairwise
+disjoint and P4(c) applies.
+
+**Theorem J′.** She wins in 10 requests provided, on the line actually played,
+
+    (J′)   1 - c + min_a |(Z_1 ∪ Z_2)∖X_a| <= t.
+
+Worst case: |C_i ∩ X_b| <= μ gives |Z_i∖X_a| <= 3μ, so **1 - c + 6μ <= t suffices**. ∎
+At t = 3/4: μ <= (c - 1/4)/6, i.e. μ <= 0.042 at c = 1/2 and 0.0625 at c = 5/8.
+
+### 14.2 Multiplicity refinement [proved by hand]
+
+Let s_b be the mass of the single part of X_b (points of U in no other petal). Points of U∖X_a of
+multiplicity >= 2 lie in two of the other three petals, so a centre has at most 3μ/2 of them; on
+single parts it has at most Σ_{b≠a} min(μ, s_b). Hence
+
+    |(Z_1 ∪ Z_2)∖X_a| <= 3μ + 2 Σ_{b≠a} min(μ, s_b).
+
+With negligible singles the requirement is 1 - c + 3μ <= t. The factor 6 is reached only when
+each centre puts μ into the single part of each of three petals.
+
+### 14.3 The arena adversary 𝒜(t, δ) is beaten arena-blind for δ < t/12 [proved by hand]
+
+Fix c = 1 - 7t/12 (0.5625 at 3/4). In 𝒜(t, δ) with δ < t/12: same-colour overlaps are >= a_0 =
+1 - t/2 - δ > c and cross overlaps are <= 2δ + O(1) < t/6 < c, so the classes are visible and 𝒞 holds.
+Step 1 as above. Step 2 with a = 1: a centre's trace has at most δ + O(1) in V_A, and in V_F it lies
+in the V_F-parts of the petals; outside X_1 those have mass <= 3δ + O(1). So
+|(Z_1 ∪ Z_2)∖X_1| <= 2δ + 3δ, and (J′) reads 7t/12 + 5δ <= t, i.e. δ <= t/12. ∎
+The strategy uses t and the threshold c only. δ_N(t) < t/12 for all t >= 3/4 (table in §12), so
+every 𝒜(t, δ) that Theorem N protects from 2+2 quadruples loses to J′.
+(12.3 reaches t/8 with arena-aware requests; the difference is the forcing set, which there may
+sit anywhere in V_A.)
+
+## 15. The two proposed levers, and the attempt at an adversary
+
+### 15.1 P2 does not beat pairwise disjointness in the worst case [proved by hand]
+
+Four petals with empty common intersection, T_d = points in all petals except X_d. From
+|X_a ∩ X_b| > c: |T_d| > 2c - 1 for each d, so no T_d is empty. A point y of T_d has co-type {d}, so
+x ~ y iff x is in X_d; every x of U lies in some X_d.
+**Lemma.** Suppose each of the three centres contains a point of every T_d (he can arrange this
+unless a request contains a whole T_d). Then P2 holds iff the traces are pairwise disjoint on U.
+*Proof.* P2 fails iff some edge {x, y} has every centre containing x or y. Let x lie in two
+traces, Z_i and Z_j, and let x be in X_d. The third centre contains some y in T_d, and x ~ y. So
+no point may lie in two traces; the converse is P4(c). ∎
+What P2 does give: a centre that misses T_d entirely frees the other two to overlap on points
+whose only relevant neighbours are in T_d. That costs |T_d| > 2c - 1 per request; in arenas
+|T_d| is about t/2, the size of the forcing set. Not pursued: no gain when c is near 1 - t/2.
+
+### 15.2 Forcing below 1 - c [dead; proved for arenas]
+
+In 𝒜(t, δ) any request with at most t/2 points in V_A admits a reply of colour A. So forcing costs
+at least t/2 = 1 - a_0 - δ: the possible gain over 1 - c is δ, and to collect it she must know that
+the forcing points lie in V_A. In the abstract model the only certificate of exclusion is
+"1 - c of one petal". The count via four petals (a class-X reply E has Σ_a |E ∩ X_a| > 4c, hence more
+than 4c - 2 in ∪T_d) gives cost |∪T_d| - (4c - 2), which is larger than 1 - c in arenas.
+
+### 15.3 Attempt at an adversary realising 6μ: arenas with private parts [proved that it fails]
+
+𝓑(t, ρ, μ): arenas of mass 1 + t/2 - ρ; a reply has 1 - ρ in its own arena and ρ elsewhere. X-type
+replies put the ρ into fresh points (a private single part). A forced centre puts μ into the
+unrequested private part of each of three petals outside X_a. Needs ρ >= 3μ. Then
+c = 1 - t/2 - ρ and the J′ cost is t/2 + ρ + 6μ <= t/2 + 3ρ.
+If c > θ(t) then ρ < 7/5 - 17t/10, so the cost is below 4.2 - 4.6t, which is <= t exactly when t >= 3/4.
+**So 𝓑 loses to J′ in the whole region c > θ(t), t >= 3/4.** Outside it (c <= θ) the 2+2 single-serve
+bound 11.3 no longer protects him. The mechanism: private parts that make traces large also
+lower c, i.e. raise her forcing cost by ρ but his exposure by 3ρ.
+I did not find another construction. A targeting adversary must also know the quadruple; in J′
+it is determined (first four of a class), so that is not the obstacle.
+
+## 16. Status after the rework
+
+Closed [proved]: 𝒜(t, δ) for δ < t/12 arena-blind (all of Theorem N's range); 𝓑 in the region
+c > θ(t); abstract two-class adversaries with 1 - c + 6μ <= t, or with small singles and
+1 - c + 3μ + 2σ <= t.
+
+Dead [proved]: P2 as a worst-case improvement (15.1); cheaper forcing in general (15.2).
+
+**Exact remaining gap.** Abstract class 𝒞(c, μ) with
+
+    θ(t) < c < 1 - t/2   and   6μ > t - 1 + c,
+
+realised by replies whose petals have single parts >= 3μ *without* the arena-plus-private
+relation c <= 1 - t/2 - 3μ. I have neither a strategy nor an adversary there. At t = 3/4 this is
+1/2 < c < 5/8, μ > (c - 1/4)/6, up to μ <= (t - 1/3)/3 = 0.139 (above that he needs a third class
+and Theorem D applies).
+
+**Best next step.** Prove or refute the structural lemma behind 15.3 in general:
+
+    if every class-X reply has single mass >= σ relative to three others of its class, then some
+    request of mass <= 1 - c - σ + o(1) excludes class X (the exclusion cost e_X, not 1 - c, is the
+    true forcing price), and e_X + e_Y > t is forced on him.
+
+With it, J′'s cost becomes e_X + 3μ + 2·min(3μ, σ) against e_X + e_Y > t, and the region above
+should close by the 𝓑 computation. Without it, the adversary to look for is a two-class family
+that is not a pair of arenas: same-class overlaps > θ(t) spread over many small common parts
+rather than one core.
+
+Hand proofs re-read once: 14.1 (Step 1 budget 2·t/2; (J′)), 14.2 (3μ/2 count), 14.3 (5δ; c < a_0 iff
+δ < t/12), 15.1, 15.3 (4.2 - 4.6t <= t iff t >= 3/4).
