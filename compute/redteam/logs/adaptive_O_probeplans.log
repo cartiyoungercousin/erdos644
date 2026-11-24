@@ -1,0 +1,2 @@
+{"start": true, "T": 0.76, "N": 1.8, "prefix": "O", "k": 1, "plans": "logs/adaptive_probe_root_O.log", "tl": 3600.0, "ign": [], "leaves": 32, "vars": 22112}
+{"T": 0.76, "N": 1.8, "prefix": "O", "status": "Infeasible", "milp_z": null, "secs": 1}

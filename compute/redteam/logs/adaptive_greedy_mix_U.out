@@ -1,0 +1,2 @@
+{"SUMMARY": true, "T": 0.76, "N": 1.8, "prefix": "UU", "constructed": true, "secs": 67, "leaves_won_exact_at_T": 16, "leaves": 16, "worst": ["UUOOUU", -0.006851558355002702, 5]}
+{"SUMMARY": true, "T": 0.76, "N": 1.8, "prefix": "UO", "constructed": true, "secs": 15, "leaves_won_exact_at_T": 16, "leaves": 16, "worst": ["UOOUUU", -0.006310391307849615, 5]}

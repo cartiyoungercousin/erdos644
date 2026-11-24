@@ -1,0 +1,3 @@
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+{"SUMMARY": true, "T": 0.76, "N": 1.8, "prefix": "O", "constructed": true, "secs": 47, "leaves_won_exact_at_T": 32, "leaves": 32, "worst": ["OUOUOO", -0.012807081606237116, 5]}

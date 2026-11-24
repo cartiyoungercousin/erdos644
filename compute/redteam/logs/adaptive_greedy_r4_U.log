@@ -1,0 +1,9 @@
+{"start": true, "T": 0.76, "N": 1.8, "prefix": "U", "k": 1, "MC": 6, "TL": 20.0}
+{"node": "U", "cand": 0, "rejected_by": "UOUOOO"}
+{"node": "U", "cand": 1, "rejected_by": "UOUOOO"}
+{"node": "U", "cand": 2, "rejected_by": "UUOUOO"}
+{"node": "U", "cand": 3, "rejected_by": "UUOUOO"}
+{"node": "U", "cand": 4, "rejected_by": "UUOUOO"}
+{"node": "U", "cand": 5, "rejected_by": "UUOUOO"}
+{"node": "U", "ok": false, "cands": 15}
+{"SUMMARY": true, "T": 0.76, "N": 1.8, "prefix": "U", "constructed": false, "secs": 1260}

@@ -573,3 +573,44 @@ bit.* In the half-tree that I did complete (N = 1.8k, first bit U) one plan — 
 32 continuations with margin >= 0.0116; the open half differs only in the first reply's concentrated dump
 (onto B_1 instead of onto unused points), which suggests looking at how the second reply's overlap with B_1
 enters the (T) plan's round-4 block.
+
+## 14. Adaptive tilted spread, t = 0.76, N = 1.80k, m = 8: a full winning strategy tree
+
+Code: `compute/redteam/adaptive_replay.py` (exact replay at budget T), `adaptive_probe.py`, `adaptive_pair.py`,
+`adaptive_multi.py` (non-anticipative MILP on a chosen set of leaves, one plan per leaf), `adaptive_greedy.py`
+(depth-first subtree builder, candidates from non-adaptive lines), `adaptive_tree.py` (whole-subtree MILP),
+`adaptive_assemble.py` (final tree + check), `adaptive_m.py` / `adaptive_pairR.py` (m = 9 versions, not needed).
+Logs: `compute/redteam/logs/adaptive_*.log`; the tree is `logs/adaptive_tree_full_T0.76_N1.8.json` (63 nodes).
+
+**Verdict [computed exact]: the requester beats the adaptive tilted spread at t = 0.76, N = 1.8k, m = 8.** The
+tree's request for reply j depends only on the bits of replies < j (it is a dictionary keyed by the bit prefix).
+All 64 adversary leaves were replayed in exact rational arithmetic at budget T: every round's request sums to at most T,
+the true tilt rule is applied, and the best of the 7 discards is taken. All 64 are won.
+
+| subtree | leaves won (exact, at T) | smallest margin T - mass(D) | where |
+|---|---|---|---|
+| first bit U | 32 / 32 | **0.0063** | UOOUUU, discard 5 |
+| first bit O | 32 / 32 | 0.0128 | OUOUOO, discard 5 |
+
+**What the problem was.** The obstruction in §13.3 was the ROOT request, not node "O". With the §13 root
+{0: 0.2546, 1: 0.5044} fixed, every O-schedule is still winnable on its own (logs/adaptive_probe_root_O.log), but
+the full 32-leaf O-model is infeasible under the certificate's plan, the leaf pair (OUUOOO, OUOUOO) is optimal at
++0.0074 with one plan, and the line-candidate builder rejects every candidate at "O". With the root left free, the
+4-leaf model {OUUOOO, OUOUOO, UUOOOU, UUOUOO} is optimal at -0.0106 with root {0: 0.25843, 1: 0.50057}, and the
+whole O-subtree then builds at once (certificate plan near the top, the 1.9k line's plan under OO). Under that root the
+U side fails with the certificate's plan alone (8-leaf model optimal at +0.0088), but works with the 1.9k line's plan:
+a 6-leaf mixed-plan model (O-leaves certificate plan, U-leaves 1.9k plan) gives the same root and node "U" at
+-0.0059, and the UU and UO subtrees then build with the line-candidate builder.
+
+**Approach (1)** (ignore the bits of replies 2 and 5) did not help directly. Reusing the U-subtree's requests on
+O-leaves loses by about 1.0, because requests meant to be complete leave slivers. The invariance only says that the
+non-adaptive VALUES coincide, not the lines. Approach (2) (whole 32-leaf MILP) found no incumbent in 900 s and was
+not needed. Approach (3) (m = 9) was not needed.
+
+**Correction to §13.** `tilt.exact_leaf` compares mass(D) with T + 0.001, not with T (the requests sum to
+T - 0.001). So every exact margin quoted in §13.2–13.3 is 0.001 too large. All those wins still hold at T (e.g. the
+§13 U-subtree's worst margin is 0.0106, not 0.0116). The §14 margins above are measured at T.
+
+**Unresolved.** Only this one point (t = 0.76, N = 1.8k) was tested. The margin is thin (0.0063), and the tree is
+plan-restricted (so her best margin may be larger). N = 1.85k, 2.1k, t = 0.751 and m = 9 are untested against the
+adaptive bit, as is any opponent with more than one bit per reply. No adversary win anywhere, so no (7,2) test.

@@ -1,0 +1,15 @@
+{"specs": ["OUUOOO:0", "OUOUOO:2"], "status": "Infeasible", "z": null, "req": null}
+{"specs": ["OUUOOO:f", "OUOUOO:2"], "status": "TimeLimit", "z": 0.016551391298181825, "req": {"0": 0.2653, "2": 0.02839, "3": 0.4653}}
+{"specs": ["OUUOOO:0", "OUOUOO:f"], "status": "TimeLimit", "z": 0.00727617104907105, "req": {"1": 0.26786, "2": 0.271, "3": 0.22014}}
+{"specs": ["OUUOOO:0", "OOOOOO:0", "OUOUOO:2"], "status": "Infeasible", "z": null, "req": null}
+{"specs": ["OUUOOO:f", "OUOUOO:f"], "status": "TimeLimit", "z": 0.3348025096391475, "req": {"0": 0.00268, "1": 0.05886, "2": 0.01053, "3": 0.25142, "6": 0.43551}}
+{"specs": ["OUUOOO:0", "OUOUOO:f"], "status": "Optimal", "z": 0.007435644816815695, "req": {"1": 0.0, "3": 0.23194, "5": 0.26165, "6": 0.26541}}
+{"specs": ["OUUOOO:f", "OUOUOO:f"], "status": "TimeLimit", "z": 0.44035750332614176, "req": {"1": 0.00889, "2": 0.20146, "3": 0.10619, "5": 0.44246}}
+{"specs": ["OUUOOO:0", "OUOUOO:f"], "status": "Optimal", "z": -0.011807326422499789, "req": {"3": 0.2357, "5": 0.26165, "6": 0.26165}}
+{"specs": ["OUUOOO:1", "OUOUOO:f"], "status": "Infeasible", "z": null, "req": null}
+{"specs": ["OUUOOO:2", "OUOUOO:f"], "status": "Optimal", "z": 0.01655233263959255, "req": {"3": 0.26195, "5": 0.248, "6": 0.24905}}
+{"specs": ["OUUOOO:3", "OUOUOO:f"], "status": "Optimal", "z": 0.00743493815861235, "req": {"3": 0.23194, "5": 0.26165, "6": 0.26541}}
+{"specs": ["OUUOOO:8", "OUOUOO:f"], "status": "Optimal", "z": 0.22826041969510538, "req": {"0": 0.02572, "1": 0.22963, "6": 0.26541, "7": 0.23824}}
+{"specs": ["OUUOOO:9", "OUOUOO:f"], "status": "Optimal", "z": 0.01658858549087615, "req": {"0": 0.02572, "3": 0.23394, "4": 0.23958, "6": 0.02839, "7": 0.23137}}
+{"specs": ["OUUOOO:10", "OUOUOO:f"], "status": "Optimal", "z": 0.0074360299439718515, "req": {"3": 0.23194, "5": 0.26165, "6": 0.26541}}
+{"specs": ["OUUOOO:6", "OUOUOO:f"], "status": "Optimal", "z": 0.39904718649962156, "req": {"3": 0.4653, "5": 0.02587, "6": 0.26783}}

@@ -1,0 +1,7 @@
+{"start": true, "T": 0.76, "N": 1.8, "prefix": "O", "k": 1, "MC": 4, "TL": 20.0}
+{"node": "O", "cand": 0, "rejected_by": "OUUOOO"}
+{"node": "O", "cand": 1, "rejected_by": "OUUOOO"}
+{"node": "O", "cand": 2, "rejected_by": "OUOUOO"}
+{"node": "O", "cand": 3, "rejected_by": "OUUOOO"}
+{"node": "O", "ok": false, "cands": 10}
+{"SUMMARY": true, "T": 0.76, "N": 1.8, "prefix": "O", "constructed": false, "secs": 313}

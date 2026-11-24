@@ -1,0 +1,132 @@
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+MIP has 70220 rows; 22113 cols; 401368 nonzeros; 10080 integer variables (10080 binary)
+Coefficient ranges:
+  Matrix  [1e-09, 2e+00]
+  Cost    [1e+00, 1e+00]
+  Bound   [1e+00, 4e+00] (continuous)
+  Bound   [1e+00, 1e+00] (non-continuous)
+  RHS     [2e-08, 2e+00]
+WARNING: Problem has some excessively small bounds on constraints
+Presolving model
+70220 rows, 22113 cols, 401368 nonzeros 0s
+39088 rows, 16202 cols, 280864 nonzeros 0s
+24411 rows, 11850 cols, 159665 nonzeros 0s
+21832 rows, 10870 cols, 146148 nonzeros 0s
+Presolve reductions: rows 21832(-48388); columns 10870(-11243); nonzeros 146148(-255220) 
+
+Solving MIP model with:
+   21832 rows
+   10870 cols (5140 binary, 0 integer, 0 implied int., 5730 continuous, 0 domain fixed)
+   146148 nonzeros
+   Thread count: 24 available cores, 24 logical processors, using up to 1 workers across 1 threads.
+
+Src: B => Branching; C => Central rounding; F => Feasibility pump; H => Heuristic;
+     I => Shifting; J => Feasibility jump; L => Sub-MIP; P => Empty MIP; R => Randomized rounding;
+     S => Solve LP; T => Evaluate node; U => Unbounded; X => User solution; Y => HiGHS solution;
+     Z => ZI Round; l => Trivial lower; p => Trivial point; u => Trivial upper; z => Trivial zero
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+         0       0         0   0.00%   -0.759          inf                  inf        0      0      0         0     1.4s
+         0       0         0   0.00%   -0.759          inf                  inf        0      0      4     16341    11.5s
+         0       0         0   0.00%   -0.759          inf                  inf    19723    596     21     23442    18.1s
+         0       0         0   0.00%   -0.759          inf                  inf    23313    884     45     29908    49.0s
+         0       0         0   0.00%   -0.759          inf                  inf    27421   1006     49     79754    91.9s
+         0       0         0   0.00%   -0.759          inf                  inf    12052   1266     56     95721   104.0s
+         0       0         0   0.00%   -0.759          inf                  inf    16240   1515     56    150269   144.5s
+         0       0         0   0.00%   -0.759          inf                  inf    17100   1712     63    161396   154.4s
+         0       0         0   0.00%   -0.759          inf                  inf    20866   1880     63    169199   161.8s
+         0       0         0   0.00%   -0.759          inf                  inf    23443   2034     67    277701   250.9s
+         0       0         0   0.00%   -0.759          inf                  inf    13301   2157     70    319128   283.0s
+         0       0         0   0.00%   -0.759          inf                  inf    15161   2245     77    326870   290.2s
+         0       0         0   0.00%   -0.759          inf                  inf    17686   2322     86    336606   298.6s
+         0       0         0   0.00%   -0.759          inf                  inf    19848   2094     96    455444   408.5s
+         0       0         0   0.00%   -0.759          inf                  inf    13353   2173    104    523950   461.8s
+         0       0         0   0.00%   -0.759          inf                  inf    15180   2248    110    530124   467.6s
+         0       0         0   0.00%   -0.759          inf                  inf    17725   2317    119    663249   585.7s
+         0       0         0   0.00%   -0.759          inf                  inf    15467   2391    123    734919   644.7s
+         0       0         0   0.00%   -0.759          inf                  inf    17477   1649    127    743898   653.1s
+         0       0         0   0.00%   -0.759          inf                  inf    19060   1723    131    753939   662.6s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+         0       0         0   0.00%   -0.759          inf                  inf    23993   1850    143    766851   675.6s
+         0       0         0   0.00%   -0.759          inf                  inf    26161   1903    143    909467   789.3s
+         0       0         0   0.00%   -0.759          inf                  inf    15900   1358    149     1046k   901.4s
+         0       0         0   0.00%   -0.759          inf                  inf    15289   1358    149     1046k   901.4s
+
+Solving report
+  Status            Time limit reached
+  Primal bound      inf
+  Dual bound        -0.759
+  Gap               inf
+  P-D integral      901.39
+  Solution status   -
+  Timing            901.39
+                    0.85 (Presolve)
+                    900.54 (Solve)
+                    0.00 (Postsolve)
+  Max sub-MIP depth 0
+  Nodes             0
+  Repair LPs        0
+  LP iterations     1046597
+                    0 (strong br.)
+                    1030256 (separation)
+                    0 (heuristics)
+{"T": 0.76, "N": 1.8, "prefix": "O", "status": "TimeLimit", "milp_z": null, "secs": 902}
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+MIP has 70540 rows; 22113 cols; 403800 nonzeros; 10080 integer variables (10080 binary)
+Coefficient ranges:
+  Matrix  [1e-09, 2e+00]
+  Cost    [1e+00, 1e+00]
+  Bound   [1e+00, 4e+00] (continuous)
+  Bound   [1e+00, 1e+00] (non-continuous)
+  RHS     [2e-08, 2e+00]
+WARNING: Problem has some excessively small bounds on constraints
+Presolving model
+70540 rows, 22113 cols, 403800 nonzeros 0s
+30017 rows, 11825 cols, 141984 nonzeros 0s
+26361 rows, 10585 cols, 130912 nonzeros 0s
+Presolve reductions: rows 26361(-44179); columns 10585(-11528); nonzeros 130912(-272888) 
+
+Solving MIP model with:
+   26361 rows
+   10585 cols (5504 binary, 0 integer, 0 implied int., 5081 continuous, 0 domain fixed)
+   130912 nonzeros
+   Thread count: 24 available cores, 24 logical processors, using up to 1 workers across 1 threads.
+
+Src: B => Branching; C => Central rounding; F => Feasibility pump; H => Heuristic;
+     I => Shifting; J => Feasibility jump; L => Sub-MIP; P => Empty MIP; R => Randomized rounding;
+     S => Solve LP; T => Evaluate node; U => Unbounded; X => User solution; Y => HiGHS solution;
+     Z => ZI Round; l => Trivial lower; p => Trivial point; u => Trivial upper; z => Trivial zero
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+         0       0         0   0.00%   -0.759          inf                  inf        0      0      0         0     1.3s
+         0       0         0   0.00%   -0.3299604135   inf                  inf        0      0      2     25709    12.7s
+         1       0         1 100.00%   inf             inf                  inf    15746    324      5     34961    16.4s
+
+Solving report
+  Status            Infeasible
+  Primal bound      inf
+  Dual bound        inf
+  Gap               inf
+  P-D integral      16.38
+  Solution status   -
+  Timing            16.38
+                    0.85 (Presolve)
+                    15.53 (Solve)
+                    0.00 (Postsolve)
+  Max sub-MIP depth 0
+  Nodes             1
+  Repair LPs        0
+  LP iterations     34961
+                    0 (strong br.)
+                    2386 (separation)
+                    0 (heuristics)
+{"T": 0.76, "N": 1.8, "prefix": "O", "status": "Infeasible", "milp_z": null, "secs": 17}
