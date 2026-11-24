@@ -30,7 +30,7 @@ def order_of(rule, types):
 
 
 class Tree2:
-    def __init__(self, T, menus, default=("L",), discards=(0, 1), start=None, fixed=None, tl=900):
+    def __init__(self, T, menus, default=("L",), discards=(0, 1), start=None, fixed=None, tl=900, leafdisc=None):
         self.T, self.menus, self.default, self.discards = T, menus, default, discards
         self.prob = pulp.LpProblem("t2", pulp.LpMinimize)
         self.cnt = 0
@@ -38,6 +38,7 @@ class Tree2:
         self.prob += self.z
         self.nodes, self.leaves = [], []
         self.fixed = fixed
+        self.leafdisc = leafdisc or {}
         if start is None:
             start = ((), 2, {1: 1.0, 2: 1.0, 3: 0.0}, {1: 1, 2: 1, 3: 1})
         self.root = start[0]
@@ -89,7 +90,7 @@ class Tree2:
         prob, T = self.prob, self.T
         full = (1 << E) - 1
         picks = []
-        for d in self.discards:
+        for d in self.leafdisc.get(path, self.discards):
             I = full & ~(1 << d)
             pick = self.V(cat="Binary")
             picks.append((d, pick))

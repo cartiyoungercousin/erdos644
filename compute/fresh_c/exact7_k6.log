@@ -1,0 +1,7 @@
+k=6 T=5 (T/k=0.8333): REQUESTER wins   states=12605  [63.9s]
+  after 1 edges: |D| = 12  types {-:6, 1:6}  request {-:2, 1:3}
+  after 2 edges: |D| = 12  types {-:2, 1:4, 2:4, 12:2}  request {1:2, 2:1, 12:2}
+  after 3 edges: |D| = 12  types {1:2, 2:2, 12:2, 3:2, 13:2, 23:2}  request {12:2, 13:2, 23:1}
+  after 4 edges: |D| = 12  types {12:2, 13:2, 23:2, 14:2, 24:2, 34:2}  request {12:2, 13:1, 34:2}
+  after 5 edges: |D| = 8  types {12:1, 123:1, 134:2, 235:2, 45:1, 345:1}  request {123:1, 134:2, 235:2}
+  after 6 edges (adversary's best reply): |D| = 4

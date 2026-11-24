@@ -277,3 +277,222 @@ slivers as in 7.6). k = 3, T = 2 (t = 2/3 < 3/4): requester loses — sanity che
 Runs for (k,T) = (4,3), (5,4), (6,5) hit the 9-minute limit without finishing (empty
 `compute/twin/run_k*_T*.log`): NOTHING is claimed for those sizes. The solver needs round-symmetry
 canonicalisation and a better request ordering (e.g. the LP rule of 8.4 first) before it is useful.
+
+=============================================================================================
+## 11. Is the confined adversary the worst case? (third time box)
+
+**Answer: not provably, and not by any simulation argument. What is true is one-directional.**
+- An ADVERSARY win on the 2k points A_1 ∪ A_2 transfers to the open game (11.1).
+- A REQUESTER win there transfers only for 7-tuples that keep the disjoint pair (11.2), which is the
+  mode she cannot use below 5k/6; in the mode she must use (drop one of A_1, A_2) I have no reduction,
+  and the two obvious ones fail for stated reasons (11.3, 11.5).
+- "Each disjoint pair costs one discard, and only boundedly many can be forced" is false as a
+  mechanism (11.4).
+I found neither a proof that fresh points are useless to the adversary nor an unconfined adversary
+that provably beats what every confined one can do. So a certified requester win in agent C's
+confined game would NOT by itself prove anything about general families.
+
+Notation: conf(N) = adversaries all of whose replies lie in a fixed N-point set V known to the
+requester; open = no restriction. "Fresh" = a point in no earlier reply.
+
+### 11.1 Monotonicity [proved by hand]
+
+Every conf(N) strategy is a conf(N') strategy for N' >= N (ignore the extra points), and in an
+m-request game every open strategy uses at most mk points, so open = conf(mk) up to naming the fresh
+points in advance. Hence the adversary's power is non-decreasing in N, and
+
+    "confined to 2k is the worst case"  ⇔  the game value is constant in N for N >= 2k.
+
+Consequences: an adversary strategy that beats every m-request requester on 2k points beats her in
+the open game too; a requester win on 2k points says nothing about N > 2k.
+
+### 11.2 Keep-mode: confinement is w.l.o.g. [proved by hand]
+
+**Theorem.** Let A, A' be disjoint replies that are both among the seven kept, W = A ∪ A'. Replace
+every other kept reply E by any k-set E' with E ∩ W ⊆ E' ⊆ W. If the original seven are 2-coverable,
+so are the new seven. So in tuples that keep the pair, an adversary loses nothing by confining all
+later replies to W, and fresh mass strictly helps her: a reply with mass f outside W has rectangle
+(A∖E) × (A'∖E) of semi-perimeter exactly k + f (Lemma 5.1), against k for a confined reply.
+*Proof.* A cover of a tuple containing A, A' is a pair (x,y) in A × A'; it covers E iff x or y is in
+E ∩ W ⊆ E'. ∎
+This is the only regime where "confined to A_1 ∪ A_2" is literally the worst case. It is the regime
+of Theorem 8, whose adversary holds her to T >= 5k/6 [C, computed exact], so it is not the regime
+in which 3k/4 can be reached.
+
+### 11.3 Padding lemma: what a confined win does give [proved by hand]
+
+**Lemma.** Let Σ be a requester strategy that beats every conf(V) adversary. Against an arbitrary
+adversary let her feed Σ the padded replies B'_i = (B_i ∩ V) ∪ P_i, with P_i ⊂ V∖(S_i ∪ B_i) of her
+choice, |B'_i| = k (possible since |V∖S_i| >= k). When Σ announces seven uncoverable padded replies,
+every 2-cover of the corresponding REAL replies contains a point outside V.
+*Proof.* B_i ∩ V ⊆ B'_i, so a real cover inside V covers the padded tuple. ∎
+So the lift succeeds iff she can also exclude covers through outside points, i.e. pairs (x,y), x ∉ V,
+with J_x ∪ J_y ⊇ kept. A sufficient condition is "points of V in at most 4 kept replies, outside
+points in at most 2". That costs budget outside V: at each round she must request the outside points
+already used twice. Σ is a black box using the whole budget T inside V, so the lift needs
+T_open >= T_conf + (mass of twice-used outside points), and the adversary decides that mass. A
+single fresh point placed in every reply already defeats the unpaid lift (cost O(1)); a fresh set F
+of mass f that he re-uses whenever it is unrequested costs her on the order of f/2 per round [estimate: she must pair-cover F by
+her requests, e.g. six sets of half its mass in K4 pattern], while costing him f of each reply's
+mass inside V. Whether that exchange favours him is exactly the open game; the lemma
+does not decide it.
+
+### 11.4 Disjoint pairs are not "one discard each" [proved by hand]
+
+**Proposition (two arenas).** Let V_X, V_Y be disjoint public sets of k + ⌈T/2⌉ points and let the
+adversary always reply inside one arena (he can: one arena has at most T/2 requested points). Among
+m replies with a in V_X there are a(m - a) disjoint pairs — every X-reply is disjoint from every
+Y-reply, no three replies are pairwise disjoint — so no bounded number of discards removes them.
+Nevertheless the requester wins with 7 requests and no discard when T >= 2k/3 + O(1).
+*Proof.* Fix P_1..P_4 ⊂ V_X and Q_1..Q_4 ⊂ V_Y, each of at most T/2 points, covering their arena
+(4·T/2 >= k + T/2). With x, y the numbers of X- and Y-replies so far, request P_{x+1} ∪ Q_{y+1}
+(nothing from an arena that already has four replies). If before the last round one arena has no
+reply, request more than T/2 points of the other arena, which forces a reply into the empty one.
+After 7 rounds both arenas are used and one, say X, has four replies missing P_1,…,P_4, hence with
+no common point. A 2-cover needs a point of V_Y for a Y-reply and then one point in all X-replies:
+impossible. ∎
+So a disjoint pair (A, A') is of two kinds, distinguished by the later replies E:
+confined kind (E ⊂ A ∪ A', rectangle area <= k²/4: the pair must lose a member below 4k/5 [proved, Cor. 5.2];
+below 5k/6 against Theorem 8's adversary [C, computed]) and
+arena kind (E misses A or A', rectangle a full strip: the pair is kept and helps her). By 11.2 the
+measure is the semi-perimeter k + f of the rectangle. An adversary may mix the kinds reply by reply,
+and nothing I can prove bounds the number of confined-kind pairs he forces. The only general
+constraint is that the disjointness graph is triangle-free, so 23 = R(3,7) replies always contain 7
+pairwise intersecting ones — but not necessarily seven she can use, and "intersecting in O(1)
+points" still behaves like disjoint.
+
+### 11.5 Why compression does not work [proved by hand]
+
+The natural reduction replaces each fresh point by an old unrequested point (a map φ from the open
+ground set onto V). Covers survive (φ of a cover is a cover of the images), but requests do not:
+one request of φ(u) in the confined game answers to requests of all preimages of φ(u) in the open
+game, so the image adversary is weaker, not stronger. Fresh points are precisely extra copies that
+she must pay for separately; this is the content of 11.3's budget term and the reason no
+shifting-type argument can prove the reduction.
+
+### 11.6 What would close it
+
+(i) [open] Constancy of the value in N on the range 2k <= N <= 7k/3. The upper end is where the
+majority template of 7.3(c) becomes available (seven replies with every point in at most three);
+points of degree >= 3 in a kept 7-tuple have mass at most 7k/3, so I expect nothing new beyond it
+[heuristic].
+(ii) A requester strategy stated in ground-set-free terms. The Fano-nerve blocks M_c of 7.5 are
+such terms: for a block strategy the open game IS the game "keep mass(M_c) <= T", and fresh points
+enter only through twice-used fresh mass on the early pair of a line, whose labelling she chooses
+afterwards. A certified win of agent C's solver transfers to general families only if the winning
+strategy is of this form and its certificate bounds mass(M_c) for arbitrary replies, not only
+for replies inside A_1 ∪ A_2.
+(iii) Concretely for agent C: by 11.1 the informative direction on 2k points is an ADVERSARY
+certificate. For the requester direction the same solver should be run on conf(N) with
+N in {2.15k, 7k/3} (complete family, same omission scripts plus a "new territory" rule: omit the
+highest-degree unrequested points), since those adversaries are at least as strong.
+
+=============================================================================================
+## 12. Does the value stabilise past N₀ ≈ 7k/3? (fourth time box)
+
+**Outcome: job (1) is NOT proved; job (2) is answered with proved lemmas, and they show why
+7k/3 is a threshold for the final 7-tuple but not (by any argument I have) for the game.**
+- 12.1 gives the exact condition under which points beyond a ground set V can be merged into V
+  (hosting theorem). Merging is free for points used once and for strategies that never cap or
+  block at degree 2; it is not free in general, and the precise leak is identified (12.2).
+- 12.3–12.6 are the lemmas behind 7k/3: forced 4-fold mass below it, the spread (majority) lemma
+  above it, and the fact that every cover lives on at most 7k/3 points.
+- I found no adversary whose power provably grows with N, so there is no counterexample lead either.
+
+conf(N), open, fresh as in §11. Type J_u = set of replies containing u; image objects carry a prime.
+
+### 12.1 Hosting theorem [proved by hand]
+
+**Theorem.** Let Σ be a requester strategy that beats every adversary confined to a set V
+(|V| >= k + T_Σ, budget T_Σ). In the open game let her run Σ against image replies B'_j ⊂ V∖S^Σ_j
+that she constructs herself, and put I'_J = ∩_{i in J} B'_i. Suppose at every round j her real
+request contains
+
+    U_j = { real points u with J_u ≠ ∅ and I'_{J_u} ⊆ S^Σ_j }        (so she needs |U_j| <= T).
+
+Then she can construct the B'_j so that at all times every real point u with J_u ≠ ∅ has a host
+p in V with J'_p ⊇ J_u, and when Σ announces seven uncoverable image replies, the real replies with
+the same indices are uncoverable.
+*Proof.* Induction on j. A point u of the real reply B_j is not in U_j, so there is
+p_u in I'_{J_u}∖S^Σ_j (for fresh u: any p_u in V∖S^Σ_j). Let B'_j consist of the p_u, u in B_j (at
+most k points), padded to a k-subset of V∖S^Σ_j; this is a legal confined reply, and
+J'_{p_u} ⊇ J_u ∪ {j}. Points outside B_j keep their hosts. A real 2-cover {x,y} of the kept replies
+gives hosts with larger types, i.e. an image 2-cover. ∎
+Hosts need not be distinct: arbitrarily many real points may share one host. The real request need
+not contain S^Σ_j at all. The entire cost of ignoring the points outside V is |U_j|:
+
+    cost_j = real mass of the types J whose image intersection I'_J is completely requested by Σ.
+
+### 12.2 What the theorem gives and where it leaks [proved by hand]
+
+(a) **Points used once are free.** |I'_{{a}}| = k > T_Σ, so a point lying in one reply is never in
+    U_j. Fresh filler that is not re-used costs nothing, on any V, for any Σ.
+(b) **Faithful case = monotonicity.** If the real ground set embeds injectively in V (hosts
+    distinct, B'_j = image of B_j), then U_j is contained in the preimage of S^Σ_j and cost_j <= T_Σ:
+    this is just 11.1.
+(c) **Block-only strategies see only degree >= d.** If Σ only ever requests a whole I'_J with
+    |J| >= d, then U_j consists of real points of degree >= d, whose mass among j replies is at
+    most jk/d (7k/3 for d = 3 and seven replies). Only these points would need distinct hosts.
+    [That they can always be given distinct hosts online is NOT proved.]
+(d) **The leak.** She can make |I'_{ab}| no larger than |B'_a∖S^Σ_b|. When Σ caps a pair intersection
+    by a partial request (most of B'_a at round b) and later requests the small I'_{ab} entirely,
+    the real points of type ⊇ {a,b} are charged in full, and nothing in the hosting construction has
+    capped THEIR mass: merged copies evade a cap that was paid for only once. The strategies known
+    to reach 3k/4 on small ground sets (Fano blocks M_c of 7.5, matched pairs capped at r) are of
+    this kind, with d = 2. In my construction, mirroring the caps needs distinct hosts for all
+    points of degree >= 1, i.e. |V| >= the real ground set: no reduction.
+So merging points beyond N₀ changes the winner unless the certified strategy is block-only at
+degree >= 3. I could not prove stabilisation at any N₀ independent of m for general strategies.
+
+### 12.3 Below 7k/3 high multiplicity is forced [proved by hand]
+
+Seven replies inside an N-set have 4-fold mass at least (7k - 3N)/4, and at least 7k - 3N if no
+point lies in five of them (count incidences: 7k <= 7y + 3(N - y), resp. 4y + 3(N - y)). So for
+N < 7k/3 every 7-tuple has 4-fold points for free; she can never reach "every point in at most 3"
+and must instead destroy every complementary (4,3)/(4,4) pair. This is forced mass that no request
+can prevent. For N >= 7k/3 nothing is forced: every 4-fold point exists only because the adversary
+re-used it against her requests.
+
+### 12.4 Spread lemma (the majority family as a strategy) [proved by hand]
+
+**Lemma.** On any ground set: if at each of the requests j = 4,…,7 the points lying in at least
+three of the replies so far have mass at most T, she wins with seven requests and no discard.
+*Proof.* She requests exactly those points. A point in four replies i_1 < … < i_4 lay in three
+replies at request i_4 and was requested. So no point is 4-fold and two points cover at most six. ∎
+Corollary: to survive, an adversary must at some request j <= 7 have 3-fold mass > T among at most
+six replies. By 12.3 a confined adversary with N < 7k/3 never satisfies the hypothesis; an adversary
+on more points satisfies it unless he concentrates on purpose.
+
+### 12.5 Every cover lives on at most 7k/3 points [proved by hand]
+
+If no point lies in five of the seven kept replies (free for her when 4T >= 3k, Lemma 3), a cover
+{x,y} has both degrees in {3,4}. So coverability of the tuple depends only on the traces on
+R = {points in >= 3 kept replies}, and 3·mass(R) <= 7k. All other points are *filler*.
+With N points and maximum degree 4 the filler has mass at most 2N - 7k/2: none at 7k/4 (Fano
+blow-up is rigid), k/2 at 2k, 7k/6 at 7k/3.
+
+### 12.6 Why the threshold appears, and why it is not yet a theorem about the game
+
+What fresh points give the adversary, exactly: filler. Up to N = 7k/3 more points mean more room
+for replies that overlap little with the past (waste in the sense of Theorem 8, disjoint pairs) while
+4-fold points are still forced (12.3). Past 7k/3 the relevant set R cannot grow (12.5), 4-fold
+points are no longer forced (12.3), and an adversary who actually spreads over the extra points
+loses to 12.4. That is the sense in which the gain stops. [the three facts are proved; the
+conclusion "hence the game value is constant past 7k/3" is NOT]
+What is missing: R is only determined at the end. During play she cannot tell filler from future
+members of R, and by 12.2(d) she cannot treat them as merged without losing her caps. An adversary
+on N > 7k/3 points is free to play any small-ground-set strategy and to decide reply by reply
+which fresh points to re-use.
+No growing adversary found: in every example I can analyse, fresh mass f in a reply shrinks the
+core he plays on (replies of size k - f on R), and a smaller Fano-type core has smaller blocks, which
+helps her [heuristic]. I have no adversary whose guaranteed level increases with N beyond 2k.
+
+### 12.7 Consequence for the certification plan
+
+A certified requester win on N₀ = 7k/3 points becomes a general bound if, in addition, the
+certificate shows either
+(i) the strategy is block-only at degree >= 3 (then by 12.2(c) only points of degree >= 3 matter;
+    but 12.3 says such a strategy cannot win on N₀ < 7k/3, and at 7k/3 it is essentially 12.4), or
+(ii) the bound mass(M_c) <= T on its blocks holds for arbitrary real replies, with caps paid on
+    real points (the ground-set-free form of 11.6(ii)).
+Without one of these the confined certificate does not transfer.

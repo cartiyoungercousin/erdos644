@@ -532,3 +532,61 @@ Observations.
 adversaries that are too weak to matter, and nothing computed so far shows a level above 3/4 at m = 8.
 The decisive computation is still the certified value of the m = 8 game against the adaptive pivot
 at T = 0.76 and 0.80; it needs a branch-decomposed solver, not the monolithic MILP used here.
+
+---------------------------------------------------------------------------------------------
+
+## 11. Attempt at a certified solver for the m = 8 confined game — NOT achieved
+
+Code: `compute/fresh_c/cert.py` (discard-pattern decomposition), `do_loop.py` (pool loop), `ntable.py`
+(values per (T, N) against scripts). Logs: `do_loop_T0.76.log`, `ntable.log`.
+
+**Bottom line.** No certified value of the m = 8 game against the unrestricted confined adversary was
+obtained, at T = 0.76 or anywhere else; consequently no t*(9), t*(10) and no N-dependence against that
+adversary. What follows is what was tried, why it failed, and what is certified.
+
+### 11.1 Why the loop cannot be certified with the present models
+
+1. *Lower-bound side (requester versus a pool).* The requester's problem against a pool with L leaves
+   is one MILP whose LP relaxation is useless: the 0/1 "realized" flags are bounded below only by the
+   unrequested mass, so the relaxation makes every flag tiny and the bound stays at the trivial -T
+   until essentially all block decisions are fixed. Tried:
+   - monolithic MILP, 4-rule fork at reply 5 (4 leaves), T = 0.76, 19 min: incumbent -0.01, bound -0.76;
+   - **decomposition over the requester's discard pattern** (`cert.py`: 16 MILPs with the discard of
+     every leaf fixed, in parallel, 400 s each): 0 of 16 closed; best incumbents +0.22 … +0.48, bounds
+     -0.76 (two at -0.73, -0.63). Fixing the discards does not make the tree easier; the incumbents are
+     in fact worse than the monolithic one, so these runs prove nothing in either direction;
+   - Benders-type decomposition over the branches with the prefix requests as complicating variables
+     was NOT implemented: the branch value is not convex in the prefix requests (the realized family is
+     a 0/1 function of which types are fully requested), so ordinary Benders cuts are invalid, and
+     integer (combinatorial) cuts amount to enumerating block patterns.
+   What is needed is a purpose-built branch-and-bound that branches on the *block pattern* (which
+   types are fully requested at each node) and solves an LP at each leaf of that search, with
+   dominance pruning. That is a different program from anything here.
+2. *Upper-bound side.* A pool of vertex replies is not known to be without loss of generality: the
+   requester's continuation value is not quasi-convex in the adversary's omission (averaging two
+   continuations unites their realized families). So even a loop that closes over all single-type-first
+   deviations certifies only "value against adaptive vertex replies, one deviation deep". A certified
+   requester win needs an explicit policy defined on all states and an exact adversary best response
+   to it; I have no such policy.
+
+### 11.2 Certified facts gathered on the way
+
+- **Reduction [proved by hand].** In the confined game (replies 1, 2 disjoint, V their union) a requester
+  who commits to discarding reply 2 plays exactly the 7-request game on the 2k-point ground set whose
+  first reply is A_1 and whose other k points are untouched. Hence value(m = 8 confined) <= value of
+  that 7-request game, and it is the latter (5 adaptive adversary replies, last one in closed form) that a
+  purpose-built solver should attack first; discard patterns are then unnecessary for a requester win.
+- **Two bad templates exist on 2k points, not one [proved by hand].** Besides sub-Fano families, the ten
+  blocks of the 2-(6,3,2) design are pairwise intersecting with every index in exactly half of them, so
+  ten classes of mass k/5 give SIX replies with no 2-cover on 2k points. A correct requester rule (and
+  any rigidity argument) must allow for both templates; the twin's "Fano up-set is the natural one"
+  (TWIN §7.3) is not forced.
+- Seven-request thresholds 5/6, ≈11/13, 7/8 and the m = 8 control (§10) stand.
+- Loop log at T = 0.76 (§9.6): iteration 0 value -0.28 (optimal), best deviation +0.24; iteration 1
+  value in [-0.76, -0.01]; the oracle after iteration 1 proposes three more rules at the reply-7 node
+  (deviation +0.23). Gap never closed.
+
+### 11.3 Values per (T, N) against scripted adversaries [computed exact; requester free; discards 1 or 2]
+
+See the table appended below (`ntable.log`). Scripts on a ground set of mass N (untouched pool N-1 after
+reply 1): reply 2 disjoint ("W"), then T8 / L / H / G as in §9, and PF (never a fresh point).
