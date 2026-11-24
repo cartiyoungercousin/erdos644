@@ -40,8 +40,8 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 | Claim | Where | Status |
 |---|---|---|
 | Theorem J′ (6μ), Theorem J″ (4μ) | PETAL 14.1, 18.1 | VERIFIED (V4; Step 1 needs t >= 2/3; the third-class branch and integer rounding are not written) |
-| Theorem DS, DS-b | PETAL 20.2, §21 | HAND + EXACT replay, verification pending (V5) |
-| Lemma FF, Theorem AP | PETAL 23.1, 23.2 | HAND + EXACT replay, verification pending (V5) |
+| Theorem DS, DS-b | PETAL 20.2, §21 | VERIFIED (V5; δ < t/6 is sharp; the DS-b condition must be strict) |
+| Lemma FF, Theorem AP | PETAL 23.1, 23.2 | VERIFIED (V5; 112/151 is sharp; asymmetric arenas replayed; AP's τ_c comes from a direct count, not 'FF with equality') |
 | Theorem N adversary beats 2+2 | PETAL §12 | HAND |
 | 𝒜(t,δ), 𝒦₂ (c >= 0.5217) as obstructions | PETAL §20, §22 | DEAD |
 
