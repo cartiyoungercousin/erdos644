@@ -1,0 +1,4 @@
+vertices: 93
+worst B-load with S-petals (units of delta): 2.000000 at {'1': np.float64(1.0), '2': np.float64(1.0), '3': np.float64(1.0), '4': np.float64(1.0)}
+worst B-load, double seal only: 2.666667  (= 8/3 expected)
+d=2: 987 integer structures; worst least max B-load = 4 (2d = 4) at {'2': 2, '3': 2, '14': 2}

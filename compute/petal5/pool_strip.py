@@ -216,9 +216,9 @@ class Adv:
         return E
 
 
-def play(F, T, X, genome):
+def play(F, T, X, genome, strat=None):
     adv = Adv(F, genome)
-    out = ps_strategy(F, T, adv.reply, X)
+    out = (strat or ps_strategy)(F, T, adv.reply, X)
     reps = out["reps"]
     mr = max(len(R) for R in out["reqs"])
     out["cmax"] = max((len(R) for R in out["reqs"][4:]), default=0)
@@ -236,12 +236,12 @@ def score(F, reps):
     return best
 
 
-def search(F, T, X, games, seed):
+def search(F, T, X, games, seed, strat=None):
     rnd = random.Random(seed)
     st = dict(games=0, covers=0, viol=0, flags=set(), maxreq=0, maxcov=0, cmax=0)
 
     def ev(g):
-        out, mr, cov = play(F, T, X, g)
+        out, mr, cov = play(F, T, X, g, strat)
         st["games"] += 1
         st["maxreq"] = max(st["maxreq"], mr)
         st["cmax"] = max(st["cmax"], out["cmax"])

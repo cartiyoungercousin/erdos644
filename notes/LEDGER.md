@@ -47,12 +47,13 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 | Lemma FF, Theorem AP | PETAL 23.1, 23.2 | VERIFIED (V5; 112/151 is sharp; asymmetric arenas replayed; AP's τ_c comes from a direct count, not 'FF with equality') |
 | Theorem PS (pooled 𝒜 loses for δ < 3t/16, no condition on c) | PETAL §26 | VERIFIED (PS verifier; 3t/16 is sharp) |
 | Small-k search for non-arena two-class families (k = 12, at most 4 atoms; k = 16, at most 4 atoms, n <= 44) | PETAL §25 | EXACT: no hit (proved within those bounds); k = 12 with 5–6 atoms partial |
+| Theorem PS2 (pooled 𝒜 loses for δ < t/4) | PETAL §27 | HAND + EXACT LP (93 leak structures) + 4200-game replay; verification pending |
 | Theorem N adversary beats 2+2 | PETAL §12 | VERIFIED (W3) |
 | 12.3 (𝒜 loses to 4+3 when she knows the arenas) | PETAL 12.3 | GAP (W3): assumes the ground set is the two arenas; a leak outside them breaks it. Check whether DS / the 𝒜 kill inherits this, or whether AP's pool covers it |
 | 𝒜(t,δ), 𝒦₂ (c >= 0.5217) as obstructions | PETAL §20, §22 | DEAD |
 
 ## Open
-- Petal: pooled 𝒜 for 3t/16 <= δ < 1 - t (e.g. [0.1406, 0.25) at t = 3/4). The earlier note claiming §19.1 closes this was wrong: §19.1 only marks where AP's hypothesis fails (verifier, notes/verify/PS.md).
+- Petal: pooled 𝒜 for t/4 <= δ < 1 - t (empty for t >= 4/5; [0.1875, 0.25) at t = 3/4). Narrowed from 3t/16 by PS2. The earlier note claiming §19.1 closes this was wrong: §19.1 only marks where AP's hypothesis fails (verifier, notes/verify/PS.md).
 - The core window is 3t - 1/2 < N < 3 - t (21.2 does not close (3t - 1/2, 5t - 2]).
 - (Σ) for hash-like, non-greedy and self-cut families (core window).
 - Fixed two-class families not of arena-with-pool form (petal).

@@ -1399,3 +1399,124 @@ borderline, NOT a hit. Not an arena violation.
 none at k=16 (m<=4, n<=44, PROVED within those bounds; larger n and m>4 not run). Nothing reached steps (5)-(7); the only
 candidate was killed by exact verification. Many range-feasible families exist (e.g. two disjoint complete families) but
 every one has AP <= T+1: the structure lemma holds on all searched blow-up families.
+
+---------------------------------------------------------------------------------------------
+## 27. Pooled 𝒜 above 3t/16: Theorem PS2 (δ < t/4), and the subfamily lever (eleventh time box)
+
+Code: `compute/petal5/ps2.py`, `bload_lp.py`, `intload.py`, `minimal.py`; logs `logs/ps2.log`, `logs/bload.log`,
+`logs/min_k12.log`.
+
+**Outcome.**
+1. The open range [3t/16, 1 - t) shrinks to **[t/4, 1 - t), and it is empty for t >= 4/5** (Theorem PS2, 27.2)
+   [proved by hand, with one LP step computed exactly; exact replay]. At t = 3/4 the range left is [0.1875, 0.25).
+2. Double sealing is dead above 3t/16 [proved by hand, 27.1]. The gain comes from P2 instead of P4(c): a single point of a
+   petal needs sealing only once, provided its whole neighbourhood (one triple cell) is sealed in that request, and the
+   petal requests can be designed so that two triple cells fit into the free part of the centres' forcing sets.
+3. Subfamily lever (27.4): at k = 12, d = 2 (t = 3/4, δ = 1/6) **every** subfamily with τ > T fails (7,2), and the
+   failure is forced (PS2 fits the integer budget exactly) [proved by hand + computed exact]. Enumerating minimal τ > T
+   subfamilies directly is not feasible: they are large (27.4). For k = 20, d = 4 (δ = 0.2, inside [t/4, 1 - t)) nothing
+   was decided.
+
+### 27.1 Why PS stops at 3t/16 [proved by hand]
+
+Petals of class X, centres of class Y (a centre has to avoid a set of mass > τ_X = t/2 inside R_X). Let every petal put
+its leak on fresh points outside R_X, so B = U ∖ R_X has mass 4δ. A centre may contain any unrequested point of B: points in
+R_Y have no capacity limit, and a single pool point is a free sliver. For P4(c), every point of B must be requested in at
+least two of the three centre requests. So the three requests together hold 3·(t/2) + 8δ, and one of them holds at least
+t/2 + 8δ/3. This is the PS bound, so the **P4(c) route is dead for δ > 3t/16 whatever the petal phase does**. (The pool is
+not the issue: with no pool the adversary puts the leaks into R_Y and gets the same 8δ/3; 26.2 and the §20 DS case agree.)
+
+### 27.2 Theorem PS2 [proved by hand; the B-load step computed exactly]
+
+Pooled 𝒜(t, δ) (or any arena-with-pool family with τ_X = τ_Y = t/2, leak δ), 3/4 <= t, δ < min(t/4, 1 - t).
+*Petals (requests 1–4).* Request i = F_i ∪ W_i. F_i ⊂ R_Y has mass max(t/2 + ε, |R_Y-parts of earlier petals|) and contains
+those parts. W_1, W_2, W_3 are pairwise disjoint blocks of R_X of mass t/2 - ε, and W_4 = R_X ∖ (W_1 ∪ W_2 ∪ W_3), of mass
+w = 1 - t - δ + 3ε. Request 4 also contains the points of P_1 ∩ P_2 ∩ P_3 outside R_X ∪ R_Y (pool common points).
+- Class X is forced (|F_i| > τ_Y). For i <= 3, P_i ∩ R_X = R_X ∖ W_i exactly, since 1 - δ is all that is left there. The
+  R_Y-parts of different petals are disjoint. ∪W = R_X. So the common intersection is empty.
+- Budgets. Requests 1–3: t/2 + t/2 (2δ <= t/2 since δ < t/4). Request 4: with s = mass of pool common points, the R_Y-parts of
+  petals 1–3 have mass <= 3δ - 3s, so request 4 <= max(t/2 + s, 3δ - 2s) + w <= max(1 - t/2, 1 - t + 2δ) <= t, using
+  δ <= t - 1/2.
+- Triple cells: T_a = the points of U in every petal but a. Then T_a ∩ R_X ⊂ W_a (mass <= t/2) for a <= 3, and T_4 ∩ R_X = W_4
+  (mass w).
+*Centres (requests 5–7).* G_j ⊂ R_X has mass >= t/2 + ε and contains the R_X-traces on U of the earlier centres (<= (j-1)δ),
+so the centres are class Y with pairwise disjoint traces on R_X. Pick an S-petal a ∈ {1,2,3}: G_5 ⊇ T_a ∩ R_X. Petal 4 is
+the second S-petal: G_6 ⊇ T_4 ∩ R_X, and δ + w = 1 - t <= t/2. Each B point gets a pattern P ⊆ {5,6,7}, the requests that
+contain it. Singles of petal a (resp. 4) may have P = {5} (resp. {6}). All other B points get |P| >= 2. B points of type
+[4] ∖ {a} (resp. [4] ∖ {4}) must have 5 ∈ P (resp. 6 ∈ P).
+- P2 holds. Edges are pairs {x, y} with J_x ∪ J_y = [4]. R_X points and points with |P| >= 2 lie in at most one centre, so
+  such pairs meet at most two centres. B singles of different petals are never adjacent. A single x of petal a with
+  P = {5} has N(x) = T_a, and request 5 contains x and all of T_a (R_X part in G_5, B part by its pattern), so centre 5
+  misses both. The same holds for petal 4 with request 6. No point lies in all four petals.
+- Cost of request j: |G_j| + (B-load of j) = t/2 + ε + B-load_j (G_j stays at t/2: 2δ <= t/2, and δ + w <= t/2).
+  **B-load <= 2δ** for every leak structure: the least max load, minimised over the S-choice, is a convex function of the
+  masses of B by petal type (singles, and multi-types in the pool, with petal budgets <= δ). So its maximum sits at a vertex
+  of that polytope. All 93 vertices were solved as LPs (`bload_lp.py`) [computed exact]: max = 2δ, attained by all
+  singles. By hand at that vertex: loads δ + δ, δ + δ, 2δ (singles of petals 2 and 3 double-sealed as {5,7}, {6,7}).
+  With double seal only, the max is 8/3 δ, as in 27.1.
+So every centre request is <= t/2 + 2δ + ε <= t iff **δ < t/4**. ∎ For t >= 4/5, t/4 >= 1 - t, so pooled 𝒜 is closed on its
+whole range δ < 1 - t.
+
+### 27.3 Exact replay (`ps2.py`, 200 adversary games per row; harness and adversary of 26.3) [computed exact]
+
+The S-petals and pattern design are chosen in-game by an integer MIP on the actual B points. Brute-force pair test on the
+seven replies.
+| k, T | d (δ) | pool m (only?) | t/4·k | τ(H) | covers | over-T | centre max |
+|---|---|---|---|---|---|---|---|
+| 40, 30 | 6 (0.150) | 0 | 7.5 | 31 | 0/200 | 0 | 27 |
+| 40, 30 | 6 (0.150) | 40 | 7.5 | 31 | 0/200 | 0 | 27 |
+| 40, 30 | 7 (0.175) | 0 | 7.5 | 31 | 0/200 | 0 | 29 |
+| 40, 30 | 7 (0.175) | 40 | 7.5 | 31 | 0/200 | 0 | 29 |
+| 40, 30 | 7 (0.175) | 40 (pool only) | 7.5 | 31 | 0/200 | 0 | 29 |
+| 80, 60 | 12 (0.150) | 60 | 15.0 | 61 | 0/200 | 0 | 54 |
+| 80, 60 | 14 (0.175) | 60 | 15.0 | 61 | 0/200 | 0 | 58 |
+| 80, 60 | 15 (0.188) | 0 | 15.0 | 61 | 0/200 | 0 | 60 |
+| 80, 60 | 15 (0.188) | 80 | 15.0 | 61 | 0/200 | 0 | 60 |
+| 80, 60 | 15 (0.188) | 80 (pool only) | 15.0 | 61 | 0/200 | 0 | 60 |
+| 100, 78 | 16 (0.160) | 80 | 19.5 | 79 | 0/200 | 0 | 71 |
+| 100, 78 | 19 (0.190) | 0 | 19.5 | 79 | 0/200 | 0 | 77 |
+| 100, 78 | 19 (0.190) | 100 | 19.5 | 79 | 0/200 | 0 | 77 |
+| 50, 40 | 8 (0.160) | 40 | 10.0 | 41 | 0/200 | 0 | 36 |
+| 50, 40 | 9 (0.180) | 40 | 10.0 | 41 | 0/200 | 0 | 38 |
+| 50, 40 | 9 (0.180) | 40 (pool only) | 10.0 | 41 | 0/200 | 0 | 38 |
+| 80, 60 | 15/12 (0.188) | 60 | 15.0 | 61 | 0/200 | 0 | 60 |
+| 80, 60 | 12/15 (0.188) | 60 | 15.0 | 61 | 0/200 | 0 | 54 |
+| 40, 30 | 8 (0.200) | 40 | 7.5 | 31 | 0/200 | 125 | 32 |
+| 80, 60 | 16 (0.200) | 80 | 15.0 | 61 | 0/200 | 141 | 64 |
+| 80, 60 | 18 (0.225) | 80 | 15.0 | 61 | 0/200 | 147 | 72 |
+
+Every row with δ <= t/4 (δ = t/4 exactly at k = 80, d = 15, which fits by rounding): 0 covers, 0 over budget, no flags; the
+largest centre request equals τ_X + 2d (bound attained). The last three rows (δ > t/4) overrun as predicted. Small k:
+(12, 9), d = 2, m = 6 and m = 12 pool only: 300 games each, 0 covers, max request 9 = T. (16, 12), d = 3 (δ = t/4) overruns by
+one point in the petal phase (integer rounding), so it is not covered at k = 16.
+
+### 27.4 The subfamily lever
+
+- **Logic** [proved by hand]. (7,2)-failure passes to superfamilies, and every τ > T subfamily contains an inclusion-minimal
+  one. So "every minimal τ > T subfamily fails (7,2)" ⟺ "no subfamily is a counterexample at this k". The game is
+  stronger: a requester strategy that works against the whole family works against every subfamily. Forcing is
+  sufficient, not necessary.
+- **k = 12, T = 9, d = 2, any pool: settled** [proved by hand + computed exact]. PS2's integer budget: petal requests
+  5 + 4 = 9, request 4 <= max(5 + s, 6 - s) + 2 <= 9. G_j = 5 (blocks 4, W_4 = 2, traces <= 4). B-load <= 4, by exhaustive
+  MIP over all 987 integer leak structures (`intload.py 2`: worst 4 = 2d). Each centre request <= 9. So every subfamily with
+  τ > 9 yields seven forced members with no 2-cover. Replay agrees (27.3).
+- **Direct enumeration of minimal subfamilies: dead at this scale** [computed]. The fractional cover number of the full
+  family is 2.8 while τ = 10 (k = 12). So τ > T is purely integral, and cut generation needs very many members:
+  LP-guided integer cuts reached τ = 7 after 1244 members (`logs/min_k12.log`, stopped), and minimalisation would cost one ILP
+  per member on top. Random cuts are worse (τ = 6 after 700). No minimal subfamily was obtained, so none was tested.
+- **k = 20, T = 15, d = 4** (δ = 0.2 ∈ [t/4, 1 - t)): PS2 overruns (max centre request 16), so no forcing statement. Not
+  decided.
+
+### 27.5 Status and next steps
+
+- Closed: pooled 𝒜, δ < t/4, all t >= 3/4; all of pooled 𝒜 for t >= 4/5.
+- Open: pooled 𝒜 with t/4 <= δ < 1 - t, 3/4 < t < 4/5 (t = 3/4: [0.1875, 0.25)).
+- Limits of PS2 [heuristic, counting]: a third S-petal would need T_c ∩ R_X <= t/2 - 2δ, or two S-petals in one request
+  would need T_a + T_b <= t/2. With W_4 <= t/2 - δ (petal-4 budget), Σ_a |T_a ∩ R_X| >= 2n - Σ|W| >= 2 - t - δ, and both
+  options need t >= 4/5 or δ <= (3t - 2)/2. So within 4 + 3 with this window design, t/4 looks like the end.
+- Most promising next route [heuristic]: 2+2 in the range. There a_0 = 1 - t/2 - δ <= θ(t), so the copy bound 11.3 no longer
+  blocks a triple served alone (L*(a_0, 1 - t + a_0) <= t). But an A-pair with overlap a_0 needs an unforced request
+  (forcing class A costs t/2 and leaves overlap 1 - t/2 > θ), so the adversary's class choice has to be handled. Cross cells
+  (<= 2δ) are not yet in the account. Not attempted.
+Hand proofs re-read once: 27.1 counting; 27.2 petal budgets (request 4 with the pool trade-off s), the P2 case list, G_j
+sizes. Checks: `py compute/petal5/bload_lp.py`; `py compute/petal5/intload.py 2`; `py compute/petal5/ps2.py 20`.
