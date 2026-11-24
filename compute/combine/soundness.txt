@@ -1,0 +1,4 @@
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+t=0.64 potential=(1.0, 1.0, 1.0) class=all depth<=2 grid 1/25 (requests 1/50): 1 anchors; won at depth: {}; stuck 1: [(0.44, 0.44, 0.44)]; time 97s
+t=0.625 potential=(1.0, 1.0, 1.0) class=all depth<=2 grid 1/20 (requests 1/40): 1 anchors; won at depth: {}; stuck 1: [(0.45, 0.45, 0.45)]; time 1s
+t=0.72 potential=(1.0, 1.0, 1.0) class=all depth<=2 grid 1/50 (requests 1/50): 1 anchors; won at depth: {}; stuck 1: [(0.42, 0.42, 0.42)]; time 2648s

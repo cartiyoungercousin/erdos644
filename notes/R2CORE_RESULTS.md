@@ -134,3 +134,30 @@ adaptively", and the rule "no tight triple" does not separate them. A proof has 
 property of genuine families that survives when each single request is answered like a complete
 family, that is, a statement about many responses to overlapping requests (a density or
 Turán-type input), not a better line of six requests.
+
+## 8. Part 2 (all closure shapes / all request orders): PAUSED, state at the pause
+
+Paused on a priority change from the coordinator. Code: `compute/r2core/orders_lp.py`,
+`orders_milp.py`, `orders_tree.py`, `orders_modes.py`, `two_stage.py`; outputs in `out/`.
+
+- **Shapes [P, resting on the floating MILP of ROADMAP 2.2].** For n < 11k/6 every bad 7-tuple
+  carries a full Fano plane of miss-patterns, and a set of Fano lines meeting every line contains
+  a line. So every closure shape is the Fano shape; 2 or 3 kept edges are sub-cases of one anchor
+  plus six requests. What is left to vary is the ORDER of the six requests (first = 1A by symmetry;
+  second = 1B, or 2A up to symmetry).
+- **Orders whose second request is the partner of the first (24 of 120): threshold exactly 3
+  [E]** (`out/orders_3.01.txt`: exact LP infeasible at c/g = 3.01 for all 24).
+- **The other 96 orders: NOT SETTLED.** No adversary certificate. Against the restricted
+  adversaries I could encode, the requester survives up to c/g = 11/3 (1B third) or 5 (1B later)
+  **[C]** (`out/orders_milp.txt`, `out/orders_tree_D2.txt`: adaptive modes at the first two
+  responses, a weak rule afterwards). These are upper bounds for the requester, NOT requester
+  wins. In the other direction, a requester strategy that is static after the second response
+  reaches exactly 3 and no more **[C]** (`two_stage.py`). So the true threshold of these orders
+  lies in [3, 11/3] resp. [3, 5]. The depth-3 tree was still running when I stopped (no result).
+  Hand analysis: with 2A second there are no complete points to drop at the 2nd to 4th
+  responses, which is why the part-1 policy PI does not transfer; on the other hand the freed
+  slots are rigidly placed (2B and 3B freed, 3A consumed), which is why I expect 3. Unproven.
+- **Correction to part 1:** "adversary wins above 3" is certified only for the orders with
+  partner second; Section 6 already flagged the other orders as unchecked.
+- Coexistence check: not written up (hand notes only: the first answer of PI is memoryless, its
+  later answers are history dependent; the closure of PI is K_n-like and not (7,2), Section 4).
