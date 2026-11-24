@@ -1,0 +1,70 @@
+{"q": "UUUUU", "plan": 3, "status": "Optimal", "z": -0.03062323535451361, "exact_margins_at_T": [0.03551055419855322, 0.03162322802963089]}
+{"q": "UUUUO", "plan": 3, "status": "Optimal", "z": 0.01297919360974355, "exact_margins_at_T": null}
+{"q": "UUUUO", "plan": 1, "status": "Optimal", "z": -0.01377224264667019, "exact_margins_at_T": [0.02050880072939272, 0.014772242647545304]}
+{"q": "UUUOU", "plan": 3, "status": "Optimal", "z": -0.03062313952499675, "exact_margins_at_T": [0.034872723128440294, 0.03162322802963089]}
+{"q": "UUUOO", "plan": 3, "status": "Optimal", "z": 0.01297933235541514, "exact_margins_at_T": null}
+{"q": "UUUOO", "plan": 1, "status": "Optimal", "z": -0.013772242646672024, "exact_margins_at_T": [0.02183226843017636, 0.014771900006232956]}
+{"q": "UUOUU", "plan": 3, "status": "Optimal", "z": -0.028934456108908827, "exact_margins_at_T": [0.03028876241423397, 0.029934448959076876]}
+{"q": "UUOUO", "plan": 3, "status": "Optimal", "z": 0.01466817469172227, "exact_margins_at_T": null}
+{"q": "UUOUO", "plan": 1, "status": "Optimal", "z": 0.012880418557425576, "exact_margins_at_T": null}
+{"q": "UUOUO", "plan": 0, "status": "Optimal", "z": 0.014668380896574913, "exact_margins_at_T": null}
+{"q": "UUOUO", "plan": 2, "status": "TimeLimit", "z": 0.22771118599199575, "exact_margins_at_T": null}
+{"q": "UUOUO", "plan": 5, "status": "TimeLimit", "z": 0.28412771853523144, "exact_margins_at_T": null}
+{"q": "UUOUO", "plan": 6, "status": "Optimal", "z": 0.269967767644956, "exact_margins_at_T": null}
+{"q": "UUOOU", "plan": 3, "status": "Optimal", "z": -0.028934262265637733, "exact_margins_at_T": [0.03049027563884734, 0.02993434873298628]}
+{"q": "UUOOO", "plan": 3, "status": "Optimal", "z": 0.014668176875958953, "exact_margins_at_T": null}
+{"q": "UUOOO", "plan": 1, "status": "Optimal", "z": 0.012880418557424647, "exact_margins_at_T": null}
+{"q": "UUOOO", "plan": 0, "status": "Optimal", "z": 0.014668380896574204, "exact_margins_at_T": null}
+{"q": "UUOOO", "plan": 2, "status": "TimeLimit", "z": -0.03514580700363031, "exact_margins_at_T": [0.03618179841194945, 0.03614553000753289]}
+{"q": "UOUUU", "plan": 3, "status": "Optimal", "z": -0.07432073891307557, "exact_margins_at_T": [0.07604642133666492, 0.0753210173453377]}
+{"q": "UOUUO", "plan": 3, "status": "Optimal", "z": -0.03236388355036125, "exact_margins_at_T": [0.036163957489300194, 0.03336387180786058]}
+{"q": "UOUOU", "plan": 3, "status": "Optimal", "z": -0.07432082486307007, "exact_margins_at_T": [0.07537666733060788, 0.07532081980496942]}
+{"q": "UOUOO", "plan": 3, "status": "Optimal", "z": -0.03236387754611085, "exact_margins_at_T": [0.03348028573512015, 0.033363508681749275]}
+{"q": "UOOUU", "plan": 3, "status": "Optimal", "z": -0.051414566045293326, "exact_margins_at_T": [0.05247493067833979, 0.05241456325919024]}
+{"q": "UOOUO", "plan": 3, "status": "Optimal", "z": -0.028282151779367624, "exact_margins_at_T": [0.02940797587860465, 0.029281747605606003]}
+{"q": "UOOOU", "plan": 3, "status": "Optimal", "z": -0.05141447021577794, "exact_margins_at_T": [0.054317565103135436, 0.052422888304848966]}
+{"q": "UOOOO", "plan": 3, "status": "Optimal", "z": -0.028282152048356567, "exact_margins_at_T": [0.029301070954476892, 0.029299605722971214]}
+{"q": "OUUUU", "plan": 3, "status": "Optimal", "z": -0.030623337148072607, "exact_margins_at_T": [0.035510651219682665, 0.0316233245267723]}
+{"q": "OUUUO", "plan": 3, "status": "Optimal", "z": 0.012979193609742281, "exact_margins_at_T": null}
+{"q": "OUUUO", "plan": 1, "status": "Optimal", "z": -0.01377224264667174, "exact_margins_at_T": [0.021513580136740172, 0.01477224264597009]}
+{"q": "OUUOU", "plan": 3, "status": "Optimal", "z": -0.030623239351060667, "exact_margins_at_T": [0.03487272294535897, 0.03162322802616184]}
+{"q": "OUUOO", "plan": 3, "status": "Optimal", "z": 0.012979185091750264, "exact_margins_at_T": null}
+{"q": "OUUOO", "plan": 1, "status": "Optimal", "z": -0.013772242646671805, "exact_margins_at_T": [0.01532821676416672, 0.01477224264597009]}
+{"q": "OUOUU", "plan": 3, "status": "Optimal", "z": -0.02893435409860251, "exact_margins_at_T": [0.030490275642824673, 0.0299343487369828]}
+{"q": "OUOUO", "plan": 3, "status": "Optimal", "z": 0.01466807486565048, "exact_margins_at_T": null}
+{"q": "OUOUO", "plan": 1, "status": "Optimal", "z": 0.012880418557428728, "exact_margins_at_T": null}
+{"q": "OUOUO", "plan": 0, "status": "Optimal", "z": 0.01466838089657317, "exact_margins_at_T": null}
+{"q": "OUOUO", "plan": 2, "status": "TimeLimit", "z": -0.027208187741185184, "exact_margins_at_T": [0.028246302147398334, 0.028209982594460805]}
+{"q": "OUOOU", "plan": 3, "status": "Optimal", "z": -0.02893425826908832, "exact_margins_at_T": [0.03801257704817404, 0.02993434873663422]}
+{"q": "OUOOO", "plan": 3, "status": "Optimal", "z": 0.014668074865651087, "exact_margins_at_T": null}
+{"q": "OUOOO", "plan": 1, "status": "Optimal", "z": 0.012880418557428839, "exact_margins_at_T": null}
+{"q": "OUOOO", "plan": 0, "status": "Optimal", "z": 0.01466838089657485, "exact_margins_at_T": null}
+{"q": "OUOOO", "plan": 2, "status": "TimeLimit", "z": -0.03514431539962059, "exact_margins_at_T": [0.04252961404143772, 0.03614407790061506]}
+{"q": "OOUUU", "plan": 3, "status": "Optimal", "z": -0.07432072903355737, "exact_margins_at_T": [0.0760462239269654, 0.07532081980272974]}
+{"q": "OOUUO", "plan": 3, "status": "Optimal", "z": -0.032363979668415824, "exact_margins_at_T": [0.04007816081365744, 0.03336396557749723]}
+{"q": "OOUOU", "plan": 3, "status": "Optimal", "z": -0.07432092652405527, "exact_margins_at_T": [0.07666003271156323, 0.07532091978758572]}
+{"q": "OOUOO", "plan": 3, "status": "Optimal", "z": -0.03236382594914125, "exact_margins_at_T": [0.05908388265906283, 0.03336376837091659]}
+{"q": "OOOUU", "plan": 3, "status": "Optimal", "z": -0.05141466707775924, "exact_margins_at_T": [0.0524750307716524, 0.052414663358882056]}
+{"q": "OOOUO", "plan": 3, "status": "Optimal", "z": -0.028282097608885597, "exact_margins_at_T": [0.029407975900743098, 0.02928174761710092]}
+{"q": "OOOOU", "plan": 3, "status": "Optimal", "z": -0.05141456604529675, "exact_margins_at_T": [0.052526002963714714, 0.05241456326893469]}
+{"q": "OOOOO", "plan": 3, "status": "Optimal", "z": -0.028282147608885297, "exact_margins_at_T": [0.047291038363747984, 0.029299224252467518]}
+{"SUMMARY": true, "T": 0.76, "N": 1.85, "R": 6, "pairs": 32, "won_exact": 31, "smallest": [0.014771900006232956, "UUUOO"], "not_won": {"UUOUO": [-0.012880418557425576, null]}}
+{"q": "UUOUO", "plan": 0, "drop": 1, "status": "Optimal", "z": 0.12364521075213633, "exact_margins_at_T": null, "extra_scan": true}
+{"q": "UUOUO", "plan": 0, "drop": 2, "status": "Optimal", "z": 0.05481354039646614, "exact_margins_at_T": null, "extra_scan": true}
+{"q": "UUOUO", "plan": 0, "drop": 3, "status": "Optimal", "z": 0.19161727490037128, "exact_margins_at_T": null, "extra_scan": true}
+{"q": "UUOUO", "plan": 0, "drop": 4, "status": "Optimal", "z": 0.45863807187684474, "exact_margins_at_T": null, "extra_scan": true}
+{"q": "UUOUO", "plan": 0, "drop": 5, "status": "Optimal", "z": 0.014668380896574913, "exact_margins_at_T": null, "extra_scan": true}
+{"q": "UUOUO", "plan": 0, "drop": 6, "status": "Optimal", "z": 0.406595960691512, "exact_margins_at_T": null, "extra_scan": true}
+{"q": "UUOUO", "plan": 0, "drop": 7, "status": "Optimal", "z": 0.4176992984946773, "exact_margins_at_T": null, "extra_scan": true}
+{"q": "UUOUO", "plan": 1, "drop": 1, "status": "Optimal", "z": 0.13103757028775675, "exact_margins_at_T": null, "extra_scan": true}
+{"q": "UUOUO", "plan": 1, "drop": 2, "status": "Optimal", "z": 0.27438812612934693, "exact_margins_at_T": null, "extra_scan": true}
+{"q": "UUOUO", "plan": 1, "drop": 3, "status": "Optimal", "z": 0.022426642276495434, "exact_margins_at_T": null, "extra_scan": true}
+{"q": "UUOUO", "plan": 1, "drop": 4, "status": "Optimal", "z": 0.2509828791475912, "exact_margins_at_T": null, "extra_scan": true}
+{"q": "UUOUO", "plan": 1, "drop": 5, "status": "Optimal", "z": 0.012880418557425576, "exact_margins_at_T": null, "extra_scan": true}
+{"q": "UUOUO", "plan": 1, "drop": 6, "status": "Optimal", "z": 0.3820637890605837, "exact_margins_at_T": null, "extra_scan": true}
+{"q": "UUOUO", "plan": 1, "drop": 7, "status": "Optimal", "z": 0.26737487659719833, "exact_margins_at_T": null, "extra_scan": true}
+{"q": "UUOUO", "plan": 2, "drop": 1, "status": "TimeLimit", "z": 0.5288132924880623, "exact_margins_at_T": null, "extra_scan": true}
+{"q": "UUOUO", "plan": 2, "drop": 2, "status": "TimeLimit", "z": 0.2269419034275906, "exact_margins_at_T": null, "extra_scan": true}
+{"q": "UUOUO", "plan": 2, "drop": 3, "status": "TimeLimit", "z": 0.5812356061583513, "exact_margins_at_T": null, "extra_scan": true}
+{"q": "UUOUO", "plan": 2, "drop": 4, "status": "TimeLimit", "z": 0.11088881972191875, "exact_margins_at_T": null, "extra_scan": true}
+{"q": "UUOUO", "plan": 2, "drop": 5, "status": "TimeLimit", "z": 0.2299163143520219, "exact_margins_at_T": null, "extra_scan": true}

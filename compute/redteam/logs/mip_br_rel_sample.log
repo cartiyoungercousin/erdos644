@@ -1,0 +1,16 @@
+UUUUUU alpha=0: UUUUUU status Optimal secs 0 EXACT replay: mass(D)-T = 0.034640  ADVERSARY BEATS FIXED TREE 
+UUUUUU alpha=0.5: UUUUUU status Infeasible secs 0 
+UOOUUU alpha=0: UOOUUU status Optimal secs 0 EXACT replay: mass(D)-T = 0.031980  ADVERSARY BEATS FIXED TREE 
+UOOUUU alpha=0.5: UOOUUU status Infeasible secs 0 
+OUOUOO alpha=0: OUOUOO status Optimal secs 0 EXACT replay: mass(D)-T = 0.123003  ADVERSARY BEATS FIXED TREE 
+OUOUOO alpha=0.5: OUOUOO status Optimal secs 0 EXACT replay: mass(D)-T = 0.030405  ADVERSARY BEATS FIXED TREE 
+OOOOOO alpha=0: OOOOOO status Optimal secs 0 EXACT replay: mass(D)-T = 0.183065  ADVERSARY BEATS FIXED TREE 
+OOOOOO alpha=0.5: OOOOOO status Infeasible secs 0 
+UUOOUU alpha=0: UUOOUU status Optimal secs 0 EXACT replay: mass(D)-T = 0.034915  ADVERSARY BEATS FIXED TREE 
+UUOOUU alpha=0.5: UUOOUU status Infeasible secs 0 
+UOUOUO alpha=0: UOUOUO status Optimal secs 0 EXACT replay: mass(D)-T = 0.033315  ADVERSARY BEATS FIXED TREE 
+UOUOUO alpha=0.5: UOUOUO status Infeasible secs 0 
+OUUOOO alpha=0: OUUOOO status Optimal secs 0 EXACT replay: mass(D)-T = 0.128099  ADVERSARY BEATS FIXED TREE 
+OUUOOO alpha=0.5: OUUOOO status Infeasible secs 0 
+OOUUUU alpha=0: OOUUUU status Optimal secs 0 EXACT replay: mass(D)-T = 0.106308  ADVERSARY BEATS FIXED TREE 
+OOUUUU alpha=0.5: OOUUUU status Optimal secs 0 EXACT replay: mass(D)-T = 0.009827  ADVERSARY BEATS FIXED TREE 

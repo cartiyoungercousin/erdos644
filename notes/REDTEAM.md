@@ -660,3 +660,54 @@ spread with f in {1/4, 1/2, 3/4, 1} per reply and ordering in {U, O, GIFT}", aga
 re-solved robustly (requests keyed on the observed masses, not on a bit), starting from the §14 root/plans with
 margin slack. Whether she re-adapts at f != 0.5 is open; the §14 margin 0.0063 says no robustness was bought.
 Not done: m = 9, N != 1.8k, re-solving her tree under the 13-mode adversary.
+
+## 17. The §14 tree re-expressed TYPE-RELATIVELY, against multi-mode tilt and best response
+
+Code: `compute/redteam/multimode_rel.js` (float enumeration, rule A; env `FILL=0.759`, `ASC=1` for B/C),
+`multimode_rel_replay.py` (exact rationals, also `-v` for the composition of D), `mip_br_rel.py` (best-response MILP vs the rule).
+Rule table: `logs/phi_rule.json` (63 nodes). Logs: `logs/multimode_rel_{full,fill_full,asc_full}.json`, `logs/mip_br_rel_sample.log`.
+
+**Rule (family A).** Node = her label prefix. Request s_J = phi_J * m_J on the OBSERVED mass of each type J, with
+phi_J read off the §14 request at the 0.5 tilt (phi = 1: "all of type J" (also slivers within 3e-5 of complete);
+phi < 1: "fraction phi of J"); types with no phi are not requested. Label of an observed reply = nearer (L1 on the
+reply masses) of the two 0.5-tilt replies U / O to the same state and request (ties -> U). Over budget T: partial types
+scaled pro rata, then completes dropped smallest first (it happened at 86k of 5.3M nodes). Under budget: nothing spent.
+Variants: B = spend leftover up to 0.759 on unrequested types, largest first; C = same, smallest first.
+**Reproduces §14 exactly at the 0.5 tilt: 64/64, every label recovered, exact worst margin -0.006310** (float DFS agrees).
+
+**Full enumeration** (13 modes = f in {0,1/4,1/2,3/4,1} x {U,O,GIFT}, f=0 once; 4,826,809 sequences each):
+| rule | adversary wins | worst exact margin of the requester |
+|---|---|---|
+| A (no fill) | 4,031,268 = 83.5% | mass(D) = N, +1.04 |
+| B (fill, largest first) | 82.9% | +1.04 |
+| C (fill, smallest first) | 81.3% | +1.04 |
+(absolute tree of §16: 99.98%.) By number of deviating replies (A): 0 -> 0/64; 1 -> 852/2112; 2 -> 63%; 4-6 -> 81-85%.
+Exact check on single-deviation sequences (base path U,O,O,U,U,U, one reply changed, A): a deviation at reply 5
+(the one she discards) or reply 7 never matters (-0.006); deviations at replies 2, 3, 4, 6 break her:
+reply 3 with U0.75 / U1 / GIFT / O0.25: +1.04; reply 4 with f=0 (pure proportional) +0.492; reply 6 with f=0 +0.503;
+reply 2 with f=0 +0.239 or O1 +0.744. Mild ones: reply 3 O0.75 / U0.25 / f=0: -0.002 .. -0.005 (still won), reply 4
+U0.75 / U1: -0.006 / -0.004.
+
+**Free best response** (MILP, replies free, labels chosen by the adversary = relaxation; the rule is linear in m, so
+no clipping binaries; restricted to sequences where the rule stays within T - 3e-4): 8 sample paths
+(UUUUUU, UOOUUU, OUOUOO, OOOOOO, UUOOUU, UOUOUO, OUUOOO, OOUUUU), each optimal in < 1 s, every extracted sequence
+replayed exactly: adversary beats the rule on all 8 with margins +0.032 .. +0.034 on U-first paths and +0.106 .. +0.183 on
+O-first paths (exact). Floor class (>= half of each dump proportional, tot >= T-0.02): only 2 of 8 paths feasible
+(the rule spends less than 0.74 there), both beaten (+0.030, +0.010). So the type-relative tree is less brittle than the
+absolute one (margins +0.01..+0.18 under free replies versus +1.04) but is still beaten on every sampled path.
+
+**Which mass ends in D.** The big blocks. At the end the ~0.2-0.25 types (popcount 3-5, e.g. 42, 86, 91, 97, 124, 55 on
+the paths above) sit in D (1.25 of mass in the f=0 case, all of N in the +1.04 cases), because each is covered by a real
+type created by a tiny unrequested remainder (a>0, mass 0.001-0.03: types 0, 16, 19, 23, 33, 35, 65, 67, 70...). The
+rule keeps the same phi on blocks whose mass has MOVED: a non-0.5 reply splits a block differently (e.g. U0.75 at reply 3
+creates a type 15/7 pair, 0.095 + 0.149, where the 0.5 tilt has one block of 0.24 requested whole), so "all of J" no
+longer clears the structure, and the unrequested remainder is a real type that completes the neighbouring blocks.
+Filling leftover budget by size (B, C) does not repair it: the missing resource is not budget but the pairing of
+blocks that the 0.5-tilt plan relied on.
+
+**Reading.** Not an adversary win in the game: the rule is one natural family and she could re-solve for each tilt.
+What it shows: (i) the tree has no tilt-robustness in either representation; (ii) the harmful replies are those
+that change the block structure in replies 2, 3, 4, 6; the discarded reply and the last one are free for him;
+(iii) a robust opponent for her is again "f per reply", and a robust requester must choose the complete set from the
+observed block masses (a re-solve per node of the plan MILP), not from a table of fractions. Not done: re-solving
+her tree against the 13-mode adversary, m = 9, other N.

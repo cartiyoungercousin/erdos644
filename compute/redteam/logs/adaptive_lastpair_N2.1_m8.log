@@ -1,0 +1,51 @@
+{"q": "UUUUU", "plan": 1, "status": "Optimal", "z": 0.015757538319671926, "exact_margins_at_T": null}
+{"q": "UUUUU", "plan": 0, "status": "Optimal", "z": -0.05264567064391381, "exact_margins_at_T": [0.0790284787182555, 0.05364567064525534]}
+{"q": "UUUUO", "plan": 1, "status": "Optimal", "z": -0.0007336693197415507, "exact_margins_at_T": null}
+{"q": "UUUUO", "plan": 0, "status": "Optimal", "z": 0.09617606957141657, "exact_margins_at_T": null}
+{"q": "UUUUO", "plan": 3, "status": "Optimal", "z": 0.0961759694722337, "exact_margins_at_T": null}
+{"q": "UUUUO", "plan": 2, "status": "TimeLimit", "z": 0.28471103987595414, "exact_margins_at_T": null}
+{"q": "UUUUO", "plan": 5, "status": "TimeLimit", "z": 0.5608918448674015, "exact_margins_at_T": null}
+{"q": "UUUUO", "plan": 6, "status": "Optimal", "z": 0.11819306840582072, "exact_margins_at_T": null}
+{"q": "UUUOU", "plan": 1, "status": "Optimal", "z": 0.011035692481941813, "exact_margins_at_T": null}
+{"q": "UUUOU", "plan": 0, "status": "Optimal", "z": -0.05264567064391416, "exact_margins_at_T": [0.057035494027784364, 0.05364567064525534]}
+{"q": "UUUOO", "plan": 1, "status": "Optimal", "z": -0.006967971438143248, "exact_margins_at_T": [0.007968137318492685, 0.007968137318492685]}
+{"q": "UUOUU", "plan": 1, "status": "Optimal", "z": -0.0014490582367779506, "exact_margins_at_T": [0.011526177610528274, 0.0024490474350931284]}
+{"q": "UUOUO", "plan": 1, "status": "Optimal", "z": -0.04351084504044223, "exact_margins_at_T": [0.044510696649242974, 0.044510696649242974]}
+{"q": "UUOOU", "plan": 1, "status": "Optimal", "z": -0.0014492462095607498, "exact_margins_at_T": [0.015364678957597314, 0.002448888293902959]}
+{"q": "UUOOO", "plan": 1, "status": "Optimal", "z": -0.0863469126988734, "exact_margins_at_T": [0.08734671146409978, 0.08734671146409978]}
+{"q": "UOUUU", "plan": 1, "status": "Optimal", "z": 0.0013460660922744276, "exact_margins_at_T": null}
+{"q": "UOUUU", "plan": 0, "status": "Optimal", "z": -0.10058735404671368, "exact_margins_at_T": [0.10158735404846873, 0.10158735404846873]}
+{"q": "UOUUO", "plan": 1, "status": "Optimal", "z": -0.03733705959336726, "exact_margins_at_T": [0.03833723441784601, 0.03833723441784601]}
+{"q": "UOUOU", "plan": 1, "status": "Optimal", "z": 0.00134606609227264, "exact_margins_at_T": null}
+{"q": "UOUOU", "plan": 0, "status": "Optimal", "z": -0.09774667539191972, "exact_margins_at_T": [0.10096046050569626, 0.09874667460453199]}
+{"q": "UOUOO", "plan": 1, "status": "Optimal", "z": -0.040832429503783275, "exact_margins_at_T": [0.04183242950575323, 0.04183242950575323]}
+{"q": "UOOUU", "plan": 1, "status": "Optimal", "z": -0.05151769242486601, "exact_margins_at_T": [0.05251773728971859, 0.05251773728971859]}
+{"q": "UOOUO", "plan": 1, "status": "Optimal", "z": -0.12620499930777698, "exact_margins_at_T": [0.12720498875000527, 0.12720498875000527]}
+{"q": "UOOOU", "plan": 1, "status": "Optimal", "z": -0.05151758554506332, "exact_margins_at_T": [0.052517532395424935, 0.052517532395424935]}
+{"q": "UOOOO", "plan": 1, "status": "Optimal", "z": -0.1389617730883271, "exact_margins_at_T": [0.13996162040859153, 0.13996162040859153]}
+{"q": "OUUUU", "plan": 1, "status": "Optimal", "z": 0.015757538319672797, "exact_margins_at_T": null}
+{"q": "OUUUU", "plan": 0, "status": "Optimal", "z": -0.05264569164910736, "exact_margins_at_T": [0.0731185296297754, 0.053645833330401876]}
+{"q": "OUUUO", "plan": 1, "status": "Optimal", "z": -0.0007337566053501332, "exact_margins_at_T": null}
+{"q": "OUUUO", "plan": 0, "status": "Optimal", "z": 0.09617627082905564, "exact_margins_at_T": null}
+{"q": "OUUUO", "plan": 3, "status": "TimeLimit", "z": 0.09617596947223403, "exact_margins_at_T": null}
+{"q": "OUUUO", "plan": 2, "status": "TimeLimit", "z": 0.2292516814979144, "exact_margins_at_T": null}
+{"q": "OUUUO", "plan": 5, "status": "TimeLimit", "z": 0.3268000525381974, "exact_margins_at_T": null}
+{"q": "OUUUO", "plan": 6, "status": "Optimal", "z": 0.11819306840581188, "exact_margins_at_T": null}
+{"q": "OUUOU", "plan": 1, "status": "Optimal", "z": 0.011035692481939379, "exact_margins_at_T": null}
+{"q": "OUUOU", "plan": 0, "status": "Optimal", "z": -0.0526456706439146, "exact_margins_at_T": [0.05703549402671575, 0.05364567064415027]}
+{"q": "OUUOO", "plan": 1, "status": "Optimal", "z": -0.006967971438143487, "exact_margins_at_T": [0.007968054356541122, 0.007968054356541122]}
+{"q": "OUOUU", "plan": 1, "status": "Optimal", "z": -0.001449058236778635, "exact_margins_at_T": [0.011526028278577946, 0.002448939989436953]}
+{"q": "OUOUO", "plan": 1, "status": "Optimal", "z": -0.043510825782167056, "exact_margins_at_T": [0.04451070200133658, 0.04451070200133658]}
+{"q": "OUOOU", "plan": 1, "status": "Optimal", "z": -0.001449062065206653, "exact_margins_at_T": [0.015364730622477975, 0.002448945346881498]}
+{"q": "OUOOO", "plan": 1, "status": "Optimal", "z": -0.08634707370315114, "exact_margins_at_T": [0.08734705548311009, 0.08734705548311009]}
+{"q": "OOUUU", "plan": 1, "status": "Optimal", "z": 0.0013460660922715903, "exact_margins_at_T": null}
+{"q": "OOUUU", "plan": 0, "status": "Optimal", "z": -0.10058735404671494, "exact_margins_at_T": [0.10838554866379776, 0.10158735404797974]}
+{"q": "OOUUO", "plan": 1, "status": "Optimal", "z": -0.037337002844366196, "exact_margins_at_T": [0.03833700284421353, 0.03833700284421353]}
+{"q": "OOUOU", "plan": 1, "status": "Optimal", "z": 0.0013460660922730463, "exact_margins_at_T": null}
+{"q": "OOUOU", "plan": 0, "status": "Optimal", "z": -0.09774667539191928, "exact_margins_at_T": [0.09906206371872643, 0.09874676181407113]}
+{"q": "OOUOO", "plan": 1, "status": "Optimal", "z": -0.04083242950378363, "exact_margins_at_T": [0.041832429504697, 0.041832429504697]}
+{"q": "OOOUU", "plan": 1, "status": "Optimal", "z": -0.05151772315779017, "exact_margins_at_T": [0.052517689444501484, 0.052517689444501484]}
+{"q": "OOOUO", "plan": 1, "status": "Optimal", "z": -0.12620520252914474, "exact_margins_at_T": [0.1272051131913994, 0.1272051131913994]}
+{"q": "OOOOU", "plan": 1, "status": "Optimal", "z": -0.05151760216426926, "exact_margins_at_T": [0.0525176011211089, 0.0525176011211089]}
+{"q": "OOOOO", "plan": 1, "status": "Optimal", "z": -0.13896165084602313, "exact_margins_at_T": [0.13996163217462476, 0.13996163217462476]}
+{"SUMMARY": true, "T": 0.76, "N": 2.1, "R": 6, "pairs": 32, "won_exact": 30, "smallest": [0.002448888293902959, "UUOOU"], "not_won": {"UUUUO": [0.0007336693197415507, null], "OUUUO": [0.0007337566053501332, null]}}

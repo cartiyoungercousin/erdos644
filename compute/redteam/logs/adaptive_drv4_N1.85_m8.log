@@ -1,0 +1,29 @@
+{"start": true, "T": 0.76, "N": 1.85, "R": 6, "H": 2, "MC": 0, "TL": 20.0, "MTL": 300.0, "seed": null}
+{"node": "", "pair": ["UUUUOU", "OUUUOU"], "plans": [0, 0], "z": 0.008679774597624796}
+{"node": "", "pair": ["UUUUOU", "OUUUOU"], "plans": [0, 1], "z": 0.017157229681754413}
+{"node": "", "pair": ["UUUUOU", "OUUUOU"], "plans": [0, 2], "z": 0.013965759162659887}
+{"node": "", "pair": ["UUUUOU", "OUUUOU"], "plans": [0, 3], "z": 0.008679621740919864}
+{"node": "", "pair": ["UUUUOU", "OUUUOU"], "plans": [1, 0], "z": -0.0020257215264226796}
+{"node": "", "pair": ["UUUUOU", "OUUUOU"], "plans": [1, 1], "z": -0.00730656138501807}
+{"node": "", "pair": ["UUUUOU", "OUUUOU"], "plans": [1, 2], "z": 0.0008969924985783029}
+{"node": "", "pair": ["UUUUOU", "OUUUOU"], "plans": [1, 3], "z": -0.01302560803480771}
+{"node": "", "pair": ["UUUUOU", "OUUUOU"], "plans": [2, 0], "z": -0.0020257215264318507}
+{"node": "", "pair": ["UUUUOU", "OUUUOU"], "plans": [2, 1], "z": -0.007812352373101277}
+{"node": "", "pair": ["UUUUOU", "OUUUOU"], "plans": [2, 2], "z": 0.36082432239081375}
+{"node": "", "pair": ["UUUUOU", "OUUUOU"], "plans": [2, 3], "z": -0.007812655410439767}
+{"node": "", "pair": ["UUUUOU", "OUUUOU"], "plans": [3, 0], "z": 0.007471444209619175}
+{"node": "", "pair": ["UUUUOU", "OUUUOU"], "plans": [3, 1], "z": 0.016082577603430334}
+{"node": "", "pair": ["UUUUOU", "OUUUOU"], "plans": [3, 2], "z": 0.013226666184505144}
+{"node": "", "pair": ["UUUUOU", "OUUUOU"], "plans": [3, 3], "z": 0.007471247025093766}
+{"node": "", "cut_iter": 0, "add": "OUUUOO", "plan": 1, "z": null}
+{"node": "", "cut_iter": 0, "add": "OUUUOO", "plan": 0, "z": 0.41241580728155086}
+{"node": "", "cut_iter": 0, "add": "OUUUOO", "plan": 2, "z": null}
+{"node": "", "cut_iter": 0, "add": "OUUUOO", "plan": 3, "z": 0.012979480916786346}
+{"node": "", "cut_failed": ["UUUUOU", "OUUUOU", "OUUUOO"]}
+{"node": "", "cut_iter": 0, "add": "UOOUOO", "plan": 0, "z": null}
+{"node": "", "cut_iter": 0, "add": "UOOUOO", "plan": 1, "z": 0.2588252650627064}
+{"node": "", "cut_iter": 0, "add": "UOOUOO", "plan": 2, "z": 0.42991306436494897}
+{"node": "", "cut_iter": 0, "add": "UOOUOO", "plan": 3, "z": null}
+{"node": "", "cut_failed": ["UUUUOU", "OUUUOU", "UOOUOO"]}
+{"node": "", "cand": "pair:1,3", "rejected_by": "OUUUOO"}
+{"node": "", "cand": "pair:2,3", "rejected_by": "UOOUOO"}

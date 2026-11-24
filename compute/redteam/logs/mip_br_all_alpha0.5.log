@@ -1,0 +1,160 @@
+UUUUUU status Optimal vars 1659 secs 13
+MILP mass(D) - T = 1.0397191848229401
+EXACT replay: mass(D)-T = 1.039719 (best discard 5) ADVERSARY BEATS FIXED TREE
+UUUUUO status Optimal vars 1659 secs 13
+MILP mass(D) - T = 1.0397191848229401
+EXACT replay: mass(D)-T = 1.039719 (best discard 5) ADVERSARY BEATS FIXED TREE
+UUUUOU status Optimal vars 1659 secs 6
+MILP mass(D) - T = 1.0397493289989097
+EXACT replay: mass(D)-T = 1.039749 (best discard 5) ADVERSARY BEATS FIXED TREE
+UUUUOO status Optimal vars 1659 secs 5
+MILP mass(D) - T = 1.0397493289989097
+EXACT replay: mass(D)-T = 1.039749 (best discard 5) ADVERSARY BEATS FIXED TREE
+UUUOUU status Optimal vars 1659 secs 4
+MILP mass(D) - T = 1.03974513501867
+EXACT replay: mass(D)-T = 1.039745 (best discard 5) ADVERSARY BEATS FIXED TREE
+UUUOUO status Optimal vars 1659 secs 4
+MILP mass(D) - T = 1.03974513501867
+EXACT replay: mass(D)-T = 1.039745 (best discard 5) ADVERSARY BEATS FIXED TREE
+UUUOOU status Optimal vars 1659 secs 12
+MILP mass(D) - T = 1.0396911897886263
+EXACT replay: mass(D)-T = 1.039712 (best discard 5) ADVERSARY BEATS FIXED TREE
+UUUOOO status Optimal vars 1659 secs 12
+MILP mass(D) - T = 1.0396911897886263
+EXACT replay: mass(D)-T = 1.039712 (best discard 5) ADVERSARY BEATS FIXED TREE
+UUOUUU status Optimal vars 1655 secs 10
+MILP mass(D) - T = 1.0396827932264276
+EXACT replay: mass(D)-T = 1.039689 (best discard 5) ADVERSARY BEATS FIXED TREE
+UUOUUO status Optimal vars 1655 secs 10
+MILP mass(D) - T = 1.0396827932264276
+EXACT replay: mass(D)-T = 1.039689 (best discard 5) ADVERSARY BEATS FIXED TREE
+UUOUOU status Optimal vars 1653 secs 11
+MILP mass(D) - T = 1.0396044624627239
+EXACT replay: mass(D)-T = 1.039692 (best discard 5) ADVERSARY BEATS FIXED TREE
+UUOUOO status Optimal vars 1653 secs 11
+MILP mass(D) - T = 1.0396044624627239
+EXACT replay: mass(D)-T = 1.039692 (best discard 5) ADVERSARY BEATS FIXED TREE
+UUOOUU status Optimal vars 1655 secs 15
+MILP mass(D) - T = 1.0397521396670513
+EXACT replay: mass(D)-T = 1.039775 (best discard 5) ADVERSARY BEATS FIXED TREE
+UUOOUO status Optimal vars 1655 secs 15
+MILP mass(D) - T = 1.0397521396670513
+EXACT replay: mass(D)-T = 1.039775 (best discard 5) ADVERSARY BEATS FIXED TREE
+UUOOOU status Optimal vars 1651 secs 15
+MILP mass(D) - T = 1.0396992525065858
+EXACT replay: mass(D)-T = 1.039759 (best discard 5) ADVERSARY BEATS FIXED TREE
+UUOOOO status Optimal vars 1651 secs 15
+MILP mass(D) - T = 1.0396992525065858
+EXACT replay: mass(D)-T = 1.039759 (best discard 5) ADVERSARY BEATS FIXED TREE
+UOUUUU status Optimal vars 1663 secs 2
+MILP mass(D) - T = 1.0399937867936577
+EXACT replay: mass(D)-T = 1.040000 (best discard 1) ADVERSARY BEATS FIXED TREE
+UOUUUO status Optimal vars 1663 secs 2
+MILP mass(D) - T = 1.0399937867936577
+EXACT replay: mass(D)-T = 1.040000 (best discard 1) ADVERSARY BEATS FIXED TREE
+UOUUOU status Optimal vars 1663 secs 18
+MILP mass(D) - T = 1.0398517275117019
+EXACT replay: mass(D)-T = 1.040000 (best discard 1) ADVERSARY BEATS FIXED TREE
+UOUUOO status Optimal vars 1663 secs 18
+MILP mass(D) - T = 1.0398517275117019
+EXACT replay: mass(D)-T = 1.040000 (best discard 1) ADVERSARY BEATS FIXED TREE
+UOUOUU status Optimal vars 1663 secs 5
+MILP mass(D) - T = 1.0398833630492341
+EXACT replay: mass(D)-T = 1.040000 (best discard 1) ADVERSARY BEATS FIXED TREE
+UOUOUO status Optimal vars 1663 secs 6
+MILP mass(D) - T = 1.0398833630492341
+EXACT replay: mass(D)-T = 1.040000 (best discard 1) ADVERSARY BEATS FIXED TREE
+UOUOOU status Optimal vars 1663 secs 15
+MILP mass(D) - T = 1.0398821132719738
+EXACT replay: mass(D)-T = 1.040000 (best discard 1) ADVERSARY BEATS FIXED TREE
+UOUOOO status Optimal vars 1663 secs 15
+MILP mass(D) - T = 1.0398821132719738
+EXACT replay: mass(D)-T = 1.040000 (best discard 1) ADVERSARY BEATS FIXED TREE
+UOOUUU status Optimal vars 1663 secs 2
+MILP mass(D) - T = 1.0399936557771952
+EXACT replay: mass(D)-T = 1.040000 (best discard 1) ADVERSARY BEATS FIXED TREE
+UOOUUO status Optimal vars 1663 secs 2
+MILP mass(D) - T = 1.0399936557771952
+EXACT replay: mass(D)-T = 1.040000 (best discard 1) ADVERSARY BEATS FIXED TREE
+UOOUOU status Optimal vars 1663 secs 2
+MILP mass(D) - T = 1.0398728377046706
+EXACT replay: mass(D)-T = 1.040000 (best discard 1) ADVERSARY BEATS FIXED TREE
+UOOUOO status Optimal vars 1663 secs 2
+MILP mass(D) - T = 1.0398728377046706
+EXACT replay: mass(D)-T = 1.040000 (best discard 1) ADVERSARY BEATS FIXED TREE
+UOOOUU status Optimal vars 1663 secs 12
+MILP mass(D) - T = 1.0399872987761742
+EXACT replay: mass(D)-T = 1.040000 (best discard 1) ADVERSARY BEATS FIXED TREE
+UOOOUO status Optimal vars 1663 secs 12
+MILP mass(D) - T = 1.0399872987761742
+EXACT replay: mass(D)-T = 1.040000 (best discard 1) ADVERSARY BEATS FIXED TREE
+UOOOOU status Optimal vars 1663 secs 15
+MILP mass(D) - T = 1.0399845000474395
+EXACT replay: mass(D)-T = 1.040000 (best discard 1) ADVERSARY BEATS FIXED TREE
+UOOOOO status Optimal vars 1663 secs 15
+MILP mass(D) - T = 1.0399845000474395
+EXACT replay: mass(D)-T = 1.040000 (best discard 1) ADVERSARY BEATS FIXED TREE
+OUUUUU status Optimal vars 1643 secs 17
+MILP mass(D) - T = 1.0399192366845391
+EXACT replay: mass(D)-T = 1.040000 (best discard 1) ADVERSARY BEATS FIXED TREE
+OUUUUO status Optimal vars 1643 secs 16
+MILP mass(D) - T = 1.0399192366845391
+EXACT replay: mass(D)-T = 1.040000 (best discard 1) ADVERSARY BEATS FIXED TREE
+OUUUOU status Optimal vars 1643 secs 17
+MILP mass(D) - T = 1.0399192366845391
+EXACT replay: mass(D)-T = 1.040000 (best discard 1) ADVERSARY BEATS FIXED TREE
+OUUUOO status Optimal vars 1643 secs 16
+MILP mass(D) - T = 1.0399192366845391
+EXACT replay: mass(D)-T = 1.040000 (best discard 1) ADVERSARY BEATS FIXED TREE
+OUUOUU status Optimal vars 1643 secs 4
+MILP mass(D) - T = 1.0400000000000003
+EXACT replay: mass(D)-T = 1.040000 (best discard 1) ADVERSARY BEATS FIXED TREE
+OUUOUO status Optimal vars 1643 secs 4
+MILP mass(D) - T = 1.0400000000000003
+EXACT replay: mass(D)-T = 1.040000 (best discard 1) ADVERSARY BEATS FIXED TREE
+OUUOOU status Optimal vars 1643 secs 4
+MILP mass(D) - T = 1.04
+EXACT replay: mass(D)-T = 1.040000 (best discard 1) ADVERSARY BEATS FIXED TREE
+OUUOOO status Optimal vars 1643 secs 4
+MILP mass(D) - T = 1.04
+EXACT replay: mass(D)-T = 1.040000 (best discard 1) ADVERSARY BEATS FIXED TREE
+OUOUUU status Optimal vars 1645 secs 2
+MILP mass(D) - T = 1.039934224599863
+EXACT replay: mass(D)-T = 1.040000 (best discard 1) ADVERSARY BEATS FIXED TREE
+OUOUUO status Optimal vars 1645 secs 2
+MILP mass(D) - T = 1.039934224599863
+EXACT replay: mass(D)-T = 1.040000 (best discard 1) ADVERSARY BEATS FIXED TREE
+OUOUOU status Optimal vars 1645 secs 2
+MILP mass(D) - T = 1.0399343186585952
+EXACT replay: mass(D)-T = 1.040000 (best discard 1) ADVERSARY BEATS FIXED TREE
+OUOUOO status Optimal vars 1645 secs 2
+MILP mass(D) - T = 1.0399343186585952
+EXACT replay: mass(D)-T = 1.040000 (best discard 1) ADVERSARY BEATS FIXED TREE
+OUOOUU status Optimal vars 1645 secs 3
+MILP mass(D) - T = 1.04
+EXACT replay: mass(D)-T = 1.040000 (best discard 1) ADVERSARY BEATS FIXED TREE
+OUOOUO status Optimal vars 1645 secs 3
+MILP mass(D) - T = 1.04
+EXACT replay: mass(D)-T = 1.040000 (best discard 1) ADVERSARY BEATS FIXED TREE
+OUOOOU status Optimal vars 1645 secs 3
+MILP mass(D) - T = 1.0400000000000003
+EXACT replay: mass(D)-T = 1.040000 (best discard 1) ADVERSARY BEATS FIXED TREE
+OUOOOO status Optimal vars 1645 secs 3
+MILP mass(D) - T = 1.0400000000000003
+EXACT replay: mass(D)-T = 1.040000 (best discard 1) ADVERSARY BEATS FIXED TREE
+OOUUUU status Infeasible vars 1653 secs 0
+OOUUUO status Infeasible vars 1653 secs 0
+OOUUOU status Infeasible vars 1653 secs 0
+OOUUOO status Infeasible vars 1653 secs 0
+OOUOUU status Infeasible vars 1649 secs 0
+OOUOUO status Infeasible vars 1649 secs 0
+OOUOOU status Infeasible vars 1651 secs 0
+OOUOOO status Infeasible vars 1651 secs 0
+OOOUUU status Infeasible vars 1651 secs 0
+OOOUUO status Infeasible vars 1651 secs 0
+OOOUOU status Infeasible vars 1651 secs 0
+OOOUOO status Infeasible vars 1651 secs 0
+OOOOUU status Infeasible vars 1651 secs 0
+OOOOUO status Infeasible vars 1651 secs 0
+OOOOOU status Infeasible vars 1651 secs 0
+OOOOOO status Infeasible vars 1651 secs 0

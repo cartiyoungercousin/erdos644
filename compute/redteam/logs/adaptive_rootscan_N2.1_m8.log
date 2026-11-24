@@ -1,0 +1,7 @@
+{"N": 2.1, "m": 8, "leaves": ["UOUUUU", "OOUUUU"], "plans": [0, 0], "status": "Optimal", "z": 0.01685123266858654, "root": {"0": 0.336128, "1": 0.422872}}
+{"N": 2.1, "m": 8, "leaves": ["UOUUUU", "OOUUUU"], "plans": [0, 1], "status": "Optimal", "z": 0.05932138616390026, "root": {"0": 0.388141, "1": 0.370859}}
+{"N": 2.1, "m": 8, "leaves": ["UOUUUU", "OOUUUU"], "plans": [0, 3], "status": "Optimal", "z": -0.06321170115702845, "root": {"0": 0.239034, "1": 0.519966}}
+{"N": 2.1, "m": 8, "leaves": ["UOUUUU", "OOUUUU"], "plans": [1, 0], "status": "Optimal", "z": 0.029274732491274477, "root": {"0": 0.336128, "1": 0.422872}}
+{"N": 2.1, "m": 8, "leaves": ["UOUUUU", "OOUUUU"], "plans": [1, 1], "status": "Optimal", "z": 0.057929879668311306, "root": {"0": 0.388193, "1": 0.370807}}
+{"N": 2.1, "m": 8, "leaves": ["UOUUUU", "OOUUUU"], "plans": [1, 3], "status": "Optimal", "z": -0.001661779441008306, "root": {"0": 0.249075, "1": 0.509925}}
+{"N": 2.1, "m": 8, "leaves": ["UOUUUU", "OOUUUU"], "plans": [3, 0], "status": "Optimal", "z": 0.013514818379694815, "root": {"0": 0.336128, "1": 0.422872}}

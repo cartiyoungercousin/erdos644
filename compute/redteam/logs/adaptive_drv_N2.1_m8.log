@@ -1,0 +1,5 @@
+{"start": true, "T": 0.76, "N": 2.1, "R": 6, "H": 2, "MC": 3, "TL": 20.0, "MTL": 600.0, "seed": "logs/adaptive_tree_full_T0.76_N1.8.json"}
+{"node": "", "multi_z": 0.06609900928798779, "hard": ["UUOOUO", "UUOUUO", "OUOOUO", "OUOUUO"], "plans": [1, 1, 1, 1]}
+{"node": "", "cand": "seed", "rejected_by": "OUUOUU"}
+{"node": "", "cand": "line:OUOOUO", "rejected_by": "UOUUUU"}
+{"node": "", "cand": "line:UUOOUO", "rejected_by": "OUUOUU"}

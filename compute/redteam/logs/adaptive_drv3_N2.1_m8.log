@@ -1,0 +1,4 @@
+{"start": true, "T": 0.76, "N": 2.1, "R": 6, "H": 2, "MC": 3, "TL": 20.0, "MTL": 300.0, "seed": "logs/adaptive_seed_N2.1.json"}
+{"node": "", "cand": "seed", "rejected_by": "OUUOUU"}
+{"node": "", "cand": "line:OUOOUO", "rejected_by": "UOUUUU"}
+{"node": "", "cand": "line:UUOOUO", "rejected_by": "OUUOUU"}
