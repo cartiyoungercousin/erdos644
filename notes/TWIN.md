@@ -1073,3 +1073,101 @@ E3. For the red team's winning lines at N = 1.9k, t = 0.76 (and C's own at (12,1
 E4. Family-level target of 17.4 at small sizes: for (k,T,N) with k + T < N < 3k - T and T just above
     3k/4 where the outcome is open ((10,8,19..21), (12,10,23..25)): does she always reach three
     replies with empty common intersection and union <= 2T?
+
+=============================================================================================
+## 18. Class (T) in the window (tenth time box)
+
+Labels: the seven kept replies are renumbered 1..7 in time order (the red team's 1,2,3,4,6,7,8), so
+the lines are 234, 145, 136, 256, 127, 357, 467 and the paid blocks are
+round 4: B_2∩B_3;  round 5: B_1∩B_4;  round 6: M_6 = (B_1∩B_3) ∪ (B_2∩B_5);
+round 7: D = W ∪ (B_4∩B_6),  W = (B_1∩B_2) ∪ (B_3∩B_5).
+**Outcome.** The two binding rounds have an exact joint criterion after five replies (18.1), and
+it is a waste count with allowance 2(N+t) - 5 = (4t - 3) + 2ω (18.2): beyond a never-used pendant of
+mass ω the whole plan has slack 4t - 3. Working the rounds backwards (18.3) I get that, with the
+labelling fixed and her requests as in the realised line, the answer to "can she always make the
+last two rounds fit" is **no above N = 7/4 + O(4t - 3)** [derived, not certified]: an adversary who leaves pool points unused at
+round 3 and takes them at round 4 produces waste she cannot absorb. So (T) does not by itself
+extend 16.A; the realised line at 1.9k fits because the proportional adversary never makes that
+swap. What would be needed is a relabelling after the swap, i.e. again the re-cutting problem.
+
+### 18.1 Exact criterion for the last two rounds [proved by hand]
+
+After five replies let G_4 = B_4∖(M_6 ∪ W). At round 6 she must request M_6 and can spend the rest on
+G_4; the adversary then puts all unrequested points of G_4 into B_6 (|G_4| <= 1). Hence class (T) is
+completed iff
+    |M_6| <= t,   |W| <= t,   |M_6| + |W| + |G_4| <= 2t.                                   (E)
+In terms of the types J ⊆ [5] after five replies, |M_6| + |W| + |G_4| = Σ w(J) m_J with
+w = 2 on 123, 125, 135, 235, 1235;  w = 1 on 4, 12, 13, 14, 24, 25, 34, 35, 45, 124, 134, 245, 345;
+w = 0 on 1, 2, 3, 5, 15, 23 and on points in no reply.
+Check: the Fano blow-up (classes 15, 23, 124, 134, 245, 345, 1235 of mass h = (1+t)/7) gives 6h <= 2t
+iff t >= 3/4.
+
+### 18.2 Waste potential [proved by hand]
+
+Since Σ|J| m_J = 5 and Σ m_J = N, with φ(J) = w(J) - |J| + 2:
+    |M_6| + |W| + |G_4| = 5 - 2N + Φ,     Φ = Σ φ(J) m_J >= 0,
+φ = 0 exactly on the seven Fano classes above; φ = 2 on unused points and on type 4; φ = 1 on the
+single types 1, 2, 3, 5, on the pairs 12, 13, 14, 24, 25, 34, 35, 45 and on the triples
+123, 125, 135, 235. So (E) reads **Φ <= 2(N + t) - 5**.
+- States whose only waste is unused points form a two-parameter family (|B_1∩B_2| = w, class 1235 of
+  mass q, unused mass N - 2 + q >= 0); for them (E) holds iff q <= t - 1/2. Zero waste: N = 2 - q.
+- A never-used pendant of mass ω = N - 1 - t costs 2ω; the allowance is (4t - 3) + 2ω. So against a
+  frozen pendant the slack is 4t - 3, as it must be; every unit of pendant he gives up buys him
+  nothing but frees two units of allowance for her.
+- With S_2 ⊂ B_1 of mass t she gets w in [2 - N, 1 - t], so the points outside B_1 ∪ B_2 have mass at
+  most ω: the pendant cannot exceed ω.
+
+### 18.3 Working backwards with the labelling fixed [derived by hand; her request priorities are the realised line's and are not proved optimal]
+
+Round 5. Taking a point of type 1, 123, 24, 34 lowers Φ by 1; so does taking an unused point or a
+point of type 4; taking 23 raises Φ by 1; taking 12, 13, 2, 3 changes nothing. She requests the block
+(124, 134, 14), then 23, then the neutral types; he takes what is left of those first.
+Round 4. Taking 12 or 13 lowers Φ by 1; taking type 1 creates block mass for round 5; taking an
+unused point changes nothing and displaces a useful take. She requests the block (23, 123), then
+type 1, then the unused points; ξ = unrequested unused mass.
+Result, with B_3 = (a_W, a_1, a_2, a_Z) taken from (B_1∩B_2, B_1 only, B_2 only, neither),
+A = a_W + a_2 = |B_3 ∩ B_2| and ξ = (2A - 1 + ω)^+: she completes (T) iff
+    a_2 >= (1 - t) + ξ/2      and      a_1 - A <= 3t - 2 - w - ξ.
+Both cases of ξ give the same necessary condition
+    a_Z >= (N - 2 + w) - (4t - 3):
+**the third reply must contain all but 4t - 3 of the points lying in neither B_1 nor B_2.** He need
+not oblige (his omission at round 3 has mass ω), and then at round 4 the block plus the points
+lying only in B_1 already use the budget, the unused points stay unrequested, and he takes them
+instead of points of B_1∩B_2 or B_1∩B_3. Each swapped unit adds one to Φ (the reply-4 incidence is
+spent on a point of type 4, which is a liability at rounds 6–7). If instead she seals B_1∩B_2 at
+round 3 (a_W = 0) and uses the window lemma on a_2, my computation gives that the conditions can be
+forced only for N <= 3t - 1/2 (5t - 2 in one sub-case) — the range of 16.A, no more.
+Why (L) does not have this problem and (T) does: in (L) a pendant omitted three times is complete
+after round 3 (1,2,3 is a line of the dual plane); in (T) it still needs round 4, 6 or 7, so he can
+un-omit it at round 4.
+
+### 18.4 Reading of the realised lines [from REDTEAM §11; my interpretation]
+
+- N = 1.9k: allowance 2(N+t) - 5 = 0.32. The line's waste is the dust (pairs 0.17, small triples) and
+  no pendant; the proportional rule spreads its omissions, which is the cheapest possible behaviour
+  for her in this count (each omitted unit costs at most one, and half of them land on neutral
+  types). Round 5 (their reply 5) is not needed by the labelling.
+- N = 2.1k–2.2k, no Fano labelling: the heavy triple inside D (134) is paid only at the last round.
+  In a Fano labelling a triple type is blocked at three rounds (16.1); in the general criterion (§1)
+  it is paid once, and only if its complementary triple is realised. So with more room the cheaper
+  certificate is "D <= t directly", evaluated by the exact last-round formula of §2, not a Fano plan.
+  I did not derive a potential for it.
+
+### 18.5 What is missing
+
+For 3t - 1/2 < N < 8/3 - t: either a proof that after the round-4 swap she can relabel (the swapped-in
+points have type 4 and the swapped-out points type 12 or 13; in the count they cost one unit each,
+and the allowance beyond the pendant is only 4t - 3), or confirmation that the swap adversary wins
+there against every continuation — which would make this window the place where a genuinely
+different ending (non-Fano, as at 2.1k) or more spare replies are required.
+
+### 18.6 Requests for C
+
+F1. The swap adversary, exact: N = 1.8k, 1.85k, 1.9k at t = 0.76 and sizes such as (25,19,45..48):
+    rule "omit unused points at replies 2 and 3; at reply 4 take every unrequested unused point
+    first, then points lying only in B_1, then the rest proportionally; afterwards proportional".
+    Does the 8-request requester still win? If yes, record the ending's types as in REDTEAM §11.
+F2. Same with the swap at reply 5 or 6 instead of 4.
+F3. Check of 18.1: on the saved lines, |M_6| + |W| + |G_4| against 2t and Φ against 2(N+t) - 5.
+F4. For N = 2.1k, 2.2k: the minimum of mass(D) over the last two requests from the saved 4-states
+    (exact last-round formula), to see how much the non-Fano ending gains over the best Fano one.
