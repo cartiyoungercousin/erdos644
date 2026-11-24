@@ -1822,3 +1822,223 @@ Self-check (§48): 48.1 is a citation, not re-proved. 48.2: UNSAT results from C
 clause (colour of one vertex), which is sound; edge counts match C(g, q) x (3k/2)!/((k/2)!³·3!). 48.4's additive step
 uses |A| > 2^(m-1) ⟹ A + A = F_2^m (pigeonhole) and the structure of sets of size exactly 2^(m-1) with A + A ≠ F_2^m;
 written from memory, not machine-checked. The "three classes may escape" sentence is an inference from one tiny case.
+
+=============================================================================================
+# Part X — structure vs randomness: junta and spread approximation (§50–§54; others use §55+)
+
+Brief: can an arbitrary T-covering family be split into a junta-like core (killed by S/S+/W/P) plus a spread
+remainder (handed to the pseudorandom side)? Code: `compute/spread/spread_params.py` (exponent table, < 1 s),
+`compute/spread/kz_request.py` (Kupavskii–Zakharov procedure on the request measure, exact Fractions, 2 s).
+Window: 3t - 1/2 < N < 3 - t (LEDGER: 21.2 has a gap).
+**Outcome.**
+(1) Junta approximation in measure is dead in both normalisations, and the cited theorems do not apply to the
+confined setting at all (§51).
+(2) The standard spread lemmas are vacuous here. A family of (N-1)k-sets on Nk points is at most N/(N-1) <= 2.28-spread,
+and the lemmas need spreadness above 32, or above log k (§52).
+(3) The only notion with content is spreadness *relative to the complete family* (KZ "homogeneity"). Run on the request
+measure, the KZ procedure gives a decomposition that always exists (Prop. 53.1, proved). It is not a reduction:
+- its structured output is a selector over pool heads, which is exactly the open object of §47.5/§48, and the
+  decomposition carries no information about the selector (53.3);
+- its spread output is not "random": profile structure and greedy rules with more than e^{0.025k} classes pass as
+  spread (53.4);
+- for N >= N*(t) (2.157 at t = 0.76) no useful τ exists (53.2).
+The spread condition it outputs is stated in §54 for the pseudorandom side. **No reduction of CP is obtained.**
+
+## 50. What was read, what was recalled
+
+- Kupavskii–Zakharov, *Spread approximations for forbidden intersections problems*, arXiv:2203.13379v3. Read in the
+  HTML version (the PDF text extraction lost the symbols). Read:
+  - the definitions of r-spread (μ({F : X ⊂ F}) <= r^{-|X|}) and of (r, q)-spread;
+  - Theorem 4, the spread lemma (ALWZ as sharpened by Tao): Pr[W contains a member] >= 1 - (5/log₂(rδ))^m·|μ| for W
+    an (mδ)-random set;
+  - Theorem 8: hypotheses n > 2¹²τk·log₂(2k), n >= 2qτk and q >= t; remainder |ℱ'| <= τ^{-q-1}·C(n,k);
+  - the definitions of τ-homogeneous and (𝒜, τ)-homogeneous;
+  - Observation 5 (τ-homogeneous ⟹ n/(τk)-spread), Observation 7, and Lemma 10 (the procedure; remainder <= τ^{-q-1}|𝒜|).
+
+  All the main results need k <= n/(C log n), or k polynomially smaller than n. [literature, checked]
+- Keller–Lifshitz, *The junta method for hypergraphs and the Erdős–Chvátal simplex conjecture*, arXiv:1707.02643
+  (Adv. Math. 392, 2021). Read the first half (ar5iv HTML). Theorem 1.2: for a fixed ℋ and C < k < n/C there is an
+  ℋ⁺-free j-junta 𝒥 with |ℱ∖𝒥| <= max(e^{-k/C}, Ck/n)·|𝒥|. ℋ⁺ is the expansion (each edge padded with distinct new
+  vertices); "d-expanded" means the expansion of a d-uniform multi-hypergraph. [literature, checked]
+- Dinur–Friedgut (CPC 2009), only as quoted in Keller–Lifshitz Lemma 2.8: if k/n <= p/2 and μ_p(ℱ↑) <= 1 - ζ, then ℱ is
+  (s, (k/n)^r)-capturable. [literature, checked as cited; original not read]
+- Not read; recalled only:
+  - Alweiss–Lovett–Wu–Zhang (used only through KZ's Theorem 4);
+  - Frankston–Kahn–Narayanan–Park (p_c <= K·q_f·log ℓ for ℓ-bounded families);
+  - Park–Pham;
+  - Keevash–Lifshitz–Long–Minzer (global hypercontractivity).
+
+## 51. (1) Junta approximation in measure: dead
+
+**51.1 The cited theorems do not apply [proved by hand].**
+- *No expansions fit.* In the confined setting |V| = n = Nk < 2.24k. Two edges of an expansion ℋ⁺ of a fixed ℋ share at
+  most |V(ℋ)| = O(1) vertices. So an ℋ⁺ with m edges needs at least m(k - O(1)) vertices, and m <= N + o(1) < 3. No
+  expansion with three or more edges fits in V. The same holds in co-edge form: m(c - O(1)) <= n gives
+  m <= N/(N-1) + o(1) < 3. So every family on V is ℋ⁺-free for every ℋ with at least three edges.
+- *The forbidden configuration is not an expansion.* "No good seven" (no seven members covering all pairs) is not
+  ℋ⁺-freeness for any fixed ℋ: a Fano blow-up has no private vertices at all.
+- *The ranges do not match.* Keller–Lifshitz needs k < n/C, and here k/n = 1/N > 0.44. Dinur–Friedgut's error
+  (k/n)^r is a constant here (k/n and c/n are both near 1/2), not o(1).
+
+**51.2 Both normalisations fail [proved by hand].**
+(a) *Absolute error* (relative to |𝒥|, C(n,k) or C(n-1,k-1)). A T-covering family can have density e^{-γk}, with
+γ = ln C(n-T, ω)/k = (N-t)·h(ω/(N-t)) running from 0.135 to 0.92 across the window ([computed float], table 53.2).
+Every nonempty dense junta meets the error bound, so the bound says nothing about 𝒞.
+(b) *Relative error* (|𝒞 Δ 𝒥| <= ε|𝒞|). This fails for spread families. A nonempty j-junta of c-sets has density
+>= e^{-O(j)}. A family of density e^{-Θ(k)} that no j-coordinate pattern concentrates therefore has |𝒥∖𝒞| >> |𝒞| for
+every j-junta 𝒥 ⊇ (1-ε)𝒞, when j = o(k). Example: the fully random reply family (each request gets an independent
+uniform dump). Its request measure is uniform on 𝒜 (53.1(c)), and its member density is C(n,T)/C(n,c) = e^{-Θ(k)},
+because c is closer to n/2 than T is whenever N > 1 + t.
+
+§39 already killed *exact* profile approximation; approximation in measure is dead too. The obstruction is the
+density e^{-γk}, as the brief feared. On top of that, the confined geometry leaves no room for the configurations the
+junta method needs.
+
+## 52. (2) Spread lemmas: vacuous in this regime
+
+**52.1 The ALWZ/Tao lemma [proved by hand].** For ℱ ⊆ C(V, c), Σ_x |ℱ(x)| = c|ℱ|, so some point has
+|ℱ(x)| >= (c/n)|ℱ|. Hence no family of co-edges is more than n/c-spread, and no edge family is more than
+n/k-spread. Here n/c = N/(N-1) ∈ (1.81, 2.28), and n/k < 0.57. KZ's Theorem 4 bound 1 - (5/log₂(rδ))^m·|μ| is
+positive only if rδ > 32, and δ <= 1 (W is (mδ)-random with m >= 1), so it would need r > 32.
+**Dead for every family in the window, at every k.**
+
+**52.2 FKNP [recalled + proved by hand].** FKNP gives p_c <= K·q_f·log ℓ, with ℓ = k or c here (linear in k). Taking
+the fractional cover g = 1 on the edges themselves gives q_f >= (2|H|)^{-1/ℓ} >= 2^{-N-o(1)}, a constant. So the
+bound exceeds 1 for large k. Dead.
+
+**52.3 What survives.** Only spreadness *relative to the complete family* has content: KZ's (𝒜, τ)-homogeneity. As
+plain spreadness it is useless: Observation 5 converts it to n/(τc)-spreadness, which is below 2.28/τ. KZ use
+homogeneity only to feed Theorem 4 (52.1). I know of no sampling lemma for homogeneous families at uniformity about
+n/2 and density e^{-γk}. The nearest tool is global hypercontractivity (KLLM). [recalled; not checked whether it
+reaches density e^{-γk} with γ of order 1]
+
+## 53. The relative decomposition: it exists, and why it is not a reduction
+
+**Setup.** Fix a reply choice F: C(V,T) → 𝒞 with F(S) ⊇ S. Let ν be the push-forward of the uniform measure on
+requests (the *request measure*). Then ν(K) <= M := C(c,T)/C(n,T) for every K, and |𝒜|·M = C(n-T, ω) = e^{γk + o(k)},
+where 𝒜 = C(V, c). For a head B (|B| = b) write 𝒜(B) for the co-edges containing B.
+
+**53.1 Proposition (KZ Lemma 10 in the request measure) [proved by hand; KZ's proof with |·| replaced by ν].**
+For every τ > 1 and q <= c there are disjoint request classes R_1, ..., R_m, R_rem and heads B_1, ..., B_m with
+|B_i| <= q such that:
+ (i) F(S) ⊇ S ∪ B_i for S ∈ R_i;
+ (ii) each piece is homogeneous relative to its head: if ν_i is the law of F(S) for S uniform in R_i, then
+  ν_i(K ⊇ B_i ∪ X) <= τ^{|X|}·|𝒜(B_i ∪ X)|/|𝒜(B_i)| for every X;
+ (iii) ν(R_rem) <= τ^{-q-1}·|𝒜|·M = τ^{-q-1}·e^{γk+o(k)}.
+*Proof.* Start with ν^1 = ν. At step i let B_i be an inclusion-maximal set with
+ν^i(K ⊇ B_i) >= τ^{|B_i|}·(|𝒜(B_i)|/|𝒜|)·ν^i(total). The set ∅ qualifies, so B_i exists. Stop if |B_i| > q.
+Otherwise let R_i be the remaining requests whose reply contains B_i, remove them, and continue.
+(ii): if some X violated (ii), then B_i ∪ X would qualify at step i, against maximality (KZ Obs. 7).
+(iii): at the stopping step, ν^m(total) <= τ^{-|B_m|}·(|𝒜|/|𝒜(B_m)|)·ν^m(K ⊇ B_m) <= τ^{-q-1}·|𝒜|·M, because
+ν^m(K ⊇ B_m) <= |𝒜(B_m)|·M. ∎
+Examples [proved by hand]:
+ (a) the pool family: one piece, with head B_1 ⊇ Y;
+ (b) a greedy rule with a bounded number of classes: each class head Z_r is selected once ν(R_r) >= τ^ω·|𝒜(Z_r)|/|𝒜|
+  (53.3);
+ (c) the fully random reply family: S ∪ D is a uniform c-set, so ν is uniform on 𝒜 and 1-homogeneous; one piece,
+  B = ∅.
+Exact check (`kz_request.py`, (n,k,T) = (12,5,4), τ = 9/5, which lies between τ_0 = 1.776 and τ_pool = 1.846 of 53.2):
+- pool rule: heads {0,1,2,8,9,10}, {0,1,2,8}, {0,1,2}, all containing the pool;
+- three-class greedy rules: one headless piece, the same for a 2-point junta selector and for a random hash selector.
+Homogeneity (ii) and the bound (iii) are asserted in Fractions. [computed exact; sanity sizes, outside the window]
+
+**53.2 Parameters: the heads are linear, and for large N no τ is useful [computed float; exact log-binomials at
+k = 4000 agree with the entropy forms to 0.001].** Two thresholds decide whether the decomposition has content:
+- τ_0 = e^{γ/c}. A member carrying the maximal request mass M passes the selection test at X = K iff τ <= τ_0
+  (M >= τ^c/|𝒜| ⟺ τ^c <= e^{γk}). Below τ_0, a minimal family decomposes into single members: the trivial
+  decomposition.
+- τ_pool = (|𝒜|/|𝒜(Y)|)^{1/ω}, with |Y| = ω. The pool family's head Y is selected iff τ <= τ_pool.
+
+So the useful range is τ_0 < τ < τ_pool. There, (iii) needs q >= γk/ln τ ∈ (γk/ln τ_pool, ck).
+
+| N (t = 0.76) | ω | n/c | γ | τ_0 | τ_pool | q range γ/ln τ_pool .. c | T/k - 1/2 | ρ_hom(τ_m) | Φ/2 |
+|---|---|---|---|---|---|---|---|---|---|
+| 1.79 | 0.03 | 2.27 | 0.135 | 1.19 | 2.29 | 0.16 .. 0.79 | 0.26 | 0.010 | 1.19 |
+| 1.85 | 0.09 | 2.18 | 0.310 | 1.44 | 2.24 | 0.38 .. 0.85 | 0.26 | 0.020 | 1.19 |
+| 1.90 | 0.14 | 2.11 | 0.424 | 1.60 | 2.21 | 0.54 .. 0.90 | 0.26 | 0.022 | 1.19 |
+| 2.00 | 0.24 | 2.00 | 0.608 | 1.84 | 2.14 | 0.80 .. 1.00 | 0.26 | 0.018 | 1.19 |
+| 2.10 | 0.34 | 1.91 | 0.758 | 1.99 | 2.08 | 1.03 .. 1.10 | 0.26 | 0.008 | 1.19 |
+| 2.20 | 0.44 | 1.83 | 0.885 | 2.09 | 2.03 | empty | 0.26 | — | 1.19 |
+
+(τ_m = (τ_0·τ_pool)^{1/2}; ρ_hom and Φ are defined in 53.4(b).)
+The useful range is empty for N >= N*(t): N* = 2.1475, 2.1519, 2.1574, 2.1685 at t = 0.751, 0.755, 0.76, 0.77. At
+t = 0.8 the range is nonempty across the whole window. Conclusions:
+(α) The heads are linear: q > 0.16k everywhere, and q exceeds W's window T - k/2 for N >= 1.82. The "junta core" is a
+core of (0.4–1.0)k named points, not a junta.
+(β) For N >= N*(t), every choice of τ either decomposes minimal families into single members or hides the pool head.
+The decomposition degenerates there.
+
+**53.3 The structured output is the open selector problem [proved by hand].** Call a piece *full* when its head is a
+full pool: |B_i ∖ S| = ω for S ∈ R_i, so F(S) = S ∪ B_i. On the union of the full pieces the family is a greedy rule
+(§47.1) with selector σ(S) = i and heads B_i. Z_r is selected whenever ν(R_r) >= τ^ω·|𝒜(Z_r)|/|𝒜|, since
+ν(K ⊇ Z_r) >= ν(R_r), whatever σ does inside the classes. So a junta selector (window <= T - k/2, dead by Theorem W)
+and a hash-like selector with the same class masses (open: §47.5(i), §48) both produce the heads Z_r. The exact run
+in 53.1 is an instance at small size. What Theorem W uses, that one class contains the three requests of a frame, is
+a property of σ on frames, and homogeneity statements about the laws ν_i cannot see it. Whether a hash selector
+separates every frame is the colouring problem ℋ(k,T) of §48, and the decomposition adds nothing to it.
+**The structured side of the decomposition is (Σ) for greedy rules with arbitrary selectors and heads up to q, i.e.
+the open problem itself.** Dead as a reduction.
+
+**53.4 The spread output is not random.**
+(a) *Profile structure passes [proved by hand for X inside one cell; heuristic for mixed X].* Homogeneity tests only
+principal up-sets 𝒞(X), the same restrictions that globalness uses. A symmetric profile family whose cell densities
+π_j/v_j are within a factor τ of c/n passes the test (for X inside one cell, by the hypergeometric product bound).
+Theorem S kills such families, but their hash-like in-cell variants (§46.5, 47.5(4)) pass the test too.
+(b) *Numerous pool heads pass [selection threshold computed float; pencil count a first-moment heuristic].* Take a
+greedy rule with R = e^{ρk} classes, random heads of mass ω and a random selector. Class r has ν-mass about e^{-ρk},
+so its head is selected iff ρ <= ρ_hom := -ω·ln τ - ln(|𝒜(Z)|/|𝒜|)/k, which is <= 0.022 at τ = τ_m (table). The
+expected number of pencil frames whose three requests fall in one class is e^{(Φ - 2ρ)k}. Here
+Φ = (1+t)·h((t - 1/2)/(1+t)) + (3/2)·ln 3 = 2.385 is the log-count of frames around a head. That number is
+exponentially large for ρ < Φ/2 = 1.19; for comparison, the number of requests is e^{(1.22..1.43)k}. This is a
+first moment only, with no second moment. So for 0.022 < ρ < 1.19 the family is "spread" at every useful τ, yet the
+certificate that should beat it is the head-based pencil of Theorem W/P. **The pseudorandom side cannot assume
+that spread pieces have no pool heads.**
+(c) *Pieces are partial [proved by hand].* A piece answers only its own requests R_i, so it is not T-covering, and
+there can be exponentially many pieces (as in (b)). A good seven may need requests from several pieces, which is
+again §48.
+
+## 54. The exact decomposition statement, its obstruction, and what goes to the pseudorandom side
+
+**(DEC) [proved: Prop. 53.1].** Every reply map of every T-covering family splits the requests into classes R_i with
+heads B_i (|B_i| <= q, for any q >= (γ + η)k/ln τ), plus a remainder of request mass <= e^{-ηk + o(k)}. Each class
+satisfies H_τ below.
+**Needed for a reduction (not proved; blocked):**
+ (DEC-S) every family made of full pieces (pool heads) under an arbitrary selector has a good seven. This is (Σ) for
+  hash-like greedy rules, §47.5(i)/§48. (DEC) gives no extra information on the selector (53.3).
+ (DEC-R) every family whose pieces satisfy H_τ has a good seven, using members from several pieces if needed.
+ (DEC-mix) the two combine: one good seven built from structured and spread pieces together.
+Obstructions: 53.3 for (DEC-S); 53.4(b–c) for (DEC-R). For N >= N*(t) no useful τ exists, so (DEC) is trivial there
+(53.2β).
+**Condition H_τ, stated precisely for the pseudorandom side.** A class R ⊆ C(V,T) with head B (|B| = b, possibly ∅) is
+*τ-homogeneous* if F(S) ⊇ B for all S ∈ R and, for S uniform in R and every X ⊆ V∖B,
+  Pr[X ⊆ F(S)] <= τ^{|X|}·C(n-b-|X|, c-b-|X|)/C(n-b, c-b),
+with τ_0 = e^{γ/c} < τ < τ_pool. This range is nonempty only for N < N*(t).
+What H_τ does NOT give (all shown above):
+- T-covering of the piece, or any lower bound on |R|: pieces can have request mass e^{-ρk};
+- absence of pool heads when the classes are numerous (53.4b);
+- absence of profile or threshold structure (53.4a);
+- any sampling or spread lemma (52.1).
+H_τ is strictly weaker than "random". A theorem proved under H_τ alone must handle 53.4(a) and (b) as special cases.
+**Dead (this part):**
+- junta approximation in measure, in both normalisations (51.2);
+- Keller–Lifshitz and Dinur–Friedgut in the confined setting (51.1);
+- the ALWZ/Tao spread lemma, and FKNP (52.1–52.2);
+- spread approximation as a reduction of CP to S/S+/W plus a spread remainder (53.3);
+- any decomposition with sublinear heads (53.2α).
+**Exact gap.** Unchanged: (Σ) for hash-like selectors and for non-greedy rules. (DEC) only restates it as "a selector
+over at most e^{O(k)} pool-headed classes with homogeneous links".
+**Next step [heuristic].** The only quantitative lever found is 53.4(b): a uniformly random selector loses by the
+first moment unless it has e^{1.19k} classes, nearly one class per request. A second-moment (Janson) version for
+selectors that are merely *balanced on pencil frames* would turn the §48 colouring problem into a counting
+statement. That belongs with the hash-selector work, not with spread approximation.
+
+Self-check (Part X):
+- 51.1 is vertex counting (m·(k - O(1)) <= n). 52.1 is averaging plus Theorem 4's bound at δ <= 1.
+- 53.1 follows KZ Lemma 10 line by line. The only change is ν(K ⊇ B) <= |𝒜(B)|·M, which uses |F^{-1}(K)| <= C(c,T).
+  It was asserted exactly on three families.
+- 53.2's thresholds come from the selection test at X = K and X = Y. They were evaluated by `spread_params.py` with
+  exact log-binomials; the entropy forms agree to 0.001.
+- 53.4(b): Φ is the frame count of §47.2 (kernel ⊇ head, three halves), checked by log-binomial at k = 4000 (2.381
+  against 2.385). The first moment is not a proof.
+- KZ, KL and DF statements are quoted from the HTML texts as read (DF only through KL's Lemma 2.8). ALWZ beyond KZ's
+  Theorem 4, FKNP, Park–Pham and KLLM are from memory.

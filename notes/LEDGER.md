@@ -35,6 +35,8 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 | Literal SPOIL false | CORE §40 | EXACT |
 | SPOIL at all depths is not a disproof | CORE §43 | HAND |
 | One-bit rule has a good seven | CORE §44 | EXACT (89 instances) |
+| Junta approximation in measure (Dinur–Friedgut, Keller–Lifshitz); spread lemmas (ALWZ, FKNP) | CORE §50–§53 | DEAD (proved: the families are at most n/c < 2.28-spread; junta theorems need k < n/C) |
+| Kupavskii–Zakharov decomposition into head classes + remainder (H_τ) | CORE §54 | HAND; restates the hash-selector problem, not a reduction |
 | Kernel lemma; regularity reduction; c(N)·k cell bound; bounded-request game | CORE §34–35, §39, §45, Parts V–VII | DEAD |
 
 ## Petal side (Barrier F)
