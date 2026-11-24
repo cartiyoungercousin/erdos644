@@ -32,6 +32,7 @@ import Lean644.FanoBlocks
 import Lean644.Waste
 import Lean644.Anchor
 import Lean644.GapAnchor
+import Lean644.PetalReduction
 import Lean644.TightTriple
 import Lean644.TheoremA
 import Lean644.SparserTriple

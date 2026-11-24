@@ -493,3 +493,70 @@ p >= λ_t otherwise. The reply misses B_i ∩ B_j and meets B_i in at most 1 - p
 S1 applies: replies 1, 2, 3 are anchors with all pairs <= t². ✓
 *Theorem G, arena part.* n with 1 + t/2 <= n < 2 - t² exists iff 2t² + t - 2 < 0 iff t < t₁
 (the hypothesis t >= 3/4 is not used). Same-arena pairs: >= 2 - n > t². ✓ See E9a for the rest.
+
+---------------------------------------------------------------------------------------------
+
+## 10. PETAL.md (petal reduction, Theorems J, K, L, interface §9) — verdict: all main statements correct; six hypotheses/wordings to fix
+
+**Errors / gaps (none invalidates a theorem in the range 3/4 <= t < t₁).**
+(E10a) *Example parameters of Theorem J.* With c = 4t/5, λ = (9t/5 - 1)/7, (J1)–(J3) and
+t - λ >= 2/3 hold for all t >= 3/4, but 2λ <= 1 - c fails for t > 45/46 ≈ 0.978. Likewise the
+leaky-arena remark ("δ <= t/30, for every t >= 3/4") needs (J1): 4δ <= 1 - t, which fails for
+t > 15/17 ≈ 0.88 at δ = t/30. Both are outside the range of interest; say "3/4 <= t <= 0.88".
+(E10b) *Theorem J, Step 2.* The parenthesis "(if C_j is in a third class she wins by Theorem D
+instead)" is unnecessary: C_j is a valid centre whatever its class, since only |C_j ∩ X_i| < λ
+(i = 1..4) and disjointness of the traces are used. So without a third-class reply in Step 1 the
+strategy uses 10 requests; 14 is 10 + Theorem D's four only when a third-class reply occurs.
+(E10c) *Theorem L* needs the standing hypothesis p <= t explicitly (legality of S_4 = P ∪ R). It
+is implied by the two displayed conditions only at t = 3/4 (summing the two-term conditions gives
+p <= 9t - 6).
+(E10d) *Theorem K(ii)* is exact for the fixed protocol "these four petals, exactly three further
+replies, all kept". "After the fourth petal there is no adversary" is true for that protocol
+only; with further requests/discards the adversary has choices again.
+(E10e) *§9.3, last bullets.* What Theorem D gives is: after a reply F disjoint from everything,
+earlier replies pairwise overlap in more than t - 1/3 (≈ 0.417), and later E has
+|E ∩ A| + |E ∩ F| > t - 1/3. That is NOT "two families of mutual near-copies" in Theorem J's
+sense (overlap > c ≈ 0.6): overlaps in (t - 1/3, c] are banded. So "hence the two-class picture"
+is a heuristic, and "if no pair is banded, Theorem J wins" is an independent (true) statement.
+(E10f) *Matching-load lemma.* U* is the union of those cells whose opposite cell is nonempty (a
+cell opposite an empty cell is inactive), not always all six cells. Harmless (requests only get
+cheaper).
+
+**Verified.**
+*§1 P1–P4.* For x in U, M_x = petals missing x ≠ ∅. {x,y} meets all petals iff M_x ∩ M_y = ∅
+(points outside U have M = [q], so both points are in U; x = y would be a common point). Activity
+formula: y is a neighbour of x iff y lies in all petals of M_x. P2: an edge {x,y} misses C iff
+both points are outside C. P3: the condition involves only C_i ∩ U*; padding inside U* \ S only
+enlarges traces (direction as in §8 above: confined win ⇒ open win, petals kept). P4(a): C misses
+both ends of every edge iff C ∩ U* = ∅. P4(c): one of x, y lies in two of three centres. ✓
+q = 3 and q = 6 specialisations (Theorem B's grids; Cor. 4's D) checked.
+**Lean:** `Lean644/PetalReduction.lean`: `PetalEdge`, `PetalActive`, `petalEdge_ne`,
+`petalEdge_mem_union`, `petalActive_iff`, `petal_trace_iff`, `petal_mono`, `petal_one_centre`,
+`petal_three_centres` (petals = any indexed family with `∀ x, ∃ a, x ∉ P a`; q is not bounded).
+*§2.* F: trivial. RI: |I| drops by min(b, |I|) per new member, so |I| <= 1 - (j-1)b after j
+members and the 4th request contains all of I when 1 - 2b <= b. ✓
+*Theorem J.* (J1) ⇒ ~ transitive (p_il > 2c - 1 >= λ, hence > c). Standing request X_1 ∩ Y_1
+(< λ) ⇒ a third-class reply E gives anchors with p < 3λ <= t - 1/3 (J2), Theorem D. Step 1
+budget 2b + λ = t with b = (t - λ)/2; 1 - 2b <= b iff t - λ >= 2/3 (J4); pigeonhole on seven
+replies in two classes gives four members with empty common intersection. Step 2 budget
+(1 - c) + 6λ + λ <= t (J3); F_j ⊇ Z_{<j} ∩ X_1 needs 2λ <= 1 - c (J4); |C_j ∩ X_1| <= c and no band
+⇒ < λ ⇒ C_j not in class X ⇒ |C_j ∩ X_i| < λ for all four petals (classes are closed under ~);
+traces pairwise disjoint ⇒ P4(c). ✓ Dichotomy "win, or a banded pair" is correct.
+One-request follow-up (banded pair ⇒ anchors with p_ij in [λ, c], other pairs <= 1 - (t+λ)/2):
+this is `gap_anchor` with cap c' = k - (T + λk)/2. ✓
+*Matching-load lemma; "3/4 shows up".* c_34 <= |Q_3| - (t - p) = 1 - t + p_12, so
+c_12 + c_34 <= 3(1 - t). ✓
+*Theorem K.* (i) requests = round loads, K_i ⊇ S_i, cross-intersecting supports give
+I_x ∩ I_y ≠ ∅ on the three grids. (ii) for σ <= 1 + t he replies with as much unrequested active
+mass as possible, so |K_i| = max(|S_i ∩ U*|, σ - 1) <= t in every play; the final (I_x) is then a
+design with loads <= t, so a requester win forces L <= t, also against adaptive play. Closed forms
+(matching a_r + b_r; all-pairs 2σ/3; freeze Σa + Σb/3) ✓.
+*§8 / Theorem L.* q_i = 1 - p + p_jl; B_4 ∩ B_i = B_4 ∩ Q_i; σ <= p + 1 <= 1 + t. With a_i the
+cell opposite c_i4: need r_i >= ρ_i = 1 - t - p + 2a_i, r_i >= 0, Σ r_i <= t - p; solvable iff all
+sub-sums of ρ are <= t - p: three terms ⇔ t >= 3/4; two ⇔ a_i + a_j - a_l <= 3t - 2; one ⇔
+a_i <= t - 1/2 (and ρ_i <= q_i since a_i <= t). ✓ Seven replies, no discard.
+*§9.1, 9.2.* Stateless switching (Theorems D, L need only the triple and four fresh requests) and
+"committed play cannot be escaped" (P3) ✓. §9.3 first bullet arithmetic ✓ (p = a + f;
+2t - 4/3 after capping |E ∩ A| at 1 - t); see E10e for the conclusion drawn. §9.4 is a statement
+of an open hole, not a claim.
+Not checked: the computed tables of §8, the simulations, and the leaky-arena count δ <= t/26.
