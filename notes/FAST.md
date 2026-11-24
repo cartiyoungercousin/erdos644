@@ -1,4 +1,4 @@
-# FAST: faster exact solver for the anchored / confined request game
+﻿# FAST: faster exact solver for the anchored / confined request game
 
 Code (all new, `compute/fresh_c/` untouched): `compute/fast/engine.js` (engine), `anchor_fast.js` (anchor selection + certificates, same JSON format as `anchor_select.js`), `anchor_table_fast.js` (anchored table as `anchor.js`), `fast7.js` (7-request game with one fixed edge on N points = `exact7d.js` / `exact7N.js`), `difftest.js` (random differential test against the original `Game`).
 
@@ -47,3 +47,57 @@ Speedup: 6x to 100x; largest where the reply is forced (|V| <= k+T). Shapes with
 
 ## Next step that would matter
 The remaining cost is the unforced level-5 node. A request-pruning bound valid for |P| > k (P = types not fully requested) is missing: the adversary then chooses a support, so cnt(N(P)) is not a lower bound. A counterexample-guided search over requests (tried, `win5` with stored refuting supports) was slower than plain enumeration because a refuting support is killed by a single cheap request, so each stored support prunes little. Worker parallelism was not added: the anchor-selection search needs shapes on demand; independent instances were run as separate processes instead (at most 3).
+
+---------------------------------------------------------------------------------------------
+# Part 2: TWIN 19.6 requests G1, G2, G3 (Barrier 3) â€” status: model built and validated, checks NOT decisive
+
+## Status of the background runs (from Part 1)
+- (10,8) J=4 (m=8): **ADVERSARY wins** (new decision, 440 s, 17 shapes; losing: (5,5,2) (6,4,2) (7,3,2) (8,2,2) (5,5,3) (5,3,2) (5,4,4) (6,3,2) (5,4,3) (6,4,3) (5,4,2) (6,3,3) (4,4,4) (7,3,3); winning: (5,5,5) (5,5,4) (6,4,4)). Log `compute/fast/logs/as_k10_T8.log`. No certificate (adversary win; not independently checked, same status as 14.2 for (9,7)).
+- (11,9) J=4: still running (limit 5400 s), J=3 adversary.
+
+## Code
+`compute/fast/g2.js` (G2/G3 re-selection game, uses the validated engine for every four-/five-petal evaluation) and `g2_brute.js` (same game on actual point sets: no type counts, no symmetry, all requests of size T, all replies). Usage `node g2.js k T a betas M quad|five [strict]`; `betas = free` gives the unrestricted open adversary; env `FA`, `FB` let F meet A\A', A'\A in FA, FB points.
+
+Model as implemented (my reading of 19.6): ground set A u A' u F, |A n A'| = a, F disjoint (or FA/FB points into the pair); replies must avoid the request and have exactly k-beta points of F and beta points of A xor A' (beta in the given set); requester requests <= T points, up to M = 6 further requests in total; she wins at a stage if some 4 replies, triple-free, give an exact four-petal win (3 more requests: j+3 <= M), or (G3, `five`) some 5 replies give an exact five-petal win (2 more: j+2 <= M); a stage with no admissible reply counts as a requester win (counter `stuck`, 0 in all runs).
+
+## Validation
+`g2_brute.js`: results in `/tmp` log of the run at the time of writing; see the end of this section.
+
+## Results (restricted mixed adversary, strict triple-free, beta in {k/12..4k/12}), `logs/g2_restricted.log`
+Requester wins, within one or two requests, for (12,9) a=5,6; (12,10) a=5,6; (16,13) a=7,8 (beta 2..5), in both quad and five modes. Also with beta up to 11 at (12,9) a=5.
+
+## Why this does not answer G2 as posed
+1. The control FAILS: the brief says the adversary must win at (12,9), but this restricted class is beaten at once at (12,9). It cannot be otherwise: the class does not contain the adversary's real winning family (the complete 12-uniform family on 21 points with tau = 10). A restricted adversary can only be weaker, so "adversary wins" is not guaranteed for it; so the control as a soundness test needs the start position to be inside such a family. Starting from three replies (A, A', F) with F disjoint, even the unrestricted adversary confined to A u A' u F loses at (12,9): the anchored shapes (5,0,0) and (6,0,0) are requester wins at (12,9) (`engine`, nodes 2 and 3), consistent with the tables in 13 where (a,0,0) is a win for small a. So the dominant-pair start with a DISJOINT far reply is a requester position in the exact anchored game; the barrier, if any, needs F to meet the pair (FA, FB > 0) or the adversary to use fresh points.
+2. The open (unrestricted, fresh points allowed) version from such starts (`betas=free`, FA/FB > 0) does not finish at k = 8 in two minutes with this simple search (no killer/forced-reply pruning in g2.js); it was not run at k = 12.
+3. G1 (two arenas, exact, plus the Fano-labelling enumeration) was not implemented: it needs arena-coloured edges in the canonical form and the 7-level search; the engine does not support it. Only the arithmetic of Prop. 19.B was checked by hand at (12,9),(12,10): arena n = 17; she requests <= T points so the lighter arena has <= floor(T/2) <= 5 requested, leaving >= 12 = k points, so a same-arena reply exists; two same-arena replies meet in >= 24 - 17 = 7 > 5 points, so every pair-intersection keeps an unrequested point (the claim that k = 12 points suffice to hit all pair-intersections at once is NOT checked).
+
+Needed from the coordinator: (a) the exact start position for the control (which A, A', F sizes, overlaps of F with the pair, and whether fresh points exist); (b) whether the leaf should be the exact four-petal game (used here) or the Theorem K design value; (c) for G1 whether the adversary may use fresh points outside the two arenas. With those, g2.js is parametrised to run the checks; the open version needs the killer/forced-reply pruning of engine.js ported before k = 12 is reachable.
+
+
+---------------------------------------------------------------------------------------------
+# Part 3: coordinator answers (adversary win at (10,8), J=5/6, G2 with band start)
+
+## (10,8), (11,9): J=4 are ADVERSARY wins
+- (10,8) J=4 (m=8): adversary, 17 shapes, 440 s. (11,9) J=4: adversary, 22 shapes, 4141 s (4.0M engine nodes); losing shapes (6,5,2) (7,4,2) (8,3,2) (9,2,2) (6,5,3) (6,4,2) (6,4,4) (6,4,3) (5,4,2) (5,5,4) (6,3,2) (7,3,2) (5,5,3) (5,4,4) (5,5,2) (7,4,4) (7,4,3) (7,3,3) (8,3,3); winning only (6,5,5) (6,5,4) (5,5,5). Log `logs/as_k11_T9.log`. Adversary wins are not certified independently.
+- (10,8) J=5 (m=9) and J=6 (m=10): one process (`logs/as_k10_T8_J6.log`, limit 7200 s, started 07:54) is still running J=5 at the time of writing; no verdict. Nothing for J=6.
+
+## The adversary's strategy at (10,8), J=4 (`anchor_strategy.js`, `logs/adv_strategy_k10_T8_J4.log`)
+Extracted: for every request of the requester at every reachable node, the first reply leading to an adversary-win node. 994 distinct nodes, 410 distinct terminal configurations of four replies. Observations:
+- **Arena of size k+T.** In 393 of 410 terminal configurations the union of the four replies is exactly 18 = k + T points (14 have 19, 3 have 20). In an 18-point arena two 10-sets meet in >= 2 points, and the reply to any request of 8 points is forced (18 - 8 = 10 = k). The smallest pairwise overlap is 2 in all 410.
+- Pair overlaps are large: the largest pairwise overlap among the four is >= 8 of 10 in 284/410 configurations (9: 110, 10, i.e. identical replies: 34), 7 in 88, <= 6 in 38. So most terminals contain a near-copy pair, but this comes with the small arena rather than from a two-family plan; no terminal has two far-apart families (the minimum pair overlap never drops below 2 = 2k-(k+T)).
+- Losing anchor shapes are the balanced-to-moderate ones with |V| = 3k - p <= 20, e.g. (5,5,2) (6,4,2) (5,4,3) (4,4,4): shapes with p = p12+p13+p23 between 11 and 13.
+Reading: this looks like an INTEGRALITY / small-arena artifact, not near-copy or two-arena play: the adversary stays in a concentrated arena of about k+T points (1.8k), the same regime as the complete families of 14.1 (K_17^(10) has tau = 8, so T = 8 is one above the known lower bound f(10,7) >= 8, where O(1) effects dominate). At k = 10 the arena 18 = k+T is the integer case N = k+T of the concentrated game, which is trivial for him when no covering fits; it does not scale to a ratio-3/4 statement. The same reading applies to (9,7) (14.2) and (11,9) (arena 20 = k+T for the 9 of 22 forced shapes).
+
+## G2 as re-specified (fresh points allowed, band start, exact leaf)
+Start: A, A', F with |A n A'| = a and F meeting A xor A' in a band (FA, FB points; band = FA+FB in {1,2,4}). `node g2.js k T a betas M five` with env FA, FB (restricted mixed replies); the unrestricted-with-fresh-points version is `betas=free`.
+- Restricted mixed class, disjoint F (band 0): requester win at once for (12,9), (12,10), (16,13) (`logs/g2_restricted.log`); as the coordinator says, this is not a control.
+- Band start (FA/FB = (1,0), (1,1), (2,2), (4,0)) at (12,9) a=5,6, (12,10) a=5,6, (16,13) a=7,8, five-petal mode: all 24 runs UNDECIDED at the 60 s limit (`logs/g2_band_start.log` is empty: the runs were killed). The search in g2.js has no killer/forced-reply pruning, so the band start is out of reach at k = 12; a port of engine.js's level-5 pruning to the 6-reply states is the missing work.
+- The free-adversary version did not finish even at k = 8 in 2 minutes.
+So G2/G3 give no verdict at (12,9), (12,10), (16,13). G1 skipped as instructed.
+
+### Part 3 addendum (2026-11-24): (10,8) with m = 9
+J = 5 replies (m = 9 requests): ADVERSARY keeps every triple of replies losing (states = 1011, 1888 s, 57 shapes evaluated, 15 R).
+So both m = 8 and m = 9 lose at (10,8). J = 6 (m = 10) is running (node pid 44780).
+Reading: T = 8 at k = 10 is the exact extremal value (K_17^(10) has τ = 8), so this case tests whether the anchored game is tight at an integrality boundary, not the asymptotic 3/4 threshold (7.5).
+It is still a warning: when a small case has no slack, the requester needs more requests as m grows, or the confined-arena effect persists.
+Side check: 7 eight-sets do cover all pairs of an 18-set (HiGHS feasible). So K_18^(10) itself does not have property (7,2), and the adversary's winning play is a game-level obstruction, not a real (7,2) family with τ > 8.
