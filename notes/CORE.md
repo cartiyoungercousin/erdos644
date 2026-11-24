@@ -26,6 +26,9 @@ Tags: [proved by hand] / [computed exact] / [heuristic]. Nothing here is in Lean
    is already determined. So the whole gap is: force (or find) a THIRD reply whose additions are
    useful. Discards help only through dilution (several disjoint dump targets) or exhaustion (a pool).
 
+**Part II (appended below, §8–§11)** corrects item 4 and §6–§7: the dump dichotomy is not proved;
+see the outcome paragraph there.
+
 ---------------------------------------------------------------------------------------------
 
 ## 1. Co-edge form [proved by hand]
@@ -219,3 +222,188 @@ the informative sizes (10,8), (12,10) are beyond one worker in the time box).
 Self-check: Theorems T, Q, P and 2.1–2.3 re-derived once after writing; T, Q, P and the identities
 agree with brute force (`check_core.py`). §6 is analysis, not proof; "every winning seven for
 N < 11k/6 is a Fano blow-up" is quoted from ROADMAP §0.1 (computed there, not re-checked here).
+
+=============================================================================================
+# Part II — the dump dichotomy (second time box)
+
+Brief: prove "within m(eps) requests either (a) three replies with union >= N - 4·eps·k and pair
+intersections in Theorem Q's windows, or (b) all dumps in a pool of size <= N - 3k/2"; cover the swap
+adversary (TWIN §18, REDTEAM §12); re-check ROADMAP's 11k/6. Code: `compute/core/fano_floor.py`,
+`compute/core/swap_check.py`.
+
+**Outcome: the dichotomy is NOT proved, and as stated in §7 it is not the right statement.**
+- Branch (a) was mis-stated (§8.2): once the fourth reply is dumped, Theorem Q's windows collapse
+  to Theorem T's point; the correct requirement is a count of *useful* dump (§8.1).
+- Proved: a reading lemma (§9.1: against a FIXED pair the third reply always carries waste omega,
+  whichever labelling she chooses afterwards), the mode lemma (§9.2: pure "high" and pure "low"
+  adversaries lose in seven requests; the rigid swap adversary is pure high at replies 2–3 and
+  loses to pencil-first — agrees with REDTEAM §12), and a dilution lemma with its consequence
+  "pile or pay" (§10).
+- What is left is exactly the adversary the coordinator's caveat names: one whose mode at replies
+  2–3 depends on her request (§9.3, "anti-plan"). §10 shows what he is forced to do against a
+  portfolio (re-dump into a nested kernel) but I could not close either branch (§11).
+- ROADMAP's 11k/6 re-computed: confirmed (§8.3).
+
+## 8. Corrections and the exact accounting
+
+### 8.1 Useful-dump profile [proved by hand, given 1.3 for N < 11k/6]
+
+In a Fano certificate with classes w_v and lines L_i ⊆ K_i put u_i = (|L_i| - t)^+ (the part of line i
+she could not request). Then w_v = (Σ_{i ∋ v} |L_i| - N)/2, so the class masses and the line masses
+determine each other, and Σ_i (|L_i| - t) = 3N - 7t = 3·omega - 4·eps. A reply K_i = S_i ∪ D_i can be the
+line i only if D_i ⊇ L_i∖S_i, i.e. at least u_i of its dump is on its line. Two replies are free
+(u = omega each: L_1 = K_1, L_2 = K_2). Hence
+
+    she wins with these seven  ⟹  Σ_{i >= 3} (useful dump of reply i)  >=  omega - 4·eps,
+
+and the certificate has total slack (Σ_{i>=3} useful dump) - (omega - 4·eps). With exactly three
+useful replies the slack is 4·eps and all class masses are forced: triangle a = b = d =
+N/2 - 5k/8 + O(eps) (Theorem T) or pencil with kernel N - 3k/2 + O(eps) (Theorem C at the Fano
+point). "Useful" includes landing in the right cell: a dump that is on the line but unbalances
+the three classes of the line is useful only if a later line absorbs the imbalance, which again
+needs useful dump there.
+
+### 8.2 Correction to §4/§6/§7 [proved]
+
+§6 said that with Theorem Q she needs only |K_1∩K_2∩K_3| <= 4·eps·k "with pair intersections in
+windows of width ~delta". That is wrong when the fourth reply is dumped: then W = omega + (waste of
+the first three), the slack of Theorem Q is 4·eps - (that waste), base loads are
+2a + 2k - N etc., and the conditions are those of Theorem T (a, b, d within O(eps) of N/2 - 5k/8).
+Windows of width ~delta exist only if the FOURTH reply is also (partly) useful. Branch (a) of the
+"suggested lemma" in §7 must therefore read: *replies 3..7 carry useful dump >= omega - 4·eps in
+total, in the right cells* (8.1). Three replies with a small common intersection are necessary for
+the profile (omega, omega, omega, 0, 0, 0, 0) but not sufficient.
+
+### 8.3 ROADMAP §2.2 re-checked [computed; float MILP, HiGHS]
+
+`fano_floor.py`: co-types F ⊆ [7] with masses m_F, pairwise intersecting supports, every edge of
+mass 1 (Σ_{F ∌ i} m_F = 1); minimise N = Σ m_F. Unrestricted optimum 7/4 (the seven lines, 1/4
+each). With the constraint "for each of the 30 Fano planes, not all seven lines are co-types":
+optimum **11/6** = 1.83333, attained by six lines (1/3, 1/3, 1/3, 1/6, 1/6, 1/6) and one 4-set
+(1/3) — ROADMAP's example. So for N < 11k/6 all seven lines of one plane occur as co-types, hence
+every co-type meets every line, hence contains a line: 1.3's "every winning seven is a Fano
+blow-up" stands. Not an exact certificate (127 binaries, floating point); the value and the
+optimal support agree with ROADMAP's independent run.
+
+## 9. One pair, one third reply
+
+Notation: free pair K_1, K_2; O = K_1∩K_2, A = K_1∖K_2, B = K_2∖K_1, g = V∖(K_1∪K_2). For a third
+co-edge K_3 define
+  W_tri = |K_1∩K_2∩K_3|  (1,2,3 labelled as three non-concurrent lines),
+  W_pen = |K_3∩(A∪B)| + |O∖K_3|  (1,2,3 labelled as a pencil; needs g ⊆ K_3).
+
+### 9.1 Reading lemma [proved by hand]
+
+**Lemma.** In a Fano certificate containing K_1, K_2, K_3, the points counted by W_tri (resp. W_pen)
+have co-type of size >= 4, so they consume that much of the waste 4N - 7k of 2.1. If
+3·omega <= |O| <= c/2, then for EVERY request S_3 the adversary has a reply with
+min(W_tri, W_pen) >= omega.
+*Proof.* Waste: a co-type ⊇ {1,2,3} with 1,2,3 non-concurrent contains a pencil and a line outside
+it. For the pencil labelling, a point of K_3∩A has 1, 3 in its co-type but not 2; the only pencil
+containing two of the lines 1, 2, 3 is {1,2,3}; so its co-type contains a pencil plus one of 1, 3
+outside it. Same for O∖K_3 (has 1, 2, lacks 3).
+Reply: let s_O = |S_3∩O|. If s_O >= omega he dumps entirely into (A∪B)∖S_3 (it has mass
+>= c + omega - 2|O| >= omega): W_tri >= s_O >= omega and W_pen >= omega. If s_O < omega he dumps entirely
+into O∖S_3 (mass >= 2·omega): W_tri >= omega and W_pen >= |O| - s_O - omega >= omega. ∎
+So no labelling chosen after the fact rescues the third reply against a fixed pair: she loses
+omega of the 4·omega + 4·eps available, and by 8.1 must then find omega - 4·eps of useful dump in
+replies 4..7. The lemma is about one pair; it says nothing when she holds several candidate pairs.
+
+### 9.2 Mode lemma: pure adversaries lose [proved by hand; computed]
+
+Call a reply *high* if its dump lies in the common intersection of the co-edges she relates it to
+(points "unused" by the replies so far), *low* if it lies on points in the fewest co-edges.
+**(H) High at replies 2 and 3 (this is the rigid swap adversary of TWIN 18.6 F1 / REDTEAM §12).**
+She wins in seven requests, whatever he does from reply 4 on (swap included):
+S_2 = o_2 ∪ P_2 with o_2 ⊆ K_1, |o_2| = N - 3k/2 - omega, P_2 ⊆ B_1, |P_2| = k/2. High dump: D_2 ⊆ K_1,
+so |K_1∩K_2| = N - 3k/2 and B_1∩B_2 = B_1∖P_2 has k/2 points. S_3 = (K_1∩K_2 ∖ D_2) ∪ (B_1∩B_2),
+|S_3| = T. High dump at reply 3 must be D_2 (the only unused unrequested points): B_3 = B_1 △ B_2.
+The three replies are anchors with union of 3k/2 <= 2T points; Theorem C finishes. ∎
+(This is "forcing by exhaustion" again: Theorem P with Z = the current unused set.)
+`swap_check.py`: (k,T) = (20,16), (24,19), (40,31), every N with 3T - k/2 < N < 3k - T, 40 random
+plays each, rule "omit unused at replies 2–3, take unused first and B_1-only next at reply 4":
+no 2-cover in any play. REDTEAM §12's exact 8-request lines find the same mechanism (line-first,
+B_1∩B_2 = k/2 sealed at request 3); seven requests suffice for the rigid rule.
+**(L) Low at replies 2 and 3.** S_2 with exactly a* = N/2 - 5k/8 points of K_1: low dump stays
+outside K_1, so |K_1∩K_2| = a*. S_3 with a* points of each of A, B, the rest in g, none in O: low
+dump goes to g (mass |g| - |S_3∩g| = k/4 + delta/2 >= omega to spare). Then K_1∩K_2∩K_3 = ∅ and
+a = b = d = a*: Theorem T finishes. ∎
+**(K) High forever.** If every dump lies in the common intersection of all earlier co-edges
+whenever she leaves it unrequested, then from the third reply on the dump is one fixed set Y,
+|Y| = omega, K = S ∪ Y: on V∖Y he has no move, and the complete family on (k + T) points loses to
+the Fano blow-up for T >= 3k/4.
+
+### 9.3 What is left: the anti-plan adversary
+
+By 9.1 the adversary who survives answers a triangle-type request (S_3 ∩ O = ∅) high and a
+pencil-type request (S_3 ⊇ most of O) low; by 9.2 he must really switch. This is precisely the
+coordinator's caveat ("rounds 2–3 omissions depend on her request"). Is a swap a dump into a
+pool? At replies 2–3 yes (pool = unused set), and that is why the rigid version loses; the
+dangerous version uses the pool only when she does not ask for it. He is neither branch of the
+§7 dichotomy: his dumps are not confined to any set of mass <= N - 3k/2 (the low dumps range over
+A∪B), and against a fixed pair no third reply is useful (9.1).
+
+## 10. Portfolios: dilution, and "pile or pay" [proved by hand]
+
+**Dilution lemma.** Let X_1, X_2, X_3 be co-edges, κ = X_1∩X_2∩X_3, and K = S ∪ D a co-edge with S
+disjoint from X_a∩X_b for all a < b. Then
+
+    min_{a<b} |K ∩ X_a ∩ X_b|  <=  |D∩κ| + (omega - |D∩κ|)/3 .
+
+*Proof.* A point outside κ lies in at most one of the three pairwise intersections. ∎
+**Pile or pay.** Fix 0 < ν < 1. If the triangle waste of K against every one of the three pairs is
+at least ν·omega, then |D ∩ κ| >= (3ν - 1)·omega/2: he has re-dumped into the common intersection of
+the portfolio. With ν = 1 - η: |D∩κ| >= (1 - 3η/2)·omega.
+Consequences.
+- If the portfolio is an exact triangle (κ = ∅) the next reply has triangle waste <= omega/3
+  against some pair — but an exact triangle is already what she wants (circular).
+- Starting from K_1, K_2 free and K_3 dumped high (Y_3 = D_3 ⊆ O), a request S_4 avoiding the three
+  pairwise intersections (possible: the points in at most one of K_1, K_2, K_3 have mass about k)
+  gives: either K_4 has waste < ν·omega against one pair (he "pays" (1-ν)·omega of useful dump), or
+  Y_4 = D_4∩Y_3 has mass >= (3ν-1)·omega/2 and lies in four co-edges (he "piles").
+- Iterating over triples that contain the newest reply produces nested sets Y_3 ⊇ Y_4 ⊇ ...,
+  |Y_j| >= (1 - 3(j-3)η)·omega (the common intersection of a later triple exceeds the previous Y by at most 3η·omega/2), each lying in all co-edges used so far, as long as he never pays
+  more than η·omega. In the limit η → 0 this is case (K) of 9.2.
+So against a portfolio the anti-plan adversary's high answers are forced into ONE nested kernel;
+he cannot spread them.
+
+## 11. Why this does not yet close the gap
+
+Two steps are missing; each is a precise statement.
+**(M1) Cashing the "pile" branch.** After j replies there is Y with |Y| >= (1 - O(η))·omega inside
+K_1, ..., K_j, and K_i = S_i ∪ Y ∪ (error O(η·omega)) for i >= 3. On V∖Y the replies i >= 3 are her own
+requests, so she has (almost) the complete family there — but only for requests that were
+triangle-type against the portfolio, and K_1∖Y, K_2∖Y are not hers. To finish she must make the
+later S_i lines of one Fano blow-up of V∖Y through K_1∖Y and K_2∖Y while each S_i still avoids the
+pairwise intersections of some earlier triple (so that the dilution lemma keeps applying). In a
+Fano plane exactly one line avoids all three vertices of a triangle, so the portfolio must be
+re-chosen at every step; I did not find an order of seven lines that keeps the lemma applicable
+throughout, nor a proof that none exists. If he stops piling at some step, that step is "pay".
+**(M2) Cashing the "pay" branch.** A reply that pays gives useful dump (1-ν)·omega against one pair,
+at a place of his choosing among A, B, g (balance). By 8.1 she needs omega - 4·eps in total and in
+the right cells; one payment of size η·omega is far from it, and I have no mechanism that makes him
+pay repeatedly: after a payment the portfolio changes and he may pile into a different kernel.
+The natural potential is Σ_j |Y_j|-deficits (each reply either extends the nested kernel or pays),
+but the kernel can be abandoned at no cost to him when she changes the portfolio — this is the
+swap, now in its request-dependent form.
+**Exact remaining statement** (replaces §7's suggested lemma). For 3T - k/2 < N < 11k/6 and
+T = (3/4 + eps)k: there is m(eps) such that against every adversary she obtains, within m(eps)
+requests, seven replies and a Fano labelling with Σ_{i>=3} (useful dump of reply i) >= omega - 4·eps·k
+in the cells required by 8.1. Known: false for any fixed pair and fixed order (9.1 plus 2.2);
+true against pure-mode adversaries and pool adversaries (9.2, Theorem P); against a portfolio the
+adversary must pile into one nested kernel or pay (§10).
+**Single best next step.** Decide (M1) by a finite search: the first-order game is finite-
+dimensional (masses of the Venn cells of the portfolio), and the pile branch with η = 0 is a
+one-player problem: choose requests S_3, ..., S_m in V∖Y, each avoiding the pairwise intersections of
+three earlier co-edges, with replies K_i = S_i ∪ Y, such that K_1, K_2 and five of the S_i ∪ Y form a
+Fano cover. If that design exists (an LP over cell masses for each of the finitely many line
+orders), "pile" is a win and only (M2) remains; if it does not, the request-dependent swap is a
+genuine obstruction to every strategy of the "portfolio + triangle-type request" kind, and a
+different request type (one that is triangle-type for one pair and pencil-type for another) is
+needed. I did not run this search (time).
+Not touched in this box either: the far-reply half (TWIN 17.3), N >= 11k/6.
+
+Self-check (Part II): 9.1 re-derived with the room condition |(A∪B)∖S_3| >= c + omega - 2|O|; 9.2(H)
+arithmetic checked symbolically and by `swap_check.py`; 9.2(L) uses |g| = 2k - N + a* and
+|S_3∩g| = T - 2a*; dilution lemma is a one-line count. §10's iteration and all of §11 are
+statements about what is forced, not a strategy with a proof.
