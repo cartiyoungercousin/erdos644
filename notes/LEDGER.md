@@ -18,7 +18,8 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 | Anchored reduction (TWIN §13), padding transfer | TWIN §13 | HAND |
 | Theorems J, K, L (petal spread case) | PETAL §3, §7, §8 | HAND |
 | Concentrated case N <= 3T - k/2 | TWIN 16.A | HAND |
-| Theorems T, Q, pool theorem P, slack count | CORE §2–§5 | HAND (computed exact on instances) |
+| Slack count, Theorem T, Theorem Q (= Q′) | CORE §2–§4 | VERIFIED (W2; Q's 'iff' holds only for the fixed quadrangle scheme) |
+| Pool theorem P | CORE §5 | VERIFIED at first order; FAILS at finite k when εk = 1/4: counterexample (k,T,N,|Z|) = (5,4,9,0), since C(9,4,2) = 8. Needs εk >= 1/2 plus a rounding lemma (W2) |
 
 ## Core window (Barrier D+E): classification of structured families
 | Claim | Where | Status |
