@@ -732,3 +732,125 @@ p <= 6 with p_12 <= 3), Theorem C gives the Fano point, Theorem F the region p_1
    on the region {all p_ab <= t²}: by 14.1 it is not all winning, so S1 must be strengthened to
    steer into the true requester region (the caps in S1 can be lowered: with t >= t₁ she can cap
    both new intersections at any level c with 2(1 - c) - p_12 <= t, i.e. c >= 1 - (t + p_12)/2).
+
+=============================================================================================
+## 15. Step 1 for the petal architecture near t = 3/4 (seventh time box)
+
+Code: `compute/twin/petal22.py`. Reduction and steering for petals are the petal agent's
+(notes/PETAL.md); this section only answers "which petal configurations does she win".
+**Outcome.** (i) The petal game is the confined pair-cover game on the union U of the petals,
+continued from the petals; when |U| <= k + T the adversary has no move and the question is a
+finite design problem (15.1). (ii) Four petals from one cluster of near-copies are an adversary
+win (15.3). (iii) **Triple-free four petals are the winning architecture**: only three grids of
+complementary pair-cells remain, three rounds suffice, and for two pairs with cores a, b the
+exact criterion is L*(a,b) <= T (15.4); e.g. a = b <= 4T/5, which at t = 3/4 covers near-copy pairs
+(overlap between t² = 0.5625 and 0.6). (iv) Three petals of a cluster plus one outside petal are
+not settled (15.5).
+
+### 15.0 Parked: job (A), the record path [proved by hand]
+
+**Theorem H.** For T < 4k/5 every anchor shape (0, b, k - b) with b <= T (a disjoint pair and a third
+reply inside its union) is an adversary win of the anchored game: with Z ⊂ B_1∖B_3, |Z| = k - T,
+X = B_1∖Z, Y = B_2, he answers inside X ∪ Y; B_3 and the four replies each kill a rectangle of
+semi-perimeter T in X × Y, total area <= 5T²/4 < Tk (Theorem 8's count). After a disjoint opening he
+can always choose such a third reply (her caps on p_13, p_23 sum to 2k - T >= k). So "all pairs
+<= t²" is not a requester region, and three-anchor steering in seven requests gives nothing below
+4k/5 (5k/6 by C's exact value for this adversary). The record path needs J >= 4 anchors-to-choose
+and the true requester region; not pursued.
+
+### 15.1 The petal game is a confined pair-cover continuation [proved by hand]
+
+Petals P_1..P_m (m <= 4) with empty common intersection, U their union, N = |U|/k. For x in U let
+M_x = {i : x not in P_i} (nonempty). Later replies E_1..E_q (q = 7 - m), K_r = U∖E_r ⊇ S_r ∩ U,
+I_x = {r : x in K_r}. A pair {x,y} ⊂ U covers the petals iff M_x ∩ M_y = ∅ ("covering pair").
+**The tuple is uncoverable iff I_x ∩ I_y ≠ ∅ for every covering pair**, i.e. iff the 7-round types
+M_x ⊔ I_x are pairwise intersecting: this is the game of §7 on the ground set U, started after m
+rounds whose complements U∖P_i cover U. (m = 3 is §13.)
+**No-adversary range.** If N <= 1 + t, then |U∖S| <= k for a full request inside U: the adversary's
+best reply contains all unrequested points of U and K_r = S_r. The continuation is then a
+one-player design problem: choose kill-types I_x ⊆ [q] with all round loads <= T. In general a
+design with loads <= T is sufficient, and it is also necessary whenever the adversary can place his
+forced omissions (mass N - 1 - t per round) on points that are in no covering pair.
+**Cost lemma.** A point missing exactly one petal needs two kills (otherwise that whole petal,
+mass k > T, would have to be killed in one round; he keeps one of its points). A point x with
+|I_x| = 1 forces all its partners into that round.
+
+### 15.2 Notation for four petals
+
+Cells by membership J ⊆ [4] (J = [4]∖M). Triple-free = no point in three petals; then cells are
+singles and the six pair-cells c_ij = |P_i ∩ P_j|, and the covering pairs are exactly
+c_12 × c_34, c_13 × c_24, c_14 × c_23 (the three perfect matchings of K4). Singles are in no
+covering pair. She makes petals triple-free by requesting, when a petal is created, all pairwise
+intersections of the earlier petals (cost: their total mass, must be <= T).
+
+### 15.3 Four petals from one cluster lose [proved by hand]
+
+**Proposition.** If every point of U misses exactly one petal (N = 4/3: the four complements
+partition U into parts of mass k/3; pairwise overlaps 2k/3), every point needs two kills in three
+rounds: 8k/3 <= 3T, so the adversary wins for T < 8k/9. In the symmetric family with pair-missing
+cells (each point misses one or two petals, overlaps 2k/3 - π) the same count gives: adversary win
+whenever the pairwise overlap exceeds 3T/2 - 2k/3 (0.458k at t = 3/4), in particular for all
+near-copy clusters (overlap > t²k). So "four same-arena replies with empty common intersection"
+is a certificate only together with a reply almost disjoint from U (as against the two-arena
+adversary, who is forced to supply one); a careful adversary never supplies it.
+
+### 15.4 Triple-free four petals: exact criteria [proved by hand; checked exact]
+
+**(a) Uniform K4.** Six pair-cells of mass k/3, no singles (N = 2): round r requests one
+complementary pair of cells, load 2k/3. Requester win for T >= 2k/3 (+O(1)). This is the Fano
+blow-up with the class of the line {5,6,7} empty.
+**(b) Two pairs.** Petals x, x', y, y' with cores a = |x ∩ x'|, b = |y ∩ y'|, the four cross
+intersections of O(1) points, triple-free. Let
+
+    L*(a,b) = min( a + b/3,  b + a/3,  2(a+b)/3,  3a/4 + b/2 [if b >= a/2],  3b/4 + a/2 [if a >= b/2] ).
+
+**Theorem I.** She wins with three more requests iff L*(a,b) <= T + O(1).
+*Proof.* Only the grid core_X × core_Y and two pairs of single points have to be killed. A kill-type
+assignment is a pair of cross-intersecting families on [3]; up to symmetry the maximal pairs are
+({123}, singletons), (2-sets, 2-sets), ({12},{13} ; {1},{23}) and its mirror, giving the five
+loads. Necessity: he puts every unrequested core point into his reply (they fit while she requests at
+least a + b - k core points) and omits singles (there are 4k - 2a - 2b >= 3k - a - b - T of them), so the kill sets in the cores are
+her requests, or sets of mass a + b - k <= T of his choosing if she requests less. ∎
+`petal22.py`: the covering pairs are as stated (brute force); design 3 leaves no 2-cover against
+random replies with fresh and re-used outside points at (k,T,a,b) = (5,4,2,2), (8,6,4,4); and the
+exact atom optimum of the 3-round design equals ceil(L*(a,b)) for all 1 <= a <= b <= 6 [computed exact].
+Consequences: a = b wins iff a <= 4T/5. At T = 3k/4: a, b <= 0.6k; or a <= 0.75k with b = O(1);
+generally L* is increasing in a and b, so **smaller overlaps are always better for her, and she
+controls every overlap from above** (caps). With cross-cells of positive mass add
+max(c_13 + c_24, c_14 + c_23) to the load of two different rounds (sufficient; exact value = an LP).
+**(c) General triple-free.** Three grids, three rounds; sufficient: one complementary pair per
+round, loads c_12 + c_34, c_13 + c_24, c_14 + c_23 <= T. The exact value is a small LP (request C1).
+
+### 15.5 Three cluster petals plus one outside petal [partly proved]
+
+x, x', x'' with common core c_3 = |x ∩ x' ∩ x''| and y outside. Covering pairs: core × y (grid
+c_3 × k) and, for each cross point of y with one x, the cell of the other two x's only. The grid
+alone needs L*(c_3, k) <= T, i.e. c_3 <= T - k/3 (freeze the core, thirds of y) [proved: necessary].
+The cross points cannot be prevented (a petal cannot be requested entirely), so the pair-only
+cells carry "kill once" obligations as in 14.1; with them I have neither a strategy nor an
+adversary. Since she can lower c_3 by requests but the pair-only cells then grow, I expect this
+configuration to be worse for her than 15.4(b). Not settled.
+
+### 15.6 What to steer to (for the petal agent)
+
+Target: four replies, triple-free, with L* of each complementary pair of pair-cells within T, the
+three grids fitting in three rounds. Against two clusters this means one pair from each cluster
+with both cores capped near 0.6k (at t = 3/4), cross-overlaps O(1), and the triple intersections
+requested away when the third and fourth petals are created (cost = core of the first pair + O(1)).
+What I did not prove: that she can force both caps simultaneously (the cap on a core costs
+k - 0.6k = 0.4k per cluster, and the triple-free block of the first core costs up to 0.6k more at
+the fourth petal).
+
+### 15.7 Requests for C (exact, real sets)
+
+C1. Four-petal confined game, triple-free configurations (c_12, c_13, c_14, c_23, c_24, c_34) plus
+    singles, three further requests: table of requester/adversary shapes at (k,T) = (8,6), (9,7),
+    (12,9), (12,10). Prediction for two pairs with O(1) cross points: R iff ceil(L*(a,b)) <= T up to
+    the cost of the cross points.
+C2. Same game for one-cluster configurations (every point missing one or two petals) at (8,6),
+    (9,7), (12,9): prediction A for every near-copy configuration.
+C3. Configuration 15.5 (three cluster petals, common core c_3, pair-only cells, one outside petal
+    with one point in each x) at (8,6), (9,7), (12,9), over c_3 and the pair-only masses.
+C4. Selection game: four replies, she wins iff they are triple-free with L*-feasible grids (C1's
+    table); can she force it at (8,6), (9,7), (12,9), (12,10), and with five or six replies choosing
+    four?
