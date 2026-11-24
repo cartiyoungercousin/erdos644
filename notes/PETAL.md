@@ -207,3 +207,148 @@ requests and would show directly whether adversary (b) survives the petal archit
 [simulated].
 Hand proofs re-read once: P1–P4, Theorem J (budget (J3) uses |Z_i∖X_1| < 3λ for two earlier
 centres plus the standing λ; (J4) is used twice), matching-load lemma, the 3(1-t) computation.
+
+=============================================================================================
+# Part II — the spread side (second time box)
+
+Brief from the coordinator: assume some three replies with empty common intersection have union
+>= 3 - t, i.e. pair mass p = p_12 + p_13 + p_23 <= t ("spread triple"); the concentrated side is the
+twin's (Fano six-state). Code: `compute/petal/design.py`, logs `table_12_9.log`, `table_16_12.log`.
+
+**Outcome.**
+- Gap (2) is closed: the exact criterion for triple-free four petals is a finite design problem
+  with no adversary (Theorem K, §7), value L(a,b) computed by a 42-binary MILP; it specialises to
+  the twin's L* for one grid. [proved by hand; MILP checked against L* and uniform K4]
+- Gap (1) is closed for spread triples **without a dominant pair** and stays open with one.
+  The fourth petal costs exactly p <= t (that is what "spread" buys), the cells then always fit the
+  no-adversary range, and she wins in four more requests when max p_ab <= t - 1/2 and
+  p_ab + p_ac - p_bc <= 3t - 2 [proved by hand, Theorem L], and on a much larger computed region,
+  roughly max p_ab <= 3/8 at t = 3/4 [computed, grids k/12 and k/16]. With a dominant pair
+  (max p_ab >= about 0.44) this fourth-petal architecture is an adversary win at t = 3/4, by margins
+  that close near t ≈ 0.78–0.80 [computed].
+- Interface (§9): good spread triples are *stateless* wins, so alternation cannot hurt there. The
+  adversary's only way to sit between the two cases is a spread triple with a dominant pair
+  (two near-copies plus a far reply). That is the remaining hole; it is the two-class picture of
+  Theorem J again, and it is closed only when the play is band-free.
+
+## 7. Theorem K: exact criterion for triple-free four petals [proved by hand; computed]
+
+Four petals, no point in three of them. Grids r = 1, 2, 3 (the perfect matchings of K4):
+A_r × A'_r with masses a_r, b_r; σ = total mass of the six cells = |U*|. Kill types are nonempty
+subsets of the three remaining rounds.
+
+**Theorem K.** (i) She wins with three more requests if there are, for each grid r, families
+𝓕_r, 𝓖_r of nonempty subsets of [3] with F ∩ G ≠ ∅ for all F in 𝓕_r, G in 𝓖_r, and distributions of
+A_r over 𝓕_r and of A'_r over 𝓖_r, such that every round load (mass of points whose type contains
+the round) is <= t. Let L(a,b) be the least achievable maximum load.
+(ii) If σ <= 1 + t this is also necessary: she wins iff L(a,b) <= t.
+(iii) Zero cells: a cell of O(1) points opposite a cell of positive mass still forces one kill of
+every point of the latter (the adversary gets the sliver for free); in L a zero cell is a cell of
+mass ε.
+*Proof.* (i) Request the round loads; every reply misses its request, so K_i contains the design's
+round i and P2 applies (Γ is the three grids). (ii) His reply to a request S ⊆ U* with |U*∖S| <= 1
+contains all unrequested active points (worst for her by P3(i)), so K_i = S_i ∩ U*; if she requests
+fewer than σ - 1 active points he chooses the missing kills himself, which is no better for her
+than requesting them (σ - 1 <= t). Replies carry no information, so the game is the design
+problem; I_x ∩ I_y ≠ ∅ on a grid says exactly that the supports are cross-intersecting. ∎
+Single grid: the maximal cross-intersecting pairs give L = L*(a,b) of TWIN 15.4. Closed forms
+worth recording: matching design, loads a_r + b_r (one grid per round); all-pairs design, load
+2σ/3 (every point killed twice); freeze design, load Σa + Σb/3 (Theorem D's count). No closed form
+for general six positive cells: the optimum mixes these per grid, which is why it is left as a
+MILP (`design.py`: binaries = allowed types per side and grid, u_F + v_G <= 1 for disjoint F, G).
+Checks [computed]: uniform K4 (1/3 each) gives 2/3; one grid (1/2, 1/2) gives 0.625 = L*;
+(1/3, 2/3) gives 0.556 = L*.
+
+## 8. The fourth petal on a spread triple [proved by hand; computed]
+
+Spread triple B_1, B_2, B_3 (empty common intersection, p <= t), singles Q_i of mass
+q_i = 1 - p + p_jl. Request S_4 = P ∪ R, R inside the singles, r_i = |R ∩ Q_i|, Σ r_i = t - p.
+Any reply B_4 gives four triple-free petals with cells
+a = (p_12, p_13, p_23) and b = (c_34, c_24, c_14), c_i4 = |B_4 ∩ Q_i| <= q_i - r_i, Σ c_i4 <= 1.
+**Cost control:** the fourth petal costs exactly p, affordable iff the triple is spread; and
+σ = p + Σ c_i4 <= 1 + t, so Theorem K(ii) applies: **after the fourth petal there is no adversary.**
+The whole continuation is the minimax  min_r max_b L(a, b).
+
+**Theorem L (matching design).** Let t >= 3/4. If every p_ab <= t - 1/2 and
+p_ab + p_ac - p_bc <= 3t - 2 for all labellings, she wins in four more requests.
+*Proof.* Loads a_i + c_i4 <= a_i + q_i - r_i; she needs r_i >= ρ_i := 1 - t - p + 2a_i. A choice
+r >= max(ρ, 0) with Σ r = t - p exists iff every sub-sum of the ρ_i is <= t - p: three terms give
+3(1-t) - p <= t - p (t >= 3/4), two terms give a_i + a_j - a_l <= 3t - 2, one term gives
+a_i <= t - 1/2. ∎
+At t = 3/4: p_ab <= 1/4 and p_ab + p_ac - p_bc <= 1/4; e.g. every balanced spread triple.
+
+**Computed region** (`design.py table K T`: shapes on the grid 1/K with t - 1/3 < p <= t — below
+that Theorem D wins —, her r and his b on the same grid, L exact at each grid point, slivers as in
+K(iii)). R = she wins with this architecture, A = the adversary's best fourth petal beats every
+design. [computed; grid-restricted on both sides, so boundary shapes are indicative only]
+
+| K, T | shapes | A shapes (p_12 p_13 p_23 in units 1/K) |
+|---|---|---|
+| 12, 9 | 39 | 600; 700 610; 800 710 620 611 530 440; 900 810 720 711 630 621 540 522 441 |
+| 16, 12 | 79 | 800 710; 900 810 720 711; (10)00 910 820 811 730 721; (11)00 (10)10 920 911 830 821 740 731 722 650 551; at p = 12: all with p_12 >= 7, and 660 651 633 552 |
+
+Reading: she wins whenever max p_ab <= 3/8, except for a few shapes with p = t exactly (no spare
+request) or two heavy cells; she loses with a dominant pair, max p_ab >= 7/16. The adversary's
+winning margin is small (values 12.25–13 of 16 except near-copies): this architecture alone
+handles dominant pairs only from about t ≈ 0.78–0.80.
+What the fourth petal looks like when he wins: B_4 is a near-copy of the far reply B_3
+(c_34 large) that also takes a block from one single part of the dominant pair, e.g.
+a = (7,1,0), b = (7,4,1) at K = 12: the cross grid 1 × 4 costs one kill of the block of 4, and
+there is no room left beside the core grid 7 × 7.
+
+## 9. Interface between the spread and the concentrated side
+
+**9.1 Good spread triples are stateless wins [proved].** Theorems D, L (and the computed region)
+use only the triple and four fresh requests; other replies, earlier or later, are irrelevant
+(P3). So she can run any other strategy and switch the moment such a triple exists; alternating
+between "concentrated" and "good spread" behaviour does not help the adversary.
+
+**9.2 Committed play cannot be escaped [proved].** Once she has committed to a petal set P (any q)
+and plays a strategy of the petal game G(P), replies leaving U*(P) only help her (P3(iii)). So if
+the concentrated-side strategy has the form "select six petals, then one request" or "select
+anchors, then confined play", the adversary cannot break its endgame by going spread. Alternation
+can only attack the *selection* phase.
+
+**9.3 The invariant the adversary must keep.** Combining 9.1 with REDTEAM 7.2: at every moment,
+every triple of replies with empty common intersection is either concentrated (p > t) or spread
+with a dominant pair (outside the R region of §8; in particular max p_ab > 3/8 up to the boundary
+shapes, and p > t - 1/3). So the two cases do not partition the adversaries: the Fano six-state
+lemma is stated under "every such triple has p > t", and a single far reply F violates that
+hypothesis without giving a good triple, provided the replies that meet F little are pairwise
+near-copies. Consequences of a far reply [proved by hand, from Theorem D]:
+- if A ∩ A' ∩ F = ∅, |A ∩ A'| = a and F meets A ∪ A' in mass f, then a + f > t - 1/3 or he has lost;
+  so after a reply disjoint from everything, all earlier replies must pairwise overlap in more
+  than t - 1/3, and every later reply E must satisfy |E ∩ A| + |E ∩ F| > t - 1/3 for every earlier A
+  (given E ∩ A ∩ F = ∅). She can cap |E ∩ A| at 1 - t for one chosen A, forcing |E ∩ F| > 2t - 4/3;
+- hence a far reply splits the play into two families of mutual near-copies: the two-class
+  picture. If no pair is banded, Theorem J wins. If a pair is banded, see 9.4.
+
+**9.4 The hole.** A spread triple with a dominant pair, in a play that also has banded pairs:
+neither Theorem J (needs band-free), nor Theorems D/L (need no dominant pair), nor — as far as it
+is stated — the six-state lemma (needs all triples concentrated) applies. Candidate adversary:
+a self-sufficient arena (N < 3 - t, replies pairwise overlapping in the band or above) plus rare
+far replies. I did not show that this adversary survives: against it she can ignore the far
+replies and play the concentrated strategy *if* that strategy tolerates replies outside the
+arena. By 9.2 it does once it is committed; whether its selection phase does is a question about
+the twin's proof, not about petals.
+**Request to the twin:** state the six-state lemma with the hypothesis "every triple with empty
+common intersection has p > t **or contains a pair with overlap > 3/8**" (far replies allowed), or
+show that a far reply can be discarded at no cost. The natural argument for the latter: the
+request was the one the concentrated strategy wanted, and in any committed continuation a
+trace-poor reply is the best possible reply for her (P3(i)); what has to be checked is only the
+bookkeeping of the selection phase.
+
+## 10. Status of the two gaps and what is left
+
+1. Fourth-petal cost: controlled exactly on the spread side (cost p <= t, no adversary afterwards).
+   Banded pair → four winning petals: done when the pair sits in a spread triple without a
+   dominant pair; open when the triple's largest pair exceeds about 3/8–7/16.
+2. Criterion for six positive cells: Theorem K (exact, MILP); no closed form.
+3. Decisive gap now: **dominant-pair spread triples at 3/4 < t < about 0.79** — equivalently the
+   tolerance of the concentrated-side selection phase to far replies (9.4). A direct attack on
+   the spread side would need petals with triple points (q = 4 keeping part of P_12 unrequested,
+   or q = 5): by §8 the triple-free family is exhausted there.
+
+Checks: `py compute/petal/design.py design a1 a2 a3 b1 b2 b3`; `py compute/petal/design.py table 12 9`
+(about 1 min), `table 16 12` (about 8 min). Hand proofs re-read: Theorem K(ii) (the under-request
+step), Theorem L (sub-sum condition), 9.3 bullets.
