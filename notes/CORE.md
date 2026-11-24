@@ -1773,3 +1773,52 @@ triangle request (`tri_test.py`), and §26's "spoiler exists" at depth 2 (360 re
 masses (|K_i| = c, |S| = t) in Fractions and never trusts a float objective. The surviving spoiler of the first
 fine scan in §41 was re-attacked with four seeds and broken four times. `onebit.py`'s verdict is the brute-force
 pair check on replies produced by the rule itself; the MILP only proposes classes.
+
+## 48. (structural side; INTERIM — stopped by the coordinator, handed to the pseudorandom-side agent) Hash-like selectors
+
+Code: `compute/core8/sunflower_ramsey.py` (SAT, python-sat). Status of every item is tagged; nothing here is finished.
+
+**48.1 The 2/3 of §47 cannot be sharpened for one class over one kernel [proved by hand, quoting Kleitman 1968].**
+Over a fixed kernel the class-r halves are a family of k/2-subsets of a 3k/2-set with no three pairwise disjoint
+members; Kleitman's theorem (the n = sk case of the Erdős matching problem) gives the maximum C(3k/2 - 1, k/2) = 2/3 of
+all halves, attained by "all halves avoiding one point". That extremal selector is a one-point junta and dies by
+Theorem W once the kernel is moved onto the point. So the right object is not a density over one kernel but the
+hypergraph over ALL kernels:
+**ℋ(k,T):** vertices = T-subsets of a ground set G, |G| = k + T (= V minus the head of one class); edges = perfect
+sunflowers (three T-sets with one common pairwise intersection of T - k/2 points and union G). A selector avoids every
+pencil frame of that head iff the requests it sends to that class form an independent set of ℋ.
+
+**48.2 ℋ is not 2-colourable in the cases tested [computed exact, SAT, UNSAT = proof for that size].**
+(k,T) = (4,3): 35 vertices, 105 edges, not 2-colourable, 3-colourable. (k,T) = (8,6): 3003 vertices, 525 525 edges, not
+2-colourable (2 s). Running when stopped, NO result: 3-colourability at (8,6); 2-colourability at (8,7) and (4,2).
+For one fixed kernel the hypergraph is the Kneser hypergraph KG³(3k/2, k/2), chromatic number 2 (Alon–Frankl–Lovász);
+the extra edges from moving the kernel are what push it to 3.
+Meaning, if it holds for all (k,T) [conjecture, not proved]: every 2-colouring of the T-subsets of G has a
+monochromatic perfect sunflower.
+
+**48.3 What 48.2 does NOT yet give [exact open step].** A greedy rule with classes a, b has two different grounds,
+G_a = V∖Z_a and G_b = V∖Z_b. Non-2-colourability of ℋ on G_a yields a monochromatic sunflower covering G_a; if it is
+all-a she wins, but if it is all-b it is not a b-frame (its three replies are S_i plus the ≺_b-first unrequested
+points, which lie in the other petals or in Z_a), unless the orders are compatible (initial segments I_a, I_b with
+|I_a ∩ I_b| >= ω and |I_a ∪ I_b| <= n - 3k/2, in which case one hole set serves both classes and she wins outright
+[proved by hand: request (I_a ∪ I_b)∖Z, then the first ω unrequested points are Z in both orders]).
+**Open step:** a two-ground version — for every 2-colouring of the T-subsets of V there is an all-a perfect sunflower of
+V∖Z_a or an all-b perfect sunflower of V∖Z_b (heads taken relative to the requested gaps, as in 47.2). Smallest test:
+SAT at (k,T,n) = (8,6,16) with ≺_b the reverse of ≺_a (about 10⁶ clauses; not run). For R classes one needs χ(ℋ) > R,
+and already χ(ℋ(4,3)) = 3: **three classes may escape every pencil**; then Theorem T and Q' frames must be added.
+
+**48.4 Parity selectors [proved by hand].** For a selector that is a function of the parity vector (|S ∩ E_j| mod 2)_j:
+in an exact frame of class r the three parity vectors sum to v + z^r (mod 2); if neither colour class may contain such
+a triple, both have exactly half the cube and are the two cosets of one hyperplane (a set of more than half of F_2^m has
+A + A = F_2^m; equality case Kneser), so the selector is the parity of |S ∩ E| for ONE set E; one requested junk point
+per pencil line (slack 3 points, available once eps·k >= 3) flips it. Parity-type selectors therefore lose.
+
+**48.5 Non-greedy rules: not started.** Only the observation that every member of a greedy rule contains the head of
+its class relative to its request, so "re-greedifying" a request-dependent in-cell choice by a fixed order replaces
+each member S ∪ D(S) by S ∪ (first points), which is a different family: T-covering is kept (replies are redefined, not
+removed), but "no good seven" is not known to transfer in either direction. No reduction and no obstruction proved.
+
+Self-check (§48): 48.1 is a citation, not re-proved. 48.2: UNSAT results from Cadical with one symmetry-breaking unit
+clause (colour of one vertex), which is sound; edge counts match C(g, q) x (3k/2)!/((k/2)!³·3!). 48.4's additive step
+uses |A| > 2^(m-1) ⟹ A + A = F_2^m (pigeonhole) and the structure of sets of size exactly 2^(m-1) with A + A ≠ F_2^m;
+written from memory, not machine-checked. The "three classes may escape" sentence is an inference from one tiny case.
