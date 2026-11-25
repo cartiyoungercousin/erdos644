@@ -1,0 +1,219 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem,booktabs}
+\usepackage[hidelinks]{hyperref}
+\setlist{itemsep=1pt,topsep=2pt}
+\newcommand{\lvl}[1]{\textsf{\small[#1]}}
+\newcommand{\F}{\mathbb{F}_2}
+\title{Response to ``Programme for a full resolution''\\[2pt]\large Erd\H{o}s Problem \#644: state of pieces A, B and C}
+\author{erdos644 project}
+\date{25 November 2026}
+\begin{document}
+\maketitle
+
+\section*{Summary}
+\begin{itemize}
+\item \textbf{A (rich families): done.} Theorem RA is proved and independently verified. It covers the heavy-atom case
+that Theorem~3 left open. Its Lean formalisation is in progress.
+\item \textbf{B (coset families): mostly done in the main regime.}
+  \begin{itemize}
+  \item Decision point D1 came out on the safe side: $c^*=1$ for $N<1.938$.
+  \item Proposition 9 is repaired as Theorem $9'$.
+  \item Theorem B1 removes the class-count restriction for small linear codimension.
+  \item The counting criteria (Lemma F1, Theorems F, F2, F$'''$) are rigorous.
+  \end{itemize}
+  One step is open: a decomposition step for structured duals, at codimension between about $k/15$ and $0.43k$.
+\item \textbf{C (bridge): open, and restated.} An exact example at the threshold, $K_{13}^{(8)}$, is $(7,2)$ and far from
+every coset. So C must allow a second extremal structure: near-complete families. Most of that structure falls under A.
+\item \textbf{No counterexample} to (G) or to B was found anywhere.
+\end{itemize}
+Level tags: \lvl{VERIFIED} (independent adversarial check), \lvl{HAND} (proved, not yet independently checked),
+\lvl{EXACT} (exact computation), \lvl{HEUR} (heuristic), \lvl{DEAD}. The authoritative record is
+\texttt{notes/LEDGER.md}; file names below are in the public repository.
+
+\section{The problem and the reduction in use}
+$f(k,7)$ is the largest $\tau(H)$ over families $H$ of $k$-sets with property $(7,2)$: every 7 members have a transversal
+of size $\le2$. The known bounds are $3k/4+O(1)\le f(k,7)\le(7/8+o(1))k$. The question is whether
+$f(k,7)=(\tfrac34+o(1))k$.
+
+\textbf{Statement (G)}, our target and equivalent to the upper bound: for $\varepsilon>0$, $k\ge k_0(\varepsilon)$ and
+$T=\lceil(3/4+\varepsilon)k\rceil$, every finite family of nonempty sets of size $\le k$ with $\tau>T$ contains seven
+members with no 2-point transversal (a \emph{good seven}). (G) has no confinement, no anchors and no petal side.
+Minimal counterexamples are antichains, have private sets and are saturated (\texttt{notes/MINIMAL\_FRAME.md},
+\lvl{VERIFIED}, Lean).
+
+\textbf{The programme.} (G) follows from three statements:
+\begin{itemize}
+\item A: rich families ($\tau^*_b\le 7/3-\eta$) are not $(7,2)$;
+\item B: every $T$-covering coset family has a good seven;
+\item C: a thin family with no good seven is close to a family that B (or A) handles.
+\end{itemize}
+
+\section{Task 0: verification of Facts I and II}
+\begin{itemize}
+\item Lemma 2, Theorem 3, Lemma 5 (pencil-sum identity), Corollary 7 and Lemma 8 \lvl{VERIFIED}
+(\texttt{notes/verify/programme2\_task0.md}).
+\item \textbf{The heavy-atom case of Theorem 3 fails at finite $k$.} $K_{10}^{(6)}$ is $(7,2)$ with $\tau=5>3k/4$ and
+$\tau^*_b=2$. So ``rich $\Rightarrow$ not $(7,2)$'' is false at finite $k$ when atoms are heavy. This was settled
+asymptotically by Theorem RA below.
+\item \textbf{Every good seven is Fano-type for $N<11/6$} \lvl{VERIFIED, EXACT}. All 1\,422\,564 maximal intersecting
+families on 7 points were checked with rational LP certificates. The threshold $11/6$ is sharp. This replaces the earlier
+float-MILP claims.
+\item $(\Sigma)$(a) in $\F$ form is a four-term relation (pass). $(\Sigma)$(c) is not one: the pair sums and the triple
+sum all have weight $\ge n-T$.
+\end{itemize}
+
+\section{Task 1: $\tau^*_b$ for every stored family}
+LP with separation by a minimum-weight transversal; exact oracles for $n\le25$; $\Phi=\min(y(V)+7\max y)$
+(\texttt{notes/PROGRAMME2\_TASK1.md}).
+\begin{itemize}
+\item \textbf{No stored family is rich at its (small) $k$.} The term $7\max y\approx7/\tau$ dominates. The best value is
+$\Phi=7/3$ exactly, for complete $K_{21}^{(10)}$; every other family has $\Phi\ge2.45$.
+\item Typical values: FKW and $H_1$ give $\tau^*_b=11/5$; near-pool profile families give $1.75$--$2$; the $k=10$ window
+families sit at exactly $7/3$; the padded uniform template $U_1$ gives $533/220>7/3$.
+\item $\tau^*_b=n/\tau$ (uniform weights optimal) for 73 of 101 result rows.
+\end{itemize}
+
+\section{Piece A: Theorem RA}
+\textbf{Theorem RA} \lvl{VERIFIED} (\texttt{notes/PROGRAMME2\_A.md}, \texttt{notes/verify/theorem\_RA.md}). Let $H$
+consist of nonempty sets of size $\le k$, with $\tau^*_b\le7/3-\eta$ and $\tau>(k+1)/2+49/(3\eta)$. Then $H$ is not
+$(7,2)$.
+\begin{itemize}
+\item \emph{Proof idea.} Fewer than $49/(3\eta)$ points have weight $\ge\eta/7$; put all of them on one Fano point.
+\item \textbf{Lemma A0}: if every three members of $H$ share a point, then $\tau\le(k+1)/2$. It supplies three members
+that miss the heavy points and have empty triple intersection. A refined Theorem 3 then colours the light points.
+\item \emph{Testing.} Every step was checked; the heavy-atom branch was tested end to end on about 408 real families,
+$k=40$--$140$.
+\item \emph{Literature.} Lemma A0 was not found in this form. The nearest results are Nagy--Patk\'os (arXiv 2201.02452)
+and Bishnoi--Das--Morris--Szab\'o (arXiv 2001.04132).
+\end{itemize}
+\textbf{Consequence for the seam.} With $y\equiv1/\tau$ we get $\tau^*_b\le n/\tau$, and there are no heavy atoms. So
+every family on $n\le(7/4+\delta)k$ points with $\tau>(3/4+\varepsilon)k$ is handled by RA whenever
+$\delta\le7\varepsilon/3-\eta'$, for a fixed $\eta'>0$.
+
+\section{Task 2 / D1: the constant $c^*$}
+\texttt{notes/PROGRAMME2\_TASK2.md}. \textbf{D1 lands in ``B within reach''; there is no counterexample.}
+\begin{itemize}
+\item \textbf{Theorem D} \lvl{VERIFIED}. If $\dim C\ge k+r$ (plus two mild conditions), every covering coset family has
+$\rho_{\mathrm{par}}\le r+1$, parity-correct. Hence $c^*=1$.
+\item Counting gives $\dim C\ge k+r$ for $\omega<0.188$, i.e.\ $N<1.938$, which contains all of $N<11/6$
+\lvl{VERIFIED}.
+\item Theorem D also yields three pairwise disjoint parity-correct $\Omega_i$ with $\sum|\Omega_i|\le4n-7k$, but only for
+$N<1.852$ \lvl{VERIFIED}.
+\item Exact tables: $\rho\ge r+2$ occurs only when $\tau\le2$. The pair $(7,14)$ is excluded for $k\ge36$.
+\item For $N\ge1.938$ only Lemma 8's $\rho\le2r+1$ is known.
+\end{itemize}
+
+\section{Task 3: the adjustment step of Proposition 9}
+\texttt{notes/PROGRAMME2\_TASK3.md}, \texttt{notes/verify/theorems\_9prime\_D.md}.
+\begin{itemize}
+\item \textbf{Proposition 9 as literally stated is false}, because of size parity. A counterexample was found by hand and
+confirmed by SAT.
+\item \textbf{Theorem $9'$} \lvl{VERIFIED}. With parity-correct $|\Omega_i|\equiv k\pmod 2$ and explicit size margins,
+the $7\times7$ $\F$ class system is always solvable, and size residues are repaired by same-class pairs. The construction
+was exact on 10\,300 instances.
+\item \textbf{The gap the verifier found:} $9'$ needs few point classes, $c\le2^r$, i.e.\ codimension $O(\log k)$. Covering
+coset families can have about $n$ classes. This led to the many-class work below.
+\item Task 3's conjecture that parity-correct $\Omega$'s alone suffice is \textbf{false}: two exact $\tau=2$ instances
+($n=14$, $k=6$). A hypothesis such as $\tau\ge3$ or $T$-covering is needed.
+\end{itemize}
+
+\section{Piece B with many classes}
+\texttt{notes/PROGRAMME2\_B.md}, code in \texttt{compute/programme2/B/}.
+\begin{itemize}
+\item \textbf{Coset families contain no perfect pencil} \lvl{HAND}. The three membership conditions
+$[P_i]+[P_j]=\alpha$ sum to $0=\alpha$. So Theorem R (pencil-based) never applies to coset families, at any dual
+distance, and every certificate must use slack. S$^+$ applies with $m=c$; its trigger is the \emph{primal} class count,
+not the dual distance.
+\item \textbf{Theorem B1} \lvl{HAND}. For $N<1.852$, every covering coset family has a Fano-type good seven once
+$\operatorname{codim}(C_{\mathrm{ev}})-1\le\min\big((k-5r-41)/15,\ (r+4\varepsilon k-11)/5\big)$. There is no condition on
+the column structure. Exact tests: 496/496 constructions verified, including 82 certified covering families that fail
+$9'$'s hypothesis.
+\item \textbf{Counting (the reviewer's MacWilliams route).}
+  \begin{itemize}
+  \item The MacWilliams identity over $\F^3$ is exact \lvl{HAND}.
+  \item \textbf{Lemma F1} \lvl{HAND, EXACT-checked}: a rigorous fixed-count bound,
+  \[|S(\lambda)|\le\mathrm{Mult}(m)\,\Phi(n)/P_m,\]
+  via Parseval. The damping near constant words is $7^{-1/2}$ per point. On 300 cases the
+  largest ratio of true value to bound is 0.015.
+  \item \textbf{Theorems F and F2} \lvl{HAND}: counting criteria with no class-count condition and no span hypothesis.
+  \item \textbf{Möbius identity and Theorem F$'''$} \lvl{HAND}: the light-word sum is
+  $G(x)=\mathbb{E}_T[8^{\mathrm{drop}\,T}]$, and a good seven exists up to codimension $\approx0.09k$ whenever
+  $G(7^{-1/2})\approx1$. Random columns give $G=1.00$ \lvl{EXACT, sampled}.
+  \end{itemize}
+\item \textbf{Short dual words cannot obstruct.} A structural obstruction needs least deficiency per pencil-incidence
+$\beta\ge4/7$. Every short-dual-word structure tested gives $\beta=1/3$ \lvl{EXACT, exhaustive for blocks up to 6 and fans
+up to 10}.
+\item \textbf{The open step: decomposition (\S5.7).}
+  \begin{itemize}
+  \item \emph{Slack is not the binding constraint.} Removing a dual word that avoids the $\Omega$'s costs $0$ slack at any
+  weight. A coloop costs 12 per point.
+  \item \emph{What blocks it is control of the rest of the code.} With linearly many disjoint short dual words, every
+  absolute-value counting criterion fails (no-go \textbf{P3}, \lvl{HAND}), although sevens exist. Planted series pairs
+  give $G\approx\prod(1+7x^w)$, e.g.\ $6\cdot10^5$ for 20 pairs.
+  \item \emph{Routes that failed as stated.} Iterative puncturing; fixing labels, which works only for short words with
+  disjoint supports; ``many near-constant words force few classes'', which is false.
+  \item \emph{Needed next.} A multiplicative (polymer / cluster-expansion) treatment of short dual words, which first
+  needs a canonical decomposition into disjoint-support pieces.
+  \end{itemize}
+\item \textbf{Remaining B gaps}, besides \S5.7: $1.852\le N<11/6$, where three disjoint small $\Omega$'s are not proved;
+and robustness of B to a few exceptional members, since C only delivers near-cosets.
+\end{itemize}
+
+\section{Task 4 / D2 and bridge C}
+\begin{itemize}
+\item \textbf{Task 4} \lvl{EXACT/sampled} (\texttt{notes/PROGRAMME2\_TASK4.md}). Every stored family with no Fano-type
+seven found is a $\rho=2$ coset family up to at most 12 members. The $(8,6,15)$ pencil-free selector is exactly a parity
+function. This holds only in the weak regime $4T-3k=0$, and seven-freeness is certified only for FKW.
+\item \textbf{Stability data} (\texttt{notes/STABILITY\_DATA.md}, stopped early). Complete $K_{13}^{(8)}$ is $(7,2)$ with
+$\tau=6=3k/4$, yet at most $61.5\%$ of its members lie in any $\rho\ge1$ coset \lvl{EXACT, Walsh transform}. The same
+construction works for every $k$. So the near-coset form of C \textbf{fails at the threshold}. Exact $(7,2)$ certification
+for $n\ge15$ is the bottleneck: no certified family with $\tau>3k/4$ at $n\ge15$ was produced. FKW at $k=8$ is not $(7,2)$,
+as already known.
+\item \textbf{Restated C.} A thin family with $\tau>(3/4+\varepsilon)k$ and no good seven is close to a coset family
+\emph{or} close to a complete family on about $7k/4$ points. The complete family on $7k/4$ points has
+$\tau^*_b\to7/3$, exactly on the rich/thin seam. Near-complete families with $\delta\le7\varepsilon/3-\eta'$ are covered
+by RA. A \textbf{near-complete lemma} for larger $\delta$, including mixed ``complete with a parity twist'' families, is
+in progress (\texttt{notes/PROGRAMME2\_NC.md}).
+\item \textbf{Near-coset half of C:} no proof attempt yet. The planned route is a stability version of Lemma 5:
+small pencil-sum weight forces approximate linear structure, analogous to ``zero slack $\Rightarrow$ subspace''.
+\end{itemize}
+
+\section{Task 5 and side results}
+\begin{itemize}
+\item \textbf{Record at $t=43/50$}, which would give $f(k,7)\le(0.86+o(1))k$, below the published $7/8$. The first cover
+certified 7\,469 boxes and 1\,016 failed, in three regions: a lopsided corner, R1's hard profiles, and the Lemma-A boundary
+strip. A retry and an independent checker are running. \textbf{Nothing is claimed.} The transfer from the confined game
+also still needs anchor-keeping (gap G2).
+\item \textbf{Small values}: $f(6,7)=5$ and $f(7,7)=6$ are certified. $f(8,7)\in\{6,7\}$ is open.
+\item EFKT92 and Kostochka (2002) are still awaited.
+\end{itemize}
+
+\section{Scorecard and questions}
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Piece & Status & What remains \\
+\midrule
+A & \lvl{VERIFIED} & Lean formalisation \\
+B, few classes & \lvl{VERIFIED} ($9'$, D) / S$^+$ & -- \\
+B, small linear codim. & \lvl{HAND} (B1, F$'''$) & independent verification \\
+B, structured duals & open & polymer treatment of short dual words (\S5.7) \\
+B, $1.852\le N<11/6$ & open & three disjoint small $\Omega$'s \\
+C, near-complete & in progress & $\delta\ge7\varepsilon/3-\eta'$; mixed families \\
+C, near-coset & open & any mechanism \\
+\bottomrule
+\end{tabular}
+\end{center}
+\textbf{Questions for the reviewer.}
+\begin{enumerate}
+\item For the structured-dual step: is there a standard cluster expansion for weight enumerators of codes with many
+disjoint short dual words? Or a reduction that contracts series classes while keeping the coset form and the slack
+budget?
+\item For C: do you see a stability form of Lemma 5 (pencil sums of small total weight $\Rightarrow$ seven members close to
+an affine 3-space)? And how would you propagate it from sevens to the whole family?
+\item Is the two-structure form of C (near-coset or near-complete) the right final shape, or do you expect mixed
+extremal families at the seam?
+\end{enumerate}
+\end{document}
