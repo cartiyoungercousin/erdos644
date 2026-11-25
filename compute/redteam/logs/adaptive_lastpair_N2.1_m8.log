@@ -49,3 +49,5 @@
 {"q": "OOOOU", "plan": 1, "status": "Optimal", "z": -0.05151760216426926, "exact_margins_at_T": [0.0525176011211089, 0.0525176011211089]}
 {"q": "OOOOO", "plan": 1, "status": "Optimal", "z": -0.13896165084602313, "exact_margins_at_T": [0.13996163217462476, 0.13996163217462476]}
 {"SUMMARY": true, "T": 0.76, "N": 2.1, "R": 6, "pairs": 32, "won_exact": 30, "smallest": [0.002448888293902959, "UUOOU"], "not_won": {"UUUUO": [0.0007336693197415507, null], "OUUUO": [0.0007337566053501332, null]}}
+{"q": "UUUUO", "plan": 1, "status": "Optimal", "z": -0.0007336693197415507, "exact_margins_at_T": [0.0017338342714811074, 0.0017338342714811074], "recheck": true}
+{"q": "OUUUO", "plan": 1, "status": "Optimal", "z": -0.0007337566053501332, "exact_margins_at_T": [0.0017337517719217535, 0.0017337517719217535], "recheck": true}
