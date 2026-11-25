@@ -3851,3 +3851,235 @@ So for a linear code L (over F_2 or F_3), the family 𝒞_L = {K ∈ C(V, c) : 1
 - The 4ε bound for P_2 used κ_3 >= N − 2t and 3c = N + |P_2| + 2κ_3 (valid when union = V).
 - The Q′ ternary bound used u_4 >= 0 and the §37 identity.
 - Not independently verified.
+
+=============================================================================================
+# Part XIX — the fractional pair-cover (edge-clique-cover) LP (§115–§119)
+
+Brief: an external reviewer suggested the fractional PAIR-cover of V by co-edges. It is not the fractional
+transversal τ* of §80–§84. For a co-edge family 𝒦 on V put
+
+    ρ*(𝒦) = min Σ w_K   subject to   Σ_{K ⊇ {x,y}} w_K >= 1 for every pair {x,y} ⊆ V,   w >= 0,
+
+and let ρ(𝒦) be the least number of members covering all pairs. A good seven is exactly ρ <= 7. The LP dual is
+ρ* = max Σ_p y_p over pair weights y >= 0 with Σ_{p ⊆ K} y_p <= 1 for every K ∈ 𝒦.
+Finite units: n = |V| = Nk, members are c-sets (c = n − k), requests are T-sets. First order: c = N − 1,
+ω = c − t, δ = N − 7/4 = ω + ε.
+Code: `compute/paircover/`.
+- `paircover.py`: ρ* as an exact rational (primal basic solution and dual, both checked in Fractions), the
+  degree-cut LP ρ*_3, and ρ by SAT (CaDiCaL 1.9.5, seqcounter).
+- `supR.py`: the sup of ρ* over T-covering families (MILP and best-response ascent).
+- `runall.sh`.
+Logs: `compute/paircover/logs/{lp_*,pc_*,dfs_n15,random_4_3_8,supR_ascent}.log`. Small random families are in
+`compute/paircover/fams/`.
+
+**Outcome.**
+- **(a)** Both reviewer bounds hold [proved by hand]: C(n,2)/C(c,2) <= ρ* <= n(n−1)/(T(T−1)). At first order
+  this is (N/c)² <= ρ* <= (N/t)², and the upper bound is < 7 exactly for N < √7·t ≈ 1.984 + 2.65ε.
+- **(b)** The random T-set rule is optimal among rules that ignore the family (116.1). Every T-covering bound must
+  be at least the pool value C(k+T,2)/C(T,2) → ((1+t)/t)² = 49/9 ≈ 5.44 (116.2). Both are proved by hand. So the
+  extra c − T points can help only through an adaptive rule. Conjecture PC (sup ρ* = ((1+t)/t)², hence ρ* < 5.45
+  in the whole window) is open above N = √7·t.
+- **(c)** The fractional side is far from 7 and blind to the question.
+  - On every stored T-covering family, ρ* is the trivial floor C(n,2)/C(c,2) (all random, greedy, code, sum and
+    dump families), or 83/15 (core9), or 91/15 (pool).
+  - Every family decided has a good seven: ρ = 7 at n = 15, and ρ = 6 at n = 16 and 17 [computed exact]. So
+    the gap ρ/ρ* is 1.40 (n = 15, 16), 1.59 (n = 17) and 1.15 (pool). The core9 family and 11 others are
+    undecided within budget.
+  - **None of the stored families is a known family with no good seven.** The premise "ρ >= 8 for pool families"
+    is false for T-covering pools: they have ρ = 7 (Fano) whenever 4T >= 3k with divisibility.
+  - The families with ρ >= 8 and ρ* < 7 are the over-pooled families (|Y| > δ), which miss T-covering by one
+    point of Y. On them ρ* moves continuously while ρ jumps (118.1).
+  - Rounding ρ* cannot work. A degree-cut LP (every point in weight >= 3, valid when 2c < n + 1) sees the pool
+    threshold exactly, and this is the only LP information that matters. What remains is the Fano/pencil
+    structure, which is CP (§118).
+
+## 115. The two reviewer bounds [proved by hand]
+
+**115.1 Lower bound.** Sum the pair constraints over all C(n,2) pairs. Each K contributes w_K·C(c,2), so
+Σ w_K·C(c,2) >= C(n,2), i.e. ρ* >= C(n,2)/C(c,2) = n(n−1)/(c(c−1)), which is (N/c)²(1 + O(1/k)). The bound is
+attained exactly when the uniform dual y ≡ 1/C(c,2) is optimal, i.e. when 𝒦 carries a fractional 2-design.
+That happens for every random, greedy, code and sum family tested (§117).
+
+**115.2 Upper bound (random T-set rule).** T-covering gives a reply K(S) ∈ 𝒦 with S ⊆ K(S) for each T-set S.
+Draw S uniformly and put w_K = α·P(K(S) = K). For a pair p, Σ_{K ⊇ p} w_K >= α·P(p ⊆ S) = α·T(T−1)/(n(n−1)).
+With α = n(n−1)/(T(T−1)) this is feasible, so ρ* <= n(n−1)/(T(T−1)), which is (N/t)² at first order.
+- **Where it is < 7:** N < √7·t, i.e. N < 1.9843 + 2.6458ε.
+- At k = 8, T = 6 it is 7, 8 and 9.07 for n = 15, 16 and 17.
+- So below N ≈ 1.984 every T-covering family has ρ* < 7, but this says nothing about ρ.
+
+## 116. The sharpest T-covering bound on ρ*
+
+**116.0 Minimax form [proved by hand].** Put R(n,c,T) = sup ρ*(𝒦) over T-covering 𝒦. By LP duality,
+ρ*(𝒦) = max_μ 1/max_{K∈𝒦} μ(K), where μ ranges over probability measures on pairs and μ(K) = Σ_{p ⊆ K} μ_p. For
+fixed μ, the T-covering family that minimises max_K μ(K) takes for each S its cheapest extension. Hence
+
+    1/R = min_μ  max_{|S| = T}  min_{K ⊇ S, |K| = c}  μ(K).
+
+So a bound "ρ* <= X for all T-covering families" is exactly the statement "for every μ some T-set has all its
+c-extensions of μ-load >= 1/X".
+
+**116.1 Oblivious rules cannot beat the random T-set [proved by hand].** Call a rule oblivious if it fixes a
+distribution D on T-sets in advance and puts weight α·P_D(K(S) = K) on the replies.
+- Let p_0 be a pair minimising P_D(p ⊆ S). By averaging, P_D(p_0 ⊆ S) <= C(T,2)/C(n,2).
+- The adversary answers every S with S plus c − T points outside S ∪ p_0. This needs n − T − 2 >= c − T, i.e.
+  k >= 2. The resulting family is T-covering, and p_0 ⊆ K(S) iff p_0 ⊆ S.
+- So α >= n(n−1)/(T(T−1)) for every D.
+The extra points help only if the requests depend on the replies.
+
+**116.2 Lower bound from the pool [proved by hand, exact at finite k].**
+- Let Y have c − T points and 𝒫 = {K : Y ⊆ K}. Its members are Y plus any T-subset of U = V ∖ Y, with
+  |U| = k + T. It is T-covering: a T-set S has S ∪ Y of size <= c, which can be padded to a member.
+- Pairs meeting Y lie in every member. The pairs inside U form the complete pair-cover problem for T-subsets of a
+  (k+T)-set, whose ρ* is C(k+T,2)/C(T,2): 115.1 gives the lower bound, and the uniform weight attains it.
+- Hence R(n,c,T) >= (k+T)(k+T−1)/(T(T−1)), which is ((1+t)/t)² at first order. That is 49/9 = 5.444 at t = 3/4,
+  independent of N.
+- Note |Y| = c − T is the largest pool that is T-covering (y <= ω), and the pool ρ* increases with y. Checked
+  exactly: the pool family of `compute/entropy` (k=8, T=6, n=15) has ρ* = 91/15 = C(14,2)/C(6,2).
+- **Consequence:** no argument from T-covering can give ρ* < 49/9 anywhere in the window. At the bottom
+  (ω = 4ε, N = 1 + t + 4ε) the random bound (N/t)² equals ((1+t)/t)² + O(ε). So 115.2 is sharp up to O(ε) there,
+  and the gap between 115.2 and 116.2 opens linearly in ω.
+
+**116.3 Structured μ do not beat the pool [proved by hand, class by class].** In each class, compute
+max_S min_E μ(S ∪ E), with E the c − T extra points. Every class gives at least (t/(1+t))².
+- (i) μ uniform on the pairs inside a set A of mass a. With a <= 1 + t the extras hide outside A and the value is
+  (t/a)². With a > 1 + t the extras must enter A and the value is ((a−1)/a)². The minimum is at a = 1 + t: the pool.
+- (ii) μ uniform on A × B with |A| = |B| = b. The value is t(t + 2f)/(1 + t + f)² with f = max(0, 2b − 1 − t).
+  This is increasing in f, so the minimum is again the pool value.
+- (iii) Complete r-partite on a set of mass 1 + t: the same value (t/(1+t))².
+- (iv) Mixtures of two pools on disjoint Y_1, Y_2. The value is ½((c − e)² + (c − ω + e)²)/(1+t)², minimised at
+  e = ω/2. It is strictly larger than the pool value, by convexity.
+- (v) Disjoint small cliques (a partition into blocks). The value is about t/N, far larger.
+
+**Conjecture PC.** R = ((1+t)/t)² + o(1) throughout 5t − 2 < N < 3 − t, i.e. every T-covering family has
+ρ* <= 5.445.
+- Status [heuristic]. The best-response ascent of `supR.py` (k = 3..5, n = 7..13, 6 restarts each) never exceeded
+  the pool value. But it also mostly failed to reach it: it found 5.67 against a pool value of 7 at (8,4,3), so the
+  search is weak evidence.
+- The exact MILP is hopeless beyond n = 7: big-M, with a dual bound 0.138 against a primal 0.200 at (7,4,3) after
+  300 s.
+- Proved only for N < √7·t (115.2), and up to O(ε) at the bottom.
+- It would not matter much (§118): ρ* is not the obstruction.
+
+## 117. Numbers: ρ*, ρ*_3, ρ on the stored families
+
+ρ* is exact [computed exact]: a rational dual and a rational basic primal with equal totals, both checked in
+Fractions. ρ*_3 is the LP with the extra constraints Σ_{K ∋ x} w_K >= 3, valid for integral covers when 2c < n + 1
+(118.2) [computed float]. ρ is from SAT, starting at the proved floor max(⌈ρ*⌉, ⌈3n/c⌉), with every cover
+re-checked; or "undecided". All families have k = 8 and T = 6, so t = 3/4 exactly; they are T-covering unless
+marked.
+
+| family (source) | n | c | members | ρ* (exact) | ρ*_3 (float) | ρ | ρ/ρ* |
+|---|---|---|---|---|---|---|---|
+| d_code, d_greedy, d_greedy_min, d_nibble, d_nibble_min, d_sum (cover) | 15 | 7 | 1085–3235 | 5 | 45/7 = 6.43 | 7 (SAT, 14–547 s) | 1.40 |
+| randdump_s1 (entropy) | 15 | 7 | 3599 | 5 | 6.43 | 7 (SAT 216 s) | 1.40 |
+| c1_s1, c1_s2 (cover, code1: no exact pencil) | 15 | 7 | 3200 | 5 | 6.43 | 7 (s1 SAT 942 s and DFS; s2 DFS, 4.3·10^8 nodes) | 1.40 |
+| c1_s3 | 15 | 7 | 3200 | 5 | 6.43 | undecided in {7, 8} (SAT killed) | — |
+| pool (entropy; Y = {0}) | 15 | 7 | 3003 | 91/15 = 6.07 | 7.000 | 7 (Fano, classes of 2; hand + checked) | 1.15 |
+| fam_8_6_15_rev (core9) | 15 | 7 | 2352 | 83/15 = 5.53 | 6.667 | undecided in {7, 8} (2400 s SAT + 3000 s DFS; cf. 55.5) | — |
+| d_greedy, d_greedy_min, d_nibble_min | 16 | 8 | 569–732 | 30/7 = 4.29 | 6 | 6 (SAT) | 1.40 |
+| c1_s1 | 16 | 8 | 1615 | 30/7 | 6 | 6 or 7 (good seven: census 106) | — |
+| d_code, d_sum, c1_s2, c1_s3 | 16 | 8 | 809–1615 | 30/7 | 6 | >= 6, undecided | — |
+| d_greedy, d_greedy_min | 17 | 9 | 358 | 34/9 = 3.78 | (cut invalid) | 6 (UNSAT at 5, SAT at 6) | 1.59 |
+| d_code, d_nibble_min, c1_s1..s3 (d_sum: SAT not run) | 17 | 9 | 480–1535 | 34/9 | — | >= 5 (UNSAT at 4), undecided | — |
+| sevenfree (entropy; NOT T-covering, pool with \|Y\| = 2) | 15 | 7 | 1287 | 39/5 = 7.8 | 7.8 | >= 8 (degree: 35 < 39) | — |
+
+Readings.
+- **ρ* is constant on families of the same shape.** Every random, greedy, nibble, code, sum and random-dump family
+  sits exactly on the floor C(n,2)/C(c,2) (5, 30/7, 34/9). Its optimal w has all point loads equal (7/3, 15/7, 2).
+  Only the pool (91/15) and the hash-selected core9 family (83/15) are above the floor. All values are well below
+  the random bound (7, 8, 9.07).
+- **Every decided family has a good seven.** ρ = 7 at n = 15, ρ = 6 at n = 16 and at n = 17. So ρ equals the
+  proved floor ⌈3n/c⌉ at n = 15, 16. The core9 family stays undecided after 2400 s of SAT and 3000 s of DFS,
+  consistent with 55.5. 12 families were left undecided when the session's jobs were stopped; their logs carry
+  no RESULT line (`logs/KILLED_NOTE.txt`).
+- **ρ/ρ* = 1.40 on every decided floor family at n = 15, 16.** That is ⌈3n/c⌉ divided by n(n−1)/(c(c−1)). It is
+  1.59 at n = 17 and 1.15 on the pool. The integral cover is pushed up to the degree floor 3n/c, while the LP
+  spreads the load at N/c ≈ 2.0–2.3 per point.
+- **The degree-cut LP equals its floor 3n/c on every floor family.** It is 7.000 on the pool, which is exactly at
+  its Fano threshold, and 6.667 on core9.
+- The not-T-covering `sevenfree` family (a pool with |Y| = 2 > ω = 1) has ρ* = 39/5 > 7, so its lack of a good
+  seven is visible even fractionally at this k.
+- At k = 4 (n = 8, 20 random families): ρ* ∈ [4.89, 5.14], ρ = 6 always.
+
+## 118. What the rounding must overcome
+
+**118.1 ρ* is continuous where ρ jumps [proved by hand].** Take the over-pooled family 𝒫_y = {K ⊇ Y}, |Y| = y.
+- It is T-covering iff y <= ω.
+- Its members are Y plus a (c − y)-subset of U, |U| = N − y.
+- A good seven exists iff seven (c − y)-sets cover the pairs of U. When 2(c − y) < N − y this needs every point of
+  U in >= 3 sets, i.e. 7(c − y) >= 3(N − y), i.e. **y <= δ**. Conversely Fano with seven equal classes gives
+  ρ = 7 when y <= δ, at first order.
+- But ρ*(𝒫_y) = ((N − y)/(c − y))², which is 49/9 at y = δ and moves continuously through it.
+- So on one side (y = ω, T-covering) and on the other (y = δ + η, which misses T-covering by ε + η), ρ* is about
+  5.44 while ρ goes from 7 to >= 8.
+- Exact finite instance: k = 16, T = 12, n = 30 (N = 1.875, ε = 0, ω = δ = 2/16).
+  - |Y| = 2: T-covering, ρ* = 378/66 = 5.73, and ρ = 7 (Fano with classes of 4 on 28 points).
+  - |Y| = 3: ρ* = 351/55 = 6.38, ρ >= ⌈81/11⌉ = 8. It covers every 12-set that meets Y, and only those.
+- **Hence no theorem of the form "ρ* <= X ⟹ ρ <= 7" (for any X >= 49/9) holds, even among families that are
+  T-covering up to one point.** A rounding must use T-covering itself at precision ε, not through ρ*. This is the
+  pair-cover analogue of §82.
+
+**118.2 The degree cut is the one LP fact that matters [proved by hand].**
+- If 2c < n + 1 (first order N < 2), a point lying in at most two members of a cover forces those two to have
+  union V, which is impossible. So in an integral cover every r_x >= 3.
+- For seven sets, Σ_x (r_x − 3) = 7c − 3N = 4δ. This is the slack count 2.1–2.3, which is exactly how CORE §2 began.
+- Adding r_x >= 3 to the LP gives ρ*_3 >= 3N/c = 7 − 4δ/c < 7 in the window, and ρ*_3(𝒫_y) = max(3(N − y)/(c − y), ((N − y)/(c − y))²) = 3(N − y)/(c − y) here.
+  This crosses 7 exactly at y = δ, so the degree cut decides every pool, and the pool question at
+  t ≷ 3/4 (3(1+t)/t ≶ 7).
+- So the LP plus the degree cut already contains everything that §2's slack count contains. It is still below 7
+  on every T-covering family tested.
+
+**118.3 What is left after the degree cut is CP [proved by hand for N < 11/6, by 1.3].**
+- For N < 11/6, seven c-sets covering all pairs, with Σ(r_x − 3) = 4δ, are exactly a Fano labelling in which every
+  co-type contains a pencil (1.3). An integral rounding must produce seven members with that prescribed Venn
+  pattern.
+- That is a static 7-certificate, and §96 shows such patterns are not forced by density. The fractional optimum is
+  an averaged object (for floor families it is a uniform fractional 2-design), so it carries no Venn-pattern
+  information beyond the point loads.
+- Concretely, the LP solution has every point at load N/c ≈ 2.1–2.3 spread over hundreds of members (support
+  105–136 at k = 8). A good seven has every point in 3 or more of exactly 7 members.
+- **Randomized rounding fails by a constant, not a log.** Seven members drawn from w/ρ* leave each pair uncovered
+  with probability (1 − 1/ρ*)^7 = (4/5)^7 ≈ 0.21 for the n = 15 floor families (each pair has weight exactly 1). There are Θ(k²) pairs, and with a
+  fixed budget of 7 there is no concentration to exploit.
+- **Iterative or exchange rounding (Jain-type, or alternating paths in clique systems) needs sparse extreme points
+  or a matroid/laminar structure.** Extreme points here have support up to C(n,2) = Θ(k²), and the target 7 is a
+  constant. The known clique-cover integrality results (θ vs θ*) lose log factors or need perfect-graph
+  structure; neither gives an additive "< 7 ⟹ <= 7" [literature recalled, not re-checked].
+- An exchange argument specific to clique systems would have to turn a fractional design into a Fano
+  configuration among members. That is the structure theorem CP itself (§33(4) stability: near-pool ⟹ pencils).
+  [heuristic]
+
+**118.4 Verdict.** The pair-cover LP is a better relaxation than τ*: it is O(1), it depends on N, and with the
+degree cut it reproduces the pool threshold t = 3/4 exactly. But it is uniformly below 7 on T-covering families
+(conjecturally <= 49/9; proved below N = √7·t). Over-pooled families show that its value cannot separate "good
+seven" from "no good seven" at the ε scale. Rounding = CP, as in §82.
+
+## 119. Status, dead routes, what remains; self-check
+
+**Status.**
+- (1) C(n,2)/C(c,2) <= ρ* <= n(n−1)/(T(T−1)) [proved by hand]. ρ* < 7 for N < √7·t.
+- (2) Random-T is optimal among oblivious rules (116.1). The pool forces sup ρ* >= 49/9 (116.2). Conjecture PC
+  (sup = 49/9) is open for N >= √7·t [heuristic support only].
+- (3) On the 28 stored T-covering families with k = 8, ρ* is exact. It is the floor C(n,2)/C(c,2) except for the
+  pool and core9. On the 15 families decided, ρ ∈ {6, 7}, with gap 1.15–1.59. No stored T-covering family is
+  known to lack a good seven; core9 is still at {7, 8}.
+- (4) Over-pooled families give ρ* ≈ 49/9 < 7 together with ρ >= 8. The degree cut is the only LP-visible part of
+  the integrality, and it equals §2's slack count.
+
+**Dead (add to LEDGER).**
+- Rounding the fractional pair-cover: no "ρ* small ⟹ ρ <= 7" exists (118.1).
+- Oblivious extension rules (116.1).
+- Randomized or iterative rounding (118.3) [heuristic].
+
+**What remains.** Conjecture PC is not needed for CP. The only live use of this LP would be inside a stability
+argument: ρ*_3 close to 7 forces near-pool structure. That is the §33(4) programme again.
+
+**Self-check.**
+- 115.1/115.2 are two-line averaging arguments.
+- 116.1 uses k >= 2 for the escape points.
+- 116.2's pool ρ* was checked exactly (91/15) against the formula.
+- 118.1's "y <= δ ⟺ degree feasible" is 7(c − y) >= 3(N − y) ⟺ 4y <= 7c − 3N = 4δ. The finite instance was
+  checked by hand: 7·11 = 77 < 81 = 3·27 and 7·12 = 84 = 3·28.
+- The exact ρ* uses a basic solution recomputed in Fractions. All covers found by SAT were re-checked pair by pair.
+- The UNSAT claims at n = 17 are CaDiCaL's, with no proof log kept.
+- Not independently verified.

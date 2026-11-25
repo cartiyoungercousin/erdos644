@@ -1,0 +1,140 @@
+fams/r_4_3_8_nib_s1.txt: m=27 members of size c=4, n=8, k=4, T=3; uncovered T-sets: 0
+  bounds: C(n,2)/C(c,2) = 4.6667   random-T n(n-1)/(T(T-1)) = 9.3333   pool value (k+T)(k+T-1)/(T(T-1)) = 7.0000
+  rho*: float 4.973572;  exact bracket [5834/1173, 5834/1173] = [4.973572, 4.973572] EXACT (denominators <= 5040); primal support 22
+  optimal w: point loads r_x in [2.3333, 2.7118] (sum 19.8943 = c*rho*); integral cover needs >= 3 each when 2(c-1) < n-1
+  rho*_3 (pair cover + every point in weight >= 3): float 6.000000; trivial floor 3n/c = 6.0000
+  SAT b=6: cover of size 6 found, checked (0.0s): {0,1,2,4} {0,3,6,7} {0,4,5,7} {1,2,5,7} {1,3,5,6} {2,3,4,6}
+  RESULT rho = 6, rho* = 4.973572, gap rho/rho* = 1.2064, good seven: YES
+fams/r_4_3_8_nib_s10.txt: m=22 members of size c=4, n=8, k=4, T=3; uncovered T-sets: 0
+  bounds: C(n,2)/C(c,2) = 4.6667   random-T n(n-1)/(T(T-1)) = 9.3333   pool value (k+T)(k+T-1)/(T(T-1)) = 7.0000
+  rho*: float 5.103586;  exact bracket [1281/251, 1281/251] = [5.103586, 5.103586] EXACT (denominators <= 840); primal support 18
+  optimal w: point loads r_x in [2.3386, 2.7211] (sum 20.4143 = c*rho*); integral cover needs >= 3 each when 2(c-1) < n-1
+  rho*_3 (pair cover + every point in weight >= 3): float 6.000000; trivial floor 3n/c = 6.0000
+  SAT b=6: cover of size 6 found, checked (0.0s): {0,1,4,7} {0,1,5,6} {0,2,3,4} {1,2,3,6} {2,3,5,7} {4,5,6,7}
+  RESULT rho = 6, rho* = 5.103586, gap rho/rho* = 1.1756, good seven: YES
+fams/r_4_3_8_nib_s2.txt: m=25 members of size c=4, n=8, k=4, T=3; uncovered T-sets: 0
+  bounds: C(n,2)/C(c,2) = 4.6667   random-T n(n-1)/(T(T-1)) = 9.3333   pool value (k+T)(k+T-1)/(T(T-1)) = 7.0000
+  rho*: float 4.888889;  exact bracket [44/9, 44/9] = [4.888889, 4.888889] EXACT (denominators <= 840); primal support 23
+  optimal w: point loads r_x in [2.3333, 2.6752] (sum 19.5556 = c*rho*); integral cover needs >= 3 each when 2(c-1) < n-1
+  rho*_3 (pair cover + every point in weight >= 3): float 6.000000; trivial floor 3n/c = 6.0000
+  SAT b=6: cover of size 6 found, checked (0.0s): {0,1,3,7} {0,2,5,6} {0,3,4,5} {1,2,3,6} {1,4,5,7} {2,4,6,7}
+  RESULT rho = 6, rho* = 4.888889, gap rho/rho* = 1.2273, good seven: YES
+fams/r_4_3_8_nib_s3.txt: m=25 members of size c=4, n=8, k=4, T=3; uncovered T-sets: 0
+  bounds: C(n,2)/C(c,2) = 4.6667   random-T n(n-1)/(T(T-1)) = 9.3333   pool value (k+T)(k+T-1)/(T(T-1)) = 7.0000
+  rho*: float 4.979167;  exact bracket [239/48, 239/48] = [4.979167, 4.979167] EXACT (denominators <= 840); primal support 22
+  optimal w: point loads r_x in [2.3333, 2.6771] (sum 19.9167 = c*rho*); integral cover needs >= 3 each when 2(c-1) < n-1
+  rho*_3 (pair cover + every point in weight >= 3): float 6.000000; trivial floor 3n/c = 6.0000
+  SAT b=6: cover of size 6 found, checked (0.0s): {0,1,6,7} {0,2,4,7} {0,3,5,6} {1,2,4,6} {1,3,5,7} {2,3,4,5}
+  RESULT rho = 6, rho* = 4.979167, gap rho/rho* = 1.2050, good seven: YES
+fams/r_4_3_8_nib_s4.txt: m=22 members of size c=4, n=8, k=4, T=3; uncovered T-sets: 0
+  bounds: C(n,2)/C(c,2) = 4.6667   random-T n(n-1)/(T(T-1)) = 9.3333   pool value (k+T)(k+T-1)/(T(T-1)) = 7.0000
+  rho*: float 5.009783;  exact bracket [4609/920, 4609/920] = [5.009783, 5.009783] EXACT (denominators <= 5040); primal support 20
+  optimal w: point loads r_x in [2.3543, 2.7163] (sum 20.0391 = c*rho*); integral cover needs >= 3 each when 2(c-1) < n-1
+  rho*_3 (pair cover + every point in weight >= 3): float 6.000000; trivial floor 3n/c = 6.0000
+  SAT b=6: cover of size 6 found, checked (0.0s): {0,1,2,6} {0,2,5,7} {0,3,4,5} {1,3,4,6} {1,5,6,7} {2,3,4,7}
+  RESULT rho = 6, rho* = 5.009783, gap rho/rho* = 1.1977, good seven: YES
+fams/r_4_3_8_nib_s5.txt: m=24 members of size c=4, n=8, k=4, T=3; uncovered T-sets: 0
+  bounds: C(n,2)/C(c,2) = 4.6667   random-T n(n-1)/(T(T-1)) = 9.3333   pool value (k+T)(k+T-1)/(T(T-1)) = 7.0000
+  rho*: float 4.944444;  exact bracket [89/18, 89/18] = [4.944444, 4.944444] EXACT (denominators <= 60); primal support 21
+  optimal w: point loads r_x in [2.3333, 2.6111] (sum 19.7778 = c*rho*); integral cover needs >= 3 each when 2(c-1) < n-1
+  rho*_3 (pair cover + every point in weight >= 3): float 6.000000; trivial floor 3n/c = 6.0000
+  SAT b=6: cover of size 6 found, checked (0.0s): {0,1,2,3} {0,1,4,5} {0,5,6,7} {1,3,6,7} {2,3,4,5} {2,4,6,7}
+  RESULT rho = 6, rho* = 4.944444, gap rho/rho* = 1.2135, good seven: YES
+fams/r_4_3_8_nib_s6.txt: m=25 members of size c=4, n=8, k=4, T=3; uncovered T-sets: 0
+  bounds: C(n,2)/C(c,2) = 4.6667   random-T n(n-1)/(T(T-1)) = 9.3333   pool value (k+T)(k+T-1)/(T(T-1)) = 7.0000
+  rho*: float 5.000000;  exact bracket [5, 5] = [5.000000, 5.000000] EXACT (denominators <= 60); primal support 24
+  optimal w: point loads r_x in [2.3333, 2.7619] (sum 20.0000 = c*rho*); integral cover needs >= 3 each when 2(c-1) < n-1
+  rho*_3 (pair cover + every point in weight >= 3): float 6.000000; trivial floor 3n/c = 6.0000
+  SAT b=6: cover of size 6 found, checked (0.0s): {0,1,3,5} {0,2,3,7} {0,3,4,6} {1,2,6,7} {1,4,5,6} {2,4,5,7}
+  RESULT rho = 6, rho* = 5.000000, gap rho/rho* = 1.2000, good seven: YES
+fams/r_4_3_8_nib_s7.txt: m=23 members of size c=4, n=8, k=4, T=3; uncovered T-sets: 0
+  bounds: C(n,2)/C(c,2) = 4.6667   random-T n(n-1)/(T(T-1)) = 9.3333   pool value (k+T)(k+T-1)/(T(T-1)) = 7.0000
+  rho*: float 4.933333;  exact bracket [74/15, 74/15] = [4.933333, 4.933333] EXACT (denominators <= 60); primal support 18
+  optimal w: point loads r_x in [2.3333, 2.5667] (sum 19.7333 = c*rho*); integral cover needs >= 3 each when 2(c-1) < n-1
+  rho*_3 (pair cover + every point in weight >= 3): float 6.000000; trivial floor 3n/c = 6.0000
+  SAT b=6: cover of size 6 found, checked (0.0s): {0,1,3,4} {0,2,3,7} {0,3,5,6} {1,2,4,7} {1,4,5,6} {2,5,6,7}
+  RESULT rho = 6, rho* = 4.933333, gap rho/rho* = 1.2162, good seven: YES
+fams/r_4_3_8_nib_s8.txt: m=24 members of size c=4, n=8, k=4, T=3; uncovered T-sets: 0
+  bounds: C(n,2)/C(c,2) = 4.6667   random-T n(n-1)/(T(T-1)) = 9.3333   pool value (k+T)(k+T-1)/(T(T-1)) = 7.0000
+  rho*: float 4.898734;  exact bracket [387/79, 387/79] = [4.898734, 4.898734] EXACT (denominators <= 840); primal support 21
+  optimal w: point loads r_x in [2.3333, 2.5527] (sum 19.5949 = c*rho*); integral cover needs >= 3 each when 2(c-1) < n-1
+  rho*_3 (pair cover + every point in weight >= 3): float 6.000000; trivial floor 3n/c = 6.0000
+  SAT b=6: cover of size 6 found, checked (0.0s): {0,1,6,7} {0,2,3,7} {0,2,4,5} {1,2,4,6} {1,3,5,6} {3,4,5,7}
+  RESULT rho = 6, rho* = 4.898734, gap rho/rho* = 1.2248, good seven: YES
+fams/r_4_3_8_nib_s9.txt: m=27 members of size c=4, n=8, k=4, T=3; uncovered T-sets: 0
+  bounds: C(n,2)/C(c,2) = 4.6667   random-T n(n-1)/(T(T-1)) = 9.3333   pool value (k+T)(k+T-1)/(T(T-1)) = 7.0000
+  rho*: float 4.904762;  exact bracket [103/21, 103/21] = [4.904762, 4.904762] EXACT (denominators <= 840); primal support 21
+  optimal w: point loads r_x in [2.3333, 2.6190] (sum 19.6190 = c*rho*); integral cover needs >= 3 each when 2(c-1) < n-1
+  rho*_3 (pair cover + every point in weight >= 3): float 6.000000; trivial floor 3n/c = 6.0000
+  SAT b=6: cover of size 6 found, checked (0.0s): {0,1,2,4} {0,2,5,7} {0,3,6,7} {1,3,4,7} {1,4,5,6} {2,3,5,6}
+  RESULT rho = 6, rho* = 4.904762, gap rho/rho* = 1.2233, good seven: YES
+fams/r_4_3_8_nibmin_s1.txt: m=23 members of size c=4, n=8, k=4, T=3; uncovered T-sets: 0
+  bounds: C(n,2)/C(c,2) = 4.6667   random-T n(n-1)/(T(T-1)) = 9.3333   pool value (k+T)(k+T-1)/(T(T-1)) = 7.0000
+  rho*: float 5.008772;  exact bracket [571/114, 571/114] = [5.008772, 5.008772] EXACT (denominators <= 840); primal support 20
+  optimal w: point loads r_x in [2.3772, 2.7719] (sum 20.0351 = c*rho*); integral cover needs >= 3 each when 2(c-1) < n-1
+  rho*_3 (pair cover + every point in weight >= 3): float 6.000000; trivial floor 3n/c = 6.0000
+  SAT b=6: cover of size 6 found, checked (0.0s): {0,1,3,6} {0,1,4,5} {0,2,6,7} {1,2,3,7} {2,3,4,5} {4,5,6,7}
+  RESULT rho = 6, rho* = 5.008772, gap rho/rho* = 1.1979, good seven: YES
+fams/r_4_3_8_nibmin_s10.txt: m=20 members of size c=4, n=8, k=4, T=3; uncovered T-sets: 0
+  bounds: C(n,2)/C(c,2) = 4.6667   random-T n(n-1)/(T(T-1)) = 9.3333   pool value (k+T)(k+T-1)/(T(T-1)) = 7.0000
+  rho*: float 5.137931;  exact bracket [149/29, 149/29] = [5.137931, 5.137931] EXACT (denominators <= 840); primal support 19
+  optimal w: point loads r_x in [2.3668, 2.6897] (sum 20.5517 = c*rho*); integral cover needs >= 3 each when 2(c-1) < n-1
+  rho*_3 (pair cover + every point in weight >= 3): float 6.000000; trivial floor 3n/c = 6.0000
+  SAT b=6: cover of size 6 found, checked (0.0s): {0,1,4,7} {0,1,5,6} {0,2,3,4} {1,2,3,6} {2,3,5,7} {4,5,6,7}
+  RESULT rho = 6, rho* = 5.137931, gap rho/rho* = 1.1678, good seven: YES
+fams/r_4_3_8_nibmin_s2.txt: m=20 members of size c=4, n=8, k=4, T=3; uncovered T-sets: 0
+  bounds: C(n,2)/C(c,2) = 4.6667   random-T n(n-1)/(T(T-1)) = 9.3333   pool value (k+T)(k+T-1)/(T(T-1)) = 7.0000
+  rho*: float 4.951220;  exact bracket [203/41, 203/41] = [4.951220, 4.951220] EXACT (denominators <= 840); primal support 19
+  optimal w: point loads r_x in [2.3415, 2.6748] (sum 19.8049 = c*rho*); integral cover needs >= 3 each when 2(c-1) < n-1
+  rho*_3 (pair cover + every point in weight >= 3): float 6.000000; trivial floor 3n/c = 6.0000
+  SAT b=6: cover of size 6 found, checked (0.0s): {0,1,2,7} {0,1,3,4} {0,1,5,6} {2,3,5,7} {2,4,6,7} {3,4,5,6}
+  RESULT rho = 6, rho* = 4.951220, gap rho/rho* = 1.2118, good seven: YES
+fams/r_4_3_8_nibmin_s3.txt: m=20 members of size c=4, n=8, k=4, T=3; uncovered T-sets: 0
+  bounds: C(n,2)/C(c,2) = 4.6667   random-T n(n-1)/(T(T-1)) = 9.3333   pool value (k+T)(k+T-1)/(T(T-1)) = 7.0000
+  rho*: float 5.000000;  exact bracket [5, 5] = [5.000000, 5.000000] EXACT (denominators <= 840); primal support 20
+  optimal w: point loads r_x in [2.3333, 2.6667] (sum 20.0000 = c*rho*); integral cover needs >= 3 each when 2(c-1) < n-1
+  rho*_3 (pair cover + every point in weight >= 3): float 6.000000; trivial floor 3n/c = 6.0000
+  SAT b=6: cover of size 6 found, checked (0.0s): {0,1,5,7} {0,2,4,7} {0,3,5,6} {1,2,3,6} {1,2,4,5} {3,4,6,7}
+  RESULT rho = 6, rho* = 5.000000, gap rho/rho* = 1.2000, good seven: YES
+fams/r_4_3_8_nibmin_s4.txt: m=21 members of size c=4, n=8, k=4, T=3; uncovered T-sets: 0
+  bounds: C(n,2)/C(c,2) = 4.6667   random-T n(n-1)/(T(T-1)) = 9.3333   pool value (k+T)(k+T-1)/(T(T-1)) = 7.0000
+  rho*: float 5.016667;  exact bracket [301/60, 301/60] = [5.016667, 5.016667] EXACT (denominators <= 60); primal support 19
+  optimal w: point loads r_x in [2.3333, 2.8167] (sum 20.0667 = c*rho*); integral cover needs >= 3 each when 2(c-1) < n-1
+  rho*_3 (pair cover + every point in weight >= 3): float 6.000000; trivial floor 3n/c = 6.0000
+  SAT b=6: cover of size 6 found, checked (0.0s): {0,1,2,6} {0,2,5,7} {0,3,4,5} {1,3,4,6} {1,5,6,7} {2,3,4,7}
+  RESULT rho = 6, rho* = 5.016667, gap rho/rho* = 1.1960, good seven: YES
+fams/r_4_3_8_nibmin_s5.txt: m=20 members of size c=4, n=8, k=4, T=3; uncovered T-sets: 0
+  bounds: C(n,2)/C(c,2) = 4.6667   random-T n(n-1)/(T(T-1)) = 9.3333   pool value (k+T)(k+T-1)/(T(T-1)) = 7.0000
+  rho*: float 5.052632;  exact bracket [96/19, 96/19] = [5.052632, 5.052632] EXACT (denominators <= 840); primal support 19
+  optimal w: point loads r_x in [2.3333, 2.7149] (sum 20.2105 = c*rho*); integral cover needs >= 3 each when 2(c-1) < n-1
+  rho*_3 (pair cover + every point in weight >= 3): float 6.000000; trivial floor 3n/c = 6.0000
+  SAT b=6: cover of size 6 found, checked (0.0s): {0,1,2,3} {0,1,4,5} {0,5,6,7} {1,3,6,7} {2,3,4,5} {2,4,6,7}
+  RESULT rho = 6, rho* = 5.052632, gap rho/rho* = 1.1875, good seven: YES
+fams/r_4_3_8_nibmin_s6.txt: m=20 members of size c=4, n=8, k=4, T=3; uncovered T-sets: 0
+  bounds: C(n,2)/C(c,2) = 4.6667   random-T n(n-1)/(T(T-1)) = 9.3333   pool value (k+T)(k+T-1)/(T(T-1)) = 7.0000
+  rho*: float 5.092401;  exact bracket [5897/1158, 5897/1158] = [5.092401, 5.092401] EXACT (denominators <= 5040); primal support 20
+  optimal w: point loads r_x in [2.3333, 2.8044] (sum 20.3696 = c*rho*); integral cover needs >= 3 each when 2(c-1) < n-1
+  rho*_3 (pair cover + every point in weight >= 3): float 6.000000; trivial floor 3n/c = 6.0000
+  SAT b=6: cover of size 6 found, checked (0.0s): {0,1,3,6} {0,2,4,7} {0,2,5,6} {1,2,3,4} {1,3,5,7} {4,5,6,7}
+  RESULT rho = 6, rho* = 5.092401, gap rho/rho* = 1.1782, good seven: YES
+fams/r_4_3_8_nibmin_s7.txt: m=19 members of size c=4, n=8, k=4, T=3; uncovered T-sets: 0
+  bounds: C(n,2)/C(c,2) = 4.6667   random-T n(n-1)/(T(T-1)) = 9.3333   pool value (k+T)(k+T-1)/(T(T-1)) = 7.0000
+  rho*: float 5.000000;  exact bracket [5, 5] = [5.000000, 5.000000] EXACT (denominators <= 60); primal support 18
+  optimal w: point loads r_x in [2.3333, 2.6667] (sum 20.0000 = c*rho*); integral cover needs >= 3 each when 2(c-1) < n-1
+  rho*_3 (pair cover + every point in weight >= 3): float 6.000000; trivial floor 3n/c = 6.0000
+  SAT b=6: cover of size 6 found, checked (0.0s): {0,1,2,6} {0,2,3,5} {0,2,4,7} {1,3,6,7} {1,4,5,6} {3,4,5,7}
+  RESULT rho = 6, rho* = 5.000000, gap rho/rho* = 1.2000, good seven: YES
+fams/r_4_3_8_nibmin_s8.txt: m=20 members of size c=4, n=8, k=4, T=3; uncovered T-sets: 0
+  bounds: C(n,2)/C(c,2) = 4.6667   random-T n(n-1)/(T(T-1)) = 9.3333   pool value (k+T)(k+T-1)/(T(T-1)) = 7.0000
+  rho*: float 4.905292;  exact bracket [1761/359, 1761/359] = [4.905292, 4.905292] EXACT (denominators <= 5040); primal support 20
+  optimal w: point loads r_x in [2.3333, 2.5896] (sum 19.6212 = c*rho*); integral cover needs >= 3 each when 2(c-1) < n-1
+  rho*_3 (pair cover + every point in weight >= 3): float 6.000000; trivial floor 3n/c = 6.0000
+  SAT b=6: cover of size 6 found, checked (0.0s): {0,1,2,5} {0,2,3,7} {0,3,4,6} {1,3,4,5} {1,5,6,7} {2,4,6,7}
+  RESULT rho = 6, rho* = 4.905292, gap rho/rho* = 1.2232, good seven: YES
+fams/r_4_3_8_nibmin_s9.txt: m=21 members of size c=4, n=8, k=4, T=3; uncovered T-sets: 0
+  bounds: C(n,2)/C(c,2) = 4.6667   random-T n(n-1)/(T(T-1)) = 9.3333   pool value (k+T)(k+T-1)/(T(T-1)) = 7.0000
+  rho*: float 4.952381;  exact bracket [104/21, 104/21] = [4.952381, 4.952381] EXACT (denominators <= 840); primal support 19
+  optimal w: point loads r_x in [2.3690, 2.6429] (sum 19.8095 = c*rho*); integral cover needs >= 3 each when 2(c-1) < n-1
+  rho*_3 (pair cover + every point in weight >= 3): float 6.000000; trivial floor 3n/c = 6.0000
+  SAT b=6: cover of size 6 found, checked (0.0s): {0,1,2,3} {0,1,5,6} {0,2,4,7} {1,3,4,7} {2,4,5,6} {3,5,6,7}
+  RESULT rho = 6, rho* = 4.952381, gap rho/rho* = 1.2115, good seven: YES

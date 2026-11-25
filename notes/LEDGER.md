@@ -46,12 +46,13 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 | Hypergraph containers + supersaturation (codegree condition fails above a thin strip; the supersaturation step needed already implies CP) | CORE §85–§89 | DEAD (proved) |
 | Flag algebras / SDP on the limit object (Cauchy–Schwarz constraints automatic; CP is not a density statement; 'no good seven' doesn't pass to the limit, corrects §39.3) | CORE §75–§79 | DEAD (proved) |
 | Transfer lemma (finite-depth first-order win at t' < t gives CP at t for large k) | CORE §75 | HAND |
-| Density / forbidden-pattern arguments above the bottom strip (Theorem 96.1: the c-sets avoiding a point and containing a fixed Y have no static certificate yet density rate <= 0.17γ; no pattern rate can beat γ) | CORE §95–§99 | DEAD (HAND, not yet verified) |
+| Density / forbidden-pattern arguments above the bottom strip (Theorem 96.1: the c-sets avoiding a point and containing a fixed Y have no static certificate yet density rate <= 0.17γ; no pattern rate can beat γ) | CORE §95–§99 | Theorem 96.1 VERIFIED (notes/verify/thm96_1.md); 'no rate beats γ' holds only for density-only hypotheses and static certificates (float comparison) |
 | Frankl–Wilson makes the bottom strip effective (ε_0 ≈ 0.0088), except a vanishing top sliver | CORE §97 | FLOAT/HEUR |
 | Adaptive density / dependent random choice via links, traces, exclusions (links move (N,t) away from every closed region; Theorem 102.1: the static-certificate budget S_q = (q-3)δ + (7-q)ε depends only on (N,t,q)) | CORE §100–§104 | DEAD (HAND) |
 | Entropy method (Gilmer size form; iid copies AHS/Chase–Lovett; correlated laws / pencil supersaturation; witness-pair union bound); obstruction: certificates need cyclic dump constraints, entropy handles only acyclic ones | CORE §70–§74 | DEAD (HAND) |
 | core9 two-class reversed-order family at (8,6,15): 0 pencils (vs 128,301 random-predicted) and no (Σ)-shape at ε = 0 | CORE §72 | EXACT |
 | Covering-design stability / anti-Pasch analogy / code constructions (size is the wrong measure: pool families are minimal yet far above the Schönheim bound; random designs are supercritical; code redundancy needed > covering budget) | CORE §105–§109 | DEAD (HAND/FLOAT) |
+| Fractional pair-cover (edge-clique-cover) LP: (N/c)^2 <= ρ* <= (N/t)^2; a fixed request rule can't beat the random T-set; no 'ρ* small implies ρ <= 7' can hold (pools with ρ* ≈ 5.44 but ρ >= 8) | CORE §115–§119 | DEAD as a route (HAND + EXACT) |
 | Kernel lemma; regularity reduction; c(N)·k cell bound; bounded-request game | CORE §34–35, §39, §45, Parts V–VII | DEAD |
 
 ## Petal side (Barrier F)

@@ -1,0 +1,5 @@
+../cover/logs/c1_8_6_16_s3.txt: m=1595 members of size c=8, n=16, k=8, T=6; uncovered T-sets: 0
+  bounds: C(n,2)/C(c,2) = 4.2857   random-T n(n-1)/(T(T-1)) = 8.0000   pool value (k+T)(k+T-1)/(T(T-1)) = 6.0667
+  rho*: float 4.285714;  exact bracket [30/7, 30/7] = [4.285714, 4.285714] EXACT (denominators <= 10000000); primal support 118
+  optimal w: point loads r_x in [2.1429, 2.1429] (sum 34.2857 = c*rho*); integral cover needs >= 3 each when 2(c-1) < n-1
+  rho*_3 (pair cover + every point in weight >= 3): float 6.000000; trivial floor 3n/c = 6.0000

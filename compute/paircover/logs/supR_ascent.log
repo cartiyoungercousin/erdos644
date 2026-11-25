@@ -1,0 +1,42 @@
+n=8 c=4 T=3: lower C(n,2)/C(c,2) = 4.6667; pool (k+T)(k+T-1)/(T(T-1)) = 7.0000; random-T bound = 9.3333
+restart 0: rho* reached 5.666667 (44 members)  best so far 5.666667
+restart 1: rho* reached 5.666667 (33 members)  best so far 5.666667
+restart 2: rho* reached 5.666667 (32 members)  best so far 5.666667
+restart 3: rho* reached 5.666667 (38 members)  best so far 5.666667
+restart 4: rho* reached 5.666667 (31 members)  best so far 5.666667
+restart 5: rho* reached 5.500000 (33 members)  best so far 5.666667
+n=9 c=5 T=3: lower C(n,2)/C(c,2) = 3.6000; pool (k+T)(k+T-1)/(T(T-1)) = 7.0000; random-T bound = 12.0000
+restart 0: rho* reached 5.500000 (36 members)  best so far 5.500000
+restart 1: rho* reached 5.666667 (40 members)  best so far 5.666667
+restart 2: rho* reached 5.666667 (47 members)  best so far 5.666667
+restart 3: rho* reached 5.666667 (44 members)  best so far 5.666667
+restart 4: rho* reached 5.666667 (49 members)  best so far 5.666667
+restart 5: rho* reached 5.444444 (32 members)  best so far 5.666667
+n=11 c=6 T=4: lower C(n,2)/C(c,2) = 3.6667; pool (k+T)(k+T-1)/(T(T-1)) = 6.0000; random-T bound = 9.1667
+restart 0: rho* reached 5.166667 (166 members)  best so far 5.166667
+restart 1: rho* reached 4.648475 (103 members)  best so far 5.166667
+restart 2: rho* reached 4.607473 (100 members)  best so far 5.166667
+restart 3: rho* reached 4.468833 (97 members)  best so far 5.166667
+restart 4: rho* reached 4.584810 (107 members)  best so far 5.166667
+restart 5: rho* reached 5.166667 (170 members)  best so far 5.166667
+n=12 c=7 T=4: lower C(n,2)/C(c,2) = 3.1429; pool (k+T)(k+T-1)/(T(T-1)) = 6.0000; random-T bound = 11.0000
+restart 0: rho* reached 4.272727 (87 members)  best so far 4.272727
+restart 1: rho* reached 4.633002 (106 members)  best so far 4.633002
+restart 2: rho* reached 4.694971 (99 members)  best so far 4.694971
+restart 3: rho* reached 4.661964 (112 members)  best so far 4.694971
+restart 4: rho* reached 4.419444 (100 members)  best so far 4.694971
+restart 5: rho* reached 5.166667 (185 members)  best so far 5.166667
+n=10 c=5 T=4: lower C(n,2)/C(c,2) = 4.5000; pool (k+T)(k+T-1)/(T(T-1)) = 6.0000; random-T bound = 7.5000
+restart 0: rho* reached 5.166667 (134 members)  best so far 5.166667
+restart 1: rho* reached 5.166667 (142 members)  best so far 5.166667
+restart 2: rho* reached 5.166667 (131 members)  best so far 5.166667
+restart 3: rho* reached 5.166667 (138 members)  best so far 5.166667
+restart 4: rho* reached 5.166667 (142 members)  best so far 5.166667
+restart 5: rho* reached 6.000000 (126 members)  best so far 6.000000
+n=13 c=7 T=5: lower C(n,2)/C(c,2) = 3.7143; pool (k+T)(k+T-1)/(T(T-1)) = 5.5000; random-T bound = 7.8000
+restart 0: rho* reached 4.900000 (612 members)  best so far 4.900000
+restart 1: rho* reached 4.900000 (619 members)  best so far 4.900000
+restart 2: rho* reached 4.381093 (391 members)  best so far 4.900000
+restart 3: rho* reached 4.398906 (393 members)  best so far 4.900000
+restart 4: rho* reached 4.435565 (392 members)  best so far 4.900000
+restart 5: rho* reached 4.500000 (462 members)  best so far 4.900000

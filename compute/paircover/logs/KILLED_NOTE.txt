@@ -1,0 +1,1 @@
+killed by session deadline (22:17) — no RESULT line means undecided within budget

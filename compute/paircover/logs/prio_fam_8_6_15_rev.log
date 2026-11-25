@@ -1,0 +1,5 @@
+../core9/logs/fam_8_6_15_rev.txt: m=2352 members of size c=7, n=15, k=8, T=6; uncovered T-sets: 0
+  bounds: C(n,2)/C(c,2) = 5.0000   random-T n(n-1)/(T(T-1)) = 7.0000   pool value (k+T)(k+T-1)/(T(T-1)) = 6.0667
+  rho*: float 5.533333;  exact bracket [83/15, 83/15] = [5.533333, 5.533333] EXACT (denominators <= 10000000); primal support 84
+  optimal w: point loads r_x in [2.4147, 3.7005] (sum 38.7333 = c*rho*); integral cover needs >= 3 each when 2(c-1) < n-1
+  rho*_3 (pair cover + every point in weight >= 3): float 6.666667; trivial floor 3n/c = 6.4286

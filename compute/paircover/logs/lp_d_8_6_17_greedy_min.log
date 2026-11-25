@@ -1,0 +1,6 @@
+../cover/logs/d_8_6_17_greedy_min.txt: m=358 members of size c=9, n=17, k=8, T=6; uncovered T-sets: 0
+  bounds: C(n,2)/C(c,2) = 3.7778   random-T n(n-1)/(T(T-1)) = 9.0667   pool value (k+T)(k+T-1)/(T(T-1)) = 6.0667
+  rho*: float 3.777778;  exact bracket [34/9, 34/9] = [3.777778, 3.777778] EXACT (denominators <= 10000000); primal support 136
+  optimal w: point loads r_x in [2.0000, 2.0000] (sum 34.0000 = c*rho*); integral cover needs >= 3 each when 2(c-1) < n-1
+  degree cut not valid here (2c >= n + 1)
+  RESULT rho undecided (>= 99), rho* = [3.777778, 3.777778]

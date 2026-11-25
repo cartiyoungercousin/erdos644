@@ -1,0 +1,5 @@
+../entropy/logs/fam_8_6_15_pool.txt: m=3003 members of size c=7, n=15, k=8, T=6; uncovered T-sets: 0
+  bounds: C(n,2)/C(c,2) = 5.0000   random-T n(n-1)/(T(T-1)) = 7.0000   pool value (k+T)(k+T-1)/(T(T-1)) = 6.0667
+  rho*: float 6.066667;  exact bracket [91/15, 91/15] = [6.066667, 6.066667] EXACT (denominators <= 10000000); primal support 91
+  optimal w: point loads r_x in [2.6000, 6.0667] (sum 42.4667 = c*rho*); integral cover needs >= 3 each when 2(c-1) < n-1
+  rho*_3 (pair cover + every point in weight >= 3): float 7.000000; trivial floor 3n/c = 6.4286

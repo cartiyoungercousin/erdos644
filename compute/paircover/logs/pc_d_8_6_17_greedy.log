@@ -1,0 +1,9 @@
+../cover/logs/d_8_6_17_greedy.txt: m=358 members of size c=9, n=17, k=8, T=6; uncovered T-sets: 0
+  bounds: C(n,2)/C(c,2) = 3.7778   random-T n(n-1)/(T(T-1)) = 9.0667   pool value (k+T)(k+T-1)/(T(T-1)) = 6.0667
+  rho*: float 3.777778;  exact bracket [34/9, 34/9] = [3.777778, 3.777778] EXACT (denominators <= 10000000); primal support 136
+  optimal w: point loads r_x in [2.0000, 2.0000] (sum 34.0000 = c*rho*); integral cover needs >= 3 each when 2(c-1) < n-1
+  degree cut not valid here (2c >= n + 1)
+  SAT b=4: UNSAT (10.0s)
+  SAT b=5: UNSAT (877.3s)
+  SAT b=6: cover of size 6 found, checked (2.1s): {0,1,2,5,6,8,10,11,15} {0,1,3,4,7,8,9,10,14} {0,1,4,5,11,12,13,15,16} {2,3,4,6,10,12,13,14,16} {2,3,4,7,8,9,12,13,16} {3,4,5,6,7,9,11,14,15}
+  RESULT rho = 6, rho* = 3.777778, gap rho/rho* = 1.5882, good seven: YES
