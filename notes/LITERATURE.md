@@ -4,13 +4,17 @@ Status key: [READ] read in full, [ABS] abstract / secondhand only, [MISSING] not
 
 ## 1. Papers on the problem itself
 
-- **Erdős–Hajnal–Tuza 1991**, Local constraints ensuring small representing sets, JCTA 58, 78–84. [ABS]
-  Origin of f(r,p,t). Not yet read.
+- **Erdős–Hajnal–Tuza 1991**, Local constraints ensuring small representing sets, JCTA 58, 78–84. [READ]
+  Raises the general problem (p,s) -> t. NOTE: there p counts ELEMENTS (subsystems on at most p points), and the paper treats s = 1 only:
+  Thm 1 (2r,1)->r; Thm 2 (3r-3,1)->r-1, sharp when r-1 is a prime power; Thm 3 (3r-3,1)->ceil(r/5); Thm 6 general. Not directly about (7,2).
 - **EFKT92**: Erdős, Fon-Der-Flaass, Kostochka, Tuza, Small transversals in uniform hypergraphs,
   Siberian Adv. Math 2 (1992) 82–88. [MISSING] Exact f(r,p,2) for p = 3..6:
   2r, floor(3r/2), floor(5r/4), r. Extremal families = complete r-graphs.
 - **FKW99**: Fon-Der-Flaass, Kostochka, Woodall, Discrete Math 207 (1999) 277–284. [READ]
   See NOTES.md for full summary. 3r/4 + 1 <= f(r,7,2) <= ceil(7r/8) (lower bound for r = 4k, k >= 10).
+  Re-read in full (2026-11-25): Remark after Thm 1 says the construction works for k >= 4 by elaborating Claims 3–4 (not proved there), and FAILS for k = 2.
+  'If the lower bound held for k = 2, the upper bound would be exact for r = 8', so f(8,7) in {6,7} is OPEN per FKW.
+  Lower bound for all r: adding a fresh private vertex to every edge preserves (7,2) and tau, so f(r+1,7) >= f(r,7), giving f(r,7) >= 3 floor(r/4) + 1 for r >= 40.
 - **K02**: Kostochka, Transversals in uniform hypergraphs with property (p,2), Combinatorica 22
   (2002) 275–285. [ABS] Asymptotics "for large p and huge r" (formula not visible in abstract).
   Paywalled; author-page link serves the wrong PDF. Apparently does not improve p = 7.
