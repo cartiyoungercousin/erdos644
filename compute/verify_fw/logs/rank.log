@@ -1,0 +1,6 @@
+(n,k,p)=(6,3,2): diag (p-1)! mod p = 1 (expect 1); rank of {P_F} on cube = 6 <= sum_i<p C(n,i) = 7: True
+(n,k,p)=(7,3,2): diag (p-1)! mod p = 1 (expect 1); rank of {P_F} on cube = 7 <= sum_i<p C(n,i) = 8: True
+(n,k,p)=(7,4,3): diag (p-1)! mod p = 2 (expect 2); rank of {P_F} on cube = 21 <= sum_i<p C(n,i) = 29: True
+(n,k,p)=(8,5,3): diag (p-1)! mod p = 2 (expect 2); rank of {P_F} on cube = 28 <= sum_i<p C(n,i) = 37: True
+(n,k,p)=(8,4,3): diag (p-1)! mod p = 2 (expect 2); rank of {P_F} on cube = 28 <= sum_i<p C(n,i) = 37: True
+(n,k,p)=(9,5,3): diag (p-1)! mod p = 2 (expect 2); rank of {P_F} on cube = 36 <= sum_i<p C(n,i) = 46: True

@@ -1,0 +1,15 @@
+nu=1.70000  c0=0.02347  f decreasing on [0,c0]: True  (1+c0)/(2nu)=0.3010 < 1/2
+nu=1.75000  c0=0.02976  f decreasing on [0,c0]: True  (1+c0)/(2nu)=0.2942 < 1/2
+nu=1.78000  c0=0.03351  f decreasing on [0,c0]: True  (1+c0)/(2nu)=0.2903 < 1/2
+nu=1.78400  c0=0.03400  f decreasing on [0,c0]: True  (1+c0)/(2nu)=0.2898 < 1/2
+nu=1.79000  c0=0.03475  f decreasing on [0,c0]: True  (1+c0)/(2nu)=0.2890 < 1/2
+nu=1.79940  c0=0.03591  f decreasing on [0,c0]: True  (1+c0)/(2nu)=0.2878 < 1/2
+nu=1.80000  c0=0.03599  f decreasing on [0,c0]: True  (1+c0)/(2nu)=0.2878 < 1/2
+nu=1.83333  c0=0.04009  f decreasing on [0,c0]: True  (1+c0)/(2nu)=0.2837 < 1/2
+nu=1.90000  c0=0.04814  f decreasing on [0,c0]: True  (1+c0)/(2nu)=0.2758 < 1/2
+nu=2.00000  c0=0.05979  f decreasing on [0,c0]: True  (1+c0)/(2nu)=0.2649 < 1/2
+c0 strictly increasing on [1.70, 2.03] (step .001): True
+c0(nu) = nu - 7/4            at nu = 1.78400   (note: 1.7840; exception impossible below)
+11 c0(nu)/8 = nu - 7/4       at nu = 1.79937   (note: 1.7994; beats 3/11 below)
+5 c0(nu)/4 = nu - 7/4        at nu = 1.79406   (e <= s/5 + o(k) actually holds up to here)
+eps threshold c0(7/4)/4 = 0.00744 (note 0.0074);  sharp 4eps = c0(7/4+5eps): eps = 0.00881

@@ -1,0 +1,2 @@
+residue: k<=400, 1909366 (k,p,i) cases, 0 bad
+p = k/2 (excluded by hypothesis) would allow i = 0 = k-2p as well: [(4, 2), (6, 3), (10, 5), (14, 7), (22, 11)]

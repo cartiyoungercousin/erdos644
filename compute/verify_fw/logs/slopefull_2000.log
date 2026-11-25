@@ -1,0 +1,15 @@
+[full] k=2000 s=0: e_max=1 route=FW  (3s+24)/11 floor=2  (s+11)/5=2.2
+[full] k=2000 s=10: e_max=4 route=3/11  (3s+24)/11 floor=4  (s+11)/5=4.2
+[full] k=2000 s=20: e_max=6 route=FW  (3s+24)/11 floor=7  (s+11)/5=6.2
+[full] k=2000 s=30: e_max=8 route=FW  (3s+24)/11 floor=10  (s+11)/5=8.2
+[full] k=2000 s=40: e_max=10 route=FW  (3s+24)/11 floor=13  (s+11)/5=10.2
+[full] k=2000 s=50: e_max=12 route=FW  (3s+24)/11 floor=15  (s+11)/5=12.2
+[full] k=2000 s=60: e_max=14 route=FW  (3s+24)/11 floor=18  (s+11)/5=14.2
+[full] k=2000 s=70: e_max=17 route=FW  (3s+24)/11 floor=21  (s+11)/5=16.2
+[full] k=2000 s=80: e_max=18 route=FW  (3s+24)/11 floor=24  (s+11)/5=18.2
+[full] k=2000 s=90: e_max=20 route=FW  (3s+24)/11 floor=26  (s+11)/5=20.2
+[full] k=2000 s=100: e_max=26 route=FW  (3s+24)/11 floor=29  (s+11)/5=22.2
+[full] k=2000 s=105: e_max=29 route=FW  (3s+24)/11 floor=30  (s+11)/5=23.2
+[full] k=2000 s=110: e_max=32 route=3/11  (3s+24)/11 floor=32  (s+11)/5=24.2
+[full] k=2000 s=120: e_max=34 route=3/11  (3s+24)/11 floor=34  (s+11)/5=26.2
+[full] k=2000 s=140: e_max=40 route=3/11  (3s+24)/11 floor=40  (s+11)/5=30.2
