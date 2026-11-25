@@ -1,0 +1,6 @@
+== K_20^(12)  (n=20 k=12; covering level k+r=12, r=0, T=8, 4T-3k=-4, 4n/7=11.43)
+   phi(m)=P(m-set contains member): 12:1
+   union bound at balanced sizes: sum_u mu(|R_u|) = 4.000 (a seven is certified if < 1)
+   iid       marg min/mean 0.4910/0.4918  sum mu 3.558  prod 6.955e-03  cert 0.000e+00  kappa=log10(cert/prod) -inf
+   balanced  marg min/mean 0.0000/0.4286  sum mu 4.000  prod 0.000e+00  cert 0.000e+00  kappa=log10(cert/prod) n/a
+   anchored  marg min/mean 0.4329/0.4347  sum mu 3.957  prod 2.935e-03  cert 0.000e+00  kappa=log10(cert/prod) -inf

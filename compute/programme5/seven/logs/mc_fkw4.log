@@ -1,0 +1,6 @@
+== FKW n=29 k=16 |X|=16  (n=29 k=16; covering level k+r=17, r=1, T=12, 4T-3k=0, 4n/7=16.57)
+   phi(m)=P(m-set contains member): 16:0.5 17:1
+   union bound at balanced sizes: sum_u mu(|R_u|) = 1.500 (a seven is certified if < 1)
+   iid       marg min/mean 0.5858/0.5866  sum mu 2.894  prod 2.390e-02  cert 0.000e+00  kappa=log10(cert/prod) -inf
+   balanced  marg min/mean 0.5001/0.7859  sum mu 1.499  prod 1.253e-01  cert 0.000e+00  kappa=log10(cert/prod) -inf
+   anchored  marg min/mean 0.5009/0.5018  sum mu 3.487  prod 8.014e-03  cert 0.000e+00  kappa=log10(cert/prod) -inf

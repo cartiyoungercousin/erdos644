@@ -1,0 +1,11 @@
+== sa_8_7_16_layer_X_8_1_s1.npy  (n=16 k=8; covering level k+r=9, r=1, T=7, 4T-3k=4, 4n/7=9.14)
+   phi(m)=P(m-set contains member): 8:0.172 9:1
+   union bound at balanced sizes: sum_u mu(|R_u|) = 0.828 (a seven is certified if < 1)
+   iid       marg min/mean 0.6584/0.6594  sum mu 2.384  prod 5.423e-02  cert 3.152e-03  kappa=log10(cert/prod) -1.24
+   balanced  marg min/mean 0.1728/0.8818  sum mu 0.827  prod 1.728e-01  cert 1.728e-01  kappa=log10(cert/prod) 0.00
+   anchored  marg min/mean 0.6122/0.6135  sum mu 2.705  prod 3.272e-02  cert 6.300e-04  kappa=log10(cert/prod) -1.72
+   P1 threshold 4T-3k-6 = -2; lightest pencil weights found: [0, 2, 4, 6]
+   pencil w=0 (|Z|=4): pencil lines contain x_i: True; 4 other lines marg 0.822 0.826 0.826 0.824 joint 3.718e-01
+   pencil w=2 (|Z|=3): pencil lines contain x_i: True; 4 other lines marg 0.739 0.736 0.735 0.741 joint 1.800e-01
+   pencil w=4 (|Z|=2): pencil lines contain x_i: True; 4 other lines marg 0.637 0.641 0.631 0.635 joint 5.335e-02
+   pencil w=6 (|Z|=1): pencil lines contain x_i: True; 4 other lines marg 0.535 0.534 0.534 0.536 joint 1.200e-03

@@ -1,0 +1,6 @@
+== thresh n=23 k=12 |A|=21 t=12  (n=23 k=12; covering level k+r=14, r=2, T=9, 4T-3k=0, 4n/7=13.14)
+   phi(m)=P(m-set contains member): 12:0.217 13:0.692 14:1
+   union bound at balanced sizes: sum_u mu(|R_u|) = 2.016 (a seven is certified if < 1)
+   iid       marg min/mean 0.5894/0.5911  sum mu 2.863  prod 2.520e-02  cert 3.300e-04  kappa=log10(cert/prod) -1.88
+   balanced  marg min/mean 0.2174/0.7121  sum mu 2.015  prod 4.981e-02  cert 6.320e-02  kappa=log10(cert/prod) 0.10
+   anchored  marg min/mean 0.5180/0.5201  sum mu 3.359  prod 1.030e-02  cert 5.000e-06  kappa=log10(cert/prod) -3.31
