@@ -26,7 +26,7 @@ Let f(k,7) be the largest transversal number τ(H) over k-uniform families H wit
 | N ≤ 3t − 1/2 (crowded) | closed (verified, first order) |
 | 3t − 1/2 < N ≤ 5t − 2 (bottom strip, width 2ε) | closed for small ε (verified; Frankl–Rödl density argument, §3) |
 | **5t − 2 < N < 3 − t (core window, about 1.75k to 2.25k)** | **OPEN** |
-| N ≥ 3 − t (petal side) | mostly closed (verified); residues in §5 |
+| N ≥ 3 − t (petal side) | closed against the adversary classes analysed (verified); residues in §5; not closed against general adversaries |
 
 ## 3. Verified results (independent adversarial checking, plus Lean where marked)
 - **Lean 4 / Mathlib, no sorry:** about 20 lemmas, including the flat 7-tuple lemma, the Fano criterion, the waste adversary, the anchor and petal reductions, and Lemmas 4.1–4.8 of the 6/7 manuscript.

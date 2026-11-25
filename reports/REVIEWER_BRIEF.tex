@@ -15,9 +15,9 @@
 Let $f(k,7)$ be the largest transversal number $\tau(H)$ of a $k$-uniform family $H$ in which every at most seven
 members can be pierced by two points. Erd\H{o}s asked whether $f(k,7)=(\tfrac34+o(1))k$. The best published bounds are
 $f(k,7)\le\lceil 7k/8\rceil$ and $f(4m,7)\ge 3m+1$ for $m\ge 10$ (Fon-Der-Flaass, Kostochka and Woodall, 1999).
-We have reduced the question, for families confined to a ground set of at most $3k$ points, to one statement about
-covering families plus two small residues. Transferring confined results back to general families is a separate open
-step (\S2). We ask mainly for help with the confined statement.
+The problem is open. Below we describe a framework, results for families confined to a ground set of at most $3k$
+points, and the precise statement that remains. We are explicit about one point: results about confined families do
+not by themselves bound $f(k,7)$ (\S2).
 
 \section{The reduction (independently verified)}
 \textbf{Game form.} If $\tau(H)>T$, every $T$-set misses some member. So a requester who names $T$-sets always receives
@@ -39,11 +39,12 @@ seven co-edges a \emph{good seven}.
 \end{itemize}
 It suffices to treat all sufficiently small $\varepsilon>0$. We write $\omega=N-1-t$ and $\delta=N-\tfrac74$.
 
-\textbf{Case split by $N$ (confined families).} Every region is closed except one:
+\textbf{Case split by $N$ (confined families).}
 \begin{itemize}
-\item $N\le 3t-\tfrac12$ (crowded): closed.
-\item $3t-\tfrac12<N\le 5t-2$ (bottom strip): closed by a Frankl--R\"odl density argument.
-\item $N\ge 3-t$ (petal side): closed except two small residues.
+\item $N\le 3t-\tfrac12$ (crowded): closed for confined families.
+\item $3t-\tfrac12<N\le 5t-2$ (bottom strip): closed for confined families, by a Frankl--R\"odl density argument.
+\item $N\ge 3-t$ (petal side): closed \emph{against the adversary classes analysed} (two-class, arena and pooled-arena
+families), with two residues inside those classes. It is not closed against general adversaries.
 \item $5t-2<N<3-t$: the \textbf{core window}, open.
 \end{itemize}
 
@@ -84,6 +85,15 @@ continuum statement, the exact closures and finite-$k$ rounding remain to be don
 \end{itemize}
 
 \section{The open problem}
+\noindent\textbf{Statement (G)} (equivalent to $f(k,7)\le(\tfrac34+o(1))k$). For every $\varepsilon>0$ and $k\ge
+k_0(\varepsilon)$, with $T=\lceil(\tfrac34+\varepsilon)k\rceil$: every finite family of nonempty sets of at most $k$ points
+with $\tau>T$ has at most seven members with no transversal of at most two points. (Allowing sets of size at most $k$ is
+harmless: padding with private points reduces to the uniform case.)
+
+\medskip
+The core-window statement below is a \emph{necessary special case} of (G). A counterexample to it is a genuine
+counterexample to the conjecture. But a proof of it alone does \emph{not} bound $f(k,7)$: transfer to general families
+(far replies) and the petal side against general adversaries would remain.
 \begin{problem}
 Let $\varepsilon>0$ be sufficiently small, $t=\tfrac34+\varepsilon$, and $5t-2<N<3-t$ (about $1.75k$ to $2.25k$
 points). Show that every $T$-covering family of co-edges contains a good seven.
