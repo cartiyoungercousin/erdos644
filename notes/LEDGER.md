@@ -81,6 +81,11 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 | 12.3 (𝒜 loses to 4+3 when she knows the arenas) | PETAL 12.3 | GAP (W3): assumes the ground set is the two arenas; a leak outside them breaks it. Check whether DS / the 𝒜 kill inherits this, or whether AP's pool covers it |
 | 𝒜(t,δ), 𝒦₂ (c >= 0.5217) as obstructions | PETAL §20, §22 | DEAD |
 
+## Minimal-counterexample frame (notes/MINIMAL_FRAME.md)
+| Claim | Where | Status |
+|---|---|---|
+| Lemma 1 (padding: f with sets of size at most k = f), Lemma 3 (private sets), Lemma 4 (saturation), Corollary 5 (co-edge form), (G) equivalent to the 3/4 bound | MINIMAL_FRAME.md | VERIFIED (notes/verify/minimal_frame.md; proof-text gaps: Lemma 4 (ii) and m >= 3, S_B ⊆ V) |
+
 ## Open
 - LIFT (G2 / far replies): transfer confined results to general families (anchor-keeping certificates, or show far replies with large outside overlap lose). Needed for the full solve.
 - Record path: exact certification of R1's sparsest-anchor argument at t = 17/20 (anchor-keeping, transfers) would give f(k,7) <= (17/20 + o(1))k (FRONTIER §4–5).
