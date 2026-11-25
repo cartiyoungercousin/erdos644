@@ -1,0 +1,16 @@
+(a) finite k: log F, Chebyshev bound at R = F^(1/2)/k (uniform), at R = (F/D)^(1/3)/k (heterogeneous)
+  k=8 T=6: log F = 13.17 (per k 1.6465), log D/k = 0.7829, 9/C(k+T,T) = 3.00e-03; uniform: R < e^(0.8233 k); heterogeneous: R < e^(0.2879 k)
+  k=40 T=31: log F = 88.40 (per k 2.2100), log D/k = 1.0803, 9/C(k+T,T) = 7.10e-20; uniform: R < e^(1.1050 k); heterogeneous: R < e^(0.3766 k)
+  k=100 T=76: log F = 229.02 (per k 2.2902), log D/k = 1.1257, 9/C(k+T,T) = 8.00e-51; uniform: R < e^(1.1451 k); heterogeneous: R < e^(0.3882 k)
+  k=400 T=304: log F = 942.42 (per k 2.3561), log D/k = 1.1640, 9/C(k+T,T) = 2.50e-207; uniform: R < e^(1.1780 k); heterogeneous: R < e^(0.3973 k)
+  k=4000 T=3040: log F = 9524.65 (per k 2.3812), log D/k = 1.1791, 9/C(k+T,T) = 0.00e+00; uniform: R < e^(1.1906 k); heterogeneous: R < e^(0.4007 k)
+  first order: Phi(t)/2 and (Phi - d)/3 = log C(1+t,t)/3
+   t=0.75: Phi = 2.3656, Phi/2 = 1.1828, (Phi-d)/3 = 0.3984
+   t=0.76: Phi = 2.3849, Phi/2 = 1.1925, (Phi-d)/3 = 0.4012
+   t=0.78: Phi = 2.4225, Phi/2 = 1.2113, (Phi-d)/3 = 0.4067
+   t=0.8: Phi = 2.4589, Phi/2 = 1.2295, (Phi-d)/3 = 0.4122
+(b) simulation (k,T,n)=(8,6,16): R, mean number of head pencils over 5 samples (first moment F/R^2), samples with none
+  R=16: pencils [2021, 2142, 1913, 2035, 2077] (F/R^2 = 2052.8); samples with no head pencil: 0/5
+  R=64: pencils [126, 163, 120, 123, 120] (F/R^2 = 128.3); samples with no head pencil: 0/5
+  R=256: pencils [7, 10, 4, 7, 8] (F/R^2 = 8.0); samples with no head pencil: 0/5
+  R=1024: pencils [1, 0, 1, 0, 2] (F/R^2 = 0.5); samples with no head pencil: 2/5

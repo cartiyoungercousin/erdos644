@@ -1,0 +1,2 @@
+(a) intersecting triple supports up to S_7: 604 (sizes [1, 1, 2, 7, 20, 43, 83, 120, 125, 98, 63, 25, 10, 4, 1, 1, 0]) (129s)
+killed at stage (b,c) after 21 min, within the 20-min budget set by the coordinator: UNDECIDED

@@ -1,0 +1,8 @@
+FAIL 40 31 80 junta+ 13 rand ['R', 'W']
+FAIL 40 31 80 junta+ 13 rand ['R', 'W']
+FAIL 40 31 88 junta+ 13 rand ['R', 'W']
+FAIL 100 76 190 junta+ 28 rand ['R', 'W']
+FAIL 100 76 210 junta+ 28 rand ['R', 'W']
+FAIL 100 76 210 junta+ 28 rand ['R', 'W']
+FAIL 100 76 210 junta+ 28 rand ['R', 'W']
+TOTAL good sevens 798/805

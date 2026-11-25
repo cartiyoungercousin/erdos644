@@ -2043,6 +2043,313 @@ Self-check (Part X):
 - KZ, KL and DF statements are quoted from the HTML texts as read (DF only through KL's Lemma 2.8). ALWZ beyond KZ's
   Theorem 4, FKNP, Park–Pham and KLLM are from memory.
 
+=============================================================================================
+# Part X-b — hash-like greedy rules: finite-k exact checks, random selectors, the pseudorandom condition (§55–§59)
+
+Code: `compute/core9/`. The first agent on this part wrote `two_ground_sat.py`, `hash_check.py`, `escape_check.py` and
+`exponents.py` and ran them, but was cut off before writing notes. Its logs are kept as they were. This part reconstructs
+what it intended (the docstrings name §55, 55.1, 55.2, §56, 56.3, §57), re-runs what was needed, and finishes what it could.
+New files: `pencil_exact.py`, `hash_replay.py`, `decide_family.py`, `cover_ilp.py`, `seven_dfs.js`, `random_selector.py`.
+Finite-k conventions are those of §47: (k, T, n), ω = n - k - T, kernel n - 3k/2, petals ("halves") k/2. A *greedy rule*
+(47.1) has classes c with linear orders ≺_c, and the reply to S is S ∪ head_c(S), where head_c(S) is the first ω points
+of V∖S in ≺_c and c = σ(S).
+
+**Verdicts first.**
+- **The (8,6,15) family** (`esc_8_6_15.log`: "pencil-free family of 2352 members, local search found NO good seven"):
+  **not relevant to CP, and the good-seven question there is UNDECIDED.** (k,T) = (8,6) has t = 3/4 exactly
+  (ε = 0). It lies in no core window: 5t - 2 < N < 3 - t needs t < 5/6, and at k = 8 no T gives 3/4 < t < 5/6. The family
+  is T-covering, so τ = 7 exactly [computed exact + proved by hand, 55.5]. Whether it has a good seven (pair-cover
+  number 7 or 8) was not settled by four exact methods within budget (55.5). If it has none, it gives f(8,7) >= 7. That
+  equals 3k/4 + 1 and FKW's ⌈7k/8⌉ = 7, so it would only fix the small value f(8,7) = 7 and could not beat any known
+  bound. Small-k rounding.
+- **The 7 failures of `hash_check.log` (798/805)** are all search failures [computed exact]. All seven are `junta+` rules
+  (the min-junta on T - k/2 + 1 points, one point more than Theorem W allows). For each one an exact SAT search
+  (`pencil_exact.py`) finds a perfect pencil. That pencil is checked on the rule verbatim and completed to a good seven by
+  four transversal requests, with all pairs checked: 7/7. Corrected total: **805/805 good sevens**. Why the random search
+  missed them is explained in 56.2.
+
+## 55. The two-ground pencil question, exact at k = 8 [statements proved by hand; tables computed exact by SAT]
+
+**55.1 Parent criterion [proved by hand].** For a greedy rule, a co-edge K is a member iff for some class c there is an
+ω-set Z ⊆ J_c(K) with σ(K∖Z) = c. Here J_c(K) is the longest initial segment of ≺_c contained in K.
+*Proof.* The reply to S = K∖Z in class c is S ∪ (the first ω points of Z ∪ (V∖K) in ≺_c). This equals K iff every
+point of Z precedes every point of V∖K, i.e. iff Z ⊆ J_c(K). ∎
+(This generalises 47.2(ii); it is the membership test that `hash_check.py` and `pencil_exact.py` use.)
+
+**55.2 Pencil completion [proved: 1.3(ii), Theorem C].** If 4 | k, T >= 3k/4 and three members κ ∪ P_1, κ ∪ P_2, κ ∪ P_3
+form a perfect pencil (|κ| = n - 3k/2, the P_i are disjoint halves), then the four requests "one half (k/4 points) of each
+petal, in the patterns 000, 011, 101, 110, padded to T points" finish a good seven, whatever the replies are.
+
+**55.3 The question.** §48.3 asked for a *two-ground* version of ℋ(k,T)'s non-2-colourability: every selector of a greedy
+rule with two classes leaves a monochromatic head pencil. `two_ground_sat.py` decides exactly whether, for given orders,
+*some* selector makes the family free of perfect pencils of *any* kind. Variables: the class of every T-set. Membership
+is implied by selection (55.1). One clause per reachable frame forbids all three of its lines. SAT means a
+pencil-free selector exists (an escape); UNSAT means every selector leaves a pencil. "rev" means ≺_b is the reverse of
+≺_a. "rand s" means random orders from seed s. "shift" means cyclic shifts by n/R.
+
+| (k,T,n) | ω | R = 2 | R = 3 |
+|---|---|---|---|
+| (8,6,15) | 1 | rev: **escape**; rand 1, 2, 3: none | rand 1: **escape**; shift: none |
+| (8,6,16) | 2 | rev, rand 1, rand 2: none | rand 1, shift: none |
+| (8,6,17) | 3 | rev: **escape**; rand 1, rand 2: none | rand 1: **escape**; shift: **escape** |
+| (8,7,16) | 1 | rev: **escape**; rand 1, rand 2: none | rand 1, shift: none |
+| (8,7,17) | 2 | rev: none | — |
+
+[computed exact; CaDiCaL 1.5.3 via python-sat. The R = 2 rev/rand-1 and R = 3 rand-1/shift entries at (8,6,16), plus
+(8,6,15) rand 1, (8,6,17) rev, (8,7,16) rev and (8,7,17) rev, are the first agent's runs. The rest were run in this
+part. Logs: `logs/tg_*.log`.]
+Reading:
+- **The two-ground pencil step of 48.3 is false as a finite statement** [computed exact]: pencil-free selectors exist at
+  (8,6,15), (8,6,17) and (8,7,16) with reversed orders. Reversed orders are the natural worst case: the two heads lie
+  at opposite ends, so no request can serve both. **Dead:** "every 2-class greedy rule has a pencil" as a lemma to prove.
+- 48.3 inferred from χ(ℋ(4,3)) = 3 that "three classes may escape every pencil". That inference is not supported where
+  it was tested: random 3-class rules have no escape at (8,6,15) shift, (8,6,16) and (8,7,16). Three-class escapes exist
+  at (8,6,15) rand 1 and at (8,6,17). Whether a selector escapes depends on the orders more than on R.
+- With random orders and two classes there was no escape in any of the nine tested runs.
+
+**55.4 Do the escapes have good sevens? (`escape_check.py`) [computed exact where marked].** Each round solves the SAT
+of 55.3, builds the family from the rule verbatim, and searches it for a good seven. A good seven that is found is
+forbidden by a clause over its seven members, and the solve is repeated. UNSAT therefore means: every selector for these
+orders produces a pencil or one of the forbidden sevens, so every selector has a good seven [exact].
+| case | result |
+|---|---|
+| (8,6,17) R=2 rev | UNSAT after 36 forbidden sevens (CaDiCaL); re-run with Glucose 4: UNSAT after 26 [exact] |
+| (8,7,16) R=2 rev | UNSAT after 2 forbidden sevens (both solvers) [exact]. CaDiCaL's "c found falsified original clause" in the first run is its root-level UNSAT message; Glucose agrees |
+| (8,6,17) R=3 rand 0 ("shift" in escape_check means rand seed 0) | UNSAT at round 0: no pencil-free selector [exact] |
+| (8,6,17) R=3 rand 1 | 300/300 rounds, each pencil-free family had a good seven; not exhausted [computed exact per round] |
+| (8,6,15) R=3 rand 1 | round 0: pencil-free family of 2348 members, local search found no good seven (not decided) |
+| (8,6,15) R=2 rev | round 0: pencil-free family of 2352 members; see 55.5 |
+
+**55.5 The (8,6,15) family, decided.** `decide_family.py` rebuilds the round-0 SAT instance in the same clause order.
+CaDiCaL is deterministic, so this gives the same model. It extracts the family, written to `logs/fam_8_6_15_rev.txt`,
+2352 members of size 7. It re-checks from the family alone [computed exact]: every 6-set of V lies in a member
+(T-covering, i.e. τ(H) >= 7 for the 8-uniform complements), the family contains no perfect pencil, and the class
+counts are 2485/2520. The selector is balanced against the obvious statistics: conditioned on (first gap, last gap) of
+V∖S, the two classes are near 50/50 in every cell. It is a hash-like solution, not a threshold.
+Good seven: by the Schönheim bound, covering the pairs of 15 points needs >= 7 sets of size 7, so a good seven is a
+minimum covering. Each point then lies in >= 3 of the seven, and Σ(r_x - 3) = 4.
+τ: any 7-set that is not a member meets every edge (an edge V∖K misses X only if X ⊆ K, i.e. X = K), so τ <= 7.
+T-covering gives τ >= 7. Hence **τ = 7 exactly** [proved by hand; the T-covering check is computed exact]. The "ILP gap
+{7, 8}" is the pair-cover number, not τ.
+| method | result |
+|---|---|
+| local search (`escape_check.py`) | no good seven found (not a proof) |
+| CaDiCaL, ≤ 7 members + r_x >= 3 (`decide_family.py`) | no answer in 4 h; killed |
+| HiGHS MILP, min cover (`cover_ilp.py`, 3000 s) | primal 8, dual 7: undecided |
+| CaDiCaL split into "r_x = 3" for x = 0..4 (`seven_split.py`) | no answer in 3.5 h; killed |
+| triple-DFS (`seven_dfs.js`) and co-type DFS (`seven_cotype.js`) | too slow; killed. `seven_cotype.js` counts all 30 Fano planes at (7,3) exactly, as a check |
+| configuration enumeration (`seven_config2.py`): co-type configurations up to S_7, then embedding by exact Venn counts | stage (a) done: 604 supports in 129 s. Stage (b,c), the multiplicities, did not finish in the 20-min budget and was killed. The method passes the (7,3) Fano control. **UNDECIDED** |
+Facts used (all [proved by hand]): every point of a good seven has r_x >= 3 and Σ(r_x - 3) = 4. So at least 11 points
+have r_x = 3, and every r_x = 3 point sees its three members cover V. There are 604 intersecting supports of triples on
+[7] up to S_7 [computed exact, `seven_config2.py`]. A parallel agent reports that this family has no Q′ quadruples, no
+(b) pencil triples and 12.8M triples at defect 1 [their computation, not re-run]. That does not decide it, because (Σ)
+is only sufficient.
+**What it means.** Nothing for CP (ε = 0, outside every window). If the cover number is 8, then f(8,7) = 7, the FKW upper
+bound, matching 3k/4 + 1. **Dead as a counterexample route:** small-k families at t = 3/4.
+
+## 56. Greedy rules at finite k with hash-like and structured selectors (`hash_check.py`) [computed exact per instance]
+
+**56.1 Setup.** Sizes (k,T,n) = (40,31,74), (40,31,76), (40,31,80), (40,31,88), (100,76,180), (100,76,190), (100,76,210).
+Selectors (R classes):
+- `hash`: a blake2 hash of S mod R, i.e. an independent uniform class per request; R = 2, 8, 64.
+- `linear`: (Σ a_x + b mod p) mod R, pairwise independent; R = 2, 8.
+- `parity`: parity vector on random half-sets; R = 2, 8.
+- `early` / `late`: the class whose head ends earliest / latest in its own order (anti-plan thresholds); R = 2, 4.
+- `early^hash`: `early` shifted by a hash.
+- `junta+`: the min-junta on T - k/2 + 1 points; R = T - k/2 + 2.
+- `midhash`: a hash of the request outside the two kernel-length prefixes, flipped by an anti-plan bit.
+Orders are random, plus "rev" for R = 2. Five rules per cell, 805 in all.
+Her search uses the rule only through replies. It picks a class r, a kernel containing a prefix of ≺_r, and random
+petals. For each line it tries holes Z inside J_c(K) for random classes c (55.1). With three member lines it applies
+55.2. Coverage of all pairs is checked by brute force on the actual replies. A success is therefore an exact
+certificate; a failure means only that the search found nothing.
+
+**56.2 Result: 805/805 after the exact pass.** The first run gave 798/805 (`logs/hash_check.log`). `hash_replay.py`
+replays the same RNG stream, reproduces exactly 798/805, and saves the 7 failing rules. All are `junta+`, with R = 13
+(k = 40, n = 80, 80, 88) and R = 28 (k = 100, n = 190, 210, 210, 210). `pencil_exact.py` encodes "a labelling of V into
+kernel/petals with the right sizes such that each line satisfies one of the explicit membership options of the
+min-junta" as SAT. The options are exact consequences of 55.1:
+- class c < w: W_{<c} ⊆ K, and either W_c ∉ K with ω non-W_{<c} points of ≺_c before W_c in K, or W_c ∈ Z ⊆ J_c(K);
+- class w: W ⊆ K.
+All 7 instances are SAT. The pencil is re-verified on the rule verbatim (each line is the reply to a request inside it)
+and completed by 55.2. All pairs are covered in 7/7 [computed exact, `logs/pencil_exact.log`].
+*Why the search failed* [read off the SAT solutions]:
+- the pencils mix classes, e.g. lines via classes (0A, 21A, 0A), (11A, 4B, 12B), (3B, 3B, 8A), but the search builds
+  the kernel around one class's prefix and draws the petals at random, so a second class's head lands in the right line
+  only by chance;
+- option B needs W_c ∈ Z and W_{<c} ∩ Z = ∅, which a uniformly random hole set rarely satisfies.
+So `junta+` is not an escape from Theorem W at window T - k/2 + 1. Theorem W's frame (one class, kernel ⊇ W ∪ Z) fails
+there by one point, but mixed-class frames exist.
+Per-kind medians (frames tried, queries) are in the log. `hash` with R = 64 is the most expensive: median 39 frames and
+about 2500 queries at k = 40.
+
+## 57. Random selectors: first-order exponents, and a proof that uniformly random selectors lose
+
+**57.1 Exponents (`exponents.py`, `logs/exponents.log`) [computed float; heuristic as statements about families].**
+Nats per k, t = 0.76, across the window:
+- γ = (N - t)·h(ω/(N - t)): 0.10 to 0.93;
+- the expected number of pencils in a binomial family at the covering threshold, F_tot - 3γ: +2.13 down to +0.27;
+- the same in the random-dump model (one uniform dump per request), F_tot + 3p: +2.41 to +2.75;
+- Fano-type good sevens at the threshold, G7 - 7γ: +3.38 to +2.20.
+These are all positive. So, at first moment, random families of either kind have exponentially many pencils and good
+sevens. The shadow exponent at level 3N/7 is negative. (F_tot = N·h(3/(2N)) + (3/2)ln 3 counts all perfect pencil
+frames, not only those around a head.) These are first moments only.
+
+**57.2 Theorem R (uniformly random selectors over arbitrary heads lose) [proved by hand; Chebyshev].**
+Setting:
+- classes r = 1..R, each with a *head* B_r of size exactly ω, arbitrary (equal heads, overlapping heads and greedy
+  prefixes are all allowed);
+- every request S disjoint from B_r that is sent to class r gets the reply S ∪ B_r (true for full pool pieces, 53.3,
+  and for greedy rules with B_r = the first ω points of ≺_r);
+- the selector σ is random with P(σ(S) = r) = 1/R for every S disjoint from B_r, independent across requests (the
+  replies to other requests are arbitrary).
+A *head pencil* for r is a frame (κ ⊇ B_r; P_1, P_2, P_3) whose three requests S_i = (κ ∪ P_i)∖B_r all have σ = r.
+Let
+- F = C(k+T, T)·C(T, k/2)·C(k, k/2)/6, the number of frames around one head (perfect sunflowers on V∖B_r, |V∖B_r| = k + T);
+- D = C(T, k/2)·C(k, k/2)/2, the number of frames through one request.
+Then
+  **P(no head pencil for any class) <= R²/F + 9/C(k+T, T).**
+With 55.2 this gives a good seven (4 | k, T >= 3k/4).
+*Proof.* Let X = Σ_r Σ_frames 1[A_{r,F}], where A_{r,F} is the event that all three requests of F are class r. Then
+E X = R·F·R^{-3} = F/R². For the variance, take two events A_{r,F} and A_{r',F'} with (r,F) ≠ (r',F'):
+- if F and F' share no request, the events are independent;
+- if they share a request and r ≠ r', the events are disjoint, so the covariance is negative;
+- two distinct frames share at most one request, since two requests S_1, S_2 of a frame determine κ∖B = S_1 ∩ S_2 and
+  P_3. So in the remaining case (same class, one shared request) P(both) = R^{-5}.
+The number of ordered pairs of distinct frames sharing a request is at most F·3D. Hence
+  Var X <= E X + R·3FD·R^{-5}
+and, by Chebyshev,
+  P(X = 0) <= Var X/(E X)² <= R²/F + 3D/F,
+with 3D/F = 9/C(k+T,T). ∎
+Remarks.
+- The proof uses only 6-wise independence: within a frame (3 requests), within two frames sharing a request (5) and
+  within two disjoint frames (6). So **a selector drawn from any 6-wise independent family with uniform marginals
+  loses with probability >= 1 - R²/F - 9/C(k+T,T)** [proved, same proof]. The `linear` selectors of §56 are only
+  pairwise independent and are not covered. They lost in the computation anyway.
+- *Non-uniform marginals* (e.g. σ uniform on the admissible classes {r : S ∩ B_r = ∅}): with p_{S,r} := P(σ(S) = r),
+  the same computation gives P(X = 0) <= (1 + 3D)/E X with E X >= F/R². The bound is used as
+  P(A ∧ A') <= P(A) when they share a request. So the threshold becomes R² < F/(3D) [proved].
+- *Heads larger than ω* (full pieces with |B_r| = b, ω <= b <= n - 3k/2, F(S) = S ∪ B_r when |B_r∖S| = ω): the frames
+  are (Z ⊆ B_r, |Z| = ω; κ ⊇ B_r), with
+    F_b = C(b, ω)·C(k+T-(b-ω), T-k/2-(b-ω))·(3k/2)!/((k/2)!³·3!),
+    D_b = C(T-(b-ω), k/2)·C(k, k/2)/2.
+  The same proof gives P <= R²/F_b + 3D_b/F_b. **For b > n - 3k/2 no head pencil exists at all**: three lines that all
+  contain B_r would meet in more than n - 3k/2 points. 53.2 allows heads up to q, and q exceeds n - 3k/2 for most of
+  the window. Such heads are outside Theorem R and outside every pencil argument.
+Numbers [computed exact, log-binomials; `random_selector.py`, `logs/random_selector.log`]: the threshold R < F^{1/2},
+written as R < e^{ρk}, has
+- ρ = 0.823 at k = 8, 1.105 at k = 40, 1.145 at k = 100, 1.178 at k = 400, 1.1906 at k = 4000;
+- at first order Φ/2 with Φ = (1+t)h(t/(1+t)) + t·h(1/(2t)) + ln 2: 1.183 at t = 0.75, 1.1925 at t = 0.76, 1.229 at t = 0.8;
+- for non-uniform marginals, (Φ - d)/2 = (1+t)h(t/(1+t))/2 = 0.60, with d = t·h(1/(2t)) + ln 2.
+Φ does not depend on N: the frames around a head live on V∖B_r, which has k + T points for every N.
+Sanity simulation, (8,6,16), random heads, independent uniform σ, 5 samples per R; the observed counts match F/R²
+[computed exact per sample]:
+| R | head pencils found | F/R² |
+|---|---|---|
+| 16 | 1913–2142 | 2053 |
+| 64 | 120–163 | 128 |
+| 256 | 4–10 | 8 |
+| 1024 | 0–2 (2 of 5 samples had none) | 0.5 |
+**This makes 53.4(b)'s first-moment heuristic rigorous, with the same exponent Φ/2 = 1.19**: a uniformly random selector
+over pool heads of size ω loses with high probability unless it has e^{(1.19 - o(1))k} classes. The number of requests
+is e^{(1.22..1.43)k}, so a surviving random selector needs nearly a class per request.
+
+## 58. Deterministic selectors: the kernel-density theorem, what an escape must look like, three classes
+
+**58.1 Theorem H (kernel density) [proved by hand; the averaging of 39.2].** Let 𝒞 be T-covering, 4 | k, T >= 3k/4, and
+let κ ⊆ V with |κ| = n - 3k/2. If more than 2/3 of the C(3k/2, k/2) lines κ ∪ P (P a half of V∖κ) are members, then 𝒞
+has a good seven.
+*Proof.* The partitions of V∖κ into three halves form a 3-uniform hypergraph on the halves. Every half lies in exactly
+d = C(k, k/2)/2 of them, so there are (number of halves)·d/3 of them. If none has all three lines in 𝒞, each contains
+a half whose line is a non-member. Counting gives (number of halves)·d/3 <= (non-member halves)·d. A pencil therefore
+exists, and 55.2 finishes. ∎ (2/3 is sharp over one kernel, 48.1.)
+**For greedy rules (star hitting).** Let J ⊆ κ be an initial segment of ≺_c with |J| >= ω. If σ((κ ∪ P)∖Z) = c for some
+ω-set Z ⊆ J, then κ ∪ P is a member (55.1). So it suffices that more than 2/3 of the halves P are *c-hit*: c occurs
+among the σ-values on the star {(κ ∪ P)∖Z : Z ∈ C(J, ω)}. Two special cases:
+- Theorem W is the case where every star contains one request of class r (the one containing W).
+- An independent uniform σ: take κ = J = the first n - 3k/2 points of ≺_c. A star has C(n - 3k/2, ω) requests and
+  P(not hit) = (1 - 1/R)^{C(n-3k/2, ω)}, so Markov gives a good seven with probability >= 1 - 3e^{-C(n-3k/2,ω)/R}
+  [proved]. This is weaker than Theorem R in R (first-order exponent (N - 3/2)h(ω/(N - 3/2)) <= 0.52 against 1.19).
+  But its hypothesis is deterministic and local: one class, one kernel, density 2/3.
+
+**58.2 What an escape must do [proved: necessity; the names are descriptive].** A selector survives Theorem H only if
+**for every kernel κ, at least a third of the lines over κ are non-members**. For a greedy rule, a non-member line
+K = κ ∪ P must satisfy, for every class c, σ(K∖Z) ≠ c for every ω-set Z ⊆ J_c(K). So for every c, at least a third of
+the stars around every c-prefix kernel must avoid c entirely. Since each star has C(|J|, ω) = e^{Θ(k)} requests,
+avoiding c on it is a strong correlation between σ(S) and the position of S's holes relative to ≺_c. This is the
+anti-plan principle ("send S away from the class whose head S leaves open") made quantitative. A selector that is
+balanced on stars, meaning that each class c has density bounded below on more than 2/3 of the stars of some c-prefix
+kernel, loses. `early`, `late`, `early^hash` and `midhash` are anti-plan attempts, and every one of them lost (§56). The
+SAT escapes of 55.3 are such correlations at k = 8, where a star has only C(n - 12, ω) <= 10 requests.
+With pool heads, the analogous necessary condition says that for every r, at least a third of the head frames around
+B_r have a request not in class r, for every kernel. By Theorem R this holds for no selector with uniform 6-wise
+independent randomness and R < e^{1.19k} classes.
+
+**58.3 Two-ground step: status.** As a statement about all selectors it is false at k = 8 (55.3). It is not needed:
+- with any pseudorandom structure, Theorem R and 58.1 give a one-class pencil and never use a second ground;
+- for deterministic two-class rules the exact computations go further than the pencil: every pencil-free selector at
+  (8,6,17) rev and (8,7,16) rev has a good seven (55.4). (8,6,15) rev: see 55.5.
+**Dead:** the two-ground sunflower step (48.3) as a universal lemma. **Open:** its first-order form, i.e. whether escapes
+need ω = O(1) (all three exact escapes have ω <= 3 and stars of at most 10 requests).
+
+**58.4 Three classes, and Theorem T / Q′ frames.** Exact, k = 8 (55.3–55.4):
+- (8,6,17) R = 3 rand 0: no pencil-free selector;
+- (8,6,17) R = 3 rand 1: 300 successive pencil-free selectors, each with a good seven (not exhausted);
+- (8,6,15) R = 3 rand 1: one pencil-free family, undecided.
+Every good seven found in 55.4 is a certificate of any shape (pencil + 4, Theorem T + 4, Q′ + 3, or other), so those runs
+already contain the T/Q′ frames. The density analogue of 58.1 holds for them: within an orbit of triples (or
+quadruples) of a fixed Theorem-T (or Q′) shape under the stabiliser of a frame partition, a family with no whole
+frame misses at least 1/3 (or 1/4) of the orbit [proved, same averaging]. These thresholds are no better than the
+pencil's. I found no argument in which T/Q′ frames beat an escape that the pencil cannot. **Not done:** a SAT run that
+forbids pencils, Theorem-T frames and Q′ frames simultaneously and asks for a selector avoiding all three (the
+natural next exact test of "(Σ) for 3-class greedy rules"). escape_check's forbidden-seven loop is the stronger test,
+and it was run.
+
+## 59. The pseudorandomness condition, stated to join with §54
+
+**59.1 Statement.** Let 𝒞 be T-covering, 4 | k, T >= 3k/4. Take any piece R_i of §54's (DEC) that is full (53.3: F(S)
+= S ∪ B_i on R_i) with ω <= |B_i| =: b <= n - 3k/2. Let 𝔉_i be its head frames: pairs (Z ⊆ B_i, |Z| = ω;
+κ ⊇ B_i, |κ| = n - 3k/2) with three disjoint halves of V∖κ, the requests being (κ ∪ P_j)∖Z.
+**(PR_i) some head frame of B_i has all three of its requests in R_i.**
+(PR_i) for one i gives a good seven [proved: 55.2]. Each of the following implies (PR_i) [proved]:
+- **(PR-density)** for some (Z, κ), more than 2/3 of the halves P have (κ ∪ P)∖Z ∈ R_i (Theorem H; deterministic).
+- **(PR-random)** the assignment of requests to pieces is drawn from a 6-wise independent law, all heads have size b,
+  and P(S ∈ R_i) >= 1/R for every request of every 𝔉_i. Then some (PR_i) fails with probability at most
+  (1 + 3D_b)·R²/F_b. If the marginals are exactly 1/R, the bound improves to R²/F_b + 3D_b/F_b, i.e. the condition is
+  R < e^{(Φ_b/2 - o(1))k} with Φ_ω = Φ (Theorem R).
+**Joined with (DEC):** CP holds for every T-covering family whose (DEC) has a full piece with head size in
+[ω, n - 3k/2] satisfying (PR-density), and with high probability for every family whose selector over such pieces is
+6-wise independent with fewer than e^{(Φ_b/2 - o(1))k} pieces [proved, given 53.1].
+
+**59.2 What is left, exactly.**
+(i) *Deterministic hash-like selectors.* These are selectors with no randomness to exploit that keep, for every piece,
+at least a third of every kernel's head frames out of the piece (58.2). The question is whether such a selector can also
+be T-covering and avoid every other certificate. Exact data say "yes, against the pencil" at k = 8 for some orders, and
+"no, against all certificates" in every case decided so far (55.4; (8,6,15): 55.5).
+(ii) *Large heads* b > n - 3k/2. No head pencil exists. Certificates must combine pieces, which is §54's (DEC-mix).
+(iii) *The remainder of (DEC)* and non-greedy rules (48.5), untouched here.
+**Dead (this part):**
+- the 7 `hash_check` failures as escapes (they are search failures);
+- the two-ground pencil step as a universal statement (55.3);
+- the inference "three classes escape every pencil" from χ(ℋ(4,3)) = 3 (55.3);
+- deterministic spectral counting of pencils at density 1/R. The Kneser-type frame hypergraph over a kernel has second
+  eigenvalue ratio 1/2 (the Kneser graph K(3h, h) has λ_1/λ_0 = -1/2). Discrepancy bounds therefore cannot reach the
+  densities e^{-Θ(k)} of 53.4(b) [proved: eigenvalue of the Kneser graph; as a no-go, heuristic].
+**Next step.** Run the exact SAT of 58.4 with pencils, T-frames and Q′-frames all forbidden at (8,6,16)–(8,6,17), R = 2, 3.
+Prove or refute "escapes need ω = O(1)": a first-order version of 58.2's star condition with |J| - ω linear.
+
+Self-check (Part XI):
+- 55.1 is the definition of the reply read backwards.
+- Theorem R: the covariance cases were checked by hand. Two frames sharing two requests coincide, since S_1 ∩ S_2 is the
+  kernel and the complement of S_1 ∪ S_2 is the third petal. The count E X = F/R² matches the simulation within
+  sampling error at four values of R. F = 525 525 at (8,6) agrees with 48.2's edge count.
+- Theorem H: the double count assumes that every half lies in the same number of partitions; it does, by Sym(V∖κ).
+- The 56.2 SAT options were derived from 55.1 for the min-junta. Each SAT pencil is re-verified against the rule's own
+  replies, so an encoding error could only lose pencils, not invent them.
+- 55.5: only τ is settled; the good-seven question is recorded as undecided unless the configuration run finished (table).
+- Not machine-checked: the 6-wise independence remark, the non-uniform and large-head variants (same proof, bounds by
+  hand), and the T/Q′ averaging in 58.4.
+
 ## 60. Five-reply candidate of §41: stronger dumps do not save him; the break is not exact [verdict: UNDECIDED, survives in float]
 
 **Run.** (a) `p5_strong.py` (his dump is hill-climbed at the inner level, 150 outer dumps near cell 123, 10 workers): 17 outer

@@ -1,0 +1,5 @@
+k=8 T=6 n=15 R=2 rev seed=0: family 2352 members of size 7
+   T-sets not inside any member: 0   perfect pencils inside the family: 0
+   class counts: Counter({1: 2520, 0: 2485})
+   family written to logs/fam_8_6_15_rev.txt
+   Schoenheim bound for covering pairs of 15 points by 7-sets: 7
