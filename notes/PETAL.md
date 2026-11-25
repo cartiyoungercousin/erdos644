@@ -1912,3 +1912,195 @@ Checks:
 - `py compute/petal5/adaptive_trace.py 0.75 1e-4 two` (about 8 min; `... 1500 cap 0` for the unforced version);
 - `py compute/petal5/trace_adversary.py`;
 - `py compute/petal5/window_lp.py cap`.
+
+---------------------------------------------------------------------------------------------
+## 40. The structure lemma: reduction to one class (Theorem CR), the cross-overlap bound, and exact tests (fourteenth time box)
+
+Brief: prove that every fixed two-class family with same-class overlaps > c > θ(t) and τ > t is close to arena-with-pool
+form, with an explicit error that AP/PS absorb, or find the obstruction. Not touched: the pooled-𝒜 strip (§29–§30).
+Code: `compute/petal4/cr.py` (certificate), `search_cr.py` (two-class search), `single_cr.py` (one-class search),
+`search_chunk.py` (strided runner for the old search, superseded); logs `compute/petal4/logs/cr_*.log`, `single_*.log`.
+Nothing committed.
+
+**Outcome.**
+1. **The structure lemma is not proved in general, and no obstruction was found.** It is reduced to a statement about **one**
+   class (Theorem CR, 40.2) [proved by hand]. The other class enters only through its overlap threshold. Disjoint regions,
+   any structure of the other class, cross-overlap bounds and c > θ are all unnecessary. What is left is a one-class
+   stability statement for τ-near-extremal c-intersecting families (SL1, 40.3), with an explicit tolerance.
+2. **Lemma PC** (40.1) [proved by hand]: in any fixed family with τ(H) > t every cross overlap is <= 2 - 2c - t. With J″ this
+   closes every fixed two-class family with c >= 1 - 5t/9. So the fixed-family gap shrinks from θ < c < 1 - t/2 to
+   **θ(t) < c < 1 - 5t/9**, which is empty for t >= 63/79 = 0.797 (t = 3/4: 1/2 < c < 7/12 instead of 1/2 < c < 5/8).
+3. **Correction to §24/§25** [proved by hand]: the AP cost of the spec uses h_c = least hitting set inside R_c. AP's proof
+   needs more: its G_j must contain the earlier traces and still hit, which needs absorption (every subset of R_c of that
+   mass hits). So "AP(H) <= T" was not a certificate, and §25's "no hit" proved nothing about the strategy. The search was
+   redone with the valid certificate of Theorem CR (40.4) [computed exact]; rows and coverage in 40.4. The §25 pseudo-hit is
+   beaten by CR at cost exactly T: CR needs no region for the other class, so AP's disjointness loss disappears.
+4. **One-class test of SL1** (40.5) [computed exact]: no blow-up class violates it with <= 4 atoms (k = 12, complete; k = 16,
+   n <= 80). The 5–6-atom run was still going when the box closed.
+5. **Explicit non-arena classes** (40.6) [proved by hand, arithmetic]: blow-ups of complements of projective planes, a union
+   of q² + q + 1 arenas. They lie in the regime for q >= 8, and AP's hypothesis fails on them when c is within about 1/q² of θ.
+   CR finishes them with a margin of about 0.17 at t = 3/4. They show that "not arena-with-pool" alone is harmless. The only
+   thing that can hurt is **leak** (β), not absorption excess.
+
+### 40.1 Lemma PC (pair cover) and the fixed-family J″ [proved by hand]
+
+H fixed, τ(H) > t, classes H_X, H_Y with same-class overlaps > c (c + t > 1). Let E ∈ H_X, C ∈ H_Y, m = |E ∩ C|.
+**Lemma PC.** m <= 2 - 2c - t.
+*Proof.* FF (23.1): a subset of a member of mass 1 - c + ε meets every member of its class. If m > 1 - c, a subset of E ∩ C
+of mass 1 - c + ε meets all of H, and 1 - c < t. Otherwise take S_E ⊆ E and S_C ⊆ C of mass 1 - c + ε each, both containing
+E ∩ C. S_E ∪ S_C meets all of H and has mass 2 - 2c - m + 2ε, so 2 - 2c - m + 2ε > t for every ε > 0. ∎
+**Corollary.** A fixed two-class family is in 𝒞(c, μ) with μ = 2 - 2c - t. J″ (18.1) wins if 1 - c + 4μ <= t, i.e.
+9 - 9c - 4t <= t, i.e. **c >= 1 - 5t/9**. Its side condition μ <= c/4 holds there, since μ <= t/9 <= c/4.
+So Barrier F for fixed families is the strip θ(t) < c < 1 - 5t/9, nonempty only for t < 63/79.
+The same argument with FF's private version (request 1 - c - π outside the private part) gives
+m' <= 2 - 2c - t - π_X(E) - π_Y(C) for the part m' of E ∩ C outside both private parts. Not used below.
+
+### 40.2 Lemma YC and Theorem CR [proved by hand]
+
+Notation (mass units, ε suppressed). For a class P, the other class Q, and a set A of points:
+- m_P(A) = inf over E ∈ H_P of |E ∩ A|;
+- β_P(A) = 1 - m_P(A), the leak;
+- h_P(A) = |A| - m_P(A) + ε, the absorption: **every** subset of A of mass h_P(A) meets every P-member;
+- γ_Q(A) = sup over C ∈ H_Q of |C ∩ A|.
+
+An arena R_c with leak ρ_c is the case A = R_c, with h = n_c - 1 + ρ_c and β = ρ_c.
+
+**Lemma YC (the other class stays out of an absorbing set).** If τ(H) > t, c_Q + t > 1 and h_P(A) < t, then
+γ_Q(A) <= h_P(A) - (t - 1 + c_Q).
+*Proof.* Let C ∈ H_Q, y = |C ∩ A|, z = min(y, h_P(A), 1 - c_Q). Take G ⊆ A of mass h_P(A) with |G ∩ C| >= z, and S_C ⊆ C of mass
+1 - c_Q + ε holding z of G ∩ C. G meets all of H_P (absorption) and S_C meets all of H_Q (FF), so
+t < |G ∪ S_C| <= h_P(A) + 1 - c_Q - z + ε. Both alternatives z = h_P(A) and z = 1 - c_Q contradict this (c_Q + t > 1, resp.
+h_P(A) < t). So z = y < h_P(A) - (t - 1 + c_Q) + ε. ∎
+
+**Theorem CR (core reduction).** Let H = H_X ⊔ H_Y be fixed and t >= 2/3. Nothing is assumed on cross overlaps, regions or
+c > θ (overlap thresholds enter only through YC). Put
+
+    Φ_P = inf over A of [ min( max(h_P(A), 2γ_Q(A)),  τ_P + 2γ_Q(A) ) + (8/3) β_P(A) ].
+
+(i) If τ_Q <= t - 1/3 and Φ_P < t, she wins in 7 requests. (ii) If Φ_X < t and Φ_Y < t, she wins in 10 requests.
+*Proof.* Petals.
+- (i): request F ∪ J, where F is a minimum hitting set of H_Q and J is min(b, |I ∖ F|) of I ∖ F, with b = t - τ_Q >= 1/3
+  and I the running intersection of the P-replies. The reply is in P. RI (§2) gives four P-petals with empty common
+  intersection, at cost τ_Q + b = t.
+- (ii): unforced running intersections, t/2 for each class, as in 14.1. Four petals of some class P, in 7 requests.
+
+Centres. U is the union of the petals, B = U ∖ A, |B| <= 4β_P(A); split B into thirds B_0, B_1, B_2. Request j is
+G_j ∪ (B ∖ B_j), with two options for G_j:
+- G_j ⊆ A of mass max(h_P(A), |Z_<j ∩ A|) containing Z_<j ∩ A. This meets all of H_P by absorption.
+- G_j = (a minimum hitting set of H_P) ∪ (Z_<j ∩ A).
+
+Either way the reply C_j is in Q, and |Z_<j ∩ A| <= 2γ_Q(A). Traces are pairwise disjoint on A (sealed). Every B point is
+requested twice, so it lies in at most one centre. U ⊆ A ∪ B, so P4(c) applies. Cost <= the bracket in Φ_P. ∎
+
+- **Special cases.** AP and PS (b) are A = R_X with γ_Y <= ρ_Y. CR is never worse than either. It needs neither R_Y nor
+  R_X ∩ R_Y = ∅, it forces with the family τ_Q instead of the hull τ (PS (a)), and it has no c > θ.
+- **Why the second class drops out.** If τ(H) > t, YC gives 2γ_Q <= 2h - 2(t - 1 + c_Q). So once h_P(A) <= 2(t - 1 + c_Q), the
+  term 2γ_Q is dominated by h, and **only the structure of the petal class matters.** At t = 3/4 with c_P = c_Q = c > 1/2 the
+  condition is h < 2c - 1/2. Since τ <= 1 - c, it holds when the absorption excess h - τ is below 3(c - 1/2).
+- **The petal class has τ_P >= t/2.** If τ_Q < t/2, force P (τ_Q + 1/3 < t). Otherwise both τ >= t/2, case (ii).
+
+### 40.3 What is left: the one-class lemma SL1, with its tolerance
+
+**SL1(t).** Every family 𝓕 of mass-1 sets with pairwise overlaps > c, θ(t) < c < 1 - 5t/9 and τ(𝓕) >= t/2 has a set A with
+
+    max(h(A), 2h(A) - 2(t - 1 + c)) + (8/3)β(A) < t.
+
+By 40.1–40.2, **SL1(t) closes Barrier F for fixed two-class families at that t** [proved by hand]. Take c = min(c_X, c_Y);
+YC bounds γ, and the petal class has τ >= t/2.
+
+**Arena form with error.** Write d = 1 - c - τ (>= 0 by FF). Pooled arenas have A = R with h = τ and β = ρ <= d. Suppose 𝓕 has
+A with h(A) <= τ + e_h, β(A) <= d + e_β and h(A) <= 2(t - 1 + c). Then SL1 holds as soon as
+
+    e_h + (8/3) e_β  <  (151t - 112)/30 + (8/3)(c - θ) + (5/3)(τ - t/2)
+
+[proved by hand: h + 8β/3 <= (8/3)(1 - c) - (5/3)τ + e_h + (8/3)e_β, then AP's arithmetic]. At t = 3/4 the base term is
+1/24 = 0.042. This is the explicit error the structure lemma must deliver. It is generous in e_h and tight in e_β.
+
+What I could not prove: any bound β(A) <= d + e_β with e_β small for general 𝓕. The obstacles:
+- β is a max over members. τ is integral-hard: τ* = 2.8 against τ = 10 at k = 12 (27.4). So averaging arguments (the degree
+  function f has Σ f(1 - f) < 1 - c) bound only the average leak. **Dead as a route** [heuristic, for that reason].
+- FF+ (proved by hand, same proof as FF): for every member E and P ⊆ E, some other member F has |F ∩ P| >= |P| - d. So a leak
+  above d is always shared with a single other member.
+- Shared leaks raise c, and putting them into A worked in every example I checked [proved by hand for each]:
+  - leak zone L, ρ <= |L| < 2ρ: A = R ∪ L gives β = 0, h = τ + d;
+  - union of two arenas: A = R_1 ∪ R_2 gives β = ρ, h = τ + |R_1 ∖ R_2|, with d = ρ + |R_1 ∖ R_2|;
+  - product thresholds (>= a in R_1 and >= b in R_2): A = R_1 ∪ R_2 gives β = pool share <= d, h = τ + (|R_2| - b) <= τ + d;
+  - 𝒟(q) of 40.6.
+  I have no proof that this always works.
+
+### 40.4 Correction to §25 and the two-class search with the valid certificate [computed exact]
+
+`cr.py` evaluates Theorem CR's certificate exactly on blow-up families. Region counts r_i <= s_i per atom are exact by symmetry.
+- β = max over types of Σ min(e_i, s_i - r_i); γ = max over types of Σ min(e_i, r_i); h_abs = |r| - k + β + 1.
+- cost = min(max(h_abs, 2γ), τ_P + 2γ) + ceil(8β/3).
+- Petal phase: b = ceil(k/3); forced iff τ_Q + b <= T; otherwise both roles must work.
+
+`search_cr.py` is §25's SAT model: all type subsets; τ >= T + 1; same-class overlap >= c, cross <= c - 1. CEGAR runs on "no CR
+certificate". The no-goods are sound: a certificate stays valid for every type selection that does not raise β_P or γ_Q at
+its region and is still killed by the τ witnesses it used. Sanity checks:
+- On pooled 𝒜 (k = 40, T = 32), CR reproduces PS's bounds exactly: d = 5: 30, d = 6: 32, d = 7: 35 > T (§26.3).
+- §25's pseudo-hit: CR cost 9 = T, regions (0,13,2,1) for X and (13,0,1,2) for Y. These overlap, which AP forbids.
+
+| k | atoms | n | size vectors | range-feasible | CR hits | status |
+|---|---|---|---|---|---|---|
+| 12 | <= 4 | 21–96 | 19758 | 4123 | 0 | PROVED none (complete for <= 4 atoms) |
+| 12 | 5–6 | 21–34 | 10070 | 4645 | 0 | PROVED none for n <= 34 (completes §25's partial row) |
+| 16 | <= 4 | 28–64 | 28116 | 6213 | 0 | PROVED none |
+| 16 | <= 4 | 65–128 | 28881 | 6491 | 0 | PROVED none; with 28–64, complete for <= 4 atoms (s_i <= 32) |
+The range-feasible count at k = 12, <= 4 atoms equals §25's (2002 + 1974 + 147), so the range model is unchanged. Only the
+certificate is new. "PROVED none" means: within the blow-up model, every two-class family in the range is beaten by
+Theorem CR's strategy.
+
+### 40.5 One-class search for SL1 (`single_cr.py`) [computed exact]
+
+The test is SL1 itself on blow-up classes:
+- one class, pairwise overlaps >= c, τ >= τ_0 (the least τ a petal class can have: k = 12: 5; k = 16: 7);
+- a hit is a class with no region satisfying max(h_abs, 2h_abs - 2(T - k + c)) + ceil(8β/3) <= T, which is YC's integer bound
+  γ <= h_abs + k - c - T in place of the real other class.
+
+So a hit would be a candidate non-arena class whatever its partner. With one class, more atoms are in reach.
+| k | atoms | n | size vectors | feasible (τ >= τ_0, overlaps) | hits | status |
+|---|---|---|---|---|---|---|
+| 12 | <= 4 | 17–96 | 20116 | 12553 | 0 | PROVED none (complete) |
+| 12 | 5–6 | 17–40 | 23978 | – | – | still running when this box closed (`logs/single_k12_m56_r*.log`; it prints only HIT/TIMEOUT lines and DONE); not counted |
+| 16 | <= 4 | 23–80 | 45529 | 26214 | 0 | PROVED none for n <= 80 |
+
+### 40.6 Non-arena classes from projective planes [proved by hand; arithmetic checked numerically]
+
+𝒟(q, ρ, β_0): blocks V_x of mass b = (1 - ρ)/q² + β_0 for the points x of PG(2, q). For each line L, R_L = ∪_{x ∉ L} V_x (q²
+blocks) and A_L = all mass-1 sets with >= 1 - ρ in R_L, the rest in a pool. 𝒟 = ∪_L A_L.
+- **Overlap.** The minimum comes from two different lines: |R_L ∩ R_L'| = (q² - q)b, so
+  c = (1 - ρ)(1 - 1/q) - q(q + 1)β_0. The same line gives (1 - ρ) - q²β_0, which is larger.
+- **τ.** S meets A_L iff Σ_{x∉L} |S ∩ V_x| > q²β_0. By transitivity the LP optimum is uniform; the dual weight is 1/q² per line.
+  So τ = (q² + q + 1)β_0.
+- **Hull.** A = ∪V_x gives β = ρ and h = τ + (1 - ρ)(q + 1)/q². The hull arena's own overlap is c - (1 - ρ)/q² - β_0. So AP,
+  which needs the arena's overlap above θ, fails for θ < c < θ + (1 - ρ)/q² + β_0.
+- **Example** at t = 3/4: q = 16, ρ = 0.05, τ = 0.38. Then c = 0.5120 and the hull overlap is 0.5069. Two disjoint copies with
+  a shared pool have τ(H) = 0.76 > t, so the family is in the range.
+- **CR wins with margin.** CR cost = h + 8ρ/3 = 0.443 + 0.133 = 0.576 < 0.75 (γ = 0 with pool leaks, <= ρ otherwise).
+- **Range.** For c > 1/2 and τ_X + τ_Y > 3/4 one needs q >= 8 (ρ ≈ 0 at q = 8, ρ < 0.063 at q = 16). The Fano case q = 2 caps c at 1/2.
+
+So the absorption excess (q + 1)/q² is absorbed by CR's large slack in e_h. The leak ρ <= d is the same as in arenas.
+
+### 40.7 Status
+
+- Proved: Lemma PC; fixed-family J″ for c >= 1 - 5t/9; Lemma YC; Theorem CR; FF+; the reduction of Barrier F (fixed families)
+  to SL1 with the tolerance of 40.3; the 𝒟(q) computations.
+- Computed exact: CR search, no hit in the ranges of 40.4; one-class SL1 search, no hit in the ranges of 40.5.
+- Dead:
+  - §25 as a certificate (wrong h);
+  - the requirement of disjoint regions;
+  - averaging (degree-function) proofs of the leak bound [heuristic];
+  - the attempted completion of the old `search.py` at k = 12, 5–6 atoms: started in this box, stopped, and superseded by
+    `search_cr.py`, because its certificate is invalid.
+- **Open (Barrier F, fixed families):** SL1(t) for θ(t) < c < 1 - 5t/9, t < 63/79. Exactly: τ-near-extremal c-intersecting
+  classes (τ >= t/2) whose every absorbing set has leak above d + e_β, with e_β from 40.3 (about 0.016 at the corner t = 3/4,
+  c → 1/2, τ = t/2). None is known.
+- **Next.** (1) Prove SL1 for threshold (weighted-arena) classes 𝓕 = {E : w(E) >= 1}, the natural next family. (2) Run
+  `single_cr.py` at 7–8 atoms with a SAT-side symmetry cut. (3) Try a stability proof of β <= d + O(d²) using FF+ iteratively:
+  move shared leaks into A and track the absorption cost.
+
+Checks: `py compute/petal4/cr.py` (pseudo-hit); `py compute/petal4/search_cr.py 12 4 27 30 1 0 1 0 300` (10 s);
+`py compute/petal4/single_cr.py 12 4 17 30 1 1 0 300` (15 s). Full runs: the commands in the log headers (strided, 4–6 processes).
+Hand proofs re-read once: PC (both cases), YC (the three alternatives for z), CR (forced petals with a family hitting set;
+both G_j options; |B| <= 4β), the tolerance arithmetic, 𝒟(q) overlap and LP dual.

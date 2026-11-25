@@ -54,10 +54,11 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 | Theorem DS, DS-b | PETAL 20.2, §21 | VERIFIED only when the ground set is the two arenas. DS FAILS if 𝒜 leaks outside them (51–100 of 400 games end in a 2-cover with a 40-point outside pool). AP covers the pool but needs c > θ(t). |
 | Lemma FF, Theorem AP | PETAL 23.1, 23.2 | VERIFIED (V5; 112/151 is sharp; asymmetric arenas replayed; AP's τ_c comes from a direct count, not 'FF with equality') |
 | Theorem PS (pooled 𝒜 loses for δ < 3t/16, no condition on c) | PETAL §26 | VERIFIED (PS verifier; 3t/16 is sharp) |
-| Small-k search for non-arena two-class families (k = 12, at most 4 atoms; k = 16, at most 4 atoms, n <= 44) | PETAL §25 | EXACT: no hit (proved within those bounds); k = 12 with 5–6 atoms partial |
+| Small-k search for non-arena two-class families (k = 12, at most 4 atoms; k = 16, at most 4 atoms, n <= 44) | PETAL §25 | INVALID as a certificate: it used least-hitting-set cost, but AP needs absorption (found in §40). Redone with Theorem CR in §40: no hits (blow-up model, k = 12 at most 4 atoms plus 5–6 atoms n <= 34; k = 16 at most 4 atoms) |
 | Theorem PS2 (pooled 𝒜 loses for δ < t/4) | PETAL §27 | VERIFIED (PS2 verifier: independent vertex enumeration confirms all 93; 17k games; at δ = t/4 with T even, X must be the class with the smaller hit number) |
 | Theorem PS3 (pooled 𝒜 loses for δ < t/2 - 1/6; closes all t >= 7/9) | PETAL §28 | VERIFIED (PS3 verifier: independent LP, 31k games). The limit δ* = t/2 - 1/6 holds within the window-and-seal model only; it says nothing about two-class petals, re-selection or adaptive trace release. |
 | Petal strip, forced-centre model: an adaptive request 7 saves only about δ/2; the adversary wins for δ in (3t/10, 1 - t) at t = 0.75, 0.76 | PETAL §31 | EXACT (zero-gap MIP; requester relaxed in her favour); with unforced centres still open |
+| Lemma PC (cross overlap <= 2 - 2c - t), Lemma YC, Theorem CR (absorbing-set play without disjoint regions); fixed two-class gap reduced to θ(t) < c < 1 - 5t/9 and to the one-class statement SL1 | PETAL §40 | HAND, verification pending |
 | Theorem N adversary beats 2+2 | PETAL §12 | VERIFIED (W3) |
 | 12.3 (𝒜 loses to 4+3 when she knows the arenas) | PETAL 12.3 | GAP (W3): assumes the ground set is the two arenas; a leak outside them breaks it. Check whether DS / the 𝒜 kill inherits this, or whether AP's pool covers it |
 | 𝒜(t,δ), 𝒦₂ (c >= 0.5217) as obstructions | PETAL §20, §22 | DEAD |
@@ -66,7 +67,7 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 - Petal: pooled 𝒜 for t/2 - 1/6 <= δ < 1 - t with 3/4 < t < 7/9 ([0.2083, 0.25) at t = 3/4). The window-and-seal method is maxed out at δ* = t/2 - 1/6 (exact LP), so a new certificate is needed here. The earlier note claiming §19.1 closes this was wrong: §19.1 only marks where AP's hypothesis fails (verifier, notes/verify/PS.md).
 - Core window: 5t - 2 < N < 3 - t (for small ε; the bottom strip is VERIFIED closed).
 - (Σ) for hash-like, non-greedy and self-cut families (core window).
-- Fixed two-class families not of arena-with-pool form (petal).
+- Petal: fixed two-class families with θ(t) < c < 1 - 5t/9 (empty for t >= 63/79); reduced to the one-class stability statement SL1 (PETAL §40).
 - Strategy-form SPOIL; the five-reply candidate break (CORE §41).
 
 ## Consistency items (from paper/TODO.md)

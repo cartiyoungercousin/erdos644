@@ -1,0 +1,2 @@
+single-class CR k 16 c 9 T 12 tau0 7 vectors 45529 stride 1 res 0
+DONE STATS {'NO_HIT_FEASIBLE': 26214, 'INFEAS': 19315} elapsed 1623s

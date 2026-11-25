@@ -1,0 +1,778 @@
+CR search k 12 c 7 mu 6 T 9 vectors 10070 stride 6 res 0
+4212 (17, 8, 3, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 36, 'cegar': 1, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.0s
+4218 (17, 7, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 54, 'cegar': 1, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.0s
+4224 (17, 6, 3, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 54, 'cegar': 1, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.0s
+4230 (17, 5, 4, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 59, 'cegar': 1, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.0s
+4236 (17, 4, 4, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 51, 'cegar': 1, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.0s
+4242 (17, 4, 3, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 112, 'cegar': 1, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+4248 (16, 9, 3, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 42, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+4266 (16, 6, 4, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 67, 'cegar': 1, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+4278 (16, 5, 4, 3, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 120, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+4284 (16, 4, 4, 4, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 118, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+4296 (15, 10, 2, 1, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 72, 'cegar': 5, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+4302 (15, 8, 5, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 57, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+4308 (15, 8, 2, 2, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 128, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.4s
+4314 (15, 7, 4, 2, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 131, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+4320 (15, 6, 6, 1, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 118, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+4326 (15, 6, 4, 3, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 153, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+4332 (15, 5, 5, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 102, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+4338 (15, 5, 4, 3, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 188, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.5s
+4344 (15, 4, 4, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 212, 'cegar': 1, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.4s
+4350 (14, 12, 1, 1, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 56, 'cegar': 8, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+4356 (14, 10, 3, 1, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 92, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+4362 (14, 9, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 83, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+4368 (14, 8, 5, 1, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 126, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+4374 (14, 8, 3, 2, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 168, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.4s
+4386 (14, 7, 3, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 135, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+4392 (14, 6, 5, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 105, 'cegar': 1, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+4398 (14, 6, 4, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 145, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+4410 (14, 5, 4, 4, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 244, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.4s
+4422 (13, 12, 2, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 51, 'cegar': 6, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+4428 (13, 11, 2, 2, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 101, 'cegar': 9, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+4434 (13, 10, 3, 2, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 131, 'cegar': 7, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+4440 (13, 9, 4, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 115, 'cegar': 6, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+4446 (13, 8, 7, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 81, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+4452 (13, 8, 4, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 113, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+4458 (13, 8, 3, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 258, 'cegar': 8, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.8s
+4464 (13, 7, 5, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 121, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+4470 (13, 7, 4, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 166, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+4476 (13, 6, 6, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 151, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+4482 (13, 6, 5, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 172, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+4488 (13, 6, 4, 3, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 350, 'cegar': 6, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.1s
+4494 (13, 5, 5, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 338, 'cegar': 5, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.4s
+4500 (13, 5, 3, 3, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 455, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.8s
+4506 (12, 12, 3, 1, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 96, 'cegar': 11, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+4512 (12, 11, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 85, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+4518 (12, 10, 5, 1, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 137, 'cegar': 5, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+4524 (12, 10, 3, 2, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 180, 'cegar': 10, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.8s
+4530 (12, 9, 5, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 129, 'cegar': 1, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+4536 (12, 9, 3, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 152, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+4542 (12, 8, 6, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 130, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+4548 (12, 8, 5, 2, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 252, 'cegar': 7, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.1s
+4554 (12, 8, 3, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 314, 'cegar': 6, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.2s
+4560 (12, 7, 6, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 170, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+4566 (12, 7, 5, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 195, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+4572 (12, 7, 4, 3, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 385, 'cegar': 5, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.1s
+4578 (12, 6, 6, 3, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 326, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.7s
+4584 (12, 6, 5, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 388, 'cegar': 5, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.7s
+4590 (12, 6, 3, 3, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 520, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.1s
+4596 (12, 5, 5, 3, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 474, 'cegar': 7, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.6s
+4602 (11, 11, 6, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 77, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.0s
+4608 (11, 11, 3, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 107, 'cegar': 5, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.5s
+4614 (11, 10, 6, 1, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 160, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.4s
+4620 (11, 10, 4, 3, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 204, 'cegar': 6, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.8s
+4626 (11, 9, 7, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 117, 'cegar': 1, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+4632 (11, 9, 5, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 155, 'cegar': 1, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+4638 (11, 9, 4, 3, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 286, 'cegar': 6, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.5s
+4644 (11, 8, 7, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 145, 'cegar': 1, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+4650 (11, 8, 6, 2, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 290, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.9s
+4656 (11, 8, 5, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 380, 'cegar': 9, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.8s
+4662 (11, 7, 7, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 157, 'cegar': 1, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+4668 (11, 7, 6, 4, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 301, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.9s
+4674 (11, 7, 5, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 231, 'cegar': 1, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.4s
+4680 (11, 7, 4, 4, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 477, 'cegar': 9, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.3s
+4686 (11, 6, 6, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 241, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.6s
+4692 (11, 6, 5, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 261, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.7s
+4698 (11, 6, 4, 3, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 613, 'cegar': 8, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.4s
+4704 (11, 5, 5, 3, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 645, 'cegar': 6, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.1s
+4710 (10, 10, 7, 1, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 177, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+4716 (10, 10, 5, 3, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 245, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.0s
+4728 (10, 9, 7, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 151, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+4734 (10, 9, 6, 2, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 299, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.2s
+4740 (10, 9, 5, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 383, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.5s
+4746 (10, 8, 8, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 154, 'cegar': 1, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+4752 (10, 8, 7, 2, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 323, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.0s
+4764 (10, 8, 5, 3, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 467, 'cegar': 10, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.5s
+4770 (10, 7, 7, 5, 1) NO_HIT_RANGE_FEASIBLE {'N': 180, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+4776 (10, 7, 6, 6, 1) NO_HIT_RANGE_FEASIBLE {'N': 186, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+4782 (10, 7, 6, 3, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 504, 'cegar': 8, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.2s
+4788 (10, 7, 5, 3, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 573, 'cegar': 7, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.3s
+4794 (10, 6, 6, 5, 3) NO_HIT_RANGE_FEASIBLE {'N': 271, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.6s
+4800 (10, 6, 5, 5, 4) NO_HIT_RANGE_FEASIBLE {'N': 291, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.6s
+4812 (10, 5, 5, 4, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 753, 'cegar': 8, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 7.4s
+4818 (9, 9, 8, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 180, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+4824 (9, 9, 6, 5, 1) NO_HIT_RANGE_FEASIBLE {'N': 177, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+4836 (9, 9, 4, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 270, 'cegar': 6, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.1s
+4842 (9, 8, 8, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 209, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+4848 (9, 8, 7, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 253, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.4s
+4854 (9, 8, 6, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 274, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+4860 (9, 8, 5, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 295, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+4866 (9, 8, 4, 3, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 672, 'cegar': 7, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.3s
+4872 (9, 7, 7, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 512, 'cegar': 5, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.7s
+4878 (9, 7, 6, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 315, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.5s
+4884 (9, 7, 5, 5, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 611, 'cegar': 1, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.5s
+4890 (9, 6, 6, 6, 3) NO_HIT_RANGE_FEASIBLE {'N': 300, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+4896 (9, 6, 6, 4, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 700, 'cegar': 6, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.2s
+4902 (9, 6, 5, 4, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 823, 'cegar': 7, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.8s
+4908 (9, 5, 4, 4, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 933, 'cegar': 10, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.7s
+4920 (8, 8, 7, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 518, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.5s
+4932 (8, 8, 5, 5, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 630, 'cegar': 7, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.2s
+4938 (8, 7, 7, 7, 1) NO_HIT_RANGE_FEASIBLE {'N': 217, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+4944 (8, 7, 7, 4, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 575, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.6s
+4950 (8, 7, 6, 5, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 613, 'cegar': 6, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.7s
+4956 (8, 7, 5, 5, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 634, 'cegar': 6, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.2s
+4962 (8, 6, 6, 6, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 624, 'cegar': 8, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.3s
+4968 (8, 6, 6, 4, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 881, 'cegar': 8, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 8.9s
+4974 (8, 5, 5, 5, 5, 2) NO_HIT_RANGE_FEASIBLE {'N': 845, 'cegar': 8, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 11.1s
+4980 (7, 7, 7, 6, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 550, 'cegar': 8, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.4s
+4986 (7, 7, 7, 3, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 850, 'cegar': 12, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 9.6s
+4992 (7, 7, 6, 5, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 806, 'cegar': 7, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.4s
+4998 (7, 7, 5, 4, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 980, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.4s
+5004 (7, 6, 6, 5, 4, 2) NO_HIT_RANGE_FEASIBLE {'N': 883, 'cegar': 7, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.3s
+5010 (7, 5, 5, 5, 5, 3) NO_HIT_RANGE_FEASIBLE {'N': 1039, 'cegar': 10, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.5s
+5016 (6, 6, 6, 5, 5, 2) NO_HIT_RANGE_FEASIBLE {'N': 920, 'cegar': 6, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.7s
+5022 (5, 5, 5, 5, 5, 5) NO_HIT_RANGE_FEASIBLE {'N': 1130, 'cegar': 10, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.6s
+5148 (17, 11, 1, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 24, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.0s
+5154 (17, 8, 4, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 43, 'cegar': 5, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.0s
+5160 (17, 7, 4, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 58, 'cegar': 5, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.0s
+5166 (17, 6, 6, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 50, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.0s
+5172 (17, 6, 3, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 75, 'cegar': 6, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+5178 (17, 5, 5, 2, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 109, 'cegar': 6, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+5184 (17, 5, 3, 3, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 139, 'cegar': 9, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+5190 (17, 4, 4, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 115, 'cegar': 9, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+5196 (16, 11, 1, 1, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 48, 'cegar': 24, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+5202 (16, 9, 3, 1, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 82, 'cegar': 39, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.4s
+5208 (16, 8, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 72, 'cegar': 14, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+5214 (16, 7, 5, 1, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 109, 'cegar': 43, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.6s
+5220 (16, 7, 3, 2, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 145, 'cegar': 27, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.7s
+5226 (16, 6, 5, 2, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 136, 'cegar': 39, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.7s
+5232 (16, 6, 3, 3, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 175, 'cegar': 30, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.9s
+5238 (16, 5, 4, 4, 2) NO_HIT_RANGE_FEASIBLE {'N': 110, 'cegar': 1, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.0s
+5244 (16, 5, 3, 3, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 209, 'cegar': 1, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+5250 (16, 3, 3, 3, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 281, 'cegar': 1, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+5256 (15, 11, 2, 1, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 65, 'cegar': 32, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+5262 (15, 9, 5, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 58, 'cegar': 10, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+5268 (15, 9, 2, 2, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 129, 'cegar': 48, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.3s
+5274 (15, 8, 4, 2, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 138, 'cegar': 35, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.1s
+5280 (15, 7, 6, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 87, 'cegar': 12, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+5286 (15, 7, 4, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 122, 'cegar': 16, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.5s
+5292 (15, 6, 6, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 101, 'cegar': 1, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+5298 (15, 6, 5, 2, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 201, 'cegar': 46, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.5s
+5304 (15, 6, 3, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 252, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.4s
+5310 (15, 5, 5, 3, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 232, 'cegar': 28, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.6s
+5316 (15, 5, 3, 3, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 306, 'cegar': 34, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.8s
+5322 (14, 14, 1, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 24, 'cegar': 15, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+5328 (14, 11, 4, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 46, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.0s
+5334 (14, 10, 4, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 68, 'cegar': 14, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+5340 (14, 9, 6, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 70, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+5346 (14, 9, 3, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 99, 'cegar': 30, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.7s
+5352 (14, 8, 6, 1, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 141, 'cegar': 14, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.7s
+5358 (14, 8, 4, 3, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 182, 'cegar': 25, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.7s
+5364 (14, 7, 7, 1, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 149, 'cegar': 20, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.6s
+5370 (14, 7, 5, 3, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 212, 'cegar': 10, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.6s
+5376 (14, 7, 4, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 275, 'cegar': 6, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.9s
+5382 (14, 6, 6, 2, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 231, 'cegar': 38, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.8s
+5388 (14, 6, 5, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 297, 'cegar': 7, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.8s
+5394 (14, 5, 5, 5, 2) NO_HIT_RANGE_FEASIBLE {'N': 148, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+5400 (14, 5, 4, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 187, 'cegar': 1, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+5406 (14, 4, 4, 4, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 405, 'cegar': 37, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 7.3s
+5412 (13, 12, 3, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 52, 'cegar': 16, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+5418 (13, 11, 4, 1, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 96, 'cegar': 11, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+5424 (13, 10, 5, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 79, 'cegar': 6, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+5430 (13, 10, 3, 3, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 153, 'cegar': 48, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.4s
+5436 (13, 9, 5, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 105, 'cegar': 12, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.4s
+5442 (13, 9, 4, 2, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 203, 'cegar': 30, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.6s
+5448 (13, 8, 7, 1, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 159, 'cegar': 14, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.5s
+5454 (13, 8, 5, 3, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 220, 'cegar': 26, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.1s
+5460 (13, 8, 4, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 232, 'cegar': 56, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.3s
+5466 (13, 7, 6, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 134, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+5472 (13, 7, 5, 4, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 246, 'cegar': 8, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.0s
+5478 (13, 7, 4, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 335, 'cegar': 42, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.5s
+5484 (13, 6, 6, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 188, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+5490 (13, 6, 5, 4, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 325, 'cegar': 9, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.9s
+5496 (13, 6, 4, 3, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 438, 'cegar': 8, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.8s
+5502 (13, 5, 5, 4, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 442, 'cegar': 25, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.5s
+5508 (13, 4, 4, 4, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 555, 'cegar': 21, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.5s
+5514 (12, 12, 3, 2, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 110, 'cegar': 39, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.2s
+5520 (12, 11, 4, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 85, 'cegar': 5, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+5526 (12, 10, 7, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 80, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+5532 (12, 10, 4, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 102, 'cegar': 16, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.6s
+5538 (12, 10, 3, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 219, 'cegar': 60, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 6.0s
+5544 (12, 9, 6, 2, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 200, 'cegar': 8, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+5550 (12, 9, 4, 4, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 215, 'cegar': 41, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.7s
+5556 (12, 8, 8, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 111, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+5562 (12, 8, 6, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 160, 'cegar': 16, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.5s
+5568 (12, 8, 5, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 184, 'cegar': 6, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+5574 (12, 8, 4, 3, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 356, 'cegar': 49, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.1s
+5580 (12, 7, 6, 5, 1) NO_HIT_RANGE_FEASIBLE {'N': 149, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+5586 (12, 7, 5, 5, 2) NO_HIT_RANGE_FEASIBLE {'N': 184, 'cegar': 9, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.5s
+5592 (12, 7, 4, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 219, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+5598 (12, 6, 6, 5, 2) NO_HIT_RANGE_FEASIBLE {'N': 186, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+5604 (12, 6, 5, 5, 3) NO_HIT_RANGE_FEASIBLE {'N': 221, 'cegar': 7, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.6s
+5610 (12, 6, 4, 4, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 426, 'cegar': 39, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.7s
+5616 (12, 5, 5, 4, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 444, 'cegar': 43, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.4s
+5628 (11, 11, 4, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 105, 'cegar': 12, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.5s
+5634 (11, 11, 3, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 234, 'cegar': 45, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.1s
+5640 (11, 10, 6, 2, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 200, 'cegar': 17, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.7s
+5646 (11, 10, 4, 4, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 213, 'cegar': 46, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.8s
+5658 (11, 9, 6, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 145, 'cegar': 8, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.4s
+5664 (11, 9, 5, 4, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 256, 'cegar': 40, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.5s
+5670 (11, 9, 4, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 338, 'cegar': 24, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.6s
+5676 (11, 8, 7, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 156, 'cegar': 5, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+5682 (11, 8, 6, 4, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 289, 'cegar': 21, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.2s
+5688 (11, 8, 5, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 225, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.5s
+5694 (11, 8, 4, 4, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 361, 'cegar': 51, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 11.7s
+5700 (11, 7, 7, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 223, 'cegar': 23, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.0s
+5706 (11, 7, 6, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 252, 'cegar': 7, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.4s
+5712 (11, 7, 5, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 276, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+5718 (11, 7, 4, 3, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 604, 'cegar': 70, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 25.1s
+5724 (11, 6, 6, 4, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 471, 'cegar': 15, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.8s
+5730 (11, 6, 5, 4, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 496, 'cegar': 24, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.6s
+5736 (11, 5, 5, 5, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 503, 'cegar': 55, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.2s
+5748 (10, 10, 6, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 142, 'cegar': 13, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.4s
+5754 (10, 10, 5, 4, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 257, 'cegar': 38, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.9s
+5760 (10, 10, 4, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 339, 'cegar': 81, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 12.3s
+5766 (10, 9, 8, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 154, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.0s
+5772 (10, 9, 6, 5, 1) NO_HIT_RANGE_FEASIBLE {'N': 163, 'cegar': 13, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+5778 (10, 9, 5, 5, 2) NO_HIT_RANGE_FEASIBLE {'N': 200, 'cegar': 17, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+5784 (10, 9, 4, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 212, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+5790 (10, 8, 8, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 190, 'cegar': 1, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.0s
+5796 (10, 8, 7, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 237, 'cegar': 9, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+5802 (10, 8, 6, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 242, 'cegar': 18, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.5s
+5808 (10, 8, 5, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 252, 'cegar': 5, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+5814 (10, 8, 4, 3, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 611, 'cegar': 83, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 18.3s
+5820 (10, 7, 7, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 478, 'cegar': 60, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 8.9s
+5826 (10, 7, 6, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 264, 'cegar': 10, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.8s
+5832 (10, 7, 5, 5, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 562, 'cegar': 65, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 7.7s
+5838 (10, 6, 6, 6, 3) NO_HIT_RANGE_FEASIBLE {'N': 261, 'cegar': 5, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+5844 (10, 6, 6, 4, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 616, 'cegar': 28, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.6s
+5850 (10, 6, 5, 4, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 758, 'cegar': 29, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 7.6s
+5856 (10, 5, 4, 4, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 805, 'cegar': 5, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.2s
+5862 (9, 9, 8, 3, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 301, 'cegar': 11, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+5868 (9, 9, 7, 3, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 381, 'cegar': 25, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.1s
+5874 (9, 9, 6, 4, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 416, 'cegar': 22, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.4s
+5880 (9, 9, 5, 4, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 463, 'cegar': 57, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 8.5s
+5886 (9, 8, 8, 5, 1) NO_HIT_RANGE_FEASIBLE {'N': 183, 'cegar': 10, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+5892 (9, 8, 7, 6, 1) NO_HIT_RANGE_FEASIBLE {'N': 198, 'cegar': 19, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.7s
+5898 (9, 8, 7, 3, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 527, 'cegar': 24, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.8s
+5904 (9, 8, 6, 4, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 516, 'cegar': 45, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 8.5s
+5910 (9, 8, 5, 4, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 534, 'cegar': 18, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 6.4s
+5916 (9, 7, 7, 6, 2) NO_HIT_RANGE_FEASIBLE {'N': 276, 'cegar': 14, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.6s
+5922 (9, 7, 7, 4, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 641, 'cegar': 33, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.3s
+5928 (9, 7, 6, 5, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 648, 'cegar': 35, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.2s
+5934 (9, 7, 5, 5, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 670, 'cegar': 47, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 9.1s
+5940 (9, 6, 6, 6, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 530, 'cegar': 87, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 18.5s
+5946 (9, 6, 5, 5, 5, 1) NO_HIT_RANGE_FEASIBLE {'N': 620, 'cegar': 17, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.7s
+5952 (9, 5, 5, 5, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 874, 'cegar': 69, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 23.7s
+5958 (8, 8, 8, 4, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 438, 'cegar': 44, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.8s
+5964 (8, 8, 7, 5, 3) NO_HIT_RANGE_FEASIBLE {'N': 298, 'cegar': 8, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.8s
+5970 (8, 8, 6, 6, 3) NO_HIT_RANGE_FEASIBLE {'N': 288, 'cegar': 22, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.9s
+5976 (8, 8, 6, 4, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 662, 'cegar': 63, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 13.1s
+5982 (8, 8, 5, 4, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 802, 'cegar': 22, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 6.1s
+5988 (8, 7, 7, 5, 4) NO_HIT_RANGE_FEASIBLE {'N': 341, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+5994 (8, 7, 6, 6, 4) NO_HIT_RANGE_FEASIBLE {'N': 300, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+6000 (8, 7, 6, 4, 4, 2) NO_HIT_RANGE_FEASIBLE {'N': 699, 'cegar': 35, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 12.5s
+6006 (8, 7, 4, 4, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 843, 'cegar': 28, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 7.0s
+6012 (8, 6, 6, 5, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 903, 'cegar': 102, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 33.5s
+6018 (8, 5, 5, 5, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 1033, 'cegar': 19, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 13.2s
+6024 (7, 7, 7, 5, 5) NO_HIT_RANGE_FEASIBLE {'N': 323, 'cegar': 5, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.4s
+6030 (7, 7, 6, 6, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 678, 'cegar': 12, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.2s
+6036 (7, 7, 5, 5, 5, 2) NO_HIT_RANGE_FEASIBLE {'N': 816, 'cegar': 27, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 8.1s
+6042 (7, 6, 6, 6, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 956, 'cegar': 26, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 11.3s
+6048 (7, 5, 5, 5, 5, 4) NO_HIT_RANGE_FEASIBLE {'N': 1047, 'cegar': 33, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 14.5s
+6054 (6, 6, 5, 5, 5, 4) NO_HIT_RANGE_FEASIBLE {'N': 1136, 'cegar': 24, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 7.1s
+6222 (17, 12, 1, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 21, 'cegar': 8, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.0s
+6228 (17, 9, 4, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 45, 'cegar': 16, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+6234 (17, 8, 4, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 64, 'cegar': 30, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+6240 (17, 7, 6, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 58, 'cegar': 18, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+6246 (17, 7, 3, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 89, 'cegar': 30, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.0s
+6252 (17, 6, 5, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 82, 'cegar': 30, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.5s
+6258 (17, 6, 4, 2, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 160, 'cegar': 46, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.2s
+6264 (17, 5, 5, 3, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 155, 'cegar': 46, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.5s
+6270 (17, 5, 4, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 211, 'cegar': 70, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.2s
+6276 (17, 4, 4, 3, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 229, 'cegar': 71, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 7.9s
+6282 (16, 11, 3, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 38, 'cegar': 18, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+6288 (16, 10, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 50, 'cegar': 16, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+6294 (16, 9, 3, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 78, 'cegar': 10, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+6300 (16, 8, 4, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 84, 'cegar': 27, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+6306 (16, 8, 2, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 142, 'cegar': 18, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.7s
+6312 (16, 7, 5, 2, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 153, 'cegar': 44, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.3s
+6318 (16, 7, 3, 3, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 199, 'cegar': 63, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 7.7s
+6324 (16, 6, 5, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 119, 'cegar': 7, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.4s
+6330 (16, 6, 4, 3, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 219, 'cegar': 42, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 6.2s
+6336 (16, 5, 5, 4, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 189, 'cegar': 77, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 9.2s
+6342 (16, 5, 4, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 260, 'cegar': 45, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.7s
+6348 (16, 4, 4, 3, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 319, 'cegar': 15, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.8s
+6354 (15, 12, 2, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 37, 'cegar': 39, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+6360 (15, 11, 2, 2, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 77, 'cegar': 94, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.9s
+6366 (15, 10, 3, 2, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 107, 'cegar': 88, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.7s
+6372 (15, 9, 4, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 98, 'cegar': 67, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.1s
+6378 (15, 8, 7, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 72, 'cegar': 19, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+6384 (15, 8, 4, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 100, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+6390 (15, 8, 3, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 230, 'cegar': 189, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 21.4s
+6396 (15, 7, 5, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 110, 'cegar': 14, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.7s
+6402 (15, 7, 4, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 152, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.4s
+6408 (15, 6, 6, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 138, 'cegar': 55, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.4s
+6414 (15, 6, 5, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 160, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.4s
+6420 (15, 6, 4, 3, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 325, 'cegar': 208, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 42.4s
+6426 (15, 5, 5, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 318, 'cegar': 5, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.1s
+6432 (15, 5, 3, 3, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 436, 'cegar': 6, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.4s
+6438 (14, 13, 3, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 32, 'cegar': 12, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+6444 (14, 12, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 35, 'cegar': 7, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+6450 (14, 11, 3, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 65, 'cegar': 9, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+6456 (14, 10, 4, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 79, 'cegar': 15, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+6462 (14, 10, 2, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 117, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.5s
+6468 (14, 9, 5, 2, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 161, 'cegar': 73, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.1s
+6474 (14, 9, 3, 3, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 200, 'cegar': 88, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 6.4s
+6480 (14, 8, 6, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 93, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.0s
+6486 (14, 8, 4, 4, 2) NO_HIT_RANGE_FEASIBLE {'N': 106, 'cegar': 1, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.0s
+6492 (14, 8, 3, 3, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 277, 'cegar': 67, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.6s
+6498 (14, 7, 6, 3, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 232, 'cegar': 42, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.1s
+6504 (14, 7, 5, 3, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 282, 'cegar': 85, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 7.9s
+6510 (14, 7, 3, 3, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 367, 'cegar': 110, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 14.0s
+6516 (14, 6, 6, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 243, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+6522 (14, 6, 5, 3, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 372, 'cegar': 37, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.1s
+6528 (14, 5, 5, 5, 3) NO_HIT_RANGE_FEASIBLE {'N': 188, 'cegar': 17, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.6s
+6534 (14, 5, 4, 4, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 378, 'cegar': 6, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.4s
+6540 (13, 13, 3, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 40, 'cegar': 14, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+6546 (13, 12, 4, 1, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 77, 'cegar': 29, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.9s
+6552 (13, 11, 5, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 66, 'cegar': 8, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+6558 (13, 11, 3, 3, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 128, 'cegar': 69, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.0s
+6564 (13, 10, 5, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 91, 'cegar': 15, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+6570 (13, 10, 4, 2, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 173, 'cegar': 81, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.4s
+6576 (13, 9, 7, 1, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 154, 'cegar': 6, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+6582 (13, 9, 5, 3, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 205, 'cegar': 46, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.8s
+6588 (13, 9, 4, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 264, 'cegar': 212, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 23.5s
+6594 (13, 8, 7, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 144, 'cegar': 43, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.3s
+6606 (13, 8, 4, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 185, 'cegar': 35, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.7s
+6612 (13, 7, 7, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 164, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+6618 (13, 7, 6, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 192, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.6s
+6624 (13, 7, 5, 4, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 328, 'cegar': 33, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.3s
+6630 (13, 7, 4, 3, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 438, 'cegar': 60, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 7.5s
+6636 (13, 6, 6, 4, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 339, 'cegar': 40, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.0s
+6642 (13, 6, 5, 4, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 402, 'cegar': 57, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.9s
+6648 (13, 5, 5, 5, 4) NO_HIT_RANGE_FEASIBLE {'N': 225, 'cegar': 18, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.4s
+6654 (13, 5, 4, 4, 4, 2) NO_HIT_RANGE_FEASIBLE {'N': 547, 'cegar': 117, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 21.5s
+6660 (12, 12, 4, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 71, 'cegar': 22, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.4s
+6666 (12, 12, 2, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 91, 'cegar': 14, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.6s
+6672 (12, 11, 5, 2, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 145, 'cegar': 25, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.5s
+6678 (12, 11, 3, 3, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 173, 'cegar': 100, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.8s
+6684 (12, 10, 6, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 91, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.0s
+6690 (12, 10, 4, 4, 2) NO_HIT_RANGE_FEASIBLE {'N': 95, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.0s
+6696 (12, 10, 3, 3, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 247, 'cegar': 160, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 20.9s
+6702 (12, 9, 7, 2, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 208, 'cegar': 11, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.0s
+6708 (12, 9, 5, 4, 2) NO_HIT_RANGE_FEASIBLE {'N': 165, 'cegar': 16, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.3s
+6714 (12, 9, 4, 4, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 281, 'cegar': 62, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 8.1s
+6720 (12, 8, 8, 2, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 216, 'cegar': 19, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.5s
+6726 (12, 8, 6, 4, 2) NO_HIT_RANGE_FEASIBLE {'N': 134, 'cegar': 1, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+6732 (12, 8, 5, 5, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 274, 'cegar': 30, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.4s
+6738 (12, 8, 4, 4, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 369, 'cegar': 69, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 15.6s
+6744 (12, 7, 7, 4, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 282, 'cegar': 42, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.6s
+6750 (12, 7, 6, 5, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 302, 'cegar': 17, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.5s
+6756 (12, 7, 5, 5, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 369, 'cegar': 49, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 7.7s
+6762 (12, 7, 4, 4, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 527, 'cegar': 55, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 8.6s
+6768 (12, 6, 6, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 179, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+6774 (12, 6, 5, 5, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 503, 'cegar': 64, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 10.7s
+6780 (12, 5, 5, 5, 5) NO_HIT_RANGE_FEASIBLE {'N': 235, 'cegar': 71, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.6s
+6786 (12, 4, 4, 4, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 546, 'cegar': 7, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.4s
+6792 (11, 11, 6, 2, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 181, 'cegar': 18, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+6798 (11, 11, 4, 4, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 186, 'cegar': 81, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.6s
+6810 (11, 10, 6, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 131, 'cegar': 16, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+6816 (11, 10, 5, 4, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 230, 'cegar': 78, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.3s
+6822 (11, 10, 4, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 298, 'cegar': 62, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 11.9s
+6828 (11, 9, 8, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 158, 'cegar': 6, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+6834 (11, 9, 6, 5, 1) NO_HIT_RANGE_FEASIBLE {'N': 150, 'cegar': 35, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.8s
+6840 (11, 9, 5, 5, 2) NO_HIT_RANGE_FEASIBLE {'N': 182, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+6846 (11, 9, 4, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 216, 'cegar': 18, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.6s
+6852 (11, 8, 8, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 180, 'cegar': 5, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+6858 (11, 8, 7, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 218, 'cegar': 9, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.1s
+6864 (11, 8, 6, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 231, 'cegar': 31, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.2s
+6870 (11, 8, 5, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 247, 'cegar': 18, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.8s
+6876 (11, 8, 4, 3, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 559, 'cegar': 61, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 17.1s
+6882 (11, 7, 7, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 442, 'cegar': 48, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 7.4s
+6888 (11, 7, 6, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 265, 'cegar': 36, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.0s
+6894 (11, 7, 5, 5, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 532, 'cegar': 14, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.4s
+6900 (11, 6, 6, 6, 3) NO_HIT_RANGE_FEASIBLE {'N': 253, 'cegar': 56, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.5s
+6906 (11, 6, 6, 4, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 594, 'cegar': 131, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 29.3s
+6912 (11, 6, 5, 4, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 709, 'cegar': 76, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 12.3s
+6918 (11, 5, 4, 4, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 798, 'cegar': 31, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 10.0s
+6930 (10, 10, 6, 4, 2) NO_HIT_RANGE_FEASIBLE {'N': 136, 'cegar': 7, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.4s
+6936 (10, 10, 5, 5, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 279, 'cegar': 93, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 8.5s
+6942 (10, 10, 4, 4, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 359, 'cegar': 71, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.8s
+6954 (10, 9, 7, 4, 2) NO_HIT_RANGE_FEASIBLE {'N': 214, 'cegar': 25, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.5s
+6960 (10, 9, 6, 5, 2) NO_HIT_RANGE_FEASIBLE {'N': 210, 'cegar': 40, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.2s
+6966 (10, 9, 5, 5, 3) NO_HIT_RANGE_FEASIBLE {'N': 222, 'cegar': 12, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.8s
+6972 (10, 9, 4, 4, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 429, 'cegar': 28, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.1s
+6978 (10, 8, 8, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 227, 'cegar': 6, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+6984 (10, 8, 7, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 257, 'cegar': 28, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.9s
+6990 (10, 8, 6, 5, 3) NO_HIT_RANGE_FEASIBLE {'N': 254, 'cegar': 7, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.5s
+6996 (10, 8, 5, 5, 4) NO_HIT_RANGE_FEASIBLE {'N': 270, 'cegar': 13, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.5s
+7002 (10, 8, 4, 4, 4, 2) NO_HIT_RANGE_FEASIBLE {'N': 438, 'cegar': 9, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.9s
+7008 (10, 7, 7, 5, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 440, 'cegar': 91, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 8.0s
+7014 (10, 7, 6, 6, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 453, 'cegar': 89, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 6.9s
+7020 (10, 7, 6, 3, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 697, 'cegar': 61, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 12.0s
+7026 (10, 7, 4, 4, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 774, 'cegar': 134, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 26.9s
+7032 (10, 6, 6, 5, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 663, 'cegar': 85, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 21.7s
+7038 (10, 6, 5, 4, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 814, 'cegar': 74, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 17.3s
+7050 (9, 9, 8, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 236, 'cegar': 21, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.6s
+7056 (9, 9, 7, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 264, 'cegar': 9, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.4s
+7062 (9, 9, 6, 5, 3) NO_HIT_RANGE_FEASIBLE {'N': 262, 'cegar': 29, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.4s
+7074 (9, 9, 4, 4, 4, 2) NO_HIT_RANGE_FEASIBLE {'N': 595, 'cegar': 105, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 14.7s
+7080 (9, 8, 8, 4, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 421, 'cegar': 87, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.0s
+7086 (9, 8, 7, 5, 3) NO_HIT_RANGE_FEASIBLE {'N': 276, 'cegar': 40, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.7s
+7092 (9, 8, 6, 6, 3) NO_HIT_RANGE_FEASIBLE {'N': 282, 'cegar': 30, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.5s
+7098 (9, 8, 6, 4, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 641, 'cegar': 128, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 21.4s
+7104 (9, 8, 5, 4, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 736, 'cegar': 124, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 23.3s
+7110 (9, 7, 7, 5, 4) NO_HIT_RANGE_FEASIBLE {'N': 322, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.7s
+7116 (9, 7, 6, 6, 4) NO_HIT_RANGE_FEASIBLE {'N': 311, 'cegar': 11, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.6s
+7122 (9, 7, 6, 4, 4, 2) NO_HIT_RANGE_FEASIBLE {'N': 719, 'cegar': 116, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 26.1s
+7128 (9, 7, 4, 4, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 866, 'cegar': 162, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 61.0s
+7134 (9, 6, 6, 5, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 842, 'cegar': 76, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 19.2s
+7140 (9, 5, 5, 5, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 960, 'cegar': 35, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 14.1s
+7146 (8, 8, 8, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 228, 'cegar': 7, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.5s
+7152 (8, 8, 7, 6, 3) NO_HIT_RANGE_FEASIBLE {'N': 300, 'cegar': 19, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.2s
+7158 (8, 8, 7, 4, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 684, 'cegar': 148, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 35.7s
+7164 (8, 8, 6, 5, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 589, 'cegar': 69, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 9.2s
+7170 (8, 8, 5, 5, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 813, 'cegar': 24, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.9s
+7176 (8, 7, 7, 6, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 606, 'cegar': 57, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 7.8s
+7182 (8, 7, 7, 4, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 834, 'cegar': 34, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 8.8s
+7188 (8, 7, 6, 5, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 872, 'cegar': 87, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 18.4s
+7194 (8, 6, 6, 6, 5, 1) NO_HIT_RANGE_FEASIBLE {'N': 653, 'cegar': 27, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.9s
+7200 (8, 6, 5, 5, 5, 3) NO_HIT_RANGE_FEASIBLE {'N': 950, 'cegar': 52, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 14.5s
+7212 (7, 7, 7, 4, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 957, 'cegar': 79, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 20.9s
+7218 (7, 7, 6, 5, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 977, 'cegar': 79, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 24.9s
+7224 (7, 6, 6, 6, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 973, 'cegar': 105, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 23.4s
+7230 (6, 6, 6, 6, 5, 3) NO_HIT_RANGE_FEASIBLE {'N': 1009, 'cegar': 110, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 47.9s
+7452 (17, 11, 3, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 36, 'cegar': 21, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.4s
+7458 (17, 10, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 50, 'cegar': 24, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.7s
+7464 (17, 9, 3, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 78, 'cegar': 40, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.3s
+7470 (17, 8, 4, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 83, 'cegar': 33, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.0s
+7476 (17, 8, 2, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 142, 'cegar': 64, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.6s
+7482 (17, 7, 5, 2, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 151, 'cegar': 46, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.3s
+7488 (17, 7, 3, 3, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 198, 'cegar': 57, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.4s
+7494 (17, 6, 5, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 119, 'cegar': 38, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.3s
+7500 (17, 6, 4, 3, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 218, 'cegar': 72, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 8.0s
+7506 (17, 5, 5, 4, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 187, 'cegar': 59, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.4s
+7512 (17, 5, 4, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 259, 'cegar': 80, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 8.2s
+7518 (17, 4, 4, 3, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 319, 'cegar': 90, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 12.2s
+7524 (16, 12, 2, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 32, 'cegar': 18, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.5s
+7530 (16, 11, 2, 2, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 71, 'cegar': 59, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.7s
+7536 (16, 10, 3, 2, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 102, 'cegar': 104, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.8s
+7542 (16, 9, 4, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 92, 'cegar': 54, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.6s
+7548 (16, 8, 7, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 69, 'cegar': 64, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.4s
+7554 (16, 8, 4, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 97, 'cegar': 61, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.3s
+7560 (16, 8, 3, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 222, 'cegar': 149, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 40.8s
+7566 (16, 7, 5, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 107, 'cegar': 69, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.1s
+7572 (16, 7, 4, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 148, 'cegar': 55, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.2s
+7578 (16, 6, 6, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 133, 'cegar': 35, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.9s
+7584 (16, 6, 5, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 156, 'cegar': 60, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.7s
+7590 (16, 6, 4, 3, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 318, 'cegar': 139, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 29.4s
+7596 (16, 5, 5, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 314, 'cegar': 98, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 11.5s
+7602 (16, 5, 3, 3, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 431, 'cegar': 182, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 42.2s
+7608 (15, 14, 1, 1, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 32, 'cegar': 139, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.3s
+7614 (15, 12, 3, 1, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 57, 'cegar': 95, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.2s
+7620 (15, 11, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 58, 'cegar': 17, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+7626 (15, 10, 5, 1, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 107, 'cegar': 174, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.1s
+7632 (15, 10, 3, 2, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 132, 'cegar': 137, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 7.9s
+7638 (15, 9, 5, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 111, 'cegar': 46, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.0s
+7644 (15, 9, 3, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 121, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+7650 (15, 8, 6, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 109, 'cegar': 6, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+7656 (15, 8, 5, 2, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 213, 'cegar': 108, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.3s
+7662 (15, 8, 3, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 266, 'cegar': 66, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.0s
+7668 (15, 7, 6, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 149, 'cegar': 27, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.7s
+7674 (15, 7, 5, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 168, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+7680 (15, 7, 4, 3, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 348, 'cegar': 102, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 11.3s
+7686 (15, 6, 6, 3, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 287, 'cegar': 71, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.1s
+7692 (15, 6, 5, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 345, 'cegar': 51, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.3s
+7698 (15, 6, 3, 3, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 469, 'cegar': 5, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.4s
+7704 (15, 5, 5, 3, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 428, 'cegar': 74, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 7.9s
+7710 (14, 14, 3, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 24, 'cegar': 7, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.0s
+7716 (14, 13, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 35, 'cegar': 20, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+7722 (14, 12, 3, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 48, 'cegar': 19, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+7728 (14, 11, 4, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 64, 'cegar': 11, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+7734 (14, 11, 2, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 122, 'cegar': 38, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.4s
+7740 (14, 10, 5, 2, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 140, 'cegar': 96, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.4s
+7746 (14, 10, 3, 3, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 167, 'cegar': 87, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.9s
+7752 (14, 9, 6, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 111, 'cegar': 22, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+7758 (14, 9, 4, 4, 2) NO_HIT_RANGE_FEASIBLE {'N': 125, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+7764 (14, 9, 3, 3, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 242, 'cegar': 114, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 6.1s
+7776 (14, 8, 5, 4, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 222, 'cegar': 10, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.4s
+7782 (14, 8, 4, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 302, 'cegar': 69, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.2s
+7788 (14, 7, 7, 2, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 252, 'cegar': 75, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.0s
+7794 (14, 7, 6, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 324, 'cegar': 36, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.8s
+7800 (14, 7, 5, 3, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 370, 'cegar': 86, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 8.3s
+7812 (14, 6, 6, 3, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 384, 'cegar': 56, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.7s
+7818 (14, 6, 5, 3, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 455, 'cegar': 78, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 9.0s
+7824 (14, 5, 5, 5, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 441, 'cegar': 15, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.4s
+7830 (14, 4, 4, 4, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 609, 'cegar': 54, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 7.7s
+7836 (13, 13, 3, 2, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 70, 'cegar': 106, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.0s
+7842 (13, 12, 4, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 53, 'cegar': 12, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+7854 (13, 11, 4, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 80, 'cegar': 30, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.6s
+7860 (13, 11, 3, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 175, 'cegar': 70, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.2s
+7866 (13, 10, 6, 2, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 167, 'cegar': 51, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.9s
+7872 (13, 10, 4, 4, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 168, 'cegar': 42, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.1s
+7884 (13, 9, 6, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 122, 'cegar': 23, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.4s
+7890 (13, 9, 5, 4, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 212, 'cegar': 31, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.3s
+7896 (13, 9, 4, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 284, 'cegar': 193, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 12.9s
+7902 (13, 8, 7, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 136, 'cegar': 20, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+7908 (13, 8, 6, 4, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 250, 'cegar': 33, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.4s
+7914 (13, 8, 5, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 197, 'cegar': 24, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.8s
+7920 (13, 8, 4, 4, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 294, 'cegar': 136, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 10.6s
+7926 (13, 7, 7, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 196, 'cegar': 7, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+7932 (13, 7, 6, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 223, 'cegar': 24, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.4s
+7938 (13, 7, 5, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 245, 'cegar': 57, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.7s
+7944 (13, 7, 4, 3, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 542, 'cegar': 93, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 15.6s
+7950 (13, 6, 6, 4, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 422, 'cegar': 92, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 8.2s
+7956 (13, 6, 5, 4, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 445, 'cegar': 95, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 8.3s
+7962 (13, 5, 5, 5, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 452, 'cegar': 35, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.1s
+7974 (12, 12, 4, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 75, 'cegar': 41, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.5s
+7980 (12, 12, 3, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 144, 'cegar': 99, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.7s
+7986 (12, 11, 6, 2, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 162, 'cegar': 8, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.5s
+7992 (12, 11, 4, 4, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 161, 'cegar': 116, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.5s
+8004 (12, 10, 6, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 116, 'cegar': 21, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.4s
+8010 (12, 10, 5, 4, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 205, 'cegar': 140, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 8.6s
+8016 (12, 10, 4, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 266, 'cegar': 113, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 7.8s
+8022 (12, 9, 8, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 135, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+8028 (12, 9, 6, 5, 1) NO_HIT_RANGE_FEASIBLE {'N': 136, 'cegar': 26, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.5s
+8034 (12, 9, 5, 5, 2) NO_HIT_RANGE_FEASIBLE {'N': 163, 'cegar': 55, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.7s
+8040 (12, 9, 4, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 182, 'cegar': 15, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.8s
+8046 (12, 8, 8, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 164, 'cegar': 10, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+8052 (12, 8, 7, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 203, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+8058 (12, 8, 6, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 208, 'cegar': 5, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+8064 (12, 8, 5, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 219, 'cegar': 43, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.5s
+8070 (12, 8, 4, 3, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 521, 'cegar': 11, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.4s
+8076 (12, 7, 7, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 415, 'cegar': 29, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.8s
+8082 (12, 7, 6, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 233, 'cegar': 12, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+8088 (12, 7, 5, 5, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 489, 'cegar': 102, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 8.1s
+8100 (12, 6, 6, 4, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 546, 'cegar': 43, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 6.0s
+8106 (12, 6, 5, 4, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 672, 'cegar': 47, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 11.6s
+8112 (12, 5, 4, 4, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 737, 'cegar': 98, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 21.6s
+8124 (11, 11, 5, 4, 2) NO_HIT_RANGE_FEASIBLE {'N': 156, 'cegar': 14, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+8130 (11, 11, 4, 4, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 245, 'cegar': 109, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.4s
+8142 (11, 10, 7, 3, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 245, 'cegar': 13, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+8148 (11, 10, 6, 3, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 290, 'cegar': 65, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.3s
+8154 (11, 10, 5, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 323, 'cegar': 85, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.1s
+8160 (11, 10, 3, 3, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 404, 'cegar': 161, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 13.5s
+8166 (11, 9, 8, 3, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 264, 'cegar': 15, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.6s
+8172 (11, 9, 7, 3, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 327, 'cegar': 41, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.5s
+8178 (11, 9, 6, 4, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 351, 'cegar': 93, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.6s
+8184 (11, 9, 5, 4, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 382, 'cegar': 78, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 7.2s
+8190 (11, 8, 8, 5, 1) NO_HIT_RANGE_FEASIBLE {'N': 157, 'cegar': 22, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.4s
+8196 (11, 8, 7, 6, 1) NO_HIT_RANGE_FEASIBLE {'N': 171, 'cegar': 15, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.4s
+8202 (11, 8, 7, 3, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 456, 'cegar': 45, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.6s
+8208 (11, 8, 6, 4, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 440, 'cegar': 96, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 7.2s
+8214 (11, 8, 5, 4, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 453, 'cegar': 99, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 17.6s
+8220 (11, 7, 7, 6, 2) NO_HIT_RANGE_FEASIBLE {'N': 241, 'cegar': 24, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.4s
+8226 (11, 7, 7, 4, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 556, 'cegar': 65, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.3s
+8232 (11, 7, 6, 5, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 563, 'cegar': 53, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 15.5s
+8238 (11, 7, 5, 5, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 581, 'cegar': 29, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.0s
+8244 (11, 6, 6, 6, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 426, 'cegar': 117, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 14.1s
+8250 (11, 6, 5, 5, 5, 1) NO_HIT_RANGE_FEASIBLE {'N': 535, 'cegar': 261, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 36.1s
+8256 (11, 5, 5, 5, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 767, 'cegar': 22, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 6.2s
+8268 (10, 10, 7, 4, 2) NO_HIT_RANGE_FEASIBLE {'N': 181, 'cegar': 24, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.5s
+8274 (10, 10, 6, 5, 2) NO_HIT_RANGE_FEASIBLE {'N': 180, 'cegar': 31, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.9s
+8280 (10, 10, 5, 5, 3) NO_HIT_RANGE_FEASIBLE {'N': 205, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+8298 (10, 9, 8, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 355, 'cegar': 25, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.6s
+8304 (10, 9, 7, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 425, 'cegar': 116, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 8.1s
+8310 (10, 9, 6, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 218, 'cegar': 6, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+8316 (10, 9, 5, 5, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 495, 'cegar': 163, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 20.1s
+8322 (10, 8, 8, 6, 1) NO_HIT_RANGE_FEASIBLE {'N': 172, 'cegar': 16, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.5s
+8328 (10, 8, 8, 3, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 449, 'cegar': 30, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.9s
+8334 (10, 8, 7, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 252, 'cegar': 23, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.0s
+8340 (10, 8, 6, 5, 4) NO_HIT_RANGE_FEASIBLE {'N': 255, 'cegar': 7, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.5s
+8352 (10, 7, 7, 7, 2) NO_HIT_RANGE_FEASIBLE {'N': 251, 'cegar': 52, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.8s
+8358 (10, 7, 7, 5, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 578, 'cegar': 163, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 25.1s
+8364 (10, 7, 6, 6, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 517, 'cegar': 45, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 12.3s
+8370 (10, 7, 5, 5, 5, 1) NO_HIT_RANGE_FEASIBLE {'N': 558, 'cegar': 99, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 13.5s
+8376 (10, 6, 6, 6, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 546, 'cegar': 191, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 22.0s
+8382 (10, 6, 5, 5, 5, 2) NO_HIT_RANGE_FEASIBLE {'N': 728, 'cegar': 111, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 18.0s
+8394 (9, 9, 8, 5, 2) NO_HIT_RANGE_FEASIBLE {'N': 231, 'cegar': 36, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.5s
+8400 (9, 9, 7, 7, 1) NO_HIT_RANGE_FEASIBLE {'N': 187, 'cegar': 40, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.7s
+8406 (9, 9, 7, 4, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 475, 'cegar': 144, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 16.5s
+8412 (9, 9, 6, 5, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 500, 'cegar': 66, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.0s
+8424 (9, 8, 8, 6, 2) NO_HIT_RANGE_FEASIBLE {'N': 205, 'cegar': 40, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.0s
+8430 (9, 8, 8, 4, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 465, 'cegar': 159, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 17.6s
+8436 (9, 8, 7, 5, 4) NO_HIT_RANGE_FEASIBLE {'N': 308, 'cegar': 23, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.3s
+8442 (9, 8, 6, 6, 4) NO_HIT_RANGE_FEASIBLE {'N': 247, 'cegar': 21, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.6s
+8448 (9, 8, 6, 4, 4, 2) NO_HIT_RANGE_FEASIBLE {'N': 568, 'cegar': 161, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 22.8s
+8454 (9, 8, 4, 4, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 681, 'cegar': 376, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 57.6s
+8460 (9, 7, 7, 5, 5) NO_HIT_RANGE_FEASIBLE {'N': 290, 'cegar': 10, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+8466 (9, 7, 6, 6, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 597, 'cegar': 81, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 9.2s
+8472 (9, 7, 5, 5, 5, 2) NO_HIT_RANGE_FEASIBLE {'N': 718, 'cegar': 91, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 11.9s
+8478 (9, 6, 6, 6, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 835, 'cegar': 6, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.8s
+8490 (8, 8, 8, 5, 4) NO_HIT_RANGE_FEASIBLE {'N': 283, 'cegar': 35, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.3s
+8496 (8, 8, 7, 7, 3) NO_HIT_RANGE_FEASIBLE {'N': 303, 'cegar': 6, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.4s
+8502 (8, 8, 7, 5, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 582, 'cegar': 206, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 19.2s
+8508 (8, 8, 6, 6, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 662, 'cegar': 141, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 17.1s
+8514 (8, 8, 5, 5, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 856, 'cegar': 189, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 32.8s
+8520 (8, 7, 7, 6, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 621, 'cegar': 30, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.8s
+8532 (8, 7, 6, 4, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 819, 'cegar': 64, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 11.2s
+8538 (8, 6, 6, 5, 5, 3) NO_HIT_RANGE_FEASIBLE {'N': 934, 'cegar': 146, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 24.0s
+8544 (7, 7, 7, 7, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 738, 'cegar': 215, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 24.0s
+8550 (7, 7, 7, 5, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 915, 'cegar': 107, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 19.9s
+8556 (7, 7, 6, 5, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 1047, 'cegar': 160, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 27.1s
+8562 (7, 6, 5, 5, 5, 5) NO_HIT_RANGE_FEASIBLE {'N': 1009, 'cegar': 247, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 60.8s
+8844 (17, 12, 3, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 29, 'cegar': 19, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+8850 (17, 11, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 54, 'cegar': 35, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+8856 (17, 10, 3, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 70, 'cegar': 51, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.5s
+8862 (17, 9, 4, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 80, 'cegar': 58, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.6s
+8868 (17, 9, 2, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 173, 'cegar': 106, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.0s
+8874 (17, 8, 5, 2, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 153, 'cegar': 79, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.0s
+8880 (17, 8, 3, 3, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 199, 'cegar': 126, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 7.3s
+8886 (17, 7, 6, 2, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 171, 'cegar': 94, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.7s
+8892 (17, 7, 4, 4, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 194, 'cegar': 112, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 6.5s
+8898 (17, 6, 6, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 111, 'cegar': 81, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.1s
+8904 (17, 6, 5, 4, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 212, 'cegar': 118, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 6.4s
+8910 (17, 6, 4, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 294, 'cegar': 161, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 16.3s
+8916 (17, 5, 5, 4, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 272, 'cegar': 148, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 12.9s
+8922 (17, 5, 4, 3, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 372, 'cegar': 184, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 19.6s
+8928 (16, 14, 2, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 16, 'cegar': 15, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.0s
+8934 (16, 12, 3, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 34, 'cegar': 15, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+8940 (16, 11, 4, 1, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 73, 'cegar': 134, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.2s
+8946 (16, 10, 5, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 64, 'cegar': 32, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+8952 (16, 10, 3, 3, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 124, 'cegar': 144, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.4s
+8958 (16, 9, 5, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 90, 'cegar': 43, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+8964 (16, 9, 4, 2, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 174, 'cegar': 62, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.6s
+8970 (16, 8, 7, 1, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 138, 'cegar': 158, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.9s
+8976 (16, 8, 5, 3, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 196, 'cegar': 153, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.9s
+8982 (16, 8, 4, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 195, 'cegar': 40, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.8s
+8988 (16, 7, 6, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 120, 'cegar': 36, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.5s
+8994 (16, 7, 5, 4, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 225, 'cegar': 187, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 9.3s
+9000 (16, 7, 4, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 309, 'cegar': 111, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 7.7s
+9006 (16, 6, 6, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 172, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+9012 (16, 6, 5, 4, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 301, 'cegar': 121, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.5s
+9018 (16, 6, 4, 3, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 410, 'cegar': 16, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.5s
+9024 (16, 5, 5, 4, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 411, 'cegar': 20, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.4s
+9030 (16, 4, 4, 4, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 527, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.7s
+9036 (15, 13, 4, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 23, 'cegar': 13, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+9042 (15, 12, 4, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 40, 'cegar': 34, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+9048 (15, 11, 6, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 53, 'cegar': 14, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+9054 (15, 11, 3, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 62, 'cegar': 27, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+9060 (15, 10, 6, 1, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 118, 'cegar': 128, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.7s
+9066 (15, 10, 4, 3, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 138, 'cegar': 57, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.1s
+9072 (15, 9, 7, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 90, 'cegar': 26, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+9078 (15, 9, 5, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 116, 'cegar': 72, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.0s
+9084 (15, 9, 4, 3, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 212, 'cegar': 163, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 10.6s
+9090 (15, 8, 7, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 114, 'cegar': 7, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+9096 (15, 8, 6, 2, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 228, 'cegar': 254, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 15.3s
+9102 (15, 8, 5, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 298, 'cegar': 361, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 31.1s
+9108 (15, 7, 7, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 126, 'cegar': 1, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.0s
+9114 (15, 7, 6, 4, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 245, 'cegar': 64, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.3s
+9120 (15, 7, 5, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 190, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+9126 (15, 7, 4, 4, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 384, 'cegar': 225, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 22.0s
+9132 (15, 6, 6, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 196, 'cegar': 5, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+9138 (15, 6, 5, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 213, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+9144 (15, 6, 4, 3, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 528, 'cegar': 7, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.2s
+9150 (15, 5, 5, 3, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 568, 'cegar': 3, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.0s
+9156 (14, 14, 3, 1, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 36, 'cegar': 47, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+9162 (14, 13, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 38, 'cegar': 35, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+9168 (14, 12, 5, 1, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 78, 'cegar': 16, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+9174 (14, 12, 3, 2, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 83, 'cegar': 124, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.2s
+9180 (14, 11, 5, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 85, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.0s
+9186 (14, 11, 3, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 85, 'cegar': 110, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.5s
+9192 (14, 10, 6, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 96, 'cegar': 26, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+9198 (14, 10, 5, 2, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 173, 'cegar': 100, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.2s
+9204 (14, 10, 3, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 210, 'cegar': 229, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 9.5s
+9210 (14, 9, 7, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 134, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.0s
+9222 (14, 9, 4, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 164, 'cegar': 52, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.1s
+9228 (14, 8, 8, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 102, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+9264 (14, 7, 5, 5, 3) NO_HIT_RANGE_FEASIBLE {'N': 198, 'cegar': 79, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.9s
+9270 (14, 7, 4, 4, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 402, 'cegar': 4, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.5s
+9276 (14, 6, 6, 5, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 359, 'cegar': 83, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.7s
+9282 (14, 6, 5, 5, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 425, 'cegar': 76, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.2s
+9288 (14, 6, 4, 4, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 608, 'cegar': 292, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 31.9s
+9294 (14, 5, 4, 4, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 675, 'cegar': 225, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 38.2s
+9300 (13, 13, 4, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 53, 'cegar': 47, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.4s
+9312 (13, 12, 4, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 65, 'cegar': 72, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.6s
+9318 (13, 12, 3, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 130, 'cegar': 128, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.2s
+9324 (13, 11, 6, 2, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 148, 'cegar': 37, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.4s
+9330 (13, 11, 4, 4, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 141, 'cegar': 75, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.4s
+9342 (13, 10, 6, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 108, 'cegar': 45, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.4s
+9348 (13, 10, 5, 4, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 186, 'cegar': 54, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.1s
+9354 (13, 10, 4, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 244, 'cegar': 221, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 13.4s
+9360 (13, 9, 8, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 135, 'cegar': 21, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+9378 (13, 9, 4, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 182, 'cegar': 187, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.9s
+9384 (13, 8, 8, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 156, 'cegar': 5, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+9390 (13, 8, 7, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 191, 'cegar': 7, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+9396 (13, 8, 6, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 202, 'cegar': 52, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.0s
+9402 (13, 8, 5, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 216, 'cegar': 190, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.6s
+9408 (13, 8, 4, 3, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 497, 'cegar': 242, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 34.7s
+9414 (13, 7, 7, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 395, 'cegar': 82, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.0s
+9420 (13, 7, 6, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 233, 'cegar': 139, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.2s
+9426 (13, 7, 5, 5, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 483, 'cegar': 63, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.8s
+9438 (13, 6, 6, 4, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 536, 'cegar': 121, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 16.7s
+9444 (13, 6, 5, 4, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 653, 'cegar': 136, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 26.9s
+9450 (13, 5, 4, 4, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 734, 'cegar': 606, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 126.4s
+9462 (12, 12, 4, 4, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 136, 'cegar': 179, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.6s
+9474 (12, 11, 6, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 105, 'cegar': 19, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.2s
+9480 (12, 11, 5, 4, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 178, 'cegar': 187, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.8s
+9486 (12, 11, 4, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 225, 'cegar': 120, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.6s
+9498 (12, 10, 7, 2, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 240, 'cegar': 40, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.2s
+9504 (12, 10, 6, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 213, 'cegar': 6, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+9510 (12, 10, 5, 3, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 305, 'cegar': 232, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 14.0s
+9522 (12, 9, 8, 2, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 262, 'cegar': 32, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.4s
+9528 (12, 9, 7, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 359, 'cegar': 9, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.5s
+9534 (12, 9, 6, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 357, 'cegar': 13, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.8s
+9540 (12, 9, 5, 4, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 409, 'cegar': 90, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 8.8s
+9546 (12, 8, 8, 4, 2) NO_HIT_RANGE_FEASIBLE {'N': 141, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+9552 (12, 8, 7, 5, 2) NO_HIT_RANGE_FEASIBLE {'N': 199, 'cegar': 53, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.4s
+9564 (12, 8, 6, 4, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 327, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.3s
+9570 (12, 8, 5, 4, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 508, 'cegar': 328, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 37.3s
+9582 (12, 7, 7, 3, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 494, 'cegar': 180, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 17.5s
+9588 (12, 7, 6, 4, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 470, 'cegar': 158, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 11.9s
+9594 (12, 7, 5, 4, 4, 2) NO_HIT_RANGE_FEASIBLE {'N': 620, 'cegar': 212, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 27.1s
+9600 (12, 6, 6, 5, 5) NO_HIT_RANGE_FEASIBLE {'N': 258, 'cegar': 131, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.6s
+9606 (12, 6, 5, 5, 4, 2) NO_HIT_RANGE_FEASIBLE {'N': 649, 'cegar': 247, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 38.2s
+9612 (12, 5, 5, 4, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 812, 'cegar': 259, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 51.8s
+9624 (11, 11, 6, 4, 2) NO_HIT_RANGE_FEASIBLE {'N': 144, 'cegar': 71, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.1s
+9630 (11, 11, 5, 5, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 225, 'cegar': 185, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.6s
+9636 (11, 11, 4, 4, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 281, 'cegar': 12, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.6s
+9654 (11, 10, 7, 2, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 347, 'cegar': 36, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.8s
+9660 (11, 10, 6, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 349, 'cegar': 211, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 10.3s
+9666 (11, 10, 5, 4, 2, 2) NO_HIT_RANGE_FEASIBLE {'N': 385, 'cegar': 292, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 16.5s
+9678 (11, 9, 8, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 203, 'cegar': 39, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.7s
+9684 (11, 9, 7, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 230, 'cegar': 1, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+9690 (11, 9, 6, 5, 3) NO_HIT_RANGE_FEASIBLE {'N': 221, 'cegar': 62, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.5s
+9702 (11, 9, 4, 4, 4, 2) NO_HIT_RANGE_FEASIBLE {'N': 477, 'cegar': 279, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 23.9s
+9708 (11, 8, 8, 4, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 362, 'cegar': 50, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.2s
+9714 (11, 8, 7, 5, 3) NO_HIT_RANGE_FEASIBLE {'N': 238, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 0.1s
+9720 (11, 8, 6, 6, 3) NO_HIT_RANGE_FEASIBLE {'N': 240, 'cegar': 117, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.2s
+9726 (11, 8, 6, 4, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 545, 'cegar': 352, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 36.6s
+9732 (11, 8, 5, 4, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 630, 'cegar': 52, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 7.6s
+9744 (11, 7, 6, 6, 4) NO_HIT_RANGE_FEASIBLE {'N': 264, 'cegar': 133, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.8s
+9750 (11, 7, 6, 4, 4, 2) NO_HIT_RANGE_FEASIBLE {'N': 610, 'cegar': 303, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 35.0s
+9756 (11, 7, 4, 4, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 736, 'cegar': 13, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 4.8s
+9762 (11, 6, 6, 5, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 734, 'cegar': 318, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 41.5s
+9768 (11, 5, 5, 5, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 856, 'cegar': 2, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.4s
+9786 (10, 10, 7, 4, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 352, 'cegar': 206, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 11.5s
+9792 (10, 10, 6, 5, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 357, 'cegar': 119, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.3s
+9798 (10, 10, 5, 5, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 402, 'cegar': 9, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.2s
+9804 (10, 10, 4, 4, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 538, 'cegar': 422, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 38.9s
+9816 (10, 9, 8, 3, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 413, 'cegar': 50, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.5s
+9822 (10, 9, 7, 5, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 393, 'cegar': 130, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.3s
+9828 (10, 9, 6, 6, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 403, 'cegar': 143, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.9s
+9834 (10, 9, 6, 3, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 599, 'cegar': 22, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.2s
+9840 (10, 9, 4, 4, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 654, 'cegar': 387, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 38.5s
+9852 (10, 8, 7, 6, 3) NO_HIT_RANGE_FEASIBLE {'N': 263, 'cegar': 78, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.0s
+9858 (10, 8, 7, 4, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 592, 'cegar': 234, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 26.2s
+9864 (10, 8, 6, 5, 4, 1) NO_HIT_RANGE_FEASIBLE {'N': 507, 'cegar': 108, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 8.6s
+9870 (10, 8, 5, 5, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 693, 'cegar': 7, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.9s
+9876 (10, 7, 7, 6, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 532, 'cegar': 357, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 24.5s
+9882 (10, 7, 7, 4, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 720, 'cegar': 451, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 67.0s
+9888 (10, 7, 6, 5, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 752, 'cegar': 350, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 48.1s
+9894 (10, 6, 6, 6, 5, 1) NO_HIT_RANGE_FEASIBLE {'N': 569, 'cegar': 274, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 19.0s
+9900 (10, 6, 5, 5, 5, 3) NO_HIT_RANGE_FEASIBLE {'N': 816, 'cegar': 8, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.3s
+9912 (9, 9, 8, 6, 1, 1) NO_HIT_RANGE_FEASIBLE {'N': 344, 'cegar': 173, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.6s
+9918 (9, 9, 8, 3, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 526, 'cegar': 330, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 33.4s
+9924 (9, 9, 7, 5, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 492, 'cegar': 203, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 12.1s
+9930 (9, 9, 6, 6, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 511, 'cegar': 16, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.3s
+9936 (9, 9, 6, 4, 3, 3) NO_HIT_RANGE_FEASIBLE {'N': 696, 'cegar': 19, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.3s
+9942 (9, 8, 8, 8, 1) NO_HIT_RANGE_FEASIBLE {'N': 185, 'cegar': 128, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 1.7s
+9948 (9, 8, 8, 5, 3, 1) NO_HIT_RANGE_FEASIBLE {'N': 504, 'cegar': 350, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 25.1s
+9954 (9, 8, 7, 7, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 464, 'cegar': 241, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 11.8s
+9960 (9, 8, 7, 5, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 642, 'cegar': 362, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 45.5s
+9966 (9, 8, 6, 5, 5, 1) NO_HIT_RANGE_FEASIBLE {'N': 559, 'cegar': 54, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 5.5s
+9972 (9, 8, 5, 4, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 822, 'cegar': 723, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 116.8s
+9978 (9, 7, 7, 6, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 701, 'cegar': 249, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 21.1s
+9984 (9, 7, 6, 6, 5, 1) NO_HIT_RANGE_FEASIBLE {'N': 604, 'cegar': 107, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 8.1s
+9990 (9, 7, 5, 5, 5, 3) NO_HIT_RANGE_FEASIBLE {'N': 804, 'cegar': 281, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 40.7s
+9996 (9, 6, 6, 5, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 879, 'cegar': 162, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 33.1s
+10002 (8, 8, 8, 7, 2, 1) NO_HIT_RANGE_FEASIBLE {'N': 465, 'cegar': 258, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 13.0s
+10008 (8, 8, 8, 5, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 645, 'cegar': 22, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 2.5s
+10020 (8, 8, 7, 4, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 820, 'cegar': 12, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 3.9s
+10026 (8, 8, 6, 5, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 838, 'cegar': 249, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 32.5s
+10032 (8, 7, 7, 7, 3, 2) NO_HIT_RANGE_FEASIBLE {'N': 719, 'cegar': 323, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 29.9s
+10038 (8, 7, 7, 5, 4, 3) NO_HIT_RANGE_FEASIBLE {'N': 876, 'cegar': 56, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 9.8s
+10044 (8, 7, 6, 5, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 929, 'cegar': 234, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 35.6s
+10062 (7, 7, 6, 6, 4, 4) NO_HIT_RANGE_FEASIBLE {'N': 949, 'cegar': 523, 'status': 'NO_HIT_RANGE_FEASIBLE'} X None Y None 97.3s
+DONE STATS {'INFEAS': 903, 'NO_HIT_RANGE_FEASIBLE': 776} elapsed 4814s
