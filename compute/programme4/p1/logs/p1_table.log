@@ -1,0 +1,35 @@
+| family | k | n | tau | e | 4T-3k | w* | Fano seven |
+|---|---|---|---|---|---|---|---|
+| K_6^(4) | 4 | 6 | 3 | +0.00 | -4 | 0 | none |
+| K_9^(5) | 5 | 9 | 5 | +1.25 | 1 | 1 | none |
+| K_10^(6) | 6 | 10 | 5 | +0.50 | -2 | 0 | none |
+| K_12^(7) | 7 | 12 | 6 | +0.75 | -1 | 1 | none |
+| K_13^(8) | 8 | 13 | 6 | +0.00 | -4 | 0 | none |
+| K_16^(9) | 9 | 16 | 8 | +1.25 | 1 | 1 | none |
+| K_17^(10) | 10 | 17 | 8 | +0.50 | -2 | 0 | none |
+| K_19^(11) | 11 | 19 | 9 | +0.75 | -1 | 1 | none |
+| K_20^(12) | 12 | 20 | 9 | +0.00 | -4 | 0 | none |
+| K_23^(13) | 13 | 23 | 11 | +1.25 | 1 | 1 | none |
+| K_24^(14) | 14 | 24 | 11 | +0.50 | -2 | 0 | none |
+| K_26^(15) | 15 | 26 | 12 | +0.75 | -1 | 1 | none |
+| K_27^(16) | 16 | 27 | 12 | +0.00 | -4 | 0 | none |
+| K_30^(17) | 17 | 30 | 14 | +1.25 | 1 | 1 | none |
+| K_31^(18) | 18 | 31 | 14 | +0.50 | -2 | 0 | none |
+| K_33^(19) | 19 | 33 | 15 | +0.75 | -1 | 1 | none |
+| K_34^(20) | 20 | 34 | 15 | +0.00 | -4 | 0 | none |
+| K_37^(21) | 21 | 37 | 17 | +1.25 | 1 | 1 | none |
+| K_38^(22) | 22 | 38 | 17 | +0.50 | -2 | 0 | none |
+| K_40^(23) | 23 | 40 | 18 | +0.75 | -1 | 1 | none |
+| K_41^(24) | 24 | 41 | 18 | +0.00 | -4 | 0 | none |
+| FKW m=2 | 8 | 15 | 7 | +1.00 | 0 | 2 | none |
+| FKW m=3 | 12 | 22 | 10 | +1.00 | 0 | 2 | none |
+| FKW m=4 | 16 | 29 | 13 | +1.00 | 0 | 2 | none |
+
+two-block scan, n in [3k/2, 2.0k]: max 4T-3k over H_J with NO Fano-type seven, least w* there
+k=5: 91 cands with 4T-3k>=-4, 29 checked had a seven; max 4T-3k with no Fano seven = 1, least w* there = 1 (P1: >= -4); e.g. n,a,J = (9, 4, [0, 1, 2, 3, 4])
+k=6: 162 cands with 4T-3k>=-4, 148 checked had a seven; max 4T-3k with no Fano seven = -2, least w* there = 0 (P1: >= -7); e.g. n,a,J = (10, 4, [0, 1, 2, 3, 4])
+k=7: 290 cands with 4T-3k>=-4, 272 checked had a seven; max 4T-3k with no Fano seven = -1, least w* there = 1 (P1: >= -6); e.g. n,a,J = (12, 5, [0, 1, 2, 3, 4, 5])
+k=8: 1032 cands with 4T-3k>=-4, 519 checked had a seven; max 4T-3k with no Fano seven = 0, least w* there = 2 (P1: >= -5); e.g. n,a,J = (15, 7, [1, 3, 5, 7])
+k=9: 1941 cands with 4T-3k>=-4, 938 checked had a seven; max 4T-3k with no Fano seven = 1, least w* there = 1 (P1: >= -4); e.g. n,a,J = (16, 7, [0, 1, 2, 3, 4, 5, 6, 7])
+k=10: 3660 cands with 4T-3k>=-4, 3573 checked had a seven; max 4T-3k with no Fano seven = -2, least w* there = 0 (P1: >= -7); e.g. n,a,J = (17, 7, [0, 1, 2, 3, 4, 5, 6, 7])
+k=11: 6915 cands with 4T-3k>=-4, 6913 checked had a seven; max 4T-3k with no Fano seven = -1, least w* there = 1 (P1: >= -6); e.g. n,a,J = (19, 8, [0, 1, 2, 3, 4, 5, 6, 7, 8])
