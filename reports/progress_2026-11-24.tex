@@ -1,0 +1,185 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,array,enumitem}
+\usepackage[hidelinks]{hyperref}
+\setlist{itemsep=2pt,topsep=3pt}
+\newcommand{\st}[1]{\textsf{\small[#1]}}
+\title{Erd\H{o}s Problem \#644: progress report}
+\author{Project status as of 24 November 2026}
+\date{}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We work on the question whether $f(k,7)=(\tfrac34+o(1))k$, where $f(k,7)$ is the largest transversal number of a
+$k$-uniform family in which every seven members can be pierced by two points. The known bounds are
+$\tfrac34k+1\le f(k,7)\le\lceil 7k/8\rceil$ (Fon-Der-Flaass--Kostochka--Woodall). \textbf{We have not solved the
+problem.} We have a verified reduction of it to a covering game confined to at most $3k$ points. We have closed the
+crowded and spread regions of that game, and proved that every \emph{structured} counterexample is impossible in the
+remaining region. What is left is a precise statement about ``random-looking'' families in a window of
+$1.75k$--$2.25k$ points. This report says which parts are publishable and which are only working evidence.
+\end{abstract}
+
+\section*{Status labels}
+\st{LEAN}: machine-checked in Lean~4/Mathlib, standard axioms only.
+\st{VERIFIED}: a hand proof that an independent agent, given only the statement and the proof, tried to break.
+That agent checked every step and ran its own adversarial exact tests.
+\st{EXACT}: rational or brute-force computation on finite instances.
+\st{FLOAT}: floating-point evidence.
+\st{DEAD}: refuted or shown not to apply.
+The status of every claim is tracked in \texttt{notes/LEDGER.md}.
+
+\section{The approach in one page}
+\textbf{Request principle.} If $\tau(H)>T$, every set $S$ of $T$ points misses some edge. A ``requester'' names sets
+$S_1,S_2,\dots$, and an ``adversary'' answers each with an edge avoiding it. If the requester can always collect seven
+answers with no 2-point transversal, then $f(k,7)\le T$. With unboundedly many requests the adversary is no stronger
+than a fixed family (CORE \S29), so the game \emph{is} the problem, not a relaxation.
+
+\textbf{Reduction.} Three answers with empty common intersection confine all later play to their union $V$, with
+$|V|\le 3k$. Requester wins in the confined game transfer to the full game (TWIN \S13) \st{VERIFIED}. In units of $k$
+we write $t=T/k=\tfrac34+\varepsilon$ and $N=|V|/k$. We pass to \emph{co-edges} $K=V\setminus B$. Seven answers have
+no 2-cover iff their co-edges cover every pair of $V$, i.e.\ the sets $I_x=\{i:x\in K_i\}$ are pairwise intersecting.
+And $\tau>T$ iff the co-edge family is \emph{$T$-covering}: every $T$-set lies in some co-edge.
+
+\textbf{Case split by $N$.}
+\begin{center}\small
+\begin{tabular}{@{}p{4.6cm}p{5.6cm}p{4.6cm}@{}}\toprule
+region & content & status\\\midrule
+$N\le 3t-\tfrac12$ (crowded) & Proposition 16.A & \st{VERIFIED} at first order\\
+$3t-\tfrac12<N<3-t$ (\textbf{core window}) & statement CP / $(\Sigma)$ below & \textbf{open}\\
+$N\ge 3-t$ (petal side) & petal reduction, Theorems J, K, L, AP, PS--PS3 & mostly \st{VERIFIED}; two residues\\\bottomrule
+\end{tabular}
+\end{center}
+
+\section{What is established}
+\subsection{Machine-checked}
+About twenty lemmas are in Lean with no \texttt{sorry}. They cover:
+\begin{itemize}
+\item the tight-triple lemma, a transversal bound we call Theorem~A, stability, the lopsided-top bound, the
+sparse-triple lemma, the trace lemma, the pair gap and the three-centres lemma;
+\item the Fano criterion and Fano blocks, the flat 7-tuple lemma (top-degree requests give seven edges with every
+point of degree at most~4), and the waste adversary;
+\item the anchor and petal reductions;
+\item Lemmas 4.1--4.8 of the unrefereed $6/7$ manuscript.
+\end{itemize}
+The headline statements are frozen in \texttt{Statements.lean}. The main $6/7$ theorem itself is \emph{not}
+formalised.
+
+\subsection{Hand proofs that passed independent verification}
+\begin{itemize}
+\item \textbf{Tools of the core window:} the slack count, Theorem T (triangle finish), Theorem Q, which is the same as
+its set form Q$'$, and the reduction CP~$\Leftarrow(\Sigma)$ with one clause corrected by the verifier.
+\item \textbf{Classification of structured families (core window):}
+ \begin{itemize}
+ \item \emph{Theorem S}: no family whose membership depends only on profiles of a bounded partition is a
+ counterexample.
+ \item \emph{Theorem S$^+$}: the same at finite $k$, for up to $4\varepsilon k-12$ cells of any size.
+ \item \emph{\S46}: ordered frozen rules lose.
+ \item \emph{Theorem W}: any greedy priority-order adversary whose choice of order depends on the request only through
+ a window of $\le T-k/2$ points loses in seven requests, with any number of orders.
+ \end{itemize}
+\item \textbf{Petal side:} Theorems J, J$'$, J$''$, K, L, N, DS-b, AP, PS, PS2, PS3 and Lemma FF.
+\end{itemize}
+The verifiers ran several hundred thousand exact or brute-force games, including adversaries built against the
+weakest step of each proof. They found no counterexample. They did find corrections:
+\begin{itemize}
+\item The pool theorem P and Proposition 16.A hold at first order but need repair at finite $k$. P fails at
+$(k,T,N)=(5,4,9)$ because $C(9,4,2)=8$.
+\item A short count (CORE 21.2) that was meant to close the bottom strip $3t-\tfrac12<N\le 5t-2$ has a gap. That strip
+is therefore part of the open window.
+\item Double sealing (DS) fails when the adversary may leak outside its arenas. This was repaired by PS--PS3.
+\end{itemize}
+
+\subsection{Exact small values}
+With 8 requests, every 6- and 7-uniform family with $\tau=k$ contains seven members with no 2-cover
+\st{EXACT certificate, independent checker}. Together with TWIN \S13, now verified, this gives $f(6,7)=5$ and
+$f(7,7)=6$, against the general upper bounds 6 and 7. The matching lower bounds rest on covering numbers $C(v,k,2)$
+from our own ILP. They still have to be checked against the La~Jolla tables.
+
+\section{What is publishable, and what is not}
+\textbf{Worth publishing or presenting}, in our judgement:
+\begin{enumerate}
+\item \emph{The reduction and game equivalence.} The problem equals a covering game confined to $\le3k$ points, and
+bounded-depth games are exact truncations of it \st{VERIFIED}. This is a clean reformulation that others can use.
+\item \emph{The classification theorems S, S$^+$, \S46, W.} These are genuine theorems about the problem: a
+counterexample to $3/4$ cannot be a bounded blow-up, cannot follow fixed orders, and cannot choose among fixed orders
+by a small window. They constrain any future construction. \st{VERIFIED}
+\item \emph{The exact statement of what remains}, $(\Sigma)$, together with the proved negative results:
+ \begin{itemize}
+ \item junta theorems (Dinur--Friedgut, Keller--Lifshitz) do not apply, because the families are far too sparse;
+ \item spread and sunflower lemmas do not apply, because the families are at most $2.3$-spread;
+ \item exact symmetrisation destroys the property one needs.
+ \end{itemize}
+ This saves the next person months.
+\item \emph{Lean formalisation} of the FKW-type lemmas and of the $6/7$ manuscript's lemmas. It is valuable as
+verification of others' unrefereed work.
+\item \emph{$f(6,7)=5$ and $f(7,7)=6$}, after the covering-number check: small, but new as exact values as far as we
+know \st{cite?}.
+\end{enumerate}
+\textbf{Not worth publishing on its own:}
+\begin{itemize}
+\item The numerical game searches: the tilted-spread strategy trees, the depth-2/3 values and the SPOIL experiments.
+They are float-level, narrow, or superseded by the theorems above.
+\item The small-$k$ adversary wins (e.g.\ $(10,8)$): we showed these are integrality artefacts.
+\item The parked ``$0.84$'' upper-bound candidate: only partly certified, and weaker than the claimed $6/7$.
+\item The petal theorems, as a separate paper: they are correct, but specialised and meaningful only as part of a
+full solution.
+\end{itemize}
+\textbf{Honest headline.} There is no new upper bound on $f(k,7)$ and no solution. The publishable content is a
+verified reformulation plus impossibility results for structured counterexamples.
+
+\section{What remains}
+\begin{enumerate}
+\item \textbf{Core window (the main obstacle).} We must show that every $T$-covering co-edge family on $N$ points,
+$3t-\tfrac12<N<3-t$, contains seven members covering all pairs. By the reduction it suffices to find one of three
+shapes: a Q$'$ quadruple, a pencil triple with union $V$ and large triple intersection, or a Theorem-T triangle. The
+families not yet handled are:
+ \begin{itemize}
+ \item hash-like ones, whose choice reads more than about $k/4$ requested points;
+ \item non-greedy ones;
+ \item self-cut ones, whose cells are cut out by their own earlier members.
+ \end{itemize}
+ A decomposition in the style of Kupavskii--Zakharov reduces everything to the hash-like case.
+\item \textbf{Petal strip.} The pooled arena adversary, for $\tfrac34<t<\tfrac79$ and
+$\tfrac t2-\tfrac16\le\delta<1-t$. The sealing method is provably maxed out there. The remaining question is whether
+an \emph{adaptive} final request saves one $\delta$ of sealing cost.
+\item \textbf{Unusual petal families.} Two-class families not of arena-with-pool form. An exact search at $k=12,16$
+found none.
+\end{enumerate}
+
+\section{What writing this made clear}
+Writing the case split out in one place showed three things we had not stated sharply before.
+
+\textbf{(a) A counterexample would need extreme negative correlation.} For the random threshold $T$-covering family
+in the window, the expected number of good sevens is $e^{ck}$ with $c$ between $2.1$ and $3.4$, and the expected
+number of pencils is also exponentially large \st{FLOAT, CORE \S57 code}. So a counterexample must avoid exponentially
+many candidates that a random family would contain. Our structure theorems kill the structured ways of doing that.
+Avoiding a fixed configuration in a sparse, random-looking regime is exactly what the \textbf{hypergraph container
+method} (Balogh--Morris--Samotij; Saxton--Thomason) is built for. Containers need a \emph{supersaturation} statement:
+a $T$-covering family that is far from every container must contain many good sevens. This is a route we have not
+tried, and the first-moment numbers suggest it is the natural one.
+
+\textbf{(b) The threshold $k/4$ appears everywhere for one reason.} Theorem W stops at windows of $T-k/2=(\tfrac14+
+\varepsilon)k$ points, Theorem S$^+$ at $4\varepsilon k$ cells, and the pool families at $t=\tfrac34$ exactly. In each
+case the slack is the amount by which $T$ exceeds $3k/4$. This is consistent with $3/4$ being the true constant, and
+it locates the difficulty in a simple place: the open case is adversaries that use more than the slack's worth of
+information about the request.
+
+\textbf{(c) The two open pieces are alike.} The petal strip and the core window both reduce to whether an
+\emph{adaptive} last move by the requester beats an adversary that hides information. Both may need the same
+ingredient: an averaging or entropy argument over the requester's options, rather than a fixed plan.
+
+\section{Work in progress}
+Agents now running, each held to the same verification gate:
+\begin{itemize}
+\item an entropy-method attack on the core window (in the style of Gilmer's union-closed argument);
+\item a flag-algebra / SDP relaxation of the $k\to\infty$ limit object;
+\item a fractional relaxation followed by rounding, via $(p,q)$-type tools;
+\item an exact decision on a $k=8$ family in which no good seven has been found yet;
+\item the adaptive petal-strip game;
+\item the structure lemma for the unusual petal families.
+\end{itemize}
+Suggestion (a), hypergraph containers, is new and is not yet assigned.
+
+\end{document}
