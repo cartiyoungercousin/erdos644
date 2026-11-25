@@ -9,7 +9,8 @@
 
 | If you want… | Read |
 |---|---|
-| A short, polished summary of what is established | [`reports/STATUS_REPORT.pdf`](reports/STATUS_REPORT.pdf) ([source](reports/STATUS_REPORT.tex)) |
+| **The current progress report** (results, status tags, what remains: Statement (S)) | [`reports/PROGRESS.pdf`](reports/PROGRESS.pdf) ([source](reports/PROGRESS.tex)) |
+| An earlier summary (confined-game era) | [`reports/STATUS_REPORT.pdf`](reports/STATUS_REPORT.pdf) ([source](reports/STATUS_REPORT.tex)) |
 | The status of every individual claim | [`notes/LEDGER.md`](notes/LEDGER.md) |
 | A self-contained brief of the open problem, for reviewers | [`reports/EXTERNAL_BRIEF.md`](reports/EXTERNAL_BRIEF.md) |
 | The full working write-up of the open region | [`notes/CORE.md`](notes/CORE.md), starting at §33 (the handover) |
