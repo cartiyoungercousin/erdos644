@@ -1,0 +1,5 @@
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+SAT rand R=3 seed=1 (8,6,15)       k= 8 T= 6 n=15 |H|= 2348  tau*=  15/8 (1.8750, exact)  tau=7 [ILP exact]  tau/tau*=3.733  (tau-1)/k=0.750  n/k=1.875
+R=3 rand seed=2: SAT instance unsatisfiable (no pencil-free selection)
+R=3 rand seed=3: SAT instance unsatisfiable (no pencil-free selection)

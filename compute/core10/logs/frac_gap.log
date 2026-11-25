@@ -1,0 +1,12 @@
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+fam_8_6_15_rev.txt                 k= 8 T= 6 n=15 |H|= 2352  tau*=  13/7 (1.8571, exact)  tau=7 [ILP exact]  tau/tau*=3.769  (tau-1)/k=0.750  n/k=1.875
+pool |Y|=1                         k= 4 T= 3 n= 8 |H|=   35  tau*=   7/4 (1.7500, exact)  tau=4 [ILP exact]  tau/tau*=2.286  (tau-1)/k=0.750  n/k=2.000
+pool |Y|=2                         k= 6 T= 5 n=13 |H|=  462  tau*=  11/6 (1.8333, exact)  tau=6 [ILP exact]  tau/tau*=3.273  (tau-1)/k=0.833  n/k=2.167
+pool |Y|=3                         k= 8 T= 6 n=17 |H|= 3003  tau*=   7/4 (1.7500, exact)  tau=7 [ILP exact]  tau/tau*=4.000  (tau-1)/k=0.750  n/k=2.125
+pool |Y|=3                         k= 8 T= 7 n=18 |H|= 6435  tau*=  15/8 (1.8750, exact)  tau=8 [ILP exact]  tau/tau*=4.267  (tau-1)/k=0.875  n/k=2.250
+pool |Y|=4                         k=10 T= 8 n=22 |H|=43758  tau*=   9/5 (1.8000, exact)  tau=9 [ILP exact]  tau/tau*=5.000  (tau-1)/k=0.800  n/k=2.200
+complete                           k= 4 T= 2 n= 6 |H|=   15  tau*=   3/2 (1.5000, exact)  tau=3 [ILP exact]  tau/tau*=2.000  (tau-1)/k=0.500  n/k=1.500
+complete                           k= 8 T= 5 n=13 |H|= 1287  tau*=  13/8 (1.6250, exact)  tau=6 [ILP exact]  tau/tau*=3.692  (tau-1)/k=0.625  n/k=1.625
+complete                           k=12 T= 8 n=20 |H|=125970  tau*=   5/3 (1.6667, exact)  tau=9 [ILP exact]  tau/tau*=5.400  (tau-1)/k=0.667  n/k=1.667
+SAT families skipped: AssertionError()

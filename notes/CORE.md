@@ -2077,3 +2077,119 @@ the two-step-robust test at kept replies 4 was not run.
 **Verdict: UNDECIDED. Candidate break not killed (float evidence for it), not exact. §43/§44's "next step" (i)-(ii) is half
 done: the outer level of one spoiler is exact, the inner level is not.**
 Files: `compute/core/p5_verify.py`, `spoil_exact_p5.py`, `logs/p5_verify_80_*.log`, `logs/p5_strong_*.log`, `logs/three_*.log`.
+
+=============================================================================================
+# Part XI — fractional relaxation and rounding (§80–§84)
+
+Brief: replace τ by τ*, settle the fractional question by LP duality, bound τ/τ*, combine. Code:
+`compute/core10/frac_gap.py`, `compute/core10/sat_rand.py`; logs `compute/core10/logs/frac_gap.log`, `sat_rand.log`.
+Families of k-sets ("edges") with the (7,2)-property: every 7 members have a 2-point transversal.
+**Outcome. The route is dead, for a structural reason. For (7,2)-families τ* is always o(k), in fact O(k^{1/3}), and it is
+O(1) in the core window, so the relaxation forgets the whole question. The gap τ/τ* is Θ(k) on exactly the families that
+matter, and "rounding" is the original problem with nothing removed (§82–§83).**
+
+## 80. The fractional problem, and its answer [proved by hand]
+
+Define f*(k,7) = sup τ*(H) over (7,2)-families of k-sets, and f*_frac(k,7) the same sup over families in which every 7
+members have τ* <= 2. This is a weaker hypothesis, since τ* <= τ.
+**80.1 Theorem F.** For every family of k-sets with at least 7 members in which every 7 members have τ* <= 2 (in
+particular every (7,2)-family), τ*(H) <= (35k)^{1/3}. Hence f*(k,7) <= f*_frac(k,7) <= (35k)^{1/3} = o(k).
+*Proof (dual with 7-member weightings).* By LP duality τ* = ν* = max Σ w_F over w >= 0 with Σ_{F∋x} w_F <= 1 for all x.
+Take an optimal w, put W = Σ w_F, and draw 7 members i.i.d. from w/W. Put p_x = P(sample ∋ x) = (Σ_{F∋x} w_F)/W. Then
+p_x <= 1/W and Σ_x p_x = Σ_F w_F|F|/W = k. The sampled multiset uses at most 7 distinct members, and these lie in some
+7 members, so it has a fractional cover of total 2 (τ* is monotone, and repeats do not change τ*). If every point lay
+in at most 3 of the 7 slots, weight 1/3 on every slot would be a fractional matching of value 7/3 > 2. So almost surely
+some point lies in >= 4 slots, and 1 <= Σ_x C(7,4) p_x^4 <= 35 (max p)^3 Σ p_x <= 35k/W^3. ∎
+**80.2 Lower bound and the extremal example [proved by hand, exact at finite k].** Let H be all k-subsets of [n] with
+n < 7k/4 (so also n < 2k). Then H is a (7,2)-family. Seven co-edges (size c = n - k) covering all pairs would need every
+point in >= 3 of them: a point in at most 2 co-edges K_i, K_j needs K_i ∪ K_j = V, which is impossible since 2c < n.
+That forces 7c >= 3n, i.e. n >= 7k/4. Here τ = n - k + 1 ≈ 3k/4 and τ* = n/k < 7/4 (uniform weight 1/k; the matching
+side follows by symmetry). So f*(k,7) ∈ [7/4 - o(1), (35k)^{1/3}]. The exact order of f* is open and does not matter
+(§82). The 3k/4 example itself has τ* < 7/4.
+**80.3 Answer to (1).** f*(k,7) = (3/4 + o(1))k is FALSE: f*(k,7) = O(k^{1/3}). The fractional analogue is not a
+weakening of the question but a different, easy question. τ* cannot see the constant 3/4.
+**80.4 Confined setting [proved by hand].** If all edges lie in V with |V| = Nk, then τ* <= N (weight 1/k per point).
+In the core window 3t - 1/2 < N < 3 - t this gives τ* < 9/4, while τ > T = tk. So the dual (7-member weighting) of
+80.1 is vacuous there: W is already bounded by N long before the sampling bound bites.
+
+## 81. The integrality gap [proved by hand; literature as tagged]
+
+**81.1** For any (7,2)-family with τ >= εk: τ/τ* >= εk/(35k)^{1/3} = Ω(k^{2/3}) [80.1]. In the core window,
+τ/τ* > tk/N > tk/(3 - t) ≈ 0.33k [80.4]. For the pool family (all k-subsets of k + T points, pool Y unused) τ = T + 1
+and τ* = 1 + t, so the gap is about tk/(1 + t) ≈ 0.43k. For the complete family of 80.2 the gap is about 3k/7.
+**So the gap is never 1 + o(1) on any family relevant to the question; it is linear in k.** The brief's premise
+"gap = 1 + o(1) in the window" is false.
+**81.2 ν <= 2 [proved by hand].** Three pairwise disjoint members cannot be hit by 2 points, so a (7,2)-family with at
+least 7 members has ν <= 2. Füredi-type bounds τ* <= (k - 1 + 1/ν)ν [literature, from memory; not re-checked] then give
+only τ* = O(k), which is weaker than 80.1.
+**81.3 Ding–Seymour–Winkler** (Combinatorica 14 (1994) 23–34) [literature: bibliographic data checked; the statement is
+from memory and a secondary citation, not checked against the paper]. They bound τ by a function of ν and λ only,
+independent of k (λ = the largest set of points every two of which are separated by an edge meeting the set in exactly
+those two points). With ν <= 2 and τ ≈ 3k/4, this forces λ → ∞ with k. It says nothing about the constant. Dead for
+this question.
+**81.4 (p,q)/Alon–Kleitman shape [literature, checked at abstract level only: Alon–Kalai–Matoušek–Meshulam, Adv. Appl.
+Math. 29 (2002) 79–101, an abstract (p,q) theorem from a fractional Helly property].** The (7,2)-property implies the
+(7,4) property "some 4 of every 7 share a point", which is what 80.1 uses; this IS the fractional-Helly step. The second
+Alon–Kleitman step is ε-nets: τ <= C·d·τ*·log τ*, with d the VC dimension (Haussler–Welzl [literature, from memory]).
+Given the ε-net theorem this yields τ = O(d·k^{1/3}·log k) in general and τ = O(d) in the window [proved by hand].
+Since d <= k always, the bound is non-trivial only for d = o(k^{2/3}/log k), and it gives at best τ = O(k) bounds with
+unspecified constants. It can show "small VC dimension ⟹ τ = o(k)" but never the constant 3/4. This is consistent with
+S+ (§39.4): in the window a family with τ > T must have VC dimension linear in k [heuristic as stated; the ε-net
+constant is not computed]. Dead for the constant.
+
+## 82. Combining: which half is the difficulty [proved by hand]
+
+The hoped-for chain τ <= (gap)·τ* <= (1 + o(1))·(3/4 + o(1))k fails at both links, but asymmetrically:
+- the fractional link is TRUE in a much stronger form (τ* = O(k^{1/3})) and costs nothing;
+- the gap link is false as stated (81.1): it has to carry a factor Θ(k), not 1 + o(1).
+So the whole difficulty is the rounding half, in the exact form
+**(R)** for every (7,2)-family H of k-sets, τ(H) <= (3/4 + o(1))k, where τ*(H) <= (35k)^{1/3} is free (and τ* <= N if
+H is confined).
+In the confined window (|V| = Nk, 3t - 1/2 < N < 3 - t), (R) says word for word that CP has no counterexample (§33(1)).
+The hypothesis τ* <= N holds automatically for every family on V, so (R) adds nothing to CP there. The relaxation
+removes no case: rounding = CP.
+
+## 83. Why no LP relaxation of this kind can help [first two items proved; third heuristic]
+
+- The hypothesis of CP (T-covering, τ > T = tk) has no fractional counterpart in the window: τ* > T is impossible
+  (τ* <= N < 9/4 < tk for k >= 3). The relaxed hypothesis is empty. [proved by hand]
+- The "7-member dual weighting" with the full (7,2) event, P_μ(seven i.i.d. members are 2-coverable) = 1 for every
+  distribution μ on H, is equivalent to the (7,2)-property itself: P < 1 iff some bad seven exists, since a full-support
+  μ samples it with positive probability. So the distributional form of the dual is exact, not a relaxation.
+  [proved by hand]
+- Between these two extremes the natural lifts are hierarchies (Sherali–Adams/Lasserre) of the hitting-set LP. For the
+  complete k-uniform family on n points the gap (n - k + 1)k/n is a pure symmetry gap, and certifying τ > T should need
+  lifts of degree comparable to T, i.e. about linear in k rounds [heuristic; not checked against the literature]. Any
+  fractional object that sees the constant 3/4 must look at 7-tuples of members jointly. That is the Fano/pencil
+  certificate machinery of §1–§5, not τ*.
+
+## 84. Numerics [computed exact: τ* by rational primal/dual certificates, τ by ILP (HiGHS)]
+
+`py compute/core10/frac_gap.py` (< 2 min) and `py compute/core10/sat_rand.py`. τ* is exact: a rational fractional
+cover and a rational fractional matching with equal totals are checked in Fractions.
+
+| family | k | T | n | members | τ* | τ | τ/τ* | n/k |
+|---|---|---|---|---|---|---|---|---|
+| fam_8_6_15_rev (core9, co-edges → edges) | 8 | 6 | 15 | 2352 | 13/7 | 7 | 3.77 | 1.875 |
+| SAT rand R=3 seed 1 (decide_family.build) | 8 | 6 | 15 | 2348 | 15/8 | 7 | 3.73 | 1.875 |
+| pool on k + T = 7 points | 4 | 3 | 8 | 35 | 7/4 | 4 | 2.29 | 2.000 |
+| pool | 6 | 5 | 13 | 462 | 11/6 | 6 | 3.27 | 2.167 |
+| pool | 8 | 6 | 17 | 3003 | 7/4 | 7 | 4.00 | 2.125 |
+| pool | 8 | 7 | 18 | 6435 | 15/8 | 8 | 4.27 | 2.250 |
+| pool | 10 | 8 | 22 | 43758 | 9/5 | 9 | 5.00 | 2.200 |
+| complete on n < 7k/4 (80.2) | 8 | 5 | 13 | 1287 | 13/8 | 6 | 3.69 | 1.625 |
+| complete on n < 7k/4 (80.2) | 12 | 8 | 20 | 125970 | 5/3 | 9 | 5.40 | 1.667 |
+
+At (8,6,15) the SAT instance of decide_family.build is unsatisfiable for R=2 seeds 1–2 and for R=3 seeds 2–3, so those
+give no family. Readings: every family has τ* in [1.62, 1.88]. For pool families τ* = (k + T)/k exactly and for complete
+families τ* = n/k; the core9 family is the only one below its uniform weight (13/7 < n/k = 15/8). Meanwhile τ = T + 1,
+roughly 3k/4, and the gap grows linearly in k (2.3 → 5.4 as k goes 4 → 12), as 81.1 predicts. The (7,2)-status of the
+core9 and SAT families is not decided here (cover_ilp: best cover 8, bound 7). It does not matter: either way τ* is
+O(1) for every family on 15 points.
+
+Self-check (§80–§84). 80.1: Σ p_x = k uses uniformity; p_x <= 1/W is the matching constraint; the 7/3 matching uses
+only that each point is in <= 3 slots. 80.2: the counts 2c < n and 7c < 3n are exact at finite k. 81.1 is arithmetic on
+80.1 and 80.4. The literature items in 81.2–81.4 are tagged with what was checked: bibliography and abstracts only, and
+DSW's exact bound and the ε-net constants were not checked against the papers. The §84 numbers are from the logs.
+**Dead routes (this part):** fractional relaxation by τ* (80.3, 82); integrality-gap bounds of DSW/Füredi/ε-net type
+for the constant (81.2–81.4); any LP relaxation of the T-covering hypothesis in the window (83).

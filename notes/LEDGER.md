@@ -37,6 +37,7 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 | One-bit rule has a good seven | CORE §44 | EXACT (89 instances) |
 | Junta approximation in measure (Dinur–Friedgut, Keller–Lifshitz); spread lemmas (ALWZ, FKNP) | CORE §50–§53 | DEAD (proved: the families are at most n/c < 2.28-spread; junta theorems need k < n/C) |
 | Kupavskii–Zakharov decomposition into head classes + remainder (H_τ) | CORE §54 | HAND; restates the hash-selector problem, not a reduction |
+| Fractional relaxation + rounding (τ* <= (35k)^{1/3} for (7,2)-families; rounding in the window is CP itself; Alon–Kleitman ε-net route can't give 3/4) | CORE §80–§84 | DEAD (proved) |
 | Kernel lemma; regularity reduction; c(N)·k cell bound; bounded-request game | CORE §34–35, §39, §45, Parts V–VII | DEAD |
 
 ## Petal side (Barrier F)
