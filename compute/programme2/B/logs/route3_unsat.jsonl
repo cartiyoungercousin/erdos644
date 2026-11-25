@@ -1,0 +1,2 @@
+{"n": 14, "k": 6, "M": 7, "cells": 12, "slack": 14, "cols": [3, 13, 121, 0, 75, 109, 124, 21, 99, 109, 40, 99, 123, 53], "alpha": 118, "W": 10, "H01": true, "9prime": false, "B1": false, "B1fail": "|X0|=4 > u=1", "fano": "UNSAT", "sat_sec": 0.0}
+{"n": 14, "k": 6, "M": 8, "cells": 14, "slack": 14, "cols": [253, 231, 123, 189, 126, 142, 167, 206, 128, 97, 120, 45, 29, 156], "alpha": 112, "W": 14, "H01": true, "9prime": false, "B1": false, "B1fail": "m<1", "fano": "UNSAT", "sat_sec": 0.1}

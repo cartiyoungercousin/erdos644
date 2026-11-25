@@ -1,0 +1,120 @@
+{"n": 14, "k": 5, "M": 7, "cells": 12, "slack": 21, "W": null, "H01": false}
+{"n": 24, "k": 11, "M": 4, "cells": 13, "slack": 19, "W": 5, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.0}
+{"n": 17, "k": 7, "M": 5, "cells": 14, "slack": 19, "W": 5, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.0}
+{"n": 25, "k": 13, "M": 8, "cells": 24, "slack": 9, "W": 7, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 1.4}
+{"n": 17, "k": 9, "M": 4, "cells": 11, "slack": 5, "W": 5, "H01": true, "9prime": false, "B1": false, "B1fail": "|X0|=4 > u=0", "fano": "SAT", "sat_sec": 0.0}
+{"n": 19, "k": 10, "M": 4, "cells": 12, "slack": 6, "W": 6, "H01": true, "9prime": false, "B1": false, "B1fail": "|X0|=3 > u=0", "fano": "SAT", "sat_sec": 0.3}
+{"n": 15, "k": 7, "M": 6, "cells": 14, "slack": 11, "W": 9, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.0}
+{"n": 23, "k": 13, "M": 8, "cells": 23, "slack": 1, "W": 7, "H01": false}
+{"n": 19, "k": 8, "M": 5, "cells": 15, "slack": 20, "W": 6, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.0}
+{"n": 18, "k": 10, "M": 5, "cells": 10, "slack": 2, "W": 8, "H01": false}
+{"n": 19, "k": 8, "M": 5, "cells": 16, "slack": 20, "W": 6, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.0}
+{"n": 16, "k": 6, "M": 5, "cells": 14, "slack": 22, "W": 6, "H01": true, "9prime": false, "B1": false, "B1fail": "m<1", "fano": "SAT", "sat_sec": 0.0}
+{"n": 14, "k": 8, "M": 7, "cells": 14, "slack": 0, "W": 10, "H01": false}
+{"n": 20, "k": 10, "M": 5, "cells": 14, "slack": 10, "W": 8, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.2}
+{"n": 24, "k": 11, "M": 5, "cells": 17, "slack": 19, "W": 7, "H01": true, "9prime": false, "B1": false, "B1fail": "m<1", "fano": "SAT", "sat_sec": 0.0}
+{"n": 17, "k": 8, "M": 8, "cells": 16, "slack": 12, "W": 8, "H01": true, "9prime": false, "B1": false, "B1fail": "|X0|=5 > u=1", "fano": "SAT", "sat_sec": 0.1}
+{"n": 24, "k": 12, "M": 7, "cells": 23, "slack": 12, "W": 10, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.2}
+{"n": 24, "k": 12, "M": 6, "cells": 22, "slack": 12, "W": 6, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.3}
+{"n": 22, "k": 10, "M": 5, "cells": 16, "slack": 18, "W": 6, "H01": true, "9prime": false, "B1": false, "B1fail": "filler", "fano": "SAT", "sat_sec": 0.0}
+{"n": 21, "k": 12, "M": 6, "cells": 19, "slack": 0, "W": 6, "H01": false}
+{"n": 26, "k": 12, "M": 7, "cells": 20, "slack": 20, "W": 8, "H01": true, "9prime": false, "B1": false, "B1fail": "|X0|=6 > u=3", "fano": "SAT", "sat_sec": 0.2}
+{"n": 24, "k": 11, "M": 7, "cells": 21, "slack": 19, "W": 9, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.1}
+{"n": 15, "k": 7, "M": 4, "cells": 11, "slack": 11, "W": 7, "H01": true, "9prime": false, "B1": false, "B1fail": "|X0|=2 > u=1", "fano": "SAT", "sat_sec": 0.0}
+{"n": 21, "k": 10, "M": 6, "cells": 14, "slack": 14, "W": 12, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.3}
+{"n": 22, "k": 10, "M": 8, "cells": 22, "slack": 18, "W": null, "H01": false}
+{"n": 16, "k": 8, "M": 5, "cells": 12, "slack": 8, "W": 10, "H01": false}
+{"n": 26, "k": 12, "M": 7, "cells": 24, "slack": 20, "W": 6, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.2}
+{"n": 26, "k": 13, "M": 4, "cells": 14, "slack": 13, "W": 7, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.1}
+{"n": 20, "k": 8, "M": 4, "cells": 12, "slack": 24, "W": 6, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.0}
+{"n": 19, "k": 8, "M": 5, "cells": 16, "slack": 20, "W": 6, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.0}
+{"n": 24, "k": 12, "M": 8, "cells": 24, "slack": 12, "W": 8, "H01": true, "9prime": false, "B1": false, "B1fail": "|X0|=6 > u=1", "fano": "SAT", "sat_sec": 0.6}
+{"n": 17, "k": 9, "M": 6, "cells": 14, "slack": 5, "W": 9, "H01": false}
+{"n": 14, "k": 8, "M": 4, "cells": 10, "slack": 0, "W": 6, "H01": false}
+{"n": 21, "k": 12, "M": 8, "cells": 21, "slack": 0, "W": 10, "H01": false}
+{"n": 23, "k": 13, "M": 5, "cells": 18, "slack": 1, "W": 7, "H01": false}
+{"n": 20, "k": 9, "M": 4, "cells": 11, "slack": 17, "W": 7, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.0}
+{"n": 23, "k": 13, "M": 6, "cells": 20, "slack": 1, "W": 7, "H01": false}
+{"n": 22, "k": 11, "M": 4, "cells": 13, "slack": 11, "W": 3, "H01": true, "9prime": false, "B1": false, "B1fail": "|X0|=5 > u=2", "fano": "SAT", "sat_sec": 0.0}
+{"n": 23, "k": 10, "M": 4, "cells": 12, "slack": 22, "W": 6, "H01": true, "9prime": false, "B1": false, "B1fail": "filler", "fano": "SAT", "sat_sec": 0.0}
+{"n": 25, "k": 11, "M": 8, "cells": 22, "slack": 23, "W": 11, "H01": true, "9prime": false, "B1": false, "B1fail": "|X0|=6 > u=3", "fano": "SAT", "sat_sec": 0.3}
+{"n": 26, "k": 14, "M": 6, "cells": 23, "slack": 6, "W": 6, "H01": true, "9prime": false, "B1": false, "B1fail": "|X0|=4 > u=0", "fano": "SAT", "sat_sec": 3.3}
+{"n": 26, "k": 12, "M": 5, "cells": 16, "slack": 20, "W": 6, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.0}
+{"n": 25, "k": 13, "M": 7, "cells": 23, "slack": 9, "W": 9, "H01": true, "9prime": false, "B1": false, "B1fail": "|X0|=2 > u=0", "fano": "SAT", "sat_sec": 2.5}
+{"n": 23, "k": 12, "M": 6, "cells": 21, "slack": 8, "W": 6, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 1.1}
+{"n": 19, "k": 9, "M": 6, "cells": 17, "slack": 13, "W": 9, "H01": true, "9prime": false, "B1": false, "B1fail": "|X0|=4 > u=1", "fano": "SAT", "sat_sec": 0.0}
+{"n": 20, "k": 11, "M": 8, "cells": 20, "slack": 3, "W": 11, "H01": false}
+{"n": 24, "k": 12, "M": 6, "cells": 22, "slack": 12, "W": 8, "H01": true, "9prime": false, "B1": false, "B1fail": "|X0|=2 > u=1", "fano": "SAT", "sat_sec": 0.2}
+{"n": 23, "k": 13, "M": 4, "cells": 12, "slack": 1, "W": 7, "H01": false}
+{"n": 23, "k": 12, "M": 5, "cells": 16, "slack": 8, "W": 6, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 1.2}
+{"n": 22, "k": 10, "M": 7, "cells": 20, "slack": 18, "W": 8, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.1}
+{"n": 19, "k": 8, "M": 4, "cells": 12, "slack": 20, "W": 6, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.0}
+{"n": 18, "k": 9, "M": 7, "cells": 17, "slack": 9, "W": 7, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.1}
+{"n": 22, "k": 10, "M": 6, "cells": 19, "slack": 18, "W": 8, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.1}
+{"n": 14, "k": 7, "M": 6, "cells": 12, "slack": 7, "W": null, "H01": false}
+{"n": 26, "k": 13, "M": 6, "cells": 22, "slack": 13, "W": 9, "H01": true, "9prime": false, "B1": false, "B1fail": "|X0|=5 > u=1", "fano": "SAT", "sat_sec": 0.2}
+{"n": 22, "k": 11, "M": 8, "cells": 21, "slack": 11, "W": 9, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 1.2}
+{"n": 18, "k": 10, "M": 5, "cells": 14, "slack": 2, "W": 6, "H01": false}
+{"n": 24, "k": 11, "M": 4, "cells": 10, "slack": 19, "W": 9, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.0}
+{"n": 20, "k": 10, "M": 8, "cells": 20, "slack": 10, "W": 10, "H01": true, "9prime": false, "B1": false, "B1fail": "|X0|=4 > u=0", "fano": "SAT", "sat_sec": 0.9}
+{"n": 17, "k": 8, "M": 4, "cells": 11, "slack": 12, "W": 6, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.0}
+{"n": 24, "k": 13, "M": 8, "cells": 22, "slack": 5, "W": 9, "H01": false}
+{"n": 15, "k": 7, "M": 5, "cells": 12, "slack": 11, "W": 7, "H01": true, "9prime": false, "B1": false, "B1fail": "|X0|=4 > u=1", "fano": "SAT", "sat_sec": 0.0}
+{"n": 16, "k": 9, "M": 8, "cells": 16, "slack": 1, "W": null, "H01": false}
+{"n": 26, "k": 13, "M": 8, "cells": 23, "slack": 13, "W": 7, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.7}
+{"n": 14, "k": 8, "M": 5, "cells": 11, "slack": 0, "W": null, "H01": false}
+{"n": 18, "k": 10, "M": 6, "cells": 16, "slack": 2, "W": 8, "H01": false}
+{"n": 25, "k": 14, "M": 7, "cells": 25, "slack": 2, "W": 6, "H01": false}
+{"n": 23, "k": 11, "M": 6, "cells": 19, "slack": 15, "W": 7, "H01": true, "9prime": false, "B1": false, "B1fail": "|X0|=4 > u=2", "fano": "SAT", "sat_sec": 0.2}
+{"n": 18, "k": 7, "M": 8, "cells": 17, "slack": 23, "W": 13, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.1}
+{"n": 17, "k": 7, "M": 5, "cells": 11, "slack": 19, "W": 9, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.0}
+{"n": 24, "k": 12, "M": 5, "cells": 16, "slack": 12, "W": 6, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.1}
+{"n": 14, "k": 6, "M": 4, "cells": 9, "slack": 14, "W": 8, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.0}
+{"n": 19, "k": 10, "M": 6, "cells": 17, "slack": 6, "W": 12, "H01": false}
+{"n": 15, "k": 7, "M": 5, "cells": 13, "slack": 11, "W": 7, "H01": true, "9prime": false, "B1": false, "B1fail": "|X0|=4 > u=1", "fano": "SAT", "sat_sec": 0.0}
+{"n": 23, "k": 10, "M": 5, "cells": 15, "slack": 22, "W": 6, "H01": true, "9prime": false, "B1": false, "B1fail": "filler", "fano": "SAT", "sat_sec": 0.0}
+{"n": 14, "k": 6, "M": 6, "cells": 14, "slack": 14, "W": null, "H01": false}
+{"n": 21, "k": 10, "M": 7, "cells": 19, "slack": 14, "W": 10, "H01": true, "9prime": false, "B1": false, "B1fail": "|X0|=5 > u=1", "fano": "SAT", "sat_sec": 0.2}
+{"n": 24, "k": 13, "M": 5, "cells": 19, "slack": 5, "W": 7, "H01": false}
+{"n": 24, "k": 12, "M": 8, "cells": 23, "slack": 12, "W": 8, "H01": true, "9prime": false, "B1": false, "B1fail": "|X0|=4 > u=1", "fano": "SAT", "sat_sec": 0.2}
+{"n": 19, "k": 10, "M": 5, "cells": 15, "slack": 6, "W": 6, "H01": true, "9prime": false, "B1": false, "B1fail": "|X0|=1 > u=0", "fano": "SAT", "sat_sec": 0.1}
+{"n": 16, "k": 7, "M": 7, "cells": 14, "slack": 15, "W": 9, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.0}
+{"n": 17, "k": 8, "M": 7, "cells": 17, "slack": 12, "W": 10, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.3}
+{"n": 26, "k": 14, "M": 4, "cells": 13, "slack": 6, "W": 6, "H01": true, "9prime": false, "B1": false, "B1fail": "step1", "fano": "SAT", "sat_sec": 3.7}
+{"n": 17, "k": 7, "M": 8, "cells": 17, "slack": 19, "W": 11, "H01": true, "9prime": false, "B1": false, "B1fail": "|X0|=6 > u=2", "fano": "SAT", "sat_sec": 0.1}
+{"n": 14, "k": 5, "M": 4, "cells": 10, "slack": 21, "W": 5, "H01": true, "9prime": false, "B1": false, "B1fail": "filler", "fano": "SAT", "sat_sec": 0.0}
+{"n": 19, "k": 10, "M": 6, "cells": 18, "slack": 6, "W": 6, "H01": true, "9prime": false, "B1": false, "B1fail": "|X0|=3 > u=0", "fano": "SAT", "sat_sec": 0.4}
+{"n": 20, "k": 8, "M": 6, "cells": 16, "slack": 24, "W": 8, "H01": true, "9prime": false, "B1": false, "B1fail": "filler", "fano": "SAT", "sat_sec": 0.0}
+{"n": 19, "k": 9, "M": 6, "cells": 18, "slack": 13, "W": 9, "H01": true, "9prime": false, "B1": false, "B1fail": "|X0|=6 > u=1", "fano": "SAT", "sat_sec": 0.1}
+{"n": 16, "k": 9, "M": 8, "cells": 16, "slack": 1, "W": 13, "H01": false}
+{"n": 16, "k": 8, "M": 5, "cells": 15, "slack": 8, "W": 6, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.1}
+{"n": 17, "k": 7, "M": 8, "cells": 15, "slack": 19, "W": 11, "H01": true, "9prime": false, "B1": false, "B1fail": "|X0|=6 > u=2", "fano": "SAT", "sat_sec": 0.1}
+{"n": 25, "k": 13, "M": 6, "cells": 22, "slack": 9, "W": 7, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.6}
+{"n": 19, "k": 9, "M": 8, "cells": 19, "slack": 13, "W": 11, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.6}
+{"n": 20, "k": 9, "M": 7, "cells": 15, "slack": 17, "W": 9, "H01": true, "9prime": false, "B1": false, "B1fail": "|X0|=5 > u=2", "fano": "SAT", "sat_sec": 0.1}
+{"n": 14, "k": 7, "M": 8, "cells": 14, "slack": 7, "W": 9, "H01": false}
+{"n": 16, "k": 8, "M": 4, "cells": 10, "slack": 8, "W": 6, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.0}
+{"n": 21, "k": 10, "M": 7, "cells": 20, "slack": 14, "W": 6, "H01": true, "9prime": false, "B1": false, "B1fail": "|X0|=7 > u=2", "fano": "SAT", "sat_sec": 0.1}
+{"n": 18, "k": 7, "M": 8, "cells": 17, "slack": 23, "W": null, "H01": false}
+{"n": 22, "k": 11, "M": 8, "cells": 22, "slack": 11, "W": 9, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.6}
+{"n": 22, "k": 12, "M": 6, "cells": 17, "slack": 4, "W": 10, "H01": false}
+{"n": 14, "k": 8, "M": 8, "cells": 14, "slack": 0, "W": null, "H01": false}
+{"n": 18, "k": 7, "M": 8, "cells": 18, "slack": 23, "W": 11, "H01": true, "9prime": false, "B1": false, "B1fail": "|X0|=7 > u=3", "fano": "SAT", "sat_sec": 0.0}
+{"n": 16, "k": 7, "M": 7, "cells": 15, "slack": 15, "W": 11, "H01": true, "9prime": false, "B1": false, "B1fail": "|X0|=5 > u=1", "fano": "SAT", "sat_sec": 0.0}
+{"n": 16, "k": 8, "M": 7, "cells": 15, "slack": 8, "W": 10, "H01": false}
+{"n": 17, "k": 9, "M": 7, "cells": 16, "slack": 5, "W": 11, "H01": false}
+{"n": 17, "k": 7, "M": 8, "cells": 16, "slack": 19, "W": 13, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.1}
+{"n": 16, "k": 6, "M": 5, "cells": 13, "slack": 22, "W": 8, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.0}
+{"n": 22, "k": 11, "M": 4, "cells": 12, "slack": 11, "W": 9, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.1}
+{"n": 24, "k": 13, "M": 7, "cells": 22, "slack": 5, "W": 9, "H01": false}
+{"n": 20, "k": 8, "M": 7, "cells": 19, "slack": 24, "W": 6, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.0}
+{"n": 24, "k": 13, "M": 5, "cells": 18, "slack": 5, "W": 9, "H01": false}
+{"n": 14, "k": 7, "M": 6, "cells": 14, "slack": 7, "W": 9, "H01": false}
+{"n": 18, "k": 8, "M": 5, "cells": 14, "slack": 16, "W": 6, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.0}
+{"n": 14, "k": 6, "M": 8, "cells": 13, "slack": 14, "W": null, "H01": false}
+{"n": 25, "k": 12, "M": 5, "cells": 16, "slack": 16, "W": 6, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.1}
+{"n": 15, "k": 8, "M": 8, "cells": 15, "slack": 4, "W": null, "H01": false}
+{"n": 25, "k": 14, "M": 8, "cells": 23, "slack": 2, "W": 8, "H01": false}
+{"n": 14, "k": 7, "M": 8, "cells": 14, "slack": 7, "W": null, "H01": false}
+{"n": 21, "k": 12, "M": 4, "cells": 13, "slack": 0, "W": 6, "H01": false}
+{"n": 18, "k": 7, "M": 4, "cells": 11, "slack": 23, "W": 9, "H01": true, "9prime": false, "B1": false, "B1fail": "fixer", "fano": "SAT", "sat_sec": 0.0}

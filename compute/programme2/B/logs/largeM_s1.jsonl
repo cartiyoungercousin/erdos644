@@ -1,0 +1,6 @@
+{"M": 16, "k": 200, "n": 366, "cells": 364, "w": [2, 4, 4], "B1": true, "B1_fail": null, "m_min": 34, "B1m": true, "B1m_fail": null, "sec": 3.8}
+{"M": 20, "k": 200, "n": 366, "cells": 366, "w": [4, 4, 4], "B1": true, "B1_fail": null, "m_min": 47, "B1m": true, "B1m_fail": null, "sec": 9.8}
+{"M": 24, "k": 200, "n": 366, "cells": 366, "w": [4, 4, 4], "B1": true, "B1_fail": null, "m_min": 47, "B1m": true, "B1m_fail": null, "sec": 12.0}
+{"M": 16, "k": 200, "n": 366, "cells": 365, "w": [4, 4, 4], "B1": true, "B1_fail": null, "m_min": 47, "B1m": true, "B1m_fail": null, "sec": 3.0}
+{"M": 20, "k": 200, "n": 366, "cells": 366, "w": [4, 4, 4], "B1": true, "B1_fail": null, "m_min": 47, "B1m": true, "B1m_fail": null, "sec": 9.9}
+{"M": 24, "k": 200, "n": 366, "cells": 366, "w": [4, 4, 4], "B1": true, "B1_fail": null, "m_min": 47, "B1m": true, "B1m_fail": null, "sec": 10.1}

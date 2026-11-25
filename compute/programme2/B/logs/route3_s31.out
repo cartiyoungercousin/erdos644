@@ -1,0 +1,120 @@
+1 {'n': 14, 'k': 5, 'M': 7, 'cells': 12, 'slack': 21, 'W': None, 'H01': False}
+2 {'n': 24, 'k': 11, 'M': 4, 'cells': 13, 'slack': 19, 'W': 5, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.0}
+3 {'n': 17, 'k': 7, 'M': 5, 'cells': 14, 'slack': 19, 'W': 5, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.0}
+4 {'n': 25, 'k': 13, 'M': 8, 'cells': 24, 'slack': 9, 'W': 7, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 1.4}
+5 {'n': 17, 'k': 9, 'M': 4, 'cells': 11, 'slack': 5, 'W': 5, 'H01': True, '9prime': False, 'B1': False, 'B1fail': '|X0|=4 > u=0', 'fano': 'SAT', 'sat_sec': 0.0}
+6 {'n': 19, 'k': 10, 'M': 4, 'cells': 12, 'slack': 6, 'W': 6, 'H01': True, '9prime': False, 'B1': False, 'B1fail': '|X0|=3 > u=0', 'fano': 'SAT', 'sat_sec': 0.3}
+7 {'n': 15, 'k': 7, 'M': 6, 'cells': 14, 'slack': 11, 'W': 9, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.0}
+8 {'n': 23, 'k': 13, 'M': 8, 'cells': 23, 'slack': 1, 'W': 7, 'H01': False}
+9 {'n': 19, 'k': 8, 'M': 5, 'cells': 15, 'slack': 20, 'W': 6, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.0}
+10 {'n': 18, 'k': 10, 'M': 5, 'cells': 10, 'slack': 2, 'W': 8, 'H01': False}
+11 {'n': 19, 'k': 8, 'M': 5, 'cells': 16, 'slack': 20, 'W': 6, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.0}
+12 {'n': 16, 'k': 6, 'M': 5, 'cells': 14, 'slack': 22, 'W': 6, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'm<1', 'fano': 'SAT', 'sat_sec': 0.0}
+13 {'n': 14, 'k': 8, 'M': 7, 'cells': 14, 'slack': 0, 'W': 10, 'H01': False}
+14 {'n': 20, 'k': 10, 'M': 5, 'cells': 14, 'slack': 10, 'W': 8, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.2}
+15 {'n': 24, 'k': 11, 'M': 5, 'cells': 17, 'slack': 19, 'W': 7, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'm<1', 'fano': 'SAT', 'sat_sec': 0.0}
+16 {'n': 17, 'k': 8, 'M': 8, 'cells': 16, 'slack': 12, 'W': 8, 'H01': True, '9prime': False, 'B1': False, 'B1fail': '|X0|=5 > u=1', 'fano': 'SAT', 'sat_sec': 0.1}
+17 {'n': 24, 'k': 12, 'M': 7, 'cells': 23, 'slack': 12, 'W': 10, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.2}
+18 {'n': 24, 'k': 12, 'M': 6, 'cells': 22, 'slack': 12, 'W': 6, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.3}
+19 {'n': 22, 'k': 10, 'M': 5, 'cells': 16, 'slack': 18, 'W': 6, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'filler', 'fano': 'SAT', 'sat_sec': 0.0}
+20 {'n': 21, 'k': 12, 'M': 6, 'cells': 19, 'slack': 0, 'W': 6, 'H01': False}
+21 {'n': 26, 'k': 12, 'M': 7, 'cells': 20, 'slack': 20, 'W': 8, 'H01': True, '9prime': False, 'B1': False, 'B1fail': '|X0|=6 > u=3', 'fano': 'SAT', 'sat_sec': 0.2}
+22 {'n': 24, 'k': 11, 'M': 7, 'cells': 21, 'slack': 19, 'W': 9, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.1}
+23 {'n': 15, 'k': 7, 'M': 4, 'cells': 11, 'slack': 11, 'W': 7, 'H01': True, '9prime': False, 'B1': False, 'B1fail': '|X0|=2 > u=1', 'fano': 'SAT', 'sat_sec': 0.0}
+24 {'n': 21, 'k': 10, 'M': 6, 'cells': 14, 'slack': 14, 'W': 12, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.3}
+25 {'n': 22, 'k': 10, 'M': 8, 'cells': 22, 'slack': 18, 'W': None, 'H01': False}
+26 {'n': 16, 'k': 8, 'M': 5, 'cells': 12, 'slack': 8, 'W': 10, 'H01': False}
+27 {'n': 26, 'k': 12, 'M': 7, 'cells': 24, 'slack': 20, 'W': 6, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.2}
+28 {'n': 26, 'k': 13, 'M': 4, 'cells': 14, 'slack': 13, 'W': 7, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.1}
+29 {'n': 20, 'k': 8, 'M': 4, 'cells': 12, 'slack': 24, 'W': 6, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.0}
+30 {'n': 19, 'k': 8, 'M': 5, 'cells': 16, 'slack': 20, 'W': 6, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.0}
+31 {'n': 24, 'k': 12, 'M': 8, 'cells': 24, 'slack': 12, 'W': 8, 'H01': True, '9prime': False, 'B1': False, 'B1fail': '|X0|=6 > u=1', 'fano': 'SAT', 'sat_sec': 0.6}
+32 {'n': 17, 'k': 9, 'M': 6, 'cells': 14, 'slack': 5, 'W': 9, 'H01': False}
+33 {'n': 14, 'k': 8, 'M': 4, 'cells': 10, 'slack': 0, 'W': 6, 'H01': False}
+34 {'n': 21, 'k': 12, 'M': 8, 'cells': 21, 'slack': 0, 'W': 10, 'H01': False}
+35 {'n': 23, 'k': 13, 'M': 5, 'cells': 18, 'slack': 1, 'W': 7, 'H01': False}
+36 {'n': 20, 'k': 9, 'M': 4, 'cells': 11, 'slack': 17, 'W': 7, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.0}
+37 {'n': 23, 'k': 13, 'M': 6, 'cells': 20, 'slack': 1, 'W': 7, 'H01': False}
+38 {'n': 22, 'k': 11, 'M': 4, 'cells': 13, 'slack': 11, 'W': 3, 'H01': True, '9prime': False, 'B1': False, 'B1fail': '|X0|=5 > u=2', 'fano': 'SAT', 'sat_sec': 0.0}
+39 {'n': 23, 'k': 10, 'M': 4, 'cells': 12, 'slack': 22, 'W': 6, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'filler', 'fano': 'SAT', 'sat_sec': 0.0}
+40 {'n': 25, 'k': 11, 'M': 8, 'cells': 22, 'slack': 23, 'W': 11, 'H01': True, '9prime': False, 'B1': False, 'B1fail': '|X0|=6 > u=3', 'fano': 'SAT', 'sat_sec': 0.3}
+41 {'n': 26, 'k': 14, 'M': 6, 'cells': 23, 'slack': 6, 'W': 6, 'H01': True, '9prime': False, 'B1': False, 'B1fail': '|X0|=4 > u=0', 'fano': 'SAT', 'sat_sec': 3.3}
+42 {'n': 26, 'k': 12, 'M': 5, 'cells': 16, 'slack': 20, 'W': 6, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.0}
+43 {'n': 25, 'k': 13, 'M': 7, 'cells': 23, 'slack': 9, 'W': 9, 'H01': True, '9prime': False, 'B1': False, 'B1fail': '|X0|=2 > u=0', 'fano': 'SAT', 'sat_sec': 2.5}
+44 {'n': 23, 'k': 12, 'M': 6, 'cells': 21, 'slack': 8, 'W': 6, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 1.1}
+45 {'n': 19, 'k': 9, 'M': 6, 'cells': 17, 'slack': 13, 'W': 9, 'H01': True, '9prime': False, 'B1': False, 'B1fail': '|X0|=4 > u=1', 'fano': 'SAT', 'sat_sec': 0.0}
+46 {'n': 20, 'k': 11, 'M': 8, 'cells': 20, 'slack': 3, 'W': 11, 'H01': False}
+47 {'n': 24, 'k': 12, 'M': 6, 'cells': 22, 'slack': 12, 'W': 8, 'H01': True, '9prime': False, 'B1': False, 'B1fail': '|X0|=2 > u=1', 'fano': 'SAT', 'sat_sec': 0.2}
+48 {'n': 23, 'k': 13, 'M': 4, 'cells': 12, 'slack': 1, 'W': 7, 'H01': False}
+49 {'n': 23, 'k': 12, 'M': 5, 'cells': 16, 'slack': 8, 'W': 6, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 1.2}
+50 {'n': 22, 'k': 10, 'M': 7, 'cells': 20, 'slack': 18, 'W': 8, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.1}
+51 {'n': 19, 'k': 8, 'M': 4, 'cells': 12, 'slack': 20, 'W': 6, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.0}
+52 {'n': 18, 'k': 9, 'M': 7, 'cells': 17, 'slack': 9, 'W': 7, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.1}
+53 {'n': 22, 'k': 10, 'M': 6, 'cells': 19, 'slack': 18, 'W': 8, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.1}
+54 {'n': 14, 'k': 7, 'M': 6, 'cells': 12, 'slack': 7, 'W': None, 'H01': False}
+55 {'n': 26, 'k': 13, 'M': 6, 'cells': 22, 'slack': 13, 'W': 9, 'H01': True, '9prime': False, 'B1': False, 'B1fail': '|X0|=5 > u=1', 'fano': 'SAT', 'sat_sec': 0.2}
+56 {'n': 22, 'k': 11, 'M': 8, 'cells': 21, 'slack': 11, 'W': 9, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 1.2}
+57 {'n': 18, 'k': 10, 'M': 5, 'cells': 14, 'slack': 2, 'W': 6, 'H01': False}
+58 {'n': 24, 'k': 11, 'M': 4, 'cells': 10, 'slack': 19, 'W': 9, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.0}
+59 {'n': 20, 'k': 10, 'M': 8, 'cells': 20, 'slack': 10, 'W': 10, 'H01': True, '9prime': False, 'B1': False, 'B1fail': '|X0|=4 > u=0', 'fano': 'SAT', 'sat_sec': 0.9}
+60 {'n': 17, 'k': 8, 'M': 4, 'cells': 11, 'slack': 12, 'W': 6, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.0}
+61 {'n': 24, 'k': 13, 'M': 8, 'cells': 22, 'slack': 5, 'W': 9, 'H01': False}
+62 {'n': 15, 'k': 7, 'M': 5, 'cells': 12, 'slack': 11, 'W': 7, 'H01': True, '9prime': False, 'B1': False, 'B1fail': '|X0|=4 > u=1', 'fano': 'SAT', 'sat_sec': 0.0}
+63 {'n': 16, 'k': 9, 'M': 8, 'cells': 16, 'slack': 1, 'W': None, 'H01': False}
+64 {'n': 26, 'k': 13, 'M': 8, 'cells': 23, 'slack': 13, 'W': 7, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.7}
+65 {'n': 14, 'k': 8, 'M': 5, 'cells': 11, 'slack': 0, 'W': None, 'H01': False}
+66 {'n': 18, 'k': 10, 'M': 6, 'cells': 16, 'slack': 2, 'W': 8, 'H01': False}
+67 {'n': 25, 'k': 14, 'M': 7, 'cells': 25, 'slack': 2, 'W': 6, 'H01': False}
+68 {'n': 23, 'k': 11, 'M': 6, 'cells': 19, 'slack': 15, 'W': 7, 'H01': True, '9prime': False, 'B1': False, 'B1fail': '|X0|=4 > u=2', 'fano': 'SAT', 'sat_sec': 0.2}
+69 {'n': 18, 'k': 7, 'M': 8, 'cells': 17, 'slack': 23, 'W': 13, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.1}
+70 {'n': 17, 'k': 7, 'M': 5, 'cells': 11, 'slack': 19, 'W': 9, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.0}
+71 {'n': 24, 'k': 12, 'M': 5, 'cells': 16, 'slack': 12, 'W': 6, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.1}
+72 {'n': 14, 'k': 6, 'M': 4, 'cells': 9, 'slack': 14, 'W': 8, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.0}
+73 {'n': 19, 'k': 10, 'M': 6, 'cells': 17, 'slack': 6, 'W': 12, 'H01': False}
+74 {'n': 15, 'k': 7, 'M': 5, 'cells': 13, 'slack': 11, 'W': 7, 'H01': True, '9prime': False, 'B1': False, 'B1fail': '|X0|=4 > u=1', 'fano': 'SAT', 'sat_sec': 0.0}
+75 {'n': 23, 'k': 10, 'M': 5, 'cells': 15, 'slack': 22, 'W': 6, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'filler', 'fano': 'SAT', 'sat_sec': 0.0}
+76 {'n': 14, 'k': 6, 'M': 6, 'cells': 14, 'slack': 14, 'W': None, 'H01': False}
+77 {'n': 21, 'k': 10, 'M': 7, 'cells': 19, 'slack': 14, 'W': 10, 'H01': True, '9prime': False, 'B1': False, 'B1fail': '|X0|=5 > u=1', 'fano': 'SAT', 'sat_sec': 0.2}
+78 {'n': 24, 'k': 13, 'M': 5, 'cells': 19, 'slack': 5, 'W': 7, 'H01': False}
+79 {'n': 24, 'k': 12, 'M': 8, 'cells': 23, 'slack': 12, 'W': 8, 'H01': True, '9prime': False, 'B1': False, 'B1fail': '|X0|=4 > u=1', 'fano': 'SAT', 'sat_sec': 0.2}
+80 {'n': 19, 'k': 10, 'M': 5, 'cells': 15, 'slack': 6, 'W': 6, 'H01': True, '9prime': False, 'B1': False, 'B1fail': '|X0|=1 > u=0', 'fano': 'SAT', 'sat_sec': 0.1}
+81 {'n': 16, 'k': 7, 'M': 7, 'cells': 14, 'slack': 15, 'W': 9, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.0}
+82 {'n': 17, 'k': 8, 'M': 7, 'cells': 17, 'slack': 12, 'W': 10, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.3}
+83 {'n': 26, 'k': 14, 'M': 4, 'cells': 13, 'slack': 6, 'W': 6, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'step1', 'fano': 'SAT', 'sat_sec': 3.7}
+84 {'n': 17, 'k': 7, 'M': 8, 'cells': 17, 'slack': 19, 'W': 11, 'H01': True, '9prime': False, 'B1': False, 'B1fail': '|X0|=6 > u=2', 'fano': 'SAT', 'sat_sec': 0.1}
+85 {'n': 14, 'k': 5, 'M': 4, 'cells': 10, 'slack': 21, 'W': 5, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'filler', 'fano': 'SAT', 'sat_sec': 0.0}
+86 {'n': 19, 'k': 10, 'M': 6, 'cells': 18, 'slack': 6, 'W': 6, 'H01': True, '9prime': False, 'B1': False, 'B1fail': '|X0|=3 > u=0', 'fano': 'SAT', 'sat_sec': 0.4}
+87 {'n': 20, 'k': 8, 'M': 6, 'cells': 16, 'slack': 24, 'W': 8, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'filler', 'fano': 'SAT', 'sat_sec': 0.0}
+88 {'n': 19, 'k': 9, 'M': 6, 'cells': 18, 'slack': 13, 'W': 9, 'H01': True, '9prime': False, 'B1': False, 'B1fail': '|X0|=6 > u=1', 'fano': 'SAT', 'sat_sec': 0.1}
+89 {'n': 16, 'k': 9, 'M': 8, 'cells': 16, 'slack': 1, 'W': 13, 'H01': False}
+90 {'n': 16, 'k': 8, 'M': 5, 'cells': 15, 'slack': 8, 'W': 6, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.1}
+91 {'n': 17, 'k': 7, 'M': 8, 'cells': 15, 'slack': 19, 'W': 11, 'H01': True, '9prime': False, 'B1': False, 'B1fail': '|X0|=6 > u=2', 'fano': 'SAT', 'sat_sec': 0.1}
+92 {'n': 25, 'k': 13, 'M': 6, 'cells': 22, 'slack': 9, 'W': 7, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.6}
+93 {'n': 19, 'k': 9, 'M': 8, 'cells': 19, 'slack': 13, 'W': 11, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.6}
+94 {'n': 20, 'k': 9, 'M': 7, 'cells': 15, 'slack': 17, 'W': 9, 'H01': True, '9prime': False, 'B1': False, 'B1fail': '|X0|=5 > u=2', 'fano': 'SAT', 'sat_sec': 0.1}
+95 {'n': 14, 'k': 7, 'M': 8, 'cells': 14, 'slack': 7, 'W': 9, 'H01': False}
+96 {'n': 16, 'k': 8, 'M': 4, 'cells': 10, 'slack': 8, 'W': 6, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.0}
+97 {'n': 21, 'k': 10, 'M': 7, 'cells': 20, 'slack': 14, 'W': 6, 'H01': True, '9prime': False, 'B1': False, 'B1fail': '|X0|=7 > u=2', 'fano': 'SAT', 'sat_sec': 0.1}
+98 {'n': 18, 'k': 7, 'M': 8, 'cells': 17, 'slack': 23, 'W': None, 'H01': False}
+99 {'n': 22, 'k': 11, 'M': 8, 'cells': 22, 'slack': 11, 'W': 9, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.6}
+100 {'n': 22, 'k': 12, 'M': 6, 'cells': 17, 'slack': 4, 'W': 10, 'H01': False}
+101 {'n': 14, 'k': 8, 'M': 8, 'cells': 14, 'slack': 0, 'W': None, 'H01': False}
+102 {'n': 18, 'k': 7, 'M': 8, 'cells': 18, 'slack': 23, 'W': 11, 'H01': True, '9prime': False, 'B1': False, 'B1fail': '|X0|=7 > u=3', 'fano': 'SAT', 'sat_sec': 0.0}
+103 {'n': 16, 'k': 7, 'M': 7, 'cells': 15, 'slack': 15, 'W': 11, 'H01': True, '9prime': False, 'B1': False, 'B1fail': '|X0|=5 > u=1', 'fano': 'SAT', 'sat_sec': 0.0}
+104 {'n': 16, 'k': 8, 'M': 7, 'cells': 15, 'slack': 8, 'W': 10, 'H01': False}
+105 {'n': 17, 'k': 9, 'M': 7, 'cells': 16, 'slack': 5, 'W': 11, 'H01': False}
+106 {'n': 17, 'k': 7, 'M': 8, 'cells': 16, 'slack': 19, 'W': 13, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.1}
+107 {'n': 16, 'k': 6, 'M': 5, 'cells': 13, 'slack': 22, 'W': 8, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.0}
+108 {'n': 22, 'k': 11, 'M': 4, 'cells': 12, 'slack': 11, 'W': 9, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.1}
+109 {'n': 24, 'k': 13, 'M': 7, 'cells': 22, 'slack': 5, 'W': 9, 'H01': False}
+110 {'n': 20, 'k': 8, 'M': 7, 'cells': 19, 'slack': 24, 'W': 6, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.0}
+111 {'n': 24, 'k': 13, 'M': 5, 'cells': 18, 'slack': 5, 'W': 9, 'H01': False}
+112 {'n': 14, 'k': 7, 'M': 6, 'cells': 14, 'slack': 7, 'W': 9, 'H01': False}
+113 {'n': 18, 'k': 8, 'M': 5, 'cells': 14, 'slack': 16, 'W': 6, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.0}
+114 {'n': 14, 'k': 6, 'M': 8, 'cells': 13, 'slack': 14, 'W': None, 'H01': False}
+115 {'n': 25, 'k': 12, 'M': 5, 'cells': 16, 'slack': 16, 'W': 6, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.1}
+116 {'n': 15, 'k': 8, 'M': 8, 'cells': 15, 'slack': 4, 'W': None, 'H01': False}
+117 {'n': 25, 'k': 14, 'M': 8, 'cells': 23, 'slack': 2, 'W': 8, 'H01': False}
+118 {'n': 14, 'k': 7, 'M': 8, 'cells': 14, 'slack': 7, 'W': None, 'H01': False}
+119 {'n': 21, 'k': 12, 'M': 4, 'cells': 13, 'slack': 0, 'W': 6, 'H01': False}
+120 {'n': 18, 'k': 7, 'M': 4, 'cells': 11, 'slack': 23, 'W': 9, 'H01': True, '9prime': False, 'B1': False, 'B1fail': 'fixer', 'fano': 'SAT', 'sat_sec': 0.0}

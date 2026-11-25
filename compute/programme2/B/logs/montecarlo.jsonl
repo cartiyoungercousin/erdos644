@@ -1,0 +1,7 @@
+{"kind": "rand", "m": 6, "M": 3, "q": 0, "rankD": 4, "main": 0.001953125, "freq": 0.0020025, "ratio": 1.02528}
+{"kind": "rand", "m": 6, "M": 4, "q": 0, "rankD": 5, "main": 0.000244140625, "freq": 0.0002375, "ratio": 0.9728}
+{"kind": "series", "m": 6, "M": 2, "q": 1, "rankD": 4, "main": 0.001953125, "freq": 0.00188, "ratio": 0.96256}
+{"kind": "series", "m": 6, "M": 2, "q": 2, "rankD": 5, "main": 0.000244140625, "freq": 0.0002325, "ratio": 0.95232}
+{"kind": "series", "m": 6, "M": 1, "q": 3, "rankD": 5, "main": 0.000244140625, "freq": 0.0002425, "ratio": 0.99328}
+{"kind": "coloop", "m": 6, "M": 3, "q": 0, "rankD": 5, "main": 0.000244140625, "freq": 0.0, "ratio": 0.0}
+{"kind": "cells", "m": 6, "M": 4, "q": 3, "rankD": 3, "main": 0.015625, "freq": 0.015835, "ratio": 1.01344}
