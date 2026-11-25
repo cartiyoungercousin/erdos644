@@ -1,0 +1,6 @@
+family logs/fam_8_6_15_sevenfree.txt: 1287 members of size 7, n=15, T-sets uncovered: 1716
+(b) triples (union V, triple meet >= 3): 75075
+(b) defect census over all triples: defect 0: 75075, defect 1: 4864860 (none listed means >= 2)
+(a) quadruples with sigma <= 1.5 (each counted once per split): 0; with all three matchings OK: 0
+point frequencies (uniform on family): min 0.3846 max 1.0000 (c/n = 0.4667)
+reply law (min-mask rule): support 1287, H = 7.1131, log|family| = 7.1601, log C(n,T)-log C(c,T) = 6.5723; freq min 0.3679 max 1.0000

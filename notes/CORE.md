@@ -2193,3 +2193,177 @@ only that each point is in <= 3 slots. 80.2: the counts 2c < n and 7c < 3n are e
 DSW's exact bound and the ε-net constants were not checked against the papers. The §84 numbers are from the logs.
 **Dead routes (this part):** fractional relaxation by τ* (80.3, 82); integrality-gap bounds of DSW/Füredi/ε-net type
 for the constant (81.2–81.4); any LP relaxation of the T-covering hypothesis in the window (83).
+
+=============================================================================================
+# Part XII — hypergraph containers plus supersaturation (§85–§89)
+
+Code: `compute/core11/`. `container_scales.py` computes codegree exponents at the sparse scale for all four shape
+hypergraphs. `pool_pencils.py` is alongside; the §86.2 bisection was a one-liner whose output is `logs/hand_boundary.log`; logs are in
+`compute/core11/logs/`. All exponents are first order (nats per k, k → ∞, subexponential factors dropped). Units k = 1,
+notation of §33.
+
+**Outcome. The route is DEAD, for two independent reasons.**
+(i) Logical (§87). The host is complete and T-covering is upward closed. So the supersaturation statement that
+containers would need already implies CP without containers, and a container carries no information about I beyond
+its independence.
+(ii) Numerical, and it bites first (§86). Work at the scale of the families in question: fingerprint τ <= p, where p is
+the density of the sparsest T-covering family, and container edge density ε <= p^r, the edge density of the random
+threshold family. At that scale the Saxton–Thomason codegree condition fails:
+- for the good-seven 7-graph and the Q' 4-graph, in essentially the whole window;
+- for pencils and triangles, outside a bottom strip ω ≲ 0.09.
+The first obstruction is the 2-codegree (j = 2). It is shape-free, so no choice of shape repairs it (§86.2).
+
+## 85. Set-up [definitions; literature checked against the papers]
+
+- X is the set of all co-edges (c-subsets of V, |V| = Nk), and log|X| = N h(1/N). Sym(V) acts transitively on X and
+  preserves every shape hypergraph below, so every vertex has the same degree d and the same maximum j-codegree Δ_j.
+  [proved by hand]
+- The shape hypergraphs are:
+  - G_7, the good sevens (Fano-type; complete for N < 11/6, §1.3);
+  - by (Σ) (§38, corrected in LEDGER): G_pen, the 3-sets with union V and triple intersection >= N - 2t;
+  - G_tri, the Theorem-T triangles;
+  - G_Q, the Q' quadruples.
+  A counterexample to CP is a T-covering family I ⊆ X that is independent in G_7. If (Σ) is used, it is also
+  independent in the other three.
+- **Saxton–Thomason** [literature, checked: Invent. Math. 201 (2015), arXiv 1204.6595; Def. 3.2, Thm 3.4, Cor. 3.6,
+  Remark 3.5 read in the arXiv PDF]. Let G be an r-graph on n vertices with average degree d. Put
+  d^{(j)}(v) = max{d(σ) : v ∈ σ, |σ| = j}, define δ_j by δ_j τ^{j-1} n d = Σ_v d^{(j)}(v), and put
+  δ(G,τ) = 2^{C(r,2)-1} Σ_{j=2}^r 2^{-C(j-1,2)} δ_j.
+  Cor. 3.6: suppose 0 < ε, τ < 1/2 and δ(G,τ) <= ε/12r!. Then there are containers C(T), where T is a tuple of
+  s <= c log(1/ε) sets of size <= cτn, such that:
+  - every independent set lies inside one container;
+  - e(G[C]) <= ε e(G) for every container;
+  - log|𝒞| <= c log(1/ε) n τ log(1/τ), with c(r) = 800 r!^3 r.
+  Remark 3.5 says that the construction "makes essentially no use of the independence" of I.
+- **Balogh–Morris–Samotij** [literature, partly checked: JAMS 28 (2015), arXiv 1204.6530; only pp. 4–9 read]. Their
+  container theorem plays the same role. Every application read there is either a sparse random host or a counting
+  question: Turán and stability in G(n,p), counting H-free graphs, KŁR. Their Thm 2.2 was not among the pages read, so
+  BMS is used here only through ST.
+- The host is vertex-transitive, so δ_j = Δ_j / (τ^{j-1} d) exactly. Per k, the ST condition reads
+      L_j := log(d/Δ_j) >= (j - 1)·log(1/τ) + log(1/ε)        (2 <= j <= r).                           (85.1)
+
+## 86. The codegree check at the relevant scale (step (2), done first)
+
+**86.1 The scale [proved by hand].** Let p := e^{-γk} with γ = (N - t) h(ω/(N - t)). Then p is the least density of a
+T-covering family, namely 1/C(n - T, c - T). The random family of density p·Ck has two properties:
+- it is T-covering w.h.p., by a union bound over the <= 2^{Nk} T-sets;
+- it has <= 3·(pCk)^r e(G) edges with probability >= 2/3, by Markov.
+Hence:
+(a) any supersaturation of the form "T-covering ⟹ more than ε e(G) edges" is FALSE unless log(1/ε) >= rγ;
+(b) containers say something about families of density about p only if τ <= p. Otherwise the fingerprint may be all
+    of I, and the count log|𝒞| exceeds the number of such families.
+So the meaningful regime is τ <= p and ε <= p^r. In that regime (85.1) becomes L_j >= (r + j - 1)γ for all j.
+
+**86.2 A shape-free obstruction at j = 2 [proved by hand].** For any r-graph on X,
+Σ_{K' ≠ K} codeg(K,K') = (r - 1)d. So Δ_2 >= (r - 1)d/|X|, and therefore L_2 <= log|X|. With τ <= p and ε <= p^r,
+condition (85.1) at j = 2 then requires
+      log|X| >= (r + 1)γ,   i.e.   N h(1/N) >= (r + 1)(N - t) h(ω/(N - t)).
+[computed float, `logs/hand_boundary.log`] Over t ∈ [0.7501, 0.78] this holds only in a bottom strip:
+- r = 3: ω < 0.093–0.095;
+- r = 4: ω < 0.067–0.069;
+- r = 7: ω < 0.035–0.060. At t = 0.78 it fails for r = 7 on the whole window.
+The window has ω up to 3 - 2t - 1 (ω = 0.50 at its top for t = 0.75). So above ω ≈ 0.095, no shape hypergraph with
+r >= 3 can carry containers at the family scale, whatever the shape. The reason is that the families are too dense in
+X for r + 1 powers of p to fit: |X| is only e^{1.2–1.5k}, while p is e^{-0.2k} to e^{-0.95k}.
+
+**86.3 Shape by shape [computed float; `logs/container_scales.log`].** Let eps* = min_j [L_j - (j - 1)γ]. This is the
+best log(1/ε) available at τ = p, and it must be >= rγ. How sharp each entry is:
+- For sevens, triangles and Q', L_j uses the typical j-codegree of the max-entropy shape. That is a lower bound for
+  Δ_j, so eps* there is an upper bound, and a failure (✗) is a proof of failure at first order.
+- For pencils, Δ_2 is a true maximum over positions (on a grid).
+
+| t | N | γ | sevens: eps* / 7γ | pencils: eps* / 3γ | triangles: eps* / 3γ | Q': eps* / 4γ |
+|---|---|---|---|---|---|---|
+| 0.7501 | 1.800 | 0.202 | <= 1.01 / 1.41 ✗ | 0.82 / 0.60 ✓ | none (infeasible) | <= 1.01 / 0.81 ✓? |
+| 0.7501 | 1.900 | 0.446 | <= 0.85 / 3.12 ✗ | 0.42 / 1.34 ✗ | none | <= 0.82 / 1.78 ✗ |
+| 0.7501 | 2.100 | 0.773 | <= 0.66 / 5.41 ✗ | -0.09 / 2.32 ✗ | none | <= 0.62 / 3.09 ✗ |
+| 0.76 | 1.826 | 0.248 | <= 0.99 / 1.73 ✗ | 0.93 / 0.74 ✓ | <= 0.99 / 0.74 ✓? | <= 0.97 / 0.99 ✗ |
+| 0.76 | 1.918 | 0.461 | <= 0.85 / 3.23 ✗ | 0.58 / 1.38 ✗ | <= 0.83 / 1.38 ✗ | <= 0.83 / 1.85 ✗ |
+| 0.76 | 2.010 | 0.626 | <= 0.75 / 4.38 ✗ | 0.33 / 1.88 ✗ | <= 0.72 / 1.88 ✗ | <= 0.72 / 2.50 ✗ |
+| 0.78 | 1.878 | 0.330 | <= 0.95 / 2.31 ✗ | 0.95 / 0.99 ✗ | <= 0.96 / 0.99 ✗ | <= 0.94 / 1.32 ✗ |
+
+✓? means the necessary check passes; the sufficient check with the true Δ_j was not done.
+- For the good-seven graph the binding term is always j = 2 (L_2 ≈ 1.2–1.5 against 8γ), so its failure is the one of
+  §86.2.
+- At t = 0.7501, Theorem-T triangles do not exist in the symmetric max-entropy form, because their tolerance is O(ε)
+  (§3). So G_tri is exponentially thin there.
+- The full grid (t = 0.7501, 0.76, 0.78, five N each) is in the log. Every N in the upper four-fifths of the window
+  fails for all four shapes.
+
+**86.4 Is the random family the right benchmark? [computed float, `logs/pool_pencils.log`]** The pool family (a
+Theorem-S family) has pencil density e^{-0.04k} to e^{-0.69k}, far above the random family's e^{-3γk}. So the random
+threshold family is the sparsest-in-pencils T-covering family known, and §86.1(a) is the operative bound. Only its
+role as an upper bound on the minimum is used; that it is the minimiser is [heuristic].
+
+**Verdict on step (2).** At the family scale the codegree conditions hold only in a bottom strip of the window:
+ω ≲ 0.09 for pencils (and possibly triangles), and nowhere for good sevens or Q' above ω ≈ 0.07. The bulk of the window
+is out of reach of containers by §86.2, independently of shape. That bulk is also where every earlier method stalls.
+
+## 87. Why containers are idle here even where the codegrees work [proved by hand]
+
+**87.1** T-covering is upward closed, and every container C contains I. So if I is a counterexample, every container
+of I is T-covering. Hence step (3), "each container has τ <= T", is not really a statement about containers. All that
+is known about which C arise is: C contains an independent set, e(G[C]) <= ε e(G), and C is determined by a
+fingerprint T ⊆ I. So the statement one must prove is
+   (Sup_ε)  every T-covering family C ⊆ X has e(G[C]) > ε e(G).
+Applied to C = I, where e(G[I]) = 0 <= ε e(G), it gives CP at once. So any container proof contains a container-free
+proof of CP. And (Sup_ε) is strictly stronger than CP: it is CP with a quantitative count.
+
+**87.2** The fingerprint adds nothing. C(T) is the set of K whose degree into the link of T is small, and for K ∈ I
+that degree is 0 by independence. ST's own remark (§85), that the construction does not use independence, says the
+same.
+
+**87.3 What containers are for, and why none of it applies.** Containers transfer a dense extremal or supersaturation
+theorem to (a) sparse random hosts, (b) counting independent sets, or (c) list colouring. CP has a complete host, asks
+for existence rather than a number, and the dense statement that would have to be transferred is CP itself.
+The symmetry-counting variant also fails, by size. Its idea: a counterexample has n!/|Aut| images, all lying in
+containers. But log n! = O(k log k), while a container holding a family of density p has at least e^{(log|X| - γ)k}
+members, which is e^{0.6k} to e^{1.1k}. [proved by hand: compare the exponents in the logs]
+
+**87.4 The stability version does not help either.** Consider "T-covering with <= e^{-ηk} p^r e(G) shapes ⟹ close to
+structured". The counterexample I itself lies in its hypothesis class. So this is the robust Theorem S of §38 applied
+directly to I, with or without containers, and §39 showed that regularity-type approximation does not deliver it.
+
+**87.5 The other side of the colouring.** T-covering can be encoded too: X∖𝒞 is independent in the star hypergraph
+{St(S) = {K ⊇ S} : |S| = T}, whose uniformity is M = C(n - T, c - T) = e^{γk}.
+- Containers for it need c(M) = 800 M!^3 M (§85), which is doubly exponential in k.
+- The condition τ >= d^{-1/(M-1)} forces τ = 1 - o(1).
+Dead. [proved by hand from the checked statement]
+
+## 88. Step (3): structured containers [proved by hand]
+
+Not reached, because there are no containers to classify (§86, §87). Even granting them, S, S+ and W would not apply:
+- they are statements about families that are exactly profile-invariant (S, and S+ with <= 4εk - 12 cells) or that
+  follow exact greedy-window rules (W);
+- a container is a superset of I with few shapes, and nothing makes it profile-invariant;
+- its own shape count (> 0 in general) says nothing about I.
+Using S, S+ or W on containers would need their robust versions. That is the open problem of §38, and passing to a
+superset does not make it easier.
+
+## 89. Exact remaining statement, dead routes, self-check
+
+**Dead (this part).** Hypergraph containers plus supersaturation for CP, in every form tried: G_7, G_pen, G_tri, G_Q,
+their union, the star hypergraph, the stability version and the symmetry-counting version.
+
+**First obstruction, exactly (§86.2).** For an r-uniform shape hypergraph on X, containers at the family scale need
+log|X| >= (r + 1)γ. This fails once ω > 0.095 (r = 3), ω > 0.069 (r = 4), or ω > 0.035–0.06 (r = 7).
+**Behind it (§87.1).** Even where the numbers pass, the supersaturation (Sup_ε) that containers need implies CP
+directly.
+
+**What survives.** Only the observation of report §5(a), stated correctly: a counterexample must have e^{-Ω(k)} times
+the random number of every (Σ)-shape. That is a first-moment fact about random families, not a mechanism. A proof
+must still produce a shape in an arbitrary T-covering family, which is (Σ) itself.
+
+**Bottom strip.** For ω ≲ 0.09 (pencils), §86 does not exclude the container condition, but §87 applies there too.
+That strip lies near 3t - 1/2 < N <= 5t - 2, where the fixed-plan method of §21.2 nearly works (LEDGER: GAP).
+Repairing §21.2 there is a better use of effort than containers.
+
+**Self-check.**
+- §86.1: the density 1/C(n - T, c - T) follows from the double count C(n,T)C(n-T,c-T) = C(n,c)C(c,T), and γ
+  reproduces `core9/exponents.py`.
+- §86.2: one averaging line; the bisection is in `logs/hand_boundary.log`.
+- §86.3: for sevens, log e(G) - 7γ reproduces the G7 - 7γ column of `core9/logs/exponents.log` (3.006, 2.643, 2.430
+  at t = 0.7501, N = 1.80, 1.90, 2.00).
+- The ST statement was read from the arXiv PDF (Def. 3.2, Thm 3.4, Cor. 3.6, Remark 3.5, §3.5).
+- Typical-codegree margins are upper bounds only, and the ✓? entries were not confirmed with true maxima.
+- Nothing in this part has been checked by an independent verifier.

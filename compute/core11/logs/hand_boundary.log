@@ -1,0 +1,5 @@
+t=0.7501 window (1.7503,2.2499) hand criterion holds only for r=3: N<1.8429 (delta-eps... omega=0.0928); r=4: N<1.8170 (delta-eps... omega=0.0669); r=7: N<1.7851 (delta-eps... omega=0.0350)
+t=0.755 window (1.7650,2.2450) hand criterion holds only for r=3: N<1.8483 (delta-eps... omega=0.0933); r=4: N<1.8222 (delta-eps... omega=0.0672); r=7: N<1.7902 (delta-eps... omega=0.0352)
+t=0.76 window (1.7800,2.2400) hand criterion holds only for r=3: N<1.8537 (delta-eps... omega=0.0937); r=4: N<1.8275 (delta-eps... omega=0.0675); r=7: N<1.7953 (delta-eps... omega=0.0353)
+t=0.77 window (1.8100,2.2300) hand criterion holds only for r=3: N<1.8645 (delta-eps... omega=0.0945); r=4: N<1.8381 (delta-eps... omega=0.0681); r=7: N<1.8100 (delta-eps... omega=0.0400)
+t=0.78 window (1.8400,2.2200) hand criterion holds only for r=3: N<1.8754 (delta-eps... omega=0.0954); r=4: N<1.8487 (delta-eps... omega=0.0687); r=7: N<1.8400 (delta-eps... omega=0.0600)

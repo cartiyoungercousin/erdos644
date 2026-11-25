@@ -1,0 +1,81 @@
+
+==== t = 0.7501 ====
+N=1.8003 gamma=0.2015 log|X|=1.2367 log|I_min|=1.0352
+  sevens  r=7 log e=4.4165 sev=+3.0060 L_j(typ)=1.215 1.526 2.628 2.873 3.044 3.180 | eps*<=1.0130 need 7g=1.4105 margin<=-0.3975 (worst j=2)
+  pencils r=3 log e=2.4630 L_2=1.2226 L_3=1.2262 | eps*=0.8232 need 3g=0.6045 margin=+0.2187
+  triang. none
+  Q'quad  r=4 log e=3.7140 L_j(typ)=1.209 2.310 2.477 | eps*<=1.0073 need 4g=0.8060 margin<=+0.2013
+N=1.9002 gamma=0.4455 log|X|=1.3145 log|I_min|=0.8690
+  sevens  r=7 log e=5.7616 sev=+2.6434 L_j(typ)=1.295 1.948 3.150 3.705 4.119 4.447 | eps*<=0.8498 need 7g=3.1182 margin<=-2.2684 (worst j=2)
+  pencils r=3 log e=2.6297 L_2=1.3115 L_3=1.3152 | eps*=0.4243 need 3g=1.3364 margin=-0.9121
+  triang. none
+  Q'quad  r=4 log e=4.1914 L_j(typ)=1.268 2.429 2.877 | eps*<=0.8229 need 4g=1.7818 margin<=-0.9590
+N=2.0001 gamma=0.6255 log|X|=1.3864 log|I_min|=0.7609
+  sevens  r=7 log e=6.8084 sev=+2.4299 L_j(typ)=1.369 2.249 3.538 4.318 4.928 5.422 | eps*<=0.7436 need 7g=4.3785 margin<=-3.6350 (worst j=2)
+  pencils r=3 log e=2.7764 L_2=1.3864 L_3=1.3901 | eps*=0.1390 need 3g=1.8765 margin=-1.7375
+  triang. none
+  Q'quad  r=4 log e=4.5357 L_j(typ)=1.335 2.572 3.149 | eps*<=0.7098 need 4g=2.5020 margin<=-1.7922
+N=2.1000 gamma=0.7725 log|X|=1.4532 log|I_min|=0.6808
+  sevens  r=7 log e=7.6857 sev=+2.2784 L_j(typ)=1.437 2.486 3.855 4.811 5.588 6.232 | eps*<=0.6648 need 7g=5.4073 margin<=-4.7425 (worst j=2)
+  pencils r=3 log e=2.9080 L_2=1.4511 L_3=1.4548 | eps*=-0.0901 need 3g=2.3174 margin=-2.4076
+  triang. none
+  Q'quad  r=4 log e=4.8092 L_j(typ)=1.390 2.665 3.356 | eps*<=0.6178 need 4g=3.0899 margin<=-2.4721
+N=2.1999 gamma=0.8979 log|X|=1.5158 log|I_min|=0.6179
+  sevens  r=7 log e=8.4450 sev=+2.1596 L_j(typ)=1.501 2.684 4.125 5.224 6.147 6.929 | eps*<=0.6029 need 7g=6.2854 margin<=-5.6825 (worst j=2)
+  pencils r=3 log e=3.0277 L_2=1.5082 L_3=1.5119 | eps*=-0.2839 need 3g=2.6937 margin=-2.9776
+  triang. none
+  Q'quad  r=4 log e=5.0116 L_j(typ)=1.437 2.706 3.496 | eps*<=0.5387 need 4g=3.5916 margin<=-3.0529
+
+==== t = 0.76 ====
+N=1.8260 gamma=0.2475 log|X|=1.2574 log|I_min|=1.0099
+  sevens  r=7 log e=4.8076 sev=+3.0749 L_j(typ)=1.236 1.653 2.783 3.121 3.361 3.550 | eps*<=0.9886 need 7g=1.7327 margin<=-0.7441 (worst j=2)
+  pencils r=3 log e=2.6803 L_2=1.2431 L_3=1.4229 | eps*=0.9278 need 3g=0.7426 margin=+0.1852
+  triang. r=3 log e=3.6596 L_2(typ)=1.2364 L_3=2.4022 | eps*<=0.9889 need 3g=0.7426 margin<=+0.2463
+  Q'quad  r=4 log e=3.9492 L_j(typ)=1.221 2.333 2.692 | eps*<=0.9732 need 4g=0.9901 margin<=-0.0169
+N=1.9180 gamma=0.4614 log|X|=1.3277 log|I_min|=0.8663
+  sevens  r=7 log e=5.9644 sev=+2.7346 L_j(typ)=1.309 2.008 3.227 3.826 4.277 4.637 | eps*<=0.8475 need 7g=3.2299 margin<=-2.3823 (worst j=2)
+  pencils r=3 log e=2.8343 L_2=1.3242 L_3=1.5066 | eps*=0.5837 need 3g=1.3842 margin=-0.8005
+  triang. r=3 log e=3.8126 L_2(typ)=1.2947 L_3=2.4849 | eps*<=0.8333 need 3g=1.3842 margin<=-0.5509
+  Q'quad  r=4 log e=4.3320 L_j(typ)=1.287 2.485 3.004 | eps*<=0.8255 need 4g=1.8456 margin<=-1.0201
+N=2.0100 gamma=0.6255 log|X|=1.3932 log|I_min|=0.7677
+  sevens  r=7 log e=6.9017 sev=+2.5232 L_j(typ)=1.376 2.275 3.572 4.371 4.999 5.509 | eps*<=0.7505 need 7g=4.3785 margin<=-3.6280 (worst j=2)
+  pencils r=3 log e=2.9712 L_2=1.3931 L_3=1.5780 | eps*=0.3270 need 3g=1.8765 margin=-1.5495
+  triang. r=3 log e=3.9380 L_2(typ)=1.3439 L_3=2.5448 | eps*<=0.7184 need 3g=1.8765 margin<=-1.1581
+  Q'quad  r=4 log e=4.6419 L_j(typ)=1.343 2.591 3.249 | eps*<=0.7174 need 4g=2.5020 margin<=-1.7847
+N=2.1020 gamma=0.7617 log|X|=1.4545 log|I_min|=0.6928
+  sevens  r=7 log e=7.7018 sev=+2.3698 L_j(typ)=1.439 2.491 3.861 4.819 5.600 6.247 | eps*<=0.6768 need 7g=5.3320 margin<=-4.6552 (worst j=2)
+  pencils r=3 log e=3.0950 L_2=1.4533 L_3=1.6405 | eps*=0.1171 need 3g=2.2851 margin=-2.1681
+  triang. r=3 log e=4.0365 L_2(typ)=1.3841 L_3=2.5820 | eps*<=0.6224 need 3g=2.2851 margin<=-1.6627
+  Q'quad  r=4 log e=4.8894 L_j(typ)=1.397 2.694 3.435 | eps*<=0.6357 need 4g=3.0468 margin<=-2.4111
+N=2.1940 gamma=0.8792 log|X|=1.5122 log|I_min|=0.6330
+  sevens  r=7 log e=8.4026 sev=+2.2484 L_j(typ)=1.497 2.673 4.110 5.202 6.116 6.890 | eps*<=0.6179 need 7g=6.1542 margin<=-5.5363 (worst j=2)
+  pencils r=3 log e=3.2082 L_2=1.5066 L_3=1.6960 | eps*=-0.0623 need 3g=2.6375 margin=-2.6998
+  triang. r=3 log e=4.1003 L_2(typ)=1.4149 L_3=2.5882 | eps*<=0.5358 need 3g=2.6375 margin<=-2.1018
+  Q'quad  r=4 log e=5.0849 L_j(typ)=1.441 2.740 3.573 | eps*<=0.5616 need 4g=3.5167 margin<=-2.9551
+
+==== t = 0.78 ====
+N=1.8780 gamma=0.3303 log|X|=1.2978 log|I_min|=0.9675
+  sevens  r=7 log e=5.4968 sev=+3.1848 L_j(typ)=1.278 1.868 3.050 3.545 3.910 4.199 | eps*<=0.9477 need 7g=2.3120 margin<=-1.3643 (worst j=2)
+  pencils r=3 log e=2.9910 L_2=1.2829 L_3=1.6933 | eps*=0.9526 need 3g=0.9909 margin=-0.0382
+  triang. r=3 log e=3.8630 L_2(typ)=1.2898 L_3=2.5652 | eps*<=0.9596 need 3g=0.9909 margin<=-0.0313
+  Q'quad  r=4 log e=4.3263 L_j(typ)=1.269 2.463 3.029 | eps*<=0.9383 need 4g=1.3211 margin<=-0.3828
+N=1.9540 gamma=0.4926 log|X|=1.3539 log|I_min|=0.8613
+  sevens  r=7 log e=6.3512 sev=+2.9029 L_j(typ)=1.336 2.120 3.371 4.053 4.578 4.997 | eps*<=0.8432 need 7g=3.4482 margin<=-2.6050 (worst j=2)
+  pencils r=3 log e=3.1191 L_2=1.3487 L_3=1.7652 | eps*=0.7800 need 3g=1.4778 margin=-0.6978
+  triang. r=3 log e=4.0032 L_2(typ)=1.3391 L_3=2.6494 | eps*<=0.8465 need 3g=1.4778 margin<=-0.6313
+  Q'quad  r=4 log e=4.5922 L_j(typ)=1.317 2.557 3.238 | eps*<=0.8241 need 4g=1.9704 margin<=-1.1463
+N=2.0300 gamma=0.6255 log|X|=1.4069 log|I_min|=0.7814
+  sevens  r=7 log e=7.0857 sev=+2.7071 L_j(typ)=1.390 2.325 3.639 4.475 5.139 5.679 | eps*<=0.7645 need 7g=4.3785 margin<=-3.6140 (worst j=2)
+  pencils r=3 log e=3.2354 L_2=1.4061 L_3=1.8285 | eps*=0.5775 need 3g=1.8765 margin=-1.2990
+  triang. r=3 log e=4.1235 L_2(typ)=1.3824 L_3=2.7166 | eps*<=0.7569 need 3g=1.8765 margin<=-1.1197
+  Q'quad  r=4 log e=4.8293 L_j(typ)=1.359 2.631 3.422 | eps*<=0.7334 need 4g=2.5020 margin<=-1.7687
+N=2.1060 gamma=0.7396 log|X|=1.4571 log|I_min|=0.7175
+  sevens  r=7 log e=7.7341 sev=+2.5572 L_j(typ)=1.441 2.499 3.872 4.837 5.624 6.277 | eps*<=0.7016 need 7g=5.1769 margin<=-4.4753 (worst j=2)
+  pencils r=3 log e=3.3421 L_2=1.4570 L_3=1.8850 | eps*=0.4059 need 3g=2.2187 margin=-1.8128
+  triang. r=3 log e=4.2212 L_2(typ)=1.4189 L_3=2.7641 | eps*<=0.6794 need 3g=2.2187 margin<=-1.5393
+  Q'quad  r=4 log e=5.0304 L_j(typ)=1.402 2.706 3.573 | eps*<=0.6620 need 4g=2.9582 margin<=-2.2963
+N=2.1820 gamma=0.8401 log|X|=1.5048 log|I_min|=0.6648
+  sevens  r=7 log e=8.3159 sev=+2.4353 L_j(typ)=1.490 2.651 4.079 5.155 6.053 6.811 | eps*<=0.6496 need 7g=5.8806 margin<=-5.2310 (worst j=2)
+  pencils r=3 log e=3.4410 L_2=1.5027 L_3=1.9362 | eps*=0.2560 need 3g=2.5202 margin=-2.2642
+  triang. r=3 log e=4.3009 L_2(typ)=1.4501 L_3=2.7961 | eps*<=0.6100 need 3g=2.5202 margin<=-1.9102
+  Q'quad  r=4 log e=5.1937 L_j(typ)=1.448 2.794 3.689 | eps*<=0.6078 need 4g=3.3603 margin<=-2.7525
