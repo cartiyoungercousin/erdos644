@@ -1,0 +1,4 @@
+bch31: n=31 dim=16 codim=15 max coset weight seen=5
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+{"code": "bch31", "n": 31, "k": 16, "N": 1.938, "rho": 5, "M": 9152, "tau": 5, "tau_lb": 5.0, "status": "Optimal", "excess": -7.0, "W": 8, "P": 8, "exact_WP": false, "lemmaQ_thr": 5.14, "seven": "UNKNOWN", "secs": 439.5}
