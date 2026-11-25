@@ -2915,3 +2915,170 @@ stop at 3t − 1/2 [heuristic for the whole class].
 - The FW conditions (prime power, 2ℓ + 1 <= c) were checked against KL's statement of Thm 12.
 - ρ is computed from first-order entropies, and the x_0 factor (1 − c/n) is polynomial.
 - Not independently verified.
+
+=============================================================================================
+# Part XV — adaptive density: links, traces, dependent random choice (§100–§104)
+
+Brief: a request S forces a member K ⊇ S, so every link 𝒞_S (|S| <= t) is nonempty and inherits covering. Use requests
+or DRC to pass to a sub-configuration that is dense AND covering (which 96.1's family is not), then run the §90 pair
+step or FR / Keevash–Long inside it; or chain such steps to a Q′ quadruple or a pencil.
+Code: `compute/links/link_check.py` (`exact`: sympy identities; `milp`: static certificates of the pool family inside
+links, via `compute/strip/window_density.cert`). Logs: `compute/links/logs/{exact,milp}.log`. Units k = 1.
+**Outcome. Dead, for every operation tried, with one exact invariant.**
+- Links move (N, t) by (−s, −s). They keep ω and γ and lower ε by s, so they move AWAY from all three closed regions
+  (strip, crowded, petal side). For s > ε the reduced statement is false: the pool family is a counterexample (§100).
+- Every static certificate, wherever its members come from, pays its waste from S_q(N, t) − 4|S| in V. Here q is the
+  number of members used in full and S is the set lying in all seven. Selecting members (links, traces, DRC, density)
+  cannot change S_q. Only adaptivity, i.e. replies used in full, raises q (§102).
+- The pool family is T-covering and dense, inherits covering in every link, and has no Q′ quadruple and no pair
+  certificate above the strip. Its only certificates are pencils, a boundary pattern. So a covering-plus-density
+  argument, adaptive or not, needs a separate pencil branch. That is §33(4)'s stability statement again (§103).
+
+## 100. What links inherit, in units [proved by hand; identities computed exact]
+
+**100.1 Inheritance.** Let |S| = s <= t and 𝒞_S = {K ∖ S : K ∈ 𝒞, K ⊇ S}, a family of (c − s)-subsets of V' = V ∖ S.
+- (a) 𝒞_S is (T − s)-covering on V': a (t − s)-set R ⊆ V' gives the t-set R ∪ S, which lies in some K ∈ 𝒞, and
+  K ⊇ S. In edge form this is vertex deletion, H − S, with τ(H − S) >= τ(H) − s.
+- (b) The conclusion transfers both ways. Seven members of 𝒞_S cover all pairs of V' iff the seven K ⊇ S cover all
+  pairs of V, since a point of S has co-type [7].
+- (c) Nothing more is guaranteed. The link of a link is a link, and every link of the pool family P_Y is again a
+  core family, which has no good seven once s > ε (100.3).
+
+**100.2 Parameters.** The edge size is unchanged: (N − s) − (c − s) = 1, so the unit k = 1 survives and nothing gets
+renormalised. With the identities from `exact.log`:
+  N′ = N − s,  t′ = t − s,  c′ = c − s,  ω′ = ω,  ε′ = ε − s,  δ′ = δ − s,  N′ − t′ = N − t.
+- **Strip margin** 5t′ − 2 − N′ = (5t − 2 − N) − 4s. The link moves away from the strip by 4s.
+- **Crowded margin** 3t′ − 1/2 − N′ = (3t − 1/2 − N) − 2s. It moves away from TWIN 16.A's region.
+- **Petal margin** N′ + t′ − 3 = (N + t − 3) − 2s. It moves away from PETAL's side too.
+- **ω′/ε′ = ω/(ε − s)**, which only increases, and t′ < 3/4 once s > ε.
+- **Density.** The T-covering bound 1/C(N − t, ω) is the same in every link, so γ = (1 + ω) h(ω/(1 + ω)) is
+  invariant, while the ground shrinks. That is §96's remark; the density per ground point gets worse.
+
+So **no link lands in a closed region** if (N, t) is not already in one [proved by hand]. Composing links gives a
+single link (S ∪ S′), so chains of links do no better.
+
+**100.3 For s > ε the reduced problem is false [proved by hand; MILP-confirmed, computed float].** The pool family
+P_Y = {K ∈ C(V, c) : K ⊇ Y}, |Y| = ω, is T-covering. For S ∩ Y = ∅ its link is the pool family of V′ with the same
+core. Any seven members of the link waste 4ω on Y, and the slack identity gives a total of 4δ′ = 4(δ − s). So the link
+has no good seven once ω > δ − s, i.e. s > ε (`exact.log`: 4ω − 4δ′ = 4(s − ε)).
+- In words: 𝒞_S is dense, (T − s)-covering, and contains no good seven. That is exactly the object the plan needed not
+  to exist. The rôle of 96.1's family is taken over, inside a link, by the pool family, with covering intact.
+- MILP (`milp.log`, t = 0.76, ε = 0.01, N ∈ {1.80, 1.85, 1.90, 2.00, 2.10}, s/ε ∈ {0, .5, .9, 1.1, 1.5, 3}): the pool
+  family in the link has static certificates (orders r = 3..7) for s <= 0.9ε and none of any order for s >= 1.1ε, at
+  every N. The bare link has no r = 2 certificate except at s = 0, N = 1.80 = 5t − 2 (the boundary control).
+- For s < ε the link is a CP instance that is strictly worse in every margin (100.2). **Links: dead.**
+
+## 101. Dependent random choice and dense links [proved by hand]
+
+**101.1 Averaging.** C(N, s)·C(N − s, c − s) = C(N, c)·C(c, s), so the average over all s-sets S of the density of 𝒞_S
+in C(V′, c − s) equals the density of 𝒞. DRC can find links denser than average, but it cannot change the parameters
+of 100.2. A dense link is still an instance at (N − s, t − s).
+
+**101.2 Where dense links come from.** In P_Y the link at S ⊆ Y is P_{Y∖S} on V ∖ S. At S = Y it is the complete
+family of t-sets on a ground of mass 1 + t, with density 1, and it has a good seven: a Fano blow-up, since
+1 + t >= 7/4. The links that contain certificates are the ones inside a core. They contain them because of their
+structure (completeness), not because of the (T − s)-covering they inherit: at s = ω > ε that covering is satisfied
+by counterexamples (100.3). So DRC is a way of finding cores. It is not a density bootstrap.
+
+**101.3 Pair step inside a link: dead.** A §90 pair found in 𝒞_S, finished by five link requests, is a static
+certificate in V with q = 2, all of whose seven sets contain S. By 102.1 it needs ω + 4s <= 4ε, so it never exists
+above the strip, whatever S is and however the pair is found (FR, Keevash–Long, Frankl–Wilson, DRC).
+
+## 102. The invariant; traces, exclusions, padding [proved by hand; identities computed exact]
+
+**Theorem 102.1 (slack invariant).** Take a static certificate in V: members K_1..K_q used in full and lines
+L_{q+1}..L_7 with |L_j| <= t, whose co-types J_x are nonempty and pairwise intersecting. Let S be the set of points
+lying in all seven. If every |J_x| >= 3, then
+  Σ_x (|J_x| − 3) + 4|S| <= S_q(N, t) := qc + (7 − q)t − 3N = (q − 3)δ + (7 − q)ε,
+where the sum counts only waste, outside S.
+- *Proof.* Σ_x |J_x| <= qc + (7 − q)t, and the points of S each contribute 7 − 3 = 4. ∎
+- **The hypothesis |J_x| >= 3 holds for q = 2 when t < 2/√5.** A co-type of size <= 2 needs two of the seven sets to
+  cover V. Two lines, or a line and a member, cannot (2t < N, t + c < N). Two members can only if N >= 2, and then
+  A = K_1 ∖ K_2 and B = K_2 ∖ K_1 have mass 1 each. Every A×B pair must then lie in one of five lines, but
+  Σ_j |L_j ∩ A||L_j ∩ B| <= 5t²/4 < 1. So for q = 2 a certificate exists only if ω + 4|S| <= 4ε.
+- **Corollary.** S_q depends on (N, t, q) only. An operation that only chooses which members of 𝒞 to use (a link, a
+  trace, DRC, a density theorem) cannot add slack. It can only fix S (cost 4|S|) or fix q.
+- The link identity S_q(N − s, t − s) = S_q(N, t) − 4s (`exact.log`) is the same statement read inside the link.
+
+**102.2 Traces on W ⊂ V (u = N − |W|, t fixed).** The trace {K ∩ W} is T-covering on W. Its sets have mass >= |W| − 1,
+so in W the instance is (N − u, t) with ω_W = ω − u and ε unchanged. That is the favourable direction, and for
+u >= ω − 4ε it reaches the strip.
+- The gain is fake. The trace instance's budget is S_q(W, t) = S_q(N, t) + (3 − q)u (`exact.log`): for q = 2 it gains u
+  exactly because the points of U = V ∖ W no longer have to be paid for.
+- A good seven for W leaves the pairs through U uncovered. Any lift to V is a certificate in V, so it is bounded by
+  102.1 with the original S_2 = 4ε − ω < 0. **Traces: dead.** This upgrades 98.3's trace remark from heuristic to
+  proved, for q = 2. For q >= 3, a trace certificate is just a V-certificate with constraints added.
+
+**102.3 Exclusions (requests "contain S, avoid X").** These cannot be forced. In P_Y no member avoids a point of Y,
+so {K ∈ 𝒞 : K ∩ X = ∅} can be empty with X a single point. In edge form this is the contraction H_X (edges ⊇ X),
+which inherits no transversal bound. **Dead.** Padding with points that lie in no member moves (N, t) by (+m, 0) and
+raises ω; it is only a device for fixing FR's α (§91). Blow-ups do not change the units.
+
+**102.4 Table of moves (k = 1).**
+
+| operation | (ΔN, Δt) | ω | ε | budget in V | conclusion transfers |
+|---|---|---|---|---|---|
+| link at S | (−s, −s) | = | −s | S_q − 4s | yes |
+| trace on W | (−u, 0) | −u (apparent) | = | S_q (apparent: S_q + (3 − q)u) | no; lifting restores S_q |
+| exclusion | not forceable | | | | |
+| padding | (+m, 0) | +m | = | (not a CP instance) | — |
+
+The only first-order direction that lowers ω/ε, (−1, 0), is not realised by any operation that keeps the conclusion.
+
+## 103. Chains to Q′ or a pencil; what an adaptive-density argument would have to do
+
+**103.1 Q′ cannot be forced by covering plus density [proved by hand; = the verified pool-family miss, V3].**
+Every quadruple of P_Y has σ >= 1 − t. The Y points lie in all four members, and in V ∖ Y (mass 1 + t) the four
+t-parts have total mass 4t, so the mass of points in at least two parts is at most 2t. But
+(1 − t) − (3t − N)/2 = (ω − 4ε)/2 > 0 above the strip (`exact.log`). P_Y is T-covering, has density e^{−γk}, and every
+quadruple of members, however it was reached, is a quadruple of P_Y. So **no chain of requests, links and density
+steps produces a Q′ quadruple from T-covering alone**, at any N > 5t − 2.
+
+**103.2 The pencil is the only certificate of P_Y, and it is a boundary pattern.**
+- In the 100.3 MILP at s = 0, certificates of orders 3..7 exist and order 2 does not; by 103.1 none of them is Q′.
+- Inside a link the pencil's window is κ ∈ [N − 2t + 2s, N − 3/2]. Its width is 2(ε − s), so links narrow it.
+- A forbidden-pattern theorem needs a tolerance independent of ε (§95), so no density step finds it.
+
+**103.3 Hybrids [heuristic].** a adaptive replies used in full, plus a density pair, plus static requests, have
+q = a + 2. For a >= 2 the budget S_q is positive (δ + 3ε at q = 4), and §96.1 does not apply when replies are taken
+through the excluded point x_0. So this combination is not killed by any count above. It is killed on P_Y by 103.1
+(no Q′ among any four members, replies included), and P_Y is beaten only by a pencil. So any such argument must be a
+dichotomy:
+- near-pool ⟹ a pencil, by structure;
+- far from pool ⟹ an open q >= 4 pattern, by a relative (vector-valued) Frankl–Rödl theorem.
+
+The first half is the stability statement of §33(4). The second would need density e^{−γk} with γ not small
+(γ(2) ≈ 0.63), far above any known Frankl–Rödl / Keevash–Long threshold [heuristic; the KL constants are
+ineffective, §97]. So adaptive density reduces to the open problem. It is not a new route.
+
+## 104. Status, dead routes, what remains; self-check
+
+**Status.**
+- (1) Links inherit exactly (T − s)-covering on V ∖ S, with k fixed. In units: (N − s, t − s, ω, ε − s), with γ fixed.
+  Every closed-region margin drops (strip by 4s, crowded by 2s, petal by 2s). For s > ε the reduced claim is false
+  (pool family).
+- (2) No operation that keeps the conclusion lowers ω/ε. Traces lower it only apparently, and lifting restores the
+  V-budget exactly. Exclusions cannot be forced.
+- (3) No reduction lands in a closed region. **The blocking invariant is Theorem 102.1:** a static certificate pays
+  its waste plus 4·|common part| out of S_q(N, t) = (q − 3)δ + (7 − q)ε, which no member-selection changes. For the
+  pair route (q = 2) the condition is ω + 4|S| <= 4ε. For Q′ the pool family blocks it outright (103.1).
+
+**Dead (add to LEDGER).**
+- Link / DRC reduction to the strip or the crowded region.
+- The §90 pair step or FR / KL inside any link.
+- Traces (q = 2 proved; q >= 3 adds nothing).
+- Exclusion requests.
+- Chains of links to Q′ from covering plus density.
+
+**What remains.** The same as before: a pencil branch for near-pool families (the §33(4) stability statement), combined
+with an open-pattern branch elsewhere. Hybrids (103.3) are its only density-flavoured form.
+
+**Self-check.**
+- S_q, the link shift −4s, the trace shift (3 − q)u, the three margin changes and the pool σ identity were all
+  checked symbolically (`exact.log`).
+- The q = 2 hypothesis |J_x| >= 3 was re-derived. The case N >= 2 uses the bipartite bound 5t²/4 < 1, valid for
+  t < 0.894.
+- 100.3 rests on the slack identity (VERIFIED W2) and is matched by the MILP on both sides of s = ε at five N.
+- The MILP is float and Fano-free (all maximal intersecting co-type families). It also reproduces the strip boundary
+  at N = 5t − 2.
+- Not independently verified.

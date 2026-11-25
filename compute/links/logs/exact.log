@@ -1,0 +1,12 @@
+S_q(N,t) - [q c + (7-q) t - 3N]           = 0
+S_q(N-s,t-s) - S_q(N,t)                   = -4*s
+S_2(N,t) - (4 eps - omega)                = 0
+omega(N-s,t-s) - omega                    = 0
+eps(t-s) - eps                            = -s
+strip margin (5t-2-N) change under link   = -4*s
+crowded margin (3t-1/2-N) change          = -2*s
+petal margin (N+t-3) change               = -2*s
+N-t (fixes gamma) change                  = 0
+pool: (1-t) - (3t-N)/2 - (omega-4eps)/2   = 0
+pool waste in link: 4 omega - 4 delta'    = 4*s - 4*t + 3  (>0 iff s > eps)
+trace on W (u = N-w): S_q(w,t) - S_q(N,t) = u*(3 - q)
