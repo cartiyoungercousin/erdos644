@@ -84,7 +84,7 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 ## Minimal-counterexample frame (notes/MINIMAL_FRAME.md)
 | Claim | Where | Status |
 |---|---|---|
-| Lemma 1 (padding: f with sets of size at most k = f), Lemma 3 (private sets), Lemma 4 (saturation), Corollary 5 (co-edge form), (G) equivalent to the 3/4 bound | MINIMAL_FRAME.md | VERIFIED (notes/verify/minimal_frame.md; proof-text gaps: Lemma 4 (ii) and m >= 3, S_B ⊆ V) |
+| Lemma 1 (padding: f with sets of size at most k = f), Lemma 3 (private sets), Lemma 4 (saturation), Corollary 5 (co-edge form), (G) equivalent to the 3/4 bound | MINIMAL_FRAME.md | VERIFIED + LEAN (Lean644/MinimalFrame.lean: private_set, saturation, antichain, padding_iff; standard axioms only) |
 
 ## Task 1 (saturation), notes/SATURATION.md
 - FKW m=3: one loose incidence class (edges with 11 X-points, z their Y-point). Shrinking gives H1 (323,236 members, τ = 10, antichain, all classes saturated, (7,2) by hand + MILP). H1 contains the literal pencil shape yet has no good seven, so (Σ)(b) is invalid for non-uniform families. H1 is not yet minimal (only 12 members have private sets). [EXACT + HAND]
