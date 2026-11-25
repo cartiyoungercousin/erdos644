@@ -1,0 +1,4 @@
+K^(4)_6 seed 1: |H|=15 new points=5 loads={1: 15} tau 3 -> 3 on 11 points; dominated points: 0
+K^(6)_10 seed 1: |H|=210 new points=75 loads={1: 195, 2: 15} tau 5 -> 5 on 85 points; dominated points: 0
+K^(6)_10 seed 2: |H|=210 new points=74 loads={1: 198, 2: 12} tau 5 -> 5 on 84 points; dominated points: 0
+K^(8)_13 seed 1: |H|=1287 new points=491 loads={1: 1101, 2: 186} tau 6 -> 6 on 504 points; dominated points: 0
