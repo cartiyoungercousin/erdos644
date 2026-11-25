@@ -17,9 +17,9 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 | Lemma 4.1–4.8 (6/7 manuscript), tight triple, Theorem A, stability 11.1, lopsided top 6.4, sparse triple, trace lemma, pair gap, three centres, Fano criterion, flat 7-tuple, Fano blocks, waste adversary, anchor/petal reductions | Lean644/*.lean | LEAN |
 | Anchored reduction (TWIN §13), anchor lemma, Theorem A, padding transfer | TWIN §13 | VERIFIED (W1) |
 | Theorems J, K, L (petal spread case) | PETAL §3, §7, §8 | VERIFIED (W3; L's statement should repeat p <= t; J's band disjunct untested in simulation) |
-| Concentrated case N <= 3T - k/2 - O(1) | TWIN 16.A | VERIFIED at first order (W1); finite-k proof has a GAP at line 904 (Theorem C's half-split isn't integral), and O(1) can't be 0 (K(9,5): τ = 5 > 4, N = 9 <= 9.5) |
+| Concentrated case N <= 3T - k/2 - O(1) | TWIN 16.A | VERIFIED at first order (W1); finite-k proof has a GAP at line 904 (Theorem C's half-split isn't integral), and O(1) can't be 0 (K(9,5): τ = 5 > 4, N = 9 <= 9.5). Repaired (FINITE_K.md): N <= 3T - k/2 - 1 holds; 142,350 end-to-end plays |
 | Slack count, Theorem T, Theorem Q (= Q′) | CORE §2–§4 | VERIFIED (W2; Q's 'iff' holds only for the fixed quadrangle scheme) |
-| Pool theorem P | CORE §5 | VERIFIED at first order; FAILS at finite k when εk = 1/4: counterexample (k,T,N,|Z|) = (5,4,9,0), since C(9,4,2) = 8. Needs εk >= 1/2 plus a rounding lemma (W2) |
+| Pool theorem P | CORE §5 | VERIFIED at first order; FAILS at finite k when εk = 1/4: counterexample (k,T,N,|Z|) = (5,4,9,0), since C(9,4,2) = 8. Finite-k repair (notes/FINITE_K.md): P holds for 4T >= 3k with 4T != 3k+1; rounding lemma proved, all 48,864 instances k <= 30 pass |
 
 ## Core window (Barrier D+E): classification of structured families
 | Claim | Where | Status |
@@ -93,3 +93,6 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 - The 6/7 main theorem (`SixSeventhsStatement`) is not proved in Lean; only its lemmas 4.1–4.8 are.
 - Not yet scheduled for verification: Theorems J, K, L, T, Q, P, N; TWIN §13; 16.A.
 - Covering numbers C(v,k,2) behind f(6,7) >= 5 and f(7,7) >= 6: our own ILP only; La Jolla tables unchecked.
+
+## Finite-k hypotheses (notes/FINITE_K.md)
+- DS-b: n - k + 7δ + 1 <= T. W: any k with 4T != 3k+1 (false at k ≡ 1 mod 4, T = (3k+1)/4). J′: T >= 2⌈k/3⌉. §46: L-branch ω <= T - ⌈k/2⌉, H-branch o <= 4ω - 3.
