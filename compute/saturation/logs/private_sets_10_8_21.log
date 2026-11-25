@@ -1,0 +1,8 @@
+P = [(8, 3)]: private set exists for co-edge profile (8, 3):yes
+P = [(8, 3), (9, 2)]: private set exists for co-edge profile (8, 3):NO, (9, 2):NO
+P = [(8, 3), (10, 1)]: private set exists for co-edge profile (8, 3):NO, (10, 1):NO
+P = [(8, 3), (11, 0)]: private set exists for co-edge profile (8, 3):NO, (11, 0):NO
+P = [(8, 3), (9, 2), (10, 1)]: private set exists for co-edge profile (8, 3):NO, (9, 2):NO, (10, 1):NO
+P = [(8, 3), (9, 2), (11, 0)]: private set exists for co-edge profile (8, 3):NO, (9, 2):NO, (11, 0):NO
+P = [(8, 3), (10, 1), (11, 0)]: private set exists for co-edge profile (8, 3):NO, (10, 1):NO, (11, 0):NO
+P = [(8, 3), (9, 2), (10, 1), (11, 0)]: private set exists for co-edge profile (8, 3):NO, (9, 2):NO, (10, 1):NO, (11, 0):NO

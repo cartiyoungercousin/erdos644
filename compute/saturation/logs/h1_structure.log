@@ -1,0 +1,5 @@
+members 323236 {(3, 9): 2200, (5, 7): 95040, (7, 5): 199584, (9, 3): 26400, (11, 0): 12} | total size 3878820
+degree of each X point 176385 | of each Y point 176220
+tau = 10 > T = 9
+antichain (no edge profile dominated by another distinct profile with smaller size): True
+max triple intersection over co-edge triples with union V: 4 at co-edge profiles ((7, 3), (7, 3), (1, 10)) | pencil needs >= 4

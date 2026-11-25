@@ -86,6 +86,10 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 |---|---|---|
 | Lemma 1 (padding: f with sets of size at most k = f), Lemma 3 (private sets), Lemma 4 (saturation), Corollary 5 (co-edge form), (G) equivalent to the 3/4 bound | MINIMAL_FRAME.md | VERIFIED (notes/verify/minimal_frame.md; proof-text gaps: Lemma 4 (ii) and m >= 3, S_B ⊆ V) |
 
+## Task 1 (saturation), notes/SATURATION.md
+- FKW m=3: one loose incidence class (edges with 11 X-points, z their Y-point). Shrinking gives H1 (323,236 members, τ = 10, antichain, all classes saturated, (7,2) by hand + MILP). H1 contains the literal pencil shape yet has no good seven, so (Σ)(b) is invalid for non-uniform families. H1 is not yet minimal (only 12 members have private sets). [EXACT + HAND]
+- Near-pool at (10,8,21): Corollary 5's U_z sets exist in 31/32 incidence classes. Saturation's consequences do NOT contradict near-pool structure; the open class does not shrink. [EXACT]
+
 ## Open
 - LIFT (G2 / far replies): transfer confined results to general families (anchor-keeping certificates, or show far replies with large outside overlap lose). Needed for the full solve.
 - Record path: exact certification of R1's sparsest-anchor argument at t = 17/20 (anchor-keeping, transfers) would give f(k,7) <= (17/20 + o(1))k (FRONTIER §4–5).

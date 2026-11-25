@@ -1,0 +1,7 @@
+r=1: status 2: The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None) -> NO good seven [solver-only]
+r=2: status 2: The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None) -> NO good seven [solver-only]
+r=3: status 2: The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None) -> NO good seven [solver-only]
+r=4: status 2: The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None) -> NO good seven [solver-only]
+r=5: status 2: The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None) -> NO good seven [solver-only]
+r=6: status 2: The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None) -> NO good seven [solver-only]
+r=7: no regular member, pairs x_i - x_l (i != l) uncovered -> NO [proved by hand]

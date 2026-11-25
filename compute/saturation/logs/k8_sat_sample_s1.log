@@ -1,0 +1,4 @@
+members 2352, incidences 18816, distinct 8-sets S 5147; deciding 240 from -1 with 120.0s each, 20 workers
+  100/240 8-sets {'SAT': 37, 'UNSAT': 0, 'undecided': 63} incidences {'SAT': 122, 'UNSAT': 0, 'undecided': 232} (562s)
+  200/240 8-sets {'SAT': 87, 'UNSAT': 0, 'undecided': 113} incidences {'SAT': 297, 'UNSAT': 0, 'undecided': 409} (948s)
+DONE 8-sets {'SAT': 112, 'UNSAT': 0, 'undecided': 128}; incidences {'SAT': 381, 'UNSAT': 0, 'undecided': 459}; time 1084s

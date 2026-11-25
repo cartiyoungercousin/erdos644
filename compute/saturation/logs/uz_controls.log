@@ -1,0 +1,3 @@
+[ctrl FKW saturated class (expect SAT)] SAT: U_z exists for K profile (5, 5), z in Y (3.2s); re-check True; |U| = 11, profile(U) = (5, 6), K_i profiles [(7, 3), (5, 5), (5, 5), (3, 7), (9, 1), (7, 3)]
+[ctrl FKW saturated class (expect SAT)] SAT: U_z exists for K profile (9, 1), z in A (44.7s); re-check True; |U| = 10, profile(U) = (10, 0), K_i profiles [(5, 5), (5, 5), (5, 5), (5, 5), (5, 5), (3, 7)]
+[ctrl FKW loose class (expect UNSAT)] UNSAT: no U_z for K profile (1, 9), z in Y (54.0s) [solver-only]

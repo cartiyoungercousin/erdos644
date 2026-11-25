@@ -1,0 +1,5 @@
+n=22 |X|=12 sizes=11,10,10,10,10,10,10 cons=[1,"odd","odd","odd","odd","odd","odd"] excess E=5
+symmetry group order 720
+heavy multisets up to symmetry: 1993
+degree-feasible leaves: 3482; split-feasible: 0
+RESULT: NO good seven [computed exact, exhaustive]
