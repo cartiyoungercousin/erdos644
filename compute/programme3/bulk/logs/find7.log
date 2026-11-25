@@ -1,0 +1,12 @@
+tgw_fam_10_8_21.txt members 23346 k 10
+  FOUND type LP=7/4 try 0: seven verified no-2-cover=True; members(hex)= ['0x14fc6', '0x1f9a80', '0xd53d', '0x1f2c30', '0x63f6', '0xb6cb', '0x17f900']
+tgw_fam_10_8_21_rand2s1.txt members 44437 k 10
+  FOUND type LP=7/4 try 0: seven verified no-2-cover=True; members(hex)= ['0x1b7680', '0x3cd83', '0x18bb22', '0x13d868', '0x8aec9', '0x1015eb', '0xb6354']
+tgw_fam_10_8_21_rand2s2.txt members 43922 k 10
+  FOUND type LP=7/4 try 0: seven verified no-2-cover=True; members(hex)= ['0x106f38', '0xea6a4', '0x16c9d0', '0x73b88', '0x1754b0', '0x19d69', '0x11f251']
+tgw_fam_10_8_21_rand3s1.txt members 53768 k 10
+  FOUND type LP=7/4 try 0: seven verified no-2-cover=True; members(hex)= ['0x1277c0', '0xa991e', '0x18eec0', '0x134b89', '0x53c74', '0x19d283', '0xfa560']
+tgw_fam_10_8_21_rand3s2.txt members 47986 k 10
+  FOUND type LP=7/4 try 0: seven verified no-2-cover=True; members(hex)= ['0xe52e4', '0x6eb50', '0xb9b9', '0x15c519', '0x1b9710', '0x132e49', '0x157ca0']
+tgw_fam_8_6_16.txt members 2814 k 8
+  FOUND type LP=7/4 try 0: seven verified no-2-cover=True; members(hex)= ['0x2e99', '0x30eb', '0x1e72', '0xc3d8', '0x2d47', '0x3335', '0x1dac']
