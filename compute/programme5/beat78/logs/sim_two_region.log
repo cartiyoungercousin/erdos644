@@ -1,0 +1,5 @@
+k=2000 T=1740 n=12840 c=0.530 rounds=10 trials=6: pencils checked 361, min lower bound on max block 0.8851 > t=0.8700
+k=3000 T=2655 n=19302 c=0.553 rounds=8 trials=4: pencils checked 138, min lower bound on max block 0.8886 > t=0.8850
+k=2000 T=1750 n=12920 c=0.520 rounds=12 trials=4: pencils checked 342, min lower bound on max block 0.8838 > t=0.8750
+k=2000 T=1740 n=12840 c=0.530 rounds=10 trials=2: pencils checked 252, min lower bound on max block 0.7750 > t=0.8700
+(NOGLUE control: printed value is only a lower bound; with exactly empty cross parts t*(c,0,0)=c+1/4=0.78 <= t, so static finishes exist -- glue is essential)

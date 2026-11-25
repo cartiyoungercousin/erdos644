@@ -1,0 +1,14 @@
+d12=0/96  requester best (a,b)=(42, 42)/96  adversary value 0.90000
+d12=1/96  requester best (a,b)=(41, 41)/96  adversary value 0.89792
+d12=2/96  requester best (a,b)=(40, 40)/96  adversary value 0.89583
+d12=3/96  requester best (a,b)=(40, 40)/96  adversary value 0.89375
+d12=4/96  requester best (a,b)=(39, 39)/96  adversary value 0.89167
+d12=5/96  requester best (a,b)=(38, 38)/96  adversary value 0.88958
+d12=6/96  requester best (a,b)=(38, 38)/96  adversary value 0.88750
+d12=7/96  requester best (a,b)=(37, 37)/96  adversary value 0.88542
+d12=8/96  requester best (a,b)=(37, 37)/96  adversary value 0.88333
+d12=9/96  requester best (a,b)=(37, 37)/96  adversary value 0.88125
+d12=10/96  requester best (a,b)=(37, 37)/96  adversary value 0.87917
+d12=11/96  requester best (a,b)=(36, 36)/96  adversary value 0.87760
+d12=12/96  requester best (a,b)=(36, 36)/96  adversary value 0.87500
+t=0.8750 two-request game value 0.90000 (at d12=0/96); > t: True

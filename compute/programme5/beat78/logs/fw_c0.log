@@ -1,0 +1,12 @@
+nu=2.00  c0=0.0598  rho_min(eps<=1/8)=0.1250  FW usable: False
+nu=2.20  c0=0.0815  rho_min(eps<=1/8)=0.3250  FW usable: False
+nu=2.30  c0=0.0915  rho_min(eps<=1/8)=0.4250  FW usable: False
+nu=2.40  c0=0.1010  rho_min(eps<=1/8)=0.5250  FW usable: False
+nu=2.50  c0=0.1101  rho_min(eps<=1/8)=0.6250  FW usable: False
+nu=2.60  c0=0.1187  rho_min(eps<=1/8)=0.7250  FW usable: False
+nu=2.70  c0=0.1270  rho_min(eps<=1/8)=0.8250  FW usable: False
+nu=2.80  c0=0.1348  rho_min(eps<=1/8)=0.9250  FW usable: False
+nu=2.90  c0=0.1423  rho_min(eps<=1/8)=1.0250  FW usable: False
+nu=3.00  c0=0.1494  rho_min(eps<=1/8)=1.1250  FW usable: False
+nu=4.00  c0=0.2067  rho_min(eps<=1/8)=2.1250  FW usable: False
+nu=10.00  c0=0.3526  rho_min(eps<=1/8)=8.1250  FW usable: False
