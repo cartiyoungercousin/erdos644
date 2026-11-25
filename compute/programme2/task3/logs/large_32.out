@@ -1,0 +1,12 @@
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+parity[9, 14, 27]+free0 k 27 sl 11 Wany 9 Wk 9 cons ok ok ok ilp good None None 1.62 
+parity[8, 15]+free5 k 14 sl 14 Wany 6 Wk 6 cons ok ok ok ilp good None None 3.37 
+parity[8, 15]+free5 k 15 sl 7 Wany 6 Wk 9 cons None None None ilp none:Infeasible None None 10.6  <<LITERAL-FAILS>>
+parity[8, 15]+free5 k 16 sl 0 Wany 6 Wk 6 cons None None None ilp none:Infeasible None None 0.36 
+parity[21, 27]+free3 k 27 sl 15 Wany 6 Wk 9 cons ok ok ok ilp good None None 1.81 
+parity[21, 27]+free3 k 28 sl 8 Wany 6 Wk 6 cons ok ok ok ilp good None None 3.81 
+parity[21, 27]+free3 k 29 sl 1 Wany 6 Wk 9 cons None None None ilp none:Infeasible None None 0.37 
+parity[22, 29]+free0 k 28 sl 8 Wany 6 Wk 6 cons ok ok ok ilp good None None 1.84 
+random n=61 r=4 k 32 sl 20 Wany 5 Wk 6 cons ok ok ok ilp good None None 68.33 
+random n=61 r=4 k 33 sl 13 Wany 5 Wk 7 cons ok ok ok ilp good None None 62.19 

@@ -1,0 +1,49 @@
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+random n=11 r=2 k 3 sl 23 Wany 3 Wk 3 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' ok ilp good None None 1.35 
+random n=11 r=2 k 4 sl 16 Wany 3 Wk 6 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' H2: no nonnegative m ilp good None None 1.0 
+random n=11 r=2 k 5 sl 9 Wany 3 Wk 3 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' Y-step infeasible ilp good None None 2.59 
+random n=11 r=2 k 6 sl 2 Wany 3 Wk 6 cons None None None ilp none:Infeasible None None 0.81 
+random n=11 r=1 k 3 sl 23 Wany 3 Wk 3 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' ok ilp good None None 0.32 
+random n=11 r=1 k 4 sl 16 Wany 3 Wk 6 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' H2: no nonnegative m ilp good None None 1.16 
+random n=11 r=1 k 5 sl 9 Wany 3 Wk 3 cons ok ok ok ilp good None None 1.47 
+random n=11 r=1 k 6 sl 2 Wany 3 Wk 6 cons None None None ilp none:Infeasible None None 0.41 
+random n=10 r=2 k 3 sl 19 Wany 5 Wk 7 cons H2 fails: min m_p = -2 < 0 H2 fails: min m_p = -2 < 0 H2: no nonnegative m ilp good None None 2.44 
+random n=10 r=2 k 4 sl 12 Wany 5 Wk 6 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' H2: no nonnegative m ilp good None None 7.33 
+random n=10 r=2 k 5 sl 5 Wany 5 Wk 7 cons None None None ilp good None None 8.22 
+random n=14 r=2 k 5 sl 21 Wany 3 Wk 3 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' ok ilp good None None 3.58 
+random n=14 r=2 k 6 sl 14 Wany 3 Wk 6 cons ok ok ok ilp good None None 2.42 
+random n=14 r=2 k 7 sl 7 Wany 3 Wk 3 cons ok ok ok ilp good None None 6.09 
+random n=14 r=2 k 8 sl 0 Wany 3 Wk 6 cons None None None ilp none:Infeasible None None 0.81 
+random n=20 r=4 k 8 sl 24 Wany 5 Wk 6 cons H4 fails: no admissible cell parity vectors H4 fails: no admissible cell parity vectors ok ilp good None None 21.06 
+random n=20 r=4 k 9 sl 17 Wany 5 Wk 7 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' ok ilp good None None 20.68 
+random n=20 r=4 k 10 sl 10 Wany 5 Wk 6 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' ok ilp good None None 22.32 
+random n=20 r=4 k 11 sl 3 Wany 5 Wk 7 cons None None None ilp none:Infeasible None None 90.51 
+random n=9 r=3 k 3 sl 15 Wany None Wk None cons None None None ilp none:Infeasible None None 8.58 
+random n=9 r=3 k 4 sl 8 Wany None Wk None cons None None None ilp none:Infeasible None None 16.23 
+random n=9 r=3 k 5 sl 1 Wany None Wk None cons None None None ilp none:Infeasible None None 0.87 
+random n=10 r=1 k 3 sl 19 Wany 3 Wk 3 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' ok ilp good None None 1.35 
+random n=10 r=1 k 4 sl 12 Wany 3 Wk 6 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' H2: no nonnegative m ilp good None None 1.43 
+random n=10 r=1 k 5 sl 5 Wany 3 Wk 3 cons ok ok ok ilp good None None 1.15 
+random n=18 r=3 k 7 sl 23 Wany 3 Wk 3 cons ok ok ok ilp good None None 10.37 
+random n=18 r=3 k 8 sl 16 Wany 3 Wk 6 cons H4 fails: no admissible cell parity vectors H4 fails: no admissible cell parity vectors ok ilp good None None 10.9 
+random n=18 r=3 k 9 sl 9 Wany 3 Wk 3 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' ok ilp good None None 11.26 
+random n=18 r=3 k 10 sl 2 Wany 3 Wk 6 cons None None None ilp none:Infeasible None None 18.43 
+random n=13 r=2 k 4 sl 24 Wany 3 Wk 6 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' H2: no nonnegative m ilp good None None 3.59 
+random n=13 r=2 k 5 sl 17 Wany 3 Wk 3 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' ok ilp good None None 2.18 
+random n=13 r=2 k 6 sl 10 Wany 3 Wk 6 cons ok ok ok ilp good None None 2.1 
+random n=13 r=2 k 7 sl 3 Wany 3 Wk 3 cons ok ok ok ilp good None None 6.14 
+random n=19 r=2 k 8 sl 20 Wany 4 Wk 6 cons ok ok ok ilp good None None 5.7 
+random n=19 r=2 k 9 sl 13 Wany 4 Wk 5 cons ok ok ok ilp good None None 7.56 
+random n=19 r=2 k 10 sl 6 Wany 4 Wk 6 cons ok ok ok ilp good None None 7.87 
+random n=17 r=1 k 7 sl 19 Wany 3 Wk 3 cons ok ok ok ilp good None None 1.66 
+random n=17 r=1 k 8 sl 12 Wany 3 Wk 6 cons ok ok ok ilp good None None 1.81 
+random n=17 r=1 k 9 sl 5 Wany 3 Wk 3 cons ok ok ok ilp good None None 2.79 
+random n=17 r=3 k 7 sl 19 Wany 4 Wk 5 cons ok ok ok ilp good None None 2.12 
+random n=17 r=3 k 8 sl 12 Wany 4 Wk 6 cons ok ok ok ilp good None None 11.85 
+random n=17 r=3 k 9 sl 5 Wany 4 Wk 5 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' ok ilp good None None 15.66 
+random n=19 r=2 k 8 sl 20 Wany 3 Wk 6 cons ok ok ok ilp good None None 3.47 
+random n=19 r=2 k 9 sl 13 Wany 3 Wk 3 cons ok ok ok ilp good None None 5.88 
+random n=19 r=2 k 10 sl 6 Wany 3 Wk 6 cons ok ok ok ilp good None None 11.9 
+random n=15 r=1 k 6 sl 18 Wany 3 Wk 6 cons ok ok ok ilp good None None 1.71 
+random n=15 r=1 k 7 sl 11 Wany 3 Wk 3 cons ok ok ok ilp good None None 0.9 

@@ -1,0 +1,44 @@
+== fkw: 9 instances (H nonempty, V = union H)
+  literal hyp (any parity): 9  ground truth good: 9  none: 0  (of these with Wk>slack or None: 0 )
+  parity-k hyp (H0+H1): 9  ground truth good: 9  none: 0
+    cons: {'ok': 9}
+    cons_brief: {'ok': 9}
+    cons_ilp: {'ok': 9}
+  good seven exists but structured construction (ILP Y-step) fails: 0 Counter()
+  verification failures: 0
+== large: 48 instances (H nonempty, V = union H)
+  literal hyp (any parity): 31  ground truth good: 28  none: 3  (of these with Wk>slack or None: 3 )
+  parity-k hyp (H0+H1): 28  ground truth good: 28  none: 0
+    cons: {'ok': 27, 'H4 fails': 1}
+    cons_brief: {'ok': 27, 'H4 fails': 1}
+    cons_ilp: {'ok': 28}
+  good seven exists but structured construction (ILP Y-step) fails: 0 Counter()
+  verification failures: 0
+== parity: 536 instances (H nonempty, V = union H)
+  literal hyp (any parity): 221  ground truth good: 159  none: 62  (of these with Wk>slack or None: 62 )
+  parity-k hyp (H0+H1): 159  ground truth good: 159  none: 0
+    cons: {'H4 fails': 66, 'ok': 29, 'H2 fails': 55, 'not enough points': 5, 'H3 fails': 4}
+    cons_brief: {'H4 fails': 66, 'ok': 29, 'H2 fails': 55, 'not enough points': 5, 'H3 fails': 4}
+    cons_ilp: {'H2': 123, 'ok': 29, 'Y-step infeasible': 7}
+  good seven exists but structured construction (ILP Y-step) fails: 130 Counter({'H2': 123, 'Y-step infeasible': 7})
+  verification failures: 0
+== random: 109 instances (H nonempty, V = union H)
+  literal hyp (any parity): 90  ground truth good: 89  none: 1  (of these with Wk>slack or None: 1 )
+  parity-k hyp (H0+H1): 88  ground truth good: 88  none: 0
+    cons: {'H4 fails': 44, 'ok': 43, 'H2 fails': 1}
+    cons_brief: {'H4 fails': 44, 'ok': 43, 'H2 fails': 1}
+    cons_ilp: {'H2': 18, 'Y-step infeasible': 6, 'ok': 64}
+  good seven exists but structured construction (ILP Y-step) fails: 24 Counter({'H2': 18, 'Y-step infeasible': 6})
+  verification failures: 0
+== ALL: 702 instances (H nonempty, V = union H)
+  literal hyp (any parity): 351  ground truth good: 285  none: 66  (of these with Wk>slack or None: 66 )
+  parity-k hyp (H0+H1): 284  ground truth good: 284  none: 0
+    cons: {'ok': 108, 'H4 fails': 111, 'H2 fails': 56, 'not enough points': 5, 'H3 fails': 4}
+    cons_brief: {'ok': 108, 'H4 fails': 111, 'H2 fails': 56, 'not enough points': 5, 'H3 fails': 4}
+    cons_ilp: {'ok': 130, 'H2': 141, 'Y-step infeasible': 13}
+  good seven exists but structured construction (ILP Y-step) fails: 154 Counter({'H2': 141, 'Y-step infeasible': 13})
+  verification failures: 0
+seed 2: hypotheses held in 2500 instances; proof construction verified in 2500; first failing hypothesis among rejected: {'H0': 4232, 'H2': 6266, 'H1': 1201, 'H4': 6, 'H3': 6}
+seed 3: hypotheses held in 2500 instances; proof construction verified in 2500; first failing hypothesis among rejected: {'H2': 6342, 'H0': 4200, 'H1': 1140, 'H3': 4, 'H4': 4}
+seed 4: hypotheses held in 2500 instances; proof construction verified in 2500; first failing hypothesis among rejected: {'H1': 1155, 'H2': 6065, 'H0': 4035, 'H3': 3, 'H4': 3}
+seed 5: hypotheses held in 2500 instances; proof construction verified in 2500; first failing hypothesis among rejected: {'H2': 6297, 'H0': 4235, 'H1': 1140, 'H4': 5, 'H3': 2}

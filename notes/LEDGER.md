@@ -98,6 +98,8 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 ## Programme 2 (notes/PROGRAMME_2.md)
 - Task 1 (notes/PROGRAMME2_TASK1.md): every stored family is thin at its small k, because the max-atom term 7·max y (≈ 7/τ) dominates. tau*_b values: FKW and H1 2.2, near-pool 1.75–2, k=8 2–2.29, U1 533/220 ≈ 2.42, k=10 window families exactly 7/3. Asymptotically Theorem 3 needs tau*_b < 7/3 as atoms tend to 0 (coordinator's reading, not proved). [EXACT/float LP]
 
+- Task 3 (notes/PROGRAMME2_TASK3.md): Proposition 9 as literally stated is FALSE (size parity; counterexample by hand + SAT). Theorem 9′, with correct parity |Ω_i| ≡ k (mod 2) and size hypotheses, is proved by hand: the 7×7 F₂ class system is always solvable, and size residues are repaired by same-class pairs. Proof construction exact on 10,300 instances; with parity-correct Ω's, a good seven existed in 284/284 ground-truth instances (conjecture: parity alone suffices). [HAND + EXACT], not independently verified.
+
 ## Open
 - LIFT (G2 / far replies): transfer confined results to general families (anchor-keeping certificates, or show far replies with large outside overlap lose). Needed for the full solve.
 - Record path: exact certification of R1's sparsest-anchor argument at t = 17/20 (anchor-keeping, transfers) would give f(k,7) <= (17/20 + o(1))k (FRONTIER §4–5).

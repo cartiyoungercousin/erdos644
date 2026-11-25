@@ -1,0 +1,180 @@
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+parity[4, 7, 7]+free0 k 7 sl 23 Wany 9 Wk 9 cons H2 fails: min m_p = -1 < 0 H2 fails: min m_p = -1 < 0 H2: no nonnegative m ilp good None None 1.92 
+parity[4, 7, 7]+free0 k 9 sl 9 Wany 9 Wk 9 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' Y-step infeasible ilp good None None 1.61 
+parity[3, 7, 3, 3]+free0 k 6 sl 22 Wany 12 Wk 12 cons H2 fails: min m_p = -2 < 0 H2 fails: min m_p = -2 < 0 H2: no nonnegative m ilp good None None 1.83 
+parity[3, 7, 3, 3]+free0 k 8 sl 8 Wany 12 Wk 12 cons None None None ilp none:Infeasible None None 6.32 
+parity[2, 6]+free0 k 4 sl 4 Wany None Wk None cons None None None ilp none:Infeasible None None 0.48 
+parity[4, 2, 5, 3]+free3 k 7 sl 19 Wany None Wk None cons None None None ilp none:Infeasible None None 1.24 
+parity[4, 2, 5, 3]+free3 k 8 sl 12 Wany None Wk None cons None None None ilp none:Infeasible None None 1.12 
+parity[4, 2, 5, 3]+free3 k 9 sl 5 Wany None Wk None cons None None None ilp none:Infeasible None None 1.3 
+parity[4, 3]+free0 k 4 sl 0 Wany 6 Wk 6 cons None None None ilp none:Infeasible None None 0.4 
+parity[5, 7, 5]+free0 k 7 sl 19 Wany 9 Wk 9 cons H2 fails: min m_p = -1 < 0 H2 fails: min m_p = -1 < 0 H2: no nonnegative m ilp good None None 1.23 
+parity[5, 7, 5]+free0 k 9 sl 5 Wany 9 Wk 9 cons None None None ilp none:Infeasible None None 0.66 
+parity[4, 3, 5]+free3 k 6 sl 18 Wany 9 Wk 12 cons H2 fails: min m_p = -2 < 0 H2 fails: min m_p = -2 < 0 H2: no nonnegative m ilp good None None 2.95 
+parity[4, 3, 5]+free3 k 7 sl 11 Wany 9 Wk 9 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' H2: no nonnegative m ilp good None None 2.49 
+parity[4, 3, 5]+free3 k 8 sl 4 Wany 9 Wk 12 cons None None None ilp none:Infeasible None None 1.02 
+parity[5, 7, 4, 5]+free1 [live 21/22] k 10 sl 14 Wany 12 Wk 12 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' H2: no nonnegative m ilp good None None 3.75 
+parity[5, 7, 4, 5]+free1 k 11 sl 11 Wany 12 Wk None cons None None None ilp none:Infeasible None None 0.66 
+parity[5, 7, 4, 5]+free1 [live 21/22] k 12 sl 0 Wany 12 Wk 12 cons None None None ilp none:Infeasible None None 0.45 
+parity[2, 4, 6, 7]+free1 [live 19/20] k 8 sl 20 Wany None Wk None cons None None None ilp none:Infeasible None None 0.74 
+parity[2, 4, 6, 7]+free1 k 9 sl 17 Wany None Wk None cons None None None ilp none:Infeasible None None 0.99 
+parity[2, 4, 6, 7]+free1 [live 19/20] k 10 sl 6 Wany None Wk None cons None None None ilp none:Infeasible None None 0.67 
+parity[2, 4, 6, 7]+free1 k 11 sl 3 Wany None Wk None cons None None None ilp none:Infeasible None None 0.91 
+parity[5, 6, 6, 7]+free0 k 12 sl 12 Wany 12 Wk 12 cons ok ok ok ilp good None None 2.57 
+parity[7, 7, 5]+free3 k 10 sl 18 Wany 9 Wk 12 cons H2 fails: min m_p = -1 < 0 H2 fails: min m_p = -1 < 0 H2: no nonnegative m ilp good None None 3.35 
+parity[7, 7, 5]+free3 k 11 sl 11 Wany 9 Wk 9 cons ok ok ok ilp good None None 2.38 
+parity[7, 7, 5]+free3 k 12 sl 4 Wany 9 Wk 12 cons None None None ilp none:Infeasible None None 0.74 
+parity[4, 3]+free0 k 4 sl 0 Wany 6 Wk 6 cons None None None ilp none:Infeasible None None 0.33 
+parity[4, 4, 4, 5]+free1 k 7 sl 23 Wany 12 Wk None cons None None None ilp none:Infeasible UNSAT UNSAT 0.71  <<LITERAL-FAILS>>
+parity[4, 4, 4, 5]+free1 [live 17/18] k 8 sl 12 Wany 12 Wk 12 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' H2: no nonnegative m ilp good None None 3.09 
+parity[4, 4, 4, 5]+free1 k 9 sl 9 Wany 12 Wk None cons None None None ilp none:Infeasible None None 0.69 
+parity[4, 5, 3, 6]+free2 k 8 sl 24 Wany 12 Wk 12 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' H2: no nonnegative m ilp good None None 3.03 
+parity[4, 5, 3, 6]+free2 k 9 sl 17 Wany 12 Wk None cons None None None ilp none:Infeasible UNSAT UNSAT 3.96  <<LITERAL-FAILS>>
+parity[4, 5, 3, 6]+free2 k 10 sl 10 Wany 12 Wk 12 cons None None None ilp none:Infeasible None None 20.82 
+parity[4, 5, 3, 6]+free2 k 11 sl 3 Wany 12 Wk None cons None None None ilp none:Infeasible None None 1.04 
+parity[3, 6, 3, 3]+free1 [live 15/16] k 6 sl 18 Wany 12 Wk 12 cons H2 fails: min m_p = -2 < 0 H2 fails: min m_p = -2 < 0 H2: no nonnegative m ilp good None None 2.47 
+parity[3, 6, 3, 3]+free1 k 7 sl 15 Wany 12 Wk None cons None None None ilp none:Infeasible UNSAT UNSAT 0.46  <<LITERAL-FAILS>>
+parity[3, 6, 3, 3]+free1 [live 15/16] k 8 sl 4 Wany 12 Wk 12 cons None None None ilp none:Infeasible None None 0.76 
+parity[3, 6, 3, 3]+free1 k 9 sl 1 Wany 12 Wk None cons None None None ilp none:Infeasible None None 0.64 
+parity[2, 5]+free2 k 3 sl 15 Wany None Wk None cons None None None ilp none:Infeasible None None 1.0 
+parity[2, 5]+free2 k 4 sl 8 Wany None Wk None cons None None None ilp none:Infeasible None None 1.41 
+parity[2, 5]+free2 k 5 sl 1 Wany None Wk None cons None None None ilp none:Infeasible None None 0.78 
+parity[2, 7, 5]+free0 k 5 sl 21 Wany None Wk None cons None None None ilp none:Infeasible None None 0.59 
+parity[2, 7, 5]+free0 k 7 sl 7 Wany None Wk None cons None None None ilp none:Infeasible None None 0.63 
+parity[3, 5]+free2 k 3 sl 19 Wany 6 Wk None cons None None None ilp none:Infeasible UNSAT UNSAT 1.33  <<LITERAL-FAILS>>
+parity[3, 5]+free2 k 4 sl 12 Wany 6 Wk 6 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' H2: no nonnegative m ilp good None None 3.45 
+parity[3, 5]+free2 k 5 sl 5 Wany 6 Wk None cons None None None ilp none:Infeasible None None 1.21 
+parity[4, 3, 7, 5]+free1 [live 19/20] k 8 sl 20 Wany 12 Wk 12 cons H2 fails: min m_p = -1 < 0 H2 fails: min m_p = -1 < 0 H2: no nonnegative m ilp good None None 2.22 
+parity[4, 3, 7, 5]+free1 k 9 sl 17 Wany 12 Wk None cons None None None ilp none:Infeasible UNSAT UNSAT 0.82  <<LITERAL-FAILS>>
+parity[4, 3, 7, 5]+free1 [live 19/20] k 10 sl 6 Wany 12 Wk 12 cons None None None ilp none:Infeasible None None 1.38 
+parity[4, 3, 7, 5]+free1 k 11 sl 3 Wany 12 Wk None cons None None None ilp none:Infeasible None None 0.78 
+parity[3, 7, 7]+free1 [live 17/18] k 7 sl 19 Wany 9 Wk 9 cons H2 fails: min m_p = -1 < 0 H2 fails: min m_p = -1 < 0 H2: no nonnegative m ilp good None None 3.07 
+parity[3, 7, 7]+free1 k 8 sl 16 Wany 9 Wk None cons None None None ilp none:Infeasible UNSAT UNSAT 0.75  <<LITERAL-FAILS>>
+parity[3, 7, 7]+free1 [live 17/18] k 9 sl 5 Wany 9 Wk 9 cons None None None ilp none:Infeasible None None 0.72 
+parity[3, 7, 7]+free1 k 10 sl 2 Wany 9 Wk None cons None None None ilp none:Infeasible None None 0.33 
+parity[7, 7, 3, 7]+free3 k 12 sl 24 Wany 12 Wk 12 cons ok ok ok ilp good None None 1.46 
+parity[7, 7, 3, 7]+free3 k 13 sl 17 Wany 12 Wk 15 cons H2 fails: min m_p = -1 < 0 H2 fails: min m_p = -1 < 0 H2: no nonnegative m ilp good None None 8.97 
+parity[7, 7, 3, 7]+free3 k 14 sl 10 Wany 12 Wk 12 cons None None None ilp none:Infeasible None None 18.74 
+parity[7, 7, 3, 7]+free3 k 15 sl 3 Wany 12 Wk 15 cons None None None ilp none:Infeasible None None 1.03 
+parity[7, 5]+free0 k 4 sl 20 Wany 6 Wk 6 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' H2: no nonnegative m ilp good None None 1.08 
+parity[7, 5]+free0 k 6 sl 6 Wany 6 Wk 6 cons ok ok ok ilp good None None 1.22 
+parity[2, 6, 7, 6]+free0 k 10 sl 14 Wany None Wk None cons None None None ilp none:Infeasible None None 0.76 
+parity[2, 6, 7, 6]+free0 k 12 sl 0 Wany None Wk None cons None None None ilp none:Infeasible None None 0.6 
+parity[6, 7, 6]+free1 k 8 sl 24 Wany 9 Wk None cons None None None ilp none:Infeasible UNSAT UNSAT 0.94  <<LITERAL-FAILS>>
+parity[6, 7, 6]+free1 [live 19/20] k 9 sl 13 Wany 9 Wk 9 cons ok ok ok ilp good None None 2.16 
+parity[6, 7, 6]+free1 k 10 sl 10 Wany 9 Wk None cons None None None ilp none:Infeasible UNSAT UNSAT 0.89  <<LITERAL-FAILS>>
+parity[4, 3]+free0 k 4 sl 0 Wany 6 Wk 6 cons None None None ilp none:Infeasible None None 0.35 
+parity[6, 2, 3, 3]+free0 k 6 sl 14 Wany None Wk None cons None None None ilp none:Infeasible None None 1.13 
+parity[6, 2, 3, 3]+free0 k 8 sl 0 Wany None Wk None cons None None None ilp none:Infeasible None None 0.93 
+parity[7, 6, 6]+free3 k 10 sl 18 Wany 9 Wk 12 cons H2 fails: min m_p = -1 < 0 H2 fails: min m_p = -1 < 0 H2: no nonnegative m ilp good None None 2.67 
+parity[7, 6, 6]+free3 k 11 sl 11 Wany 9 Wk 9 cons ok ok ok ilp good None None 10.32 
+parity[7, 6, 6]+free3 k 12 sl 4 Wany 9 Wk 12 cons None None None ilp none:Infeasible None None 1.51 
+parity[2, 5, 4, 7]+free0 k 8 sl 16 Wany None Wk None cons None None None ilp none:Infeasible None None 0.41 
+parity[2, 5, 4, 7]+free0 k 10 sl 2 Wany None Wk None cons None None None ilp none:Infeasible None None 0.39 
+parity[2, 3, 4, 2]+free2 [live 11/13] k 4 sl 16 Wany None Wk None cons None None None ilp none:Infeasible None None 0.73 
+parity[2, 3, 4, 2]+free2 k 5 sl 17 Wany None Wk None cons None None None ilp none:Infeasible None None 1.47 
+parity[2, 3, 4, 2]+free2 k 6 sl 10 Wany None Wk None cons None None None ilp none:Infeasible None None 1.17 
+parity[2, 3, 4, 2]+free2 k 7 sl 3 Wany None Wk None cons None None None ilp none:Infeasible None None 1.25 
+parity[4, 6, 6]+free0 k 7 sl 15 Wany 9 Wk 9 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' H2: no nonnegative m ilp good None None 2.01 
+parity[4, 6, 6]+free0 k 9 sl 1 Wany 9 Wk 9 cons None None None ilp none:Infeasible None None 0.36 
+parity[6, 4, 2]+free0 k 5 sl 13 Wany None Wk None cons None None None ilp none:Infeasible None None 0.48 
+parity[4, 3, 5]+free3 k 6 sl 18 Wany 9 Wk 12 cons H2 fails: min m_p = -2 < 0 H2 fails: min m_p = -2 < 0 H2: no nonnegative m ilp good None None 4.26 
+parity[4, 3, 5]+free3 k 7 sl 11 Wany 9 Wk 9 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' H2: no nonnegative m ilp good None None 3.55 
+parity[4, 3, 5]+free3 k 8 sl 4 Wany 9 Wk 12 cons None None None ilp none:Infeasible None None 1.66 
+parity[6, 5, 3, 7]+free0 k 10 sl 14 Wany 12 Wk 12 cons H2 fails: min m_p = -1 < 0 H2 fails: min m_p = -1 < 0 H2: no nonnegative m ilp good None None 3.29 
+parity[6, 5, 3, 7]+free0 k 12 sl 0 Wany 12 Wk 12 cons None None None ilp none:Infeasible None None 0.97 
+parity[2, 5, 6]+free0 k 5 sl 17 Wany None Wk None cons None None None ilp none:Infeasible None None 0.96 
+parity[2, 5, 6]+free0 k 7 sl 3 Wany None Wk None cons None None None ilp none:Infeasible None None 0.89 
+parity[3, 4, 5, 7]+free0 k 8 sl 20 Wany 12 Wk 12 cons H2 fails: min m_p = -1 < 0 H2 fails: min m_p = -1 < 0 H2: no nonnegative m ilp good None None 2.58 
+parity[3, 4, 5, 7]+free0 k 10 sl 6 Wany 12 Wk 12 cons None None None ilp none:Infeasible None None 1.19 
+parity[5, 6, 3]+free1 k 6 sl 18 Wany 9 Wk None cons None None None ilp none:Infeasible UNSAT UNSAT 0.72  <<LITERAL-FAILS>>
+parity[5, 6, 3]+free1 [live 14/15] k 7 sl 7 Wany 9 Wk 9 cons None None None ilp none:Infeasible None None 8.01 
+parity[5, 6, 3]+free1 k 8 sl 4 Wany 9 Wk None cons None None None ilp none:Infeasible None None 0.45 
+parity[6, 4]+free2 k 4 sl 20 Wany 6 Wk 6 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' H2: no nonnegative m ilp good None None 2.25 
+parity[6, 4]+free2 k 5 sl 13 Wany 6 Wk None cons None None None ilp none:Infeasible UNSAT UNSAT 1.85  <<LITERAL-FAILS>>
+parity[6, 4]+free2 k 6 sl 6 Wany 6 Wk 6 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' Y-step infeasible ilp good None None 8.1 
+parity[7, 4]+free2 k 4 sl 24 Wany 6 Wk 6 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' H2: no nonnegative m ilp good None None 1.53 
+parity[7, 4]+free2 k 5 sl 17 Wany 6 Wk None cons None None None ilp none:Infeasible UNSAT UNSAT 1.09  <<LITERAL-FAILS>>
+parity[7, 4]+free2 k 6 sl 10 Wany 6 Wk 6 cons ok ok ok ilp good None None 1.92 
+parity[7, 4]+free2 k 7 sl 3 Wany 6 Wk None cons None None None ilp none:Infeasible None None 0.71 
+parity[4, 5]+free2 k 3 sl 23 Wany 6 Wk None cons None None None ilp none:Infeasible UNSAT UNSAT 3.82  <<LITERAL-FAILS>>
+parity[4, 5]+free2 k 4 sl 16 Wany 6 Wk 6 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' H2: no nonnegative m ilp good None None 2.49 
+parity[4, 5]+free2 k 5 sl 9 Wany 6 Wk None cons None None None ilp none:Infeasible UNSAT UNSAT 1.44  <<LITERAL-FAILS>>
+parity[4, 5]+free2 k 6 sl 2 Wany 6 Wk 6 cons None None None ilp none:Infeasible None None 0.75 
+parity[2, 2]+free3 k 3 sl 7 Wany None Wk None cons None None None ilp none:Infeasible None None 0.84 
+parity[2, 2]+free3 k 4 sl 0 Wany None Wk None cons None None None ilp none:Infeasible None None 0.56 
+parity[7, 4]+free0 k 4 sl 16 Wany 6 Wk 6 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' H2: no nonnegative m ilp good None None 1.4 
+parity[7, 4]+free0 k 6 sl 2 Wany 6 Wk 6 cons None None None ilp none:Infeasible None None 0.48 
+parity[5, 6, 5]+free1 [live 16/17] k 7 sl 15 Wany 9 Wk 9 cons H2 fails: min m_p = -1 < 0 H2 fails: min m_p = -1 < 0 H2: no nonnegative m ilp good None None 2.03 
+parity[5, 6, 5]+free1 k 8 sl 12 Wany 9 Wk None cons None None None ilp none:Infeasible UNSAT UNSAT 0.7  <<LITERAL-FAILS>>
+parity[5, 6, 5]+free1 [live 16/17] k 9 sl 1 Wany 9 Wk 9 cons None None None ilp none:Infeasible None None 0.53 
+parity[4, 6]+free2 k 4 sl 20 Wany 6 Wk 6 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' H2: no nonnegative m ilp good None None 2.12 
+parity[4, 6]+free2 k 5 sl 13 Wany 6 Wk None cons None None None ilp none:Infeasible UNSAT UNSAT 1.54  <<LITERAL-FAILS>>
+parity[4, 6]+free2 k 6 sl 6 Wany 6 Wk 6 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' Y-step infeasible ilp good None None 2.75 
+parity[3, 3, 4]+free1 [live 10/11] k 3 sl 19 Wany 9 Wk 9 cons H3 fails: no two points of V' in one class H3 fails: no two points of V' in one class H2: no nonnegative m ilp good None None 1.08 
+parity[3, 3, 4]+free1 k 4 sl 16 Wany 9 Wk None cons None None None ilp none:Infeasible UNSAT UNSAT 0.83  <<LITERAL-FAILS>>
+parity[3, 3, 4]+free1 [live 10/11] k 5 sl 5 Wany 9 Wk 9 cons None None None ilp none:Infeasible None None 1.32 
+parity[3, 3, 4]+free1 k 6 sl 2 Wany 9 Wk None cons None None None ilp none:Infeasible None None 0.99 
+parity[5, 4, 2, 4]+free0 k 6 sl 18 Wany None Wk None cons None None None ilp none:Infeasible None None 0.71 
+parity[5, 4, 2, 4]+free0 k 8 sl 4 Wany None Wk None cons None None None ilp none:Infeasible None None 1.05 
+parity[4, 5]+free2 k 3 sl 23 Wany 6 Wk None cons None None None ilp none:Infeasible UNSAT UNSAT 5.08  <<LITERAL-FAILS>>
+parity[4, 5]+free2 k 4 sl 16 Wany 6 Wk 6 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' H2: no nonnegative m ilp good None None 2.74 
+parity[4, 5]+free2 k 5 sl 9 Wany 6 Wk None cons None None None ilp none:Infeasible UNSAT UNSAT 1.1  <<LITERAL-FAILS>>
+parity[4, 5]+free2 k 6 sl 2 Wany 6 Wk 6 cons None None None ilp none:Infeasible None None 0.65 
+parity[6, 5, 2, 4]+free3 k 8 sl 24 Wany None Wk None cons None None None ilp none:Infeasible None None 1.26 
+parity[6, 5, 2, 4]+free3 k 9 sl 17 Wany None Wk None cons None None None ilp none:Infeasible None None 1.48 
+parity[6, 5, 2, 4]+free3 k 10 sl 10 Wany None Wk None cons None None None ilp none:Infeasible None None 1.24 
+parity[6, 5, 2, 4]+free3 k 11 sl 3 Wany None Wk None cons None None None ilp none:Infeasible None None 1.14 
+parity[3, 2, 4]+free0 k 3 sl 15 Wany None Wk None cons None None None ilp none:Infeasible None None 0.74 
+parity[3, 2, 4]+free0 k 5 sl 1 Wany None Wk None cons None None None ilp none:Infeasible None None 0.75 
+parity[7, 3, 2, 3]+free0 k 6 sl 18 Wany None Wk None cons None None None ilp none:Infeasible None None 1.27 
+parity[7, 3, 2, 3]+free0 k 8 sl 4 Wany None Wk None cons None None None ilp none:Infeasible None None 1.05 
+parity[5, 4]+free0 k 4 sl 8 Wany 6 Wk 6 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' H2: no nonnegative m ilp good None None 2.41 
+parity[4, 3, 2]+free0 k 3 sl 15 Wany None Wk None cons None None None ilp none:Infeasible None None 0.79 
+parity[4, 3, 2]+free0 k 5 sl 1 Wany None Wk None cons None None None ilp none:Infeasible None None 0.36 
+parity[3, 6, 5, 3]+free3 k 8 sl 24 Wany 12 Wk 12 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' H2: no nonnegative m ilp good None None 4.38 
+parity[3, 6, 5, 3]+free3 k 9 sl 17 Wany 12 Wk 15 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' H2: no nonnegative m ilp good None None 6.07 
+parity[3, 6, 5, 3]+free3 k 10 sl 10 Wany 12 Wk 12 cons None None None ilp none:Infeasible None None 16.52 
+parity[3, 6, 5, 3]+free3 k 11 sl 3 Wany 12 Wk 15 cons None None None ilp none:Infeasible None None 1.17 
+parity[6, 2, 6]+free0 k 5 sl 21 Wany None Wk None cons None None None ilp none:Infeasible None None 0.68 
+parity[6, 2, 6]+free0 k 7 sl 7 Wany None Wk None cons None None None ilp none:Infeasible None None 0.64 
+parity[6, 3]+free3 k 4 sl 20 Wany 6 Wk 6 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' H2: no nonnegative m ilp good None None 1.36 
+parity[6, 3]+free3 k 5 sl 13 Wany 6 Wk 9 cons H2 fails: min m_p = -1 < 0 H2 fails: min m_p = -1 < 0 H2: no nonnegative m ilp good None None 2.41 
+parity[6, 3]+free3 k 6 sl 6 Wany 6 Wk 6 cons ok ok ok ilp good None None 4.53 
+parity[6, 5, 4]+free0 k 7 sl 11 Wany 9 Wk 9 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' H2: no nonnegative m ilp good None None 1.57 
+parity[4, 4, 2, 4]+free0 k 6 sl 14 Wany None Wk None cons None None None ilp none:Infeasible None None 1.05 
+parity[4, 4, 2, 4]+free0 k 8 sl 0 Wany None Wk None cons None None None ilp none:Infeasible None None 0.94 
+parity[3, 7]+free0 k 4 sl 12 Wany 6 Wk 6 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' H2: no nonnegative m ilp good None None 1.08 
+parity[6, 7]+free1 k 5 sl 21 Wany 6 Wk None cons None None None ilp none:Infeasible UNSAT UNSAT 0.51  <<LITERAL-FAILS>>
+parity[6, 7]+free1 [live 13/14] k 6 sl 10 Wany 6 Wk 6 cons ok ok ok ilp good None None 1.08 
+parity[6, 7]+free1 k 7 sl 7 Wany 6 Wk None cons None None None ilp none:Infeasible UNSAT UNSAT 0.53  <<LITERAL-FAILS>>
+parity[4, 7]+free2 k 4 sl 24 Wany 6 Wk 6 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' H2: no nonnegative m ilp good None None 2.23 
+parity[4, 7]+free2 k 5 sl 17 Wany 6 Wk None cons None None None ilp none:Infeasible UNSAT UNSAT 1.18  <<LITERAL-FAILS>>
+parity[4, 7]+free2 k 6 sl 10 Wany 6 Wk 6 cons ok ok ok ilp good None None 2.52 
+parity[4, 7]+free2 k 7 sl 3 Wany 6 Wk None cons None None None ilp none:Infeasible None None 0.52 
+parity[6, 7]+free1 k 5 sl 21 Wany 6 Wk None cons None None None ilp none:Infeasible UNSAT UNSAT 0.47  <<LITERAL-FAILS>>
+parity[6, 7]+free1 [live 13/14] k 6 sl 10 Wany 6 Wk 6 cons ok ok ok ilp good None None 1.25 
+parity[6, 7]+free1 k 7 sl 7 Wany 6 Wk None cons None None None ilp none:Infeasible UNSAT UNSAT 0.49  <<LITERAL-FAILS>>
+parity[5, 5, 5]+free1 k 6 sl 22 Wany 9 Wk None cons None None None ilp none:Infeasible UNSAT UNSAT 0.44  <<LITERAL-FAILS>>
+parity[5, 5, 5]+free1 [live 15/16] k 7 sl 11 Wany 9 Wk 9 cons H2 fails: min m_p = -1 < 0 H2 fails: min m_p = -1 < 0 H2: no nonnegative m ilp good None None 2.15 
+parity[5, 5, 5]+free1 k 8 sl 8 Wany 9 Wk None cons None None None ilp none:Infeasible None None 0.32 
+parity[3, 5]+free1 k 3 sl 15 Wany 6 Wk None cons None None None ilp none:Infeasible UNSAT UNSAT 0.87  <<LITERAL-FAILS>>
+parity[3, 5]+free1 [live 8/9] k 4 sl 4 Wany 6 Wk 6 cons None None None ilp none:Infeasible None None 0.63 
+parity[3, 5]+free1 k 5 sl 1 Wany 6 Wk None cons None None None ilp none:Infeasible None None 0.34 
+parity[6, 2]+free3 k 3 sl 23 Wany None Wk None cons None None None ilp none:Infeasible None None 0.9 
+parity[6, 2]+free3 k 4 sl 16 Wany None Wk None cons None None None ilp none:Infeasible None None 0.91 
+parity[6, 2]+free3 k 5 sl 9 Wany None Wk None cons None None None ilp none:Infeasible None None 0.75 
+parity[6, 2]+free3 k 6 sl 2 Wany None Wk None cons None None None ilp none:Infeasible None None 0.84 
+parity[4, 4, 3]+free0 k 3 sl 23 Wany 9 Wk 9 cons H3 fails: no two points of V' in one class H3 fails: no two points of V' in one class H2: no nonnegative m ilp good None None 0.62 
+parity[4, 4, 3]+free0 k 5 sl 9 Wany 9 Wk 9 cons H4 fails: a class occurs exactly once in V'' H4 fails: a class occurs exactly once in V'' H2: no nonnegative m ilp good None None 2.79 
+parity[5, 3, 5]+free2 k 6 sl 18 Wany 9 Wk None cons None None None ilp none:Infeasible UNSAT UNSAT 1.56  <<LITERAL-FAILS>>
+parity[5, 3, 5]+free2 k 7 sl 11 Wany 9 Wk 9 cons H2 fails: min m_p = -1 < 0 H2 fails: min m_p = -1 < 0 H2: no nonnegative m ilp good None None 4.11 
+parity[5, 3, 5]+free2 k 8 sl 4 Wany 9 Wk None cons None None None ilp none:Infeasible None None 0.97 
+parity[3, 5, 6]+free3 k 7 sl 19 Wany 9 Wk 9 cons H2 fails: min m_p = -1 < 0 H2 fails: min m_p = -1 < 0 H2: no nonnegative m ilp good None None 4.13 
+parity[3, 5, 6]+free3 k 8 sl 12 Wany 9 Wk 12 cons H2 fails: min m_p = -1 < 0 H2 fails: min m_p = -1 < 0 H2: no nonnegative m ilp good None None 2.69 
+parity[3, 5, 6]+free3 k 9 sl 5 Wany 9 Wk 9 cons None None None ilp none:Infeasible None None 2.18 
+parity[3, 5, 7]+free2 k 7 sl 19 Wany 9 Wk 9 cons H2 fails: min m_p = -1 < 0 H2 fails: min m_p = -1 < 0 H2: no nonnegative m ilp good None None 2.41 
+parity[3, 5, 7]+free2 k 8 sl 12 Wany 9 Wk None cons None None None ilp none:Infeasible UNSAT UNSAT 2.11  <<LITERAL-FAILS>>
+parity[3, 5, 7]+free2 k 9 sl 5 Wany 9 Wk 9 cons None None None ilp none:Infeasible None None 2.1 
+parity[2, 6]+free0 k 4 sl 4 Wany None Wk None cons None None None ilp none:Infeasible None None 0.57 
