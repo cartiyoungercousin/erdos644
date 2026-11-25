@@ -3597,3 +3597,257 @@ Self-check (Part XVI, §70–§74):
 - 73.1's hole count is |V ∖ κ0| - 3(t - |κ0|) with |κ0| = N - 2t.
 - The literature statements are from the four arXiv abstracts, fetched and read. Sawin's correlated-sampling detail is recalled.
 - The fam_8_6_15 "perfect pencils 0" of core9 is reproduced independently as "(b)-triples 0".
+
+=============================================================================================
+# Part XVII — covering-design stability (§105–§109)
+
+Brief: a T-covering family is a covering design C(n, c, T) (c-sets covering every T-set). Ask (1) whether having no
+(Σ)-shape forces the design to be much larger than the Schönheim minimum, and whether random greedy or nibble designs
+contain (Σ)-shapes; (2) whether a stability theorem "configuration-free design ⟹ structured" exists or can be proved,
+using anti-Pasch Steiner triple systems as the model case; (3) a proof route or counterexample evidence.
+Code: `compute/cover/` — `shape_exponents.py` (first-order counts), `parity_cost.py` (algebraic avoidance),
+`build_designs.py` (small designs), `census.sh` with `certs_lean.py` (copy of `compute/entropy/fam_certs.py` without the
+defect census) and `compute/core9/seven_dfs.js` / `seven_cotype.js` (exhaustive good-seven search). Logs:
+`compute/cover/logs/`. Units k = 1.
+**Outcome. No proof route, and no counterexample evidence.**
+- Size is the wrong axis. The property is monotone, so a counterexample can be taken inclusion-minimal. The pool
+  family is inclusion-minimal and exponentially larger than the Schönheim minimum. Dead (§105).
+- Random and near-minimum designs are *supercritical* for Q′, Theorem T and the Fano seven. Each member lies in
+  e^{(0.6 to 2.1)k} of each shape. Pasch in a Steiner triple system is *critical* (O(1) per block). So the
+  random/nibble/conflict-free route that builds anti-Pasch and high-girth systems has nothing to work with (§106).
+- The algebraic anti-Pasch mechanism (AG(d,3): a forced linear relation that fails in the wrong characteristic) does
+  transplant: every (Σ)-shape and every good seven satisfies a mod-2 or mod-3 sum identity (107.1). But the code
+  redundancy needed to block the identity is 2 to 3.4 times the covering budget γ for Q′, Theorem T and good sevens.
+  For pencils it is far below γ (§107). So this gives no counterexample.
+- No stability theorem of the required kind exists in the literature I checked. The classical analogue of (Σ) is a
+  Brown–Erdős–Sós-type statement ("a supercritical configuration is unavoidable"), and that is open even for triple
+  systems beyond (6,3) (§108).
+
+## 105. Covering designs; size is the wrong axis
+
+**105.1 Dictionary [proved by hand].**
+- 𝒞 is T-covering ⟺ 𝒞 is a covering design C(n, c, T) ⟺ the edges V∖K form a Turán (n, n − T, k)-system.
+- The counting (Schönheim) bound is |𝒞| >= C(n, T)/C(c, T), of exponent Φ = N h(t/N) − c h(t/c) (= N h(c/N) − γ).
+- The threshold random family (density e^{−γk}·poly) meets it to first order. So Rödl-type asymptotic optimality is
+  automatic at exponential scale: near-designs are not needed, and nibble and random are the same at this resolution.
+- "Has a good seven" is monotone increasing in 𝒞. So if 𝒞 is a counterexample, so is every T-covering subfamily, in
+  particular an inclusion-minimal one, in which every member K has a *private* T-set (one covered by K alone).
+
+**105.2 The structured candidates are inclusion-minimal and far above the minimum [proved by hand; exponents computed
+float].**
+- The pool family 𝒫_Y = {K ⊇ Y}, |Y| = ω, is inclusion-minimal: K∖Y is a T-set lying in no other member.
+- Its size has exponent (N − ω) h(t/(N − ω)). The excess over Φ is +0.14 (bottom of the window) to +0.58 (top)
+  at t = 0.7501, and +0.21..+0.58 at t = 0.76 (`logs/shape_exponents.log`, column Pool−Phi).
+- It has no Q′ quadruple (σ >= 1 − t, §37) and loses only to the pencil.
+**105.3 Verdict on question (1).**
+- A size-stability theorem ("|𝒞| <= e^{ηk}·Schönheim ⟹ good seven") would exclude only near-minimum counterexamples.
+- The open families (hash-like selectors, request-dependent dumps, §47.5) are not near-minimum. Nothing forces a
+  counterexample to be: inclusion-minimality is free (105.1), and near-minimum size is not inherited.
+- The classical analogue says the same: Steiner systems are exactly minimum coverings, yet AG(d,3) is Pasch-free (107.2).
+  "Minimum ⟹ configuration" already fails for triple systems.
+- **Dead:** size / near-optimality as a route to CP or (Σ).
+
+## 106. Random designs are supercritical [computed float; finite instances computed exact]
+
+**106.1 Counts.**
+- For a shape on r members with certifying polytope P (Venn masses), let Hmax = max_{v∈P} N·H(v/N). The number of
+  ordered r-tuples of c-sets with pattern in P is then e^{k·Hmax + o(k)}.
+- In the threshold random design, the shape count per member is e^{kD} with D = Hmax − rγ − Φ.
+- `shape_exponents.py` maximizes entropy over the polytopes of §95(a) (Q′), (b) (pencil: union V, triple >= N − 2t),
+  (c) (Theorem T, triple = 0), and the Fano upset (symmetric maximum entropy; a lower bound for "some good seven").
+  SLSQP, 6 starts.
+
+| t | N range | D_Q′ | D_pencil | D_tri | D_Fano7 |
+|---|---|---|---|---|---|
+| 0.7501 | 1.79 → 2.21 | +1.93 → +0.79 | +0.87 → −0.30 | +1.90 → +0.59 | +2.00 → +1.54 |
+| 0.76 | 1.84 → 2.20 | +1.91 → +0.91 | +0.88 → −0.08 | +1.74 → +0.65 | +2.03 → +1.61 |
+| 0.78 | 1.93 → 2.19 | +1.86 → +1.15 | +0.86 → +0.24 | +1.49 → +0.75 | +2.10 → +1.76 |
+
+- (§57.1 already has the total Fano count, G7 − 7γ > 0, from core9 `exponents.py`. The
+  per-member normalisation above is new.)
+- In a random or nibble covering design, every member lies in exponentially many Q′ quadruples, Theorem-T
+  triangles and good sevens, throughout the window.
+- The pencil is the exception. It is a boundary pattern (§95), so near the top it is *subcritical*: fewer pencils than
+  members. This matches §36–§47, where the pencil killed only structured families.
+- Existence (count ≫ 1) needs only Hmax − rγ > 0. That holds with more room still [heuristic: second moment not
+  written].
+
+**106.2 Q′ is a blown-up Pasch [proved by hand].**
+- At its centre (N = 2, σ = 0, six pair cells of mass 1/3), Q′ is four members in which every point lies in exactly
+  two, and every two members meet in their own cell.
+- That is the Pasch configuration (4 blocks, 6 points, each point on 2 blocks), blown up.
+- In an STS(n), the expected number of Pasch configurations is n^6·n^{−4} = Θ(n^2) = Θ(#blocks): per block D = 0,
+  which is *critical*.
+- Here D_Q′ >= +0.79.
+- That is the decisive quantitative difference. The tools that build anti-Pasch and high-girth systems by random
+  processes only work at or below criticality: Bohman–Warnke's triangle removal, Glock–Kühn–Lo–Osthus, Kwan–Sah–
+  Sawhney–Simkin, and the conflict-free matching theorems of Glock–Joos–Kim–Kühn–Lichev and Delcourt–Postle.
+  Their conflict hypergraphs must have degrees about d^{j−1}. Here each member is in e^{Dk} conflicts against
+  e^{0} allowed. [literature, checked: abstracts / statements of the conditions; heuristic: the comparison]
+
+**106.3 Small exact census** (k, T) = (8, 6), i.e. ε = 0. The window 5T − 2k < n < 3k − T gives n = 15, 16, 17. The
+smallest window instance with ε > 0 is (16, 13, 34), where C(34, 13) ≈ 9·10^8 T-sets make an exhaustive good-seven
+search out of reach. `logs/census.log`, designs `logs/d_8_6_*`, `logs/c1_8_6_*`:
+| n | design | members | (b) pencils | (a) σ-small quads / with matchings OK | good seven |
+|---|---|---|---|---|---|
+| 15 | random greedy | 1091 | 13412 | 1455594 / 0 | yes |
+| 15 | greedy, inclusion-minimal | 1085 | 13201 | 1423938 / 0 | yes |
+| 15 | nibble (random extension) | 1535 | 35604 | 5692266 / 0 | yes (its minimal subfamily has one; monotone) |
+| 15 | nibble, inclusion-minimal | 1285 | 20961 | 2794716 / 0 | yes |
+| 16 | random greedy (= its minimal) | 569 | 896 | 0 | yes |
+| 16 | nibble, inclusion-minimal | 732 | 1915 | 0 | yes |
+| 16 | zero-sum mod 16 (107.3) | 809 | 5578 | 0 | yes |
+| 16 | binary code, r = 3, 1_V ∉ L (two builds, same code) | 1615 | **0** | 0 | yes |
+| 17 | random greedy (= its minimal) | 358 | 110 | 0 | yes |
+| 17 | nibble, inclusion-minimal | 480 | 263 | 0 | yes |
+| 17 | zero-sum mod 17 | 1430 | 7492 | 0 | yes |
+| 17 | binary code, r = 4, 1_V ∉ L (two builds, same code) | 1535 | **0** | 0 | yes |
+
+Counting bound C(n,T)/C(c,T): 715 (n = 15), 286 (n = 16), 148 (n = 17);
+greedy is within a factor 1.5–2.4 of it. Every design has a good seven; no design has a Q′ quadruple meeting all three
+matching conditions at ε = 0.
+- (b) is the exact count of triples with union V and triple meet >= n − 2T.
+- (a) is fam_certs' Q′ count, restricted to the multiplicity-2-plus-one-empty-point patterns. It is a lower bound,
+  not a full count.
+- "good seven" is the exhaustive search: `seven_dfs.js` for n <= 16, `seven_cotype.js` for n = 17.
+- At ε = 0, Q′ has slack only δ + 3ε = n − 7k/4 points (1, 2, 3), so (a) is rare there. That is not evidence about
+  ε > 0.
+
+## 107. The anti-Pasch mechanism, transplanted
+
+**107.1 Sum identities [proved by hand; finite-k forms in brackets].** Write 1_K for the indicator vector.
+- *Good seven, N < 2* [2(c − 1) < n − 1].
+  - Every co-type has |I_x| >= 3.
+  - Σ_i 1_{K_i} ≡ 1_V + 1_E (mod 2), where E = {x : |I_x| even}.
+  - |E| <= Σ_x (|I_x| − 3) = 4δ [7c − 3n].
+- *Pencil (b)* (union V, κ_3 := |K_1∩K_2∩K_3| >= N − 2t).
+  - Σ 1_{K_i} ≡ 1_V + 1_{P_2} (mod 2), where P_2 is the set of points in exactly two members.
+  - 3c = N + |P_2| + 2κ_3 gives |P_2| <= 4t − 3 = 4ε [4T − 3k].
+- *Q′ (a)*.
+  - 2·1_V − Σ 1_{K_i} (mod 3) is supported on the points of co-type size 0, 1, 3, 4.
+  - From the §37 identities, u_3 + 2u_4 = 2N − 4 + 2s_0 + s_1. So the weight is
+    <= 2N − 4 + 3σ <= B_Q := (9t + N − 8)/2.
+- *Theorem T (c)* (triple cell empty). Σ 1_{K_i} ≡ 1_{singles} (mod 2). This is a vector of weight
+  3c − 2(a + b + d) ∈ [3 − 3t, t].
+
+So for a linear code L (over F_2 or F_3), the family 𝒞_L = {K ∈ C(V, c) : 1_K ∈ L} has:
+- no good seven if d(1_V, L) > 4δ;
+- no pencil if d(1_V, L) > 4ε;
+- no Q′ if d_3(2·1_V, L) > B_Q (ternary L);
+- no Theorem-T triangle if L has no codeword of weight in [3 − 3t, t].
+(For the first three: a sum of codewords is a codeword. For the fourth: so is Σ1_{K_i}.)
+
+**107.2 The classical case [proved by hand].**
+- AG(d,3) is anti-Pasch. Take lines abc, ade, bdf, cef (x + y + z = 0 on lines). Then
+  (a+b+c) + (a+d+e) − (b+d+f) − (c+e+f) = 2a − 2f = 0, which forces a = f in characteristic 3.
+- In PG(d,2), every two meeting lines lie in a Fano plane, which contains Pasch configurations.
+- In our setting the same parity phenomenon reappears: exact Pasch blow-ups have Σ1_K = 2·1_V, a relation that lives
+  mod 2 or mod 3, exactly as in 107.1.
+
+**107.3 Sum-hash families are profile families [proved by hand].**
+- 𝒞 = {K : Σ_{x∈K} g(x) ∈ A} with g: V → G, an abelian group, is the zero-sum analogue of AG(d,3).
+- Its membership depends only on the profile (|K ∩ g^{−1}(h)|)_h.
+- So for bounded |G| it loses by Theorem S. With up to 4εk − 12 fibres it loses by S+ (finite k).
+- Linear codes with r checks are profile families on 2^r column classes. T-covering needs r ≈ γk/ln 2 bits, which is
+  far beyond S+. This is the hash-like case of §47.5(i).
+
+**107.4 Cost of the identities [computed float; covering budget heuristic].**
+- A random-like code of redundancy R nats per k has its coset leaders, and its least codeword weights, where the
+  ball volume reaches e^{Rk}.
+- T-covering a code family needs R <= γ + o(1) [heuristic: the number of weight-c codewords must reach e^{Φk};
+  rigorous only is d(v, L) <= r bits = covering radius <= redundancy].
+- `parity_cost.py` (columns = ball exponents, to compare with γ):
+
+| t | N | γ | good seven N h(4δ/N) | pencil N h(4ε/N) | Q′ (ternary) | triangle N h(t/N) |
+|---|---|---|---|---|---|---|
+| 0.7501 | 1.775 | 0.119 | 0.390 | 0.004 | 0.927 | 1.209 |
+| 0.7501 | 1.900 | 0.446 | 1.186 | 0.004 | 1.096 | 1.275 |
+| 0.7501 | 2.000 | 0.625 | 1.386 | 0.004 | 1.226 | 1.323 |
+| 0.76 | 1.820 | 0.231 | 0.781 | 0.192 | 1.090 | 1.225 |
+| 0.76 | 2.000 | 0.609 | 1.386 | 0.196 | 1.319 | 1.323 |
+| 0.78 | 1.910 | 0.403 | 1.218 | 0.448 | 1.382 | 1.270 |
+| 0.78 | 2.000 | 0.576 | 1.386 | 0.454 | 1.489 | 1.323 |
+
+- Good seven: cost/γ = 2.2 to 3.4 everywhere tested (N < 2). Q′ and triangle: cost/γ >= 1.96.
+- Pencil: cost ≪ γ for ε ≪ ω.
+- Reading [heuristic]:
+  - Linear codes can kill (b) cheaply. So (Σ) must lean on (a) or (c) for near-random families, which is consistent
+    with 106.1.
+  - Linear codes cannot kill good sevens (nor Q′, nor T) within the covering budget. The anti-Pasch construction
+    does not transfer to a counterexample.
+- Exact check at ε = 0 (where 4εk = 0, so the pencil identity is exact): codes with 1_V ∉ L
+  (`build_designs.py ... code1`, r = 3, 4; the n = 15 sum/code families with r = 1 were built but not censused) have **zero (b)-triples, as 107.1 predicts**, and still a good seven
+  (106.3). That is because 7c − 3n = 8 or 12 > d(1_V, L).
+
+## 108. Literature: configuration-free designs, stability
+
+- **Anti-Pasch STS.** Exist for all v ≡ 1, 3 (mod 6) except 7 and 13 (Grannell–Griggs–Whitehead, JCD 8 (2000)
+  300–309; Brouwer for v ≡ 3 (mod 6)). Anti-Pasch optimal coverings and packings with triples: Demirkale–Donovan–
+  Grannell and coauthors. Constructions are algebraic or recursive (AG(d,3), auxiliary quasigroup designs).
+  [literature, checked: abstracts and survey statements]
+- **High girth.** Kwan–Sah–Sawhney–Simkin, Annals 200 (2024) 1059–1156 (arXiv 2201.04554): STS of girth → ∞.
+  Glock–Kühn–Lo–Osthus (Combinatorica 2020): approximate version. Bohman–Warnke (JLMS 2019): high-girth partial STS by
+  triangle removal. [literature, checked: abstract/statement]
+- **Conflict-free hypergraph matchings.** Glock–Joos–Kim–Kühn–Lichev (arXiv 2205.05564; SODA 2023) and Delcourt–Postle
+  (arXiv 2204.08981): near-perfect matchings avoiding conflicts under (d, ℓ, ε)-boundedness of the conflict
+  hypergraph. Joos–Mubayi–Smith extend this to coverings. [literature, checked: abstract-level statements; exact
+  degree thresholds not read]
+  - All of these are fixed-uniformity and need the conflicts to be at most critical.
+- **Supercritical configurations are forced by removal-type lemmas.** Ruzsa–Szemerédi: every STS contains a (6,3)
+  configuration. The general Brown–Erdős–Sós (j + 3, j) problem is open. There are approximate and limit results
+  (Glock et al. (6,4); Delcourt–Postle on the limit; group versions). [recalled, not read]
+  - These proofs are regularity-based and need polynomial density. Our families have density e^{−γk}, where §96 already
+    shows density alone is useless.
+- **"Configuration-free ⟹ structured" for designs.** I found no stability theorem of that form, for Steiner systems
+  or coverings, in any regime.
+  - Anti-Pasch systems are not close to any single structure: algebraic, recursive and random-absorption
+    constructions all exist.
+  - So in the classical case such a stability statement is **false**, for the critical configuration.
+  - For supercritical ones it is the BES problem.
+- **Answer to (2).** The anti-Pasch analogy does not suggest counterexamples. Pasch is critical and exact; Q′ is
+  supercritical (106.1) and open (§95). It suggests instead that (Σ) is a BES-type supersaturation statement in an
+  exponentially sparse regime. No such theorem exists, and the regularity proofs of the classical cases do not apply.
+  Proving "configuration-free ⟹ profile/ordered/window-selected" would in particular prove an exponential-scale BES
+  statement. **Dead as a route with current tools** [heuristic for "would prove", proved for "no such theorem found"
+  only in the sense of the search above].
+
+## 109. Status, dead routes, what remains; self-check
+
+**Status.**
+- No proof of CP or (Σ), and no counterexample.
+- New and proved by hand:
+  - the dictionary and minimality reduction (105.1);
+  - pool = inclusion-minimal and super-minimum (105.2);
+  - Q′ centre = blown-up Pasch (106.2);
+  - the four sum identities 107.1, with the code families they make certificate-free;
+  - AG(d,3) anti-Pasch;
+  - sum-hash families = profile families (107.3).
+- Computed:
+  - supercritical per-member counts for Q′, T and Fano sevens across the window; pencil subcritical near the top
+    [float];
+  - parity costs >= 1.96γ except for pencils [float; budget heuristic];
+  - exact census at (8, 6, 15–17) [exact].
+
+**Dead.**
+- Size or near-optimality stability (105.3).
+- Random, nibble or conflict-free constructions of a counterexample (106.2: supercritical).
+- Algebraic (linear-code, sum-hash) counterexamples (107.3–107.4).
+- A design-literature stability theorem: none exists. The classical analogue is false for critical configurations and
+  open (BES) for supercritical ones (108).
+
+**What remains.**
+- One genuinely new structured test object: binary-code families with d(1_V, L) > 4εk. They are pencil-free by
+  107.1(b) at a cost far below γ, and T-covering is plausible (heuristic).
+- Every family killed so far (S, S+, §46, W) died by a pencil. This one cannot. So it is the right test case for whether
+  (Σ)(a)/(c) does the work on hash-like families (§47.5(i)).
+- Smallest instance with ε > 0: (k, T, n) = (16, 13, 34), r <= γk/ln 2 ≈ 16 checks (γ = 0.72; 4εk = 4, so d(1_V, L) >= 5 is needed). Q′ / Theorem T / good-seven search
+  needs a member-indexed search, not the T-set enumeration. Not done.
+
+**Self-check.**
+- Φ = N h(c/N) − γ re-derived from C(n, c)/C(n − T, c − T) = C(n, T)/C(c, T).
+- The Q′ polytope is that of §95(a). The pencil is the verifier's (b). Theorem T uses the §33 statement with triple = 0.
+- The optimizer reproduces the core9 Fano value (G7) independently through the closed form.
+- The sum identities were checked against the census: zero (b)-triples in all code1 families at ε = 0, as predicted.
+- The 4ε bound for P_2 used κ_3 >= N − 2t and 3c = N + |P_2| + 2κ_3 (valid when union = V).
+- The Q′ ternary bound used u_4 >= 0 and the §37 identity.
+- Not independently verified.

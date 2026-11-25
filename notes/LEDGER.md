@@ -51,6 +51,7 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 | Adaptive density / dependent random choice via links, traces, exclusions (links move (N,t) away from every closed region; Theorem 102.1: the static-certificate budget S_q = (q-3)δ + (7-q)ε depends only on (N,t,q)) | CORE §100–§104 | DEAD (HAND) |
 | Entropy method (Gilmer size form; iid copies AHS/Chase–Lovett; correlated laws / pencil supersaturation; witness-pair union bound); obstruction: certificates need cyclic dump constraints, entropy handles only acyclic ones | CORE §70–§74 | DEAD (HAND) |
 | core9 two-class reversed-order family at (8,6,15): 0 pencils (vs 128,301 random-predicted) and no (Σ)-shape at ε = 0 | CORE §72 | EXACT |
+| Covering-design stability / anti-Pasch analogy / code constructions (size is the wrong measure: pool families are minimal yet far above the Schönheim bound; random designs are supercritical; code redundancy needed > covering budget) | CORE §105–§109 | DEAD (HAND/FLOAT) |
 | Kernel lemma; regularity reduction; c(N)·k cell bound; bounded-request game | CORE §34–35, §39, §45, Parts V–VII | DEAD |
 
 ## Petal side (Barrier F)
