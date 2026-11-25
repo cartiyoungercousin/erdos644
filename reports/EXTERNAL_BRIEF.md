@@ -4,12 +4,12 @@
 
 ## 1. The problem
 Let f(k,7) be the largest transversal number τ(H) over k-uniform families H with **property (7,2)**: every at most seven members of H can be pierced by 2 points. Erdős asks whether **f(k,7) = (3/4 + o(1))k**.
-- **Known bounds:** 3k/4 + 1 ≤ f(k,7) ≤ ⌈7k/8⌉ (Fon-Der-Flaass–Kostochka–Woodall, Discrete Math. 207 (1999)).
+- **Known bounds:** f(k,7) ≤ ⌈7k/8⌉, and f(4m,7) ≥ 3m + 1 for m ≥ 10, a lower bound along a subsequence (Fon-Der-Flaass–Kostochka–Woodall, Discrete Math. 207 (1999)).
 - **Unrefereed 2026 claims of 6/7:** we have formalised some of their lemmas in Lean, but have not verified the main claim.
 - **Our project:** a full resolution, in either direction. We have neither yet.
 
 ## 2. Our framework (verified)
-**Request game.** Suppose τ(H) > T. Then every set S of T points misses some edge. A requester names sets S₁, S₂, …; an adversary answers each with an edge avoiding it. If the requester can always collect seven answers with no 2-point cover, then f(k,7) ≤ T. With unboundedly many requests this game is *exactly* the problem: a deterministic reply map is without loss of generality, and an adversary that survives yields a family.
+**Request game.** Suppose τ(H) > T. Then every set S of T points misses some edge. A requester names sets S₁, S₂, …; an adversary answers each with an edge avoiding it. If the requester can always collect seven answers with no 2-point cover, then f(k,7) ≤ T. With unboundedly many requests this game is *exactly* the problem. If the requester asks every T-set, then even against a history-dependent adversary the replies along that single play form a T-covering family. So she wins against every adversary iff every T-covering family has a good seven. With a bounded number of requests, only requester wins are conclusive.
 
 **Confinement (verified).** Three answers with empty common intersection confine all covers to their union V, with |V| ≤ 3k. Requester wins transfer back to the full problem.
 
