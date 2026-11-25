@@ -2234,3 +2234,135 @@ Checks: `py -3.14 compute/petal7/fixed72_strip.py` (about 1 min); `py -3.14 comp
 `SEAL_LEAKS=1` variant).
 Hand proofs re-read once: TL (both class cases); the Tri bound (K budgets t/2, t/2, t - 2δ); the zero-slack count
 τ_A - 1 + τ_F = T.
+
+---------------------------------------------------------------------------------------------
+## 41. SL1: reformulation, the exact-arena form refuted, unions of arenas, and a K-stability criterion (fifteenth time box)
+
+Brief: prove SL1(t) (40.3) for 3/4 < t <= 63/79 in θ(t) < c < 1 - 5t/9, or find the exact obstruction. Code: `compute/petal6/`
+(`multiarena.py`, `ma_probe.py`, `ma_sl0.py`, `ma_sl0_opt.py`, `ma_sample.py`, `ma_witness.py`, `triangle.py`); logs `compute/petal6/logs/`.
+Nothing committed.
+
+**Outcome.**
+1. **SL1 is not proved, and no obstruction was found.** Every test family satisfies it.
+2. **The "exact arena form" SL0 is false** (41.3) [proved by hand; computed exact]. SL0 asks for one A with h(A) <= τ and
+   β(A) <= d. The triangle family (three arena classes) is in the regime and every A with h <= τ has β >= d + a. SL1 still
+   holds there, by a wide margin, through A = union: there e_h = +a, e_β = -a. So **a proof cannot aim at β <= d**. It
+   has to trade absorption for leak with the 1 : 8/3 weights.
+3. **K-stability criterion** (41.2) [proved by hand]. If every class in the regime has A with
+   e_h + (8/3)e_β <= K·d and e_h <= d, then SL1(t) holds for every t >= t_K = (112 + 42K)/(151 + 51K). At t = 63/79 any K < 19/3
+   suffices; at t = 3/4 only K < 1/3. So the top of the strip needs only a crude stability lemma, the bottom an almost sharp one.
+4. **Unions of arena classes** (41.4) [computed float; each instance is an exact LP]. Here Φ is an LP and has an explicit dual.
+   No SL1 violation: the least margin found is the single arena's (151t - 112)/30, at t = 3/4, 0.77 and 0.79. But **the sharp
+   arena form "cost <= τ + (8/3)d" fails** for one 4-class union, by 0.0058 = 0.135d. So even unions of arenas need K > 0 in
+   41.2, though only K >= 0.135 so far, below the 1/3 that t → 3/4 allows.
+5. **The k = 12, 5–6-atom run of 40.5 finished:** 22453 feasible size vectors, 1525 infeasible, **0 hits, 0 timeouts**
+   [computed exact]. So 40.5's second row becomes PROVED none for n <= 40.
+
+### 41.1 SL1 restated [proved by hand]
+
+h(A) = |A| - m(A) = |A| - 1 + β(A). So SL1(t) says: some set A has
+
+    (a) |A| + (11/3)β(A) < 1 + t     and     (b) 2|A| + (14/3)β(A) < 3t + 2c,
+
+with β(A) = sup over members E of |E ∖ A|. (a) is the branch h + 8β/3 < t; (b) is the branch 2h - 2(t - 1 + c) + 8β/3 < t.
+At t = 3/4, c → 1/2: (a) |A| + 3.667β < 1.75 and (b) |A| + 2.333β < 1.625. The pooled arena (|A| = 1 + τ - d, β = d, τ = 3/8,
+d = 1/8) gives 1.708 and 1.542.
+**(b) is implied by (a) whenever h(A) <= τ + d** [proved by hand]. Then h <= 1 - c, and 1 - c <= 2(t - 1 + c) iff c >= 1 - 2t/3,
+which follows from c > θ(t) for t >= 3/4. So only the h + (8/3)β branch matters for near-arena A.
+
+### 41.2 K-stability criterion [proved by hand]
+
+Write u = c - θ >= 0 and v = τ - t/2 >= 0. Then d = 1 - c - τ = D0(t) - u - v with D0(t) = 1 - θ - t/2 = (14 - 17t)/10, and the
+tolerance of 40.3 is B(t) + (8/3)u + (5/3)v with B(t) = (151t - 112)/30.
+**Criterion.** Suppose every class in the regime has a set A with e_h <= d and e_h + (8/3)e_β <= K·d (e_h = h - τ, e_β = β - d).
+Then SL1(t) holds as soon as K·D0(t) < B(t), i.e. **t > t_K = (112 + 42K)/(151 + 51K)**.
+*Proof.* K·d = K(D0 - u - v) <= K·D0 < B <= B + (8/3)u + (5/3)v, so 40.3's sufficient condition holds. h <= τ + e_h <= τ + d gives
+h <= 2(t - 1 + c) by 41.1, the side condition of 40.3. ∎
+| K | 1/3 | 1 | 2 | 3 | 4 | 6 | 19/3 |
+|---|---|---|---|---|---|---|---|
+| t_K | 3/4 | 0.7624 | 0.7747 | 0.7829 | 0.7887 | 0.7965 | 63/79 = 0.7975 |
+So a stability lemma with error 6d covers 0.7965 < t <= 63/79. The error must tend to d/3 as t → 3/4. The arena
+reaches K = 0, and the triangle of 41.3 reaches K < 0.
+What I could not prove: any finite K for general classes. Every bound I tried loses a term of order τ, not d:
+- A = X ∪ F ∪ G, with X a member and F, G avoiding disjoint τ-subsets Q, Q' of X (FF+). Then |A| < 1 + τ + 3d, since the triple
+  part lies in X ∖ (Q ∪ Q'). But a member E with E ∩ X, E ∩ F, E ∩ G > c only gets |E ∖ A| < (τ + 3d)/2.
+- A = points in >= 2 of X, F, G. Then |A| < 1 + τ + d, and the "exactly one" parts have mass <= 2d each. The same E has
+  |E ∖ A| < 6d + (τ + 3d)/2.
+- Spectral (Kneser) averaging over Q ⊆ X. With r = τ/(1 - τ), g(y) = Pr_Q[y ∈ F_Q ∖ X] has ∫g(1 - g) < 2d/(1 - r²), about 3.1d
+  at τ = 3/8. This is O(d), but only for the average leak of the F_Q. β is a sup over all members: **dead, as in 40.3**
+  [heuristic].
+The missing step is the same in all three: control of a member E that meets the chosen witnesses only through their common
+part. FF+ gives a partner for E's leak (40.3) but no bound on where that partner's own leak sits.
+
+### 41.3 SL0 is false: the triangle family [proved by hand; `triangle.py` exact LP check]
+
+Three arena classes i = 1, 2, 3 with leak ρ each. Regions R_i = core K (mass b) ∪ two of three pair atoms P_12, P_13, P_23
+(mass a each); P_jk ⊆ R_j ∩ R_k. Assume 2a <= 1 - ρ.
+- Self overlap 2 - 2ρ - 2a - b; cross overlap 2 - 2ρ - 3a - b = c.
+- τ = 2a + b - 1 + ρ: the core alone carries a hitting set, since b >= |R_i| - 1 + ρ, and τ >= τ_i.
+- d = 1 - c - τ = ρ + a.
+- **SL0 fails by a.** Let A take x_b of K and p_jk of P_jk. Averaging the three leaks gives β >= ρ + 2a - (2/3)Σp + (b - x_b), hence
+  h >= τ + Σp/3. So h <= τ forces Σp = 0, and then β >= ρ + 2a = d + a.
+- **SL1 holds with room.** A = K ∪ all P: β = ρ, h = τ + a, so h + (8/3)β = τ + (8/3)d - (5/3)a, below the arena value.
+- Instance in the regime at t = 3/4: ρ = a = 1/20, b = 123/100 gives c = 13/25, τ = 19/50, d = 1/10. The LP gives min β at h <= τ
+  as 0.15 = d + a, Φ = 0.5633, against arena form 0.6467 and t = 0.75.
+- Reading: SL0 is false, and so is "β <= d + O(d²)" stated as a pure leak bound. Next-step (3) of 40.7 must carry e_h.
+
+### 41.4 Unions of arena classes: exact LPs and dual [proved by hand (dual); computed float (search)]
+
+F = ∪_i A(R_i, ρ_i), regions = unions of Venn atoms σ ⊆ [m] (masses s_σ), leaks into an unbounded pool. Exact formulas:
+- overlap(i, j) = (2 - ρ_i - ρ_j - |R_i ∪ R_j|)_+, i = j allowed;
+- τ = LP min Σ r_σ with r(R_i) >= τ_i := |R_i| - 1 + ρ_i and 0 <= r <= s;
+- β(A) = max_i [ρ_i + |R_i ∖ A|].
+This class contains AP's arenas, 40.3's leak zones and unions of two arenas, the sunflower and rotating-arena examples
+(both give exactly the arena form), 𝒟(q) and the triangle.
+**Dual of branch (a)** [proved by hand, LP duality]:
+
+    min_A [h(A) + (8/3)β(A)] = max { Σ_i w_i τ_i - Σ_σ s_σ (W_σ - 1)_+ : w >= 0, Σ w_i = 11/3 } + 8/3,     W_σ = Σ_{i ∈ σ} w_i.
+
+So SL1(a) for unions of arenas is the inequality G(w) := Σ w_i τ_i - Σ_σ s_σ(W_σ - 1)_+ < t - 8/3 on the simplex Σw = 11/3.
+Useful values: G(e_i + e_j) = -overlap(i, j), so max over pairs = -c; and τ >= G(y) for every y (τ's own dual).
+The sharp form G(w) <= -(8/3)c - (5/3)τ (that is, cost <= τ + (8/3)d) is tight on a single arena, w = (11/3)e_1. It needs an
+*upper* bound on τ in terms of w, because τ enters with a minus sign. I have no proof.
+Numerics (`multiarena.py` Nelder–Mead on (s, ρ) maximising t - Φ with penalties; `ma_sample.py` dense sampling in the regime):
+| t | m | method | in regime | least t - Φ | (151t - 112)/30 | max Φ - (τ + 8d/3) |
+|---|---|---|---|---|---|---|
+| 3/4 | 2, 3, 4 | Nelder–Mead, 40–80 restarts each | – | 0.04193 | 0.04167 | – |
+| 3/4 | 5 | Nelder–Mead, 80 restarts | – | 0.0884 (search did not converge) | 0.04167 | – |
+| 0.77 | 4 | Nelder–Mead, 60 restarts | – | 0.1426 | 0.1423 | – |
+| 0.79 | 4 | Nelder–Mead, 60 restarts | – | 0.2446 | 0.2430 | – |
+| 3/4 | 2 | 150000 random samples | 9626 | 0.0472 | 0.04167 | 0.000000 |
+| 3/4 | 3 | 150000 random samples | 7581 | 0.0465 | 0.04167 | 0.000000 |
+| 3/4 | 4 | 150000 random samples | 4325 | 0.0449 | 0.04167 | **0.00582** |
+| 0.77 | 3 | 150000 random samples | 3170 | 0.1433 | 0.1423 | 0.000000 |
+- Every near-minimal margin is a single arena at the corner (c ≈ θ, τ ≈ t/2, one class with ρ ≈ d).
+- **Arena-form violation** (`ma_witness.py` re-checks it). A 4-class union with c = 0.51815, τ = 0.43882, d = 0.04303 has
+  Φ = 0.55940 against τ + 8d/3 = 0.55358. Branch (a) is the active one. Its SL1 margin is 0.19, large because
+  τ - t/2 = 0.064. So the sharp inequality G(w) <= -(8/3)c - (5/3)τ is **false** for unions of arenas [computed float, LP].
+  The tolerance of 40.3 is what holds.
+Nelder–Mead is weak in 15–31 dimensions; on the SL0 objective it missed the triangle. Hence [computed float] and
+evidence only.
+
+### 41.5 Status
+
+- Proved by hand: 41.1 restatement and branch reduction; 41.2 criterion and t_K table; the triangle refutation of SL0; the
+  LP dual for unions of arenas.
+- Computed exact: 40.5's k = 12, 5–6-atom one-class run, 0 hits (22453 feasible, n <= 40); triangle LPs.
+- Computed float: unions of up to 5 arena classes, no family below the arena SL1 margin; arena form violated once (0.135d).
+- Dead:
+  - SL0, i.e. β <= d with h <= τ;
+  - the sharp arena form cost <= τ + (8/3)d, already for unions of 4 arenas [computed float];
+  - pure leak-stability β <= d + O(d²);
+  - X ∪ F ∪ G and ">= 2 of three witnesses" constructions (they lose order τ);
+  - Kneser averaging, which controls only the average leak [heuristic].
+- **Open, sharpened:** SL1 for θ(t) < c < 1 - 5t/9. By 41.2 it suffices to prove the mixed stability bound
+  e_h + (8/3)e_β <= K d, e_h <= d: with K < 19/3 for the top of the strip, and K -> 1/3 at t = 3/4. **No t in (3/4, 63/79] is
+  closed by this box.**
+- Next: (1) prove G(w) < t - 8/3 for unions of arenas in the regime (the sharp form is false, 41.4). Start at m = 2, where
+  the numerics show the sharp form holds and the LP has few vertices;
+  (2) a mixed stability lemma for general classes with any explicit K, which closes t > t_K at once; (3) one-class blow-up
+  search at k = 16 with 5–6 atoms.
+
+Checks: `py -3.14 compute/petal6/triangle.py` (1 s); `py -3.14 compute/petal6/multiarena.py 0.75 3 5 1` (about 1 min);
+`py -3.14 compute/petal6/ma_sample.py 0.75 3 20000 1` (about 1 min). Hand proofs re-read once: 41.1 branch reduction, 41.2
+arithmetic (t_K at K = 19/3 gives 63/79 exactly), triangle overlaps/τ/averaging step, LP dual.

@@ -76,6 +76,7 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 | Petal strip, forced-centre model: an adaptive request 7 saves only about δ/2; the adversary wins for δ in (3t/10, 1 - t) at t = 0.75, 0.76 | PETAL §31 | EXACT (zero-gap MIP; requester relaxed in her favour); with unforced centres still open |
 | Lemma PC (cross overlap <= 2 - 2c - t), Lemma YC, Theorem CR (absorbing-set play without disjoint regions); fixed two-class gap reduced to θ(t) < c < 1 - 5t/9 and to the one-class statement SL1 | PETAL §40 | VERIFIED (backlog.md; CR for fixed families; YC needs m_P(A) > 0) |
 | Pooled strip family test: the full and natural τ > T subfamilies all fail (7,2) at 5 instances; centres-first play beats the §31 adversary A_T (even inside its 'loss region'), but a leak-on-triple-centre variant beats that plan | PETAL §45 | EXACT + HAND; strip still open |
+| SL1 (petal item 3): exact arena form false (three-arena triangle); 'cost <= τ + (8/3)d' false; K-stability criterion: SL1 holds for t > (112+42K)/(151+51K); no family beats SL1's margin in searches of up to 5 arena classes; missing: an explicit K for general classes | PETAL §41 | HAND + FLOAT; open |
 | Theorem N adversary beats 2+2 | PETAL §12 | VERIFIED (W3) |
 | 12.3 (𝒜 loses to 4+3 when she knows the arenas) | PETAL 12.3 | GAP (W3): assumes the ground set is the two arenas; a leak outside them breaks it. Check whether DS / the 𝒜 kill inherits this, or whether AP's pool covers it |
 | 𝒜(t,δ), 𝒦₂ (c >= 0.5217) as obstructions | PETAL §20, §22 | DEAD |
