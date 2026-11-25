@@ -56,6 +56,7 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 | core9 two-class reversed-order family at (8,6,15): 0 pencils (vs 128,301 random-predicted) and no (Σ)-shape at ε = 0 | CORE §72 | EXACT |
 | Covering-design stability / anti-Pasch analogy / code constructions (size is the wrong measure: pool families are minimal yet far above the Schönheim bound; random designs are supercritical; code redundancy needed > covering budget) | CORE §105–§109 | DEAD (HAND/FLOAT) |
 | Fractional pair-cover (edge-clique-cover) LP: (N/c)^2 <= ρ* <= (N/t)^2; a fixed request rule can't beat the random T-set; no 'ρ* small implies ρ <= 7' can hold (pools with ρ* ≈ 5.44 but ρ >= 8) | CORE §115–§119 | DEAD as a route (HAND + EXACT) |
+| Multi-pool designs + isoperimetry (FABLE_A): dead as a route to CP (it needs β < s²/(32t), about 10^-5); survivor Theorem 2P (two-class reversed-order rule loses for 5t-2 < N < 17/8), which rests on a float LP | notes/FABLE_A.md | DEAD route; 2P HAND |
 | Kernel lemma; regularity reduction; c(N)·k cell bound; bounded-request game | CORE §34–35, §39, §45, Parts V–VII | DEAD |
 
 ## Petal side (Barrier F)

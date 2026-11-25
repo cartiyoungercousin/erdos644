@@ -1,0 +1,5 @@
+N=1.80 om=0.045 | j=0.00om: s=+0.0093 aababfa | j=0.25om: s=+0.0077 aababff | j=0.50om: s=+0.0093 aababbf | j=0.75om: s=+0.0061 aabbffb | j=1.00om: s=+0.0029 aabbffb
+N=1.92 om=0.165 | j=0.00om: s=+0.0264 aababfa | j=0.25om: s=+0.0205 aababff | j=0.50om: s=+0.0264 aababbf | j=0.75om: s=+0.0146 aabbffb | j=1.00om: s=+0.0029 aabbffb
+N=2.04 om=0.285 | j=0.00om: s=+0.0436 aababfa | j=0.25om: s=+0.0334 aababff | j=0.50om: s=+0.0436 aababbf | j=0.75om: s=+0.0232 aabbffb | j=1.00om: s=-0.0040 aabffff
+N=2.16 om=0.405 | j=0.00om: s=-0.0325 aabbfff | j=0.25om: s=+0.0350 aababff | j=0.50om: s=+0.0607 aababbf | j=0.75om: s=+0.0021 aabbfff | j=1.00om: s=-0.0280 aabffff
+N=2.24 om=0.485 | j=0.00om: s=-0.0664 aabffff | j=0.25om: s=+0.0166 aabbfff | j=0.50om: s=+0.0721 aababbf | j=0.75om: s=-0.0133 aabbfff | j=1.00om: s=-0.0440 aabffff
