@@ -122,6 +122,8 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
   - OPEN: codimension between B1's bound and about 0.43k. B1m covers random columns up to e ≈ 2.8m, conditional on (SPAN) [EXACT per instance]. Counting via MacWilliams is exact, but the error is governed by the dual's low-weight structure (coloops, series pairs), not by c. Two rigorous pieces are missing (B §5.5).
   - Task 3's conjecture ((H0)+(H1)+V=∪H suffice) is FALSE: two τ = 2 instances [EXACT, SAT]. No counterexample to B.
 
+- Bridge C stability data (notes/STABILITY_DATA.md, stopped early): complete K_13^(8) is (7,2) with τ = 6 = 3k/4, yet at most 61.5% of its members lie in any ρ ≥ 1 coset [EXACT]. So 'thin ⇒ near-coset' FAILS at γ = 0 (for every k by the same construction); C can only hold strictly above 3k/4. No certified (7,2) family with τ > 3k/4 at n ≥ 15 was produced; exact (7,2) certification is the bottleneck.
+
 ## Open
 - LIFT (G2 / far replies): transfer confined results to general families (anchor-keeping certificates, or show far replies with large outside overlap lose). Needed for the full solve.
 - Record path: exact certification of R1's sparsest-anchor argument at t = 17/20 (anchor-keeping, transfers) would give f(k,7) <= (17/20 + o(1))k (FRONTIER §4–5).

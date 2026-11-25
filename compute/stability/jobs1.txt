@@ -1,0 +1,17 @@
+complete 14 8 6 1 0 900
+complete 14 8 6 2 0 900
+complete 14 8 6 3 0 900
+complete 15 8 7 1 0 900
+complete 15 8 7 2 0 900
+complete 15 8 7 3 0 900
+complete 15 8 6 1 0 900
+complete 15 8 6 2 0 900
+fkw 15 8 7 1 0.02 900
+fkw 15 8 7 2 0.1 900
+fkw 15 8 7 3 0.3 900
+complete 17 10 8 1 0 1200
+complete 17 10 8 2 0 1200
+complete 17 10 7 1 0 1200
+complete 18 10 8 1 0 1200
+complete 14 8 5 1 0 900
+complete 15 8 5 1 0 900
