@@ -1,0 +1,4 @@
+complete K(13)                 n=13 k=8 c= -4 |L|=   1287 tau= 6 rL=0 fano=NONE  (0dv,0sat) colsat=-       any=-       0.0s
+complete K(14)                 n=14 k=8 c=  0 |L|=   3003 tau= 7 rL=0 fano=SEVEN (1dv,0sat) colsat=-       any=-       0.0s
+FKW m=2 (l=1_X,|X|=8)          n=15 k=8 c=  4 |L|=   3200 tau= 7 rL=1 fano=NONE  (4dv,4sat) colsat=-       any=SEVEN   2.1s
+FKW m=3 (l=1_X,|X|=12)         n=22 k=12 c=  4 |L|= 323344 tau=10 rL=1 fano=NONE  (4dv,4sat) colsat=-       any=-       10.6s

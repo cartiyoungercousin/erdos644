@@ -1,0 +1,7 @@
+(n,k,r)=(12,6,1) window [2]: ok
+(n,k,r)=(13,6,1) window [0, 1, 2]: ok
+(n,k,r)=(14,7,1) window [3]: ok
+(n,k,r)=(14,8,1) window []: ok
+(n,k,r)=(15,8,1) window []: ok
+(n,k,r)=(13,7,1) window []: ok
+Lemma PAIR: sevens built and re-checked for 270 pairs

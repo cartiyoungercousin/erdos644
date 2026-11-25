@@ -1,0 +1,27 @@
+k=8 T=7 r=1 n=16: window j in [2, 3]; Delsarte LP 1315.6, exact cert bound 1315.6; covering needs 1430: NO RECORD at this n (cert)
+k=8 T=7 r=2 n=17: window j in [2, 3]; Delsarte LP 2002.0, exact cert bound 2002.0; covering needs 541: inconclusive
+k=8 T=7 r=3 n=18: window j in [2]; Delsarte LP 5352.3, exact cert bound 5352.3; covering needs 266: inconclusive
+k=9 T=8 r=1 n=18: window j in [3, 4]; Delsarte LP 3146.0, exact cert bound 3146.0; covering needs 4862: NO RECORD at this n (cert)
+k=9 T=8 r=2 n=19: window j in [3]; Delsarte LP 9029.4, exact cert bound 9029.4; covering needs 1680: inconclusive
+k=9 T=8 r=3 n=20: window j in [3]; Delsarte LP 13765.1, exact cert bound 13765.1; covering needs 764: inconclusive
+k=10 T=8 r=1 n=19: window j in [4]; Delsarte LP 9029.4, exact cert bound 9029.4; covering needs 8398: inconclusive
+k=10 T=8 r=2 n=20: window j in [4]; Delsarte LP 14586.0, exact cert bound 14586.0; covering needs 2800: inconclusive
+k=10 T=8 r=3 n=21: pair window empty
+k=11 T=9 r=1 n=21: window j in [5]; Delsarte LP 22794.6, exact cert bound 22794.6; covering needs 29393: NO RECORD at this n (cert)
+k=11 T=9 r=2 n=22: pair window empty
+k=11 T=9 r=3 n=23: pair window empty
+k=12 T=10 r=1 n=23: window j in [4, 5]; Delsarte LP 104975.0, exact cert bound 104975.0; covering needs 104006: inconclusive
+k=12 T=10 r=2 n=24: window j in [4, 5]; Delsarte LP 172159.0, exact cert bound 172159.0; covering needs 29716: inconclusive
+k=12 T=10 r=3 n=25: window j in [4]; Delsarte LP 468027.0, exact cert bound 468027.0; covering needs 11430: inconclusive
+k=13 T=11 r=1 n=25: window j in [5, 6]; Delsarte LP 274873.0, exact cert bound 274873.0; covering needs 371450: NO RECORD at this n (cert)
+k=13 T=11 r=2 n=26: window j in [5]; Delsarte LP 785823.1, exact cert bound 785823.1; covering needs 99054: inconclusive
+k=13 T=11 r=3 n=27: window j in [5]; Delsarte LP 1279438.9, exact cert bound 1279438.9; covering needs 35819: inconclusive
+k=14 T=11 r=1 n=26: window j in [6]; Delsarte LP 747852.7, exact cert bound 747852.7; covering needs 643847: inconclusive
+k=14 T=11 r=2 n=27: window j in [6]; Delsarte LP 1279438.9, exact cert bound 1279438.9; covering needs 167153: inconclusive
+k=14 T=11 r=3 n=28: pair window empty
+k=15 T=12 r=1 n=28: window j in [7]; Delsarte LP 2030593.3, exact cert bound 2030593.3; covering needs 2340135: NO RECORD at this n (cert)
+k=15 T=12 r=2 n=29: pair window empty
+k=15 T=12 r=3 n=30: pair window empty
+k=16 T=13 r=1 n=30: window j in [6, 7]; Delsarte LP 9382827.0, exact cert bound 9382827.0; covering needs 8554275: inconclusive
+k=16 T=13 r=2 n=31: window j in [6, 7]; Delsarte LP 16158075.0, exact cert bound 16158075.0; covering needs 1964315: inconclusive
+k=16 T=13 r=3 n=32: window j in [6]; Delsarte LP 44067477.3, exact cert bound 44067477.3; covering needs 620310: inconclusive

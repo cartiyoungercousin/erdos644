@@ -1,0 +1,1 @@
+RM(2,6) n=64 k=36 N=1.778 rank=6: words=888832  covering at T=ceil(3k/4) needs >= 30237034945547024 (10^16.5)

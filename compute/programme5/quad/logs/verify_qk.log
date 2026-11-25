@@ -1,0 +1,6 @@
+part 1, n = 5 (checks, violations) = (65536, 0)
+part 1, n = 6 (checks, violations) = (491520, 0)
+part 1, n = 7 (checks, violations) = (64640, 0)
+trial 3 fewer than 7 disjoint mixed 4-sets among 40 points (p = 0.02 ) - skipped
+trial 13 fewer than 7 disjoint mixed 4-sets among 40 points (p = 0.02 ) - skipped
+part 2: Fano sevens built in both level sets in 18 random instances

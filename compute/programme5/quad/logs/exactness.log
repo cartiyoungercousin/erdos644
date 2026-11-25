@@ -1,0 +1,8 @@
+n=7 k=4 seed0 a=1 |L|=14 tau=2 fano=NONE 0.0s
+n=7 k=4 seed0 a=0 |L|=21 tau=3 fano=NONE 0.0s
+n=7 k=4 seed1 a=1 |L|=18 tau=2 fano=NONE 0.0s
+n=7 k=4 seed1 a=0 |L|=17 tau=2 fano=NONE 0.0s
+n=7 k=4 seed2 a=1 |L|=20 tau=3 fano=NONE 0.0s
+n=7 k=4 seed2 a=0 |L|=15 tau=2 fano=NONE 0.0s
+n=7 k=4 seed3 a=1 |L|=18 tau=2 fano=NONE 0.0s
+n=7 k=4 seed3 a=0 |L|=17 tau=2 fano=NONE 0.0s
