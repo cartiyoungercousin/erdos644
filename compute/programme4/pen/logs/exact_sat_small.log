@@ -1,0 +1,5 @@
+n=13 k=7 r=1 forbidden |x&y|=3: NONE (UNSAT)  [1716 sets, 450450 pair clauses, 0.0 s]
+n=13 k=7 r=2 forbidden |x&y|=2: GAP FAMILY EXISTS, 330 members, spectrum [3, 4, 5, 6] (re-verified)  [1716 sets, 108108 pair clauses, 0.0 s]
+n=14 k=8 r=1 forbidden |x&y|=3: NONE (UNSAT)  [3003 sets, 504504 pair clauses, 0.0 s]
+n=14 k=8 r=2 forbidden |x&y|=3: GAP FAMILY EXISTS, 495 members, spectrum [4, 5, 6, 7] (re-verified)  [3003 sets, 504504 pair clauses, 0.0 s]
+n=15 k=8 r=1 forbidden |x&y|=3: NONE (UNSAT)  [6435 sets, 3783780 pair clauses, 0.1 s]

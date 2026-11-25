@@ -1,0 +1,7 @@
+rho = r/k limits as k -> oo.  cov(rho) = (1+rho)H(rho/(1+rho)) = -log density lower bound of covering /k
+  nu=1.7500: FW eta=0 0.0298, FW eta=1/2 0.0315, FW ceiling (2p=k) 0.0336, density-only impossible beyond 0.1079
+  nu=1.8000: FW eta=0 0.0360, FW eta=1/2 0.0383, FW ceiling (2p=k) 0.0411, density-only impossible beyond 0.1151
+  nu=1.8333: FW eta=0 0.0401, FW eta=1/2 0.0428, FW ceiling (2p=k) 0.0461, density-only impossible beyond 0.1199
+  nu=1.9000: FW eta=0 0.0481, FW eta=1/2 0.0517, FW ceiling (2p=k) 0.0561, density-only impossible beyond 0.1293
+  nu=2.0000: FW eta=0 0.0598, FW eta=1/2 0.0648, FW ceiling (2p=k) 0.0711, density-only impossible beyond 0.1433
+  r <= s+1 always inside FW range (c0(nu) >= nu-7/4) for nu <= 1.7840; FW+P1 beats 3/11 (s < 11 c0(nu)/8) for nu < 1.7994

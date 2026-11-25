@@ -1,0 +1,7 @@
+n=7 k=3 p=2 (forbidden |x&y|=1): max family 5, FW bound 8, C(n,k)=35  OK
+n=8 k=3 p=2 (forbidden |x&y|=1): max family 8, FW bound 9, C(n,k)=56  OK
+n=8 k=4 p=3 (forbidden |x&y|=1): max family 17, FW bound 37, C(n,k)=70  OK
+n=9 k=4 p=3 (forbidden |x&y|=1): max family 21, FW bound 46, C(n,k)=126  OK
+n=9 k=5 p=3 (forbidden |x&y|=2): max family 21, FW bound 46, C(n,k)=126  OK
+n=10 k=5 p=3 (forbidden |x&y|=2): max family 27, FW bound 56, C(n,k)=252  OK
+n=10 k=4 p=3 (forbidden |x&y|=1): max family 28, FW bound 56, C(n,k)=210  OK

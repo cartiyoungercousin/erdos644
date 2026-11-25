@@ -1,0 +1,20 @@
+Entropy limit (k -> oo), eta=0: largest rho=r/k with (1+rho)H(rho/(1+rho)) + nu H((1+rho)/(2nu)) < nu H(1/nu)
+  nu=1.7500: rho_max = 0.0298
+  nu=1.7857: rho_max = 0.0342
+  nu=1.8000: rho_max = 0.0360
+  nu=1.8333: rho_max = 0.0401
+  nu=1.9000: rho_max = 0.0481
+  nu=2.0000: rho_max = 0.0598
+Exact: largest r with an FW pencil of weight <= r + 2*sqrt(k) (prime-gap slack), and with any weight
+  k=  200 n=  350 (n/k=1.750): r_max(weight<=r+2sqrt k)=7 (0.0350k), r_max(any)=7 (0.0350k)
+  k=  200 n=  367 (n/k=1.835): r_max(weight<=r+2sqrt k)=9 (0.0450k), r_max(any)=9 (0.0450k)
+  k=  200 n=  399 (n/k=1.995): r_max(weight<=r+2sqrt k)=14 (0.0700k), r_max(any)=14 (0.0700k)
+  k=  500 n=  875 (n/k=1.750): r_max(weight<=r+2sqrt k)=17 (0.0340k), r_max(any)=17 (0.0340k)
+  k=  500 n=  917 (n/k=1.834): r_max(weight<=r+2sqrt k)=23 (0.0460k), r_max(any)=23 (0.0460k)
+  k=  500 n=  999 (n/k=1.998): r_max(weight<=r+2sqrt k)=36 (0.0720k), r_max(any)=36 (0.0720k)
+  k= 1000 n= 1750 (n/k=1.750): r_max(weight<=r+2sqrt k)=33 (0.0330k), r_max(any)=33 (0.0330k)
+  k= 1000 n= 1834 (n/k=1.834): r_max(weight<=r+2sqrt k)=46 (0.0460k), r_max(any)=46 (0.0460k)
+  k= 1000 n= 1999 (n/k=1.999): r_max(weight<=r+2sqrt k)=69 (0.0690k), r_max(any)=71 (0.0710k)
+  k= 2000 n= 3500 (n/k=1.750): r_max(weight<=r+2sqrt k)=65 (0.0325k), r_max(any)=65 (0.0325k)
+  k= 2000 n= 3667 (n/k=1.833): r_max(weight<=r+2sqrt k)=90 (0.0450k), r_max(any)=90 (0.0450k)
+  k= 2000 n= 3999 (n/k=2.000): r_max(weight<=r+2sqrt k)=131 (0.0655k), r_max(any)=139 (0.0695k)
