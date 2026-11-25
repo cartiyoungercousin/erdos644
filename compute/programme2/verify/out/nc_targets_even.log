@@ -1,0 +1,13 @@
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+{"name": "EV_8_8", "nx": 8, "ny": 8, "n": 16, "k": 8, "kind": "even", "tau": 8, "thmNC": false, "NC1": false, "NC0a": false, "best_slack": [-1, 8, 8, 1, 12, 11], "good7": "FOUND+checked"}
+{"name": "EV_8_7", "nx": 8, "ny": 7, "n": 15, "k": 8, "kind": "even", "tau": 7, "thmNC": false, "NC1": false, "NC0a": false, "best_slack": [-3, 8, 7, 1, 12, 9], "good7": "FOUND+checked"}
+{"name": "EV_4_11", "nx": 4, "ny": 11, "n": 15, "k": 8, "kind": "even", "tau": 7, "thmNC": false, "NC1": false, "NC0a": false, "best_slack": [-3, 4, 11, 1, 12, 9], "good7": "FOUND+checked"}
+{"name": "EV_9_9", "nx": 9, "ny": 9, "n": 18, "k": 8, "kind": "even", "tau": 10, "thmNC": true, "NC1": true, "NC0a": false, "best_slack": [3, 9, 9, 1, 12, 15], "good7": "FOUND+checked"}
+{"name": "EV_10_10", "nx": 10, "ny": 10, "n": 20, "k": 8, "kind": "even", "tau": 12, "thmNC": true, "NC1": true, "NC0a": false, "best_slack": [7, 10, 10, 1, 12, 19], "good7": "FOUND+checked"}
+{"name": "EV_5_5_k5", "nx": 5, "ny": 5, "n": 10, "k": 5, "kind": "even", "tau": 5, "thmNC": false, "NC1": false, "NC0a": false, "best_slack": [-3, 5, 5, 1, 8, 5], "good7": "FOUND+checked"}
+{"name": "EV_6_6_k5", "nx": 6, "ny": 6, "n": 12, "k": 5, "kind": "even", "tau": 6, "thmNC": false, "NC1": true, "NC0a": false, "best_slack": [0, 5, 6, 1, 7, 7], "good7": "FOUND+checked"}
+{"name": "EV_7_7_k6", "nx": 7, "ny": 7, "n": 14, "k": 6, "kind": "even", "tau": 8, "thmNC": true, "NC1": true, "NC0a": false, "best_slack": [2, 7, 7, 1, 9, 11], "good7": "FOUND+checked"}
+{"name": "EV_12_11", "nx": 12, "ny": 11, "n": 23, "k": 12, "kind": "even", "tau": 11, "thmNC": false, "NC1": false, "NC0a": false, "best_slack": [-1, 12, 11, 1, 18, 17], "good7": "FOUND+checked"}
+{"name": "OD_9_9", "nx": 9, "ny": 9, "n": 18, "k": 8, "kind": "odd", "tau": 9, "thmNC": false, "NC1": true, "NC0a": false, "best_slack": [0, 8, 8, 1, 11, 11], "good7": "FOUND+checked"}
+{"name": "OD_10_10", "nx": 10, "ny": 10, "n": 20, "k": 8, "kind": "odd", "tau": 10, "thmNC": true, "NC1": true, "NC0a": false, "best_slack": [2, 8, 8, 1, 9, 11], "good7": "FOUND+checked"}

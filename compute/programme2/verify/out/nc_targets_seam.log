@@ -1,0 +1,10 @@
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+{"name": "E8_6_8", "nx": 6, "ny": 8, "n": 14, "k": 8, "kind": "odd", "tau": 6, "thmNC": false, "NC1": false, "NC0a": false, "best_slack": [-6, 6, 8, 1, 13, 7], "good7": "Infeasible"}
+{"name": "E8_7_7", "nx": 7, "ny": 7, "n": 14, "k": 8, "kind": "odd", "tau": 6, "thmNC": false, "NC1": false, "NC0a": false, "best_slack": [-6, 7, 7, 1, 13, 7], "good7": "Infeasible"}
+{"name": "E8_8_6", "nx": 8, "ny": 6, "n": 14, "k": 8, "kind": "odd", "tau": 6, "thmNC": false, "NC1": false, "NC0a": false, "best_slack": [-6, 8, 6, 1, 13, 7], "good7": "Infeasible"}
+{"name": "FKW_m2", "nx": 8, "ny": 7, "n": 15, "k": 8, "kind": "odd", "tau": 7, "thmNC": false, "NC1": false, "NC0a": false, "best_slack": [-4, 8, 7, 1, 13, 9], "good7": "FOUND+checked"}
+{"name": "FKW_m3", "nx": 12, "ny": 10, "n": 22, "k": 12, "kind": "odd", "tau": 10, "thmNC": false, "NC1": false, "NC0a": false, "best_slack": [-4, 12, 10, 1, 19, 15], "good7": "Infeasible"}
+{"name": "PAR7m2_m2", "nx": 8, "ny": 8, "n": 16, "k": 8, "kind": "odd", "tau": 8, "thmNC": false, "NC1": false, "NC0a": false, "best_slack": [-2, 8, 8, 1, 13, 11], "good7": "FOUND+checked"}
+{"name": "PAR7m2_m3", "nx": 12, "ny": 11, "n": 23, "k": 12, "kind": "odd", "tau": 11, "thmNC": false, "NC1": false, "NC0a": false, "best_slack": [-2, 12, 11, 1, 19, 17], "good7": "FOUND+checked"}
+{"name": "E12_10_11", "nx": 10, "ny": 11, "n": 21, "k": 12, "kind": "odd", "tau": 9, "thmNC": false, "NC1": false, "NC0a": false, "best_slack": [-6, 10, 11, 1, 19, 13], "good7": "Infeasible"}
