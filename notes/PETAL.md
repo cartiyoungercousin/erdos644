@@ -2366,3 +2366,106 @@ evidence only.
 Checks: `py -3.14 compute/petal6/triangle.py` (1 s); `py -3.14 compute/petal6/multiarena.py 0.75 3 5 1` (about 1 min);
 `py -3.14 compute/petal6/ma_sample.py 0.75 3 20000 1` (about 1 min). Hand proofs re-read once: 41.1 branch reduction, 41.2
 arithmetic (t_K at K = 19/3 gives 63/79 exactly), triangle overlaps/τ/averaging step, LP dual.
+
+---------------------------------------------------------------------------------------------
+## 46. Centres-first with petal slack against the leak-on-triple-centre adversary (sixteenth time box)
+
+Brief: centres-first (CF, §45.3) with petals that are NOT exact. Petal a moves slack s_a from its window to its R_F part:
+W_a has mass t/2 - s_a and Y_a has mass t/2 + s_a, so class A is still forced. Does some slack allocation seal the
+triple-centre points within budget on 3/4 < t < 7/9, t/2 - 1/6 <= δ < 1 - t?
+Code: `compute/petal7/cf_lp.py` (mass-level MIP of necessary conditions) and `compute/petal7/cf2_replay.py` (point
+strategy, exact replay). Logs: `logs/cf_lp_eta.log`, `logs/cf_lp_vstar.log`, `logs/cf2_replay.log`. Nothing committed.
+
+**Outcome: undecided. There is no strategy and no proved obstruction.**
+1. The MIP of necessary conditions (46.1) is **feasible across the strip** when earlier leaks can be sealed at their
+   true spread cost. So no loss of CF is certified [computed exact, MIP optimal].
+2. Charging a full δ for each earlier leak sealed makes the MIP **infeasible for t <= 0.76 on the whole sampled δ
+   range**, with extra budget needed of 0.011–0.062, and feasible at t = 0.77 and 0.7777 (46.2). That charge is
+   correct only against an adversary who concentrates each leak on one type AND when she cannot dodge that type by
+   choosing exclusions adaptively. So it is **not** a valid loss certificate.
+3. The point strategy CF2, the MIP's plan made non-adaptive, **loses** to A_T+ at all 8 instances. The cover is
+   always a complementary pair of linked leaks at different types (46.3).
+4. The question is now sharp. It is decided by the **adaptive leak-type game**: after each petal the adversary picks
+   which available two-centre type its leak sits on, and she then picks the next exclusion and seals. That is a
+   scenario tree of <= 3^3 leaves on the MIP below. It was not built in this box.
+
+### 46.1 The MIP (`cf_lp.py`) [conditions proved by hand; MIP computed exact]
+
+Adversary V:
+- centre traces in R_A, mass δ each (pairwise disjoint after sealing);
+- every centre misses exactly t/2 of R_F, with its extra misses placed on points already missed;
+- petal leaks on R_F points outside Y_a that lie in the most centres.
+
+R_F then splits into three parts:
+- Tri (in all three centres), with |Tri| >= n - (2t - 2δ);
+- κ_j (missed only by centre j);
+- low points (missed by >= 2 centres).
+
+They satisfy κ_j + λ_j = t/2 and 2λ <= Σλ_j <= 3λ.
+
+Kills, each a 2-cover {x, y} checked by hand:
+- (N2) T_a ≠ ∅ forces Tri ⊆ Y_a.
+- (N3) If κ_j is available to a, i.e. not inside Y_a, then T_a ∩ z_j = ∅.
+- (N5″) Three pairwise linkable petals at type j are a kill when the fourth petal has another available type. The
+  fourth petal's leak then lies in centre j: covering it needs s_d >= 1 - δ - t/2 together with z_j ⊆ W_d, which is
+  impossible for t < 1.
+- (N6″) A linkable pair (a, b) at j forces the pair cell D_ab to avoid z_j.
+- (N7″) Complementary linkable pairs at different types are a kill: {y, y′} meets all four petals and all three
+  centres.
+
+Linkability: (a, b) is linkable at j if κ_j is available to both and Y_b does not seal L_a ∩ κ_j. One common point is
+enough.
+
+Windows are given as cell masses μ[M, trace label]:
+- they cover R_A;
+- window masses are t/2 - s_a;
+- trace masses are δ.
+
+Relaxations, all in her favour:
+- the κ/λ split is hers;
+- pair cells are created only by her windows (the adversary's own-part choice on the slack is ignored);
+- pool traces are ignored.
+
+Objective: the least extra budget Δ such that every petal R_F part fits in t/2 + s_a + Δ.
+
+### 46.2 Results [computed exact]
+
+| t | δ range sampled (5 points) | Δ, spread-leak sealing (valid relaxation) | Δ, full-δ sealing (not a valid bound) |
+|---|---|---|---|
+| 0.7501 | 0.2084–0.2499 | -0.028 … -0.021 | +0.028 … +0.062 |
+| 0.76 | 0.2133–0.2400 | -0.044 … -0.040 | +0.011 … +0.040 |
+| 0.77 | 0.2183–0.2300 | -0.061 … -0.059 | -0.006 … -0.002 |
+| 0.7777 | ≈ 0.2222 | -0.074 | -0.018 |
+
+In the spread-leak column, V spreads each leak over its available types, so that sealing L_a ∩ κ_j costs at least
+min(κ_j, δ/3).
+
+Before the leak kills were added, Δ ≈ -0.06 … -0.11. The only binding difference between the two columns is the cost of
+sealing earlier leaks.
+
+The two accountings bracket the adaptive game. When the adversary concentrates each leak, she can dodge the concentrated
+type by exclusion at no extra cost (exclusion costs κ either way), but only one type per petal.
+
+### 46.3 Replay of the MIP pattern (`cf2_replay.py`) [computed exact]
+
+CF2 plays as follows:
+- petals 0–2 exclude κ_0, κ_1, κ_2 in turn, and petal 3 excludes nothing;
+- Y_a = Tri + κ_a + earlier leak points as the budget allows;
+- W_a = z_a + a private block, and W_3 covers the rest.
+
+Against A_T+ and A_T+p every instance of §45.3 ends in a 2-cover. Against A_T it wins with a pool and loses without one.
+
+The cover, diagnosed at (100,75,24,60) and (37,28,8,16):
+- leaks 1 and 2 are linked on κ_0, and leaks 0 and 3 are linked on κ_1;
+- this is N7″, exactly the leak-sealing term of 46.2;
+- every request is exactly T; there are no flags.
+
+### 46.4 Status
+
+- Proved: kills N2, N3, N5″, N6″, N7″ and the Tri bound.
+- Computed: both MIP scans and 24 replays.
+- Not decided: CF with slack on the strip.
+- **Next (deciding): the adaptive leak-type scenario MIP of item 4.**
+  - If its value is > 0 at t = 3/4, then V with adaptive type choice is the obstruction for CF. Combined with §31
+    (petals-first), that is the Theorem-N-type statement for the two orders, though not for interleaved orders.
+  - If its value is <= 0, its plan is the strategy to replay.
