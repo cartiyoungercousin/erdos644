@@ -2079,6 +2079,164 @@ done: the outer level of one spoiler is exact, the inner level is not.**
 Files: `compute/core/p5_verify.py`, `spoil_exact_p5.py`, `logs/p5_verify_80_*.log`, `logs/p5_strong_*.log`, `logs/three_*.log`.
 
 =============================================================================================
+# Part (§75–§79) — flag algebras / type-space relaxations on the compactness limit
+
+Code: `compute/flag/` — `fano.py` (need LP, members labelled by Fano points), `pair_steer.py`, `robust3.py` (level-3
+robust LP), `scan3.py`; logs `compute/flag/logs_scan3_*.txt`. Run with `py -3.14` (scipy is missing from the default 3.15).
+No SDP solver is installed (cvxpy, SCS, CVXOPT all absent); none was installed, and 76.1 shows none is needed.
+**Outcome. CP is NOT proved and no counterexample candidate is produced. The flag-algebra method is DEAD here, for
+proved reasons:** (i) the semidefinite (Cauchy–Schwarz) part is vacuous on this limit object (76.1); (ii) neither the
+hypothesis (T-covering) nor the conclusion (a good seven) is a density statement — good sevens have density → 0 even
+in families that satisfy CP (76.2); (iii) the only sound relaxation hierarchy on the type space is the bounded-depth
+first-order game (76.3), which Parts VI–IX already compute. Two corrections to §39.3: "no good seven" does not pass
+to the limit (75.2); a transfer lemma with t' < t is what makes a first-order win a certificate (75.3). Computed: the
+lowest levels of the hierarchy stop exactly at the window's lower edge N = 3t − 1/2 (77.1 proved by hand, 77.2 float).
+(Compatible with Part XI §83, which kills LP relaxations of the hitting-set side; this part kills the density side.)
+
+## 75. The limit object as a type space
+
+**75.1 Definition.** Parameters (t, N), c = N − 1, ω = N − 1 − t. A *q-type* is μ ∈ R_{>=0}^{P([q])} with
+Σ_I μ_I = N and Σ_{I ∋ i} μ_I = c for each i (μ_I = mass of points of co-type I; equivalently N times the law of the
+co-type of a random point — this is the only "density of a q-point Venn configuration" there is). A *type system*
+𝒯 = (𝒯_q)_{q>=1}: nonempty closed sets of q-types with
+- (C) closure under permuting members and under marginals (forgetting a member);
+- (E) extension: for μ ∈ 𝒯_q and every request s with 0 <= s <= μ, Σ s = t, some μ' ∈ 𝒯_{q+1} has marginal μ on [q] and
+  μ'_{I ∪ {q+1}} >= s_I for every I (the new member contains s);
+- (A) avoidance: no type in 𝒯_q (q >= 7) has a 7-marginal supported on nonempty, pairwise intersecting co-types.
+Check against §39.3 [proved by hand]: (C) and (E) are §39.3's closure and extension property, and they pass to
+Hausdorff limits of the finite-k systems 𝒯_q^{(k)} (for (E): approximate s by an integral request at level k, take the
+reply, pass to a convergent subsequence; μ' >= s is a closed condition). Systems with (C), (E) are exactly the position
+sets of first-order adversary strategies, as §39.3 says. (A) is where §39.3 needs correcting.
+
+**75.2 (A) does not pass to the limit [proved by hand].** Goodness of a 7-type is the closed condition b(μ) = 0
+(b = mass on bad cells), so "no good seven" is open, and limits of bad types can be good. It happens for the extremal
+family itself. Let 𝒞_k = all (n − k)-subsets of an n-set, n = ⌈7k/4⌉ − 1, T = n − k (T-covering: τ(K_n^(k)) = n − k + 1).
+No good seven at finite k: seven c-sets (c = n − k) covering all pairs put every point in >= 3 of them (a point in <= 2
+sees at most 2(c − 1) < n − 1 others, as n > 2c − 1), so 7c >= 3n, i.e. n >= 7k/4 — false. But the limit (t, N) = (3/4, 7/4)
+of 𝒞_k contains every type with the right marginals (all are realised up to rounding), among them the Fano blow-up
+(seven classes of mass 1/4, lines of mass 3/4 = c), which is good. **So the limit of a (7,2) family can contain good
+sevens: "limit object = a winning adversary strategy" is false as stated.** What survives is (C) + (E), plus 75.3.
+
+**75.3 Transfer lemma [proved by hand].** Suppose that for some m, some t' < t and all N' in a neighbourhood U of N she
+has a strategy winning G_∞(t', N') within m requests against every system with (C), (E) (= every first-order
+adversary). Then for all large k, every T-covering family of c-sets with T >= tk, |V| = N'k, N' ∈ U, has a good seven.
+*Proof.* At finite k a position IS an exact cell vector (divided by k). Her strategy gives a profile s of mass t'; she
+requests ⌈s_I k⌉ points of each cell I (possible: cells are integral and s <= μ) and pads to T; rounding costs at most
+2^m points <= (t − t')k once k >= 2^m/(t − t'). Each reply has mass c and contains a set of profile >= s, so the play is a
+legal play of G_∞(t', N') on exact positions, and her leaf condition (a good seven) is checked on the real sets. ∎
+Nothing holds in the other direction: an adversary surviving every finite depth is not a family (§43).
+Consequence: **the correct limit-level form of CP is "she wins G_∞ at finite depth on a neighbourhood of (t', N),
+t' < t"**, not "every type system violates (A)" (false at t = 3/4 by 75.2, so not the right object just above 3/4 either).
+
+**75.4 What carries a measure [proved by hand].** Point side: given a q-tuple, r random points have independent
+co-types (law μ/N each): points carry no relations among themselves, and every set of r <= T points lies in a member, so
+r-point traces of 𝒞 are complete. Member side: no measure at all — 𝒯_q is a set; (E) is a ∀∃ statement on it, (A) a ∀
+statement on 𝒯_7, and the alternation of (E) is unbounded.
+
+## 76. The flag-algebra relaxation, and why it is empty
+
+**76.1 Positivity is vacuous [proved by hand].** Razborov's constraints are ⟦(Σ a_i F_i)^2⟧_σ >= 0 for σ-flags F_i
+over a type σ. Here σ is a tuple of members, and a flag can only add points (adding members is not a sampling
+operation: there is no measure on members). Point flags multiply independently, p(F_i F_j) = μ_{I_i} μ_{I_j} / N^2, so
+every Gram matrix is rank one and PSD for every μ — no constraint beyond μ >= 0. And every μ >= 0 with the marginals is
+realisable (atomless limit; at finite k up to rounding). So the level-q "flag algebra" is the polytope of q-types; there
+is no SDP to solve.
+**76.2 No density formulation of CP [proved by hand].** Let 𝒞 be the complete family (all c-sets) on V, N >= 7/4:
+T-covering, and it HAS good sevens (the Fano blow-up needs 3N <= 7c, i.e. N >= 7/4). Under the uniform (the only
+Sym(V)-invariant) measure a random 7-tuple has co-type masses concentrated at N p^{|I|}(1 − p)^{7−|I|}, p = c/N, so
+μ_∅ ≈ N(1 − p)^7 > 0 and the tuple is bad with probability 1 − e^{−Ω(k)}. Hence the density of good sevens tends to 0 in a
+family satisfying CP: every flag inequality "d(good) >= λ > 0" is false there, and "d(good) >= 0" is empty. (Part XI §83's
+second item is the finite-k form: a full-support measure sees a good seven with positive, but here e^{−Ω(k)}, probability;
+the limit loses it.) T-covering is not a density condition either: by 39.2 a T-covering family can have density e^{−γk}
+in every class. A flag-algebra certificate is a ∀-statement linear in densities (alternation depth 1); CP is ∀∃∀∃…
+(iterated (E)) followed by ∃ (a good seven). No density functional sees it.
+**76.3 The sound hierarchy is the game [proved by hand].** Level-m relaxation 𝓡_m(t, N): systems (𝒯_q)_{q<=m} with (C),
+(E) for q < m and (A) for q <= m. 𝓡_m is feasible iff he survives m requests in G_∞(t, N) (positions reachable under his
+strategy form such a system; conversely a system is a strategy: answer with any extension type). 𝓡_{m+1} feasible ⇒ 𝓡_m
+feasible. By 75.3, infeasibility of 𝓡_m on a neighbourhood of (t', N), t' < t, certifies CP at (t, N). This is §29.2(a)
+in type language; "flag algebra at level q" adds only 76.1, i.e. nothing.
+**76.4 Trivial levels.** 𝓡_m is feasible for every t when m <= 6 (no seven exists; the complete family gives (E)).
+
+## 77. The hierarchy solved at its lowest levels
+
+**77.1 Level 7 through a steered pair [proved by hand; `pair_steer.py` agrees in float].** Label K_1, K_2 by Fano points
+0, 1 (all pairs are equivalent); the position is o = |K_1 ∩ K_2|; cells O = o, A = B = c − o, g = 2 − N + o. Let Z be the
+set of o for which the five future lines can all be requested as they stand (pair need = 0, §25).
+*Claim.* Z = [N − 2t, 3t − 2]; so Z ≠ ∅ iff N <= 5t − 2 (base <= 0), and |Z| = 5t − 2 − N = −base.
+*Necessity.* Every line other than {0,1,2} meets the four future points {3,4,5,6} twice, and only points of O can sit on
+{0,1,2}; so 2(N − o) <= Σ_{j=3..6} |L_j| <= 4t gives o >= N − 2t. Let y = mass of O not on {0,1,2}. Every class of g sits on a
+line through 2 (the lines avoiding 0 and 1 are {2,3,6}, {2,4,5}), so t >= |L_2| >= (o − y) + g, i.e. y >= 2o + 2 − N − t. Counting
+future incidences (O on {0,1,2}: 1; other points of O, and A, B: >= 2; g: 3) gives 5t >= Σ_{j=2..6} |L_j| >= N + 2 + y.
+Together o <= 3t − 2.
+*Sufficiency.* O: o − y on {0,1,2}, y/4 on each of {0,3,4}, {0,5,6}, {1,3,5}, {1,4,6}; A in halves on {0,3,4}, {0,5,6}; B in halves
+on {1,3,5}, {1,4,6}; g in halves on {2,3,6}, {2,4,5}. Then |L_2| = 2o + 2 − N − y and |L_3| = … = |L_6| = (y + N − o)/2, and some
+y ∈ [0, o] makes both <= t iff N − 2t <= o <= 3t − 2. ∎ (LP: Z = [0.27, 0.28] at (0.76, 1.79), [0.31, 0.34] at (0.78, 1.87),
+[0.35, 0.40] at (0.8, 1.95), grids 0.0025–0.01.)
+*Steering.* After S_2 with |S_2 ∩ K_1| = x, the unrequested mass outside K_1 is 1 − t + x >= 1 − t > ω (as N < 2), so his
+dump puts any d ∈ [0, min(ω, c − x)] into K_1 and o = x + d is his choice in an interval of length min(ω, c − x); c ∉ Z.
+Hence the steered pair wins (2 + 5 = 7 requests) iff |Z| >= ω, i.e. **N <= 3t − 1/2: exactly TWIN 16.A's line**. This level
+sees nothing of the window. His extremal answer: o at the end of [x, x + ω] outside Z.
+
+**77.2 Three adaptive replies, then a static finish [computed float; her S_3 class restricted].** `robust3.py`: for a
+pair position o, look for S_3 (profile on O, A, B, g) such that EVERY dump leaves some reading — pairs {1,2}, {1,3}, {2,3},
+or the triple labelled collinear or as a triangle (ordered triples of each kind are equivalent under GL(3,2)) — with all
+future lines <= t (7 or 8 requests in all). Restriction: each cell is either exhausted by S_3 or keeps >= ω unrequested;
+then the dump polytope has vertices ω·e_j, and one LP (S_3 shared, one class assignment per vertex) decides a
+single-reading win; per-vertex mixed readings are accepted only after a grid check of the dump simplex (286 points).
+Exhausting cells is included (the pool mechanism); partial exhaustion (0 < unrequested < ω) is not.
+
+| (t, N) | ω | 2ε / 4ε | Z | o scanned | S_3 found |
+|---|---|---|---|---|---|
+| 0.76, 1.79 | 0.03 | 0.02 / 0.04 | [0.27, 0.28] | [0, 0.79] step 0.026; [0.25, 0.30] step 0.0025 | only for o ∈ Z (pair reading) |
+| 0.78, 1.87 | 0.09 | 0.06 / 0.12 | [0.31, 0.34] | [0.25, 0.40] step 0.01 | only for o ∈ Z |
+| 0.80, 1.95 | 0.15 | 0.10 / 0.20 | [0.35, 0.40] | [0.30, 0.46] step 0.01 | only for o ∈ Z |
+
+All three points lie in the lower strip 3t − 1/2 < N <= 5t − 2. Within this class the third reply never repairs a pair
+that he steered out of Z, so this level's threshold is again N = 3t − 1/2. This matches 9.1 (the third reply can be made
+to waste ω against the pair) where 9.1's hypothesis 3ω <= o holds (only the first point).
+**77.3 Deeper levels [repo results, not re-run].** At t = 0.76 the exact tilted-spread tree (REDTEAM §14, CORE §20–21)
+wins at N = 1.80 = 5t − 2, so 𝓡_m is infeasible there at that tree's depth; nothing in between is known, and 21.2 (the
+claim that the whole strip N <= 5t − 2 is closed) is a GAP (LEDGER). For N > 5t − 2 (base > 0) the float searches of §26,
+§30, §41, §60 found 𝓡_m feasible at every depth reached (up to five or six kept replies), with one unresolved candidate break.
+**Extreme t.** For every N in the window, every level computed here is feasible for all t < (N + 1/2)/3, i.e. on the whole
+window; infeasibility appears only on and below the line N = 3t − 1/2 (levels 7–8), plus the single exact point
+(0.76, 1.80) at greater depth. No t > 3/4 gives a certificate inside the window.
+
+## 78. Extremal structure read off; counterexample candidates
+
+- Level 7: the steerer (77.1) — the pair carries one number, o, and he puts it outside Z. Level 8: the same plus a third
+  dump that keeps every reading of {K_1, K_2, K_3} positive (in the LP the failing vertices are dumps into O and into the
+  private part the request left open, as in 9.1). These are bounded-depth first-order strategies; by §43 they are not
+  families, and none is proposed as one. [computed float for level 8; heuristic as a description]
+- An all-levels feasible system is not finitely generated [proved]: finitely generated systems are profile families
+  (39.3), and those have a good seven (Theorem S). So the "extremal limit object" of this method, if it exists, is exactly
+  the non-finitely-generated system SPOIL\* asks for; the relaxation gives no finite description of it.
+
+## 79. Verdict, dead routes, next step
+
+**Dead.** (a) Flag algebras / SDP in Razborov's or Lidický–Pfender's sense: no measure on members, rank-one positivity
+on points (76.1). (b) Any density formulation of CP (76.2). (c) "Level-q relaxation with positivity" as something beyond
+the game: it is the bounded-depth game (76.3). (d) Pair-steered and pair-plus-one-reply levels inside the window: they
+stop at N = 3t − 1/2 (77.1 proved; 77.2 float).
+**Corrected.** §39.3: the limit of a (7,2) family satisfies (C), (E) but not (A) (75.2); the certificate direction is the
+transfer lemma 75.3 (t' < t, finite depth).
+**Status of CP.** Unchanged: open on 3t − 1/2 < N < 3 − t. Inside it, the lower strip N <= 5t − 2 (base <= 0) is where
+finite levels can still win by static finishes (they do at (0.76, 1.80)); above 5t − 2 every static finish needs on-line
+dump mass from a non-free reply (§25), and the question is SPOIL\*.
+**Next step [heuristic].** If the hierarchy is pushed, push it where it can terminate: the strip 3t − 1/2 < N <= 5t − 2.
+Rationalise the REDTEAM §14 tree as a function of (t, N) and test it with `robust3`-style vertex LPs at 3–4 adaptive levels,
+aiming at "she wins 𝓡_m for all N <= 5t − 2". That would close the 21.2 GAP and move the open window to (5t − 2, 3 − t).
+Not done: that; exact (rational) versions of 77.2; partial-exhaustion requests in 77.2; levels beyond 8.
+
+Self-check (§75–§79): 75.2's count is the standard "every point in >= 3 blocks" bound, checked against n = 7k/4 (Fano
+blow-up exact). 75.3 uses only that finite-k positions are exact and that requesting more points is legal in G_∞(t').
+76.1: the point flags of a fixed tuple are i.i.d. by definition of the limit; 76.2: the concentration is the LLN for seven
+independent uniform c-subsets. 77.1: both inequalities re-derived from the incidence table of the seven lines; the LP
+matches the endpoints N − 2t, 3t − 2 at three points and gives need 0 at the Theorem-T point a = N/2 − 5/8 for the
+triangle labelling at (0.76, 1.79). 77.2 is float (HiGHS via scipy) with the class restriction stated; its "no S_3"
+verdicts are not proofs even within the class. Everything is first order.
+
+=============================================================================================
 # Part XI — fractional relaxation and rounding (§80–§84)
 
 Brief: replace τ by τ*, settle the fractional question by LP duality, bound τ/τ*, combine. Code:

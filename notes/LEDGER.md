@@ -39,6 +39,8 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 | Kupavskii–Zakharov decomposition into head classes + remainder (H_τ) | CORE §54 | HAND; restates the hash-selector problem, not a reduction |
 | Fractional relaxation + rounding (τ* <= (35k)^{1/3} for (7,2)-families; rounding in the window is CP itself; Alon–Kleitman ε-net route can't give 3/4) | CORE §80–§84 | DEAD (proved) |
 | Hypergraph containers + supersaturation (codegree condition fails above a thin strip; the supersaturation step needed already implies CP) | CORE §85–§89 | DEAD (proved) |
+| Flag algebras / SDP on the limit object (Cauchy–Schwarz constraints automatic; CP is not a density statement; 'no good seven' doesn't pass to the limit, corrects §39.3) | CORE §75–§79 | DEAD (proved) |
+| Transfer lemma (finite-depth first-order win at t' < t gives CP at t for large k) | CORE §75 | HAND |
 | Kernel lemma; regularity reduction; c(N)·k cell bound; bounded-request game | CORE §34–35, §39, §45, Parts V–VII | DEAD |
 
 ## Petal side (Barrier F)

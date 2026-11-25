@@ -1,0 +1,18 @@
+t=0.8 N=1.95 omega=0.1500 Z=[N-2t,3t-2]=[0.3500,0.4000]
+o=0.3000 pairneed=0.1000 -
+o=0.3100 pairneed=0.0800 -
+o=0.3200 pairneed=0.0600 -
+o=0.3300 pairneed=0.0400 -
+o=0.3400 pairneed=0.0200 -
+o=0.3500 pairneed=0.0000 ((), '12', {'O': np.float64(0.2), 'A': np.float64(0.1), 'B': np.float64(0.45), 'g': np.float64(0.05)})
+o=0.3600 pairneed=0.0000 ((), '12', {'O': np.float64(0.21), 'A': np.float64(0.16), 'B': np.float64(0.4), 'g': np.float64(0.03)})
+o=0.3700 pairneed=0.0000 ((), '12', {'O': np.float64(0.22), 'A': np.float64(0.275), 'B': np.float64(0.305), 'g': np.float64(-0.0)})
+o=0.3800 pairneed=0.0000 ((), '12', {'O': np.float64(0.15), 'A': np.float64(0.285), 'B': np.float64(0.29), 'g': np.float64(0.075)})
+o=0.3900 pairneed=0.0000 ((), '12', {'O': np.float64(0.035), 'A': np.float64(0.295), 'B': np.float64(0.4), 'g': np.float64(0.07)})
+o=0.4000 pairneed=0.0000 ((), '12', {'O': np.float64(0.2375), 'A': np.float64(0.275), 'B': np.float64(0.2875), 'g': np.float64(-0.0)})
+o=0.4100 pairneed=0.0100 -
+o=0.4200 pairneed=0.0200 -
+o=0.4300 pairneed=0.0300 -
+o=0.4400 pairneed=0.0400 -
+o=0.4500 pairneed=0.0500 -
+o=0.4600 pairneed=0.0600 -
