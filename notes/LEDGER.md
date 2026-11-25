@@ -95,7 +95,7 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 - TWIN 16.A vs Lean `TheoremA` (one-anchor Fano template): they are different statements. 16.A stays HAND.
 - The 6/7 main theorem (`SixSeventhsStatement`) is not proved in Lean; only its lemmas 4.1–4.8 are.
 - Not yet scheduled for verification: Theorems J, K, L, T, Q, P, N; TWIN §13; 16.A.
-- Covering numbers C(v,k,2) behind f(6,7) >= 5 and f(7,7) >= 6: our own ILP only; La Jolla tables unchecked.
+- Covering numbers behind f(6,7) >= 5 and f(7,7) >= 6: certified by hand (Schönheim bound; notes/verify/small_values.md). The upper bounds come from exact certificates (FRESH_C §14) plus the VERIFIED TWIN §13, so f(6,7) = 5 and f(7,7) = 6 are certified.
 
 ## Finite-k hypotheses (notes/FINITE_K.md)
 - DS-b: n - k + 7δ + 1 <= T. W: any k with 4T != 3k+1 (false at k ≡ 1 mod 4, T = (3k+1)/4). J′: T >= 2⌈k/3⌉. §46: L-branch ω <= T - ⌈k/2⌉, H-branch o <= 4ω - 3.

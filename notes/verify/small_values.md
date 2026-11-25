@@ -33,11 +33,20 @@ A SAT cross-check (python-sat) was attempted but the UNSAT instances did not fin
 so the lower bounds (the "needed >= 8" rows) rest on HiGHS optimality only, i.e. one solver family
 (a different formulation, but not a proof certificate). Upper bounds are explicit verified designs.
 
+## (2b) Hand certificate for the two lower bounds (Schoenheim; no solver)
+Claim: C(v,k,2) >= ceil(v/k * ceil((v-1)/(k-1))).
+Proof: fix a point x. The other v-1 points must each share a block with x, and a block through x holds k-1 others,
+so x lies in r >= ceil((v-1)/(k-1)) blocks. Counting point-block incidences, k*b >= v*r, so b >= v*r/k.
+- C(10,4,2): r >= ceil(9/3) = 3; b >= 10*3/4 = 7.5, so b >= 8.
+- C(12,5,2): r >= ceil(11/4) = 3; b >= 12*3/5 = 7.2, so b >= 8.
+Hence no 7-block pair covering exists for (10,4) or (12,5). Both lower bounds are settled by this
+two-line counting argument, independent of HiGHS and SAT. The ILP optima (9, 9) are consistent with it, and
+only the weaker ">= 8" is needed. No SAT/DRAT run was necessary.
+
 ## (3) Status of f(6,7) = 5 and f(7,7) = 6
-- Lower bounds f(6,7) >= 5, f(7,7) >= 6: the arithmetic is reproduced by a second, independent ILP;
-  the explicit complete families are (7,2). Not certified against the literature and without a
-  solver-independent proof certificate for the two >= 8 facts, so: "independently recomputed", not
-  "literature-certified".
+- Lower bounds f(6,7) >= 5, f(7,7) >= 6: now FULLY certified at the level of the two covering facts
+  C(10,4,2) >= 8 and C(12,5,2) >= 8 (hand proof in (2b)); the complete families are (7,2) by FRESH_B 1.3.
+  The earlier caveat about reliance on HiGHS optimality is withdrawn.
 - Upper bounds f(6,7) <= 5, f(7,7) <= 6: EXACT certificates (FRESH_C 14.3), TWIN section 13 VERIFIED (as stated by the requester).
-- Conclusion: f(6,7) = 5 and f(7,7) = 6 hold given those two inputs plus the HiGHS lower-bound values; the only
-  remaining gap is an external or proof-logged confirmation of C(10,4,2) >= 8 and C(12,5,2) >= 8.
+- Conclusion: f(6,7) = 5 and f(7,7) = 6 hold, given those upper-bound inputs. Remaining caveat: the upper bounds
+  are not re-derived here; the literature lookup in (1) was not achieved.
