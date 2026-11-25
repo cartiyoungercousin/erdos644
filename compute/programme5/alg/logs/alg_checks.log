@@ -1,0 +1,7 @@
+(a) line-free lemma: 128/128 subsets agree
+(b) closed form for M(n) agrees with full enumeration for n <= 13: True
+(b) n, M(n), max crit of PG(2,2)-free up-set = n-M(n), static bound floor(3(n+7)/7)
+   1:1 2:2 3:2 4:2 5:3 6:3 7:3 8:4 9:5 10:5 11:5 12:6 13:6 14:6 15:7 16:8 17:8 18:8 19:9 20:9 21:9 22:10 23:11 24:11 25:11 26:12 27:12 28:12 29:13 30:14 31:14 32:14 33:15 34:15 35:15
+   n - M(n) - floor(3n/7) over n=1..35: [0, 1, 2]
+(c) Fano in pencil graph of K^(k)_n vs M(n)>=k: (3,5):00 (4,6):00 (4,7):11 (5,7):00 (5,8):00 (5,9):00 (6,8):00 (6,9):00 (6,10):00 (6,11):11  agree=True
+(d) anchor-quotient construction: 70/70 pencils with w <= 4tau-3k-4 gave a good seven

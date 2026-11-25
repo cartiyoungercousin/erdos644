@@ -1,0 +1,14 @@
+K^(4)_6: |H|=15 pencils=15 density=0.0330 (0.0s)
+  2-colourable: True (0.0s)
+   class 0: size 10, common point(s) 1
+   class 1: size 5, common point(s) 0
+K^(5)_8: |H|=56 pencils=840 density=0.0303 (0.0s)
+  2-colourable: True (0.0s)
+   class 0: size 35, common point(s) 1
+   class 1: size 21, common point(s) 0
+K^(5)_9: |H|=126 pencils=31500 density=0.0968 (0.0s)
+  2-colourable: False (0.0s)
+  3-colourable: True (0.0s)
+K^(6)_10: |H|=210 pencils=37450 density=0.0246 (0.0s)
+  2-colourable: False (0.0s)
+  3-colourable: True (0.0s)

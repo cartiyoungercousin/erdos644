@@ -1,0 +1,6 @@
+K^(7)_12: |H|=792 pencils=1561560 density=0.0189 (1.4s)
+  2-colourable: False (1.5s)
+  3-colourable: True (2.4s)
+K^(8)_13: |H|=1287 pencils=1336335 density=0.0038 (1.4s)
+  2-colourable: False (1.5s)
+  3-colourable: True (2.3s)
