@@ -104,6 +104,11 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
   - Every good seven is Fano-type for N < 11/6: VERIFIED EXACT (all 1,422,564 maximal intersecting families on 7 points, rational LP certificates; 11/6 is sharp).
   - (Σ)(a) in F₂ form: four-term relation, PASS. (Σ)(c): not a four-term relation (the pair sums and the triple sum all have weight >= n − T).
 - Task 4 (notes/PROGRAMME2_TASK4.md, D2 measurement): every stored family with no Fano-type seven found is a ρ = 2 coset family up to at most 12 members (FKW exact; H1-type after deleting 12 sets; one k=8 family up to 1 member). The (8,6,15) pencil-free selector is exactly a parity function. Data support 'seven-free implies most members in one coset with ρ > 4T − 3k', but only in the weak regime 4T − 3k = 0, and seven-freeness is certified only for FKW. [EXACT/sampled]
+- Task 2 (notes/PROGRAMME2_TASK2.md, D1): NO counterexample.
+  - Theorem D [HAND + EXACT tests]: if dim C >= k + r, every covering coset family has ρ_par <= r + 1 (parity-correct), so c* = 1.
+  - Counting gives dim C >= k + r for ω < 0.188 (t = 3/4), which contains all of N < 11/6. So D1 lands in 'B within reach' there.
+  - For ω >= 0.188 (N >= 1.94) only ρ <= 2r + 1 is known.
+  - Exact tables: ρ >= r + 2 only when τ <= 2. (7,14) is excluded for k >= 36; residue-class targets were corrected.
 - Task 3 (notes/PROGRAMME2_TASK3.md): Proposition 9 as literally stated is FALSE (size parity; counterexample by hand + SAT). Theorem 9′, with correct parity |Ω_i| ≡ k (mod 2) and size hypotheses, is proved by hand: the 7×7 F₂ class system is always solvable, and size residues are repaired by same-class pairs. Proof construction exact on 10,300 instances; with parity-correct Ω's, a good seven existed in 284/284 ground-truth instances (conjecture: parity alone suffices). [HAND + EXACT], not independently verified.
 
 ## Open

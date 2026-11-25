@@ -1,0 +1,7 @@
+t=0.75: Theorem D holds for omega < 0.1881 (N < 1.9381)
+t=0.78: Theorem D holds for omega < 0.2000 (N < 1.9800)
+t=0.8: Theorem D holds for omega < 0.2078 (N < 2.0078)
+t=0.85: Theorem D holds for omega < 0.2271 (N < 2.0771)
+t=0.875: Theorem D holds for omega < 0.2366 (N < 2.1116)
+min g over N<11/6 region: 0.3164
+min g for third Omega (ground set shrunk by 2(r+1)) over N<11/6: 0.1131

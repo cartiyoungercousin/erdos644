@@ -1,0 +1,5 @@
+[0, 0, 2, 2, 2, 4, 4, 4, 7, 7, 7] k=9 members=10 tau=2 r=1 rho=3 MATCH
+[2, 2, 2, 4, 4, 4, 8, 8, 8, 15, 15] k=8 members=18 tau=2 r=2 rho=4 MATCH
+[2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3] k=6 members=472 tau=6 r=1 rho=2 MATCH
+[0, 0, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3] k=6 members=210 tau=5 r=2 rho=2 MATCH
+[0, 2, 2, 2, 4, 4, 4, 7, 7, 7] k=5 members=27 tau=3 r=3 rho=3 MATCH

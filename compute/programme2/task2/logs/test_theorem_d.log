@@ -1,0 +1,3 @@
+{"trials":4000,"lemmaC":26075,"lemmaCfail":0,"thmD":3237,"thmDfail":0,"violations_seen":112}
+rho>=r+2 instances by (r,rho): {"r=1,rho=3":50,"r=2,rho=4":47,"r=2,rho=5":1,"r=3,rho=5":2,"r=1,rho=4":12}
+[{"n":14,"k":12,"tau":2,"T":1,"r":1,"rho":3,"e":3,"dimC":11,"why":"e>T"},{"n":14,"k":13,"tau":1,"T":0,"r":1,"rho":3,"e":3,"dimC":11,"why":"e>T"},{"n":14,"k":13,"tau":1,"T":0,"r":1,"rho":3,"e":4,"dimC":9,"why":"e>T"},{"n":8,"k":6,"tau":1,"T":0,"r":2,"rho":4,"e":3,"dimC":4,"why":"e>T"},{"n":7,"k":5,"tau":1,"T":0,"r":2,"rho":5,"e":5,"dimC":1,"why":"e>Tn<2e+1"},{"n":15,"k":13,"tau":2,"T":1,"r":1,"rho":3,"e":3,"dimC":11,"why":"e>T"},{"n":14,"k":12,"tau":1,"T":0,"r":2,"rho":4,"e":4,"dimC":9,"why":"e>T"},{"n":10,"k":9,"tau":1,"T":0,"r":1,"rho":3,"e":4,"dimC":6,"why":"e>T"}]

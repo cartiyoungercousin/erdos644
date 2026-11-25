@@ -1,0 +1,8 @@
+k=4m, T=3m+1: every (r, rho) with 7rho > 12(r+1), rho_par even <= min(2r,k)
+m=4 k=16: checked 2 values of r; NOT excluded by LP: [(7, 14, False, np.float64(25.68), np.float64(14.86)), (8, 16, False, np.float64(25.64), np.float64(14.1))]
+m=5 k=20: checked 4 values of r; NOT excluded by LP: [(7, 14, False, np.float64(32.09), np.float64(20.04)), (8, 16, False, np.float64(31.62), np.float64(19.11)), (9, 18, False, np.float64(32.1), np.float64(18.27)), (10, 20, False, np.float64(32.25), np.float64(17.51))]
+Traceback (most recent call last):
+  File "lp_exclusion.py", line 73, in <module>
+    res_m.append((r, rho0, R.get('excluded'), round(R.get('lp', 0) and np.log2(R['lp']), 2), round(np.log2(R['LB']), 2)))
+                                                                                                           ~^^^^^^
+KeyError: 'LB'

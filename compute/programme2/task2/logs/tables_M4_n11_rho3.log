@@ -1,0 +1,22 @@
+M=4 NMAX=11 rho3only=true multisets=1640639
+(r,rho)=(0,3) VIOLATES rho<=r+1 count=86140 maxTau=1 ex={"h":[0,0,0,0,0,0,0,0,2,4,7],"k":11,"n":11,"tau":1,"e":3} lemma8regime=none T>=3k/4&tau>=2=none
+(r,rho)=(0,4) VIOLATES rho<=r+1 count=6272 maxTau=1 ex={"h":[0,0,0,0,0,0,0,2,4,8,15],"k":11,"n":11,"tau":1,"e":4} lemma8regime=none T>=3k/4&tau>=2=none
+(r,rho)=(1,3) VIOLATES rho<=r+1 count=450076 maxTau=2 ex={"h":[0,0,2,2,2,4,4,4,7,7,7],"k":9,"n":11,"tau":2,"e":3} lemma8regime=none T>=3k/4&tau>=2=none
+(r,rho)=(1,4) VIOLATES rho<=r+1 count=21560 maxTau=1 ex={"h":[0,0,0,0,0,0,0,2,4,8,15],"k":10,"n":11,"tau":1,"e":4} lemma8regime=none T>=3k/4&tau>=2=none
+(r,rho)=(2,3)  count=881528 maxTau=3 ex={"h":[0,0,2,2,2,4,4,4,7,7,7],"k":7,"n":11,"tau":3,"e":3} lemma8regime=none T>=3k/4&tau>=2=none
+(r,rho)=(2,4) VIOLATES rho<=r+1 count=29904 maxTau=2 ex={"h":[2,2,2,4,4,4,8,8,8,15,15],"k":8,"n":11,"tau":2,"e":3} lemma8regime=none T>=3k/4&tau>=2=none
+(r,rho)=(3,3)  count=1112052 maxTau=4 ex={"h":[2,2,2,4,4,7,7,8,11,13,14],"k":5,"n":11,"tau":4,"e":3} lemma8regime=none T>=3k/4&tau>=2=none
+(r,rho)=(3,4)  count=36512 maxTau=2 ex={"h":[2,2,2,2,4,4,8,8,15,15],"k":6,"n":10,"tau":2,"e":3} lemma8regime=none T>=3k/4&tau>=2=none
+(r,rho)=(4,3)  count=940144 maxTau=4 ex={"h":[2,2,4,4,7,7,8,11,13,14],"k":3,"n":10,"tau":4,"e":3} lemma8regime={"h":[2,2,4,4,7,7,8,11,13,14],"k":3,"n":10,"tau":4} T>=3k/4&tau>=2={"h":[2,2,4,4,7,7,8,11,13,14],"k":3,"n":10,"tau":4}
+(r,rho)=(4,4)  count=33040 maxTau=2 ex={"h":[0,0,0,2,2,4,4,8,8,15,15],"k":6,"n":11,"tau":2,"e":4} lemma8regime=none T>=3k/4&tau>=2=none
+(r,rho)=(5,3)  count=929616 maxTau=4 ex={"h":[0,2,2,4,4,7,7,8,11,13,14],"k":3,"n":11,"tau":4,"e":4} lemma8regime={"h":[0,2,2,4,4,7,7,8,11,13,14],"k":3,"n":11,"tau":4} T>=3k/4&tau>=2={"h":[0,2,2,4,4,7,7,8,11,13,14],"k":3,"n":11,"tau":4}
+(r,rho)=(5,4)  count=31416 maxTau=2 ex={"h":[0,0,0,2,2,4,4,8,8,15,15],"k":5,"n":11,"tau":2,"e":4} lemma8regime=none T>=3k/4&tau>=2=none
+(r,rho)=(6,3)  count=819680 maxTau=3 ex={"h":[0,0,0,0,2,4,7,8,11,13,14],"k":3,"n":11,"tau":3,"e":4} lemma8regime=none T>=3k/4&tau>=2=none
+(r,rho)=(6,4)  count=24360 maxTau=2 ex={"h":[0,0,0,2,2,4,4,8,8,15,15],"k":4,"n":11,"tau":2,"e":4} lemma8regime=none T>=3k/4&tau>=2=none
+(r,rho)=(7,3)  count=706524 maxTau=2 ex={"h":[0,0,0,0,0,2,2,4,4,7,7],"k":3,"n":11,"tau":2,"e":3} lemma8regime=none T>=3k/4&tau>=2=none
+(r,rho)=(7,4)  count=16520 maxTau=1 ex={"h":[0,0,0,0,0,0,0,2,4,8,15],"k":4,"n":11,"tau":1,"e":4} lemma8regime=none T>=3k/4&tau>=2=none
+(r,rho)=(8,3)  count=329420 maxTau=1 ex={"h":[0,0,0,0,0,0,0,0,2,4,7],"k":3,"n":11,"tau":1,"e":3} lemma8regime=none T>=3k/4&tau>=2=none
+
+real	4m37.147s
+user	0m0.015s
+sys	0m0.016s
