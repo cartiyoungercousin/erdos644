@@ -42,6 +42,8 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 | Hypergraph containers + supersaturation (codegree condition fails above a thin strip; the supersaturation step needed already implies CP) | CORE §85–§89 | DEAD (proved) |
 | Flag algebras / SDP on the limit object (Cauchy–Schwarz constraints automatic; CP is not a density statement; 'no good seven' doesn't pass to the limit, corrects §39.3) | CORE §75–§79 | DEAD (proved) |
 | Transfer lemma (finite-depth first-order win at t' < t gives CP at t for large k) | CORE §75 | HAND |
+| Density / forbidden-pattern arguments above the bottom strip (Theorem 96.1: the c-sets avoiding a point and containing a fixed Y have no static certificate yet density rate <= 0.17γ; no pattern rate can beat γ) | CORE §95–§99 | DEAD (HAND, not yet verified) |
+| Frankl–Wilson makes the bottom strip effective (ε_0 ≈ 0.0088), except a vanishing top sliver | CORE §97 | FLOAT/HEUR |
 | Kernel lemma; regularity reduction; c(N)·k cell bound; bounded-request game | CORE §34–35, §39, §45, Parts V–VII | DEAD |
 
 ## Petal side (Barrier F)

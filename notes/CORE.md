@@ -2668,3 +2668,250 @@ proved by hand, modulo the cited FR theorem; finite-k certificate exact.
 - (c) Whether "small ε suffices" is acceptable for the global argument. It is for f(k,7) <= (3/4 + ε)k, which is
   monotone in ε.
 - (d) That CP's family form is the right target (TWIN 16.2).
+
+=============================================================================================
+# Part XIV — how far up the window can density go? (§95–§99)
+
+Brief: can a forbidden-configuration (density) theorem do in 5t − 2 < N < 3 − t (ε → 0: 1.75 < N < 2.25) what
+Frankl–Rödl did in the strip (§91; verified in notes/verify/bottom_strip.md)?
+Code: `compute/strip/window_density.py` (MILP for static certificates on scipy/HiGHS, rate tables, Frankl–Wilson
+rates). Logs: `compute/strip/logs/{threshold_check, rate_table, fw_rate, fw_eps0, thresh_*}.log`. Units: k = 1.
+**Outcome.**
+- (Σ) has one shape with first-order slack: the Q′ quadruple (a). The pencil (b) and the Theorem-T triangle (c) are
+  boundary patterns with tolerance O(ε) (§95).
+- **Density alone cannot work anywhere above the strip.** Theorem 96.1 is proved by hand. Take one point outside
+  every member and a core of mass (δ + 3ε)/2 inside every member. That kills every static certificate of every
+  order r <= 7, and the family has density e^{−ρk} with ρ <= 0.17·γ as ε → 0 (ρ <= 0.28·γ for ε <= 0.05). The same
+  construction inside a link kills every link-density argument.
+- Requiring every point to be covered (all small links dense) does not rescue the route above N ≈ 1.77 (§98.3,
+  computed float). Below that, only a sliver of width about 0.02 in N is not refuted by the families tested, and
+  no theorem is known there.
+- Bonus (§98.1): in the strip, Frankl–Wilson gives an EXPLICIT rate. So ε_0 ≈ 0.0088 is effective, except on a
+  vanishing top sliver.
+
+## 95. Which (Σ)-shapes are prescribed-pattern configurations [proved by hand]
+
+**Pattern.** A pattern of r members is a Venn vector v = (v_I)_{I ⊆ [r]}, where v_I is the mass of points whose
+co-type among K_1..K_r is exactly I. It satisfies Σ_I v_I = N and Σ_{I ∋ i} v_I = c.
+
+**Open.** Call a pattern class *open* if its certifying set has nonempty interior in that affine slice. Only open
+targets fit FR / Keevash–Long-type theorems. Those need every cell bounded away from 0 and a tolerance that does not
+depend on ε.
+
+- **(a) The Q′ quadruple is open.** Put s_0 = v_∅, s_1 = Σ_{|I|=1} v_I, σ = s_0 + s_1, and v_ij for the pair cells.
+  The certifying set is
+      σ <= (3t − N)/2,   v_12 + v_34 + σ <= t,   v_13 + v_24 + σ <= t,   v_14 + v_23 + σ <= t
+  (the matchings condition is the reading confirmed by the verifier, Qprime_Sigma_density.md (2)).
+  - Its total slack is δ + 3ε > 0, by the §4 identity W = 2N − 4 + 2σ <= δ + 3ε. So the set is open for N > 7/4.
+  - Example at N = 2: σ = 0 and all six pair cells equal to 1/3. Each matching load is 2/3 < t.
+- **(b) The pencil is not open.** The verifier's reading is triple cell κ >= N − 2t and K_1 ∪ K_2 ∪ K_3 = V.
+  - Union V means v_∅ = 0, so the pattern lies on a face of the simplex.
+  - Union V also forces κ <= N − 3/2. So κ lies in [N − 2t, N − 3/2], an interval of width 2ε.
+- **(c) Theorem T is not open.** It needs κ <= 4ε (35.2), which is a face up to O(ε), with the pair cells within O(ε)
+  of a* = N/2 − 5/8.
+- **In general (2.3),** a certificate that uses q members in full and 7 − q requests has slack (q − 3)δ + (7 − q)ε.
+  - Only q >= 4 gives an open pattern.
+  - q = 2 is open only in the strip (the window Z of §90).
+  - q = 3 is always a boundary pattern.
+
+## 96. Density alone fails above the strip [proved by hand; MILP-confirmed, computed float]
+
+**Static r-certificate.** This is r members K_1..K_r together with 7 − r requests L_j with |L_j| <= t, such that the
+minimal co-types J_x = {i <= r : x ∈ K_i} ∪ {j > r : x ∈ L_j} are nonempty and pairwise intersecting.
+- By 1.1 and monotonicity, any T-covering family containing K_1..K_r then has a good seven.
+- §90 (r = 2), (Σ)(a)–(c) (r = 4, 3, 3) and a good seven among members (r = 7) are all instances.
+
+**Density-only argument.** This is a theorem of the form "density >= e^{−ρ'k} forces some static certificate",
+applied with ρ' = γ.
+
+**Theorem 96.1.** Suppose δ > 5ε (above the strip) and N < 3 − t. Let x_0 ∈ V, and let Y ⊆ V ∖ {x_0} have mass
+y > (δ + 3ε)/2. Then G = {K ∈ C(V, c) : x_0 ∉ K, Y ⊆ K} contains no static r-certificate, for any r.
+
+*Proof.*
+1. **Every co-type has size >= 3, also for N >= 2.**
+   - J_{x_0} ⊆ {r+1, …, 7}, because x_0 lies in no member.
+   - Every other co-type meets J_{x_0}, so no co-type lies inside [r].
+   - A co-type {i, j} with i <= r < j would need c + t >= N. A co-type {j, j'} of two requests would need 2t >= N.
+     Both fail because t < 1. Singletons fail too.
+2. **Waste budget.** Σ_x |J_x| <= rc + (7 − r)t. Hence Σ_x (|J_x| − 3) <= S_r := (r − 3)δ + (7 − r)ε (2.3).
+3. **Case analysis on r.**
+   - r <= 2: S_r < 0 because δ > 5ε. Impossible.
+   - r >= 5: J_{x_0} would need size >= 3 inside at most two requests. Impossible.
+   - r = 3: J_{x_0} ⊆ {4, 5, 6, 7}. A Y-point's co-type contains {1, 2, 3} and meets J_{x_0}, so it has size >= 4.
+     The waste is then >= y > 4ε = S_3.
+   - r = 4: J_{x_0} = {5, 6, 7}. A Y-point's co-type contains [4] and one of 5, 6, 7, so it has size >= 5.
+     The waste is then >= 2y > δ + 3ε = S_4. ∎
+
+**Remarks.**
+- At finite k, x_0 is a single point and the proof is unchanged, since step 1 is pointwise.
+- The r = 4 case is Q′'s W-count again: u_4 >= y gives W >= 2y.
+- The threshold is sharp. The MILP finds a 4-certificate at y = (δ + 3ε)/2 − 0.004, and none of any order at
+  y = (δ + 3ε)/2 + 0.004. Tested at N = 1.78, 1.85, 1.95, 2.0, 2.1, 2.2, 2.24 with t = 0.7521, x_0 replaced by a cell
+  of mass 0.005 (`logs/threshold_check.log`).
+
+**Density of G.**
+- |G|/C(n, c) = (1 − c/n) · C(n − 1 − y, c − y)/C(n − 1, c).
+- So ρ = N h(c/N) − (N − y) h((c − y)/(N − y)) + o(1).
+- Values at y = (δ + 3ε)/2, from 40 points per ε across 5t − 2 < N < 3 − t [computed float, `logs/rate_table.log`]:
+
+| ε | ρ/γ at low end | ρ/γ at N ≈ 2 | ρ/γ at top | max ρ/γ |
+|---|---|---|---|---|
+| 0.0001 | 0.081 | 0.145 | 0.167 | 0.167 |
+| 0.001 | 0.102 | 0.148 | 0.168 | 0.168 |
+| 0.01 | 0.183 | 0.169 | 0.180 | 0.183 |
+| 0.05 | 0.275 | 0.262 | 0.241 | 0.275 |
+
+- At N = 2, as ε → 0: ρ = 0.091 against γ = 0.626.
+- Near the bottom (δ ↓ 5ε), ρ ≈ 4ε ln(N/c) ≈ 3.4ε while γ ≈ 4ε ln(e/4ε). So the ratio → 0 as ε → 0 [heuristic
+  asymptotics; the table is the computed statement].
+
+**Corollary 96.2.** Fix N with 5t − 2 < N < 3 − t and ε <= 0.05 (tested range). Then the statement "every family of
+c-sets of density >= e^{−γk} contains a static certificate" is false. G is a counterexample with exponential room:
+ρ <= 0.28·γ.
+- So no forbidden-pattern rate, explicit or ineffective, can reach γ for (Σ)(a), (b), (c), or for any other static
+  certificate.
+- **Dead route.**
+
+**Links.** T-covering gives the same γ in every link 𝒞_A = {K ∈ 𝒞 : A ⊆ K}: the ground becomes N − a, the sets
+c − a, the requests t − a, and ω and N − t are unchanged.
+- A link-density argument finds a certificate whose members all contain A.
+- Put G_A = {K ⊇ A ∪ Y' : x_0 ∉ K} with x_0 ∉ A. Theorem 96.1 applies verbatim with Y = A ∪ Y'.
+- Inside the link, the cost is that of Y' alone. It is zero once |A| > (δ + 3ε)/2.
+- **Dead**, for every A.
+
+## 97. Literature: forbidden vector / pattern intersection theorems
+
+Tags: [literature, checked] means I read the statements quoted, in the PDF or the ar5iv text. "Abstract only" and
+"recalled" mean exactly that.
+
+- **Keevash–Long, "Frankl–Rödl type theorems for codes and permutations"** (TAMS 369 (2017); arXiv 1402.6294).
+  PDF read: Thm 1, Lemmas 10–11, Thm 12, Cor 13, Thms 2, 3, 6, and the §2 proof. [literature, checked]
+  - Pairs only.
+  - FR (Thm 1) is reproved from Frankl–Wilson (Thm 12). The proof uses Baker–Harman three-prime splitting (Thm 14)
+    and dependent random choice (Lemmas 10–11).
+  - So δ(α, η) is effective in principle, but no value is given. The authors say the new proof "does not seem to
+    improve on the bounds" of FR.
+  - Thm 6 forbids weak k-petal sunflowers in [q]^n (all pairwise agreements of EQUAL size), with δ(k) not explicit.
+    This is a pattern on pairwise sizes, not a Venn pattern.
+- **Keevash–Long, "Forbidden vector-valued intersections"** (PLMS 121 (2020); arXiv 1706.03740). ar5iv read: Thm 1.1,
+  the Thm 1.9 dichotomy, Thms 1.13–1.14, §6 Thms 6.2–6.4, Lemma 8.1. [literature, checked]
+  - The intersections are vector-weighted, but always of PAIRS.
+  - The multi-family statement (Thm 6.2, |S| <= C) is reduced to |S| = 2 by Lemma 8.1.
+  - All constants come from hierarchies n^{−1} ≪ δ ≪ ε, so they are ineffective.
+  - There is no prescribed Venn pattern for r >= 3 sets.
+- **Frankl–Rödl, "Forbidden intersections"** (TAMS 300 (1987)). Abstract only (AMS page), plus the statement as
+  given in KL.
+  - Pairs, with ineffective δ.
+  - Weak Δ-systems of size r (pairwise intersections all equal) are forbidden at density (2 − ε_r)^n, with ε_r
+    ineffective.
+- **Ellis–Keller–Lifshitz** (arXiv 1604.06135). Abstract only.
+  - Forbids |A ∩ B| = t − 1 for FIXED t, with o(n) <= k <= n/2 − o(n).
+  - The forbidden intersection is constant, not linear, so this is not our regime.
+- **Frankl–Füredi 1985; Keevash–Mubayi–Wilson 2006 (no singleton intersection).** Recalled, not read.
+  - Exact results for fixed k or a fixed intersection value. Neither linear nor about r-tuples.
+- **Frankl–Wilson** (statement as KL Thm 12, read). [literature, checked]
+  - If k − l is a prime power and 2l + 1 <= k, an l-avoiding family of k-sets has |𝒜| <= C(n, k − l − 1).
+  - **Explicit**, but pairs only. Used in §98.1.
+
+**Summary.** In what I read, no theorem gives density <= e^{−δn} for families avoiding a prescribed Venn pattern of
+r >= 3 sets in the linear regime, explicit or not. Corollary 96.2 makes this moot above the strip: no such theorem,
+however strong, could be applied there.
+
+## 98. The quantitative question
+
+**98.1 Explicit ε_0 in the strip [proved by hand from FW; computed float].**
+- **Setting.** §90's ℓ = o = n − 2T has c − ℓ = 2T − k =: p. Also 2ℓ + 1 <= c, because N < 4t − 1.
+- **FW bound.** If p is a prime power, FW gives density <= C(n, p − 1)/C(n, c) = e^{−δ_FW k}, where
+  δ_FW = N[h(c/N) − h((2t − 1)/N)] (≈ 0.149 at N = 7/4).
+- **Comparison.** T-covering gives density >= e^{−γk}. So the pair exists once γ < δ_FW on the whole strip
+  3t − 1/2 <= N <= 5t − 2, and the worst point is the top.
+- **Value.** Bisection gives **ε_0^{FW} = 0.00881** (`logs/fw_eps0.log`). The table in `logs/fw_rate.log` has
+  margin +0.123 at ε = 0.001 and −0.015 at ε = 0.01.
+- **Primality.**
+  - ℓ may be any integer of Z_k (§90, width (4ε − ω)k), so p ranges over an interval of that length.
+  - That interval contains a prime once (4ε − ω)k >= k^{0.525} (Baker–Harman–Pintz, effective for large k).
+  - This needs every o inside Z_k to be certifying at finite k, not only n − 2T. §90.3's MILP solved each feasible o,
+    but I did not re-check parity for every o [heuristic for that step].
+  - The top sliver, 4ε − ω < k^{−0.475}, stays with the verified ineffective FR argument.
+- **Net.** §91 becomes effective, with ε_0 ≈ 0.0088, on all of the strip except a vanishing sliver.
+
+**98.2 Above the strip, no static pattern has an explicit δ > γ (§96).** The obstruction costs ρ <= 0.17γ as ε → 0.
+It does not depend on γ(2) ≈ 0.63 being large: even at the bottom of the window, ρ/γ ≈ 0.08.
+
+**98.3 What T-covering adds beyond density, and whether that rescues the route.**
+- **Where G fails.** G violates T-covering in exactly one way: the t-sets through x_0 are not covered. So any proof
+  must use members through every point.
+- **The hypothesis that remains.** In density language this is local density (LD_a): every link 𝒞_A with |A| <= a
+  has density >= e^{−γk}.
+  - At a = t this is T-covering itself, since the link density at a t-set is exactly 1/C(N − t, ω). There is
+    nothing left to relax.
+  - For small a > 0, LD_a is a new hypothesis, and no forbidden-configuration theorem in the literature uses it.
+- **Families with every point covered** (MILP over all orders r = 3..7; `logs/thresh_*.log`; t = 0.7501, requests
+  tested at mass t + 0.002) [computed float]:
+  - Core families {K ⊇ Y} need y > N − 3/2 (the pencil threshold, confirmed by the MILP). Their ρ is below γ only for
+    N > 1.842 (crossover: ρ = 0.314 against γ = 0.310 at N = 1.84).
+  - Threshold families {|K ∩ W| >= θ} are much better. They satisfy LD_a for a < c − θ ≈ 0.36. Best found, over an
+    8-point grid in w:
+
+| N | γ | best ρ | (w, θ) | ρ/γ |
+|---|---|---|---|---|
+| 1.755 | 0.031 | 0.105 | (0.58, 0.390) | 3.38 |
+| 1.765 | 0.078 | 0.102 | (0.58, 0.392) | 1.31 |
+| 1.770 | 0.098 | 0.102 | (0.58, 0.393) | 1.04 |
+| 1.780 | 0.135 | 0.099 | (0.59, 0.395) | 0.73 |
+| 1.800 | 0.201 | 0.094 | (0.59, 0.399) | 0.47 |
+| 1.850 | 0.335 | 0.101 | (1.52, 0.809) | 0.30 |
+| 1.900 | 0.445 | 0.091 | (1.56, 0.848) | 0.20 |
+| 2.000 | 0.625 | 0.075 | (1.65, 0.926) | 0.12 |
+| 2.100 | 0.772 | 0.050 | (2.00, 1.093) | 0.06 |
+| 2.200 | 0.898 | 0.021 | (2.10, 1.176) | 0.02 |
+
+- **Reading of the table.**
+  - The "every point covered" refinement is also dead for N >~ 1.771, where these families have ρ < γ.
+  - On 5t − 2 < N < ~1.771 (ω up to about 0.02), these families do NOT refute it. Their ρ stays near 0.10 while
+    γ → 0.
+  - That sliver is the only place left where a local-density / forbidden-pattern argument could in principle
+    exceed γ. It would need a new theorem: forbid a static certificate (necessarily a q >= 4 one, by §95, unless
+    ω <= 4ε) in families with all small links dense. I know no such theorem [heuristic].
+  - The grid gives only an upper bound on the best ρ. A finer search can only move 1.771 down.
+- **Traces on a sub-ground W [heuristic].** A trace pattern fixes no co-type outside W, and the x_0 trick can be
+  placed outside W. Dead for the same reason as §96.
+
+## 99. Status, dead routes, what remains; self-check
+
+**Status.**
+- **(1)** Q′ is the only (Σ)-shape that is an open prescribed pattern. Its certifying set is that of §95(a), with
+  slack δ + 3ε. The pencil and Theorem T are O(ε) boundary patterns.
+- **(2)** No theorem I checked handles r >= 3 Venn patterns in the linear regime. All the pair theorems are
+  ineffective except Frankl–Wilson.
+- **(3)** Density-only arguments, global or in a link, are dead throughout 5t − 2 < N < 3 − t. This is proved by
+  hand, with room ρ <= 0.28γ for ε <= 0.05.
+  - Adding "every point covered" (small-link density) is dead above N ≈ 1.771 [computed float].
+  - Below that it is open, and only as an unproved new kind of theorem.
+- **Bonus.** The strip's ε_0 is effective, about 0.0088, up to a vanishing sliver.
+
+**Dead.**
+- Density ⟹ static certificate, at any N above the strip, for any r and any (Σ)-shape.
+- The same argument inside any link.
+- Trace versions [heuristic].
+- A vector-FR / Keevash–Long continuation (moot by 96.2).
+- Point-covered density for N >~ 1.771 [computed float].
+
+**What remains.** Arguments that use the coverage of every t-set, i.e. T-covering proper and not a density
+consequence of it. The narrow open density question is the sliver 5t − 2 < N < 1.771: does LD_a (a ≈ 0.3) plus
+density e^{−γk} force a Q′-type or other q >= 4 certificate?
+
+**Not covered.** Adaptive finishes, where a pattern is followed by requests chosen after seeing replies. Corollary
+96.2 concerns static finishes only. Adaptive finishes bring the game back, and §77 / §92 found the one-adaptive levels
+stop at 3t − 1/2 [heuristic for the whole class].
+
+**Self-check.**
+- I re-derived steps 1–3 of 96.1. S_r = rc + (7 − r)t − 3N = (r − 3)δ + (7 − r)ε was checked by hand.
+- The MILP may take the co-type family WLOG to be a maximal intersecting upset: it holds exactly one of J and
+  [7] ∖ J, and it is upward closed. It reproduces three earlier results:
+  - §90's strip pair (r = 2 feasible at N = 1.7505), and its absence at N = 1.8;
+  - the pencil threshold y* = N − 3/2 at N = 1.8, 2.0 and 2.2;
+  - the hand threshold (δ + 3ε)/2 at seven values of N.
+- The FW conditions (prime power, 2ℓ + 1 <= c) were checked against KL's statement of Thm 12.
+- ρ is computed from first-order entropies, and the x_0 factor (1 − c/n) is polynomial.
+- Not independently verified.
