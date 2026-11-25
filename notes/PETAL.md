@@ -1788,3 +1788,127 @@ Barrier F at t → 3/4. That is **not** established here.
 - **Next:** build the adaptive trace LP of 30.2, starting at the corner t = 3/4.
 
 Checks: `py compute/petal5/window_lp.py split` (about 10 min). Oracle: set `window_lp.ZFAC` and call `build`.
+
+---------------------------------------------------------------------------------------------
+## 31. Adaptive trace release decided for forced centres; class choice is the remaining gap (fourteenth time box)
+
+Code: `compute/petal5/adaptive_trace.py` (the deciding game as a MIP), `trace_adversary.py` (the adversary A_T on point sets,
+with a legality harness), `window_lp.py` mode `cap`. Logs: `logs/adaptive_two.log`, `adaptive_two_nofloor.log`,
+`adaptive_corner_*.log`, `adaptive_ccg_077.log`, `window_cap.log`, `trace_adversary.log`, `ps3_k100_T77_d22.log`.
+Nothing committed.
+
+**Outcome.**
+1. **For forced centres the answer is no at t = 0.75 and 0.76. Adaptive release saves about δ/2, not δ** [computed exact:
+   MIP solved to optimality, gap 0]. The game (31.2) is solved at δ = 1 - t - 10^-4. Its value is the least achievable max
+   request, with the adversary restricted and the requester given extra power:
+
+   | t | 0.75 | 0.76 | 0.77 |
+   |---|---|---|---|
+   | value | 0.79157 | 0.77990 | 0.76725 |
+   | budget t | 0.75 | 0.76 | 0.77 |
+   | verdict | adversary wins | adversary wins | not certified (undecided, 31.2) |
+
+   The non-adaptive model (§30, c = 2) gives 0.8333 at t = 3/4, and c = 1.5 would give 0.7917. So adaptivity is worth half a
+   trace seal.
+2. **The threshold of this model is δ = 3t/10** [computed exact at these points]:
+   - t = 0.75: value 0.70417, 0.75000, 0.75250, 0.77917, 0.79157 at δ = 0.2, 0.225, 0.226, 0.2375, 0.2499;
+   - t = 0.76: value 0.76000, 0.76250 at δ = 0.228, 0.229.
+
+   So at the sampled t, forced 4+3 with split singles and any adaptive release loses on (3t/10, 1 - t). That interval is
+   nonempty iff t < 10/13, which explains why t = 0.77 is not certified. On [t/2 - 1/6, 3t/10] the model certifies nothing in
+   either direction. A gain there over PS3 would need a real strategy and a replay; none is claimed. That the value is
+   monotone in δ between the sampled points is [heuristic].
+3. **Unforced centre requests reopen the question** [computed exact]. Drop the floor |G_j| >= t/2 and let the adversary still
+   answer class F (A_T's choice). The model value is then 0.74970, 0.71970, 0.68970 at t = .75, .76, .77 near 1 - t, all
+   <= t, so no loss is certified. **Any obstruction must therefore use class choice**: answering class A to an unforced
+   centre request (31.4). That is exactly the Theorem N issue, now isolated.
+4. **Legal trace mass** [computed exact; proved by hand at the corner]. A class-F centre that keeps every unrequested single
+   has only θ_j = min(δ, 1 - 4δ + ℓ_j) left for its R_X-trace, where ℓ_j is its request's single load. So the §28/§30
+   adversary (θ = δ always) is illegal when ℓ_j < 5δ - 1.
+   - With the legal θ (`window_lp.py cap`), δ_max is still t/2 - 1/6 at t = .75, .76, .77, so the verified limit stands.
+   - At δ = 1 - t, θ = δ is forced: the other two requests carry <= t loads, so ℓ_j >= 4δ - t = 5δ - 1.
+5. **The adversary A_T is legal** [computed exact]. Six strip instances (k = 40, 80, 100; with and without pool), each with
+   400 random games over all request profiles (unforced ones included), plus PS3 plays: every reply is a member avoiding S,
+   and no answerable request goes unanswered.
+6. Integer side note [computed exact]. At k = 100, T = 77, d = 22 (δ = 0.22, just above δ* k = 21.83), PS3 stays within T
+   with no pool (40 games, 0 covers). With pool m = 60 it overruns by one point. This is a rounding effect, not a closure.
+
+### 31.1 Necessary conditions used (all [proved by hand]; only necessary conditions enter, so a value > t is a real loss)
+
+All-singles leaks on fresh R_F points. Centre j keeps every unrequested single. Its R_X-trace z_j (mass θ_j) also carries an
+ε-point of every cell outside G_j. Then:
+- (H1) A heavy point x of z_1 (triple or pair cell) lies in request 6. The only alternative, for a pair cell, is a "skip":
+  request 7 holds x and the whole neighbourhood N(x). For a triple cell, N(x) ⊇ P_a ∩ R_X has mass >= 1 - δ > t, so no
+  skip is possible.
+- (H2) z_1 lies in request 7 unless G_6 ⊇ N(x) (release; pair cells only).
+- (H3) z_2 lies in request 7 unless G_5 ⊇ N(x) (release; pair cells only).
+- (H5) A single of petal a sealed only in request j forces T_a ⊂ G_j.
+- (H6) Every single is sealed at least once.
+
+N(x) for a pair cell missing {a,b} is the union of the cells disjoint from {a,b}, and it has no B part.
+
+### 31.2 The game (`adaptive_trace.py`) [computed exact]
+
+The stages follow the play.
+1. The requester picks windows (15 cell masses), G_5, which triple cells G_5 hosts, which releases G_5 enables, and ℓ_5.
+2. The adversary picks z_1 by greedy fill of the heavy cells outside G_5, in one of two orders: pairs first, or triples
+   first.
+3. The requester picks G_6 (holding z_1 except skips), its hostings and releases, and ℓ_6.
+4. The adversary picks z_2 outside G_6, again by greedy fill in one of the two orders.
+5. The requester picks G_7, its hostings, releases and skips, and every single's pattern.
+
+The objective is the max over j of |G_j| + ℓ_j.
+
+How the model leans:
+- In the requester's favour: she knows which single is which with hindsight; the adversary never uses light cells; skipped
+  points cannot be reused by z_2.
+- Against the requester: none. Every constraint is one of H1–H6, the capacity rule θ, or the window rules.
+
+Hence value > t means this adversary beats every adaptive plan in the forced 4+3 window-and-seal model, split singles
+included. The scenario tree has 4 leaves, about 560 variables, and is solved in 2–6 min.
+- Control: δ = 0.2 gives 0.70417 <= 0.7333 = PS3, as it must.
+- Richer adversary families make the MIP intractable at this size. With 4 orders per stage it stopped at the time limit
+  (incumbent 0.83320, bound 0.70820); with 10 orders it stopped too. They are not needed for the "adversary wins" rows.
+- At t = 0.77 a column-and-constraint loop (`ccg`) was run. The 2-order optimum (0.76725) fails against the 10-order family
+  (bound 0.80608 > t). With 5 orders the master stopped at the time limit (incumbent 0.76730, bound 0.69153), and its plan
+  fails again (0.80610). The run was stopped there. **t = 0.77 stays undecided** (it lies above 10/13, outside the t → 3/4
+  question).
+
+### 31.3 The adversary A_T, explicitly
+
+Class choice:
+- class A while fewer than 4 class-A replies exist (or class F is infeasible); class F after that;
+- class A only if class F is infeasible.
+
+Replies:
+- **Class-A reply:** k - d points of R_A ∖ S plus d fresh R_F points (fresh pool points as fallback).
+- **Class-F reply:** every unrequested single; R_X-trace of size θ = min(d, k - #unrequested singles), placed by the better
+  of the two greedy orders (the code fills pairs first); plus ε-points of every cell outside S, then R_F filler.
+
+Legality is checked in `trace_adversary.py` (outcome 5). Against forced centres A_T wins on (3t/10, 1 - t) at the sampled t.
+Against unforced centre requests the always-F rule certifies nothing (outcome 3).
+
+### 31.4 Toward a Theorem-N analogue: what is proved and what is missing
+
+Proved or computed exact:
+- the model loss on (3t/10, 1 - t) for forced 4+3 at the sampled t (31.2);
+- 6+1 with class-A petals dead (30.4);
+- trace relief and split alone (§30);
+- legality of A_T.
+
+Missing, and each would be needed before the strip is called a real obstruction for Barrier F:
+1. **Unforced centre requests.** The natural rule: answer class A with a near-copy of an earlier petal (P' = P ∖ S plus fresh
+   replacements; legal because |R_A ∖ S| >= 1 - δ when the request is unforced in R_F). Then show that near-copies never
+   complete a certificate (q = 5 petals + 2 centres, or a class-A centre). Not done; the 5+2 case of 30.4 is the core.
+2. Two-class petals (30.3, heuristic) and 2+2 (§28.5, heuristic).
+3. A proof, rather than samples, of the threshold 3t/10 in the forced model. It matches the §30.1 sum bound, which suggests a
+   hand proof along the same lines [heuristic].
+
+**Status.** For t < 10/13, the strip part 3t/10 < δ < 1 - t resists every forced 4+3 certificate in the model, adaptive or
+not [computed exact at t = .75, .76]. This includes t → 3/4, where 3t/10 = 0.225 and 1 - t = 0.25. The strip is **not** yet
+shown to be a real obstruction: unforced requests, with the adversary's class choice, are the open door.
+
+Checks:
+- `py compute/petal5/adaptive_trace.py 0.75 1e-4 two` (about 8 min; `... 1500 cap 0` for the unforced version);
+- `py compute/petal5/trace_adversary.py`;
+- `py compute/petal5/window_lp.py cap`.

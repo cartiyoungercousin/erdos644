@@ -307,3 +307,62 @@ if __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "split":
             dm, Y = split_dmax(t)
             print("ZFAC=%s t=%.3f 1-t=%.4f t/2-1/6=%.5f 3t/10=%.4f | split dmax=%.5f Y=%s" % (
                 z, t, 1 - t, t / 2 - 1 / 6, 0.3 * t, dm, [sorted(y) for y in Y] if Y else None), flush=True)
+
+
+# ---------------- §31: legal trace mass (capacity) ----------------
+# A forced class-Y centre must hold the unrequested singles (4 delta - ell_j, all in R_Y) to keep them in every centre,
+# so its R_X-trace is theta_j = min(delta, 1 - 4 delta + ell_j), ell_j = single load of its request.  The earlier LPs
+# used theta_j = delta always, which is not a legal reply when ell_j < 5 delta - 1.  Here the requester may pick, per
+# earlier centre, the branch theta = delta or theta = 1 - 4 delta + ell (requirement G >= min(...) is a disjunction).
+def build_split_cap(t, d, Y, br):
+    m = LP(); L = m.var(-highspy.kHighsInf); INF = highspy.kHighsInf
+    n = 1 + t / 2 - d
+    mu = {M: m.var() for M in TYPES}
+    m.row({mu[M]: 1.0 for M in TYPES}, n, n)
+    for a in range(4):
+        m.row({mu[M]: 1.0 for M in TYPES if a in M}, -INF, t / 2)
+    G = [m.var(t / 2) for _ in range(3)]
+    load = [dict() for _ in range(3)]
+    for a in range(4):
+        pats = [P for P in BPATS if len(P) >= 2 or next(iter(P)) in Y[a]]
+        xs = {P: m.var() for P in pats}
+        m.row({xs[P]: 1.0 for P in pats}, d, d)
+        for P, v in xs.items():
+            for j in P: load[j][v] = load[j].get(v, 0) + 1.0
+    # traces: theta_i of centre i (i = 0, 1), entering G_j for j > i with factor ZFAC-like weights (1 each, request 7
+    # holds both): G_1 >= theta_0 + T, G_2 >= theta_0 + theta_1 + T.
+    for j in range(3):
+        c = {mu[frozenset([a])]: 1.0 for a in range(4) if j in Y[a]}; c[G[j]] = -1.0
+        const = 0.0
+        for i in range(j):
+            if br[i] == 0: const += d
+            else:
+                const += 1 - 4 * d
+                for v, w in load[i].items(): c[v] = c.get(v, 0) + w
+        m.row(c, -INF, -const)
+    for j in range(3):
+        c = dict(load[j]); c[G[j]] = c.get(G[j], 0) + 1.0; c[L] = -1.0
+        m.row(c, -INF, 0)
+    st, val, sol = m.solve(L)
+    return val if st == "Optimal" else float("inf")
+
+
+def cap_value(t, d):
+    best = (float("inf"), None)
+    for Y in YCOMB:
+        for br in itertools.product((0, 1), repeat=2):
+            v = build_split_cap(t, d, Y, br)
+            if v < best[0]: best = (v, (Y, br))
+    return best
+
+
+if __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "cap":
+    for t in [0.75, 0.76, 0.77]:
+        lo, hi = t / 2 - 1 / 6 - 0.01, 1 - t
+        top = cap_value(t, hi - 1e-6)
+        print("t=%.3f value at delta=1-t: %.5f %s" % (t, top[0], top[1]), flush=True)
+        for _ in range(16):
+            mid = (lo + hi) / 2
+            if cap_value(t, mid)[0] <= t + 1e-12: lo = mid
+            else: hi = mid
+        print("t=%.3f 1-t=%.4f t/2-1/6=%.5f | legal-trace split dmax=%.5f" % (t, 1 - t, t / 2 - 1 / 6, lo), flush=True)

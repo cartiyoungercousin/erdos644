@@ -1,0 +1,4 @@
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+t=0.750 delta=0.24990 (1-t-1e-04) orders=two | Optimal value=0.79157 dual_bound=0.79157 budget=0.750 | 484s vars=558
+  plan: {'mu': {(0,): 0.2499, (1,): 0.33343, (2,): 0.04167, (3,): 0.16677, (0, 2): 0.1251, (2, 3): 0.16667, (1, 2, 3): 0.04157}, 'g5': {(1,): 0.33343, (2,): 0.04167}, 'y5': [1, 2], 'rho5': []}

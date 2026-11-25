@@ -1,0 +1,6 @@
+t=0.750 value at delta=1-t: 0.83333 ((frozenset(), frozenset({0}), frozenset({1}), frozenset({2})), (0, 0))
+t=0.750 1-t=0.2500 t/2-1/6=0.20833 | legal-trace split dmax=0.20833
+t=0.760 value at delta=1-t: 0.81333 ((frozenset(), frozenset({0}), frozenset({1}), frozenset({0, 2})), (0, 0))
+t=0.760 1-t=0.2400 t/2-1/6=0.21333 | legal-trace split dmax=0.21333
+t=0.770 value at delta=1-t: 0.79333 ((frozenset(), frozenset({0}), frozenset({1}), frozenset({0, 2})), (0, 0))
+t=0.770 1-t=0.2300 t/2-1/6=0.21833 | legal-trace split dmax=0.21833

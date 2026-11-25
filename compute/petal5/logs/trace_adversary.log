@@ -1,0 +1,6 @@
+k=40 T=30 d=9 (delta=0.225, 1-t=0.250) m=12 | vs PS3: 4 replies legal, over-T requests 1, 2-cover True, flags ['no reply'] | random: 400 games, problems 0 []
+k=40 T=30 d=9 (delta=0.225, 1-t=0.250) m=0 | vs PS3: 7 replies legal, over-T requests 2, 2-cover False, flags [] | random: 400 games, problems 0 []
+k=80 T=60 d=19 (delta=0.237, 1-t=0.250) m=40 | vs PS3: 4 replies legal, over-T requests 1, 2-cover True, flags ['no reply'] | random: 400 games, problems 0 []
+k=80 T=61 d=18 (delta=0.225, 1-t=0.238) m=40 | vs PS3: 4 replies legal, over-T requests 1, 2-cover True, flags ['no reply'] | random: 400 games, problems 0 []
+k=100 T=76 d=23 (delta=0.230, 1-t=0.240) m=60 | vs PS3: 4 replies legal, over-T requests 1, 2-cover True, flags ['no reply'] | random: 400 games, problems 0 []
+k=100 T=77 d=22 (delta=0.220, 1-t=0.230) m=0 | vs PS3: 7 replies legal, over-T requests 0, 2-cover False, flags [] | random: 400 games, problems 0 []

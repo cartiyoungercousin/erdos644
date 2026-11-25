@@ -1,0 +1,5 @@
+ccg t=0.770 delta=0.22990
+  ccg round 0: |O|=2 Optimal value=0.76725 bound=0.76725 (198s)
+  plan vs big family: worst bound 0.80608 (budget 0.770)
+  ccg round 1: |O|=5 Time limit reached value=0.76730 bound=0.69153 (601s)
+  plan vs big family: worst bound 0.80610 (budget 0.770)
