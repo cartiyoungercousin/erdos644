@@ -1,0 +1,173 @@
+k=4 T=2 n=8: 5 random counterexamples
+family: n=7 members=8 sizes=[3, 3, 3, 3, 3, 4, 4, 4] total=27 tau=3
+  degrees [3, 4, 4, 4, 4, 4, 4]
+  B=[4, 5, 7] |K|=4 omega_K=2 private(min.)=[[2, 6]] #wit=[7, 3, 3] |U| range=(3,5) forced core=[2, 6] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=-1 cotype2 max=1
+     z=4 deg=4 partners w (outside B) over witnesses: [(1,), (1, 3), (1, 3, 6), (1, 6), (3,), (3, 6), (6,)]
+     z=5 deg=4 partners w (outside B) over witnesses: [(3,), (3, 6), (6,)]
+     z=7 deg=3 partners w (outside B) over witnesses: [(1,), (1, 2), (2,)]
+  B=[4, 6, 7] |K|=4 omega_K=2 private(min.)=[[3, 5]] #wit=[3, 3, 3] |U| range=(3,5) forced core=[3, 5] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=1 cotype2 max=0
+     z=4 deg=4 partners w (outside B) over witnesses: [(1,), (1, 3), (3,)]
+     z=6 deg=4 partners w (outside B) over witnesses: [(2,), (2, 5), (5,)]
+     z=7 deg=3 partners w (outside B) over witnesses: [(1,), (1, 2), (2,)]
+  B=[1, 2, 3, 4] |K|=3 omega_K=1 private(min.)=[[5, 6]] #wit=[1, 3, 1, 1] |U| range=(3,4) forced core=[5, 6] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=1 cotype2 max=0
+     z=1 deg=4 partners w (outside B) over witnesses: [(7,)]
+     z=2 deg=4 partners w (outside B) over witnesses: [(6,), (6, 7), (7,)]
+     z=3 deg=4 partners w (outside B) over witnesses: [(5,)]
+     z=4 deg=4 partners w (outside B) over witnesses: [(6,)]
+  B=[1, 2, 3, 5] |K|=3 omega_K=1 private(min.)=[[4, 6]] #wit=[3, 3, 1, 1] |U| range=(3,4) forced core=[4, 6] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=1 cotype2 max=0
+     z=1 deg=4 partners w (outside B) over witnesses: [(4,), (4, 7), (7,)]
+     z=2 deg=4 partners w (outside B) over witnesses: [(6,), (6, 7), (7,)]
+     z=3 deg=4 partners w (outside B) over witnesses: [(4,)]
+     z=5 deg=4 partners w (outside B) over witnesses: [(6,)]
+  B=[1, 2, 5, 6] |K|=3 omega_K=1 private(min.)=[[3, 4]] #wit=[3, 1, 1, 1] |U| range=(3,4) forced core=[3, 4] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=1 cotype2 max=0
+     z=1 deg=4 partners w (outside B) over witnesses: [(4,), (4, 7), (7,)]
+     z=2 deg=4 partners w (outside B) over witnesses: [(7,)]
+     z=5 deg=4 partners w (outside B) over witnesses: [(3,)]
+     z=6 deg=4 partners w (outside B) over witnesses: [(4,)]
+  B=[1, 3, 6] |K|=4 omega_K=2 private(min.)=[[2, 7]] #wit=[3, 3, 7] |U| range=(3,5) forced core=[2, 7] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=-1 cotype2 max=1
+     z=1 deg=4 partners w (outside B) over witnesses: [(4,), (4, 7), (7,)]
+     z=3 deg=4 partners w (outside B) over witnesses: [(4,), (4, 5), (5,)]
+     z=6 deg=4 partners w (outside B) over witnesses: [(2,), (2, 4), (2, 4, 5), (2, 5), (4,), (4, 5), (5,)]
+  B=[2, 4, 5] |K|=4 omega_K=2 private(min.)=[[1, 7]] #wit=[3, 7, 3] |U| range=(3,5) forced core=[1, 7] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=-1 cotype2 max=1
+     z=2 deg=4 partners w (outside B) over witnesses: [(6,), (6, 7), (7,)]
+     z=4 deg=4 partners w (outside B) over witnesses: [(1,), (1, 3), (1, 3, 6), (1, 6), (3,), (3, 6), (6,)]
+     z=5 deg=4 partners w (outside B) over witnesses: [(3,), (3, 6), (6,)]
+  B=[3, 6, 7] |K|=4 omega_K=2 private(min.)=[[1, 4]] #wit=[3, 7, 3] |U| range=(3,5) forced core=[1, 4] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=-1 cotype2 max=1
+     z=3 deg=4 partners w (outside B) over witnesses: [(4,), (4, 5), (5,)]
+     z=6 deg=4 partners w (outside B) over witnesses: [(2,), (2, 4), (2, 4, 5), (2, 5), (4,), (4, 5), (5,)]
+     z=7 deg=3 partners w (outside B) over witnesses: [(1,), (1, 2), (2,)]
+family: n=6 members=8 sizes=[2, 3, 3, 3, 3, 3, 3, 4] total=24 tau=3
+  degrees [3, 3, 4, 4, 5, 5]
+  B=[0, 3, 5] |K|=3 omega_K=1 private(min.)=[[6, 7]] #wit=[1, 7, 3] |U| range=(3,4) forced core=[6, 7] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=-1 cotype2 max=2
+     z=0 deg=3 partners w (outside B) over witnesses: [(6,)]
+     z=3 deg=4 partners w (outside B) over witnesses: [(2,), (2, 6), (2, 6, 7), (2, 7), (6,), (6, 7), (7,)]
+     z=5 deg=5 partners w (outside B) over witnesses: [(2, 6, 7), (6,), (7,)]
+  B=[0, 3, 7] |K|=3 omega_K=1 private(min.)=[[5, 6]] #wit=[1, 7, 3] |U| range=(3,4) forced core=[5, 6] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=-1 cotype2 max=2
+     z=0 deg=3 partners w (outside B) over witnesses: [(6,)]
+     z=3 deg=4 partners w (outside B) over witnesses: [(2,), (2, 5), (2, 5, 6), (2, 6), (5,), (5, 6), (6,)]
+     z=7 deg=5 partners w (outside B) over witnesses: [(2, 5, 6), (5,), (6,)]
+  B=[2, 5, 6] |K|=3 omega_K=1 private(min.)=[[3, 7]] #wit=[1, 3, 7] |U| range=(3,4) forced core=[3, 7] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=-1 cotype2 max=2
+     z=2 deg=3 partners w (outside B) over witnesses: [(3,)]
+     z=5 deg=5 partners w (outside B) over witnesses: [(0, 3, 7), (3,), (7,)]
+     z=6 deg=4 partners w (outside B) over witnesses: [(0,), (0, 3), (0, 3, 7), (0, 7), (3,), (3, 7), (7,)]
+  B=[0, 2, 5, 7] |K|=2 omega_K=0 private(min.)=[[3, 6]] #wit=[1, 1, 3, 3] |U| range=(3,3) forced core=[3, 6] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=1 cotype2 max=1
+     z=0 deg=3 partners w (outside B) over witnesses: [(6,)]
+     z=2 deg=3 partners w (outside B) over witnesses: [(3,)]
+     z=5 deg=5 partners w (outside B) over witnesses: [(3,), (3, 6), (6,)]
+     z=7 deg=5 partners w (outside B) over witnesses: [(3,), (3, 6), (6,)]
+  B=[3, 5, 7] |K|=3 omega_K=1 private(min.)=[[0, 6]] #wit=[3, 1, 1] |U| range=(3,4) forced core=[0, 6] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=2 cotype2 max=0
+     z=3 deg=4 partners w (outside B) over witnesses: [(2,), (2, 6), (6,)]
+     z=5 deg=5 partners w (outside B) over witnesses: [(6,)]
+     z=7 deg=5 partners w (outside B) over witnesses: [(6,)]
+  B=[3, 6] |K|=4 omega_K=2 private(min.)=[[5, 7]] #wit=[7, 7] |U| range=(4,5) forced core=[5, 7] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=-2 cotype2 max=4
+     z=3 deg=4 partners w (outside B) over witnesses: [(0, 2, 5, 7), (2,), (2, 5), (2, 7), (5,), (5, 7), (7,)]
+     z=6 deg=4 partners w (outside B) over witnesses: [(0,), (0, 2, 5, 7), (0, 5), (0, 7), (5,), (5, 7), (7,)]
+  B=[2, 6, 7] |K|=3 omega_K=1 private(min.)=[[3, 5]] #wit=[1, 7, 3] |U| range=(3,4) forced core=[3, 5] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=-1 cotype2 max=2
+     z=2 deg=3 partners w (outside B) over witnesses: [(3,)]
+     z=6 deg=4 partners w (outside B) over witnesses: [(0,), (0, 3), (0, 3, 5), (0, 5), (3,), (3, 5), (5,)]
+     z=7 deg=5 partners w (outside B) over witnesses: [(0, 3, 5), (3,), (5,)]
+  B=[5, 6, 7] |K|=3 omega_K=1 private(min.)=[[2, 3]] #wit=[1, 3, 1] |U| range=(3,4) forced core=[2, 3] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=2 cotype2 max=0
+     z=5 deg=5 partners w (outside B) over witnesses: [(3,)]
+     z=6 deg=4 partners w (outside B) over witnesses: [(0,), (0, 3), (3,)]
+     z=7 deg=5 partners w (outside B) over witnesses: [(3,)]
+family: n=6 members=8 sizes=[3, 3, 3, 3, 3, 3, 3, 3] total=24 tau=3
+  degrees [3, 4, 4, 4, 4, 5]
+  B=[2, 3, 5] |K|=3 omega_K=1 private(min.)=[[4, 7]] #wit=[3, 1, 3] |U| range=(3,4) forced core=[4, 7] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=1 cotype2 max=0
+     z=2 deg=4 partners w (outside B) over witnesses: [(1,), (1, 4), (4,)]
+     z=3 deg=5 partners w (outside B) over witnesses: [(1,)]
+     z=5 deg=4 partners w (outside B) over witnesses: [(1,), (1, 7), (7,)]
+  B=[2, 5, 7] |K|=3 omega_K=1 private(min.)=[[1, 3]] #wit=[3, 3, 1] |U| range=(3,4) forced core=[1, 3] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=1 cotype2 max=1
+     z=2 deg=4 partners w (outside B) over witnesses: [(1,), (1, 4), (4,)]
+     z=5 deg=4 partners w (outside B) over witnesses: [(1,), (1, 3), (3,)]
+     z=7 deg=4 partners w (outside B) over witnesses: [(4,)]
+  B=[3, 4, 5] |K|=3 omega_K=1 private(min.)=[[1, 2]] #wit=[3, 3, 3] |U| range=(3,4) forced core=[1, 2] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=1 cotype2 max=1
+     z=3 deg=5 partners w (outside B) over witnesses: [(1,), (1, 2, 7), (2, 7)]
+     z=4 deg=3 partners w (outside B) over witnesses: [(2,), (2, 7), (7,)]
+     z=5 deg=4 partners w (outside B) over witnesses: [(1,), (1, 7), (7,)]
+  B=[1, 2, 7] |K|=3 omega_K=1 private(min.)=[[3, 5]] #wit=[3, 1, 3] |U| range=(3,4) forced core=[3, 5] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=1 cotype2 max=1
+     z=1 deg=4 partners w (outside B) over witnesses: [(3,), (3, 5), (5,)]
+     z=2 deg=4 partners w (outside B) over witnesses: [(4,)]
+     z=7 deg=4 partners w (outside B) over witnesses: [(4,), (4, 5), (5,)]
+  B=[1, 3, 4] |K|=3 omega_K=1 private(min.)=[[5, 7]] #wit=[3, 3, 3] |U| range=(3,4) forced core=[5, 7] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=1 cotype2 max=1
+     z=1 deg=4 partners w (outside B) over witnesses: [(2,), (2, 5), (5,)]
+     z=3 deg=5 partners w (outside B) over witnesses: [(2, 5, 7), (2, 7), (5,)]
+     z=4 deg=3 partners w (outside B) over witnesses: [(2,), (2, 7), (7,)]
+  B=[1, 3, 7] |K|=3 omega_K=1 private(min.)=[[2, 4]] #wit=[3, 1, 3] |U| range=(3,4) forced core=[2, 4] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=1 cotype2 max=0
+     z=1 deg=4 partners w (outside B) over witnesses: [(2,), (2, 5), (5,)]
+     z=3 deg=5 partners w (outside B) over witnesses: [(5,)]
+     z=7 deg=4 partners w (outside B) over witnesses: [(4,), (4, 5), (5,)]
+  B=[1, 4, 5] |K|=3 omega_K=1 private(min.)=[[2, 3], [3, 7]] #wit=[3, 3, 3] |U| range=(4,4) forced core=[2, 3, 7] min|cap(U_z - z)|=3 |S cap U| range=(2,2) budget min=1 cotype2 max=1
+     z=1 deg=4 partners w (outside B) over witnesses: [(2,), (2, 3), (3,)]
+     z=4 deg=3 partners w (outside B) over witnesses: [(2,), (2, 7), (7,)]
+     z=5 deg=4 partners w (outside B) over witnesses: [(3,), (3, 7), (7,)]
+  B=[2, 3, 7] |K|=3 omega_K=1 private(min.)=[[1, 5]] #wit=[3, 3, 3] |U| range=(3,4) forced core=[1, 5] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=1 cotype2 max=1
+     z=2 deg=4 partners w (outside B) over witnesses: [(1,), (1, 4), (4,)]
+     z=3 deg=5 partners w (outside B) over witnesses: [(1,), (1, 4, 5), (5,)]
+     z=7 deg=4 partners w (outside B) over witnesses: [(4,), (4, 5), (5,)]
+family: n=5 members=8 sizes=[2, 3, 3, 3, 3, 3, 3, 3] total=23 tau=3
+  degrees [4, 4, 5, 5, 5]
+  B=[2, 4, 6] |K|=2 omega_K=0 private(min.)=[[5, 7]] #wit=[1, 1, 3] |U| range=(3,3) forced core=[5, 7] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=-1 cotype2 max=1
+     z=2 deg=5 partners w (outside B) over witnesses: [(7,)]
+     z=4 deg=5 partners w (outside B) over witnesses: [(7,)]
+     z=6 deg=4 partners w (outside B) over witnesses: [(5,), (5, 7), (7,)]
+  B=[4, 5, 6] |K|=2 omega_K=0 private(min.)=[[2, 7]] #wit=[1, 1, 3] |U| range=(3,3) forced core=[2, 7] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=-1 cotype2 max=1
+     z=4 deg=5 partners w (outside B) over witnesses: [(7,)]
+     z=5 deg=5 partners w (outside B) over witnesses: [(7,)]
+     z=6 deg=4 partners w (outside B) over witnesses: [(2,), (2, 7), (7,)]
+  B=[2, 4, 5] |K|=2 omega_K=0 private(min.)=[[6, 7]] #wit=[3, 3, 3] |U| range=(3,3) forced core=[6, 7] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=-1 cotype2 max=1
+     z=2 deg=5 partners w (outside B) over witnesses: [(6,), (6, 7), (7,)]
+     z=4 deg=5 partners w (outside B) over witnesses: [(6,), (6, 7), (7,)]
+     z=5 deg=5 partners w (outside B) over witnesses: [(6,), (6, 7), (7,)]
+  B=[2, 4, 7] |K|=2 omega_K=0 private(min.)=[[5, 6]] #wit=[1, 1, 3] |U| range=(3,3) forced core=[5, 6] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=-1 cotype2 max=1
+     z=2 deg=5 partners w (outside B) over witnesses: [(6,)]
+     z=4 deg=5 partners w (outside B) over witnesses: [(6,)]
+     z=7 deg=4 partners w (outside B) over witnesses: [(5,), (5, 6), (6,)]
+  B=[6, 7] |K|=3 omega_K=1 private(min.)=[[2, 4], [2, 5], [4, 5]] #wit=[7, 7] |U| range=(4,4) forced core=[2, 4, 5] min|cap(U_z - z)|=3 |S cap U| range=(2,2) budget min=-3 cotype2 max=4
+     z=6 deg=4 partners w (outside B) over witnesses: [(2,), (2, 4), (2, 4, 5), (2, 5), (4,), (4, 5), (5,)]
+     z=7 deg=4 partners w (outside B) over witnesses: [(2,), (2, 4), (2, 4, 5), (2, 5), (4,), (4, 5), (5,)]
+  B=[2, 5, 6] |K|=2 omega_K=0 private(min.)=[[4, 7]] #wit=[1, 1, 3] |U| range=(3,3) forced core=[4, 7] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=-1 cotype2 max=1
+     z=2 deg=5 partners w (outside B) over witnesses: [(7,)]
+     z=5 deg=5 partners w (outside B) over witnesses: [(7,)]
+     z=6 deg=4 partners w (outside B) over witnesses: [(4,), (4, 7), (7,)]
+  B=[2, 5, 7] |K|=2 omega_K=0 private(min.)=[[4, 6]] #wit=[1, 1, 3] |U| range=(3,3) forced core=[4, 6] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=-1 cotype2 max=1
+     z=2 deg=5 partners w (outside B) over witnesses: [(6,)]
+     z=5 deg=5 partners w (outside B) over witnesses: [(6,)]
+     z=7 deg=4 partners w (outside B) over witnesses: [(4,), (4, 6), (6,)]
+  B=[4, 5, 7] |K|=2 omega_K=0 private(min.)=[[2, 6]] #wit=[1, 1, 3] |U| range=(3,3) forced core=[2, 6] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=-1 cotype2 max=1
+     z=4 deg=5 partners w (outside B) over witnesses: [(6,)]
+     z=5 deg=5 partners w (outside B) over witnesses: [(6,)]
+     z=7 deg=4 partners w (outside B) over witnesses: [(2,), (2, 6), (6,)]
+family: n=6 members=8 sizes=[3, 3, 3, 3, 3, 3, 3, 3] total=24 tau=3
+  degrees [3, 4, 4, 4, 4, 5]
+  B=[0, 1, 2] |K|=3 omega_K=1 private(min.)=[[5, 6]] #wit=[3, 3, 1] |U| range=(3,4) forced core=[5, 6] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=1 cotype2 max=0
+     z=0 deg=4 partners w (outside B) over witnesses: [(3,), (3, 6), (6,)]
+     z=1 deg=4 partners w (outside B) over witnesses: [(3,), (3, 5), (5,)]
+     z=2 deg=5 partners w (outside B) over witnesses: [(3,)]
+  B=[0, 2, 5] |K|=3 omega_K=1 private(min.)=[[1, 3]] #wit=[3, 3, 3] |U| range=(3,4) forced core=[1, 3] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=1 cotype2 max=1
+     z=0 deg=4 partners w (outside B) over witnesses: [(3,), (3, 6), (6,)]
+     z=2 deg=5 partners w (outside B) over witnesses: [(1, 3, 6), (1, 6), (3,)]
+     z=5 deg=3 partners w (outside B) over witnesses: [(1,), (1, 6), (6,)]
+  B=[0, 1, 6] |K|=3 omega_K=1 private(min.)=[[2, 3]] #wit=[3, 3, 1] |U| range=(3,4) forced core=[2, 3] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=1 cotype2 max=1
+     z=0 deg=4 partners w (outside B) over witnesses: [(2,), (2, 3), (3,)]
+     z=1 deg=4 partners w (outside B) over witnesses: [(3,), (3, 5), (5,)]
+     z=6 deg=4 partners w (outside B) over witnesses: [(5,)]
+  B=[0, 3, 5] |K|=3 omega_K=1 private(min.)=[[1, 2], [2, 6]] #wit=[3, 3, 3] |U| range=(4,4) forced core=[1, 2, 6] min|cap(U_z - z)|=3 |S cap U| range=(2,2) budget min=1 cotype2 max=1
+     z=0 deg=4 partners w (outside B) over witnesses: [(2,), (2, 6), (6,)]
+     z=3 deg=4 partners w (outside B) over witnesses: [(1,), (1, 2), (2,)]
+     z=5 deg=3 partners w (outside B) over witnesses: [(1,), (1, 6), (6,)]
+  B=[2, 3, 5] |K|=3 omega_K=1 private(min.)=[[0, 6]] #wit=[3, 3, 3] |U| range=(3,4) forced core=[0, 6] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=1 cotype2 max=1
+     z=2 deg=5 partners w (outside B) over witnesses: [(0,), (0, 1, 6), (1, 6)]
+     z=3 deg=4 partners w (outside B) over witnesses: [(0,), (0, 1), (1,)]
+     z=5 deg=3 partners w (outside B) over witnesses: [(1,), (1, 6), (6,)]
+  B=[1, 2, 6] |K|=3 omega_K=1 private(min.)=[[0, 3]] #wit=[3, 3, 3] |U| range=(3,4) forced core=[0, 3] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=1 cotype2 max=1
+     z=1 deg=4 partners w (outside B) over witnesses: [(3,), (3, 5), (5,)]
+     z=2 deg=5 partners w (outside B) over witnesses: [(0,), (0, 3, 5), (3,)]
+     z=6 deg=4 partners w (outside B) over witnesses: [(0,), (0, 5), (5,)]
+  B=[1, 3, 6] |K|=3 omega_K=1 private(min.)=[[0, 2]] #wit=[1, 3, 3] |U| range=(3,4) forced core=[0, 2] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=1 cotype2 max=1
+     z=1 deg=4 partners w (outside B) over witnesses: [(5,)]
+     z=3 deg=4 partners w (outside B) over witnesses: [(0,), (0, 2), (2,)]
+     z=6 deg=4 partners w (outside B) over witnesses: [(0,), (0, 5), (5,)]
+  B=[2, 3, 6] |K|=3 omega_K=1 private(min.)=[[1, 5]] #wit=[1, 3, 3] |U| range=(3,4) forced core=[1, 5] min|cap(U_z - z)|=2 |S cap U| range=(2,2) budget min=1 cotype2 max=0
+     z=2 deg=5 partners w (outside B) over witnesses: [(0,)]
+     z=3 deg=4 partners w (outside B) over witnesses: [(0,), (0, 1), (1,)]
+     z=6 deg=4 partners w (outside B) over witnesses: [(0,), (0, 5), (5,)]

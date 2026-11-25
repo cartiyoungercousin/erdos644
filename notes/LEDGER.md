@@ -90,6 +90,11 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 - FKW m=3: one loose incidence class (edges with 11 X-points, z their Y-point). Shrinking gives H1 (323,236 members, τ = 10, antichain, all classes saturated, (7,2) by hand + MILP). H1 contains the literal pencil shape yet has no good seven, so (Σ)(b) is invalid for non-uniform families. H1 is not yet minimal (only 12 members have private sets). [EXACT + HAND]
 - Near-pool at (10,8,21): Corollary 5's U_z sets exist in 31/32 incidence classes. Saturation's consequences do NOT contradict near-pool structure; the open class does not shrink. [EXACT]
 
+## Task 2 (proof side in the minimal frame), notes/TASK2.md — NEGATIVE
+- Lemma 4U (ii) is implied by (i), so the uniform variant equals Lemma 4 restricted to points of degree >= 2. Near-pool test at (10,8,21) with (ii): 31/32 classes still have U_z. [HAND + EXACT]
+- Questions (a)–(c) give only restatements or identities. The summed slack is the identity ‖H‖(4δ+1); no waste lower bound follows.
+- Complete families on ⌈7k/4⌉ points (k = 5, 9, 13) are saturated in every incidence and satisfy all the frame's lemmas (O(1) rounding effects). The minimal frame alone gives no leverage on the window.
+
 ## Open
 - LIFT (G2 / far replies): transfer confined results to general families (anchor-keeping certificates, or show far replies with large outside overlap lose). Needed for the full solve.
 - Record path: exact certification of R1's sparsest-anchor argument at t = 17/20 (anchor-keeping, transfers) would give f(k,7) <= (17/20 + o(1))k (FRONTIER §4–5).
