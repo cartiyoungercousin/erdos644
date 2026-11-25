@@ -80,7 +80,7 @@ families with $\rho=7$. So no statement of the form ``$\rho^*$ small implies $\r
  static certificate.
  \item So density alone cannot force a certificate. This method closed the bottom strip but stops there.
  \end{itemize}
-\item \textbf{Adaptive density via links, traces and exclusions} (\S100--104). \lvl{HAND}
+\item \textbf{Adaptive density via links, traces and exclusions} (\S100--104). \lvl{VERIFIED}
  \begin{itemize}
  \item A link through $s$ points keeps $\omega$ but lowers $\varepsilon$ to $\varepsilon-s$. That moves away from every
  closed region, and for $s>\varepsilon$ the reduced statement is false.
@@ -106,7 +106,34 @@ is below threshold, so a single-link lemma is false. Using all links together is
 \item \textbf{Steps for hash-like selectors} (\S48, \S55--59). \lvl{HAND+EXACT} The $2/3$ averaging bound cannot be
 improved over one kernel (Kleitman). Pencil-free two-class selectors exist at $k=8$, so the ``two-ground'' step is
 false. ``Three classes always escape a pencil'' is also false.
+\item \textbf{Six-member certificate $\Sigma_6$} (\texttt{notes/FABLE\_C.md}). \lvl{HAND, refereed}
+ \begin{itemize}
+ \item Take six members whose uncovered-pair endpoints fit in a $T$-set. One request then finishes, and this does
+ imply CP.
+ \item But it is CP with one inessential dump. Net of baseline dumping its budget is $5\varepsilon-\delta<0$ in the
+ window.
+ \end{itemize}
+\item \textbf{Size-2 co-type static certificates for $N>2$} (\texttt{notes/FABLE\_C.md}). \lvl{HAND+EXACT} A referee
+found that Theorem 102.1's budget gains the size-2 co-type mass $m_2$ when $N>2$. This opening fails for two reasons.
+ \begin{itemize}
+ \item Such mass is not forced: there are $T$-covering families with $m_2=0$, including 124 exact witnesses at
+ $(k,T,n)=(10,8,21)$.
+ \item It cannot be steered: counting it double-counts the prescribed part of a dump.
+ \end{itemize}
+\item \textbf{Multi-pool designs with isoperimetry} (\texttt{notes/FABLE\_A.md}). \lvl{HAND+FLOAT} Two-pool Fano designs
+have slack $2\omega+4\varepsilon$. Moving requests between selector classes by Johnson-graph isoperimetry only tolerates
+$e^{\beta k}$ classes with $\beta\approx10^{-5}$ to $10^{-4}$. What survives is a theorem for the two-class
+reversed-order rule (Theorem 2P, for $N<17/8$).
+\item \textbf{Small exact instances as evidence} (\S110--114). \lvl{EXACT}
+ \begin{itemize}
+ \item The instances $(13,10,\cdot)$ are degenerate: the complete family already has $\tau=11$.
+ \item At the smallest genuine instance $(10,8,21)$, all 231 cell-symmetric searches are UNSAT, with checked
+ certificates, and the reversed-order template leaves a pencil.
+ \item This is useful evidence for $3/4$, but finite instances cannot decide an asymptotic statement.
+ \end{itemize}
 \end{enumerate}
+\noindent\emph{Audit note.} Route 13 (links) has since been independently verified as dead. The verification also
+found that Theorem 102.1's corollary needs an extra term $m_2$ when $N>2$, which led to route 19.
 
 \section*{Lessons: what a successful argument must do}
 \begin{enumerate}[leftmargin=*]
@@ -116,6 +143,7 @@ false. ``Three classes always escape a pencil'' is also false.
 \item Handle the \textbf{near-pool families} with an adaptive pencil finish. These sit exactly at the static budget
 (Theorem 102.1), so this is the stability problem of \S33(4).
 \item Defeat \textbf{deterministic anti-correlated} selectors. The model case is the two-class reversed-order family at
-$k=8$: it has 0 pencils, against $1.3\times10^5$ for a random family of the same size, and no $(\Sigma)$-shape at $\varepsilon=0$.
+$k=8$: it has 0 pencils, against $1.3\times10^5$ for a random family of the same size, and no $(\Sigma)$-shape at $\varepsilon=0$. It does not survive at the genuine window
+instance $(10,8,21)$ (route 21).
 \end{enumerate}
 \end{document}
