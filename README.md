@@ -45,7 +45,7 @@ Verification levels: **LEAN** = machine-checked in Lean 4/Mathlib (standard axio
 2. **Lifting (far replies).** Transfer the confined results to general families. This needs either anchor-keeping certificates or a proof that answers leaving $V$ cannot help the adversary (TWIN §17, gap G2).
 3. **Petal residues.** A pooled two-arena strip and a one-class stability statement (SL1).
 
-A possible intermediate result: exact certification of the parked one-round "sparsest anchor" argument would give a bound below the published $7/8$ (the argument keeps the anchors, so it transfers). The earlier target $17/20$ turned out *not* to be reachable by the one-round game; at $t = 0.86$ about 99.9% of the region is exactly certified, with three small pockets open. See [`notes/RECORD.md`](notes/RECORD.md).
+A possible intermediate result: exact certification of the parked one-round "sparsest anchor" argument would give a bound below the published $7/8$ (the argument keeps the anchors, so it transfers). The earlier target $17/20$ turned out *not* to be reachable by the one-round game. At $t = 0.86$ the cover is certified except for three small pockets, so **no bound is claimed**; certification is all-or-nothing. See [`notes/RECORD.md`](notes/RECORD.md).
 
 ## Repository layout
 
