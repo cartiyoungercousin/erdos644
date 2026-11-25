@@ -140,7 +140,7 @@ Checks:
   [computed exact]:
   - (14,5,3), J = {1,2} (Lemma 5c interval): UNSAT ✓.
   - (14,5,3), J = {2} (single centred value, η < 1/2): UNSAT. So no gap family exists here.
-  - (15,6,3), J = {1,2}: UNSAT ✓. The single-value runs (15,6,3), J = {1} / {2}: see `logs/gap_sat_small.log`.
+  - (15,6,3), J = {1,2}: UNSAT ✓. The single-value runs (15,6,3), J = {1} and J = {2}: undecided (240 s timeout).
   - These sizes are far from the Fano window (r ~ k/2). They are evidence about the small-r combinatorics only.
 
 ## 7. What changes upstream
