@@ -3389,3 +3389,211 @@ with an open-pattern branch elsewhere. Hybrids (103.3) are its only density-flav
 - The MILP is float and Fano-free (all maximal intersecting co-type families). It also reproduces the strip boundary
   at N = 5t − 2.
 - Not independently verified.
+
+=============================================================================================
+# Part XVI — the entropy method (Gilmer style) for CP (§70–§74)
+
+Brief: for any T-covering family in the window, build a law on 7-tuples (adaptive or correlated) and use entropy
+inequalities to show some tuple covers all pairs, i.e. has pairwise-intersecting co-types I_x. Window: 3t - 1/2 < N < 3 - t.
+Code: `compute/entropy/` — `entropy_tables.py` (first-order exponents, < 1 s), `fam_certs.py` (exact certificate census on
+a finite family, a few minutes), `witness_pair.py` (the coordinator's witness-pair test, seconds). Logs: `compute/entropy/logs/`.
+Test families at (k,T,n) = (8,6,15) in `compute/entropy/logs/fam_8_6_15_{pool,randdump_s1,sevenfree}.txt`, plus core9's
+`fam_8_6_15_rev.txt`.
+**Outcome. CP is NOT proved, and the entropy method is DEAD as a route, in every form I could set up.**
+(1) The Gilmer shape needs an upper bound on entropy from "no good seven" and a lower bound from T-covering. It fails at every
+point of the window: an explicit 7-free family is larger than the smallest T-covering family (§71.1).
+(2) Independent samples (Gilmer, AHS, Chase–Lovett) see only typical tuples. Those leave a constant fraction of the pair mass
+uncovered for every law (§71.2).
+(3) Correlated, family-dependent laws (Sawin-type) need a correlation inequality on frames (supersaturation of pencils).
+It fails exactly on the core9 hash-like family: 0 pencils against a density-product prediction of 128 301 (§72).
+A random-dump family matches its prediction (459 702 against 465 265). The core9 family also has no Q′ quadruple, so all of
+(Σ) fails on it at finite size with ε = 0 (new). Q′ is absent in every test family at ε = 0.
+(4) The exact obstruction (§73) is that every minimal certificate is a cyclic containment constraint on ≥ 3 dumps. Entropy
+inequalities give joint lower bounds only along acyclic orders, or through density. Density statements are false here,
+and the cyclic statement is the Ramsey/colouring problem of §48.
+(5) The witness-pair entropy idea (coordinator) is the first moment over pairs (§73.4). It is dead with uniform or iid laws:
+E[#uncovered pairs] is 22 to 31 on all four test families, including ones that do have good sevens. With an adapted law
+it is circular.
+
+## 70. Formulation
+
+**70.1 What the method is [literature, checked against the arXiv abstracts].**
+- Gilmer, arXiv:2211.09055: if A, B are i.i.d. with Pr[i ∈ A] < 0.01 for all i and H(A) > 0, then H(A ∪ B) > H(A).
+  With A uniform on a union-closed 𝓕, A ∪ B ∈ 𝓕 gives H(A ∪ B) <= log|𝓕| = H(A), a contradiction, so some element lies in
+  >= 1% of the sets.
+- Alweiss–Huang–Sellke (2211.11731), Chase–Lovett (2211.11689) and Sawin (2211.11504) each reach (3 - √5)/2 ≈ 0.38.
+  Sawin's abstract also sketches an addition that gives a constant strictly larger, and disproves a conjecture of Gilmer
+  that would have implied Frankl. That the "addition" uses correlated A, B is recalled, not checked.
+
+The three ingredients are:
+- (S) a law, uniform on the family;
+- (U) an upper bound, from closure: the output of an operation stays in the support;
+- (L) a lower bound, from the hypothesis, through a per-coordinate inequality.
+
+**70.2 Dictionary for CP [proved by hand].**
+- The only "closure" is the lift S ↦ F(S) ∈ 𝒞, F(S) ⊇ S. It is many-to-one, so for every request law ρ,
+  H(F_*ρ) >= H(ρ) - E log|F^{-1}(F(S))| >= H(ρ) - log C(c, t)k. With ρ uniform this is Φk, where
+  Φ := N h(t/N) - c h(t/c) is the counting bound on |𝒞|.
+- The hypothesis "no good seven" is a 7-ary forbidden configuration. It can only give an UPPER bound of ex-type:
+  H(F_*ρ) <= Λk for families with no good seven.
+- So the Gilmer shape is **(I1)**: Λ < sup_ρ [H(ρ) - E log|fibre|]/k. This would give CP with no structure at all.
+
+**70.3 The cleanest statement that implies CP [proved by hand: it is 2.2 read as an event].** For a law ν on 7-tuples of
+requests (adapted to F, which she knows), let K_i = F(S_i) and D_i = K_i ∖ S_i.
+**(E)** Pr_ν[ there are lines L_i ⊆ K_i with pairwise-intersecting co-types and Σ_i |D_i ∩ (L_i ∖ S_i)| >= 3N - 7t ] > 0.
+- (E) ⟺ CP for N < 11/6 (Fano readings complete, §1.3), and (E) ⟹ CP everywhere.
+- (E) with "> 0" is CP itself (cf. 83, second item). The content of an entropy proof is an INEQUALITY that yields the positive
+  probability. Three candidates:
+  - (I1) entropy/size (Gilmer shape, 70.2);
+  - (I2) average inequalities over independent copies (AHS/CL);
+  - (I3) a correlation inequality for a family-dependent correlated law (Sawin-type correlation; Sidorenko / Kopparty–Rossman
+    sequential sampling).
+- Since two replies are free (2.3), the event in (E) needs useful landing >= base = ω - 4ε in the dumps of replies 3–7.
+- Each of those landings is a containment D_i ⊆ (target) up to O(ε): a large-deviation event for each reply separately.
+
+## 71. (I1) and (I2) are dead
+
+**71.1 Proposition E0 [proved by hand; numbers computed float on a grid].** Let W ⊆ V with |W| = 7/4 - η, Y' = V ∖ W, and
+𝒫' = {Y' ∪ A : A ⊆ W, |A| = 3/4 - η}. Then:
+- (i) 𝒫' has no good seven. Y' lies in every member, so a good seven would cover all pairs of W by seven (3/4 - η)-sets.
+  That is impossible on fewer than 7k/4 points (80.2).
+- (ii) 𝒫' contains a member ⊇ S for every t-set S with |S ∩ Y'| >= ε + η.
+- (iii) log|𝒫'| → Λ0 k with Λ0 = log C(7/4, 3/4) = 1.1951.
+
+Hence any bound Λ derived from "no good seven" has Λ >= Λ0, while T-covering guarantees only Φ. `entropy_tables.py`:
+E0 = Λ0 - Φ > 0 at all 44 grid points (t = 0.7501, 0.76, 0.78, 0.80; N across the window). It is smallest at the lower
+corner (+0.0016 at t = 0.7501, N = 3t - 1/2; +0.073 at t = 0.76) and largest at the top (+0.60). **(I1) is dead in the
+whole window.** It is tight only as t → 3/4 at N → 3t - 1/2, which is the 21.2 gap region.
+
+**Blindness to typical requests.** The requests that 𝒫' fails to cover (|S ∩ Y'| < ε) have uniform probability e^{-rk},
+r = log C(N,t) - log C(δ,ε) - Λ0. The rate r ranges from 0.0006 (lower corner, t = 0.76) to 0.24 (t = 0.7501, N = 2.25).
+So a working law must have relative entropy >= rk to the uniform request law, for each such Y'. It must be built from the
+family, as in Gilmer, and it must avoid the common part of earlier members.
+
+Finite check [computed exact, k = 8]: 𝒫' at (8,6,15) (|Y'| = 2) has 1287 members, which is more than
+C(15,6)/C(7,6) = 715. It covers 3289 of the 5005 six-sets (65.7%) and has no good seven (80.2). It contains 75 075 (b)-triples.
+This shows that (b) is a three-member condition PLUS the covering of four transversal requests, and 𝒫' fails the latter.
+
+**71.2 Independent copies see only bad tuples [proved by hand: Jensen].** Let μ be any law on c-sets and K_1..K_7 i.i.d. ~ μ.
+Put q(x,y) = μ(K ∋ x, y). Then E_{x,y} q = E|K|²/N² = (c/N)², so the expected uncovered (ordered) pair mass is
+E_{x,y}(1 - q)^7 >= (1 - (c/N)²)^7. This is 0.075 to 0.24 across the window (table column iid).
+- So an average/entropy inequality over independent copies controls tuples that miss a constant fraction of the pairs.
+- A good seven is an event of probability e^{-Θ(k)} under such laws, and averages do not see it.
+- This kills (I2) as a route. It does not say that i.i.d. sampling never hits a good seven: it does, if CP holds and μ has
+  full support.
+
+The correlation the law must create, as total correlation per point of a Fano-type co-type law with marginals c/N, is
+TCmin = 0.90 to 2.83 nats; i.i.d. gives 0. [computed float; Fano-type co-types only]
+
+## 72. (I3) tested: pencil supersaturation on finite families [computed exact]
+
+The simplest correlation inequality that would give (Σ)(b) is "positive correlation of members along pencil frames":
+#(b)-triples >= κ · (density)³ · #frames for some κ > 0. This is Harris/Sidorenko-type, and it is what a sequential entropy
+count gives for acyclic patterns. `fam_certs.py` at (k,T,n) = (8,6,15), with t = 3/4 exactly, ε = 0, n - 2T = n - 3k/2 = 3:
+
+| family | members | T-covering | (b)-triples | (b) defect 1 | Q′ splits σ <= 1 / with matchings OK | max point freq | H(reply) / log|𝒞| |
+|---|---|---|---|---|---|---|---|
+| core9 `fam_8_6_15_rev` (2-class hash-like selector) | 2352 | yes | **0** | 12 816 580 | 39 608 394 / **0** | 0.640 | 7.616 / 7.763 |
+| pool (|Y| = ω = 1) | 3003 | yes | 525 525 | 42 882 840 | 0 / 0 | 1.000 | 7.871 / 8.007 |
+| random dump, seed 1 | 3599 | yes | 459 702 | 45 233 747 | 171 507 483 / **0** | 0.476 | 7.735 / 8.188 |
+| 𝒫′ (7-free; §71.1) | 1287 | no (1716 missed) | 75 075 | 4 864 860 | 0 / 0 | 1.000 | 7.113 / 7.160 |
+
+- Perfect-pencil frames: C(15,3)·12!/(4!³·3!) = 2 627 625.
+- Density-product prediction for the core9 family: 2 627 625 · (2352/6435)³ = 128 301. Under the random-dump model it is
+  2 627 625 · (1 - (8/9)^7)³ = 465 265.
+- (b) defect := uncovered points + max(0, 3 - triple meet). "Q′ splits" counts (pair, pair) splits of quadruples with
+  σ <= (3T - n)/2. Q′ also needs every matching's pair-only mass + σ <= T.
+
+Readings:
+- **The correlation inequality fails totally on the core9 family**: 0 pencils against 128 301 predicted, although 12.8 M
+  triples miss (b) by one point.
+- The family is entropy-uniform: its reply entropy is within 0.15 nats of log|𝒞|, and its point frequencies are 0.44–0.64,
+  around c/n = 0.467. So the Gilmer-type conclusion "a frequent element / a pool exists" also fails on it (max 0.64 against
+  1.0 for the pool).
+- The random-dump family has 459 702 pencils against the prediction 465 265 (ratio 0.99). So the first moment is accurate for a
+  random map, and the core9 deficit (0 of 128 301) comes from the selector's structure, not from the size.
+- **New: all of (Σ) fails on the core9 family.** No (b); no Q′ (39.6 M quadruples reach σ = 1, none passes the matching
+  loads; Q′ is absent in ALL four families, including random dumps with 171.5 M σ = 1 quadruples, so at ε = 0 Q′ has no room
+  and only (b) distinguishes the families); (c) is vacuous at this size, since Theorem T needs pair meets <= (T + n - 2k)/2 = 2.5 and sum
+  >= (3n - 3k - T)/2 = 7.5, and three meets of at most 2 cannot sum to 8 [proved by hand].
+  This is at ε = 0 and finite k. It is not a first-order counterexample to (Σ), but it says (Σ) has no room at t = 3/4.
+  CP for this family, if true, needs at least five members used in full. Its good-seven status is still open
+  (core9 cover_ilp: best 8, bound 7).
+- The pool family has many (b)-triples and no Q′, as §37 predicts (σ >= 1 - t = 2 points).
+
+## 73. The proof attempt, and the exact obstruction
+
+**73.1 Attempt (sequential entropy count for (b)) [proved by hand].** Give the three requests a common kernel κ0 of mass N - 2t.
+Then |K_1 ∩ K_2 ∩ K_3| >= N - 2t holds from the requests alone. Union = V then needs the holes
+H = V ∖ (κ0 ∪ S_1 ∪ S_2 ∪ S_3) (petals disjoint, |H| = 2t - 3(3t - N) = 3N - 7t = 3ω - 4ε) to satisfy D_1 ∪ D_2 ∪ D_3 ⊇ H.
+So the three dumps must be pairwise disjoint up to 4ε, and inside H up to 4ε, i.e. K_i ∩ K_j ≈ κ0 for all pairs.
+This is a TRIANGLE in the compatibility graph G_{κ0} on requests (S ~ S′ iff F(S) ∩ F(S′) ⊆ κ0 up to O(ε)). A chain-rule
+count samples S_1, then S_2 ~ S_1, then S_3 adjacent to both, and gives a lower bound only for the path S_1 ~ S_2 ~ S_3.
+The closing edge S_3 ~ S_1 is the cyclic constraint. Triangles are not Sidorenko: a dense graph can be triangle-free.
+Here the analogue is realised: the core9 family is T-covering with 12.8 M near-triangles and 0 triangles (§72).
+
+**73.2 The obstruction, stated exactly.** For each minimal certificate (pencil (b), Theorem-T triangle, Q′ quadruple), the
+success event for reply i is a containment of D(S_i) in a set fixed by the OTHER requests and dumps (73.1; 2.2; 35.2).
+The dependency graph among the >= 3 non-free replies is cyclic. Entropy inequalities give lower bounds on joint
+probabilities in only two ways, and neither is available:
+- (a) along an acyclic elimination order. In game form the last reply's target is known before its dump and he avoids it
+  (reading lemma 9.1; depth values = base, §26, §30).
+- (b) through density. Density statements are false here: 𝒫′ has density e^{(Λ0 - N h(c/N))k}, above the least density
+  e^{(Φ - N h(c/N))k} of a T-covering family (margin E0, §71.1), and it has no good seven.
+What is left is the statement "every reply map has a frame whose three (or more) dumps are mutually compatible". That is the
+monochromatic-edge problem of §48 (hypergraph ℋ, two grounds), a Ramsey-type statement with e^{Θ(k)} colours. Entropy enters
+it only as the first moment: pdump = +2.37 to +2.80 (a uniformly random reply map has e^{2.4k} pencils). That is a heuristic
+about random maps, not an inequality for arbitrary F.
+
+**73.3 Dependent random choice [heuristic].** Choose S_3 first, condition on D(S_3), then sample S_1, S_2 among requests
+compatible with it. The compatible set is a subfamily of requests on which F is arbitrary: T-covering does not restrict to
+it, so the conditioned problem is the original one on fewer requests. Dependent random choice yields many common
+neighbours (density); the frame needs one exact compatible triple. No gain found.
+
+**73.4 Witness-pair entropy (coordinator's idea) [proved by hand; computed exact at k = 8].** Give each bad seven a witness
+pair {x,y} that no member covers, so all seven avoid 𝒦_xy = {K ⊇ {x,y}}. Then
+H(seven | bad) <= log #pairs + max_xy H(seven | all avoid 𝒦_xy). This is the union bound
+Pr_ν[bad] <= Σ_xy Pr_ν[no K_i ∈ 𝒦_xy] up to the log #pairs term, i.e. the first moment of the number of uncovered pairs.
+- At first order, log #pairs = O(log k). So the inequality asks that every pair be uncovered with probability
+  e^{-ω(log k)} under ν.
+- Link covering gives an ABSOLUTE bound |𝒦_xy| >= C(n-2,T-2)/C(c-2,T-2) = e^{Φk + O(1)}, not a fraction of |𝒞|.
+  Relative to a minimal family it is a fraction of about (c/N)², which is exactly the constant of 71.2. It is a one-member
+  statement and does not see how the seven are correlated.
+- `witness_pair.py`, ν = 7 i.i.d. uniform members: E[#uncovered pairs] = 23.4 (core9), 26.4 (pool), 22.2 (random dump),
+  31.2 (𝒫′), against the needed < 1. The entropy form fails by 3.4–3.8 nats in each case.
+  Minimum link fractions are 0.17, 0.16, 0.19, 0.13, against (c/n)² = 0.218, and the links are 3–5 times the codegree bound 143.
+- It fails on the pool, which does have good sevens. So with i.i.d. or uniform laws the inequality is false where CP is true.
+- With a ν adapted to F it holds iff ν puts mass on good sevens (ν conditioned on good has zero uncovered pairs), which is
+  circular. It also fails for every constructive design on random-dump families: lines of mass 3N/7 > t need dumps, so the
+  per-pair failure probability is a constant.
+- **Verdict: dead as stated.** Viable only with a law that already concentrates on good sevens, i.e. it reduces to (E) / CP.
+
+## 74. Verdict, dead routes, next step
+
+**Verdict.** The entropy method does not decide CP. Every form reduces either to a false density/entropy statement
+(71.1, 73.2b), to an average that sees only bad tuples (71.2, 73.4), or to the cyclic Ramsey statement of §48 (73.1–73.2).
+**Dead (this part):**
+- entropy/size bounds of Gilmer shape (I1), in the whole window, with margin E0 > 0 (71.1);
+- independent-copy average inequalities (I2) (71.2);
+- pencil supersaturation by a correlation inequality, refuted exactly on the core9 family (72);
+- witness-pair entropy / union bound over pairs (73.4);
+- any argument that uses only requests meeting a fixed (δ + η)-set in >= ε + η (71.1).
+**New facts:**
+- E0 (71.1);
+- the Jensen floor (1 - (c/N)²)^7 (71.2);
+- the core9 family is T-covering, entropy-uniform, and has no (b), no Q′ and vacuous (c) at (8,6,15) (72).
+**Next step [heuristic].** The only place entropy could still enter is a second-moment (Janson) bound for frames under maps
+that are "balanced" in a sense that EXCLUDES 2-class hash-like selectors such as the core9 family. Theorem W does not reach
+that family, so the balance hypothesis would itself need a structural proof. Before any proof attempt, decide the core9
+family's good-seven status: an exact five-member certificate search is enough, since (Σ) fails there.
+
+Self-check (Part XVI, §70–§74):
+- E0 uses only 80.2 and the count of 𝒫′. Φ and Λ0 are closed-form log-binomials (entropy_tables.py); r assumes
+  ε < tδ/N (true except at the lower endpoint, where r = 0 is printed).
+- 71.2 is one application of Jensen to x ↦ (1 - x)^7.
+- §72 counts are exact enumerations. The (b) check is "union = V and triple meet >= n - 2T", as corrected in LEDGER. The Q′
+  check uses σ = points in <= 1 member, and the pair-only mass per matching. Members are read verbatim from the files, and
+  T-covering is re-checked on each.
+- 73.1's hole count is |V ∖ κ0| - 3(t - |κ0|) with |κ0| = N - 2t.
+- The literature statements are from the four arXiv abstracts, fetched and read. Sawin's correlated-sampling detail is recalled.
+- The fam_8_6_15 "perfect pencils 0" of core9 is reproduced independently as "(b)-triples 0".

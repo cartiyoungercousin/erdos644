@@ -1,0 +1,6 @@
+family logs/fam_8_6_15_pool.txt: 3003 members of size 7, n=15, T-sets uncovered: 0
+(b) triples (union V, triple meet >= 3): 525525
+(b) defect census over all triples: defect 0: 525525, defect 1: 42882840 (none listed means >= 2)
+(a) quadruples with sigma <= 1.5 (each counted once per split): 0; with all three matchings OK: 0
+point frequencies (uniform on family): min 0.4286 max 1.0000 (c/n = 0.4667)
+reply law (min-mask rule): support 3003, H = 7.8708, log|family| = 8.0074, log C(n,T)-log C(c,T) = 6.5723; freq min 0.4000 max 1.0000

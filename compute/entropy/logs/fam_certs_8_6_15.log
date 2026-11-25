@@ -1,0 +1,7 @@
+family ../core9/logs/fam_8_6_15_rev.txt: 2352 members of size 7, n=15, T-sets uncovered: 0
+(b) triples (union V, triple meet >= 3): 0
+(b) defect, triples with first member among the first 401: min 1; counts {1: 4885630}
+(a) quadruples with sigma <= 1.5 (each counted once per split): 39608394; with all three matchings OK: 0
+point frequencies (uniform on family): min 0.4388 max 0.6395 (c/n = 0.4667)
+reply law (min-mask rule): support 2352, H = 7.6160, log|family| = 7.7630, log C(n,T)-log C(c,T) = 6.5723; freq min 0.4000 max 0.6965
+.6965

@@ -1,0 +1,12 @@
+../core9/logs/fam_8_6_15_rev.txt: |C|=2352; pair-link min 410 mean 470.4 max 656 (codegree bound 143.0); min link fraction 0.1743, (c/n)^2 = 0.2178
+   iid-uniform union bound E[#uncovered pairs] = 23.44  (need < 1)
+   entropy form: H(uniform 7-tuple) = 54.341  vs  log#pairs + 7 log|C - K_xy|max = 57.788  (need first > second)
+logs/fam_8_6_15_pool.txt: |C|=3003; pair-link min 495 mean 600.6 max 1287 (codegree bound 143.0); min link fraction 0.1648, (c/n)^2 = 0.2178
+   iid-uniform union bound E[#uncovered pairs] = 26.35  (need < 1)
+   entropy form: H(uniform 7-tuple) = 56.052  vs  log#pairs + 7 log|C - K_xy|max = 59.578  (need first > second)
+logs/fam_8_6_15_randdump_s1.txt: |C|=3599; pair-link min 692 mean 719.8 max 756 (codegree bound 143.0); min link fraction 0.1923, (c/n)^2 = 0.2178
+   iid-uniform union bound E[#uncovered pairs] = 22.21  (need < 1)
+   entropy form: H(uniform 7-tuple) = 57.319  vs  log#pairs + 7 log|C - K_xy|max = 60.612  (need first > second)
+logs/fam_8_6_15_sevenfree.txt: |C|=1287; pair-link min 165 mean 257.4 max 1287 (codegree bound 143.0); min link fraction 0.1282, (c/n)^2 = 0.2178
+   iid-uniform union bound E[#uncovered pairs] = 31.16  (need < 1)
+   entropy form: H(uniform 7-tuple) = 50.120  vs  log#pairs + 7 log|C - K_xy|max = 53.948  (need first > second)
