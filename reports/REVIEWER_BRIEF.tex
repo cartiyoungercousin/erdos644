@@ -1,0 +1,109 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\setlist{itemsep=2pt,topsep=3pt}
+\newtheorem*{problem}{Open Problem (CP)}
+\title{Erd\H{o}s Problem \#644: the remaining obstacle\\[2pt]\large A brief for reviewers}
+\author{erdos644 project}
+\date{November 2026}
+\begin{document}
+\maketitle
+
+\section{The question}
+Let $f(k,7)$ be the largest transversal number $\tau(H)$ of a $k$-uniform family $H$ in which every at most seven
+members can be pierced by two points. Erd\H{o}s asked whether $f(k,7)=(\tfrac34+o(1))k$. The best published bounds are
+$f(k,7)\le\lceil 7k/8\rceil$ and $f(4m,7)\ge 3m+1$ for $m\ge 10$ (Fon-Der-Flaass, Kostochka and Woodall, 1999).
+We have reduced the question to one statement about covering families, plus two small residues. We ask for help with
+that statement.
+
+\section{The reduction (independently verified)}
+\textbf{Game form.} If $\tau(H)>T$, every $T$-set misses some member. So a requester who names $T$-sets always receives
+members avoiding them. If she asks every $T$-set, the answers on that single play form a family with $\tau>T$. Thus
+$f(k,7)\le T$ if and only if she can always collect seven answers with no 2-point transversal.
+
+\textbf{Confinement.} Three answers with empty common intersection confine all later analysis to their union $V$,
+with $|V|\le 3k$.
+
+\textbf{Co-edge form.} We work in units of $k$: $t=T/k=\tfrac34+\varepsilon$ and $N=|V|/k$. For a member $B$ its
+\emph{co-edge} is $K=V\setminus B$, of mass $N-1$. Then:
+\begin{itemize}
+\item $\tau>T$ if and only if the co-edge family is \emph{$T$-covering}: every $T$-subset of $V$ lies in a co-edge.
+\item Seven members have no 2-point transversal if and only if their co-edges cover every pair of $V$. We call such
+seven co-edges a \emph{good seven}.
+\end{itemize}
+It suffices to treat all sufficiently small $\varepsilon>0$. We write $\omega=N-1-t$ and $\delta=N-\tfrac74$.
+
+\textbf{Case split by $N$.} Every region is closed except one:
+\begin{itemize}
+\item $N\le 3t-\tfrac12$ (crowded): closed.
+\item $3t-\tfrac12<N\le 5t-2$ (bottom strip): closed by a Frankl--R\"odl density argument.
+\item $N\ge 3-t$ (petal side): closed except two small residues.
+\item $5t-2<N<3-t$: the \textbf{core window}, open.
+\end{itemize}
+
+\section{The open problem}
+\begin{problem}
+Let $\varepsilon>0$ be sufficiently small, $t=\tfrac34+\varepsilon$, and $5t-2<N<3-t$ (about $1.75k$ to $2.25k$
+points). Show that every $T$-covering family of co-edges contains a good seven.
+\end{problem}
+
+\noindent\textbf{A sufficient condition} (verified). The family contains one of:
+\begin{enumerate}[label=(\alph*)]
+\item a Q$'$ quadruple: four members with $\sigma\le(3t-N)/2$, where $\sigma$ is the mass lying in at most one of
+them, and, for each of the three matchings of the four, (mass lying in exactly the pairs of that matching)
+$+\,\sigma\le t$;
+\item a pencil triple: three members whose union is $V$ and whose triple intersection is $\ge N-2t$;
+\item a Theorem-T triangle: three members with empty triple intersection and pairwise intersections $a,b,d\le
+(t+N-2)/2$ with $a+b+d\ge(3N-3-t)/2$.
+\end{enumerate}
+(Exact computation shows these three are not the only way to finish: about a third of forced good sevens contain none
+of them. Every window family examined, however, contains at least one.)
+
+\section{What a counterexample would have to look like (verified)}
+A family with no good seven in the window cannot be any of the following:
+\begin{itemize}
+\item a bounded blow-up: membership depending only on profiles of at most $4\varepsilon k-12$ cells;
+\item a fixed-order rule;
+\item a rule choosing among priority orders by a window of at most $T-k/2$ points;
+\item a family with kernel density above $2/3$;
+\item a random or 6-wise independent selector with fewer than about $e^{1.19k}$ classes.
+\end{itemize}
+It must therefore be \emph{deterministic and strongly anti-correlated}. A random $T$-covering family of the relevant
+size contains $e^{\Theta(k)}$ good sevens. At the smallest genuine window instance $(k,T,n)=(10,8,21)$, every
+cell-symmetric search is UNSAT with checked certificates. The most anti-correlated family we know is pencil-free at
+$\varepsilon=0$, but it fails there.
+
+\section{What does not work}
+Twenty-one approaches were analysed, each with an identified obstruction (details in \texttt{FAILED\_ROUTES.pdf}):
+\begin{itemize}
+\item bounded-request games;
+\item junta approximation, because the families have density $e^{-\gamma k}$;
+\item spread and sunflower lemmas, because the families are at most $2.3$-spread;
+\item fractional relaxations of both the transversal and the pair-cover LP;
+\item hypergraph containers;
+\item flag algebras;
+\item forbidden-intersection density arguments above the bottom strip;
+\item adaptive restriction to links, since links lower $\varepsilon$ while keeping $\omega$;
+\item entropy methods, since certificates need cyclic constraints;
+\item covering-design stability;
+\item several reformulations.
+\end{itemize}
+The lesson is that a successful argument must use the \emph{full} covering hypothesis, not only density, together with
+\emph{adaptive} choice. It must also handle near-pool families, which sit exactly at the static slack $4\varepsilon$.
+
+\section{What we would value}
+\begin{enumerate}
+\item Any tool that combines a covering hypothesis (``every $T$-set lies in a member'') with avoidance of a fixed small
+configuration, in a linear, exponentially sparse regime.
+\item A reason to believe the answer is \emph{no}: an idea for a deterministic, anti-correlated $T$-covering family with
+no good seven.
+\item Errors in any claim marked verified.
+\item References to related exact results or techniques.
+\end{enumerate}
+
+\medskip\noindent Full notes, code and verification reports:
+\url{https://github.com/cartiyoungercousin/erdos644}. Start with \texttt{README.md}; \texttt{docs/RESULTS.md} lists
+every result with its verification.
+\end{document}
