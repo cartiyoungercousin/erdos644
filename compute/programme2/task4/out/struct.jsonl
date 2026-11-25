@@ -1,0 +1,30 @@
+{"name": "FKW m=2 (n=15,k=8)", "n": 15, "members": 3200, "codim": 2, "ann_supports": [["complement of", [8, 9, 10, 11, 12, 13, 14]], [8, 9, 10, 11, 12, 13, 14]], "ann_parity_of_a": [1, 1], "triples_x1+x2=x3": 0}
+{"name": "FKW m=3 (n=22,k=12)", "n": 22, "members": 323344, "codim": 2, "ann_supports": [["complement of", [12, 13, 14, 15, 16, 17, 18, 19, 20, 21]], [12, 13, 14, 15, 16, 17, 18, 19, 20, 21]], "ann_parity_of_a": [1, 1]}
+{"name": "H1", "n": 22, "members": 323236, "codim": 1, "ann_supports": [["complement of", [12, 13, 14, 15, 16, 17, 18, 19, 20, 21]]], "ann_parity_of_a": [1]}
+{"name": "task3 fkwmin_random_1.npy", "n": 22, "members": 100524, "codim": 2, "ann_supports": [["complement of", [12, 13, 14, 15, 16, 17, 18, 19, 20, 21]], [12, 13, 14, 15, 16, 17, 18, 19, 20, 21]], "ann_parity_of_a": [1, 1]}
+{"name": "task3 gprime_fkw1.npy", "n": 22, "members": 100428, "codim": 1, "ann_supports": [["complement of", [12, 13, 14, 15, 16, 17, 18, 19, 20, 21]]], "ann_parity_of_a": [1]}
+{"name": "task3 h1min_prof3-9-5-7_1.npy", "n": 22, "members": 100506, "codim": 1, "ann_supports": [["complement of", [12, 13, 14, 15, 16, 17, 18, 19, 20, 21]]], "ann_parity_of_a": [1]}
+{"name": "task3 h1min_prof5-7-3-9_1.npy", "n": 22, "members": 100506, "codim": 1, "ann_supports": [["complement of", [12, 13, 14, 15, 16, 17, 18, 19, 20, 21]]], "ann_parity_of_a": [1]}
+{"name": "task3 h1min_prof7-5-9-3_1.npy", "n": 22, "members": 100506, "codim": 1, "ann_supports": [["complement of", [12, 13, 14, 15, 16, 17, 18, 19, 20, 21]]], "ann_parity_of_a": [1]}
+{"name": "task3 h1min_prof7-9-5-3_1.npy", "n": 22, "members": 100506, "codim": 1, "ann_supports": [["complement of", [12, 13, 14, 15, 16, 17, 18, 19, 20, 21]]], "ann_parity_of_a": [1]}
+{"name": "task3 h1min_prof9-3-7-5_1.npy", "n": 22, "members": 100506, "codim": 1, "ann_supports": [["complement of", [12, 13, 14, 15, 16, 17, 18, 19, 20, 21]]], "ann_parity_of_a": [1]}
+{"name": "task3 h1min_random_1.npy", "n": 22, "members": 100506, "codim": 1, "ann_supports": [["complement of", [12, 13, 14, 15, 16, 17, 18, 19, 20, 21]]], "ann_parity_of_a": [1]}
+{"name": "task3 h1min_random_2.npy", "n": 22, "members": 100329, "codim": 1, "ann_supports": [["complement of", [12, 13, 14, 15, 16, 17, 18, 19, 20, 21]]], "ann_parity_of_a": [1]}
+{"name": "task3 h1min_random_3.npy", "n": 22, "members": 100431, "codim": 1, "ann_supports": [["complement of", [12, 13, 14, 15, 16, 17, 18, 19, 20, 21]]], "ann_parity_of_a": [1]}
+{"name": "U1 = pad(gprime_fkw1.npy)", "n": 34, "members": 100428, "codim": 2, "ann_supports": [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], ["complement of", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]]], "ann_parity_of_a": [1, 1]}
+{"name": "U1 = pad(h1min_random_1.npy)", "n": 34, "members": 100506, "codim": 2, "ann_supports": [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], ["complement of", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]]], "ann_parity_of_a": [1, 1]}
+{"name": "core9 fam_8_6_15_rev", "n": 15, "members": 2352, "codim": 2, "ann_supports": [["complement of", [8, 9, 10, 11, 12, 13, 14]], [8, 9, 10, 11, 12, 13, 14]], "ann_parity_of_a": [1, 1], "triples_x1+x2=x3": 0}
+{"name": "entropy fam_8_6_15_pool", "n": 15, "members": 3003, "codim": 2, "ann_supports": [[0], ["complement of", [0]]], "ann_parity_of_a": [0, 0], "triples_x1+x2=x3": 525525}
+{"name": "entropy fam_8_6_15_randdump_s1", "n": 15, "members": 3599, "codim": 1, "ann_supports": [["complement of", []]], "ann_parity_of_a": [0], "triples_x1+x2=x3": 459702}
+{"name": "entropy fam_8_6_15_sevenfree", "n": 15, "members": 1287, "codim": 3, "ann_supports": [[0], [1], ["complement of", [0, 1]]], "ann_parity_of_a": [0, 0, 0], "triples_x1+x2=x3": 75075}
+{"name": "tgw_fam_8_6_15", "n": 15, "members": 2352, "codim": 1, "ann_supports": [["complement of", []]], "ann_parity_of_a": [0], "triples_x1+x2=x3": 0}
+{"name": "tgw_fam_8_6_16", "n": 16, "members": 2814, "codim": 1, "ann_supports": [["complement of", []]], "ann_parity_of_a": [0], "triples_x1+x2=x3": 283932}
+{"name": "tgw_fam_10_8_21", "n": 21, "members": 23346, "codim": 1, "ann_supports": [["complement of", []]], "ann_parity_of_a": [0]}
+{"name": "tgw_fam_10_8_21_rand2s1", "n": 21, "members": 44437, "codim": 2, "ann_supports": [["complement of", [18]], [18]], "ann_parity_of_a": [0, 0]}
+{"name": "tgw_fam_10_8_21_rand2s2", "n": 21, "members": 43922, "codim": 2, "ann_supports": [["complement of", [1]], [1]], "ann_parity_of_a": [0, 0]}
+{"name": "tgw_fam_10_8_21_rand3s1", "n": 21, "members": 53768, "codim": 1, "ann_supports": [["complement of", []]], "ann_parity_of_a": [0]}
+{"name": "tgw_fam_10_8_21_rand3s2", "n": 21, "members": 47986, "codim": 1, "ann_supports": [["complement of", []]], "ann_parity_of_a": [0]}
+{"name": "tgw_fam_13_10_25", "n": 25, "members": 1172984, "codim": 1, "ann_supports": [["complement of", []]], "ann_parity_of_a": [1]}
+{"name": "complete K_9^(5)", "n": 9, "members": 126, "codim": 1, "ann_supports": [["complement of", []]], "ann_parity_of_a": [1], "triples_x1+x2=x3": 0}
+{"name": "complete K_16^(9)", "n": 16, "members": 11440, "codim": 1, "ann_supports": [["complement of", []]], "ann_parity_of_a": [1]}
+{"name": "complete K_23^(13)", "n": 23, "members": 1144066, "codim": 1, "ann_supports": [["complement of", []]], "ann_parity_of_a": [1]}

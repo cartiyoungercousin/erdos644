@@ -1,0 +1,3 @@
+{"case": "sel15r3", "n": 15, "members": 2348, "best_cost": 1, "found": false, "restarts_used": 25, "steps": 500, "chi": null}
+{"case": "gprime", "n": 22, "members": 100428, "best_cost": 1, "found": false, "restarts_used": 25, "steps": 500, "chi": null}
+{"case": "h1", "n": 22, "members": 323236, "best_cost": 1, "found": false, "restarts_used": 25, "steps": 500, "chi": null}

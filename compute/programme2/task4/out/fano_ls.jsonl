@@ -1,0 +1,8 @@
+{"case": "core9", "n": 15, "members": 2352, "best_cost": 1, "found": false, "restarts_used": 100, "steps": 400, "chi": null}
+{"case": "tgw15", "n": 15, "members": 2352, "best_cost": 1, "found": false, "restarts_used": 100, "steps": 400, "chi": null}
+{"case": "fkw16", "n": 16, "members": 6400, "best_cost": 0, "found": true, "restarts_used": 0, "steps": 400, "chi": [3, 2, 0, 6, 4, 6, 4, 3, 0, 0, 5, 4, 5, 2, 2, 6]}
+{"case": "sel17r2", "n": 17, "members": 1433, "best_cost": 0, "found": true, "restarts_used": 11, "steps": 500, "chi": [2, 3, 2, 6, 6, 4, 6, 5, 2, 5, 3, 1, 0, 3, 1, 4, 4]}
+{"case": "sel15r3", "n": 15, "members": 2348, "best_cost": 1, "found": false, "restarts_used": 25, "steps": 500, "chi": null}
+{"case": "gprime", "n": 22, "members": 100428, "best_cost": 1, "found": false, "restarts_used": 25, "steps": 500, "chi": null}
+{"case": "sel17r3", "n": 17, "members": 1578, "best_cost": 0, "found": true, "restarts_used": 0, "steps": 500, "chi": [1, 0, 0, 3, 2, 5, 2, 4, 5, 0, 6, 3, 6, 4, 5, 1, 3]}
+{"case": "h1", "n": 22, "members": 323236, "best_cost": 1, "found": false, "restarts_used": 25, "steps": 500, "chi": null}

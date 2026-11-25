@@ -1,0 +1,2 @@
+{"case": "sel17r2", "n": 17, "members": 1433, "best_cost": 0, "found": true, "restarts_used": 11, "steps": 500, "chi": [2, 3, 2, 6, 6, 4, 6, 5, 2, 5, 3, 1, 0, 3, 1, 4, 4]}
+{"case": "sel17r3", "n": 17, "members": 1578, "best_cost": 0, "found": true, "restarts_used": 0, "steps": 500, "chi": [1, 0, 0, 3, 2, 5, 2, 4, 5, 0, 6, 3, 6, 4, 5, 1, 3]}

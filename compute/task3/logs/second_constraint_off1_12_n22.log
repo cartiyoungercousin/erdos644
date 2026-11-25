@@ -73,3 +73,34 @@ k=12 n=22 P2 R=((0, 0), (0, 1)) cells=(7, 2, 13) tau=10 (3k/4+1.0): GOOD_SEVEN[e
 k=12 n=22 P2 R=((0, 0), (0, 1)) cells=(7, 3, 12) tau=10 (3k/4+1.0): GOOD_SEVEN[exact] 0.0s
 k=12 n=22 P2 R=((0, 0), (1, 0)) cells=(7, 3, 12) tau=10 (3k/4+1.0): GOOD_SEVEN[exact] 0.6s
 k=12 n=22 P2 R=((0, 0), (1, 1)) cells=(7, 3, 12) tau=10 (3k/4+1.0): GOOD_SEVEN[exact] 0.5s
+k=12 n=22 P2 R=((0, 1), (1, 0)) cells=(7, 3, 12) tau=10 (3k/4+1.0): TIMEOUT 601.9s
+k=12 n=22 P2 R=((0, 1), (1, 0), (1, 1)) cells=(7, 3, 12) tau=10 (3k/4+1.0): GOOD_SEVEN[exact] 0.7s
+k=12 n=22 P2 R=((0, 0), (0, 1)) cells=(7, 4, 11) tau=10 (3k/4+1.0): GOOD_SEVEN[exact] 0.4s
+k=12 n=22 P2 R=((0, 0), (1, 1)) cells=(7, 4, 11) tau=10 (3k/4+1.0): GOOD_SEVEN[exact] 0.9s
+k=12 n=22 P2 R=((0, 1), (1, 0)) cells=(7, 4, 11) tau=10 (3k/4+1.0): TIMEOUT 601.8s
+k=12 n=22 P2 R=((0, 0), (1, 0)) cells=(7, 4, 11) tau=10 (3k/4+1.0): GOOD_SEVEN[exact] 0.2s
+k=12 n=22 P2 R=((0, 1), (1, 0), (1, 1)) cells=(7, 4, 11) tau=10 (3k/4+1.0): GOOD_SEVEN[exact] 1.2s
+k=12 n=22 P2 R=((0, 0), (0, 1)) cells=(7, 5, 10) tau=10 (3k/4+1.0): GOOD_SEVEN[exact] 0.2s
+k=12 n=22 P2 R=((0, 0), (1, 0)) cells=(7, 5, 10) tau=10 (3k/4+1.0): GOOD_SEVEN[exact] 0.3s
+k=12 n=22 P2 R=((0, 1), (1, 0)) cells=(7, 5, 10) tau=10 (3k/4+1.0): TIMEOUT 602.4s
+k=12 n=22 P2 R=((0, 0), (1, 1)) cells=(7, 5, 10) tau=10 (3k/4+1.0): GOOD_SEVEN[exact] 0.3s
+k=12 n=22 P2 R=((0, 1), (1, 0), (1, 1)) cells=(7, 5, 10) tau=10 (3k/4+1.0): GOOD_SEVEN[exact] 1.4s
+k=12 n=22 P2 R=((0, 0), (0, 1)) cells=(7, 6, 9) tau=10 (3k/4+1.0): GOOD_SEVEN[exact] 0.9s
+k=12 n=22 P2 R=((0, 0), (1, 1)) cells=(7, 6, 9) tau=10 (3k/4+1.0): GOOD_SEVEN[exact] 0.2s
+k=12 n=22 P2 R=((0, 0), (1, 0)) cells=(7, 6, 9) tau=10 (3k/4+1.0): GOOD_SEVEN[exact] 0.3s
+k=12 n=22 P2 R=((0, 1), (1, 0), (1, 1)) cells=(7, 6, 9) tau=10 (3k/4+1.0): GOOD_SEVEN[exact] 0.5s
+k=12 n=22 P2 R=((0, 0), (0, 1)) cells=(7, 7, 8) tau=10 (3k/4+1.0): GOOD_SEVEN[exact] 0.3s
+k=12 n=22 P2 R=((0, 0), (1, 0)) cells=(7, 7, 8) tau=10 (3k/4+1.0): GOOD_SEVEN[exact] 0.2s
+k=12 n=22 P2 R=((0, 0), (1, 1)) cells=(7, 7, 8) tau=10 (3k/4+1.0): GOOD_SEVEN[exact] 1.2s
+k=12 n=22 P2 R=((0, 1), (1, 0), (1, 1)) cells=(7, 7, 8) tau=10 (3k/4+1.0): GOOD_SEVEN[exact] 1.8s
+k=12 n=22 M3 R=(0, 2) cells=(7, 15) tau=10 (3k/4+1.0): GOOD_SEVEN[exact] 0.1s
+k=12 n=22 M3 R=(0, 1) cells=(7, 15) tau=10 (3k/4+1.0): GOOD_SEVEN[exact] 0.1s
+progress {'False': 95, 'cut': 104, 'dup': 1}
+k=12 n=22 P2 R=((0, 0), (1, 0)) cells=(8, 1, 13) tau=10 (3k/4+1.0): GOOD_SEVEN[exact] 0.0s
+k=12 n=22 P2 R=((0, 0), (1, 1)) cells=(8, 1, 13) tau=10 (3k/4+1.0): GOOD_SEVEN[exact] 0.2s
+k=12 n=22 P2 R=((0, 0), (0, 1)) cells=(8, 1, 13) tau=10 (3k/4+1.0): GOOD_SEVEN[exact] 0.3s
+k=12 n=22 P2 R=((0, 1), (1, 0)) cells=(8, 2, 12) tau=10 (3k/4+1.0): TIMEOUT 600.2s
+k=12 n=22 P2 R=((0, 0), (1, 1)) cells=(8, 2, 12) tau=10 (3k/4+1.0): GOOD_SEVEN[exact] 0.3s
+k=12 n=22 P2 R=((0, 1), (1, 0), (1, 1)) cells=(8, 2, 12) tau=10 (3k/4+1.0): GOOD_SEVEN[exact] 1.3s
+k=12 n=22 P2 R=((0, 0), (1, 0)) cells=(8, 3, 11) tau=10 (3k/4+1.0): GOOD_SEVEN[exact] 0.2s
+k=12 n=22 P2 R=((0, 0), (1, 1)) cells=(8, 3, 11) tau=10 (3k/4+1.0): GOOD_SEVEN[exact] 0.3s

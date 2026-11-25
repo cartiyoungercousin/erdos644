@@ -1,3 +1,14 @@
 (12,10) shape (6,6,0) |V|=24: ADVERSARY 110.233s
 (12,10) shape (8,4,2) |V|=22: ADVERSARY 6.32s
 (12,10) shape (7,5,2) |V|=22: ADVERSARY 13.586s
+(12,10) shape (6,5,2) |V|=23: TIMEOUT 907.336s
+(12,10) shape (6,4,2) |V|=24: TIMEOUT 925.594s
+(12,10) shape (5,5,2) |V|=24: TIMEOUT 912.293s
+(12,10) shape (4,4,2) |V|=26: REQUESTER 0.006s
+(12,10) shape (7,7,0) |V|=22: ADVERSARY 225.865s
+(12,10) shape (5,5,1) |V|=25: TIMEOUT 920.009s
+(12,10) shape (6,6,1) |V|=23: TIMEOUT 913.237s
+(12,10) shape (4,4,4) |V|=24: REQUESTER 0.076s
+(12,10) shape (5,5,5) |V|=21: ADVERSARY 19.039s
+(12,10) shape (6,3,2) |V|=25: TIMEOUT 907.13s
+(12,10) shape (8,3,2) |V|=23: TIMEOUT 909.909s
