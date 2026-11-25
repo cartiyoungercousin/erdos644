@@ -1,0 +1,2 @@
+k=9 T=8 q=3 n=17..20: {'examined': 2129, 'fano': 2129, 'nonfano': 0, 'hi_examined': 2129, 'free': 0}
+k=10 T=8 q=3 n=18..23: {'examined': 8880, 'fano': 8853, 'nonfano': 27, 'hi_examined': 8853, 'free': 0}

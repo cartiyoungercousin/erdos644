@@ -1,0 +1,4 @@
+{"k": 9, "a": [7, 13], "n": 20, "tau": 8, "J1": [0, 5], "seven_explicit": true, "fano_brute": false, "ntypes": 11}
+{"k": 9, "a": [10, 10], "n": 20, "tau": 8, "J1": [2, 7], "seven_explicit": true, "fano_brute": false, "ntypes": 11}
+{"k": 9, "a": [8, 13], "n": 21, "tau": 8, "J1": [0, 6], "seven_explicit": true, "fano_brute": false, "ntypes": 10}
+{"k": 9, "a": [10, 11], "n": 21, "tau": 8, "J1": [1, 7], "seven_explicit": true, "fano_brute": false, "ntypes": 10}

@@ -1,0 +1,20 @@
+{"k": 10, "a": [7, 13], "n": 20, "tau": 8, "J1": [0, 1, 5], "seven_explicit": true, "fano_brute": false, "ntypes": 11}
+{"k": 10, "a": [10, 10], "n": 20, "tau": 8, "J1": [3, 7], "seven_explicit": true, "fano_brute": false, "ntypes": 9}
+{"k": 10, "a": [7, 14], "n": 21, "tau": 8, "J1": [0, 5], "seven_explicit": true, "fano_brute": false, "ntypes": 10}
+{"k": 10, "a": [8, 13], "n": 21, "tau": 8, "J1": [1, 6], "seven_explicit": true, "fano_brute": false, "ntypes": 11}
+{"k": 10, "a": [10, 11], "n": 21, "tau": 8, "J1": [2, 7], "seven_explicit": true, "fano_brute": false, "ntypes": 12}
+{"k": 10, "a": [8, 14], "n": 22, "tau": 8, "J1": [0, 6], "seven_explicit": true, "fano_brute": false, "ntypes": 10}
+{"k": 10, "a": [9, 13], "n": 22, "tau": 8, "J1": [1, 7], "seven_explicit": true, "fano_brute": false, "ntypes": 11}
+{"k": 10, "a": [10, 12], "n": 22, "tau": 8, "J1": [1, 7], "seven_explicit": true, "fano_brute": false, "ntypes": 9}
+{"k": 10, "a": [11, 11], "n": 22, "tau": 8, "J1": [2, 8], "seven_explicit": true, "fano_brute": false, "ntypes": 10}
+{"k": 10, "a": [9, 14], "n": 23, "tau": 8, "J1": [0, 7], "seven_explicit": true, "fano_brute": false, "ntypes": 11}
+{"k": 10, "a": [10, 13], "n": 23, "tau": 8, "J1": [1, 8], "seven_explicit": true, "fano_brute": false, "ntypes": 10}
+{"k": 10, "a": [10, 13], "n": 23, "tau": 8, "J1": [0, 7], "seven_explicit": true, "fano_brute": false, "ntypes": 8}
+{"k": 10, "a": [10, 13], "n": 23, "tau": 9, "J1": [1, 7], "seven_explicit": true, "fano_brute": false, "ntypes": 12}
+{"k": 10, "a": [11, 12], "n": 23, "tau": 8, "J1": [1, 8], "seven_explicit": true, "fano_brute": false, "ntypes": 10}
+{"k": 10, "a": [10, 14], "n": 24, "tau": 9, "J1": [0, 7], "seven_explicit": true, "fano_brute": false, "ntypes": 12}
+{"k": 10, "a": [10, 14], "n": 24, "tau": 8, "J1": [0, 8], "seven_explicit": true, "fano_brute": false, "ntypes": 11}
+{"k": 10, "a": [12, 12], "n": 24, "tau": 8, "J1": [1, 9], "seven_explicit": true, "fano_brute": false, "ntypes": 12}
+{"k": 10, "a": [11, 13], "n": 24, "tau": 8, "J1": [0, 8], "seven_explicit": true, "fano_brute": false, "ntypes": 11}
+{"k": 10, "a": [11, 13], "n": 24, "tau": 8, "J1": [1, 9], "seven_explicit": true, "fano_brute": false, "ntypes": 9}
+{"k": 10, "a": [11, 13], "n": 24, "tau": 9, "J1": [1, 8], "seven_explicit": true, "fano_brute": false, "ntypes": 10}

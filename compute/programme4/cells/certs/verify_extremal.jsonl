@@ -1,0 +1,8 @@
+{"k": 10, "a": [17], "J": "complete", "n": 17, "tau": 8, "cpsat": "NONE", "milp": "Infeasible", "secs": 1}
+{"k": 11, "a": [19], "J": "complete", "n": 19, "tau": 9, "cpsat": "NONE", "milp": "Infeasible", "secs": 1}
+{"k": 13, "a": [23], "J": "complete", "n": 23, "tau": 11, "cpsat": "NONE", "milp": "Infeasible", "secs": 6}
+{"k": 14, "a": [24], "J": "complete", "n": 24, "tau": 11, "cpsat": "NONE", "milp": "Infeasible", "secs": 1}
+{"k": 15, "a": [26], "J": "complete", "n": 26, "tau": 12, "cpsat": "NONE", "milp": "Infeasible", "secs": 1}
+{"k": 17, "a": [30], "J": "complete", "n": 30, "tau": 14, "cpsat": "NONE", "milp": "Infeasible", "secs": 7}
+{"k": 18, "a": [31], "J": "complete", "n": 31, "tau": 14, "cpsat": "NONE", "milp": "Infeasible", "secs": 1}
+{"k": 19, "a": [33], "J": "complete", "n": 33, "tau": 15, "cpsat": "NONE", "milp": "Infeasible", "secs": 1}

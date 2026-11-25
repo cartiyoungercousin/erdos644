@@ -1,0 +1,48 @@
+{"a": [1, 13], "k": 8, "T": 6, "n": 14, "examined": 1, "fano": 1, "nonfano_only": [], "status": "UNSAT"}
+{"a": [2, 12], "k": 8, "T": 6, "n": 14, "examined": 1, "fano": 1, "nonfano_only": [], "status": "UNSAT"}
+{"a": [3, 11], "k": 8, "T": 6, "n": 14, "examined": 1, "fano": 1, "nonfano_only": [], "status": "UNSAT"}
+{"a": [4, 10], "k": 8, "T": 6, "n": 14, "examined": 1, "fano": 1, "nonfano_only": [], "status": "UNSAT"}
+{"a": [5, 9], "k": 8, "T": 6, "n": 14, "examined": 1, "fano": 1, "nonfano_only": [], "status": "UNSAT"}
+{"a": [6, 8], "k": 8, "T": 6, "n": 14, "examined": 1, "fano": 1, "nonfano_only": [], "status": "UNSAT"}
+{"a": [7, 7], "k": 8, "T": 6, "n": 14, "examined": 1, "fano": 1, "nonfano_only": [], "status": "UNSAT"}
+{"a": [1, 14], "k": 8, "T": 6, "n": 15, "examined": 1, "fano": 1, "nonfano_only": [], "status": "UNSAT"}
+{"a": [2, 13], "k": 8, "T": 6, "n": 15, "examined": 2, "fano": 2, "nonfano_only": [], "status": "UNSAT"}
+{"a": [3, 12], "k": 8, "T": 6, "n": 15, "examined": 2, "fano": 2, "nonfano_only": [], "status": "UNSAT"}
+{"a": [4, 11], "k": 8, "T": 6, "n": 15, "examined": 3, "fano": 3, "nonfano_only": [], "status": "UNSAT"}
+{"a": [5, 10], "k": 8, "T": 6, "n": 15, "examined": 2, "fano": 2, "nonfano_only": [], "status": "UNSAT"}
+{"a": [6, 9], "k": 8, "T": 6, "n": 15, "examined": 3, "fano": 3, "nonfano_only": [], "status": "UNSAT"}
+{"a": [7, 8], "k": 8, "T": 6, "n": 15, "examined": 2, "fano": 1, "nonfano_only": [{"J": [[1, 7], [3, 5], [5, 3], [7, 1]], "tau": 7, "fano_status": "FOUND", "x": {"0": {"15": 3, "52": 1, "56": 1, "81": 1, "82": 1}, "1": {"15": 1, "52": 1, "56": 1, "76": 1, "82": 1, "97": 2, "98": 1}}}], "status": "UNSAT"}
+{"a": [1, 15], "k": 8, "T": 6, "n": 16, "examined": 1, "fano": 1, "nonfano_only": [], "status": "UNSAT"}
+{"a": [2, 14], "k": 8, "T": 6, "n": 16, "examined": 1, "fano": 1, "nonfano_only": [], "status": "UNSAT"}
+{"a": [3, 13], "k": 8, "T": 6, "n": 16, "examined": 3, "fano": 3, "nonfano_only": [], "status": "UNSAT"}
+{"a": [4, 12], "k": 8, "T": 6, "n": 16, "examined": 3, "fano": 3, "nonfano_only": [], "status": "UNSAT"}
+{"a": [5, 11], "k": 8, "T": 6, "n": 16, "examined": 3, "fano": 3, "nonfano_only": [], "status": "UNSAT"}
+{"a": [6, 10], "k": 8, "T": 6, "n": 16, "examined": 3, "fano": 3, "nonfano_only": [], "status": "UNSAT"}
+{"a": [7, 9], "k": 8, "T": 6, "n": 16, "examined": 5, "fano": 5, "nonfano_only": [], "status": "UNSAT"}
+{"a": [8, 8], "k": 8, "T": 6, "n": 16, "examined": 6, "fano": 6, "nonfano_only": [], "status": "UNSAT"}
+{"a": [1, 16], "k": 8, "T": 6, "n": 17, "examined": 1, "fano": 1, "nonfano_only": [], "status": "UNSAT"}
+{"a": [2, 15], "k": 8, "T": 6, "n": 17, "examined": 1, "fano": 1, "nonfano_only": [], "status": "UNSAT"}
+{"a": [3, 14], "k": 8, "T": 6, "n": 17, "examined": 1, "fano": 1, "nonfano_only": [], "status": "UNSAT"}
+{"a": [4, 13], "k": 8, "T": 6, "n": 17, "examined": 4, "fano": 4, "nonfano_only": [], "status": "UNSAT"}
+{"a": [5, 12], "k": 8, "T": 6, "n": 17, "examined": 4, "fano": 4, "nonfano_only": [], "status": "UNSAT"}
+{"a": [6, 11], "k": 8, "T": 6, "n": 17, "examined": 5, "fano": 5, "nonfano_only": [], "status": "UNSAT"}
+{"a": [7, 10], "k": 8, "T": 6, "n": 17, "examined": 7, "fano": 6, "nonfano_only": [{"J": [[1, 7], [5, 3]], "tau": 7, "fano_status": "FOUND", "x": {"0": {"15": 1, "19": 2, "35": 2, "70": 1, "73": 1}, "1": {"58": 1, "60": 2, "70": 1, "81": 2, "109": 1, "110": 1, "124": 2}}}], "status": "UNSAT"}
+{"a": [1, 17], "k": 8, "T": 6, "n": 18, "examined": 1, "fano": 1, "nonfano_only": [], "status": "UNSAT"}
+{"a": [2, 16], "k": 8, "T": 6, "n": 18, "examined": 1, "fano": 1, "nonfano_only": [], "status": "UNSAT"}
+{"a": [8, 9], "k": 8, "T": 6, "n": 17, "examined": 9, "fano": 9, "nonfano_only": [], "status": "UNSAT"}
+{"a": [3, 15], "k": 8, "T": 6, "n": 18, "examined": 1, "fano": 1, "nonfano_only": [], "status": "UNSAT"}
+{"a": [4, 14], "k": 8, "T": 6, "n": 18, "examined": 1, "fano": 1, "nonfano_only": [], "status": "UNSAT"}
+{"a": [5, 13], "k": 8, "T": 6, "n": 18, "examined": 4, "fano": 4, "nonfano_only": [], "status": "UNSAT"}
+{"a": [6, 12], "k": 8, "T": 6, "n": 18, "examined": 5, "fano": 5, "nonfano_only": [], "status": "UNSAT"}
+{"a": [7, 11], "k": 8, "T": 6, "n": 18, "examined": 9, "fano": 8, "nonfano_only": [{"J": [[0, 8], [5, 3]], "tau": 7, "fano_status": "FOUND", "x": {"0": {"5": 2, "25": 1, "41": 1, "49": 1, "67": 2}, "1": {"54": 1, "62": 2, "81": 2, "91": 1, "110": 3, "124": 1, "126": 1}}}], "status": "UNSAT"}
+{"a": [9, 9], "k": 8, "T": 6, "n": 18, "examined": 8, "fano": 8, "nonfano_only": [], "status": "UNSAT"}
+{"a": [1, 18], "k": 8, "T": 6, "n": 19, "examined": 1, "fano": 1, "nonfano_only": [], "status": "UNSAT"}
+{"a": [2, 17], "k": 8, "T": 6, "n": 19, "examined": 1, "fano": 1, "nonfano_only": [], "status": "UNSAT"}
+{"a": [3, 16], "k": 8, "T": 6, "n": 19, "examined": 1, "fano": 1, "nonfano_only": [], "status": "UNSAT"}
+{"a": [4, 15], "k": 8, "T": 6, "n": 19, "examined": 1, "fano": 1, "nonfano_only": [], "status": "UNSAT"}
+{"a": [5, 14], "k": 8, "T": 6, "n": 19, "examined": 1, "fano": 1, "nonfano_only": [], "status": "UNSAT"}
+{"a": [6, 13], "k": 8, "T": 6, "n": 19, "examined": 4, "fano": 4, "nonfano_only": [], "status": "UNSAT"}
+{"a": [8, 10], "k": 8, "T": 6, "n": 18, "examined": 10, "fano": 9, "nonfano_only": [{"J": [[1, 7], [6, 2]], "tau": 7, "fano_status": "FOUND", "x": {"0": {"7": 1, "11": 1, "19": 2, "35": 2, "66": 1, "77": 1}, "1": {"62": 2, "81": 2, "109": 1, "110": 1, "124": 4}}}], "status": "UNSAT"}
+{"a": [7, 12], "k": 8, "T": 6, "n": 19, "examined": 9, "fano": 9, "nonfano_only": [], "status": "UNSAT"}
+{"a": [8, 11], "k": 8, "T": 6, "n": 19, "examined": 8, "fano": 7, "nonfano_only": [{"J": [[0, 8], [6, 2]], "tau": 7, "fano_status": "FOUND", "x": {"0": {"7": 1, "11": 2, "19": 1, "35": 1, "51": 1, "67": 1, "71": 1}, "1": {"45": 1, "62": 1, "81": 2, "110": 1, "124": 5, "126": 1}}}], "status": "UNSAT"}
+{"a": [9, 10], "k": 8, "T": 6, "n": 19, "examined": 7, "fano": 6, "nonfano_only": [{"J": [[1, 7], [7, 1]], "tau": 7, "fano_status": "FOUND", "x": {"0": {"63": 7, "81": 1, "110": 1}, "1": {"62": 1, "67": 1, "68": 2, "72": 1, "74": 1, "81": 2, "96": 2}}}], "status": "UNSAT"}

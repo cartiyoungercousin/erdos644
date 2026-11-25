@@ -1,0 +1,11 @@
+{"k": 18, "a": [16, 25], "n": 41, "tau": 15, "J1": [1, 11], "seven_explicit": true, "fano_brute": "skipped; cpsat=NONE", "ntypes": 13}
+{"k": 18, "a": [19, 22], "n": 41, "tau": 15, "J1": [3, 13], "seven_explicit": true, "fano_brute": "skipped; cpsat=NONE", "ntypes": 13}
+{"k": 18, "a": [16, 26], "n": 42, "tau": 15, "J1": [0, 11], "seven_explicit": true, "fano_brute": "skipped; cpsat=NONE", "ntypes": 13}
+{"k": 18, "a": [17, 25], "n": 42, "tau": 15, "J1": [1, 12], "seven_explicit": true, "fano_brute": "skipped; cpsat=NONE", "ntypes": 9}
+{"k": 18, "a": [20, 22], "n": 42, "tau": 15, "J1": [3, 14], "seven_explicit": true, "fano_brute": "skipped; cpsat=NONE", "ntypes": 14}
+{"k": 18, "a": [19, 23], "n": 42, "tau": 15, "J1": [2, 13], "seven_explicit": true, "fano_brute": "skipped; cpsat=NONE", "ntypes": 11}
+{"k": 18, "a": [18, 25], "n": 43, "tau": 15, "J1": [1, 13], "seven_explicit": true, "fano_brute": "skipped; cpsat=NONE", "ntypes": 15}
+{"k": 18, "a": [17, 26], "n": 43, "tau": 15, "J1": [0, 12], "seven_explicit": true, "fano_brute": "skipped; cpsat=NONE", "ntypes": 13}
+{"k": 18, "a": [20, 23], "n": 43, "tau": 15, "J1": [2, 14], "seven_explicit": true, "fano_brute": "skipped; cpsat=NONE", "ntypes": 13}
+{"k": 18, "a": [19, 24], "n": 43, "tau": 15, "J1": [1, 13], "seven_explicit": true, "fano_brute": "skipped; cpsat=NONE", "ntypes": 13}
+{"k": 18, "a": [21, 22], "n": 43, "tau": 15, "J1": [3, 15], "seven_explicit": true, "fano_brute": "skipped; cpsat=NONE", "ntypes": 13}

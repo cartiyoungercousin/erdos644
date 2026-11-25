@@ -1,0 +1,6 @@
+{"k": 20, "a": [19, 28], "n": 47, "tau": 17, "J1": [1, 13], "seven_explicit": true, "fano_brute": "skipped; cpsat=NONE", "ntypes": 13}
+{"k": 20, "a": [22, 25], "n": 47, "tau": 17, "J1": [3, 15], "seven_explicit": true, "fano_brute": "skipped; cpsat=NONE", "ntypes": 13}
+{"k": 20, "a": [19, 29], "n": 48, "tau": 17, "J1": [0, 13], "seven_explicit": true, "fano_brute": "skipped; cpsat=NONE", "ntypes": 15}
+{"k": 20, "a": [20, 28], "n": 48, "tau": 17, "J1": [1, 14], "seven_explicit": true, "fano_brute": "skipped; cpsat=NONE", "ntypes": 13}
+{"k": 20, "a": [22, 26], "n": 48, "tau": 17, "J1": [2, 15], "seven_explicit": true, "fano_brute": "skipped; cpsat=NONE", "ntypes": 15}
+{"k": 20, "a": [23, 25], "n": 48, "tau": 17, "J1": [3, 16], "seven_explicit": true, "fano_brute": "skipped; cpsat=NONE", "ntypes": 16}

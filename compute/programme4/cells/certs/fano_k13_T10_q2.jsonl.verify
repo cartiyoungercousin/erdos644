@@ -1,0 +1,9 @@
+{"k": 13, "a": [10, 19], "n": 29, "tau": 11, "J1": [0, 7], "seven_explicit": true, "fano_brute": false, "ntypes": 13}
+{"k": 13, "a": [13, 16], "n": 29, "tau": 11, "J1": [2, 9], "seven_explicit": true, "fano_brute": false, "ntypes": 13}
+{"k": 13, "a": [11, 19], "n": 30, "tau": 11, "J1": [0, 8], "seven_explicit": true, "fano_brute": false, "ntypes": 12}
+{"k": 13, "a": [13, 17], "n": 30, "tau": 11, "J1": [1, 9], "seven_explicit": true, "fano_brute": false, "ntypes": 13}
+{"k": 13, "a": [14, 16], "n": 30, "tau": 11, "J1": [2, 10], "seven_explicit": true, "fano_brute": false, "ntypes": 13}
+{"k": 13, "a": [12, 19], "n": 31, "tau": 11, "J1": [0, 9], "seven_explicit": true, "fano_brute": false, "ntypes": 9}
+{"k": 13, "a": [13, 18], "n": 31, "tau": 11, "J1": [0, 9], "seven_explicit": true, "fano_brute": false, "ntypes": 10}
+{"k": 13, "a": [14, 17], "n": 31, "tau": 11, "J1": [1, 10], "seven_explicit": true, "fano_brute": false, "ntypes": 14}
+{"k": 13, "a": [15, 16], "n": 31, "tau": 11, "J1": [2, 11], "seven_explicit": true, "fano_brute": false, "ntypes": 12}
