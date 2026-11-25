@@ -1,0 +1,42 @@
+closed form, hash selectors: gamma = ln(1/p)/k;  gamma_a = ln C(n-T, k)/k (minimal covering)
+k=40 T=31 n=74 N=1.850 omega=3  gamma_a=0.2355 | R=2: p=1.255e-01 gamma=0.0519 | R=8: p=2.186e-01 gamma=0.0380 | R=64: p=3.366e-01 gamma=0.0272
+k=40 T=31 n=76 N=1.900 omega=5  gamma_a=0.3504 | R=2: p=2.894e-02 gamma=0.0886 | R=8: p=6.168e-02 gamma=0.0696 | R=64: p=1.436e-01 gamma=0.0485
+k=40 T=31 n=80 N=2.000 omega=9  gamma_a=0.5361 | R=2: p=1.693e-03 gamma=0.1595 | R=8: p=4.156e-03 gamma=0.1371 | R=64: p=1.388e-02 gamma=0.1069
+k=40 T=31 n=88 N=2.200 omega=17  gamma_a=0.8143 | R=2: p=9.945e-06 gamma=0.2880 | R=8: p=2.683e-05 gamma=0.2632 | R=64: p=1.108e-04 gamma=0.2277
+k=100 T=76 n=180 N=1.800 omega=4  gamma_a=0.1534 | R=2: p=5.226e-02 gamma=0.0295 | R=8: p=1.032e-01 gamma=0.0227 | R=64: p=2.032e-01 gamma=0.0159
+k=100 T=76 n=190 N=1.900 omega=14  gamma_a=0.4028 | R=2: p=2.307e-05 gamma=0.1068 | R=8: p=6.051e-05 gamma=0.0971 | R=64: p=2.369e-04 gamma=0.0835
+k=100 T=76 n=210 N=2.100 omega=34  gamma_a=0.7336 | R=2: p=2.256e-11 gamma=0.2452 | R=8: p=6.308e-11 gamma=0.2349 | R=64: p=3.009e-10 gamma=0.2192
+
+Monte Carlo (4000 random k-sets per rule), rule code verbatim:
+k=40 n=74 hash       R=  2: p~0.1298 (519/4000)  gamma~0.0511
+k=40 n=74 hash       R=  8: p~0.2117 (847/4000)  gamma~0.0388
+k=40 n=74 hash       R= 64: p~0.3305 (1322/4000)  gamma~0.0277
+k=40 n=74 linear     R=  2: p~0.1197 (479/4000)  gamma~0.0531
+k=40 n=74 linear     R=  8: p~0.2305 (922/4000)  gamma~0.0367
+k=40 n=74 parity     R=  2: p~0.1293 (517/4000)  gamma~0.0512
+k=40 n=74 parity     R=  8: p~0.2165 (866/4000)  gamma~0.0383
+k=40 n=74 early      R=  2: p~0.1550 (620/4000)  gamma~0.0466
+k=40 n=74 early      R=  4: p~0.2402 (961/4000)  gamma~0.0357
+k=40 n=74 late       R=  2: p~0.0460 (184/4000)  gamma~0.0770
+k=40 n=74 late       R=  4: p~0.0270 (108/4000)  gamma~0.0903
+k=40 n=74 early^hash R=  2: p~0.1160 (464/4000)  gamma~0.0539
+k=40 n=74 early^hash R=  4: p~0.1850 (740/4000)  gamma~0.0422
+k=40 n=74 junta+     R= 13: p~0.0912 (365/4000)  gamma~0.0599
+k=40 n=74 midhash    R=  2: p~0.1005 (402/4000)  gamma~0.0574
+k=40 n=74 midhash    R=  4: p~0.1370 (548/4000)  gamma~0.0497
+k=100 n=180 hash       R=  2: p~0.0602 (241/4000)  gamma~0.0281
+k=100 n=180 hash       R=  8: p~0.0980 (392/4000)  gamma~0.0232
+k=100 n=180 hash       R= 64: p~0.2032 (813/4000)  gamma~0.0159
+k=100 n=180 linear     R=  2: p~0.0508 (203/4000)  gamma~0.0298
+k=100 n=180 linear     R=  8: p~0.1022 (409/4000)  gamma~0.0228
+k=100 n=180 parity     R=  2: p~0.0495 (198/4000)  gamma~0.0301
+k=100 n=180 parity     R=  8: p~0.1087 (435/4000)  gamma~0.0222
+k=100 n=180 early      R=  2: p~0.0770 (308/4000)  gamma~0.0256
+k=100 n=180 early      R=  4: p~0.1247 (499/4000)  gamma~0.0208
+k=100 n=180 late       R=  2: p~0.0120 (48/4000)  gamma~0.0442
+k=100 n=180 late       R=  4: p~0.0075 (30/4000)  gamma~0.0489
+k=100 n=180 early^hash R=  2: p~0.0568 (227/4000)  gamma~0.0287
+k=100 n=180 early^hash R=  4: p~0.0785 (314/4000)  gamma~0.0254
+k=100 n=180 junta+     R= 28: p~0.0345 (138/4000)  gamma~0.0337
+k=100 n=180 midhash    R=  2: p~0.0375 (150/4000)  gamma~0.0328
+k=100 n=180 midhash    R=  4: p~0.0530 (212/4000)  gamma~0.0294

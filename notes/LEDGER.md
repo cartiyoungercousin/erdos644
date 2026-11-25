@@ -132,6 +132,8 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 
 - CORRECTION (reviewer, 2026-11-25): the "B gap 1.852 ≤ N < 11/6" quoted in reports/RESPONSE_TO_DIRECTION_2 is EMPTY (11/6 ≈ 1.833 < 1.852): B1's three Ω's cover the whole Fano range N < 11/6. The genuine open range for B is N ≥ 11/6 (non-Fano good sevens; Theorem D to 1.938; core window to ≈ 2.25). Slack units: per-point slack (3−j)(4−j) in units of 3(4n−7k); a dumped point costs 12 there = 4 in units of 4n−7k (total 4δk). Short dual words: members meet supp(h) evenly (⟨h,B⟩ = 0); wt(h) may be odd.
 
+- γ precheck for the counting route (notes/PROGRAMME3_GAMMA.md) [computed; cost model heuristic]: covering families have density p = e^{−γk} with γ ≤ γ_a = (1+ω)h(ω/(1+ω)) ≈ 0.10–0.29 in the Fano window. The brief's light-character cutoff w* ≈ 1.03γk leaves e^{0.39k}–e^{0.70k} light characters (rigorous Parseval cutoff: essentially all 2^n). Density increment: < 1 deficiency unit of slack per step. VERDICT: Tasks C/D (counting + increment for arbitrary families) work only for dense families (γ ≲ 4ε); for sparse seven-free covering families the wall is the whole regime. Stored CORE §56 greedy families are dense (γ ≈ 0.8ω). Also: with C1 (δ ≥ 3ε) and N < 11/6, the Fano window is nonempty only for ε < 1/36; for larger ε every counterexample has N ≥ 11/6 (non-Fano sevens), outside Programme 2's B/C framework.
+
 ## Open
 - LIFT (G2 / far replies): transfer confined results to general families (anchor-keeping certificates, or show far replies with large outside overlap lose). Needed for the full solve.
 - Record path: exact certification of R1's sparsest-anchor argument at t = 17/20 (anchor-keeping, transfers) would give f(k,7) <= (17/20 + o(1))k (FRONTIER §4–5).
