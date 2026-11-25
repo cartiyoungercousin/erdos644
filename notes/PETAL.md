@@ -2104,3 +2104,133 @@ Checks: `py compute/petal4/cr.py` (pseudo-hit); `py compute/petal4/search_cr.py 
 `py compute/petal4/single_cr.py 12 4 17 30 1 1 0 300` (15 s). Full runs: the commands in the log headers (strided, 4–6 processes).
 Hand proofs re-read once: PC (both cases), YC (the three alternatives for z), CR (forced petals with a family hitting set;
 both G_j options; |B| <= 4β), the tolerance arithmetic, 𝒟(q) overlap and LP dual.
+
+---------------------------------------------------------------------------------------------
+## 45. Fixed-family test on the strip; tightness lemma; centres-first play (fifteenth time box)
+
+Brief: pooled 𝒜 on 3/4 < t < 7/9, t/2 - 1/6 <= δ < 1 - t. Test the lever "the adversary answers from ONE fixed family":
+does every minimal τ > T subfamily fail (7,2), and can she force it? Code: `compute/petal7/fixed72_strip.py`,
+`compute/petal7/cf_replay.py`; logs `compute/petal7/logs/fixed72_strip.log`, `cf_replay.log`, `cf_replay_seal.log`.
+Imports only `pool_strip.Fam`, `pool_strip.two_cover` and `trace_adversary` from `compute/petal5`. Nothing committed.
+
+**Outcome.**
+1. **Every natural τ > T subfamily fails (7,2) at the smallest strip instances** [computed exact]. No counterexample
+   candidate appears (45.2).
+2. **Tightness lemma TL** [proved by hand]: every τ > T subfamily G has τ(G) = T + 1, and for every own part Q (k - d
+   points of R_c) and every τ_{c'}-subset Y of R_{c'} it contains a member with own part exactly Q avoiding Y. So in
+   EVERY subfamily she controls own parts completely. Minimal subfamilies differ from H only in where leaks and traces
+   go (45.1). The SAT seven of item 1 rely on leak placements the adversary need not give. So item 1 is not a forcing
+   statement, and the fixed-family question is exactly the leak game.
+3. **The §31 adversary A_T is beaten by reordering** [computed exact]. Centres first, then four exact petals (CF, 45.3),
+   wins in seven requests <= T against A_T at every instance with a pool. This includes (57, 43, 13) and (100, 76, 23),
+   which lie inside the §31 loss region (3t/10, 1 - t). So §31's verdict is about the petals-first model, not about A_T
+   as an obstruction.
+4. **A leak-aware variant beats this CF plan at all 8 instances** [computed exact]. In the variant A_T+, petal leaks go
+   to the points lying in the most centres. Every cover has the same shape: {x, y}, with y a pair leak lying in all
+   three centres and x a trace point of centre 3 in a triple cell. The cause is that exact petal requests have zero
+   slack: τ_A - 1 + τ_F = T. They cannot seal the R_F points that lie in all three centres on top of the block that
+   restricts leak types (45.3) [proved by hand for this plan].
+5. **Verdict on (3) of the brief:** no genuine obstruction was found, and nothing here is a (7,2) family with τ > T.
+   The strip is still open. It is now reduced to a sharp form: a τ > T subfamily is a counterexample iff its leak and
+   trace function defeats every adaptive multi-probe requester whose own parts are free (TL).
+
+### 45.1 Lemma TL (tightness) [proved by hand]
+
+H = pooled 𝒜 at integer level, with n_A + n_F = 2k - 2d + T - 1, so that τ_A + τ_F = T + 1 (τ_c = n_c - k + d + 1). Let
+G ⊆ H with τ(G) > T. Take Q ⊆ R_A with |Q| = k - d and Y ⊆ R_F with |Y| = τ_F, and put S = (R_A ∖ Q) ∪ Y. Then
+|S| = (τ_A - 1) + τ_F = T, so some E ∈ G avoids S.
+- E is not class F, because |R_F ∖ Y| = n_F - τ_F = k - d - 1.
+- So E is class A with E ∩ R_A ⊆ Q, and |E ∩ R_A| >= k - d forces E ∩ R_A = Q. Its leak (d points) lies in
+  (R_F ∖ Y) ∪ O.
+
+The same holds with the classes swapped. Also τ(G) <= τ(H) = T + 1. ∎
+
+Consequences:
+- Every "exact" request (τ_c - 1 points of R_c, τ_{c'} of R_{c'}) works identically against every subfamily. This covers
+  PS3's petal requests and the CF petals below.
+- Re-selection (more than seven probes, choosing the seven afterwards) is the only extra power a fixed family gives her.
+- Against trace hits, re-selection is weak [heuristic]: a centre needs only ONE unsealed point of an earlier trace to
+  re-create the P2 edge, so every extra probe can be spoiled at point cost.
+
+### 45.2 Fixed-family (7,2) tests (`fixed72_strip.py`) [computed exact]
+
+Strip instances with k < 60 (exact rational test): the smallest are (24,18,5) (t = 3/4, δ = 5/24 = δ*), (33,25,7)
+(t > 3/4, δ = δ* exactly) and (37,28,8) (interior). The first with δ > 3t/10 are (44,33,10) at t = 3/4 and (57,43,13)
+with t > 3/4.
+
+Families:
+- H: pool m = 2d;
+- Hnp: no pool, which is what A_T answers from;
+- Hex: exactly k - d own and d in the other arena;
+- Hpo: exactly k - d own and d in a pool of T + d points, the least pool keeping τ > T, since τ <= |O| - d + 1.
+
+τ is computed by exhaustive profile enumeration. SAT (CaDiCaL) searches for 4 class-A + 3 class-F distinct members
+with no 2-cover, and the seven are re-checked by the plain double loop over points.
+
+| (k,T,d) | t | δ | H | Hnp | Hex | Hpo |
+|---|---|---|---|---|---|---|
+| 24,18,5 | .750 | .208 | τ=19, seven found | 19, found | 19, found | 19, found |
+| 33,25,7 | .758 | .212 | 26, found | 26, found | 26, found | 26, found |
+| 37,28,8 | .757 | .216 | 29, found | 29, found | 29, found | 29, found |
+| 44,33,10 | .750 | .227 | 34, found | 34, found | 34, found | 34, found |
+| 57,43,13 | .754 | .228 | 44, found | 44, found | 44, found | 44, found |
+
+All τ = T + 1. Every seven is legal and distinct, with no 2-cover. In Hex and Hpo every member has the exact profile
+(k - d, d): its own part is forceable by TL, its leak is not.
+
+### 45.3 Centres-first play (`cf_replay.py`) [computed exact for the replays; accounting proved by hand for the plan]
+
+**CF.**
+- Centres 1–3 are forced class F by G_j ⊂ R_A, |G_j| = max(τ_A, |earlier R_A-traces|), sealing the earlier traces.
+  Request 3 also seals the pool points common to centres 1 and 2. The rest of each budget is a block K_j ⊂ R_F
+  (K_1, K_2 disjoint, of τ_F - 1 points each; K_3 in the rest of R_F).
+- Petals 4–7 are exact (TL). W_a ⊂ R_A has τ_A - 1 points, with W_1 ⊇ z_1, W_2 ⊇ z_2, and W_3 ∪ W_4 ⊇ z_3 ∪ rest.
+  Y_a ⊂ R_F has τ_F points: points in two earlier leaks first, then the points missed by centre y(a), with
+  y = (1, 2, 3, 3); then R_F points lying in all three centres.
+- Every request is exactly T.
+- Why it can work: R_A points lie in at most one centre, so R_A–R_A edges are safe. A single of petal a with centre
+  type [3] ∖ {j} is dangerous only if T_a ∩ z_j ≠ ∅, and the windows put z_j only into the triple cells of petals with
+  y(a) = j.
+
+| instance (k,T,d,m) | vs A_T | vs A_T+ | vs A_T+p (also pool-first traces) |
+|---|---|---|---|
+| 24,18,5,10 / 33,25,7,14 / 37,28,8,16 / 57,43,13,26 | win (no 2-cover) | 2-cover | 2-cover |
+| 100,76,23,60 / 100,75,24,60 / 200,150,49,100 | win | 2-cover | 2-cover |
+| 100,75,24,0 (no pool) | 2-cover (A_T leaks fall on used R_F points) | 2-cover | 2-cover |
+
+`SEAL_LEAKS=1` (seal all earlier leak points first) gives the same table.
+
+**The A_T+ kill, by hand.** Let Tri be the set of R_F points in all three centres.
+- K_1 + K_2 + K_3 <= t + (t - 2δ) cannot cover R_F (mass 1 + t/2 - δ). So the adversary can keep
+  |Tri| >= 1 - 3t/2 + δ, which is > 0 on the strip since δ >= t/2 - 1/6 and t < 5/6.
+- An exact petal request has no room beyond its type block, so Tri cannot be sealed there.
+- A leak at a point of Tri is adjacent to its triple cell, and that cell meets centre 3's trace or (for a pair leak) the
+  pair cell. Every logged cover is of this form: x ∈ z_3 ∩ T_a, and y ∈ Tri in two petals.
+- Dropping the type block instead forces every T_a to avoid all three traces. At t = 3/4 this needs mass 3δ in at least
+  two windows, against the available 3t/2 - 1 + δ: it fails for δ > 1/16. The count is proved by hand (double-counting
+  of window multiplicities). That every two-centre leak type stays available to every petal is [heuristic].
+- So **this CF plan is dead on the strip**. CF with petals that are not exact (giving up window control to seal Tri),
+  or with triple cells deliberately emptied for some petals (Σ_a |T_a| >= 2 - t - 2δ allows two empty cells), was
+  **not examined**.
+
+### 45.4 Status
+
+- Proved: TL; the Tri bound and the zero-slack count for the CF plan; the window-multiplicity count.
+- Computed exact: 45.2 (20 SAT instances, all failing (7,2)); 45.3 (24 replays).
+- Dead:
+  - "natural subfamily is a counterexample" (all fail);
+  - A_T as an obstruction (CF beats it);
+  - the exact-petal CF plan (A_T+ beats it).
+- **Open:** the strip. Next steps:
+  1. A CF LP in the style of `window_lp.py`. Its variables would be centre types of R_F points, leak types, cell masses
+     with traces, and non-exact petal requests trading window control for Tri sealing. It decides whether any CF plan
+     reaches 1 - t.
+  2. CF with two petals whose triple cells are empty.
+  3. If both fail, a joint adversary (A_T for petals-first, A_T+ for centres-first) is the natural Theorem-N analogue to
+     try. It still has to be shown consistent with ONE fixed family under re-selection (TL leaves it only the leak
+     function).
+
+Checks: `py -3.14 compute/petal7/fixed72_strip.py` (about 1 min); `py -3.14 compute/petal7/cf_replay.py` (about 1 min;
+`SEAL_LEAKS=1` variant).
+Hand proofs re-read once: TL (both class cases); the Tri bound (K budgets t/2, t/2, t - 2δ); the zero-slack count
+τ_A - 1 + τ_F = T.

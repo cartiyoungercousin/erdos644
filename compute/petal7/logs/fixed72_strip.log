@@ -1,0 +1,31 @@
+strip instances with k < 60 (k, T, d): [(24, 18, 5), (28, 21, 6), (32, 24, 7), (33, 25, 7), (36, 27, 8), (37, 28, 8), (40, 30, 9), (41, 31, 9), (42, 32, 9), (44, 33, 10), (45, 34, 10), (46, 35, 10), (48, 36, 10), (48, 36, 11), (49, 37, 11), (50, 38, 11), (51, 39, 11), (52, 39, 11), (52, 39, 12), (53, 40, 12), (54, 41, 12), (55, 42, 12), (56, 42, 12), (56, 42, 13), (57, 43, 12), (57, 43, 13), (58, 44, 13), (59, 45, 13)]
+
+(k,T,d)=(24,18,5): t=0.7500 delta=0.2083  t/2-1/6=0.2083 3t/10=0.2250 1-t=0.2500  nA=28 nF=27
+  H    m= 10 tau=19 (T+1=19): seven found in 0.0s; members legal True, distinct True, brute-force 2-cover None; profiles [[22, 2, 0], [24, 0, 0], [19, 5, 0], [19, 5, 0], [5, 19, 0], [5, 19, 0], [5, 19, 0]]
+  Hnp  m=  0 tau=19 (T+1=19): seven found in 0.0s; members legal True, distinct True, brute-force 2-cover None; profiles [[22, 2, 0], [24, 0, 0], [19, 5, 0], [19, 5, 0], [5, 19, 0], [5, 19, 0], [5, 19, 0]]
+  Hex  m=  0 tau=19 (T+1=19): seven found in 0.2s; members legal True, distinct True, brute-force 2-cover None; profiles [[19, 5, 0], [19, 5, 0], [19, 5, 0], [19, 5, 0], [5, 19, 0], [5, 19, 0], [5, 19, 0]]
+  Hpo  m= 23 tau=19 (T+1=19): seven found in 0.4s; members legal True, distinct True, brute-force 2-cover None; profiles [[19, 0, 5], [19, 0, 5], [19, 0, 5], [19, 0, 5], [0, 19, 5], [0, 19, 5], [0, 19, 5]]
+
+(k,T,d)=(33,25,7): t=0.7576 delta=0.2121  t/2-1/6=0.2121 3t/10=0.2273 1-t=0.2424  nA=38 nF=38
+  H    m= 14 tau=26 (T+1=26): seven found in 0.7s; members legal True, distinct True, brute-force 2-cover None; profiles [[26, 0, 7], [26, 0, 7], [26, 0, 7], [26, 0, 7], [0, 26, 7], [2, 26, 5], [6, 26, 1]]
+  Hnp  m=  0 tau=26 (T+1=26): seven found in 0.4s; members legal True, distinct True, brute-force 2-cover None; profiles [[27, 6, 0], [27, 6, 0], [26, 7, 0], [30, 3, 0], [6, 27, 0], [5, 28, 0], [2, 31, 0]]
+  Hex  m=  0 tau=26 (T+1=26): seven found in 0.4s; members legal True, distinct True, brute-force 2-cover None; profiles [[26, 7, 0], [26, 7, 0], [26, 7, 0], [26, 7, 0], [7, 26, 0], [7, 26, 0], [7, 26, 0]]
+  Hpo  m= 32 tau=26 (T+1=26): seven found in 0.6s; members legal True, distinct True, brute-force 2-cover None; profiles [[26, 0, 7], [26, 0, 7], [26, 0, 7], [26, 0, 7], [0, 26, 7], [0, 26, 7], [0, 26, 7]]
+
+(k,T,d)=(37,28,8): t=0.7568 delta=0.2162  t/2-1/6=0.2117 3t/10=0.2270 1-t=0.2432  nA=43 nF=42
+  H    m= 16 tau=29 (T+1=29): seven found in 1.1s; members legal True, distinct True, brute-force 2-cover None; profiles [[29, 0, 8], [29, 0, 8], [29, 0, 8], [29, 0, 8], [0, 29, 8], [0, 29, 8], [8, 29, 0]]
+  Hnp  m=  0 tau=29 (T+1=29): seven found in 0.9s; members legal True, distinct True, brute-force 2-cover None; profiles [[29, 8, 0], [33, 4, 0], [29, 8, 0], [29, 8, 0], [8, 29, 0], [8, 29, 0], [8, 29, 0]]
+  Hex  m=  0 tau=29 (T+1=29): seven found in 0.7s; members legal True, distinct True, brute-force 2-cover None; profiles [[29, 8, 0], [29, 8, 0], [29, 8, 0], [29, 8, 0], [8, 29, 0], [8, 29, 0], [8, 29, 0]]
+  Hpo  m= 36 tau=29 (T+1=29): seven found in 0.8s; members legal True, distinct True, brute-force 2-cover None; profiles [[29, 0, 8], [29, 0, 8], [29, 0, 8], [29, 0, 8], [0, 29, 8], [0, 29, 8], [0, 29, 8]]
+
+(k,T,d)=(44,33,10): t=0.7500 delta=0.2273  t/2-1/6=0.2083 3t/10=0.2250 1-t=0.2500  nA=50 nF=50
+  H    m= 20 tau=34 (T+1=34): seven found in 0.8s; members legal True, distinct True, brute-force 2-cover None; profiles [[34, 10, 0], [34, 10, 0], [40, 4, 0], [34, 10, 0], [8, 35, 1], [10, 34, 0], [0, 34, 10]]
+  Hnp  m=  0 tau=34 (T+1=34): seven found in 1.0s; members legal True, distinct True, brute-force 2-cover None; profiles [[34, 10, 0], [37, 7, 0], [34, 10, 0], [35, 9, 0], [6, 38, 0], [9, 35, 0], [9, 35, 0]]
+  Hex  m=  0 tau=34 (T+1=34): seven found in 5.7s; members legal True, distinct True, brute-force 2-cover None; profiles [[34, 10, 0], [34, 10, 0], [34, 10, 0], [34, 10, 0], [10, 34, 0], [10, 34, 0], [10, 34, 0]]
+  Hpo  m= 43 tau=34 (T+1=34): seven found in 1.4s; members legal True, distinct True, brute-force 2-cover None; profiles [[34, 0, 10], [34, 0, 10], [34, 0, 10], [34, 0, 10], [0, 34, 10], [0, 34, 10], [0, 34, 10]]
+
+(k,T,d)=(57,43,13): t=0.7544 delta=0.2281  t/2-1/6=0.2105 3t/10=0.2263 1-t=0.2456  nA=65 nF=65
+  H    m= 26 tau=44 (T+1=44): seven found in 1.4s; members legal True, distinct True, brute-force 2-cover None; profiles [[51, 0, 6], [46, 11, 0], [45, 12, 0], [44, 13, 0], [0, 45, 12], [13, 44, 0], [0, 44, 13]]
+  Hnp  m=  0 tau=44 (T+1=44): seven found in 4.6s; members legal True, distinct True, brute-force 2-cover None; profiles [[44, 13, 0], [44, 13, 0], [44, 13, 0], [44, 13, 0], [7, 50, 0], [13, 44, 0], [13, 44, 0]]
+  Hex  m=  0 tau=44 (T+1=44): seven found in 14.5s; members legal True, distinct True, brute-force 2-cover None; profiles [[44, 13, 0], [44, 13, 0], [44, 13, 0], [44, 13, 0], [13, 44, 0], [13, 44, 0], [13, 44, 0]]
+  Hpo  m= 56 tau=44 (T+1=44): seven found in 1.9s; members legal True, distinct True, brute-force 2-cover None; profiles [[44, 0, 13], [44, 0, 13], [44, 0, 13], [44, 0, 13], [0, 44, 13], [0, 44, 13], [0, 44, 13]]
