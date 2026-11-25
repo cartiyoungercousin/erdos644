@@ -29,6 +29,13 @@ columns h_x ∈ F₂^M (parity-check columns), the *classes/cells* of V are the 
   seven. The 2 exceptions have τ = 2. They are not covering, but they **refute Task 3's conjecture** that (H0)+(H1)+V = ∪H
   suffice.
 
+- **Second pass (remaining gap, route (b)).**
+  - Item 1 of §5.5 is now proved: Lemma F1, a fixed-count Fourier bound via Parseval on F₂³, gives the rigorous
+    criteria Theorem F and F2 (§5.6).
+  - Item 2 (a deterministic decomposition) is open (§5.7).
+  - Short dual words cannot obstruct (§5.8).
+  - See §7.
+
 ## 1. The reviewer's dual-distance dichotomy (checked first)
 
 **Verdict: the dichotomy does not apply as stated. Theorem R never applies to a coset family, at any dual distance.
@@ -268,8 +275,7 @@ P(Σ_{x∈supp μ} v(x) = 0)·8 = 1 + 7(−1/7)^w. That is 0 for w = 1, 8/7 for 
   e^{Θ(k)} in the whole regime N < 11/6, and (DW) needs only e < (2/3)N, far beyond B1m's 3m.
 
 ### 5.5 What a complete counting proof of B still needs (precise)
-1. **A rigorous fixed-count estimate** |[z^m] Π_x ĝ_{λ(x)}| ≤ poly(N)·κ^{d(λ)}·Mult(m) (a saddle point / local limit
-   bound uniform in λ). Not written.
+1. **A rigorous fixed-count estimate.** **Now proved (Lemma F1, §5.6)**, with κ_eff = 7^{−1/2} in place of 1/7.
 2. **A deterministic decomposition.** Remove (dump to Z, or glue into monochromatic blocks) a set X of near-coloop
    structure, at cost |X₀| ≤ u, after which (DW) holds on the rest.
    - B1 does this for the threshold |S|/4, but only proves the *construction*, not (DW).
@@ -277,6 +283,80 @@ P(Σ_{x∈supp μ} v(x) = 0)·8 = 1 + 7(−1/7)^w. That is 0 for w = 1, 8/7 for 
      of cocircuits. That is not controlled by local deficiency alone.
 3. **Blocks.** They interact with the count only through their fixed labels, which shift the target of the Fourier sum
    over the free points. Harmless.
+
+### 5.6 Item 1 made rigorous: Lemma F1 (fixed counts) [proved by hand; checked exactly in `f1_check.py`]
+**Notation.**
+- p_v = m_v/N (v ∈ F₂³ ∖ 0) and P₂ = 8 Σ_v p_v². P₂ = 8/7 for equal regions.
+- P_m = Mult(m)·Π_v p_v^{m_v} is the probability that an i.i.d. p-labelling has counts exactly m. By Stirling,
+  P_m ≥ c·N^{−3} when every m_v ≥ 1.
+- For λ: V″ → F₂³, write n_u = |λ⁻¹(u)|.
+
+**Lemma F1.**
+  |S(λ)| ≤ Mult(m) · Φ(n)/P_m,   where Φ(n) = max { Π_u t_u^{n_u/2} : Σ_u t_u = P₂, 0 ≤ t_u ≤ 1 }.
+
+*Proof.*
+- Write S(λ) = [z^m] Π_x ĝ_{λ(x)}(z) and substitute z_v = p_v e^{iθ_v}. This gives
+  S(λ) = Π_v p_v^{−m_v} (2π)^{−7} ∫ Π_x g_{λ(x)}(θ) e^{−i⟨m,θ⟩} dθ, with g_u(θ) = Σ_v p_v (−1)^{⟨u,v⟩} e^{iθ_v}.
+- g_u(θ) is the F₂³-Fourier transform at u of f(v) = p_v e^{iθ_v} (with f(0) = 0). So |g_u| ≤ 1, and by Parseval
+  Σ_u |g_u(θ)|² = 8 Σ_v p_v² = P₂ for every θ.
+- Hence |Π_x g_{λ(x)}(θ)| = Π_u |g_u|^{n_u} ≤ Φ(n). Dividing by Mult(m) = P_m·Π_v p_v^{−m_v} gives the claim. ∎
+
+**Consequences [proved by hand].**
+- *Near-constant words.* If the dominant value has n_{u*} ≥ N/P₂ (= 7N/8 for equal regions), the maximiser has
+  t_{u*} = 1. The other t_u share P₂ − 1, so Φ ≤ (P₂ − 1)^{d/2}·e^{−(d/2)H(ν′)} ≤ 7^{−d/2}, with d = N − n_{u*}. The
+  rigorous per-point damping is therefore **7^{−1/2}**. The heuristic 1/7 of 5.2 is not proved.
+- *Spread words.* Φ ≤ exp(−(N/2)(H(ν) − ln P₂)), where ν = n/N and H is the entropy in nats.
+
+**Exact check.** `f1_check.py` computes S(λ)/Mult exactly, as E[Π_x (−1)^{⟨λ(x),Y_x⟩}] by DP over the remaining counts in
+rationals. Over 300 random (λ, m) with N ≤ 28, near-constant and spread, the bound held every time. The largest ratio of
+the exact value to the bound was 0.015, so the bound is valid and loose [computed exact].
+
+**Theorem F (counting criterion) [proved by hand, from F1 and 5.2].** Fix Ω, F and Z as in 9′ / B1. Then
+  N_m ≥ 8^{−d} Mult(m) (8 − Σ_{λ ∈ A ∖ Λ₀} Φ(n(λ))/P_m).
+So **Σ_{λ ∈ D⊗F₂³, λ nonconstant} Φ(n(λ)) < 8·P_m implies a Fano-type good seven.** This criterion is rigorous and
+checkable from the type distribution of D ⊗ F₂³. It has no hypothesis on c and no reserved bases.
+
+**Theorem F2 (with a fixed part) [proved by hand].** Let S ⊆ V″ carry a fixed labelling ψ, and let R = V″ ∖ S with
+remaining counts m′.
+- Fourier over (F₂^M)³ gives a count of completions with target τ = Σ_{x∈S} ψ(x) ⊗ h_x.
+- The fibres of λ ↦ λ|_R contribute only if τ is orthogonal to every functional that vanishes on the R-columns.
+  Condition (LC0): ψ satisfies the constraints of the dual words supported in S.
+- The constant words on R must come with sign +1. Condition (LC1), the parity condition.
+- Under (LC0) and (LC1), the criterion of Theorem F with (D_R = D|_R, m′, p′) gives a completion, hence a good seven.
+
+### 5.7 Item 2 (the decomposition): status [proved: the reduction; not proved: the size bound]
+- **What a decomposition must do.** The words that break Theorem F are those near the constants: Φ ≈ 7^{−d/2} against
+  their number. Theorem F2 removes them by fixing labels on their supports. Any word of D supported in S becomes a local
+  constraint (LC0) and disappears from D_R.
+- **Why this is not yet a proof: puncturing lowers weights.** D_R = D|_R can acquire *new* light words: words heavy on S
+  and light on R.
+  - The closure S* (the least S such that D|_{V″∖S} has no nonconstant word at two-sided weight < w₀) exists, by
+    iteration.
+  - But nothing known bounds |S*|.
+  - Moreover, (LC0) on S* is a labelling problem of the same type on S*, with no spread. That is circular.
+- **What would close B.** One of:
+  - (i) a bound |S*| ≤ c·u together with a B1-type solution on S*; or
+  - (ii) a direct type-distribution bound for D ⊗ F₂³ under T-covering (covering only constrains the words of
+    C^⊥ ∖ C₀^⊥, which have weight ≥ T + 1, and says nothing about C₀^⊥); or
+  - (iii) a structural reason why covering coset families in the gap have random-like D.
+  I found none of these. **Item 2 is open.**
+
+### 5.8 Building an obstruction from short dual words (route (c)): dead [proved by hand: the reduction; computed exact: the ratios]
+- **The test.** Lemma 5 gives Σ_p wt(s_p) = Σ_x j_x(4 − j_x), where j_x = |J(x)|. The total deficiency is
+  Σ_x (4 − j_x) = 4n − 7k (more is allowed, since points can be wasted).
+  - Every s_p ∈ a + C, so Σ_p wt(s_p) ≥ 7ρ_par.
+  - A Fano-type seven therefore needs β·7ρ_par ≤ 4δk, where β is the least deficiency per pencil-incidence available.
+  - Free points have β = 1/3 (triangles). That is Corollary 7.
+  - So a structural obstruction would need structure forcing β > 4δk/(7ρ_par) ≥ 4/7 − o(1), using ρ_par ≤ r + 1 ≤ δk + 1.
+- **The natural candidates.** Short dual words λ with λ·a = 0 force local XOR relations on patterns:
+  - "even blocks": w points whose patterns XOR to 0;
+  - "fans": dual words {x_i, y, y′}, which force J(x_i) = J(y) Δ J(y′).
+- **`ratio.py` (exhaustive over the 64 admissible patterns):** the minimum β is **1/3** for even blocks of every size
+  w = 2..6 and for fans of every size q = 1..10. Two triangles can have an anti-pencil as symmetric difference, for
+  example {124, 235, 346} Δ {124, 457, 267} = ANTI(1).
+- **Conclusion.** Local even-intersection structure never raises the cost of a Fano-type seven. An obstruction would
+  have to be global (non-local). My first hand estimate, β = 2/3 for fans, was wrong; the exhaustive check corrected it.
+  No counterexample candidate was produced.
 
 ## 6. Computations (`compute/programme2/B/`, logs in `logs/`)
 
@@ -322,23 +402,50 @@ P(Σ_{x∈supp μ} v(x) = 0)·8 = 1 + 7(−1/7)^w. That is 0 for w = 1, 8/7 for 
 
 ### 6.4 Counting (`montecarlo.py`): §5.3.
 
-## 7. Status of B and what is left
+## 7. Status of B and what is left (updated after the second pass)
 
-- **Few classes.**
-  - S⁺ (c ≤ 4(T − 3k/4) − 12 and n/3 + c ≤ T): good seven, no parity or singleton conditions [given S⁺].
-  - 9′ (c ≲ (k − 5r)/4 with H3, H4′).
-- **Many classes, small linear codimension: Theorem B1** [proved by hand]. B holds for N < 1.852 whenever
-  codim(C_ev) − 1 ≤ min((k − 5r − 41)/15, (r + 4εk − 11)/5), for every column structure.
-- **Many classes, larger codimension.**
-  - B1m works [computed exact per instance; random columns up to e ≈ 2.8m], conditional on (SPAN).
-  - Counting says the main term dominates for random-like D [heuristic].
-  - **Unproved:** structured codes with codimension above B1's bound that are *not* random-like. For example a code mixing
-    near-coloop structure (rank drop between |S|/4 and 0.94|S|) with codimension Θ(k).
-  - That is the exact remaining gap. A proof needs §5.5 (1) and (2), or a version of B1 whose reserved-base cost does not
-    scale with e.
-- **No counterexample.** Nothing found in the many-class regime. The only failures of (H0) + (H1) + V = ∪H have τ = 2.
-- **11/6 ≤ N < 1.938.** B1 needs three disjoint small Ω's, which are proved only for N < 1.852 (t = 3/4). Unchanged.
+**Proved [by hand].**
+- *Few classes.* S⁺: c ≤ 4(T − 3k/4) − 12 and n/3 + c ≤ T [given S⁺]. 9′: c ≲ (k − 5r)/4, with H3 and H4′.
+- *Theorem B1.* B holds for N < 1.852 whenever codim(C_ev) − 1 ≤ min((k − 5r − 41)/15, (r + 4εk − 11)/5), for every
+  column structure (committed).
+- *Lemma F1 (§5.6).* A rigorous fixed-count Fourier bound, with per-point damping 7^{−1/2} near the constants and an
+  entropy form elsewhere. This settles item 1 of §5.5.
+- *Theorems F and F2.* Counting criteria for a Fano-type good seven:
+  Σ_{λ nonconstant in D⊗F₂³} Φ(n(λ)) < 8P_m, optionally after fixing labels on a set S satisfying (LC0) and (LC1).
+  They need no hypothesis on c, no reserved bases and no (SPAN).
+- *The reduction of route (c) to the deficiency ratio β (§5.8).* A structural obstruction needs β ≥ 4/7.
+
+**Computed exact.**
+- 496/496 B1 constructions verified; Y-step capacity 3m (§4).
+- 217/219 small instances satisfying (H0)+(H1) with V = ∪H have a Fano-type seven. The 2 exceptions have τ = 2, which
+  refutes Task 3's conjecture.
+- Lemma F1 checked exactly on 300 cases; the largest ratio of exact value to bound was 0.015.
+- β = 1/3 for every even block (w ≤ 6) and fan (q ≤ 10). Short-dual-word structure gives no obstruction.
+
+**Heuristic.**
+- B1m handles random-like codes in the whole range N < 11/6.
+- For random-like D the Theorem F sum is about exp(N[H/2 + 0.067 − 2.08(1 − d/N)]) ≤ e^{−0.41N} (type counting). So
+  Theorem F holds with exponential margin for random-like codes.
+  - This is heuristic only because B_w(D⊗F₂³) is replaced by its random value. The rigorous F1 bound is kept.
+
+**The remaining gap, exactly.**
+- Covering coset families with codimension above B1's bound whose punctured dual D has *many* near-constant words of
+  D⊗F₂³: more than about 7^{d/2} words at distance d.
+- These are codes with a large amount of near-coloop structure: subsets S with rank drop ≥ 0.47|S|, the threshold where
+  8^{drop}·7^{−|S|/2} ≥ 1.
+- For them Theorem F fails, B1's dump budget u is too small, and Theorem F2 needs the closure S* of §5.7, whose size is
+  not controlled.
+- Choice made: route (b). Item 1 is done. Item 2 is open, and §5.7 (i)–(iii) are the three possible ways to close it.
+
+**Counterexample search.**
+- Local structures are excluded (§5.8).
+- No global structured candidate was built.
+- The deficiency LP of §5.8 is the right test for any future candidate: compute β on its dual-word structure before any
+  SAT run.
+
+**11/6 ≤ N < 1.938.** B1 and Theorem F need three disjoint small Ω's, which are proved only for N < 1.852 (t = 3/4).
+Unchanged.
 
 Files: `b1.py` (B1, B1m, Lemma B/C/C* constructive, matroid partition, independent verifier); `fam.py` (families, exact
 BFS / meet-in-the-middle Ω's, covering certificate); `run_b1.py`; `run_large_M.py`; `ystep.py`; `route3_sat.py`;
-`unsat_check.py`; `montecarlo.py`; logs in `logs/`.
+`unsat_check.py`; `montecarlo.py`; `f1_check.py` (Lemma F1, exact); `ratio.py` (deficiency ratios, exhaustive); logs in `logs/`.
