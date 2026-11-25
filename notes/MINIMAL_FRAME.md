@@ -17,6 +17,10 @@ Status: everything below is **HAND, unverified**. Task 0 verifies it.
 - It has no anchors, no confinement and no bound on N. There are no far replies and no separate petal side.
 
 ## Structural facts (H a minimal counterexample)
+**Lemma 2.5 (antichain).** No member contains another. If C ⊊ B, then B is redundant (anything hitting C hits B), so removing B keeps τ > T and (7,2) with smaller total size. Lemma 4 uses this to rule out B∖{z} equalling an existing member.
+
+**Provenance.** Lemma 3 is classical: S_B together with B forms a Bollobás set-pair system, the standard tool for τ-critical hypergraphs (Bollobás, Lovász, Frankl, Tuza). It gives |H| ≤ C(k+T, k) in the uniform case. Combined with covering, it only forces N ≥ (1+t)k, with equality for the complete family. So it does not organise the window. **Lemma 4 (saturation) is the new ingredient.** Do not present Lemma 3 as novel.
+
 **Lemma 3 (private sets).** For every B ∈ H there is a set S_B with |S_B| ≤ T, S_B ∩ B = ∅, meeting every other member. Equivalently, S_B ⊆ K_B and S_B ⊄ K for every other co-edge K.
 *Proof.* H∖{B} is smaller, so it is not a counterexample, and it has a transversal of at most T points. That transversal misses B.
 
@@ -44,7 +48,8 @@ Status: everything below is **HAND, unverified**. Task 0 verifies it.
 
 ## Tasks (in order)
 - **Task 0.** Verify Lemmas 1–4 and Corollary 5 adversarially; then formalise them in Lean.
-- **Task 1.** The decisive test: are the surviving candidates saturated? An incidence (z, B) is *loose* if B → B∖{z} keeps (7,2). Test:
+- **Task 1** (reading corrected by a reviewer): looseness is defined only for genuine (7,2)-families with τ > T. At ε = 0 (FKW) shrinking always ends saturated, so 1(a) is a TEMPLATE, not a test. For near-pool and hash-like MODELS, test whether saturation's consequences (the U_z sets of Corollary 5 and the private sets) contradict their structure.
+- **Task 1 (original wording).** The decisive test: are the surviving candidates saturated? An incidence (z, B) is *loose* if B → B∖{z} keeps (7,2). Test:
   - (a) the FKW parity family at m = 3;
   - (b) pencil-free two-class selectors at k = 8;
   - (c) near-pool models M_{Y,η} at (10,8,21) and (13,10,25).
