@@ -98,6 +98,11 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 ## Programme 2 (notes/PROGRAMME_2.md)
 - Task 1 (notes/PROGRAMME2_TASK1.md): every stored family is thin at its small k, because the max-atom term 7·max y (≈ 7/τ) dominates. tau*_b values: FKW and H1 2.2, near-pool 1.75–2, k=8 2–2.29, U1 533/220 ≈ 2.42, k=10 window families exactly 7/3. Asymptotically Theorem 3 needs tau*_b < 7/3 as atoms tend to 0 (coordinator's reading, not proved). [EXACT/float LP]
 
+- Task 0 (notes/verify/programme2_task0.md):
+  - Lemma 2, Theorem 3, Lemma 5, Corollary 7, Lemma 8: VERIFIED.
+  - Heavy-atom case FAILS as stated: K_10^(6) is (7,2) with τ = 5 > 3k/4 and tau*_b = 2. So 'rich implies not (7,2)' is false at finite k, and asymptotically it is a GAP. Refined Theorem 3H covers heavy atoms by placement LPs.
+  - Every good seven is Fano-type for N < 11/6: VERIFIED EXACT (all 1,422,564 maximal intersecting families on 7 points, rational LP certificates; 11/6 is sharp).
+  - (Σ)(a) in F₂ form: four-term relation, PASS. (Σ)(c): not a four-term relation (the pair sums and the triple sum all have weight >= n − T).
 - Task 3 (notes/PROGRAMME2_TASK3.md): Proposition 9 as literally stated is FALSE (size parity; counterexample by hand + SAT). Theorem 9′, with correct parity |Ω_i| ≡ k (mod 2) and size hypotheses, is proved by hand: the 7×7 F₂ class system is always solvable, and size residues are repaired by same-class pairs. Proof construction exact on 10,300 instances; with parity-correct Ω's, a good seven existed in 284/284 ground-truth instances (conjecture: parity alone suffices). [HAND + EXACT], not independently verified.
 
 ## Open
