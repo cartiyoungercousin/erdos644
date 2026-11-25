@@ -46,6 +46,24 @@ Status: everything below is **HAND, unverified**. Task 0 verifies it.
 - A minimal counterexample need not be uniform. The verified tools (slack count, Theorems T, Q, P) are stated for uniform families and must be re-derived before use here. Do not pad back to uniform: padding destroys minimality.
 - N is unbounded in this frame.
 
+
+## Uniform variant (reviewer suggestion, 2026-11-25) [HAND, checked by coordinator; not independently verified]
+Shrink by SWAPPING in a fresh point, which keeps the family k-uniform.
+- **Measure.** Order counterexamples lexicographically by (|H|, Σ_x C(deg x, 2)).
+- **The swap.** B' = B − z + z', where z' is fresh (in no other member).
+- **τ does not drop.** If a transversal X' of H' uses z', then X' − z' + z is a transversal of H. If it doesn't, X' meets B' inside B − z ⊂ B.
+- **The measure drops** when deg z >= 2: C(d,2) becomes C(d−1,2), and z' contributes 0.
+
+**Lemma 3U (private sets).** As Lemma 3: removing a member lowers |H|.
+
+**Lemma 4U (uniform saturation).** In a uniform-minimal counterexample, for every incidence (z, B) with deg z >= 2 there are B₂..B_m, m <= 7, such that:
+- (i) B − z, B₂..B_m have no 2-point transversal;
+- (ii) NO single point covers all of B₂..B_m (otherwise that point plus z' would cover B', B₂..B_m).
+
+*Proof.* H' has τ > T and a smaller measure, so it fails (7,2). The failing subfamily must contain B'. Then a 2-cover of B − z, B₂..B_m would be a 2-cover of B', B₂..B_m, which gives (i). A point x covering B₂..B_m would give the 2-cover {x, z'} of B', B₂..B_m, which gives (ii).
+
+Uniformity is kept, so the verified uniform tools (slack count, Theorems T, Q, P, the pencil) apply again. Next step: re-derive Corollary 5 in this form and re-run the (10,8,21) near-pool test with the extra condition (ii).
+
 ## Tasks (in order)
 - **Task 0.** Verify Lemmas 1–4 and Corollary 5 adversarially; then formalise them in Lean.
 - **Task 1** (reading corrected by a reviewer): looseness is defined only for genuine (7,2)-families with τ > T. At ε = 0 (FKW) shrinking always ends saturated, so 1(a) is a TEMPLATE, not a test. For near-pool and hash-like MODELS, test whether saturation's consequences (the U_z sets of Corollary 5 and the private sets) contradict their structure.
