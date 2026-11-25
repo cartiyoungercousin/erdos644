@@ -144,6 +144,7 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 ## Open
 - LIFT (G2 / far replies): transfer confined results to general families (anchor-keeping certificates, or show far replies with large outside overlap lose). Needed for the full solve.
 - Record path: exact certification of R1's sparsest-anchor argument at t = 17/20 (anchor-keeping, transfers) would give f(k,7) <= (17/20 + o(1))k (FRONTIER §4–5).
+  - **Update (RECORD.md):** 17/20 is NOT reachable by the depth-1 game [C]: the lopsided corner near (0.575, 0.025, 0.025) is stuck at t = 0.85–0.856 and at 6/7 for C = 3..20 and grids down to 1/120 (FRONTIER's 'won at 0.85' was a 1/20-grid artefact); 17/20 needs the depth-2 re-anchoring game. At t = 43/50 = 0.86, C = 8: 9102 exact certificates accepted by the independent checker, about 0.13% of the region still uncovered in three pockets where box subdivision to side 1/512 fails (float game wins at the grid points; plan switching along slanted planes suspected). No bound below 7/8 is certified yet.
 - Petal: pooled 𝒜 for t/2 - 1/6 <= δ < 1 - t with 3/4 < t < 7/9 ([0.2083, 0.25) at t = 3/4). The window-and-seal method is maxed out at δ* = t/2 - 1/6 (exact LP), so a new certificate is needed here. The earlier note claiming §19.1 closes this was wrong: §19.1 only marks where AP's hypothesis fails (verifier, notes/verify/PS.md).
 - Core window: 5t - 2 < N < 3 - t (for small ε; the bottom strip is VERIFIED closed).
 - (Σ) for hash-like, non-greedy and self-cut families (core window).
