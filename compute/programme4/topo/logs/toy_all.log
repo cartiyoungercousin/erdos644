@@ -1,0 +1,57 @@
+K^(1)_2                      k=1 m=  2 tau=2 (k+1)/2=1.0 good_triple=True |V|=6 |E|=9  rb0=0 b1=4  criterion_fires=False
+K^(1)_3                      k=1 m=  3 tau=3 (k+1)/2=1.0 good_triple=True |V|=9 |E|=27  rb0=0 b1=0  criterion_fires=True
+K^(1)_4                      k=1 m=  4 tau=4 (k+1)/2=1.0 good_triple=True |V|=12 |E|=54  rb0=0 b1=0  criterion_fires=True
+star K_1,3                   k=2 m=  3 tau=1 (k+1)/2=1.5 good_triple=False |V|=27 |E|=81  rb0=2 b1=0  criterion_fires=False
+2 disjoint edges             k=2 m=  2 tau=2 (k+1)/2=1.5 good_triple=True |V|=18 |E|=81  rb0=0 b1=64  criterion_fires=False
+triangle K_3                 k=2 m=  3 tau=2 (k+1)/2=1.5 good_triple=True |V|=27 |E|=81  rb0=0 b1=28  criterion_fires=False
+3 disjoint edges             k=2 m=  3 tau=3 (k+1)/2=1.5 good_triple=True |V|=27 |E|=243  rb0=0 b1=0  criterion_fires=True
+K_4                          k=2 m=  6 tau=3 (k+1)/2=1.5 good_triple=True |V|=54 |E|=567  rb0=0 b1=0  criterion_fires=True
+K_5                          k=2 m= 10 tau=4 (k+1)/2=1.5 good_triple=True |V|=90 |E|=2025  rb0=0 b1=0  criterion_fires=True
+K^(3)_4 (no triple)          k=3 m=  4 tau=2 (k+1)/2=2.0 good_triple=False |V|=84 |E|=306  rb0=0 b1=88  criterion_fires=False
+K^(3)_5                      k=3 m= 10 tau=3 (k+1)/2=2.0 good_triple=True |V|=210 |E|=3735  rb0=0 b1=1  criterion_fires=False
+Fano lines                   k=3 m=  7 tau=3 (k+1)/2=2.0 good_triple=True |V|=147 |E|=3087  rb0=0 b1=0  criterion_fires=True
+K^(3)_6                      k=3 m= 20 tau=4 (k+1)/2=2.0 good_triple=True |V|=420 |E|=22230  rb0=0 b1=0  criterion_fires=True
+K^(4)_6                      k=4 m= 15 tau=3 (k+1)/2=2.5 good_triple=True |V|=675 |E|=16875  rb0=0 b1=181  criterion_fires=False
+  secs 1.3
+K^(4)_7                      k=4 m= 35 tau=4 (k+1)/2=2.5 good_triple=True |V|=1575 |E|=144585  rb0=0 b1=0  criterion_fires=True
+  secs 37.1
+K^(4)_5 (A0-tight)           k=4 m=  5 tau=2 (k+1)/2=2.5 good_triple=False |V|=225 |E|=990  rb0=0 b1=208  criterion_fires=False
+  secs 0.0
+PG(2,3) lines                k=4 m= 13 tau=4 (k+1)/2=2.5 good_triple=True |V|=585 |E|=52650  rb0=0 b1=0  criterion_fires=True
+  secs 2.8
+K^(2)_3 + K^(2)_3 disj       k=2 m=  6 tau=4 (k+1)/2=1.5 good_triple=True |V|=54 |E|=891  rb0=0 b1=0  criterion_fires=True
+  secs 0.0
+rand k3 n7 s1.0              k=3 m= 13 tau=4 (k+1)/2=2.0 good_triple=True |V|=273 |E|=12294  rb0=0 b1=0  criterion_fires=True
+   members: ['034', '456', '136', '234', '045', '135', '256', '056', '123', '025', '124', '016', '026'] 0.6 s
+rand k3 n7 s1.1              k=3 m= 13 tau=4 (k+1)/2=2.0 good_triple=True |V|=273 |E|=12294  rb0=0 b1=0  criterion_fires=True
+   members: ['134', '015', '046', '012', '034', '156', '136', '246', '036', '025', '125', '245', '356'] 0.6 s
+rand k3 n7 s1.2              k=3 m= 13 tau=4 (k+1)/2=2.0 good_triple=True |V|=273 |E|=12294  rb0=0 b1=0  criterion_fires=True
+   members: ['012', '045', '015', '456', '246', '145', '036', '023', '136', '234', '123', '256', '014'] 0.8 s
+rand k3 n7 s1.3              k=3 m= 13 tau=4 (k+1)/2=2.0 good_triple=True |V|=273 |E|=11610  rb0=0 b1=0  criterion_fires=True
+   members: ['015', '025', '016', '045', '012', '134', '125', '026', '356', '036', '126', '234', '456'] 0.8 s
+rand k3 n8 s2.0              k=3 m= 11 tau=4 (k+1)/2=2.0 good_triple=True |V|=231 |E|=10659  rb0=0 b1=0  criterion_fires=True
+   members: ['135', '235', '014', '236', '057', '247', '456', '017', '015', '467', '567'] 0.6 s
+rand k3 n8 s2.1              k=3 m= 12 tau=4 (k+1)/2=2.0 good_triple=True |V|=252 |E|=12282  rb0=0 b1=0  criterion_fires=True
+   members: ['367', '124', '256', '045', '156', '137', '346', '347', '027', '136', '467', '125'] 0.3 s
+rand k3 n8 s2.2              k=3 m= 11 tau=4 (k+1)/2=2.0 good_triple=True |V|=231 |E|=10467  rb0=0 b1=0  criterion_fires=True
+   members: ['237', '247', '234', '017', '014', '045', '156', '347', '023', '256', '037'] 0.4 s
+rand k3 n8 s2.3              k=3 m= 10 tau=4 (k+1)/2=2.0 good_triple=True |V|=210 |E|=8097  rb0=0 b1=0  criterion_fires=True
+   members: ['136', '023', '256', '247', '017', '037', '145', '127', '347', '046'] 0.1 s
+rand k3 n6 s3.0              k=3 m=  6 tau=3 (k+1)/2=2.0 good_triple=True |V|=126 |E|=1917  rb0=0 b1=0  criterion_fires=True
+   members: ['012', '045', '135', '124', '235', '034'] 0.0 s
+rand k3 n6 s3.1              k=3 m=  7 tau=3 (k+1)/2=2.0 good_triple=True |V|=147 |E|=2709  rb0=0 b1=0  criterion_fires=True
+   members: ['025', '014', '123', '015', '023', '145', '345'] 0.1 s
+rand k3 n6 s3.2              k=3 m=  7 tau=3 (k+1)/2=2.0 good_triple=True |V|=147 |E|=2415  rb0=0 b1=0  criterion_fires=True
+   members: ['235', '013', '024', '345', '134', '125', '145'] 0.0 s
+rand k3 n7 s4.0              k=3 m=  6 tau=3 (k+1)/2=2.0 good_triple=True |V|=126 |E|=2601  rb0=0 b1=0  criterion_fires=True
+   members: ['025', '016', '456', '024', '134', '123'] 0.1 s
+rand k3 n7 s4.1              k=3 m=  5 tau=3 (k+1)/2=2.0 good_triple=True |V|=105 |E|=1764  rb0=0 b1=0  criterion_fires=True
+   members: ['014', '025', '123', '346', '156'] 0.0 s
+rand k3 n7 s4.2              k=3 m=  6 tau=3 (k+1)/2=2.0 good_triple=True |V|=126 |E|=2601  rb0=0 b1=0  criterion_fires=True
+   members: ['135', '246', '235', '016', '045', '034'] 0.0 s
+rand k4 n8 s5.0              k=4 m= 21 tau=4 (k+1)/2=2.5 good_triple=True |V|=945 |E|=72450  rb0=0 b1=0  criterion_fires=True
+   members: ['1467', '1257', '1367', '1245', '0147', '0236', '0123', '2346', '1235', '2467', '0567', '2345', '0146', '2347', '0135', '0456', '2357', '0126', '3467', '1345', '0457'] 18.5 s
+rand k4 n8 s5.1              k=4 m= 22 tau=4 (k+1)/2=2.5 good_triple=True |V|=990 |E|=77697  rb0=0 b1=0  criterion_fires=True
+   members: ['1235', '0357', '0234', '0156', '1245', '0147', '1345', '2467', '0123', '0267', '1234', '0124', '0345', '1567', '3457', '3467', '0457', '0136', '0256', '2367', '2456', '0257'] 13.5 s
+rand k4 n8 s5.2              k=4 m= 22 tau=4 (k+1)/2=2.5 good_triple=True |V|=990 |E|=80829  rb0=0 b1=0  criterion_fires=True
+   members: ['0134', '2345', '0357', '2457', '0126', '0145', '0257', '0346', '1367', '2347', '1235', '1346', '0157', '3457', '0247', '0456', '1456', '0136', '0237', '1467', '2356', '1267'] 25.9 s
