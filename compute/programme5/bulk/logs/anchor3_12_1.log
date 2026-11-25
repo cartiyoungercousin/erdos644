@@ -1,0 +1,13 @@
+w=0.0000 |U|/2=0.7500 fano=0.7500 best_nonfano=0.8333 (class 430) gain=-0.0833
+w=2.0548 |U|/2=1.2637 fano=1.2637 best_nonfano=0.7976 (class 160) gain=0.4661
+w=2.0891 |U|/2=1.2723 fano=1.2723 best_nonfano=0.8486 (class 378) gain=0.4237
+w=1.8028 |U|/2=1.2007 fano=1.2007 best_nonfano=0.8453 (class 441) gain=0.3554
+w=1.1044 |U|/2=1.0261 fano=1.0261 best_nonfano=0.8682 (class 613) gain=0.1579
+w=2.4026 |U|/2=1.3506 fano=1.3506 best_nonfano=0.7707 (class 430) gain=0.5799
+w=2.6114 |U|/2=1.4028 fano=1.4028 best_nonfano=0.7500 (class 195) gain=0.6528
+w=2.3173 |U|/2=1.3293 fano=1.3293 best_nonfano=0.7500 (class 195) gain=0.5793
+w=1.8512 |U|/2=1.2128 fano=1.2128 best_nonfano=0.8547 (class 614) gain=0.3581
+w=1.1793 |U|/2=1.0448 fano=1.0448 best_nonfano=0.8741 (class 597) gain=0.1707
+w=1.8249 |U|/2=1.2062 fano=1.2062 best_nonfano=0.8365 (class 430) gain=0.3697
+w=0.8114 |U|/2=0.9529 fano=0.9529 best_nonfano=0.8750 (class 638) gain=0.0779
+max gain of a non-Fano type over Fano: 0.6528383607741929

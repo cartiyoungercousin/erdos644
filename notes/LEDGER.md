@@ -155,6 +155,8 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 
 - **Algebraic angle (notes/PROGRAMME5_ALG.md): NO-GO** [HAND + computed]. Reformulation: below 11k/6, (7,2) iff the pencil 3-graph on H (edges = empty-intersection triples) is Fano-free; for seven-free complete families it is 3- but not 2-colourable, so no Fano-Turán stability. Slice rank (pattern not translation-invariant), Chevalley–Warning/Ax–Katz (degree >= k), GL-invariant data, MacWilliams (U not a code) are all blind; max critical number of a PG(2,2)-free up-set is floor(3n/7)+{0,1,2}, independent of k, so all content of (S<) is the k-uniform covering structure. Bose–Burton induction reproves P1′ only.
 
+- **Region n >= 11k/6 (notes/PROGRAMME5_BULK.md)** [HAND, unverified]: two-stage dump weakens the pencil-bound size condition to 4T >= 2k+3r+3, extending the 3/11 bound to n <= (8k+11)/3 (FKW 1/8 is the only bound from ν = 53/24 on); 8/3 is the limit of iterated two-member dumps [computed]. No easy large-ν region: adding a private point to every member keeps (7,2) and τ, so (G) for ν >= ν0 is equivalent to all of (G); no large-to-small reduction known [open]. Non-Fano-only families (n >= 2k) all have 'Fano minus a line' sevens; HUB lemma (non-Fano P1, class 195) [HAND, 1403 random checks]. Conjecture (F2): Fano sevens suffice for n < 2k [open].
+
 ## Open
 - LIFT (G2 / far replies): transfer confined results to general families (anchor-keeping certificates, or show far replies with large outside overlap lose). Needed for the full solve.
 - Record path: exact certification of R1's sparsest-anchor argument at t = 17/20 (anchor-keeping, transfers) would give f(k,7) <= (17/20 + o(1))k (FRONTIER §4–5).

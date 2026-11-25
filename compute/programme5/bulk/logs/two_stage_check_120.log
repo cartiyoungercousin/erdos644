@@ -1,0 +1,12 @@
+FAIL k=4 r=5 T=7 hi*=0 w=2
+FAIL k=5 r=7 T=9 hi*=0 w=3
+FAIL k=6 r=9 T=11 hi*=0 w=4
+FAIL k=7 r=11 T=13 hi*=0 w=5
+FAIL k=8 r=13 T=15 hi*=0 w=6
+FAIL k=9 r=15 T=17 hi*=0 w=7
+FAIL k=10 r=17 T=19 hi*=0 w=8
+FAIL k=11 r=19 T=21 hi*=0 w=9
+FAIL k=12 r=21 T=23 hi*=0 w=10
+FAIL k=13 r=23 T=25 hi*=0 w=11
+two-stage conditions: 831958 cases, 117 failures
+3/11 range n <= (8k+11)/3: 194171 (n,k,T) above the line, 0 not covered by a pencil theorem
