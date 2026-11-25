@@ -37,6 +37,26 @@ columns h_x ∈ F₂^M (parity-check columns), the *classes/cells* of V are the 
   - Short dual words cannot obstruct (§5.8).
   - See §7.
 
+- **Fourth pass (third brief, Task A(a)–(b); §8–§9).**
+  - *All shifts (§8).* Every linear layer is either a coset family as in §1–§7 (shift ≥ 1, or shift 0 with k odd) or
+    H = C₀ ∩ (V choose k) with k even (case S0). In the Venn form the target is 0 for every shift. So 9′, B1, F, F2, F‴
+    and S⁺ hold verbatim at shift 0, with Ω = ∅, W = 0, and for B1 with no N restriction. NC does **not** handle every
+    shift-0 layer.
+  - **Theorem S0** [proved by hand; 319/319 verified sevens]. A shift-0 layer contains a Schur triangle x₁ + x₂ + x₃ = 0
+    with empty triple intersection, by two applications of Lemma C. NC1 with W = V then finishes it. **B holds for every
+    shift-0 layer with 4 ∣ k and τ > 3k/4 in N < 11/6, for every k** (counting, exact for k ≤ 400). k ≡ 2 (mod 4) is
+    unconditional for N < 1.7985.
+  - **Theorem S1** [proved by hand, untested]. The same construction with x₁ + x₂ + x₃ = Ω gives B at every shift
+    whenever r ≤ 4εk − 7, at any codimension up to about k/2. The gap of B is now r ≥ 4εk with codimension above B1's.
+  - *Contraction (§9).* Ω-first order: Lemma P shows that lost parity and Ω-met blocks do not arise. Proved: the exact
+    contraction lemma, F1w (weighted F1), the P_m^w bound (size repair), F‴w (with a mixed-constant hypothesis), and
+    **F1⁺** (rigorous damping 1/7 near the constants). P3 survives for series pairs, so contraction is necessary.
+    Giant blocks of words of weight ≥ 3 are open.
+  - *N ≥ 11/6:* three disjoint Ω's to N < 1.861 (no recount). Empty common intersection to N < 1.909 (patterns checked
+    exhaustively). S1 needs only one Ω, so it reaches 1.9385.
+  - *Check (ii)* (codimension > 0.09k, no short dual words, r ≥ 4εk): **open**. The missing piece is a bound on the
+    number of medium-weight words of D′ ⊗ F₂³, not the damping. "They do not exist" is dead (random codes).
+
 ## 1. The reviewer's dual-distance dichotomy (checked first)
 
 **Verdict: the dichotomy does not apply as stated. Theorem R never applies to a coset family, at any dual distance.
@@ -526,8 +546,452 @@ remaining counts m′.
   SAT run.
 
 **11/6 ≤ N < 1.938.** B1 and Theorem F need three disjoint small Ω's, which are proved only for N < 1.852 (t = 3/4).
-Unchanged.
+Updated in §9.5: N < 1.861 without the recount, N < 1.909 with empty common intersection, and Theorem S1 (one Ω) to 1.9385.
+
+**Update after the fourth pass (§8–§9).**
+- **Shift 0 is closed** for 4 ∣ k in the Fano range (Theorem S0), with no condition on c, cells or short dual words.
+  k ≡ 2 (mod 4) is closed below N = 1.7985. Above that it is conditional on one non-self-orthogonality choice [open].
+- **At every shift**, B holds for r ≤ 4εk − 7 (Theorem S1, untested) and for codimension within B1's bound.
+- **The remaining gap** is r ≥ 4εk − O(1) with codimension above B1's bound.
+  - Contraction removes short dual words exactly (§9.1). After it, the step left is check (ii): a bound on the
+    medium-weight word counts A_w(D′ ⊗ F₂³), plus giant blocks of words of weight ≥ 3 and the F‴w mixed-constant
+    condition.
+  - The damping side is no longer the bottleneck. F1⁺ gives 1/7 per point near the constants, and for random-like D′
+    the reach is about 0.47N [heuristic].
+- **NC's robustness** does not dispose of blocks. It closes B in the regime r < 4εk through NC1 with linear triples,
+  which makes the decomposition unnecessary there (§9.4).
 
 Files: `b1.py` (B1, B1m, Lemma B/C/C* constructive, matroid partition, independent verifier); `fam.py` (families, exact
 BFS / meet-in-the-middle Ω's, covering certificate); `run_b1.py`; `run_large_M.py`; `ystep.py`; `route3_sat.py`;
 `unsat_check.py`; `montecarlo.py`; `f1_check.py` (Lemma F1, exact); `ratio.py` (deficiency ratios, exhaustive); `gx.py` (G(x), sampling); logs in `logs/`.
+
+## 8. B for every linear layer, all shifts (third brief, Task A(a))
+
+Tags as above, plus [dead] and [open]. Code and logs: `compute/programme2/B/shift/`. Units: deficiency, i.e. a point x costs
+4 − j_x against the budget 4n − 7k = 4δk (a dumped point costs 4, an Ω-point 1). This is the same thing as the
+(3 − j)(4 − j) count against 3(4n − 7k): "4|Z|" and "a coloop costs 12" are the same cost.
+
+### 8.1 Reduction to two cases [proved by hand]
+Let H = (e + C) ∩ (V choose k) be a linear layer (e of least weight in its coset, shift wt(e)), H ≠ ∅. Put C₀ = C ∩ Even and
+pick e′ ∈ e + C of parity k. Then H = (e′ + C₀) ∩ (V choose k) (Lemma 2.1 of Task 3).
+- **Case S≠0: e′ ∉ C₀.** This is a coset family in the sense of §1–§7, with a = e′ and ρ_par = min wt(e′ + C₀) ≥ 1.
+  Everything in §1–§7 applies unchanged.
+- **Case S0: e′ ∈ C₀.** Then H = C₀ ∩ (V choose k): the members are the weight-k words of an even linear code.
+  - Case S0 happens exactly when the shift is 0 **and k is even**. If e′ ∈ C₀ ⊆ C, then e ∈ C.
+  - Shift 0 with k odd is case S≠0, with ρ_par = the least odd weight in C.
+  - Example: "all k-sets even on X" with k even is S0, with C₀ = {even on X, even}.
+- In the Venn form (§2) the shift never enters the counting problem. The Ω's carry α. Every bit-class D_i must lie in C,
+  so the target on V″ is 0 for every shift. The shift enters only through the Ω's: through their existence (Theorem D), W, Δ
+  and the slack s = 4n − 7k − W.
+
+### 8.2 Which results hold at shift 0 (case S0)
+
+| result | at shift 0 | tag |
+|---|---|---|
+| Lemma 2.1, Lemma 2.2 (cells, C ⊇ ⊕ Even(V_g)) | yes, with α = 0 | proved by hand |
+| Lemma 5, Corollary 7 | Corollary 7 is vacuous (ρ_par = 0). Exact pencils (s_p = 0) are allowed: Schur triangles, 3-dim subspaces | proved by hand |
+| Theorem 9′ | yes, with Ω₁ = Ω₂ = Ω₃ = ∅ (W = Δ = 0). The proof is verbatim: Ω enters only through [B_ℓ] ∋ α = 0 and the (now empty) T_i patterns. H2–H4′ (few classes) remain | proved by hand |
+| Theorem D | not needed: Ω = ∅ costs nothing | — |
+| Theorem B1 | yes, with W = Δ = 0. Conditions: k ≥ 15e + 36 and 4δk ≥ 5e + 8, for **every N**. There is no N < 1.852 restriction and no r in the bound | proved by hand; computed exact (199 verified sevens, §8.5) |
+| Theorems F, F2, F‴, P1–P3, §5.8 | verbatim (target 0 for every shift) | proved by hand |
+| S⁺ | verbatim: the symmetry argument does not use α | given S⁺ |
+| RA | applies to any family. A shift-0 layer is rich only when it is near-complete, so RA is not a route for general shift-0 layers | proved by hand |
+| NC | **not every** shift-0 layer (see below) | proved by hand |
+| **Theorem S0 (new, §8.3)** | B for every shift-0 layer with 4 ∣ k and N < 11/6 | proved by hand; computed exact |
+
+**NC at shift 0, explicitly [proved by hand].**
+- With W = V and d = r (T-covering is (V, r)-completeness), Corollary NC handles every T-covering family of any shift
+  with r < 2εk − 3, i.e. n − 2r > (7/4 − ε)k + 5/2.
+- With W = one cell V_g (k even, so every k-subset of a cell is in C₀ and d = 0), NC handles every layer with a cell of
+  size ≥ (7/4 − ε)k + 3.
+- "All k-sets even on X" (k even) is (V, 1)-complete. A (k+1)-set U with a point outside X has a k-subset that is even
+  on X: drop an outside point if |U ∩ X| is even, an X-point otherwise. U ⊆ X is also fine. So NC with d = 1 handles it
+  as soon as 2εk ≥ 5.
+- **NC does not handle every shift-0 layer.**
+  - A random even code with all cells singletons has no cell to use. Its covering excess r is not < 2εk when ε is small
+    against ω, and restricting to a W ⊊ V does not lower d for a random code.
+  - So NC needs d < (ε + δ)k/2 on some W, which fails there.
+  - RA does not help either: such layers are thin.
+- What does handle them is NC1 fed with a *linear* triple, which exists only because the shift is 0 (§8.3).
+
+### 8.3 Theorem S0: shift 0 is closed by a Schur triangle [proved by hand; computed exact]
+
+**Lemma S0a (Schur triangle).** Let C₀ be even, k even, H = C₀ ∩ (V choose k), with columns h_x (parity coordinate 1) and
+e = dim E = codim(C₀) − 1. Suppose some member x₁ satisfies:
+- (i) k ≥ 2e_{x₁} + 1 and e_{x₁} ≤ k/2, where e_S = dim E_S and E_S = span{h_x + h_y : x, y ∈ S};
+- (ii) e″ := dim((E_{x₁} + E_{V∖x₁})/E_{x₁}) ≤ n − 3k/2, and n − k ≥ 2e″ + 1;
+- (iii) 4 ∣ k, or x₁ ∉ C₀^⊥.
+
+Then there are A ⊆ x₁ and B ⊆ V ∖ x₁ with |A| = |B| = k/2 and ΣA = ΣB. So x₂ = A ∪ B and x₃ = x₁ + x₂ = (x₁∖A) ∪ B are
+members. The three members have pairwise intersections of size k/2, x₁ + x₂ + x₃ = 0, x₁ ∩ x₂ ∩ x₃ = ∅ and |x₁ ∪ x₂ ∪ x₃| = 3k/2.
+
+*Proof.*
+- **The sums over A.** By Lemma C (Task 2) on x₁ with a = k/2, the sums ΣA, |A| = k/2, fill (k/2)h_u + E_{x₁} (u ∈ x₁).
+- **The sums over B.** By Lemma C on V ∖ x₁, with columns taken modulo E_{x₁} and a = k/2 (≤ |V∖x₁| − e″ by (ii)), the
+  sums ΣB fill (k/2)h_v + E_{x₁} + E_{V∖x₁} modulo E_{x₁} (v ∉ x₁).
+- **The two sets meet** iff (k/2)(h_u + h_v) ∈ E′ := E_{x₁} + E_{V∖x₁}.
+  - If 4 ∣ k this is 0.
+  - Otherwise, suppose E′ ≠ E. Then E = E′ ⊕ ⟨h_u + h_v⟩, and a functional φ with φ(E′) = 0 and φ(h_u + h_v) = 1 gives the
+    dual word (φ(h_x))_x ∈ {1_{x₁}, 1 + 1_{x₁}}. Since 1 ∈ C₀^⊥, this puts x₁ ∈ C₀^⊥, which (iii) excludes.
+- **The triangle.** x₂ and x₃ are codewords of weight k. x₁ ∩ x₂ = A, and A ∩ x₃ = ∅. ∎
+
+**Lemma S0b (choosing x₁) [proved by hand].**
+- Let U ⊇ an affine basis of the columns (e + 1 points), with |U| = k + r. Then E_U = E, and any member x₁ ⊆ U (T-covering)
+  has e − e_{x₁} ≤ r, since deleting a point lowers the affine rank by at most 1.
+- So e″ ≤ r ≤ n − 3k/2, because n − 3k/2 = k/4 + r + εk.
+- Also n − k ≥ 2r + 1. So (ii) is automatic, and (i) holds once e ≤ (k − 1)/2.
+
+**Theorem S0.** Let H = C₀ ∩ (V choose k) be a shift-0 layer (k even), T-covering with T = n − k − r and T ≥ ⌈3k/4⌉
+(that is, τ ≥ ⌈3k/4⌉ + 1). Suppose e ≤ (k − 1)/2 and either 4 ∣ k, or the x₁ of Lemma S0b can be taken outside C₀^⊥.
+Then H has a Fano-type good seven, so H is not (7,2).
+
+*Proof.* This is NC1 (PROGRAMME2_NC.md §3) with W = V, d = r and G = (x₁, x₂, x₃) from S0a/S0b.
+- The X-sets are X₁ = B, X₂ = x₁∖A and X₃ = A, each of size k/2.
+- Each line avoiding NC1's point 0 takes one half of each X_s. So |L| ≤ 3k/4 if 4 ∣ k.
+- If k ≡ 2 (mod 4), give the larger halves to three colours that are not collinear; then |L| ≤ (3k+2)/4 = ⌈3k/4⌉.
+- So |R_ℓ| ≥ n − T = k + r, and R_ℓ contains a member. The three lines through 0 are closed by x₁, x₂ and x₃. ∎
+
+**Range [proved by hand + computed exact].** e ≤ n − ⌈log₂|H|⌉ − 1, and |H| ≥ C(n, k+r)/C(n−k, r) (Task 2).
+- **4 ∣ k.**
+  - `s0_finite.py`: for every k ≤ 400 (k even), every r and every T ≥ ⌈3k/4⌉ with n < 11k/6 (39,304 triples), counting
+    forces e ≤ (k − 1)/2. There are 0 exceptions [computed exact, integer arithmetic].
+  - For k > 400, the asymptotic margin is (1/2 − 0.435)k − log₂(n + 1) − 2 > 0 [proved by hand; `ranges.py`].
+  - The asymptotic counting range extends to N < 1.8525.
+  - **So B holds for every shift-0 layer with 4 ∣ k and τ > 3k/4 in the whole Fano range N < 11/6, for every k ≥ 4.**
+- **k ≡ 2 (mod 4).**
+  - The unconditional version uses x₁ ∉ C₀^⊥ from counting: |H| > 2^{n/2} rules out a self-orthogonal span(H). It also
+    needs e ≤ n − 3k/2, so that (ii) holds for that x₁.
+  - Counting guarantees both for N < 1.7985 (asymptotic) [proved by hand]. `s0_finite.py` lists 2,429 finite triples
+    near the top of the window where counting does not guarantee them.
+  - Beyond that, the extra hypothesis "the S0b member can be taken outside C₀^⊥" is [open]. It held in every test.
+- **What S0 needs and what it does not.** There is no condition on c, on singleton cells or on short dual words; the
+  planted tests have weight-2 and weight-4 dual words. Neither (SPAN), nor reserved bases, nor counting is used. The
+  linear algebra is two applications of Lemma C. The rest is covering.
+
+**Why this is the right mechanism.** The pencil shape (Σ)(b) needs three members with empty common intersection and
+wt(x₁+x₂+x₃) ≤ 4T − 3k. At shift ≠ 0, x₁ + x₂ + x₃ ∈ a + C has weight ≥ ρ_par ≥ 1 (§1(a): no perfect pencil). At shift 0
+it can be 0, and Lemma C makes it 0.
+
+### 8.4 The same construction at every shift (Theorem S1) [proved by hand; not yet tested]
+**Construction.** Let Ω ∈ a + C have parity k and weight ρ = ρ_par.
+- Take a member x₁ disjoint from Ω (covering on V ∖ Ω).
+- Choose A ⊆ x₁ with |A| = (k+ρ)/2 and B ⊆ V ∖ (x₁ ∪ Ω) with |B| = (k−ρ)/2, such that ΣA + ΣB = σ(a).
+- Put x₂ = A ∪ B and x₃ = x₁ + x₂ + Ω = (x₁∖A) ∪ B ∪ Ω.
+
+**Properties.**
+- x₂ and x₃ are members. x₁ ∩ x₂ ∩ x₃ = ∅. |∪| = (3k + ρ)/2, and x₁ + x₂ + x₃ = Ω.
+- In NC1 (W = V, d = r): X₃ = A, X₂ = x₁∖A, and X₁ = B. The points of Ω lie only in x₃, so they are split between X₁ and X₂.
+  Then |L| ≤ (3k + ρ)/4 + 3/2.
+- **So H is not (7,2) once ρ_par ≤ 4T − 3k − 6 and the Lemma C steps go through.**
+  - Lemma C on x₁ needs e_{x₁} ≤ (k − ρ)/2.
+  - On V ∖ (x₁ ∪ Ω), modulo E_{x₁}, it needs e″ ≤ n − 3k/2 − ρ/2.
+  - Plus a separation condition: no dual word λ with λ ∖ Ω ∈ {x₁, V∖(x₁∪Ω)}.
+
+**Range.**
+- With Theorem D (ρ_par ≤ r + 1), this gives B whenever r ≤ 4εk − 7 and e ≲ (k − r)/2, at any codimension up to k/2.
+  - Corollary NC only reached r < 2εk.
+  - B1 needs codim ≲ (r + 4εk)/5.
+- So **B's remaining gap at shift ≠ 0 is r ≥ 4εk − O(1) (ω ≥ 4ε), together with codimension above B1's bound.**
+- Theorem S1 is S0 with ρ = 0. It was not stress-tested in this pass, so it stays at [proved by hand, untested].
+
+### 8.5 Tests (`shift/s0.py`, `shift/tri_test.py`; logs `shift/logs/`) [computed exact per instance]
+**Families.**
+- Random even codes (parity row plus M random rows), some with planted rows of support 2 or 4. The planted rows are
+  short dual words, which break the covering certificate.
+- k = 8, 10, 12, 14, 32, 40, 42, 60, 62, 80, 106, 200, 202, including k ≡ 2 (mod 4). n is up to 370.
+
+**Certified hypotheses.**
+- r_cert is the least r with r ≥ e such that every nontrivial dual word λ has |λ|, n − |λ| < k + r.
+- Then every (k+r)-set U has E_U = E, and Lemma C puts a member in U, which certifies T-covering.
+- "hyp" means 4T ≥ 3k, e ≤ (k−1)/2 and n ≥ k + r + 2.
+
+**Verifier.** Every produced seven went through `verify7.py`, written fresh with no shared code:
+- seven pairwise distinct sets;
+- each of size k with zero syndrome under the original rows;
+- no transversal of size ≤ 2, by brute force over all point pairs.
+
+**Results.**
+
+| | instances | S0 seven built and verified | B1 (Ω = ∅) built and verified |
+|---|---|---|---|
+| hypotheses certified | 132 (35 with k ≡ 2 mod 4) | **132** | 72 (60: B1's size hypotheses fail at small k) |
+| not certified (n small, or planted short words) | 187 | **187** | 127 |
+| **all** | **319** | **319**, 0 verifier failures | 199 |
+
+- `tri_test.py`: the Schur-triangle step alone, in the large-codimension range k/4 < e ≤ (k−1)/2 (e up to 90 at k = 200;
+  planted words included; k ≡ 2 mod 4 included): **109/109** triangles built by the proof's Lemma C steps and checked
+  directly (three distinct members, sum 0, empty triple intersection).
+- B1 at shift 0 needs k ≥ 15e + 36. That is why it fails at small k, while S0 does not.
+
+## 9. Contraction instead of expansion (Task A(b)), and the two checks
+
+### 9.1 The objects [proved by hand]
+**Wording** (corrected per the reviewer). A *short dual word* is h ∈ C^⊥ with ⟨h, B⟩ = 0 for every member B, i.e.
+⟨h, a⟩ = 0, so members meet supp h evenly. Its weight need not be even, and that is why odd pieces exist. Every h with
+⟨h, a⟩ = 1 has weight ≥ T + 1 (covering dictionary). At shift 0 every dual word has ⟨h, a⟩ = 0.
+
+**Order of operations: Ω first, then contraction on V″.**
+- Fix Ω, F and Z₀ (Theorem D and B1, or ∅ at shift 0). Then work with the punctured dual D = C^⊥|_{V″}, as in §5.
+- **Lemma P (puncturing keeps parity).**
+  - If h ∈ C^⊥ has ⟨h, a⟩ = 0, then |h ∩ Ω_i| is even for each i (since Ω_i ∈ a + C) and |h ∩ F| is even (F ∈ C).
+    So |h|_{V″}| ≡ |h| + |h ∩ Z₀| (mod 2).
+  - If ⟨h, a⟩ = 1, then |h|_{V″}| ≥ T + 1 − |V ∖ V″|. This exceeds w₀ as soon as w₀ < T + 1 − W − u − |F| (about
+    3k/4 − 4δk).
+  - So the short words of D are exactly the restrictions of short words of C^⊥ with ⟨h, a⟩ = 0. They keep their weight
+    parity, except through Z₀, which we choose.
+- **"Lost parity" does not arise in this order.**
+  - The condition for B_ℓ is ⟨∪_{p∉ℓ}Y_p, λ⟩ = 0 for λ ∈ D. The Ω's already carry ⟨a, h⟩.
+  - A word that is even on every block is satisfied by every block-respecting labelling.
+  - The brief's lost-parity case is an artefact of contracting before choosing the Ω's. Then the Ω's would have to be
+    unions of blocks with ⟨Ω, h⟩ = 1.
+- **"Blocks met by an Ω" disappear the same way.** The Ω's are removed before the blocks are formed, and Lemma P says
+  removing them never creates an odd short word.
+  - The price: puncturing can make medium words of C^⊥ short in D. These are simply short words of D and are handled
+    with the rest.
+  - So there is no need to run Theorem D on the contracted family.
+
+**The contraction.**
+- **Blocks.** Let D_s = span of the words of D of weight ≤ w₀. Its blocks S₁, …, S_q are the components of the hypergraph
+  of supports. Each short word lies inside one block.
+- **Contracted problem.** Labellings constant on each block correspond exactly to labellings of the contracted ground
+  set, in which block j has weight w_j = |S_j ∖ Z| and unit points have weight 1. The contracted dual is
+  D′ = π(D), where π(λ)_j = |λ ∩ S_j| mod 2.
+  - The number of Fano-type sevens of the 9′/B1 form with monochromatic blocks equals the weighted count of §9.2 for
+    (D′, w, m), exactly.
+  - Every word even on every block lies in ker π and costs nothing (zero slack, §5.7).
+- **Odd pieces.**
+  - Weight parity is linear on D[S_j] = {λ ∈ D : supp λ ⊆ S_j}. If it is nonzero, choose Z_j ⊆ S_j with
+    ⟨1_{Z_j}, λ⟩ = |λ| for all λ ∈ D[S_j] (an information set gives |Z_j| ≤ dim D[S_j]) and dump Z_j.
+  - The cost is 4|Z_j| deficiency. Note that the parity must be fixed on all of D[S_j], not only on D_s. A long word
+    inside a block with odd weight would otherwise become a coloop of D′.
+  - Alternative at zero slack: give the block a fixed non-monochromatic labelling with XOR 0 on every word (possible iff
+    D[S_j] has no weight-1 word). That is F2 with S = S_j. It keeps the slack but loses the block's count factor.
+- **Iteration.** D′ can have new light words: images of long words that are even on most blocks. Merge blocks along
+  them and repeat.
+  - Every round merges at least two units, so the process terminates.
+  - At the end, D′ has no nonzero word of weight ≤ w₀ (weight = number of units), and every remaining coloop has been
+    dumped.
+  - Total dump: |Z| ≤ Σ over odd merged blocks of dim D[S_j].
+  - **Budget condition:** |Z₀| + |Z| ≤ u (deficiency 4 each).
+
+### 9.2 Weighted points: Lemma F1w, size repair, Theorem F‴w [proved by hand; F1w checked exactly]
+**Lemma F1w.** Blocks j have integer weights w_j. For λ: blocks → F₂³,
+  S(λ) = Σ_{v: Σ_{j: v_j = v} w_j = m_v} Π_j (−1)^{⟨λ_j, v_j⟩}.
+For every ζ ∈ (0, ∞)^7,
+  |S(λ)| ≤ ζ^{−m} Π_j Z_j(ζ) · Π_{w} Φ(n^{(w)}(λ); P₂^{(w)}),
+where:
+- Z_j = Σ_v ζ_v^{w_j};
+- n^{(w)}_u = #{j : w_j = w, λ_j = u};
+- P₂^{(w)} = 8Σ_v ζ_v^{2w}/(Σ_v ζ_v^w)²;
+- Φ is as in F1.
+
+Equivalently, |S(λ)| ≤ S(0)·Π_w Φ^{(w)}/P_m^w, with P_m^w = S(0)ζ^m/ΠZ_j the probability that the i.i.d. model (block j
+gets v with probability ζ_v^{w_j}/Z_j) hits the counts m exactly.
+
+*Proof.*
+- S(λ) = [z^m] Π_j F_{j,λ_j}(z), with F_{j,u}(z) = Σ_v (−1)^{⟨u,v⟩} z_v^{w_j}. Substitute z = ζe^{iθ}.
+- For a fixed weight w, F_{j,u}/Z_j is the F₂³-Fourier transform at u of f(v) = ζ_v^w e^{iwθ_v}/Z_j (f(0) = 0). So it has
+  modulus ≤ 1, and its squared moduli sum over u to P₂^{(w)} for every θ (Parseval).
+- Bound the θ-supremum of the product by the product over weight classes of the F1 maxima. ∎
+
+- **Exact check (`f1w_check.py`).** S(λ) was computed by rational DP, with weights in {1, 2, 3}, near-constant and
+  spread λ, and ζ both at m/N and random. The bound held in 153/153 cases (loose, as for F1) [computed exact].
+- **The damping does not depend on the weight when the regions are equal.** With ζ constant, P₂^{(w)} = 8/7 for every
+  w, so every block, of any weight, is damped by 7^{−1/2}. For unequal regions, P₂^{(w)} = 8/7 + O((w·Δm/m)²), so bounded
+  weights cost O(1).
+
+**Size repair = a lower bound on P_m^w [proved by hand, standard].**
+- The counts in S are exact, so a positive count is an exactly sized seven. Nothing has to be repaired afterwards. What
+  is needed is P_m^w ≥ poly(N)^{−1}.
+- Choose ζ at the saddle point, where the model mean equals m. This exists because m is interior and the log-partition
+  function is strictly convex.
+- Let N₁ be the number of unit points and Q = Σ_{heavy j} w_j².
+  - Chebyshev puts every heavy count within √N₁ of its mean with probability ≥ 1 − 7Q/N₁.
+  - Conditionally, the unit points hit the residual counts with probability ≥ c(min_v ζ_v/Σζ)·N₁^{−3} (Stirling).
+- **So P_m^w ≥ (c/2)N₁^{−3} once Q ≤ N₁/14.** "Giant blocks" are, by definition, the failure of Q ≤ N₁/14 (§9.4).
+
+**Theorem F‴w [proved by hand].** Write c_w for the number of distinct weights and M for the 8^{c_w} "mixed constants"
+Σ_w u_w ⊗ 1_{class w}. Then
+  Σ_{λ ∈ D′⊗F₂³ nonconstant} Π_w Φ^{(w)} < 8 P_m^w
+gives a Fano-type good seven with monochromatic blocks.
+
+The F‴ split goes through, with one change:
+- The near-constant part is bounded by 8(G_M(x) − 1), where G_M(x) = Σ_λ x^{dist(λ, M)} and x = 7^{−1/2}. Each weight
+  class has its own nearest constant.
+- G_M − 1 is small iff D′ has no light words **and** no word close to a nontrivial mixed constant. That second condition
+  says that the class indicators 1_{class w} are far from D′ + ⟨1⟩, which is a genuine extra hypothesis [open in general].
+- With a single weight (c_w = 1) this is F‴ itself. Then the spread term 8^{d′} e^{−0.12N′} again limits d′ ≲ 0.058N′,
+  where N′ is the number of units.
+
+### 9.3 Lemma F1⁺: the heuristic damping 1/7 is rigorous near the constants [proved by hand; checked exactly]
+- **The extra Parseval constraints.** For a two-element subgroup U = {0, u} ≤ F₂³, the transform values g₀(θ), g_u(θ) of F1
+  satisfy, for every θ,
+    |g₀|² + |g_u|² = 2|Σ_{⟨u,v⟩=0, v≠0} p_v e^{iθ_v}|² + 2|Σ_{⟨u,v⟩=1} p_v e^{iθ_v}|² ≤ c_u := 2(a_u² + (1 − a_u)²),
+  with a_u = Σ_{⟨u,v⟩=1} p_v. For equal regions, c_u = 50/49.
+- **The bound.** Shift λ by its dominant value; this changes S only by a sign, since Σ_x ⟨u, v(x)⟩ = Σ_v m_v⟨u,v⟩ is
+  fixed. Then
+    |S(λ)| ≤ (Mult(m)/P_m) · max_{0 ≤ t₀ ≤ 1} t₀^{n₀/2} Π_{u≠0} min(1, c_u − t₀)^{n_u/2}.
+- **Near the constants.** For equal regions and d(λ) ≤ N/50, the maximum is at t₀ = 1, and the bound is **7^{−d(λ)}**.
+  That is per-point damping 1/7, where F1 gave 7^{−1/2}.
+- **Beyond.** For d(λ) = fN > N/50, the bound is exp((N/2)(ln(50/49) − h(f))). It is valid for every λ, not only for
+  two-valued ones, and it is tight for two-valued words: it is the Krawtchouk magnitude.
+- **Exact check (`f1w_check.py`).** The bound held in 148/148 cases (N = 10–22), and it was sharper than F1 in 65 of them
+  [computed exact].
+- **Consequences.**
+  - Theorem F‴ holds with G(7^{−1/2}) replaced by G(1/7) for the words with d ≤ N/50. That is a much weaker hypothesis:
+    a weight-w word now costs 7·7^{−w}, not 7·7^{−w/2}.
+  - Theorem F‴w holds in the same way, class by class, with c_u^{(w)} from the tilted law.
+  - **But P3 survives:** q isolated series pairs still give G(1/7) ≥ (8/7)^q, and these terms have sign +. No
+    absolute-value bound, however sharp, removes them. They must be contracted (§9.1), and after contraction this is
+    exactly what is needed.
+
+### 9.4 Giant blocks, and the coordinator's NC question
+**Giant blocks** (Q > N₁/14, or one block carrying a fixed fraction of N) [partly proved; open in general].
+- **Few giant blocks.** Fix each one monochromatically (F2 with S = the giant blocks; (LC0) holds after the Z-fix, and
+  (LC1) is the parity condition), choosing the labels so that the residual m′ stays balanced. The rest is counted. This
+  works when the number of giant blocks is O(1) [proved by hand, from F2].
+- **Many giant blocks.** Not handled.
+  - **The brief's route ("low rate on the block, profile-type, route to S⁺/9′") is [dead] as stated.** A connected union
+    of words of weight ≤ w₀ on S has dim D[S] ≥ (|S| − 1)/(w₀ − 1). That makes the shortened code of rate ≤ 1 − 1/w₀ on S,
+    which is not low rate.
+  - Nor is the family invariant under Sym(S), so S⁺ does not apply. The one exception is the series-pair case (all words
+    of weight 2), where S is a cell.
+  - **Series-pair giant blocks *are* cells, and the right tool for them is 9′'s cell machinery or B1's blocks**, which
+    already allow them.
+- **The case of [open] content is giant blocks of short words of weight ≥ 3**, for example a long chain of overlapping
+  triads.
+
+**Does NC's robustness help the decomposition step?**
+- **No, as a disposal tool for a block [proved by hand].**
+  - NC needs a W with |W| ≥ (7/4 − ε)k + 2d + 3. A light-word block or a giant block is a proper part of V, with
+    |V| = (7/4 + δ)k. To qualify it would have to be almost all of V.
+  - It would also have to be near-complete. But a block carrying many short dual words has dim D[S] ≥ (|S| − 1)/(w₀ − 1).
+    So H[S] is a high-codimension layer on S whose (S, d)-completeness excess d grows with |S|/w₀ [heuristic for the size
+    of d].
+  - NC's tolerance of outside members does not buy anything here. The members outside a block are not arbitrary: they
+    are the same layer.
+- **Yes, as a closing tool [proved by hand, §8.3–8.4].**
+  - What NC1 really needs is three members with empty common intersection and small union. Its four other lines are
+    closed by covering alone, so no linear algebra is spent on them.
+  - At shift 0 a linear (Schur) triple always qualifies, and that closes S0 (Theorem S0).
+  - At shift ≠ 0 the triple sum lies in a + C, and S1 makes it equal to a minimum-weight Ω. That closes B whenever
+    r ≤ 4εk − 7.
+  - Like NC, this route is indifferent to short dual words and to c. Its limit is r versus 4εk, not codimension.
+- **So NC1 removes the need for the decomposition in the regime r < 4εk.** Contraction is needed only for r ≥ 4εk.
+
+### 9.5 N ≥ 11/6 (replaces check (i))
+The reviewer is right: "1.852 ≤ N < 11/6" is empty, since 11/6 ≈ 1.833. B1's Ω's already cover N < 11/6.
+
+**What B has for N ≥ 11/6.**
+- A Fano-type good seven is sufficient at every N, and every construction here produces one (9′, B1, F, NC1, S0, S1). So
+  the classification "good sevens are Fano-type" is not needed for B. It matters only for the obstruction (Corollary 7).
+- **Single Ω (Theorem D, ρ_par ≤ r + 1):** N < 1.9385 [VERIFIED].
+- **Three pairwise disjoint Ω's:** N < 1.852 with the recount of Task 2. **N < 1.861 without the recount** [proved by hand,
+  `ranges.py`]: Theorem D on V ∖ X needs only e′ ≤ e and e ≤ T − |X|, and e′ ≤ e holds trivially, so no new count on the
+  smaller ground set is required.
+- **Shift 0:** B1 (Ω = ∅) at every N under its codimension bound. S0 for N < 1.8525 (4 ∣ k, counting).
+- **N > 1.9385:** nothing for coset families beyond Lemma 8 (ρ ≤ 2r + 1). The core-window results (CORE, up to about
+  N ≈ 2.25) are not coset-family statements, and nothing here extends them.
+
+**Does the empty-common-intersection relaxation extend anything? Yes, the three-Ω range, from 1.852/1.861 to 1.909.**
+- **The patterns [computed exact, `omega_overlap.py`, exhaustive on Π].**
+  - A point of Ω_i ∩ Ω_j gets colour q ∈ ℓ_m ∖ {p₀}, with pattern P = ANTI(q) ∖ {ℓ_i, ℓ_j}: two lines, j = 2,
+    admissible, and omitted from ℓ_i and ℓ_j.
+  - For all 6 choices, T_i + T_j + P is a nonzero anti-pencil ANTI(p_ij) ∈ S. So the pencil sums are unchanged as vectors.
+  - The Y-step target then shifts by [O_ij] ⊗ ANTI(p_ij). That is reachable: it lies in S ⊗ Q. Its parity coordinate is
+    the size equation, so B1's coset bookkeeping is unaffected.
+  - t mod 2 changes by Σ|O_ij|·ANTI(p_ij) ∈ S, so integrality of m_p is unaffected (mod-4 fixer as before).
+  - The deficiency per Ω-incidence is still 1, so the budget is Σ|Ω_i| ≤ 4n − 7k, and 3(r + 1) ≤ 4δk holds throughout
+    [proved by hand].
+  - The full re-write of the 9′/B1 size formulas with overlaps was not carried out [sketch].
+- **Getting the Ω's.**
+  - Ω₁: Theorem D on V. Ω₂: Theorem D on V ∖ S₁, with S₁ ⊆ Ω₁ and |S₁| = ⌈|Ω₁|/2⌉. Ω₃: Theorem D on V ∖ (Ω₁ ∩ Ω₂).
+  - Then ∩Ω_i = ∅, and the largest shrink is ⌈(r + 1)/2⌉, against 2(r + 1) for disjoint Ω's. Halving is optimal for
+    this scheme.
+  - Thresholds (t = 3/4 worst case, `ranges.py`): **N < 1.909** (no recount) or 1.9065 (recount) [proved by hand:
+    asymptotic counting].
+- **Not extended:** 1.909 ≤ N < 1.9385 (only one Ω), and nothing above 1.9385, because Theorem D itself stops there.
+- **Alternative above 1.909:** Theorem S1 needs only **one** Ω. So it covers r ≤ 4εk − 7 up to N < 1.9385 as well
+  [proved by hand, untested].
+
+### 9.6 Check (ii): codimension above 0.09k with no short dual words
+**Verdict: open.** It is the exact remaining step of B after contraction, in the regime r ≥ 4εk − O(1) (below that,
+S1/NC1 closes B).
+
+**Why it is open [proved by hand].**
+- After contraction, D′ has no words of weight ≤ w₀.
+- The proved criteria still need either:
+  - d′ ≲ 0.058N′ (F‴'s spread term 8^{d′}e^{−0.12N′}); or
+  - control of the number A_w(D′ ⊗ F₂³) of words at distance w from the constants, for medium w. F1⁺ needs about
+    Σ_w A_w exp(−(N/2)(h(w/N) − ln(50/49))) ≪ 1 in the range N/50 < w ≤ N/2.
+- Minimum distance > w₀ bounds only the w ≤ w₀ part. A code can have no light words and still have 2^{d′} words packed
+  near weight N/50.
+
+**Route (1), "such families do not exist in the Fano range": [dead] for random-like codes.**
+- Random codes of codimension M are covering when log₂C(k+r, r) ≳ M [heuristic: covering of random codes]. Codimension
+  0.09k then needs only ω ≈ 0.0115, i.e. N ≈ 1.762 + ε.
+- Their dual distance is at the GV bound, so they have no short dual words.
+- So these families exist throughout 1.77 ≲ N < 11/6. They are near-perfect coverings only when M is close to the
+  counting bound n − log₂|H| (0.026k at N = 7/4, 0.435k at N = 11/6), which they need not be.
+
+**Route (2), exact signs instead of absolute values: partly done, not closed.**
+- F1⁺ (§9.3) achieves the true magnitude 1/7 per point near the constants. The two-valued words are exactly Krawtchouk
+  values, with signs (−1)^w at small w.
+- What is still missing is the cancellation *between* medium-weight words. For that one needs the signed sum
+  Σ_λ S(λ)/S(0), which equals the uncounted identity 5.1 up to the fixed-count correction. Bounding it from below with
+  signs needs the weight enumerator of D′, which "no short words" does not give.
+- **The precise sufficient condition, rigorous:** Σ_{w>N/50} A_w(D′⊗F₂³)·exp(−(N/2)(h(w/N) − 0.0202)) + 8(G′(1/7) − 1) < P_m
+  (plus F1's entropy bound for words with dominant fraction < 1/2).
+  - For random-like D′ [heuristic, `reach_f1plus.py`], replace A_w by its random value.
+    - Words of typical type: the F1 bound already reaches d′ ≈ 0.47N, because off-dominant points spread over 7 values
+      get 7^{−1} from F1 itself.
+    - Two-valued words: F1⁺ reaches d′ ≈ 0.49N, against 0.40N with F1 alone.
+    - So F‴'s 0.058N is an artefact of the crude count 8^{d′}, not of the damping. This agrees with §5.4's heuristic
+      e < (2/3)N.
+  - No rigorous bound on A_w for medium w is available for general codes. That count, not the damping, is the whole
+    content of check (ii).
+
+### 9.7 Summary of Task A(a)–(b)
+**[proved by hand]**
+- The two-case reduction.
+- The shift-0 table.
+- **Theorem S0**: B for every shift-0 layer with 4 ∣ k in N < 11/6, any column structure.
+- S1 (B for r ≤ 4εk − 7 at any shift, untested).
+- Lemma P (puncturing keeps parity; lost parity and Ω-met blocks do not arise in the Ω-first order).
+- The contraction lemma and its termination.
+- F1w, the P_m^w bound (size repair), F‴w (with the mixed-constant hypothesis), F1⁺.
+- Thresholds for N ≥ 11/6: three disjoint Ω's to 1.861, empty common intersection to 1.909.
+
+**[computed exact]**
+- 319/319 S0 sevens and 199 B1 (Ω = ∅) sevens independently verified.
+- 109/109 Schur triangles in the large-codimension range.
+- 0 counting exceptions for 4 ∣ k, k ≤ 400.
+- F1w 153/153 and F1⁺ 148/148.
+- Overlap patterns: 6/6.
+
+**[open]**
+- k ≡ 2 (mod 4) at shift 0 near the top of the window.
+- Giant blocks of words of weight ≥ 3.
+- Check (ii) (codimension > 0.09k with no short words, r ≥ 4εk).
+- The mixed-constant hypothesis of F‴w.
+- The full overlap version of 9′/B1.
+
+**[dead]**
+- Routing giant blocks to S⁺/9′ as stated.
+- Route (1) of check (ii).
+- NC as a block-disposal tool.
+
+**[heuristic]**
+- Random codes exist in check (ii)'s range.
+- The reach of F1/F1⁺ for random-like D′: about 0.47N (typical types) and 0.49N (two-valued words).
+
+Files (`compute/programme2/B/shift/`):
+- `s0.py`: Theorem S0 construction, the covering certificate, B1 at Ω = ∅.
+- `verify7.py`: independent verifier.
+- `tri_test.py`: Schur triangles.
+- `s0_finite.py`: counting for S0.
+- `ranges.py`: asymptotic thresholds.
+- `f1w_check.py`: F1w and F1⁺, exact.
+- `omega_overlap.py`: overlap patterns.
+- `reach_f1plus.py`: heuristic reach for random-like D′.
+- Logs are in `logs/`.

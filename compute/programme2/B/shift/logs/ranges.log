@@ -1,0 +1,9 @@
+S0 (codim <= min(k/2, n-3k/2) and |H| > 2^(n/2)) holds for all N < 1.7985
+S0 dimension condition alone: N < 1.7985
+  min slack (per k) of S0 condition over N < 11/6: -0.1006
+  codim bound n - L at N=7/4 (w=e=0): 0.0259 ; at w=1/12,e=0: 0.4348
+shrink 2(r+1) [disjoint]: no-recount N < 1.8610; recount N < 1.8525
+shrink (r+1)/2 [empty common intersection, halving]: no-recount N < 1.9090; recount N < 1.9065
+shrink 0: no-recount N < 1.9385; recount N < 1.9385
+S0 (4|k form, e <= k/2 only): N < 1.8525
+  max over N<1.9385 region of (n-L)/k: 0.75

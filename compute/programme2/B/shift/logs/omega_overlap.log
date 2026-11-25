@@ -1,0 +1,7 @@
+Omega_1 cap Omega_2: colour 1, P = ['235', '346'], T_i+T_j+P = ANTI(4), in S: True
+Omega_1 cap Omega_2: colour 3, P = ['124', '156'], T_i+T_j+P = ANTI(5), in S: True
+Omega_1 cap Omega_3: colour 2, P = ['156', '346'], T_i+T_j+P = ANTI(1), in S: True
+Omega_1 cap Omega_3: colour 6, P = ['124', '235'], T_i+T_j+P = ANTI(3), in S: True
+Omega_2 cap Omega_3: colour 4, P = ['156', '235'], T_i+T_j+P = ANTI(2), in S: True
+Omega_2 cap Omega_3: colour 5, P = ['124', '346'], T_i+T_j+P = ANTI(6), in S: True
+all checks pass: True

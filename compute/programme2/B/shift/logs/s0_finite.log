@@ -1,0 +1,5 @@
+triples checked: 39304
+4|k: hypothesis not guaranteed by counting at 0 triples; largest k: None
+k=2 mod 4: not guaranteed at 2429 triples; largest k: 398
+first few 4|k failures: []
+largest-k 2mod4 failures: [(398, 30, 300), (398, 30, 301), (398, 31, 299), (398, 31, 300), (398, 32, 299)]
