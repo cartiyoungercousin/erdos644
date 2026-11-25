@@ -8,7 +8,7 @@
 - Mills (Ars Combin. 8 (1979)) covering-number thresholds; "exact C(v,k,2) known for v/k <= 13/4" (from a web-search snippet, unchecked).
 
 ## [to check]
-- La Jolla Covering Repository (site unreachable from this environment, search returned no table values): C(9,4,2)>=8, C(10,5,2)<=7, C(10,4,2)>=8, C(11,5,2)<=7, C(12,5,2)>=8, C(13,6,2)<=7 (the facts behind the lower bounds f(5,7)=5.., f(6,7)>=5, f(7,7)>=6). Our own source is a single ILP (complete_int.py), not independently re-run.
+- Covering numbers C(9,4,2)>=8, C(10,5,2)<=7, C(10,4,2)>=8, C(11,5,2)<=7, C(12,5,2)>=8, C(13,6,2)<=7: recomputed independently (compute/verify/cover_ilp.py, HiGHS; values 8,6,9,7,9,7; all upper-bound witnesses brute-force verified; see notes/verify/small_values.md). La Jolla table still NOT read (site unreachable). Open: a proof-logged/literature confirmation of C(10,4,2)>=8 and C(12,5,2)>=8 (SAT cross-check did not finish).
 
 ## Items used but NOT in LEDGER.md (status as stated in the notes)
 - f(6,7)=5, f(7,7)=6 (FRESH_C 14.1-14.3): EXACT certificates, conditional on the anchored reduction (HAND).
