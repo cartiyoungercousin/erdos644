@@ -1,0 +1,15 @@
+k=14 T=11 n=28 cells=[27, 1] nondeg=False: UNSAT after 2 SAT calls, 1 cuts, 2.5s; |profiles|=2; good sevens without any (Sigma)-shape: 0/1
+k=14 T=11 n=28 cells=[26, 2] nondeg=False: UNSAT after 2 SAT calls, 1 cuts, 7.7s; |profiles|=3; good sevens without any (Sigma)-shape: 0/1
+k=14 T=11 n=28 cells=[25, 3] nondeg=False: UNSAT after 2 SAT calls, 1 cuts, 6.6s; |profiles|=4; good sevens without any (Sigma)-shape: 0/1
+k=14 T=11 n=28 cells=[24, 4] nondeg=False: UNSAT after 5 SAT calls, 4 cuts, 8.3s; |profiles|=5; good sevens without any (Sigma)-shape: 1/4
+k=14 T=11 n=28 cells=[23, 5] nondeg=False: UNSAT after 5 SAT calls, 4 cuts, 31.7s; |profiles|=6; good sevens without any (Sigma)-shape: 0/4
+k=14 T=11 n=28 cells=[22, 6] nondeg=False: UNSAT after 6 SAT calls, 5 cuts, 22.6s; |profiles|=7; good sevens without any (Sigma)-shape: 0/5
+k=14 T=11 n=28 cells=[21, 7] nondeg=False: UNSAT after 6 SAT calls, 5 cuts, 22.4s; |profiles|=8; good sevens without any (Sigma)-shape: 0/5
+k=14 T=11 n=28 cells=[20, 8] nondeg=False: UNSAT after 6 SAT calls, 5 cuts, 27.1s; |profiles|=9; good sevens without any (Sigma)-shape: 3/5
+k=14 T=11 n=28 cells=[19, 9] nondeg=False: UNSAT after 9 SAT calls, 8 cuts, 54.3s; |profiles|=10; good sevens without any (Sigma)-shape: 0/8
+k=14 T=11 n=28 cells=[18, 10] nondeg=False: UNSAT after 6 SAT calls, 5 cuts, 53.1s; |profiles|=11; good sevens without any (Sigma)-shape: 1/5
+k=14 T=11 n=28 cells=[17, 11] nondeg=False: UNSAT after 11 SAT calls, 10 cuts, 71.6s; |profiles|=12; good sevens without any (Sigma)-shape: 2/10
+k=14 T=11 n=28 cells=[16, 12] nondeg=False: UNSAT after 19 SAT calls, 18 cuts, 124.8s; |profiles|=13; good sevens without any (Sigma)-shape: 5/18
+k=14 T=11 n=28 cells=[15, 13] nondeg=False: UNSAT after 11 SAT calls, 10 cuts, 35.0s; |profiles|=14; good sevens without any (Sigma)-shape: 3/10
+k=14 T=11 n=28 cells=[14, 14] nondeg=False: UNSAT after 20 SAT calls, 19 cuts, 125.1s; |profiles|=15; good sevens without any (Sigma)-shape: 6/19
+BATCH_DONE

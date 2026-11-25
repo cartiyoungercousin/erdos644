@@ -1,0 +1,4 @@
+n=16 k=9 |X|=0 c=7 excess E=1
+heavy multisets up to S7: 1
+degree-feasible co-type multisets (leaves): 0; split-feasible: 0
+RESULT: NO bad 7-tuple (no good seven of co-edges) [computed exact, exhaustive]

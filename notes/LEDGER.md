@@ -37,6 +37,8 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 | Theorem H (> 2/3 of the lines over one kernel present gives a good seven; W is a special case) | CORE §55–§59 | VERIFIED (R/H verifier; 2/3 is sharp: the Kleitman set; §58.1 wording fix: 'J has ω points outside the window W') |
 | Hash-like selectors: 805/805 trials have a good seven (the 7 earlier misses were search failures) | CORE §56 | EXACT |
 | (8,6,15) family: τ = 7; good-seven question UNDECIDED; at ε = 0, irrelevant to CP | CORE §55 | EXACT (τ) |
+| Reduction sanity check: the FKW parity family (m = 3, k = 12, ε = 0) has no good seven and no (Σ)-shape; pencils are excluded by parity | CORE §110–§114 | HAND + EXACT |
+| Window exact searches: (10,8,21) is the smallest genuine instance ((13,10,·) is degenerate: the complete family already has τ = 11); 231 symmetric (cell-invariant) searches are all UNSAT with checked certificates; the reversed-order template dies at (10,8,21) | CORE §110–§114 | EXACT (certificates) / solver-only (template) |
 | Literal SPOIL false | CORE §40 | EXACT |
 | SPOIL at all depths is not a disproof | CORE §43 | HAND |
 | One-bit rule has a good seven | CORE §44 | EXACT (89 instances) |

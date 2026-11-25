@@ -4083,3 +4083,238 @@ argument: ρ*_3 close to 7 forces near-pool structure. That is the §33(4) progr
 - The exact ρ* uses a basic solution recomputed in Fractions. All covers found by SAT were re-checked pair by pair.
 - The UNSAT claims at n = 17 are CaDiCaL's, with no proof log kept.
 - Not independently verified.
+
+=============================================================================================
+# Part XVIII — finite checks: the FKW parity family against (Σ); exact searches at true window instances (§110–§114)
+
+Code: `compute/core12/`. Logs: `compute/core12/logs/`. Tags as usual. Here "exact" means a complete enumeration by our own
+code, or a SAT refutation whose DRUP proof was re-checked by our own RUP checker (`check_drup.py`). "Solver-only" means
+the answer comes from one solver run with no checked certificate.
+**Outcome.**
+- (A) The verified reduction CP ⇐ (Σ) passes the FKW sanity test. The FKW family at m = 3 really is (7,2) with τ > T.
+  It contains no Q′ quadruple, no (b) pencil triple and no Theorem-T triangle. At general m this is proved by hand.
+- But the test only bites on (b). At ε = 0, (a) and (c) fail by integer rounding (half a point). (b) fails because of
+  the parity, which is the real content of the construction.
+- (B) No T-covering family without a good seven exists among the profile families with q ≤ 2 cells, at every listed
+  instance and at the smaller instance (10, 8, 21). The (Σ) shapes are present in every candidate family. Many of the
+  good sevens found contain no (Σ) shape among their own members, which is expected and is not evidence against (Σ)
+  (§114). The core9 two-order template does not survive at (10, 8, 21).
+- (13, 10, ·) is not a test of CP: genuine (7,2) families with τ = 11 exist there. The smallest genuine open window
+  instance is (10, 8, 21), which is missing from the reviewers' list (§112).
+
+## 110. The FKW parity family at m = 3 [proved by hand; computed exact]
+
+**110.1 The family.** S = X ⊔ Y with |X| = 4m and |Y| = 3m + 1, so n = 7m + 1 and k = 4m. The edges are the k-sets A
+with |A ∩ X| odd. In co-edge form, c = 3m + 1 and the co-edges are the c-sets K with |K ∩ X| odd (since |X| is even).
+T = 3m, so t = 3/4 and ε = 0. N = 7/4 + 1/k, ω·k = n − k − T = 1, and 4δ·k = 7c − 3n = 4.
+So the family lies one point above the lower end 5t − 2 of the window, and has slack 4 points and dump 1 point.
+**110.2 τ = 3m + 1 for every m >= 1 [proved by hand].**
+- Y is a transversal, since every edge has |A ∩ Y| = k − |A ∩ X| >= 1.
+- Let U be any set of 4m + 1 points, a = |U ∩ X| >= m. Take j ∈ {a − 1, a} odd. Then j >= m − 1, and U contains an edge
+  with j points in X, because 4m − j <= 4m + 1 − a.
+- So no 3m-set is a transversal.
+Hence the family is T-covering at T = 3m, i.e. τ > T.
+**110.3 (7,2) at m = 3 [computed exact: `fkw_spectrum.js 22 12 12`, exhaustive].**
+Spectrum (co-type) model, as in the erdosproblemaday report.
+- A good seven is the same thing as nonnegative integers x_I, y_I (I ⊆ [7]) with pairwise-intersecting support,
+  Σx = |X|, Σy = |Y|, deg_i(x + y) = c and deg_i(x) odd.
+- Hand facts used:
+  - |I| = 1 is impossible (K_i would be V).
+  - |I| = 2 is impossible when 2c < n.
+  - Hence Σ(|I| − 3) = 7c − 3n = 4.
+- Method: enumerate the heavy co-types (excess 4) up to S_7 (86 classes); DFS over the multiplicities of the 3-sets
+  (intersecting support, exact degrees); then an exact DP over the X/Y split with parity.
+- Result: 312 degree-feasible co-type multisets, 0 realizable with the parity. **No good seven.**
+- Controls:
+  - m = 2 (k = 8): 12 multisets, 3 realizable. Witnesses rebuilt as explicit sets and pair-checked, so the family fails,
+    as FKW state.
+  - Complete K_21^(12): bad tuples exist (the Fano blow-up).
+  - Complete K_16^(9) and K_23^(13): none [exact]. This gives f(9,7) >= 8 and f(13,7) >= 11, matching FRESH_C 14.1.
+  - The m = 2 control was rerun after the DFS pruning was strengthened. It gave the same 12/3 counts.
+- This agrees with the erdosproblemaday report (CP-SAT + SCIP, solver-only) and with NOTES Phase A (solver).
+  An independent MILP cross-check of ours (`fkw_milp.py`, all 127 co-types, no hand reduction) finds the m = 2 bad
+  tuple; at m = 3 a rerun (`logs/fkw_milp_m3.log`, 40-min cap) was still running when this was written [solver-only, pending]; the result above does not depend on it.
+**Verdict.** At m = 3 the FKW family is a genuine (7,2)-family with τ = 10 > T = 9 = 3k/4. So it has no good seven.
+
+## 111. (Σ) inside the FKW family [proved by hand for every m >= 2; computed exact at m = 2, 3, 4]
+
+Finite-k forms with ε = 0 (integer masses): n = 7m + 1, c = 3m + 1, T = 3m.
+**111.1 (b) No pencil triple.**
+- Three co-edges with union V and triple intersection κ: degree count 3c = n + 2κ + d_2 gives κ <= m + 1.
+- The pencil needs κ >= n − 2T = m + 1. So κ = m + 1 and d_2 = 0, and the three petals P_i (size 2m) partition V ∖ κ.
+- Let e = |κ ∩ X|.
+  - Each |P_i ∩ X| ≡ 1 − e (mod 2), since |K_i ∩ X| is odd.
+  - The petals sum to 4m − e.
+  - So 3(1 − e) ≡ e (mod 2), i.e. 1 ≡ 0. Contradiction.
+- The parity kills exactly the configuration that the complete family on the same 7m + 1 points does contain.
+  Exhaustive Venn enumeration (`fkw_sigma.py`):
+  - parity family: 0 pencils and largest κ with union V equal to m at m = 2, 3, 4;
+  - complete family: one pencil class each, with κ = m + 1.
+**111.2 (c) No Theorem-T triangle.**
+- The conditions are a, b, d <= (T + n − 2k)/2 = m + 1/2 and a + b + d >= (3n − 3k − T)/2 = 3m + 3/2.
+- These are incompatible in integers, since the maximum sum is 3m. Only rounding is at work: at ε = 0 the
+  Theorem-T region is the single point a = b = d = (t + N − 2)/2.
+- Enumeration: 0 in both the parity and the complete family.
+**111.3 (a) No Q′ quadruple.**
+- From the load identity (§37), u_3 + 2u_4 = 2s_0 + s_1 + 2 − 2m.
+- σ = s_0 + s_1 <= (3T − n)/2 = m − 1/2 forces s_0 = m − 1, s_1 = 0 and u_3 = u_4 = 0. All other points lie in exactly
+  two of the four members.
+- Opposite pair-masses are then equal (α, β, γ), with α + β + γ = c = 3m + 1.
+- The matching conditions give 2α + m − 1 <= 3m, i.e. α <= m, and likewise β, γ <= m. But α + β + γ = 3m + 1 > 3m.
+  Contradiction.
+- MILP (`fkw_quad.py`, solver-only), parity and complete, m = 3 and 4: the least doubled violation is 1, i.e. Q′ is
+  missed by half a point.
+**111.4 What the test shows.**
+- The reduction is consistent with the only known (7,2)-family above 3k/4: none of the three shapes occurs.
+- The complete family on the same ground set does contain a pencil, and does have a good seven, also consistent.
+- The test is strong for (b) only. Pencils are excluded by the defining parity, which is the mechanism FKW use to kill
+  the Fano blow-up.
+- (a) and (c) are excluded by the half-point rounding that ε = 0 forces. A family with ε > 0 would test them; none is
+  known (any integer family with τ >= T + 1 at T > 3k/4 would beat FKW).
+- No (Σ) shape was found in a genuine no-good-seven family. **Nothing indicates that the reduction is wrong.**
+
+## 112. Which window instances are tests; the search model [proved by hand; computed exact]
+
+**112.1 The list.** The integer instances with 5T − 2k < n < 3k − T and k <= 16 are:
+(9,7,18–19), (10,8,21), (13,10,25–28), (14,11,28–30), (15,12,31–32), (16,13,34). Of these:
+- **(9,7,·) and (13,10,·) are not tests.**
+  - K_16^(9) and K_23^(13) are (7,2) with τ = T + 1 (110.3 controls).
+  - Padding (adding points that lie in every co-edge) makes them T-covering co-edge families without a good seven on
+    n = 18, 19 and n = 25..28 points, under the literal definition.
+  - The profile search finds the padded K_23 at (13,10,25) without being told: cells (23,2), profile (10,2), log
+    `prof_ctrl_13_10_25_23-2.json`; MILP-certified seven-free, solver-only.
+  - At (13,10) we therefore searched only *nondegenerate* families (every cell has a point outside some member). That
+    is the confinement condition that V is a union of edges.
+- **(10,8,21) is the smallest genuine open instance.** f(10,7) ∈ {8, 9}; τ = 9 is open. It is missing from the
+  reviewers' list.
+- (14,11), (15,12) and (16,13) are genuine and open as well: τ > T beats every known construction.
+**112.2 Unrestricted search is out of reach.**
+- At (10,8,21) there are C(21,11) = 352 716 co-edge variables and C(21,8) = 203 490 covering clauses of length
+  C(13,3) = 286.
+- Each lazy "no good seven" step is a pair-cover decision. Even at (8,6,15) that took more than 4 h without an answer
+  (CORE 55.5).
+- At (14,11,28) there are C(28,14) ≈ 4·10⁷ variables.
+- The erdosproblemaday methodology (spectrum model with CP-SAT) decides one *symmetric* family. Its natural extension
+  to a search is the profile model below.
+**112.3 Profile families (`profile_search.py`).**
+- Fix a partition V = V_1 ⊔ … ⊔ V_q. Take families that are unions of whole profile classes C(p), Σp = c. These are
+  exactly the Sym(V_1) × … × Sym(V_q)-invariant families; FKW is q = 2.
+- [proved by hand] T-covering ⟺ every T-profile s is dominated by a chosen p.
+- [proved by hand] A good seven ⟺ seven slots in P plus per-cell co-type counts with intersecting support.
+- SAT runs on the profile variables (Glucose 4, DRUP proof on), with the covering clauses and, at (13,10), the
+  nondegeneracy clauses.
+- Each model is shrunk greedily to a minimal covering subfamily. A MILP (HiGHS) then searches it for a good seven,
+  using an up-set exactly-one-of-each-complementary-pair encoding of the support. A seven that is found is re-checked by
+  plain code and cut.
+- Certificate for UNSAT = the CNF + DRUP proof + logged sevens. `check_drup.py` re-derives the covering clauses from
+  (k, T, n, cells), re-verifies every cut's seven by plain code, and RUP-checks the proof (deletions ignored).
+  A cut is valid by monotonicity: any family containing those ≤ 7 profiles contains the seven.
+- Theorem S+ (§39.4) is vacuous here (4εk − 12 < 0), so these classes were not already excluded.
+- Controls:
+  - (12,9,22), cells (12,10): finds exactly the FKW family {(1,9), (3,7), (5,5), (7,3), (9,1)} at the first SAT call.
+    Its "no good seven" is MILP-only, solver-only.
+  - (13,10,23), q = 1: finds K_23.
+  - (8,6,15), cells (8,7): UNSAT, certificate verified.
+
+## 113. Results [computed exact where the DRUP certificate is verified; see the table]
+
+**113.1 Profile searches.** Every run ended UNSAT: no profile family of that partition is T-covering without a good
+seven. The 45-min cap was never reached by any q <= 2 run.
+
+| (k, T, n) | q = 1 | q = 2 (all partitions) | q = 3 (partitions done / total) |
+|---|---|---|---|
+| (10, 8, 21) | UNSAT | UNSAT 10/10 | UNSAT 19/37 (stopped) |
+| (13, 10, 25) nondeg | UNSAT | UNSAT 12/12 | UNSAT 14/52 (stopped) |
+| (13, 10, 26–28) nondeg | — | UNSAT 13/13, 13/13, 14/14 | — |
+| (14, 11, 28) | UNSAT | UNSAT 14/14 | UNSAT 18/65 (stopped) |
+| (14, 11, 29) | UNSAT | UNSAT 14/14 | UNSAT 19/70 (stopped) |
+| (14, 11, 30) | UNSAT | UNSAT 15/15 | — |
+| (15, 12, 31) | UNSAT | UNSAT 15/15 | — |
+| (15, 12, 32) | UNSAT | UNSAT 16/16 | — |
+| (16, 13, 34) | UNSAT | UNSAT 17/17 | — |
+
+- Certificates: all 231 UNSAT runs (q = 1, 2, 3 together) have a DRUP proof accepted by `check_drup.py`. Two tampered certificates (one cut deleted; a bogus proof) were rejected.
+- The q = 3 batches were stopped for time. The partitions done are the most unbalanced ones (largest first cell).
+- In total there were 3 083 cuts over all runs, each a pair-checked good seven.
+- What this proves [exact]: for these (k, T, n), no family invariant under the full symmetric group of each cell of any
+  partition into <= 2 cells (<= 3 for the partitions listed) is a counterexample. In particular no parity-type /
+  FKW-type construction (any set of allowed X-sizes, any |X|) has τ > T and property (7,2) there.
+- What it does not prove: anything about families with less symmetry. Theorem S says profile families lose
+  asymptotically, so this is the finite-k analogue, not progress on CP.
+
+**113.2 The core9 template at a true window instance (`tg_window.py`, `pencil_find.js`).**
+- Rule: two priority orders; the reply to S of class c is S ∪ (the first ω points of V ∖ S in order c). The class of
+  every T-set is free (SAT).
+- Lazy cuts on every (Σ)(b) pencil found in the current family. `pencil_find.js` is exhaustive when it says so. Pencils
+  are restricted by 3c = n + 2κ + d_2, so pair overlaps lie in [n − 2T, 3c − n − (n − 2T)].
+- Controls reproduce core9 exactly:
+  - (8,6,16) rev: UNSAT (no pencil-free selector).
+  - (8,6,15) rev: a pencil-free family of 2 352 members, exhaustive pencil check, in which local search finds no good
+    seven (as `esc_8_6_15.log`).
+- At **(10, 8, 21)** (ε = 1/20, ω = 3):
+
+| orders | result |
+|---|---|
+| rev (one order reversed) | UNSAT after 100 rounds (2·10⁷ pencil cuts): **every selector leaves a pencil** |
+| two random orders, seed 1 | UNSAT after 19 rounds |
+| two random orders, seed 2 | UNSAT after 168 rounds |
+| three random orders, seed 2 | UNSAT after 379 rounds |
+| three random orders, seed 1 | undecided: the SAT call after round 430 (8.6·10⁷ pencil cuts) passed the 45-min cap; killed |
+
+  [CaDiCaL, solver-only: the refutation is not certificate-checked. Every cut is a genuine pencil by construction of
+  `pencil_find.js`.]
+- So the template that is pencil-free and (heuristically) seven-free at ε = 0 does not survive one step into the true
+  window. With ε·k = 1/2 point of slack and ω = 3 dump points, the pencil can no longer be avoided by any selector for
+  these orders.
+- This answers the coordinator's question for (10,8,21): the ε > 0 slack forces pencils, hence good sevens.
+- (13,10,25) rev: undecided at the 45-min cap. There are 3.27·10⁶ requests and about 1.15·10⁶ members, and pencils are
+  still abundant after 221 rounds. It would not be a CP test anyway (112.1).
+- (16,13,34): C(34,13) ≈ 9.3·10⁸ requests; not attempted.
+
+## 114. Structure of the forced good sevens; status; self-check
+
+**114.1 Do the forced sevens contain (Σ) shapes? [computed exact on the logged data, `seven_shapes.py`, `sigma_profile.py`]**
+- Of the 3 083 logged good sevens, 949 contain no pencil, Theorem-T triangle or Q′ among their own members.
+- The smallest deficits are ½–1 point for T and Q′, and 1 point for the pencil. These are finite-k rounding sizes.
+- The co-type size profiles of those 949 are mostly 3- and 4-sets with a few 5-, 6- and 7-sets, with non-Fano triples.
+- **This is not evidence that (Σ) is too narrow.** (Σ) says the *family* contains a shape, not the seven. The MILP
+  returns an arbitrary seven.
+- At the family level, every one of 2 896 candidate families (minimal T-covering profile families met in the
+  searches) contains a (Σ) shape:
+  - pencil in 2 896;
+  - Q′ in 2 872;
+  - Theorem T in 1 047;
+  - families with none: 0 [MILP per family, solver-only; witnesses re-checked by plain code].
+- So these data do not suggest any new minimal finishing configuration (Σ⁺) at the family level. The seven-level data
+  are exported for FABLE_C (114.2).
+- Caveat: profile families contain pencils for a structural reason (Theorem S). The data cannot say whether (Σ) is
+  too narrow for non-symmetric families.
+**114.2 Data export for FABLE_C.** `compute/core12/forced_sevens.jsonl` (`export_sevens.py`) holds all 3 083 forced
+good sevens at window instances, one JSON object per line. Each record has the seven co-edges as explicit bitmasks on
+0..n−1 (cells = consecutive blocks), re-checked to cover all pairs, and the profile family it came from.
+- The sub-shapes were recomputed from the bitmasks: pencil 1 881, Theorem T 90, Q′ 583. 2 134 sevens have at least
+  one shape and 949 have none, matching 114.1.
+- Classification is left to FABLE_C.
+- The prefix-trace test was dropped on the coordinator's instruction (FABLE_C owns adaptive certificates).
+**114.3 Status.**
+- (A) passed. The reduction survives its only available sharp check (b). (a) and (c) are not tested at ε = 0.
+- (B):
+  - No profile counterexample at any listed instance, or at (10,8,21).
+  - The core9 template dies at (10,8,21).
+  - Unrestricted families at window instances remain out of reach (112.2).
+  - Next feasible targets: profile families with q = 3, 4 at (10,8,21), and reflection- or cyclic-invariant families
+    at (10,8,21). The latter cut the variable count by about 2n while keeping hash-like freedom.
+**114.4 Self-check.**
+- 110.2, 111.1–111.3 re-derived by hand for general m. The parity step in 111.1 was checked against the enumeration
+  at m = 2, 3, 4.
+- `fkw_spectrum.js`: the pruning was changed during the run. The m = 2 control was rerun on the final code and gave the
+  same 12/3 counts.
+- `check_drup.py` first deleted clauses as the proof said. That rejected valid proofs, because the incremental solver
+  deletes reason clauses. It now ignores deletions, which is sound.
+- The profile model's two equivalences (112.3) are two-line arguments. The cut validity uses only monotonicity.
+- Solver-only items:
+  - the MILP "no good seven" for the FKW and padded-K_23 control families;
+  - the template UNSATs;
+  - the per-family shape MILPs;
+  - the Q′ margin MILP.
+- Not independently verified.

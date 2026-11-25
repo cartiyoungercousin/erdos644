@@ -1,0 +1,5 @@
+m=4: n=29 k=16 T=12 c=13; pencil needs union V and kappa >= 5; Thm T needs a,b,d <= 9/2, sum >= 27/2
+  combined Venn vectors with sizes c: 2744 ; parity-realizable: 2743
+  max triple intersection over triples with union V: complete family 5 ; parity family 4
+  pencil triples: complete family 1 ; parity family 0
+  Theorem-T triples: complete family 0 ; parity family 0

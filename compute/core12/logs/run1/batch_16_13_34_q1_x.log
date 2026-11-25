@@ -1,0 +1,2 @@
+k=16 T=13 n=34 cells=[34] nondeg=False: UNSAT after 2 SAT calls, 1 cuts, 2.8s; |profiles|=1; good sevens without any (Sigma)-shape: 0/1
+BATCH_DONE
