@@ -20,5 +20,7 @@ These are research logs written as the work progressed. They contain dead ends a
 | `REDTEAM.md` | Adversary constructions used to stress-test strategies |
 | `FAST.md` | Exact game solver and small-case computations |
 | `LITERATURE.md`, `LIT_11_13.md`, `NOTES.md` | Literature notes and the problem statement |
-| `R1*`, `R2CORE*`, `COMBINE_RESULTS.md`, `NEW_PATHS.md` | Early computational rounds, superseded |
+| `FABLE_A.md`, `FABLE_C.md` | The latest research round (multi-pool designs; the Σ₆ and size-2 co-type leads) |
+| `FRONTIER.md`, `FINITE_K.md` | Intermediate-bound work and finite-$k$ repairs (in progress) |
+| [`archive/`](archive/) | Superseded logs from early rounds (`R1*`, `R2CORE*`, `COMBINE_RESULTS`, `NEW_PATHS`, old plans) |
 | `LEAN_POLICY.md` | Rules for the Lean development (no `sorry`, frozen statements) |

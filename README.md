@@ -15,6 +15,11 @@
 | The full working write-up of the open region | [`notes/CORE.md`](notes/CORE.md), starting at §33 (the handover) |
 | Independent verification reports | [`notes/verify/`](notes/verify/) |
 | The machine-checked lemmas | [`Lean644/`](Lean644/) |
+| Every result with its proof location and verification | [`docs/RESULTS.md`](docs/RESULTS.md) |
+| The approaches shown not to work, and why | [`reports/FAILED_ROUTES.pdf`](reports/FAILED_ROUTES.pdf) |
+| Definitions of the terms used | [`docs/GLOSSARY.md`](docs/GLOSSARY.md) |
+| How to check the claims yourself | [`docs/HOW_TO_VERIFY.md`](docs/HOW_TO_VERIFY.md) |
+| How the work progressed | [`docs/TIMELINE.md`](docs/TIMELINE.md) |
 | A guide to all working notes | [`notes/README.md`](notes/README.md) |
 
 ## What is established (summary)
