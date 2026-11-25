@@ -38,3 +38,4 @@ import Lean644.TheoremA
 import Lean644.SparserTriple
 import Lean644.ThreeCentres
 import Lean644.MinimalFrame
+import Lean644.RichFamilies
