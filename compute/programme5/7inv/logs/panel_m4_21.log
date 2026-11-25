@@ -1,0 +1,9 @@
+== mod4 |X|=12 res=1  n=21 k=12 |H|=46992  cover level 15 (r=3)  tau=7  4n-7k=0  4T-3k=-12
+   phi: 12:0.16 13:0.362 14:0.642 15:1
+   beta_H = 0.9990 (|a|=12)  base_H = 0.0249
+   beta_U(13) = 0.1941 (|a|=13)  phi=0.362
+   beta_U(14) = 0.5563 (|a|=12)  phi=0.642
+   cone(12): dim const-on-U_m 44, const-on-slice 23, excess 21
+   cone(13): dim const-on-U_m 24, const-on-slice 23, excess 1
+   cone(14): dim const-on-U_m 23, const-on-slice 23, excess 0
+   balanced S=200000: marg 0.161 0.161 0.160 0.160 0.159 0.160 0.159  prod 2.681e-06  cert 0.000e+00  kappa -inf

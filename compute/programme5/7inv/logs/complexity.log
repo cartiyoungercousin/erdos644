@@ -1,0 +1,11 @@
+(a) Cauchy-Schwarz complexity per form: {1: 2, 2: 2, 3: 2, 4: 2, 5: 2, 6: 2, 7: 2}
+(b) 20000 random (q, y) in F_2^10: violations of sum_u q(u.y)=0 (quadratic): 0; of sum_u |u.y| = 0 mod 4: 0; cubic q with sum = 1: 9926
+    A = {x1x2+...+x9x10 = 1} in F_2^10: density 0.4844, max nontrivial |Fourier| 0.0156 (2^-5 = 0.0312), sampled PG(2,2) in A: 0 of 400000 (independence predicts 2502)
+(c) Abelian embeddings of the colouring law (m, |E_m| no zero class, |E_m| zero class allowed, |<1> + (m/2)Hamming|, |Hamming|):
+    Z_2: 16  16  explained 16  (Hamming 16)
+    Z_3: 3  1  explained 3  (Hamming 16)
+    Z_4: 32  32  explained 32  (Hamming 16)
+    Z_5: 5  1  explained 5  (Hamming 16)
+    Z_6: 48  16  explained 48  (Hamming 16)
+    Z_7: 7  1  explained 7  (Hamming 16)
+    Z_8: 64  32  explained 64  (Hamming 16)

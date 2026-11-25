@@ -1,0 +1,9 @@
+== TASKB sa_10_8_21_random_s1.npy  n=21 k=10 |H|=4090  cover level 13 (r=3)  tau=9  4n-7k=14  4T-3k=2
+   phi: 10:0.0116 11:0.123 12:0.572 13:1
+   beta_H = 0.0812 (|a|=14)  base_H = 0.0844
+   beta_U(11) = 0.0301 (|a|=5)  phi=0.123
+   beta_U(12) = 0.0130 (|a|=5)  phi=0.572
+   cone(10): dim const-on-U_m 23, const-on-slice 23, excess 0
+   cone(11): dim const-on-U_m 23, const-on-slice 23, excess 0
+   cone(12): dim const-on-U_m 23, const-on-slice 23, excess 0
+   balanced S=200000: marg 0.573 0.574 0.571 0.573 0.573 0.571 0.572  prod 2.014e-02  cert 1.970e-02  kappa -0.01

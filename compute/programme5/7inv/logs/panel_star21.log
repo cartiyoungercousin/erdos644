@@ -1,0 +1,9 @@
+== star+patch r=3 s=1  n=21 k=10 |H|=56512  cover level 13 (r=3)  tau=9  4n-7k=14  4T-3k=2
+   phi: 10:0.16 11:0.649 12:0.929 13:1
+   beta_H = 0.8281 (|a|=1)  base_H = 0.0227
+   beta_U(11) = 0.5209 (|a|=1)  phi=0.649
+   beta_U(12) = 0.0869 (|a|=1)  phi=0.929
+   cone(10): dim const-on-U_m 23, const-on-slice 23, excess 0
+   cone(11): dim const-on-U_m 23, const-on-slice 23, excess 0
+   cone(12): dim const-on-U_m 23, const-on-slice 23, excess 0
+   balanced S=200000: marg 0.929 0.928 0.929 0.930 0.929 0.929 0.929  prod 5.969e-01  cert 5.730e-01  kappa -0.02

@@ -1,0 +1,7 @@
+== quad s=1  n=22 k=12 |H|=323188  cover level 14 (r=2)  tau=9  4n-7k=4  4T-3k=-4
+   phi: 12:0.5 13:1 14:1
+   beta_H = 0.0058 (|a|=13)  base_H = 0.0097
+   beta_U(13) = 0.0001 (|a|=11)  phi=1
+   cone(12): dim const-on-U_m 25, const-on-slice 24, excess 1
+   cone(13): dim const-on-U_m 24, const-on-slice 24, excess 0
+   balanced S=200000: marg 1.000 0.501 1.000 0.501 1.000 0.499 1.000  prod 1.252e-01  cert 1.259e-01  kappa 0.00

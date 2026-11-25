@@ -1,0 +1,7 @@
+== thresh |A|=21 t=12  n=23 k=12 |H|=293930  cover level 14 (r=2)  tau=10  4n-7k=8  4T-3k=0
+   phi: 12:0.217 13:0.692 14:1
+   beta_H = 1.0435 (|a|=21)  base_H = 0.0104
+   beta_U(13) = 0.4580 (|a|=21)  phi=0.692
+   cone(12): dim const-on-U_m 68, const-on-slice 25, excess 43
+   cone(13): dim const-on-U_m 26, const-on-slice 25, excess 1
+   balanced S=200000: marg 0.694 0.689 1.000 0.218 0.691 0.692 1.000  prod 4.994e-02  cert 6.398e-02  kappa 0.11

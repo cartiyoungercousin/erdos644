@@ -1,0 +1,9 @@
+== coset codim=4 s=1 (syndrome 0)  n=21 k=10 |H|=22066  cover level 13 (r=3)  tau=9  4n-7k=14  4T-3k=2
+   phi: 10:0.0626 11:0.523 12:0.99 13:1
+   beta_H = 1.0022 (|a|=6)  base_H = 0.0363
+   beta_U(11) = 0.3737 (|a|=6)  phi=0.523
+   beta_U(12) = 0.0076 (|a|=6)  phi=0.99
+   cone(10): dim const-on-U_m 97, const-on-slice 23, excess 74
+   cone(11): dim const-on-U_m 23, const-on-slice 23, excess 0
+   cone(12): dim const-on-U_m 23, const-on-slice 23, excess 0
+   balanced S=200000: marg 0.990 0.990 0.990 0.991 0.990 0.991 0.990  prod 9.340e-01  cert 9.334e-01  kappa -0.00

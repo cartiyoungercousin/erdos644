@@ -1,0 +1,5 @@
+== FKW m=3  n=22 k=12 |H|=323344  cover level 13 (r=1)  tau=10  4n-7k=4  4T-3k=0
+   phi: 12:0.5 13:1
+   beta_H = 0.9999 (|a|=12)  base_H = 0.0097
+   cone(12): dim const-on-U_m 45, const-on-slice 24, excess 21
+   balanced S=200000: marg 1.000 0.500 1.000 0.502 1.000 0.498 1.000  prod 1.248e-01  cert 0.000e+00  kappa -inf
