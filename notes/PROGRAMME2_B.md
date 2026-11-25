@@ -32,7 +32,8 @@ columns h_x ∈ F₂^M (parity-check columns), the *classes/cells* of V are the 
 - **Second pass (remaining gap, route (b)).**
   - Item 1 of §5.5 is now proved: Lemma F1, a fixed-count Fourier bound via Parseval on F₂³, gives the rigorous
     criteria Theorem F and F2 (§5.6).
-  - Item 2 (a deterministic decomposition) is open (§5.7).
+  - Item 2 (a deterministic decomposition) is open (§5.7). The third pass proved the Möbius form, Theorem F‴ and the
+    no-go P3; routes (i)–(iii) fail as stated.
   - Short dual words cannot obstruct (§5.8).
   - See §7.
 
@@ -324,22 +325,95 @@ remaining counts m′.
 - The constant words on R must come with sign +1. Condition (LC1), the parity condition.
 - Under (LC0) and (LC1), the criterion of Theorem F with (D_R = D|_R, m′, p′) gives a completion, hence a good seven.
 
-### 5.7 Item 2 (the decomposition): status [proved: the reduction; not proved: the size bound]
-- **What a decomposition must do.** The words that break Theorem F are those near the constants: Φ ≈ 7^{−d/2} against
-  their number. Theorem F2 removes them by fixing labels on their supports. Any word of D supported in S becomes a local
-  constraint (LC0) and disappears from D_R.
-- **Why this is not yet a proof: puncturing lowers weights.** D_R = D|_R can acquire *new* light words: words heavy on S
-  and light on R.
-  - The closure S* (the least S such that D|_{V″∖S} has no nonconstant word at two-sided weight < w₀) exists, by
-    iteration.
-  - But nothing known bounds |S*|.
-  - Moreover, (LC0) on S* is a labelling problem of the same type on S*, with no spread. That is circular.
-- **What would close B.** One of:
-  - (i) a bound |S*| ≤ c·u together with a B1-type solution on S*; or
-  - (ii) a direct type-distribution bound for D ⊗ F₂³ under T-covering (covering only constrains the words of
-    C^⊥ ∖ C₀^⊥, which have weight ≥ T + 1, and says nothing about C₀^⊥); or
-  - (iii) a structural reason why covering coset families in the gap have random-like D.
-  I found none of these. **Item 2 is open.**
+### 5.7 Item 2 (the decomposition): third pass, timeboxed [tags per item]
+
+**Verdict: not closed.**
+- All three suggested routes, as stated, fail for an identified reason.
+- What survives: one exact reformulation, one rigorous criterion in a smaller codimension range, and a diagnosis of what
+  a proof must do.
+
+**(P1) Möbius form of the light-word sum [proved by hand].** For every x ∈ [0, 1],
+  Σ_{λ ∈ D⊗F₂³} x^{wt λ} = E_{T ∼ Bin(V″, x)} [ 8^{drop(T)} ] =: G(x),   drop(T) = rk V″ − rk(V″ ∖ T).
+- *Proof.* The number of λ with support in T is 8^{dim D_T}, and dim D_T = drop(T). By Möbius inversion over supports,
+  Σ_λ x^{wt λ} = Σ_T 8^{drop T} x^{|T|} (1 − x)^{N−|T|}. ∎
+- So "many near-constant words" means exactly that the column matroid loses rank on random x-subsets, with x = 7^{−1/2} ≈ 0.378.
+- Monte Carlo (`gx.py`, N = 300) [computed]: G = 1.00 for random columns. Planted structure gives:
+
+  | planted structure | G | isolated-word prediction |
+  |---|---|---|
+  | 5 series pairs | 31 | 32 |
+  | 20 series pairs | 6·10⁵ | 1·10⁶ |
+  | 20 triads | 1.1·10³ | 6·10² |
+  | 3 coloops | 45 | 48 |
+
+  The predictions are Π(1 + 7x^w) over the planted words.
+
+**(P2) Theorem F‴: a rigorous criterion in terms of G [proved by hand, from F1 and P1].** Let x = (P₂ − 1)^{1/2}
+(= 7^{−1/2} for equal regions). Group λ by its nearest constant.
+- Words at distance ≤ N(1 − 1/P₂) contribute at most 8(G(x) − 1).
+- The rest have dominant value < 1/P₂, so H(ν) ≥ h(1/P₂) (0.377 nats at P₂ = 8/7). Together they contribute at most
+  8^{d}·e^{(N/2)(ln P₂ − h(1/P₂))}.
+- **So 8(G(x) − 1) + 8^{d} e^{−0.12N} < 8P_m implies a Fano-type good seven.**
+- The second term limits this to d = rk V″ ≲ 0.058N (codimension ≲ 0.09k). That is independent of ε, so it beats B1's
+  (r + 4εk)/5 when ε is small. But it is conditional on G(x) ≈ 1.
+- Removing the 0.058N restriction needs a type-refined count of λ by full value-distribution, i.e. a multi-variable G.
+  Not done.
+
+**(P3) Why every absolute-value criterion fails, so a decomposition must be exact on short words [proved by hand; computed above].**
+- q disjoint isolated dual words of weight w give G ≥ (1 + 7x^w)^q: 2^q for series pairs, 1.38^q for triads.
+- The true count changes only by the local factors 8(m − 1)/(7m − 1) and about 48/49 (§5.3).
+- So with linearly many disjoint short dual words, Theorems F, F2 and F‴ all fail, even though sevens exist. Even the
+  heuristic κ = 1/7 gives Π(1 + 7^{1−w}) = e^{Θ(N)} for linearly many triads.
+- Short-word structure has to be summed *multiplicatively* (local factors), not bounded.
+
+**Slack cost of one decomposition step, against the budget 3(4n − 7k) (incidence units; 1 unit of deficiency = 3 units) [proved by hand].**
+- *Dual word of weight w ≥ 2 disjoint from the Ω's (fixed or glued, F2): **0**, for every w.*
+  - Labels with XOR 0 can all be nonzero (anti-pencil) patterns: (v, v); (v₁, v₂, v₁ + v₂); and so on.
+  - No deficient pattern is needed.
+- *Coloop (w = 1): 12 units per point.* It must be dumped (pattern ∅: deficiency 4, 0 incidences).
+- *Dual word meeting the Ω's:* the outside points must XOR to the Ω patterns there.
+  - One outside point opposite one Ω point: that point takes the triangle pattern. Cost 3 units, i.e. β = 1/3, the same as
+    an Ω point.
+  - Outside points opposite two points of the same Ω (a fan whose pair lies in Ω_i): they must be dumped. Cost 12 units
+    per point.
+  - These cases are avoidable by the choice of Ω, since the Ω's are ours.
+- So the cost is **not** proportional to w. It is 0 off the Ω's and between 3 and 12 units per forced point on them.
+- **Does the increment argument close? No.** Slack is not the binding constraint. Steps off the Ω's are free, so a slack
+  count can neither block nor finish the decomposition. What blocks it is analytic:
+  - after fixing an overlapping word, D|_R gains new light words (§5.7 (ii));
+  - absolute-value criteria fail on linearly many short words (P3).
+  The β = 1/3 versus 4/7 margin of §5.8 rules out slack-based *obstructions*. It does not supply the missing
+  *control* of the remainder.
+
+**(i) Potential-function closure [proved by hand: properties; fails: size].**
+- g(K) = 3 dim K − (log₂7/2)|supp K| is supermodular on subcodes K ≤ D. So a maximal maximiser K* exists and is unique,
+  with S* = supp K*.
+- Afterwards, every subcode M of D|_{V″∖S*} satisfies dim M ≤ 0.468|supp M|.
+- But (a) this bounds dimensions, not *numbers* of supports, so it does not give G ≈ 1. (b) |S*| ≤ 2.14·dim K* is ≤ 2.14d,
+  not ≤ u. (c) On S* the problem (LC0) is of the original type. **Fails.**
+
+**(ii) F2 with S = the light-word support, labels fixed [proved by hand: works for isolated words; fails in general].**
+- If the short words have pairwise disjoint supports and private directions (isolated), fix on each support a labelling
+  with XOR 0. That is possible for every weight ≥ 2, and with free points for any counts. Then D|_R loses those
+  directions, and F2 applies to the rest.
+- For overlapping or nested short words, D|_R gains new light words (heavy on S, light on R). This is the puncturing
+  problem again.
+- Also, fixing the labels of a series pair throws away its factor 8/7; gluing (a 2-point unit) is the right operation,
+  but F1 is not proved for units of size > 1.
+
+**(iii) "Many near-constant words ⟹ few classes or small codimension on a large subset" [false as stated, proved by hand].**
+- q planted series pairs or triads on random columns keep c = n − O(1).
+- Restricted to any large subset, the column space is not smaller: each planted direction lives on ≤ 3 points, so
+  deleting them lowers the rank by at most q, and q can be o(N).
+- Yet G ≥ 1.38^q. Near-constant words come from *sparse* structure, not from few classes.
+
+**Polymer route (the natural next step) [heuristic; one obstruction found].**
+- For the uncounted identity (5.1), Σ_λ (−1/7)^{wt λ} would be a hard-core polymer gas if every λ split uniquely into
+  disjoint-support indecomposable words. Kotecký–Preiss would then give non-vanishing under a local smallness condition
+  per point. That is exactly a multiplicative treatment of short words.
+- **The uniqueness fails**: in D = ⟨1100, 0011, 1010⟩, 1111 = 1100 + 0011 = 1010 + 0101.
+- So a polymer representation needs a canonical decomposition, for example by a matroid connectivity decomposition of
+  the columns. Fixed counts need F1-style saddle control on top. Not done.
 
 ### 5.8 Building an obstruction from short dual words (route (c)): dead [proved by hand: the reduction; computed exact: the ratios]
 - **The test.** Lemma 5 gives Σ_p wt(s_p) = Σ_x j_x(4 − j_x), where j_x = |J(x)|. The total deficiency is
@@ -414,6 +488,11 @@ remaining counts m′.
   Σ_{λ nonconstant in D⊗F₂³} Φ(n(λ)) < 8P_m, optionally after fixing labels on a set S satisfying (LC0) and (LC1).
   They need no hypothesis on c, no reserved bases and no (SPAN).
 - *The reduction of route (c) to the deficiency ratio β (§5.8).* A structural obstruction needs β ≥ 4/7.
+- *Third pass (§5.7).*
+  - P1: the Möbius identity Σ_λ x^{wt λ} = E_T 8^{drop T}.
+  - P2: Theorem F‴, a rigorous criterion for codimension ≲ 0.058N given G(7^{−1/2}) ≈ 1.
+  - P3: no absolute-value criterion survives linearly many disjoint short dual words.
+  - (iii) is refuted by series-pair and triad families.
 
 **Computed exact.**
 - 496/496 B1 constructions verified; Y-step capacity 3m (§4).
@@ -421,6 +500,8 @@ remaining counts m′.
   refutes Task 3's conjecture.
 - Lemma F1 checked exactly on 300 cases; the largest ratio of exact value to bound was 0.015.
 - β = 1/3 for every even block (w ≤ 6) and fan (q ≤ 10). Short-dual-word structure gives no obstruction.
+- G(7^{−1/2}) by Monte Carlo (`gx.py`): 1.00 for random columns, and about Π(1 + 7x^w) for planted words, up to 6·10⁵ for
+  20 series pairs [computed, sampling].
 
 **Heuristic.**
 - B1m handles random-like codes in the whole range N < 11/6.
@@ -428,14 +509,15 @@ remaining counts m′.
   Theorem F holds with exponential margin for random-like codes.
   - This is heuristic only because B_w(D⊗F₂³) is replaced by its random value. The rigorous F1 bound is kept.
 
-**The remaining gap, exactly.**
-- Covering coset families with codimension above B1's bound whose punctured dual D has *many* near-constant words of
-  D⊗F₂³: more than about 7^{d/2} words at distance d.
-- These are codes with a large amount of near-coloop structure: subsets S with rank drop ≥ 0.47|S|, the threshold where
-  8^{drop}·7^{−|S|/2} ≥ 1.
-- For them Theorem F fails, B1's dump budget u is too small, and Theorem F2 needs the closure S* of §5.7, whose size is
-  not controlled.
-- Choice made: route (b). Item 1 is done. Item 2 is open, and §5.7 (i)–(iii) are the three possible ways to close it.
+**The remaining gap, exactly (after the third pass, §5.7).**
+- Covering coset families with codimension above B1's bound and above F‴'s 0.058N whose column matroid loses rank on
+  random 38% subsets: G(7^{−1/2}) ≫ 1 in the Möbius form P1.
+- The proved criteria F, F2 and F‴ are absolute-value bounds. P3 shows that no such bound can handle linearly many
+  disjoint short dual words, although those are harmless for the true count (local factors ≈ 1).
+- So the decomposition must treat short-word structure *multiplicatively* (cluster/polymer expansion, or exact local
+  factors), and bound only the global remainder.
+- Routes (i), (ii) and (iii) fail as stated (§5.7). (ii) works for isolated short words.
+- The polymer route needs a canonical decomposition, because the naive one is not unique, and fixed-count control.
 
 **Counterexample search.**
 - Local structures are excluded (§5.8).
@@ -448,4 +530,4 @@ Unchanged.
 
 Files: `b1.py` (B1, B1m, Lemma B/C/C* constructive, matroid partition, independent verifier); `fam.py` (families, exact
 BFS / meet-in-the-middle Ω's, covering certificate); `run_b1.py`; `run_large_M.py`; `ystep.py`; `route3_sat.py`;
-`unsat_check.py`; `montecarlo.py`; `f1_check.py` (Lemma F1, exact); `ratio.py` (deficiency ratios, exhaustive); logs in `logs/`.
+`unsat_check.py`; `montecarlo.py`; `f1_check.py` (Lemma F1, exact); `ratio.py` (deficiency ratios, exhaustive); `gx.py` (G(x), sampling); logs in `logs/`.

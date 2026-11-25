@@ -1,0 +1,5 @@
+{'kind': 'rand', 'q': 0, 'N': 300, 'G': 1.0, 'isolated_word_prediction': 1.0}
+{'kind': 'series', 'q': 5, 'N': 300, 'G': 31.398, 'isolated_word_prediction': 32.0}
+{'kind': 'series', 'q': 20, 'N': 300, 'G': 601214.06, 'isolated_word_prediction': 1048576.0}
+{'kind': 'triads', 'q': 20, 'N': 300, 'G': 1125.672, 'isolated_word_prediction': 609.201}
+{'kind': 'coloops', 'q': 3, 'N': 300, 'G': 45.17, 'isolated_word_prediction': 48.458}
