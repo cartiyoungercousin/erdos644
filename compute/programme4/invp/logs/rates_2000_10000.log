@@ -1,0 +1,18 @@
+columns: k d | U: eps*/d lam=P/r r P margin(bits) seven-exp(bits) | L: eps*/d lam | lam=1 at eps=d/5; PEN(1/2) kills lam>=3/2 (eps>=3d/11)
+k=2000 d=0.01 | U: 0.150 0.412 r=17 P=7 marg=22.1 7exp=9635 | L: 0.200 0.688
+k=2000 d=0.02 | U: 0.150 0.559 r=34 P=19 marg=30.9 7exp=9472 | L: 0.200 0.844
+k=2000 d=0.04 | U: 0.163 0.701 r=67 P=47 marg=16.3 7exp=9303 | L: 0.188 0.846
+k=2000 d=0.06 | U: 0.167 0.750 r=100 P=75 marg=3.7 7exp=9177 | L: 0.175 0.798
+k=2000 d=0.08 | U: 0.163 0.739 r=134 P=99 marg=15.5 7exp=9053 | L: 0.175 0.811
+k=10000 d=0.01 | U: 0.170 0.759 r=83 P=63 marg=35.0 7exp=48167 | L: 0.190 0.877
+k=10000 d=0.02 | U: 0.175 0.818 r=165 P=135 marg=15.9 7exp=47543 | L: 0.175 0.818
+k=10000 d=0.04 | U: 0.173 0.819 r=331 P=271 marg=28.1 7exp=46559 | L: 0.178 0.848
+k=10000 d=0.06 | U: 0.172 0.819 r=497 P=407 marg=19.0 7exp=45839 | L: 0.175 0.838
+k=10000 d=0.08 | U: 0.170 0.812 r=664 P=539 marg=20.5 7exp=45288 | L: 0.172 0.826
+
+asymptotic, eps/d fixed: largest lam with h(lam*om/N) N < (1+om) h(om/(1+om)) (U and L coincide at rate level)
+d=0.01  eps*/d=0.183  lam*=0.897
+d=0.02  eps*/d=0.181  lam*=0.882
+d=0.04  eps*/d=0.177  lam*=0.863
+d=0.06  eps*/d=0.175  lam*=0.848
+d=0.08  eps*/d=0.173  lam*=0.836
