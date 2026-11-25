@@ -32,6 +32,7 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 | Ordered frozen anti-plan has a good seven | CORE §46 | VERIFIED (V2; finite-k H-branch needs o <= 4ω - 3) |
 | Theorem W (window-selected greedy rules lose) | CORE §47 | VERIFIED (V2; finite k needs 4 \| k; selectors reading \|S\| are outside W; threshold corollary holds for upward thresholds only) |
 | Window lower end: 3t - 1/2 < N <= 5t - 2 closed by a fixed class-(T) plan when omega <= 4·eps | CORE 21.2 | GAP (V4): it assumes zero base waste for every adversary, with no steering lemma; static Theorem T tolerates only about 2ε of deficit. So the open window starts at 3t - 1/2, not 5t - 2. |
+| Bottom strip 3t - 1/2 < N <= 5t - 2 closed for ε <= ε_0 (ineffective): a pair with overlap in [N - 2t, 3t - 2] gives a good seven; Frankl–Rödl forces such a pair because T-covering families are dense (e^{-O(ε ln 1/ε) n}) | CORE §90–§94 | HAND, verification pending |
 | Literal SPOIL false | CORE §40 | EXACT |
 | SPOIL at all depths is not a disproof | CORE §43 | HAND |
 | One-bit rule has a good seven | CORE §44 | EXACT (89 instances) |
@@ -59,7 +60,7 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 
 ## Open
 - Petal: pooled 𝒜 for t/2 - 1/6 <= δ < 1 - t with 3/4 < t < 7/9 ([0.2083, 0.25) at t = 3/4). The window-and-seal method is maxed out at δ* = t/2 - 1/6 (exact LP), so a new certificate is needed here. The earlier note claiming §19.1 closes this was wrong: §19.1 only marks where AP's hypothesis fails (verifier, notes/verify/PS.md).
-- The core window is 3t - 1/2 < N < 3 - t (21.2 does not close (3t - 1/2, 5t - 2]).
+- Core window: 5t - 2 < N < 3 - t for small ε, if §90–§94 passes verification (otherwise 3t - 1/2 < N).
 - (Σ) for hash-like, non-greedy and self-cut families (core window).
 - Fixed two-class families not of arena-with-pool form (petal).
 - Strategy-form SPOIL; the five-reply candidate break (CORE §41).

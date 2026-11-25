@@ -1,0 +1,12 @@
+k=41 T=32 n=77: exact window Z_k = []  first-order [n-2T, 3T-2k] = [13, 14]  brute-force failures over 2 paddings per o: 0
+k=41 T=32 n=78: exact window Z_k = []  first-order [n-2T, 3T-2k] = [14, 14]  brute-force failures over 2 paddings per o: 0
+k=41 T=33 n=81: exact window Z_k = [15, 16, 17]  first-order [n-2T, 3T-2k] = [15, 17]  brute-force failures over 2 paddings per o: 0
+k=41 T=33 n=82: exact window Z_k = []  first-order [n-2T, 3T-2k] = [16, 17]  brute-force failures over 2 paddings per o: 0
+k=41 T=33 n=83: exact window Z_k = []  first-order [n-2T, 3T-2k] = [17, 17]  brute-force failures over 2 paddings per o: 0
+k=41 T=34 n=86: exact window Z_k = [18, 19, 20]  first-order [n-2T, 3T-2k] = [18, 20]  brute-force failures over 2 paddings per o: 0
+k=41 T=34 n=87: exact window Z_k = []  first-order [n-2T, 3T-2k] = [19, 20]  brute-force failures over 2 paddings per o: 0
+k=41 T=34 n=88: exact window Z_k = []  first-order [n-2T, 3T-2k] = [20, 20]  brute-force failures over 2 paddings per o: 0
+k=61 T=47 n=113: exact window Z_k = []  first-order [n-2T, 3T-2k] = [19, 19]  brute-force failures over 2 paddings per o: 0
+k=61 T=47 n=114: exact window Z_k = []  first-order [n-2T, 3T-2k] = [20, 19]  brute-force failures over 2 paddings per o: 0
+k=61 T=49 n=121: exact window Z_k = [23, 24, 25]  first-order [n-2T, 3T-2k] = [23, 25]  brute-force failures over 2 paddings per o: 0
+k=61 T=49 n=122: exact window Z_k = []  first-order [n-2T, 3T-2k] = [24, 25]  brute-force failures over 2 paddings per o: 0

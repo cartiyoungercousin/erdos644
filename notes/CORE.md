@@ -2525,3 +2525,146 @@ Repairing §21.2 there is a better use of effort than containers.
 - The ST statement was read from the arXiv PDF (Def. 3.2, Thm 3.4, Cor. 3.6, Remark 3.5, §3.5).
 - Typical-codegree margins are upper bounds only, and the ✓? entries were not confirmed with true maxima.
 - Nothing in this part has been checked by an independent verifier.
+
+=============================================================================================
+# Part XIII — the bottom strip 3t − 1/2 < N <= 5t − 2 (§90–§94)
+
+Brief: close the strip ω <= 4ε (the 21.2 GAP, LEDGER V4), or show it is as hard as the rest of the window.
+Code: `compute/strip/pair_window.py` (exact MILP plus a brute-force pair check), `compute/strip/density_rate.py`.
+Logs are in `compute/strip/logs/`. Units k = 1 unless finite k is stated.
+**Outcome.** For ε <= ε_0 (an absolute constant from Frankl–Rödl) and k >= k_0(ε), CP holds for every N with
+n <= 5T − 2k (k even) or n <= 5T − 2k − 2 (k odd). At first order that is every ω <= 4ε: the WHOLE strip. The ratio
+ω/ε = 4 is the largest this certificate can reach.
+This is not a game strategy. It is a family statement: a density theorem forces two members whose intersection lies in
+the 77.1 window Z, and Z's five static lines finish the seven. No steering lemma, no adaptivity, no deficit bound.
+The route is the conditional ROADMAP L4 / NEW_PATHS 13.3 / CORE §11-end one. New here:
+- the FR statement checked against a source;
+- uniformity in α handled by padding;
+- an exact finite-k certificate, with a hand proof of the parity rule.
+ε_0 is ineffective (it comes from FR's δ). Small ε is all Erdős #644 needs. No independent verifier has checked this
+part yet.
+
+## 90. The certificate: one pair in Z [proved by hand (re-derived from 77.1); computed exact]
+
+**Lemma 90.1 (= 77.1).** Let K, K' be members of a T-covering family 𝒞 of c-subsets of V, |V| = N, with
+o := |K ∩ K'| ∈ Z := [N − 2t, 3t − 2]. Then 𝒞 has a good seven.
+*Proof.* Label K, K' by the Fano points 0, 1, with lines {012, 034, 056, 135, 146, 236, 245}. Place the classes:
+- O = K ∩ K': o − y points on line 012, and y/4 on each of 034, 056, 135, 146;
+- A = K ∖ K': in halves on 034, 056;
+- B = K' ∖ K: in halves on 135, 146;
+- G = V ∖ (K ∪ K'), of mass 2 − N + o: in halves on 236, 245.
+
+Each point's line meets {0, 1} only inside its co-type so far. For j = 2..6 let L_j be the union of the classes on lines
+through j. Then |L_2| = 2o + 2 − N − y and |L_3| = … = |L_6| = (y + N − o)/2. Some y ∈ [0, o] makes all five <= t iff
+N − 2t <= o <= 3t − 2. By T-covering each L_j lies in a member K_j. Every co-type then contains a line (monotonicity,
+1.1), and two lines meet. ∎ Z ≠ ∅ iff N <= 5t − 2 iff ω <= 4ε, and |Z| = 4ε − ω.
+
+**90.2 Finite k, parity rule [proved by hand].** Put y = 0.
+- *k even, o := n − 2T.* Then |A| = |B| = 2T − k and |G| = 2k − 2T are all even. Split each in exact halves:
+  |L_3| = … = |L_6| = (n − o)/2 = T, and |L_2| = 2o + 2k − n = n − 4T + 2k <= T iff n <= 5T − 2k.
+- *k odd, o := n − 2T + 1.* Then |A| = |B| = 2T − k − 1 are even and |G| = 2k − 2T + 1 is odd. Put the extra G point on
+  line 236: |L_3| = |L_6| = T and |L_4| = |L_5| = T − 1. Also |L_2| = n − 4T + 2k + 2 <= T iff n <= 5T − 2k − 2.
+
+Nonnegativity of the cells is clear in the strip. So for n in the strip there is an explicit integer ℓ(n, k, T) for
+which any two members meeting in exactly ℓ points give a good seven.
+
+**90.3 [computed exact].** `pair_window.py k T n` solves the exact integer assignment (every cell to every compatible
+line; HiGHS MILP) for each o. For each feasible o it builds the seven real sets and pads every L_j to n − k points
+(random, low-line-first and greedy orders). Every pair is then checked by brute force.
+- Sweep `logs/sweep.log`: k ∈ {24, 32, 40, 48, 60}, T = 3k/4 + e (e = 1, 2, 3), every n from ⌈3T − k/2⌉ to 5T − 2k.
+  That is 75 triples. Z_k is nonempty at every one and always contains n − 2T. Paddings: 0 failures. Extra points
+  (40, 31, 72–76) and (100, 78, 185–191): 0 failures in 30 or 12 paddings per o.
+- Odd k (41, 32 | 33 | 34; 61, 47 | 49): Z_k = ∅ exactly at n ∈ {5T − 2k − 1, 5T − 2k}, and nonempty with
+  min Z_k = n − 2T below that. This matches 90.2: the rounding loss is real, and it is at most 2 points.
+
+## 91. Density forces the pair [proved by hand, citing Frankl–Rödl]
+
+**Theorem FR** (Frankl–Rödl 1987; statement read in Keevash–Long, TAMS 369 (2017) 1147–1162, Thm 1.1). Let
+α, η ∈ (0, 1) with η <= α/2, k' = ⌊α n'⌋, and ℓ ∈ [max(0, 2k' − n') + η n', k' − η n']. Then every
+𝒜 ⊆ C([n'], k') with |A ∩ B| ≠ ℓ for all A, B ∈ 𝒜 has |𝒜| <= (1 − δ)^{n'} C(n', k'), where δ = δ(α, η) > 0.
+**Theorem 91.1 (strip).** There is an absolute ε_0 > 0 with the following property. Let 0 < ε <= ε_0, k >= k_0(ε),
+T = (3/4 + ε)k, and 7k/4 <= n <= 5T − 2k (minus 2 if k is odd). Then every T-covering family 𝒞 of (n − k)-subsets of
+an n-set has a good seven.
+*Proof.*
+1. **Size.** Each member contains C(n − k, T) T-sets. So |𝒞| >= C(n, T)/C(n − k, T) = C(n, n − k)/C(n − T, ωk).
+2. **Fix α.** FR's δ depends on α, and n/(n − k) moves with N. Add m := ⌈7(n − k)/3⌉ − n isolated points.
+   - m >= 0 iff n >= 7k/4, and m ≈ (4δ/3)k, writing δ = N − 7/4 for the excess (not FR's δ).
+   - The members are now (n − k)-subsets of an (n + m)-set, with n − k = ⌊(3/7)(n + m)⌋.
+   - No intersection changes.
+   - Their density in C(n + m, n − k) is at least 1/[C(n − T, ωk) · C(n + m, n − k)/C(n, n − k)] =: e^{−r(n + m)}.
+   - r = O(ω ln(e/ω) + δ) = O(ε ln(1/ε)), because ω <= 4ε and δ <= 5ε.
+3. **Apply FR** with α = 3/7, η = 1/14 and ℓ the integer of 90.2 (≈ k/4).
+   - Since 2k' − n' < 0, the range is [η n', k' − η n'] ≈ [k/8, 5k/8], which contains ℓ with room for small ε.
+     `density_rate.py` reports "FR range ok" at every tested point.
+   - Choose ε_0 so that r < −ln(1 − δ(3/7, 1/14)) throughout the strip.
+   - Then 𝒞 is not ℓ-avoiding: two members meet in exactly ℓ points.
+4. **Finish** by Lemma 90.1 at finite k (90.2). ∎
+
+Rates r [computed: exact integer binomials, logs in float] (`logs/density_rate.log`). At ω/ε = 3.9 and
+ε = 0.04, 0.02, 0.01, 0.005, 0.002, 0.001: r = 0.279, 0.180, 0.109, 0.064, 0.030, 0.0165. So r → 0 like ε ln(1/ε),
+while FR's δ is fixed. ε_0 is whatever FR's (unknown, small) δ allows.
+
+**Range.** The argument needs only ω <= 4ε (so that ℓ exists) and N >= 7/4. It also covers N <= 3t − 1/2, which
+re-proves 16.A's range independently for small ε. It stops at N = 5t − 2 exactly: above that Z = ∅, and a single pair
+carries no certificate.
+
+## 92. Why the game routes failed here, and what that means [proved by hand where stated]
+
+**The strip is NOT as hard as the rest of the window, but only in the family form.**
+- In the 7-request game her own request makes the pair. He steers o through a window of width ω > |Z| = 4ε − ω (77.1).
+  One adaptive reply plus a static finish does not help (77.2, float).
+- In the family form she does not build the pair. 𝒞 has density at least e^{−rn}, and FR then guarantees a pair with
+  o exactly ℓ.
+- Steering is a statement about one reply. Avoiding ℓ is a statement about all pairs, and it costs density the family
+  does not have.
+- CP is the family statement (§7, TWIN 16.2), so this is legitimate. The transfer lemma 75.3 is not needed.
+
+**Adaptive triangle: dead** [proved by hand for symmetric private-part splits b_s = d_s; consistent with 77.2].
+Choose S_3 after seeing o, then finish statically. Take the worst dump vertices: ω into a private part, ω into g, or
+ω into O. They leave the o-window [1/4 − ε + 5ω/2, 1/4 + ε + ω/2], which is nonempty only for ω <= ε. That lies
+inside 16.A's range.
+
+**Deficit bound: does not rescue 21.2.** "Each reply has only ω of free mass" does not save the fixed-labelling count.
+- The W-dumper spends exactly ω per reply (22.3). His total is 5ω against her budget of 4ω + 4ε.
+- Steering at reply 2 is free for him: both choices cost 0 in the potential (22.1).
+- At ω = 4ε there is zero slack, so any steering defeats the count.
+- **21.2 stays a GAP as written.** Its conclusion now holds for ε <= ε_0, by Theorem 91.1 (a different proof).
+
+**Q′ quadruples** were not needed and not pursued.
+
+## 93. Self-check
+
+- I re-derived 90.1's two load formulas from the incidence table. I also re-derived the necessity half of 77.1:
+  o >= N − 2t from 2(N − o) <= 4t, and o <= 3t − 2 from the y-count.
+- The parity rule 90.2 was derived by hand before it was observed in the MILP. It explains exactly the odd-k empty
+  windows.
+- The FR statement was read from the Keevash–Long PDF (Thm 1.1: η <= α/2; ℓ ∈ [max(0, 2k − n) + ηn, k − ηn]).
+  NOTES.md (R2) had quoted it from a survey only.
+- `density_rate.py` asserts the floor identity n − k = ⌊3(n + m)/7⌋ and m >= 0 at every tested point.
+
+## 94. Status, dead routes, what remains
+
+**Status.** For ε <= ε_0 and k >= k_0(ε), the strip 3t − 1/2 < N <= 5t − 2 is closed (finite k: 90.2's bound). Tags:
+proved by hand, modulo the cited FR theorem; finite-k certificate exact.
+- LEDGER should move "window lower end" from GAP to HAND (the new proof of §91, not 21.2), pending a verifier.
+- **The open core window becomes 5t − 2 < N < 3 − t** (for small ε). The top 2 points at odd k are absorbed by the
+  next case or by monotonicity in T.
+
+**Dead.**
+- The adaptive triangle with a static finish (§92).
+- The fixed-plan count of 21.2 as a proof (§92).
+- The game form as a route through the strip: unnecessary.
+
+**Does density go further? [heuristic; = NEW_PATHS 13.3(ii)]** Probably not.
+- Above 5t − 2 every certificate needs three members with a degenerate Venn cell (triple part <= 4ε, 35.2).
+- Forcing a cell of relative size γ costs density of about e^{−γ ln(1/γ) k}.
+- The guaranteed density is e^{−ω ln(e/ω) k} with ω > 4ε. That is the same order, with the constants on the wrong side.
+- A multi-set FR (in the spirit of Keevash–Long's vector versions) at that scale is the only density continuation, and
+  it is not expected to work.
+
+**For the verifier.**
+- (a) Uniformity of FR's δ, handled by padding to α = 3/7.
+- (b) 90.2's two parity cases, including the nonnegativity of all cells at the strip's lower end.
+- (c) Whether "small ε suffices" is acceptable for the global argument. It is for f(k,7) <= (3/4 + ε)k, which is
+  monotone in ε.
+- (d) That CP's family form is the right target (TWIN 16.2).
