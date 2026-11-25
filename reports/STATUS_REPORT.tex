@@ -1,0 +1,144 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,enumitem}
+\usepackage[hidelinks]{hyperref}
+\setlist{itemsep=2pt,topsep=3pt}
+\newcommand{\lvl}[1]{\textsf{\small[#1]}}
+\title{Erd\H{o}s Problem \#644: Status Report}
+\author{erdos644 project}
+\date{November 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Erd\H{o}s asked whether $f(k,7)=(\tfrac34+o(1))k$, where $f(k,7)$ is the largest transversal number of a
+$k$-uniform family in which every at most seven members can be pierced by two points. The best published bounds are
+$f(k,7)\le\lceil 7k/8\rceil$ and $f(4m,7)\ge 3m+1$ for $m\ge 10$ (Fon-Der-Flaass, Kostochka and Woodall, 1999).
+This report records what the project has established and how each claim has been checked.
+\textbf{The problem is not solved}, and no new bound on $f(k,7)$ is claimed. The established results are: a verified
+reduction of the problem to a covering game on at most $3k$ points; proofs closing all but one region of that game,
+together with two small residues; and theorems excluding broad classes of counterexamples in the remaining region.
+The open problem is stated in a precise, self-contained form.
+\end{abstract}
+
+\section{Verification standard}
+Each claim carries one of the following levels.
+\begin{itemize}
+\item \lvl{LEAN}: machine-checked in Lean 4/Mathlib, using only the standard axioms and no \texttt{sorry}.
+\item \lvl{VERIFIED}: a hand proof checked by an independent reviewer. The reviewer was given only the statement and
+the proof, checked every step, and ran its own exact computations. These included adversarial instances built
+against the weakest step.
+\item \lvl{EXACT}: exact rational or brute-force computation on finite instances.
+\end{itemize}
+Claims below these levels (unverified hand proofs, floating-point evidence) are listed separately in the claim ledger
+\texttt{notes/LEDGER.md} and are not used here.
+
+\section{Framework}
+\textbf{Request game.} If $\tau(H)>T$, every set $S$ of $T$ points misses some edge of $H$. A requester names $T$-sets;
+an adversary answers each with an edge avoiding it. The requester wins if seven answers have no 2-point transversal.
+If she asks every $T$-set, the answers along that single play form a family with transversal number above $T$.
+Hence she wins against every adversary if and only if $f(k,7)\le T$. With boundedly many requests, only requester wins
+are conclusive.
+
+\textbf{Confinement} \lvl{VERIFIED}. Three answers with empty common intersection confine all later analysis to their
+union $V$, with $|V|\le 3k$, and requester wins transfer back to the full problem.
+
+\textbf{Co-edge form.} Work in units of $k$: $t=T/k=\tfrac34+\varepsilon$ and $N=|V|/k$. The co-edges are
+$K=V\setminus B$, each of mass $N-1$. The hypothesis $\tau>T$ becomes \emph{$T$-covering}: every $T$-subset of $V$ lies
+in a co-edge. A winning seven is seven co-edges covering every pair of $V$. It suffices to prove everything for all
+sufficiently small $\varepsilon$.
+
+\section{Established results}
+\subsection{Closed regions}
+\begin{center}\small
+\begin{tabular}{@{}p{5.3cm}p{6.4cm}p{3.4cm}@{}}\toprule
+Region & Result & Level\\\midrule
+$N\le 3t-\tfrac12$ (crowded) & every $T$-covering family has a winning seven & \lvl{VERIFIED}, first order\\
+$3t-\tfrac12<N\le 5t-2$ (bottom strip) & density + Frankl--R\"odl (Keevash--Long form) force a good pair & \lvl{VERIFIED}\\
+$N\ge 3-t$ (petal region) & closed except two residues (\S5) & \lvl{VERIFIED}\\
+$5t-2<N<3-t$ (core window) & \textbf{open} & ---\\\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Tools}
+\begin{itemize}
+\item \textbf{Finishing configurations} \lvl{VERIFIED}: the slack count, Theorem~T (a triangle of co-edges finished by
+four requests) and Theorem~Q (a quadrangle finish).
+\item \textbf{Reduction} \lvl{VERIFIED}: the core-window statement follows from $(\Sigma)$, the existence of one of
+three explicit configurations.
+\end{itemize}
+
+\subsection{Exclusion of structured counterexamples in the core window} \lvl{VERIFIED}
+\begin{itemize}
+\item \textbf{Theorem S}: no family whose membership depends only on profiles of a bounded partition is a
+counterexample.
+\item \textbf{Theorem S$^+$}: the same at finite $k$, for up to $4\varepsilon k-12$ cells of arbitrary sizes.
+\item \textbf{Ordered rules}: rules with fixed in-cell orders are not counterexamples.
+\item \textbf{Theorem W}: greedy priority-order adversaries whose choice of order depends on the request only through a
+window of at most $T-k/2$ points lose within seven requests, whatever the number of orders.
+\item \textbf{Theorem H}: if more than $2/3$ of the lines over one kernel are present, a winning seven exists. The
+constant $2/3$ is sharp.
+\item \textbf{Theorem R}: uniformly random or 6-wise independent selectors lose unless they use about $e^{1.19k}$
+classes (second-moment argument).
+\end{itemize}
+Taken together, a counterexample to $\tfrac34$ must be deterministic, must use more than about $k/4$ points of
+information about each request, and must be strongly anti-correlated. Random families of the relevant size contain
+$e^{\Theta(k)}$ winning sevens.
+
+\subsection{Machine-checked lemmas} \lvl{LEAN}
+About twenty lemmas are formalised:
+\begin{itemize}
+\item the confinement and petal reductions;
+\item the Fano criterion and Fano blocks;
+\item the flat 7-tuple lemma, the waste adversary and several transversal bounds;
+\item Lemmas 4.1--4.8 of an unrefereed $6/7$ manuscript.
+\end{itemize}
+The $6/7$ theorem itself is not formalised, and we do not endorse it.
+
+\subsection{Small cases} \lvl{EXACT}
+Exact certificates show that every $6$- and $7$-uniform family with $\tau=k$ contains seven members with no 2-cover.
+Combined with the confinement reduction, this gives $f(6,7)=5$ and $f(7,7)=6$. The matching lower bounds depend on
+covering numbers that are still being checked against published tables, so these two values are provisional.
+
+\section{Methods shown not to apply in the core window}
+Each of the following was analysed and shown to fail for an identified structural reason.
+\begin{itemize}
+\item Junta approximation: the families are exponentially sparse.
+\item Spread and sunflower lemmas: the families are at most $2.3$-spread.
+\item Fractional relaxation followed by rounding: the fractional transversal number is $O(k^{1/3})$.
+\item Hypergraph containers: the codegree conditions fail.
+\item Flag algebras: the positivity constraints are automatic.
+\item Density-only and forbidden-pattern arguments.
+\item Adaptive restriction to links: links move the parameters away from every closed region.
+\item Entropy methods: the certificates need cyclic constraints, and entropy controls only acyclic ones.
+\item Covering-design stability.
+\end{itemize}
+These analyses are hand proofs. Some are still awaiting independent verification; see the ledger. They identify what a
+successful argument must use: the full covering hypothesis, not only density, together with adaptive choice.
+
+\section{Open problems}
+\begin{enumerate}
+\item \textbf{Core window.} For small $\varepsilon$ and $5t-2<N<3-t$, show that every $T$-covering co-edge family
+contains seven members covering all pairs. Equivalently, by the verified reduction, show that it contains one of the
+configurations $(\Sigma)$.
+\item \textbf{Petal residue A.} A pooled two-arena adversary for $\tfrac34<t<\tfrac79$, in the range
+$\tfrac t2-\tfrac16\le\delta<1-t$. In a restricted model this adversary provably beats all known finishes.
+\item \textbf{Petal residue B.} Two-class families not of arena form. This has been reduced to a one-class stability
+statement, and exact search at $k=12,16$ found no example.
+\end{enumerate}
+
+\section{Assessment}
+The project has not changed the known bounds on $f(k,7)$. What it has done is the following.
+\begin{enumerate}[label=(\roman*)]
+\item It reduced the asymptotic question to a single explicit statement about covering families on $1.75k$--$2.25k$
+points, plus two small residues.
+\item It proved, with independent verification, that every structured or random-like candidate counterexample fails.
+\item It identified precisely why the standard tools of extremal set theory do not reach the remaining case.
+\end{enumerate}
+In our assessment this is substantial progress in understanding the problem. The decisive step, a proof or a
+construction for anti-correlated families in the core window, has not been achieved.
+
+\medskip\noindent\textit{Source material, code and verification reports:}\\
+\url{https://github.com/cartiyoungercousin/erdos644}
+\end{document}

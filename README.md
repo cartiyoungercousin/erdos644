@@ -1,29 +1,55 @@
-# Erdős problems research
+# Erdős Problem #644: research toward a full resolution
 
-Working repo for attacking open Erdős problems, with proofs checked in Lean 4 + Mathlib.
+**Question.** Let $f(k,7)$ be the largest transversal number of a $k$-uniform family in which every at most seven members can be pierced by two points. Erdős asked whether $f(k,7) = (3/4 + o(1))\,k$.
+**Known before this project:** $f(k,7) \le \lceil 7k/8 \rceil$, and $f(4m,7) \ge 3m+1$ for $m \ge 10$ (Fon-Der-Flaass, Kostochka, Woodall, *Discrete Math.* 207, 1999). Problem page: <https://www.erdosproblems.com/644>.
 
-## Current target: Erdős #644
+> **Status: not solved.** This repository holds a verified reduction of the problem, proofs closing several regions of it, theorems ruling out broad classes of counterexamples, and a precise statement of what remains open. Every claim carries an explicit verification level (see below). Nothing here should be read as a claimed solution.
 
-Let f(k,r) be the largest transversal number of a k-uniform family in which every r members
-can be hit by some 2 points. Is f(k,7) = (3/4 + o(1)) k?
+## Start here
 
-Known: 3k/4 + 1 <= f(k,7) <= ceil(7k/8) (Fon-Der-Flaass, Kostochka, Woodall 1999).
-Problem page: https://www.erdosproblems.com/644
+| If you want… | Read |
+|---|---|
+| A short, polished summary of what is established | [`reports/STATUS_REPORT.pdf`](reports/STATUS_REPORT.pdf) ([source](reports/STATUS_REPORT.tex)) |
+| The status of every individual claim | [`notes/LEDGER.md`](notes/LEDGER.md) |
+| A self-contained brief of the open problem, for reviewers | [`reports/EXTERNAL_BRIEF.md`](reports/EXTERNAL_BRIEF.md) |
+| The full working write-up of the open region | [`notes/CORE.md`](notes/CORE.md), starting at §33 (the handover) |
+| Independent verification reports | [`notes/verify/`](notes/verify/) |
+| The machine-checked lemmas | [`Lean644/`](Lean644/) |
+| A guide to all working notes | [`notes/README.md`](notes/README.md) |
 
-## Layout
+## What is established (summary)
 
-- `Lean644/` – Lean formalization (definitions, lemmas, checked results)
-- `notes/` – research log, proof drafts, literature notes
-- `compute/` – SAT / search scripts for small cases and constructions
+Verification levels: **LEAN** = machine-checked in Lean 4/Mathlib (standard axioms, no `sorry`). **VERIFIED** = hand proof that passed an independent adversarial check (statement-by-statement review plus independent exact computation). **EXACT** = exact computation on finite instances.
 
-## Workflow
+1. **Reformulation** (VERIFIED). The problem is equivalent to a covering game confined to at most $3k$ points. In co-edge form, a counterexample is a family of large sets covering every $T$-subset of a ground set, with no seven of them covering all pairs.
+2. **Closed regions** (VERIFIED, at first order). Write $N = |V|/k$ and $t = T/k$ for the confined ground set $V$. The crowded region $N \le 3t-\tfrac12$ is closed. So is the bottom strip $3t-\tfrac12 < N \le 5t-2$, by a density argument based on the Frankl–Rödl theorem. The large-ground-set ("petal") region is closed up to two small residues.
+3. **No structured counterexamples** (VERIFIED). In the remaining window, a counterexample cannot be:
+   - a bounded blow-up (Theorems S, S⁺);
+   - a fixed-order rule (CORE §46);
+   - a rule choosing among priority orders by a window of at most $T-k/2$ points (Theorem W), or with more than 2/3 kernel density (Theorem H);
+   - a random or 6-wise independent selector (Theorem R).
+4. **Methods shown not to apply** in the window (hand proofs). Junta theorems; spread and sunflower lemmas; fractional relaxation with rounding; hypergraph containers; flag algebras; density-only and forbidden-pattern arguments; adaptive links; entropy methods; covering-design stability.
+5. **Lean:** about 20 lemmas, including the reductions, the Fano criterion, the flat 7-tuple lemma, and Lemmas 4.1–4.8 of an unrefereed $6/7$ manuscript. The $6/7$ theorem itself is *not* formalized.
 
-develop an argument -> formalize in Lean -> read what fails -> revise -> repeat.
-`lake build` must pass; CI rechecks every push.
+## What remains open
 
-## Building
+**The core window** $5t-2 < N < 3-t$ (about $1.75k$ to $2.25k$ points): show that every $T$-covering co-edge family there contains seven members covering all pairs. The surviving case is deterministic, deliberately anti-correlated families. The exact statement and the three sufficient configurations $(\Sigma)$ are in the [brief](reports/EXTERNAL_BRIEF.md). Two smaller residues remain on the petal side.
+
+## Repository layout
+
+- `Lean644/`: Lean 4 formalization. `Lean644/Statements.lean` holds the frozen headline statements.
+- `notes/`: working notes, the claim ledger and verification reports. See [`notes/README.md`](notes/README.md).
+- `reports/`: polished status report and reviewer brief.
+- `paper/`: an in-progress draft write-up, with status tags on every claim.
+- `compute/`: search, SAT/ILP and verification scripts with their logs.
+- `scripts/`: build and trust checks.
+
+## Building the Lean development
 
 ```
 lake exe cache get
 lake build
+scripts/check_trust.sh
 ```
+
+Feedback, corrections and refutations are welcome via issues.

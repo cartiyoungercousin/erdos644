@@ -7,3 +7,4 @@ out_*.txt
 notes/sources/
 /compute/r1/cache/
 *.pkl
+/private/
