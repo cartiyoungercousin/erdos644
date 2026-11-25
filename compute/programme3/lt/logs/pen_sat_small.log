@@ -1,0 +1,7 @@
+n=11 k=5 r=1 P=1: covering family with NO pencil of weight <= P: NONE (UNSAT)  [462 sets, 415800 pencil clauses]
+n=12 k=5 r=2 P=3: covering family with NO pencil of weight <= P: NONE (UNSAT)  [792 sets, 17047800 pencil clauses]
+n=10 k=4 r=2 P=2: covering family with NO pencil of weight <= P: NONE (UNSAT)  [210 sets, 311850 pencil clauses]
+n=10 k=4 r=2 P=4: covering family with NO pencil of weight <= P: NONE (UNSAT)  [210 sets, 1313550 pencil clauses]
+
+[exited with code 0]
+n=12 k=5 r=2 P=1: not decided (300 s timeout)

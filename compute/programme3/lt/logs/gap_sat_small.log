@@ -1,0 +1,3 @@
+n=14 k=5 r=3 forbidden intersections [1, 2]: NONE (UNSAT)  [2002 sets, 1471470 pair clauses]
+n=14 k=5 r=3 forbidden intersections [2]: NONE (UNSAT)  [2002 sets, 840840 pair clauses]
+n=15 k=6 r=3 forbidden intersections [1, 2]: NONE (UNSAT)  [5005 sets, 6621615 pair clauses]
