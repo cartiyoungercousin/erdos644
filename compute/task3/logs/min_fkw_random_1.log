@@ -1,0 +1,8 @@
+base=fkw order=random seed=1: H1 323344 -> kept 100524 members (10.5s)
+every kept member has a private set: True | min cnt over 13-sets: 1
+kept edge profiles (|A&X|,|A&Y|): count / class size: {(3, 9): '1023/2200', (5, 7): '29341/95040', (7, 5): '58394/199584', (9, 3): '11658/26400', (11, 1): '108/120'}
+member size distribution: {12: 100524}
+total size 1206288
+degrees X: [55393, 55360, 55440, 55370, 55389, 55378, 55366, 55362, 55421, 55411, 55385, 55367]
+degrees Y: [54139, 54123, 54220, 54188, 54255, 54171, 54204, 54091, 54131, 54124]
+cover multiplicity of 13-sets (cnt: #W): {1: 204435, 2: 149648, 3: 91195, 4: 37638, 5: 10790, 6: 2827, 7: 689, 8: 165, 9: 23, 10: 3, 11: 4, 12: 3}

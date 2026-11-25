@@ -1,0 +1,123 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem,booktabs}
+\usepackage[hidelinks]{hyperref}
+\setlist{itemsep=1pt,topsep=2pt}
+\newcommand{\lvl}[1]{\textsf{\small[#1]}}
+\title{Response to ``Direction for the next phase''\\[2pt]\large Erd\H{o}s Problem \#644}
+\author{erdos644 project}
+\date{25 November 2026}
+\begin{document}
+\maketitle
+
+\section*{Summary}
+We adopted the minimal-counterexample frame and Statement (G) as the target. Tasks 0, 1, 2, 3 and 5 were carried out
+in the order the brief asked; Task 4 is waiting for the papers.
+\begin{itemize}
+\item \textbf{The lemmas hold.} They passed independent verification and are formalised in Lean.
+\item \textbf{The decisive test was negative.} The consequences of saturation do not rule out near-pool families.
+\item \textbf{The proof side (Task 2) found no leverage}, within the time limit.
+\item \textbf{The disproof side (Task 3) found no construction} with linear excess, and showed why parity-type
+constructions cannot give one.
+\end{itemize}
+The frame gives a cleaner statement of the problem but not, by itself, a way into it. Level tags are as in
+\texttt{notes/LEDGER.md}.
+
+\section*{Task 0: verification of \S3}
+\begin{itemize}
+\item \textbf{Verified} (\texttt{notes/verify/minimal\_frame.md}): Lemmas 1, 3 and 4, Corollary 5, and the equivalence
+of (G) with $f(k,7)\le(\tfrac34+o(1))k$. There were no failures; the only gaps were in the proof text: part (ii) of
+Lemma 4, $m\ge3$, and $S_B\subseteq V$. The tests covered about 1300 locally minimal families and 1900 random ones,
+sampled at $T=2$.
+\item \textbf{Added: Lemma 2.5} (a reviewer's point). A minimal counterexample is an antichain. Lemma 4 uses this to
+rule out $B\setminus\{z\}$ equalling an existing member.
+\item \textbf{Lean.} \texttt{Lean644/MinimalFrame.lean} contains \texttt{private\_set}, \texttt{saturation},
+\texttt{antichain} and \texttt{padding\_iff}. The build and the trust check pass, using only the standard axioms.
+\item \textbf{Provenance.} Lemma 3 is the classical Bollob\'as set-pair / $\tau$-criticality argument, and the notes now
+say so. On its own it forces only $N\ge(1+t)k$. Lemma 4 (saturation) is the new ingredient.
+\end{itemize}
+
+\section*{Reviewer refinements adopted during the phase}
+\begin{itemize}
+\item \textbf{Reading of Task 1.} Looseness is defined only for genuine $(7,2)$-families with $\tau>T$. At
+$\varepsilon=0$, shrinking always ends saturated, so Task 1(a) was used as a template rather than a test. For near-pool
+and hash-like \emph{models}, we tested whether the consequences of saturation contradict their structure.
+\item \textbf{Uniform variant.} Swap $z$ for a fresh point instead of deleting it, using the measure
+$(|H|,\sum_x\binom{\deg x}{2})$. The family stays $k$-uniform, which gives Lemmas 3U and 4U. Part (ii) of Lemma 4U
+(``no single point covers $B_2,\dots,B_m$'') turned out to be implied by part (i) \lvl{HAND}. So the variant equals
+Lemma 4 restricted to points of degree $\ge2$, plus uniformity.
+\end{itemize}
+
+\section*{Task 1: are the surviving candidates saturated?}
+\begin{itemize}
+\item \textbf{(a) FKW, $m=3$.} There are ten incidence classes, and exactly one of them is loose: members with 11 points
+of $X$, with $z$ their only $Y$-point \lvl{EXACT}. Shrinking that class gives $H_1$: 323\,236 members, $\tau=10$, an
+antichain, saturated in every class. Its $(7,2)$ property is proved by hand and confirmed by MILP. Notably, $H_1$
+contains a pencil shape yet has no good seven, so the pencil finish $(\Sigma)$(b) fails for non-uniform families.
+\item \textbf{(b) The $k=8$ family.} Its $(7,2)$ status is undecided, so looseness is undefined there. A sample of
+incidences found none loose.
+\item \textbf{(c) Near-pool models at $(10,8,21)$.} The sets $U_z$ of Corollary 5 exist in 31 of 32 incidence classes
+\lvl{EXACT}, and this is unchanged with the uniform condition (ii). Private sets fail in the symmetric models, but
+because of the symmetry, not the pool.
+\end{itemize}
+\textbf{Decision under the brief's rule:} saturation does not make near-pool or hash-like structure incompatible. The
+open class does not shrink.
+
+\section*{Task 2: proof side (negative, stopped at the time limit)}
+\begin{itemize}
+\item \textbf{(a)} No common core of mass about $\omega$ is forced inside $K$. Even a common core would not supply the
+pool rule that Theorem P needs; obtaining that is CP itself.
+\item \textbf{(b)} The slack summed over all pairs $(K,z)$ is an identity, $\|H\|(4\delta+1)$. A contradiction would
+need a lower bound on waste, which saturation does not provide.
+\item \textbf{(c)} In the uniform frame, points of degree 1 carry no condition, so no bound on $N$ follows.
+\item \textbf{A finite-$k$ obstruction.} The complete families on $\lceil 7k/4\rceil$ points, for $k=5,9,13$, are
+saturated in every incidence and satisfy every lemma of the frame \lvl{EXACT}. These are $O(1)$ rounding cases, but
+they show that the frame alone cannot separate genuine counterexamples from near-misses.
+\end{itemize}
+
+\section*{Task 3: disproof side}
+\begin{itemize}
+\item \textbf{Template.} $H_1$ made deletion-minimal is $H_1^{\min}$: 100\,506 members, every one with a private set,
+$\tau=10$, and $(7,2)$ \lvl{EXACT}. A sample of 1\,800 incidences were all saturated. There is also a uniform template
+$U_1$: 12-uniform on 34 points, minimal and saturated (sampled).
+\item \textbf{The role of parity} \lvl{HAND}. The parity condition colours the $(k+1)$-layer, so minimality splits into
+independent covering problems, one per class. Parity contributes no slack; its only effect is half-point rounding.
+\item \textbf{Second constraints} (two parities, products, tensors, conditions mod 3). These are all profile families.
+Theorem S$^+$ (verified) then forces a good seven once $T-3k/4\ge 3(q+4)/4$, where $q$ is the number of cells. So their
+excess is $O(1)$, never linear. Finite scans agree. No family with $(7,2)$ and $\tau\ge 3k/4+2$ was found.
+\end{itemize}
+
+\section*{Task 4: literature}
+\begin{itemize}
+\item Erd\H{o}s--Hajnal--Tuza (1991) has been read. Its setting counts \emph{points} and treats $s=1$; it does not apply
+directly to (7,2).
+\item Fon-Der-Flaass--Kostochka--Woodall (1999) has been re-read. Its construction is stated for $k\ge10$; a remark
+claims it works for $k\ge4$ and fails for $k=2$, so $f(8,7)\in\{6,7\}$ is left open by the paper. Padding gives
+$f(r,7)\ge 3\lfloor r/4\rfloor+1$ for $r\ge40$.
+\item EFKT92 and Kostochka (2002) are awaited. When they arrive, we will extract how each proof chooses its extremal
+configuration and whether it uses criticality.
+\end{itemize}
+
+\section*{Task 5: corrections}
+\begin{itemize}
+\item The reviewer brief now states the open problem as Statement (G), and presents CP as a necessary special case whose
+proof alone does not bound $f(k,7)$.
+\item The petal side is described as closed only against the adversary classes analysed.
+\item The README, the status report and the external brief were corrected the same way, including the confinement
+caveat.
+\end{itemize}
+
+\section*{Side result (not counted toward the goal)}
+The certification of the one-round sparsest-anchor argument is still running at $t=43/50$. Its continuum cover has more
+than 5\,000 regions certified and none failed. The exact closure certificates and finite-$k$ rounding are not finished,
+and nothing is claimed yet. If completed, it would give $f(k,7)\le(0.86+o(1))k$ for all families, below the published
+$7/8$.
+
+\section*{Assessment}
+The phase answered its decisive question in the negative. Private sets and saturation, alone or combined, in the
+deletion or uniform form, do not constrain near-pool families. The minimal frame therefore removes the lifting and petal
+side problems as separate issues, but it does not supply the missing ingredient for (G). A full resolution still needs a
+new idea: either a mechanism that uses $T$-covering adaptively beyond what saturation encodes, or a construction whose
+excess over $3k/4$ grows linearly and escapes the profile families covered by Theorem S$^+$.
+\end{document}

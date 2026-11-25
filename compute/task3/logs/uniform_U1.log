@@ -1,0 +1,12 @@
+13-sets covered 497420 (all 497420 => tau(G') > 9, tau(U1) >= 10 by padding)
+every U1 member has a private set: True
+class (3, 9) z in X: {'SWAP_EXCLUDED': 100}
+class (3, 9) z in Y: {'SWAP_EXCLUDED': 100}
+class (5, 7) z in X: {'SWAP_EXCLUDED': 100}
+class (5, 7) z in Y: {'SWAP_EXCLUDED': 100}
+class (7, 5) z in X: {'SWAP_EXCLUDED': 100}
+class (7, 5) z in Y: {'SWAP_EXCLUDED': 100}
+class (9, 3) z in X: {'SWAP_EXCLUDED': 100}
+class (9, 3) z in Y: {'SWAP_EXCLUDED': 100}
+class (11, 0) z in X: {'SWAP_EXCLUDED': 100}
+TOTAL {'SWAP_EXCLUDED': 900}

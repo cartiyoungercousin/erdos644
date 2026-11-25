@@ -1,0 +1,30 @@
+== h1min_random_1
+members 100506 | size distribution {12: 100494, 11: 12} | total size 1206060
+  profile (3, 9): kept 1023 of 2200; covering lower bound max(220, 550)
+  profile (5, 7): kept 29344 of 95040; covering lower bound max(11880, 15840)
+  profile (7, 5): kept 58489 of 199584; covering lower bound max(33264, 24948)
+  profile (9, 3): kept 11638 of 26400; covering lower bound max(6600, 2640)
+  profile (11, 0): kept 12
+degree X min/max 55285 55421 | Y min/max 54103 54303
+13-sets covered: 497420 of 497420 | 13-sets containing members of >1 profile: 0 {}
+literal pencils ((7,3),(7,3),(1,10), union V, kappa = 4): 190110 example (3674080, 3671327, 8)
+== fkwmin_random_1
+members 100524 | size distribution {12: 100524} | total size 1206288
+  profile (3, 9): kept 1023 of 2200; covering lower bound max(220, 550)
+  profile (5, 7): kept 29341 of 95040; covering lower bound max(11880, 15840)
+  profile (7, 5): kept 58394 of 199584; covering lower bound max(33264, 24948)
+  profile (9, 3): kept 11658 of 26400; covering lower bound max(6600, 2640)
+  profile (11, 1): kept 108 of 120; covering lower bound max(60, 10)
+degree X min/max 55360 55440 | Y min/max 54091 54255
+13-sets covered: 497420 of 497420 | 13-sets containing members of >1 profile: 0 {}
+literal pencils ((7,3),(7,3),(1,10), union V, kappa = 4): 0 example None
+== gprime_fkw1
+members 100428 | size distribution {12: 100416, 11: 12} | total size 1205124
+  profile (3, 9): kept 1023 of 2200; covering lower bound max(220, 550)
+  profile (5, 7): kept 29341 of 95040; covering lower bound max(11880, 15840)
+  profile (7, 5): kept 58394 of 199584; covering lower bound max(33264, 24948)
+  profile (9, 3): kept 11658 of 26400; covering lower bound max(6600, 2640)
+  profile (11, 0): kept 12
+degree X min/max 55272 55352 | Y min/max 54079 54246
+13-sets covered: 497420 of 497420 | 13-sets containing members of >1 profile: 0 {}
+literal pencils ((7,3),(7,3),(1,10), union V, kappa = 4): 190102 example (3674080, 3671327, 8)

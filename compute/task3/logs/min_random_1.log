@@ -1,0 +1,8 @@
+base=h1 order=random seed=1: H1 323236 -> kept 100506 members (10.7s)
+every kept member has a private set: True | min cnt over 13-sets: 1
+kept edge profiles (|A&X|,|A&Y|): count / class size: {(3, 9): '1023/2200', (5, 7): '29344/95040', (7, 5): '58489/199584', (9, 3): '11638/26400', (11, 0): '12/12'}
+member size distribution: {12: 100494, 11: 12}
+total size 1206060
+degrees X: [55333, 55373, 55421, 55327, 55362, 55329, 55320, 55354, 55285, 55298, 55318, 55366]
+degrees Y: [54155, 54103, 54226, 54202, 54158, 54231, 54303, 54213, 54180, 54203]
+cover multiplicity of 13-sets (cnt: #W): {1: 204586, 2: 149344, 3: 91202, 4: 37670, 5: 10914, 6: 2760, 7: 718, 8: 183, 9: 30, 10: 3, 12: 10}

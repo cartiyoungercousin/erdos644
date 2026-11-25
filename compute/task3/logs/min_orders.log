@@ -1,0 +1,35 @@
+order=random seed=2: H1 323236 -> kept 100329 members (10.4s)
+every kept member has a private set: True | min cnt over 13-sets: 1
+kept edge profiles (|A&X|,|A&Y|): count / class size: {(3, 9): '1031/2200', (5, 7): '29309/95040', (7, 5): '58358/199584', (9, 3): '11619/26400', (11, 0): '12/12'}
+total size 1203936
+cover multiplicity of 13-sets (cnt: #W): {1: 204888, 2: 149784, 3: 90892, 4: 37410, 5: 10778, 6: 2786, 7: 670, 8: 177, 9: 24, 10: 1, 12: 10}
+order=random seed=3: H1 323236 -> kept 100431 members (9.5s)
+every kept member has a private set: True | min cnt over 13-sets: 1
+kept edge profiles (|A&X|,|A&Y|): count / class size: {(3, 9): '1034/2200', (5, 7): '29328/95040', (7, 5): '58455/199584', (9, 3): '11602/26400', (11, 0): '12/12'}
+total size 1205160
+cover multiplicity of 13-sets (cnt: #W): {1: 204428, 2: 149713, 3: 91438, 4: 37405, 5: 10779, 6: 2718, 7: 719, 8: 188, 9: 18, 10: 4, 12: 10}
+order=prof:7,5,9,3 seed=1: H1 323236 -> kept 100506 members (8.6s)
+every kept member has a private set: True | min cnt over 13-sets: 1
+kept edge profiles (|A&X|,|A&Y|): count / class size: {(3, 9): '1023/2200', (5, 7): '29344/95040', (7, 5): '58489/199584', (9, 3): '11638/26400', (11, 0): '12/12'}
+total size 1206060
+cover multiplicity of 13-sets (cnt: #W): {1: 204586, 2: 149344, 3: 91202, 4: 37670, 5: 10914, 6: 2760, 7: 718, 8: 183, 9: 30, 10: 3, 12: 10}
+order=prof:3,9,5,7 seed=1: H1 323236 -> kept 100506 members (8.4s)
+every kept member has a private set: True | min cnt over 13-sets: 1
+kept edge profiles (|A&X|,|A&Y|): count / class size: {(3, 9): '1023/2200', (5, 7): '29344/95040', (7, 5): '58489/199584', (9, 3): '11638/26400', (11, 0): '12/12'}
+total size 1206060
+cover multiplicity of 13-sets (cnt: #W): {1: 204586, 2: 149344, 3: 91202, 4: 37670, 5: 10914, 6: 2760, 7: 718, 8: 183, 9: 30, 10: 3, 12: 10}
+order=prof:5,7,3,9 seed=1: H1 323236 -> kept 100506 members (7.9s)
+every kept member has a private set: True | min cnt over 13-sets: 1
+kept edge profiles (|A&X|,|A&Y|): count / class size: {(3, 9): '1023/2200', (5, 7): '29344/95040', (7, 5): '58489/199584', (9, 3): '11638/26400', (11, 0): '12/12'}
+total size 1206060
+cover multiplicity of 13-sets (cnt: #W): {1: 204586, 2: 149344, 3: 91202, 4: 37670, 5: 10914, 6: 2760, 7: 718, 8: 183, 9: 30, 10: 3, 12: 10}
+order=prof:7,9,5,3 seed=1: H1 323236 -> kept 100506 members (9.7s)
+every kept member has a private set: True | min cnt over 13-sets: 1
+kept edge profiles (|A&X|,|A&Y|): count / class size: {(3, 9): '1023/2200', (5, 7): '29344/95040', (7, 5): '58489/199584', (9, 3): '11638/26400', (11, 0): '12/12'}
+total size 1206060
+cover multiplicity of 13-sets (cnt: #W): {1: 204586, 2: 149344, 3: 91202, 4: 37670, 5: 10914, 6: 2760, 7: 718, 8: 183, 9: 30, 10: 3, 12: 10}
+order=prof:9,3,7,5 seed=1: H1 323236 -> kept 100506 members (7.9s)
+every kept member has a private set: True | min cnt over 13-sets: 1
+kept edge profiles (|A&X|,|A&Y|): count / class size: {(3, 9): '1023/2200', (5, 7): '29344/95040', (7, 5): '58489/199584', (9, 3): '11638/26400', (11, 0): '12/12'}
+total size 1206060
+cover multiplicity of 13-sets (cnt: #W): {1: 204586, 2: 149344, 3: 91202, 4: 37670, 5: 10914, 6: 2760, 7: 718, 8: 183, 9: 30, 10: 3, 12: 10}

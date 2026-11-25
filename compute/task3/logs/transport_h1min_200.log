@@ -1,0 +1,14 @@
+class edge-profile (3, 9) z in X (certs 4): {'SAT+U': 200}
+class edge-profile (3, 9) z in Y (certs 4): {'SAT+U': 200}
+class edge-profile (5, 7) z in X (certs 4): {'SAT+U': 200}
+class edge-profile (5, 7) z in Y (certs 4): {'SAT+U': 200}
+class edge-profile (7, 5) z in X (certs 4): {'SAT+U': 200}
+class edge-profile (7, 5) z in Y (certs 4): {'SAT+U': 200}
+class edge-profile (9, 3) z in X (certs 4): {'SAT+U': 200}
+class edge-profile (9, 3) z in Y (certs 4): {'SAT+U': 200}
+class edge-profile (11, 0) z in X (certs 1): {'SAT+U': 200}
+TOTAL {'SAT+U': 1800}
+
+real	1m25.425s
+user	0m0.031s
+sys	0m0.047s
