@@ -15,16 +15,20 @@
 Let $f(k,7)$ be the largest transversal number $\tau(H)$ of a $k$-uniform family $H$ in which every at most seven
 members can be pierced by two points. Erd\H{o}s asked whether $f(k,7)=(\tfrac34+o(1))k$. The best published bounds are
 $f(k,7)\le\lceil 7k/8\rceil$ and $f(4m,7)\ge 3m+1$ for $m\ge 10$ (Fon-Der-Flaass, Kostochka and Woodall, 1999).
-We have reduced the question to one statement about covering families, plus two small residues. We ask for help with
-that statement.
+We have reduced the question, for families confined to a ground set of at most $3k$ points, to one statement about
+covering families plus two small residues. Transferring confined results back to general families is a separate open
+step (\S2). We ask mainly for help with the confined statement.
 
 \section{The reduction (independently verified)}
 \textbf{Game form.} If $\tau(H)>T$, every $T$-set misses some member. So a requester who names $T$-sets always receives
 members avoiding them. If she asks every $T$-set, the answers on that single play form a family with $\tau>T$. Thus
 $f(k,7)\le T$ if and only if she can always collect seven answers with no 2-point transversal.
 
-\textbf{Confinement.} Three answers with empty common intersection confine all later analysis to their union $V$,
-with $|V|\le 3k$.
+\textbf{Confinement.} Three answers with empty common intersection force every 2-point transversal into their union
+$V$, with $|V|\le 3k$, provided those three anchors are kept among the final seven. Requester wins that keep the
+anchors transfer to general families. Results stated for families \emph{confined} to $V$ (below) do not keep the
+anchors. Transferring them needs either anchor-keeping versions or a lemma showing that answers leaving $V$ (``far
+replies'') cannot help the adversary. That lifting step is open.
 
 \textbf{Co-edge form.} We work in units of $k$: $t=T/k=\tfrac34+\varepsilon$ and $N=|V|/k$. For a member $B$ its
 \emph{co-edge} is $K=V\setminus B$, of mass $N-1$. Then:
@@ -35,12 +39,48 @@ seven co-edges a \emph{good seven}.
 \end{itemize}
 It suffices to treat all sufficiently small $\varepsilon>0$. We write $\omega=N-1-t$ and $\delta=N-\tfrac74$.
 
-\textbf{Case split by $N$.} Every region is closed except one:
+\textbf{Case split by $N$ (confined families).} Every region is closed except one:
 \begin{itemize}
 \item $N\le 3t-\tfrac12$ (crowded): closed.
 \item $3t-\tfrac12<N\le 5t-2$ (bottom strip): closed by a Frankl--R\"odl density argument.
 \item $N\ge 3-t$ (petal side): closed except two small residues.
 \item $5t-2<N<3-t$: the \textbf{core window}, open.
+\end{itemize}
+
+\section{Other established progress}
+\begin{itemize}
+\item \textbf{Machine-checked (Lean 4/Mathlib).} About twenty lemmas, using only standard axioms:
+ \begin{itemize}
+ \item the anchor and petal reductions;
+ \item the Fano criterion: seven members labelled by Fano lines, with empty pencil intersections, have no 2-cover;
+ \item the flat 7-tuple lemma: $\tau>T\ge 3k/4$ gives seven members with every point in at most four;
+ \item the waste adversary, which refutes the plain seven-request endgame;
+ \item several transversal bounds;
+ \item Lemmas 4.1--4.8 of an unrefereed $6/7$ manuscript.
+ \end{itemize}
+\item \textbf{Finishing tools} (verified):
+ \begin{itemize}
+ \item the slack count $\sum_x(|I_x|-3)=4\delta$ for any seven co-edges;
+ \item Theorem T, a triangle finished by four requests;
+ \item Theorem Q (= Q$'$), a quadrangle finish;
+ \item the pool theorem P, which beats an adversary whose dumps stay in a known pool. Its exact finite-$k$ condition is
+ $4T\ge 3k$ with $4T\ne 3k+1$.
+ \end{itemize}
+\item \textbf{Petal side} (verified), for four or more anchors with empty common intersection:
+ \begin{itemize}
+ \item Theorems J, J$'$, J$''$, K and L;
+ \item Lemma FF and Theorem AP, which beat every fixed two-class arena-with-pool family for $t\ge 112/151$;
+ \item Theorems PS--PS3, which beat the pooled two-arena adversary for $\delta<t/2-\tfrac16$;
+ \item Theorem CR, which reduces general two-class families to a one-class stability statement (SL1).
+ \end{itemize}
+\item \textbf{Exact small values.} $f(6,7)=5$ and $f(7,7)=6$, from exact certificates. The lower bounds use two covering
+numbers that rest on a single ILP.
+\item \textbf{Exact window searches.} At $(k,T,n)=(10,8,21)$, the smallest genuine instance, 231 symmetric searches are
+UNSAT with independently checked certificates. The smaller-looking instances $(13,10,\cdot)$ are degenerate.
+\item \textbf{A possible intermediate bound.} An earlier one-round ``sparsest anchor'' argument keeps the anchors, so it
+transfers to general families. Exact certification of it at $t=17/20$ would give
+$f(k,7)\le(\tfrac{17}{20}+o(1))k$, below the published $7/8$. Grid computations win at every profile, but the
+continuum statement, the exact closures and finite-$k$ rounding remain to be done.
 \end{itemize}
 
 \section{The open problem}
@@ -92,6 +132,18 @@ Twenty-one approaches were analysed, each with an identified obstruction (detail
 \end{itemize}
 The lesson is that a successful argument must use the \emph{full} covering hypothesis, not only density, together with
 \emph{adaptive} choice. It must also handle near-pool families, which sit exactly at the static slack $4\varepsilon$.
+
+\section{The other open steps}
+\begin{enumerate}
+\item \textbf{Lifting (far replies).} Show that the confined results transfer to general families. One route is
+anchor-keeping versions of the crowded-region and bottom-strip certificates. The other is a lemma that answers
+leaving $V$, with large overlap among their outside parts, cannot help the adversary. A tolerance lemma already handles
+far replies whose outside parts are rarely reused.
+\item \textbf{Petal residues.} The pooled two-arena adversary for $\tfrac34<t<\tfrac79$ and
+$\tfrac t2-\tfrac16\le\delta<1-t$. Requesting the centres first beats the original adversary even there, but one leak
+variant still blocks it. Separately, the one-class stability statement SL1, which holds once an explicit stability
+constant $K$ is found for general classes.
+\end{enumerate}
 
 \section{What we would value}
 \begin{enumerate}

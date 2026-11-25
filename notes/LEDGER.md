@@ -15,7 +15,7 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 | Claim | Where | Status |
 |---|---|---|
 | Lemma 4.1–4.8 (6/7 manuscript), tight triple, Theorem A, stability 11.1, lopsided top 6.4, sparse triple, trace lemma, pair gap, three centres, Fano criterion, flat 7-tuple, Fano blocks, waste adversary, anchor/petal reductions | Lean644/*.lean | LEAN |
-| Anchored reduction (TWIN §13), anchor lemma, Theorem A, padding transfer | TWIN §13 | VERIFIED (W1) |
+| Anchored reduction (TWIN §13), anchor lemma, Theorem A, padding transfer | TWIN §13 | VERIFIED (W1), for anchor-keeping strategies only. Confined results (16.A, bottom strip, CP) do not keep the anchors; transferring them needs the far-replies lift G2 (TWIN §17), which is OPEN (notes/FRONTIER.md §1) |
 | Theorems J, K, L (petal spread case) | PETAL §3, §7, §8 | VERIFIED (W3; L's statement should repeat p <= t; J's band disjunct untested in simulation) |
 | Concentrated case N <= 3T - k/2 - O(1) | TWIN 16.A | VERIFIED at first order (W1); finite-k proof has a GAP at line 904 (Theorem C's half-split isn't integral), and O(1) can't be 0 (K(9,5): τ = 5 > 4, N = 9 <= 9.5). Repaired (FINITE_K.md): N <= 3T - k/2 - 1 holds; 142,350 end-to-end plays |
 | Slack count, Theorem T, Theorem Q (= Q′) | CORE §2–§4 | VERIFIED (W2; Q's 'iff' holds only for the fixed quadrangle scheme) |
@@ -82,6 +82,8 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 | 𝒜(t,δ), 𝒦₂ (c >= 0.5217) as obstructions | PETAL §20, §22 | DEAD |
 
 ## Open
+- LIFT (G2 / far replies): transfer confined results to general families (anchor-keeping certificates, or show far replies with large outside overlap lose). Needed for the full solve.
+- Record path: exact certification of R1's sparsest-anchor argument at t = 17/20 (anchor-keeping, transfers) would give f(k,7) <= (17/20 + o(1))k (FRONTIER §4–5).
 - Petal: pooled 𝒜 for t/2 - 1/6 <= δ < 1 - t with 3/4 < t < 7/9 ([0.2083, 0.25) at t = 3/4). The window-and-seal method is maxed out at δ* = t/2 - 1/6 (exact LP), so a new certificate is needed here. The earlier note claiming §19.1 closes this was wrong: §19.1 only marks where AP's hypothesis fails (verifier, notes/verify/PS.md).
 - Core window: 5t - 2 < N < 3 - t (for small ε; the bottom strip is VERIFIED closed).
 - (Σ) for hash-like, non-greedy and self-cut families (core window).

@@ -41,8 +41,11 @@ If she asks every $T$-set, the answers along that single play form a family with
 Hence she wins against every adversary if and only if $f(k,7)\le T$. With boundedly many requests, only requester wins
 are conclusive.
 
-\textbf{Confinement} \lvl{VERIFIED}. Three answers with empty common intersection confine all later analysis to their
-union $V$, with $|V|\le 3k$, and requester wins transfer back to the full problem.
+\textbf{Confinement} \lvl{VERIFIED}. Three answers with empty common intersection confine every 2-point transversal to
+their union $V$, with $|V|\le 3k$, when the three anchors are kept among the final seven. Requester wins of that form
+transfer to the full problem. \emph{Caveat:} the closed-region results below are stated for families confined to $V$
+and do not keep the anchors. Transferring them needs anchor-keeping versions or a far-replies lemma (gap G2), which is
+open.
 
 \textbf{Co-edge form.} Work in units of $k$: $t=T/k=\tfrac34+\varepsilon$ and $N=|V|/k$. The co-edges are
 $K=V\setminus B$, each of mass $N-1$. The hypothesis $\tau>T$ becomes \emph{$T$-covering}: every $T$-subset of $V$ lies
@@ -50,7 +53,7 @@ in a co-edge. A winning seven is seven co-edges covering every pair of $V$. It s
 sufficiently small $\varepsilon$.
 
 \section{Established results}
-\subsection{Closed regions}
+\subsection{Closed regions (for families confined to $V$)}
 \begin{center}\small
 \begin{tabular}{@{}p{5.3cm}p{6.4cm}p{3.4cm}@{}}\toprule
 Region & Result & Level\\\midrule
@@ -121,7 +124,9 @@ successful argument must use: the full covering hypothesis, not only density, to
 \begin{enumerate}
 \item \textbf{Core window.} For small $\varepsilon$ and $5t-2<N<3-t$, show that every $T$-covering co-edge family
 contains seven members covering all pairs. Equivalently, by the verified reduction, show that it contains one of the
-configurations $(\Sigma)$.
+configurations $(\Sigma)$. (By the verified reduction, $(\Sigma)$ implies the core-window statement.)
+\item \textbf{Lifting.} Transfer the confined results to general families, either by anchor-keeping certificates or by
+showing that far replies cannot help the adversary (gap G2).
 \item \textbf{Petal residue A.} A pooled two-arena adversary for $\tfrac34<t<\tfrac79$, in the range
 $\tfrac t2-\tfrac16\le\delta<1-t$. In a restricted model this adversary provably beats all known finishes.
 \item \textbf{Petal residue B.} Two-class families not of arena form. This has been reduced to a one-class stability
@@ -131,8 +136,9 @@ statement, and exact search at $k=12,16$ found no example.
 \section{Assessment}
 The project has not changed the known bounds on $f(k,7)$. What it has done is the following.
 \begin{enumerate}[label=(\roman*)]
-\item It reduced the asymptotic question to a single explicit statement about covering families on $1.75k$--$2.25k$
-points, plus two small residues.
+\item For families confined to at most $3k$ points, it reduced the asymptotic question to a single explicit statement
+about covering families on $1.75k$--$2.25k$ points, plus two small residues. A separate lifting step to general
+families remains open.
 \item It proved, with independent verification, that every structured or random-like candidate counterexample fails.
 \item It identified precisely why the standard tools of extremal set theory do not reach the remaining case.
 \end{enumerate}

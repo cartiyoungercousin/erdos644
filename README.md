@@ -26,8 +26,10 @@
 
 Verification levels: **LEAN** = machine-checked in Lean 4/Mathlib (standard axioms, no `sorry`). **VERIFIED** = hand proof that passed an independent adversarial check (statement-by-statement review plus independent exact computation). **EXACT** = exact computation on finite instances.
 
-1. **Reformulation** (VERIFIED). The problem is equivalent to a covering game confined to at most $3k$ points. In co-edge form, a counterexample is a family of large sets covering every $T$-subset of a ground set, with no seven of them covering all pairs.
-2. **Closed regions** (VERIFIED, at first order). Write $N = |V|/k$ and $t = T/k$ for the confined ground set $V$. The crowded region $N \le 3t-\tfrac12$ is closed. So is the bottom strip $3t-\tfrac12 < N \le 5t-2$, by a density argument based on the Frankl–Rödl theorem. The large-ground-set ("petal") region is closed up to two small residues.
+1. **Reformulation** (VERIFIED). The problem is a request game. Three answers with empty common intersection confine the analysis to their union $V$, with $|V| \le 3k$. Requester wins transfer to the general problem *when the three anchors are kept among the final seven*. For families living entirely on $V$, this gives the co-edge form: a counterexample is a family of large sets covering every $T$-subset of $V$, with no seven of them covering all pairs.
+2. **Closed regions, for families confined to $V$** (VERIFIED, at first order). Write $N = |V|/k$ and $t = T/k$. The crowded region $N \le 3t-\tfrac12$ is closed. So is the bottom strip $3t-\tfrac12 < N \le 5t-2$, by a density argument based on the Frankl–Rödl theorem. The large-ground-set ("petal") region is closed against the adversary classes analysed, up to two small residues.
+
+   **Caveat (lifting).** The confined results do not by themselves bound $f(k,7)$. Answers may leave $V$ ("far replies"), and the crowded-region and bottom-strip certificates do not keep the anchors. Transferring them needs either anchor-keeping versions or the far-replies lemma (TWIN §17, gap G2). See [`notes/FRONTIER.md`](notes/FRONTIER.md).
 3. **No structured counterexamples** (VERIFIED). In the remaining window, a counterexample cannot be:
    - a bounded blow-up (Theorems S, S⁺);
    - a fixed-order rule (CORE §46);
@@ -38,7 +40,11 @@ Verification levels: **LEAN** = machine-checked in Lean 4/Mathlib (standard axio
 
 ## What remains open
 
-**The core window** $5t-2 < N < 3-t$ (about $1.75k$ to $2.25k$ points): show that every $T$-covering co-edge family there contains seven members covering all pairs. The surviving case is deterministic, deliberately anti-correlated families. The exact statement and the three sufficient configurations $(\Sigma)$ are in the [brief](reports/EXTERNAL_BRIEF.md). Two smaller residues remain on the petal side.
+1. **The core window** $5t-2 < N < 3-t$ (about $1.75k$ to $2.25k$ points), for confined families. Show that every $T$-covering co-edge family there contains seven members covering all pairs. The surviving case is deterministic, deliberately anti-correlated families. The exact statement and the three sufficient configurations $(\Sigma)$ are in the [reviewer brief](reports/REVIEWER_BRIEF.pdf).
+2. **Lifting (far replies).** Transfer the confined results to general families. This needs either anchor-keeping certificates or a proof that answers leaving $V$ cannot help the adversary (TWIN §17, gap G2).
+3. **Petal residues.** A pooled two-arena strip and a one-class stability statement (SL1).
+
+A possible intermediate result: exact certification of the parked one-round "sparsest anchor" argument would give $f(k,7) \le (17/20+o(1))k$. That is below the published $7/8$, and the argument keeps the anchors, so it transfers. See [`notes/FRONTIER.md`](notes/FRONTIER.md) §4–5.
 
 ## Repository layout
 

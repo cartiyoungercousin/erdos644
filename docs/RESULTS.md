@@ -9,7 +9,7 @@ Levels: **LEAN** = machine-checked. **VERIFIED** = hand proof that passed an ind
 | Result | Statement (brief) | Proof | Check |
 |---|---|---|---|
 | Request principle, game equivalence | the problem is a covering game; requester wins ⇔ $f(k,7)\le T$ | CORE Part VII; [brief](../reports/EXTERNAL_BRIEF.md) §2 | LEAN (`exists_response`) + VERIFIED |
-| Confinement | three answers with empty triple intersection confine play to $\le 3k$ points | TWIN §13 | VERIFIED (`TWIN13_16A.md`); LEAN (`Anchor.lean`, `GapAnchor.lean`) |
+| Confinement | three answers with empty triple intersection confine play to $\le 3k$ points; wins transfer when the anchors are kept (far-replies lift G2 open otherwise) | TWIN §13, §17 | VERIFIED (`TWIN13_16A.md`); LEAN (`Anchor.lean`, `GapAnchor.lean`) |
 | Petal reduction | 2–6 petals with empty common intersection | PETAL §1 | LEAN (`PetalReduction.lean`) |
 | Flat 7-tuple lemma | $\tau>T\ge 3k/4$ ⇒ seven edges with all degrees $\le 4$ | PROOFS / FRESH_C §1 | LEAN (`FlatTuple.lean`) |
 | Fano criterion, Fano blocks | Fano-labelled sevens with empty pencil intersections have no 2-cover | NEW_PATHS (archived) | LEAN (`Fano.lean`, `FanoBlocks.lean`) |
