@@ -47,7 +47,7 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 | Fractional relaxation + rounding (τ* <= (35k)^{1/3} for (7,2)-families; rounding in the window is CP itself; Alon–Kleitman ε-net route can't give 3/4) | CORE §80–§84 | DEAD (proved) |
 | Hypergraph containers + supersaturation (codegree condition fails above a thin strip; the supersaturation step needed already implies CP) | CORE §85–§89 | DEAD (proved) |
 | Flag algebras / SDP on the limit object (Cauchy–Schwarz constraints automatic; CP is not a density statement; 'no good seven' doesn't pass to the limit, corrects §39.3) | CORE §75–§79 | DEAD (proved) |
-| Transfer lemma (finite-depth first-order win at t' < t gives CP at t for large k) | CORE §75 | HAND |
+| Transfer lemma (finite-depth first-order win at t' < t gives CP at t for large k) | CORE §75 | VERIFIED (backlog.md; strategy may depend on the family; 'win' = zero bad mass) |
 | Density / forbidden-pattern arguments above the bottom strip (Theorem 96.1: the c-sets avoiding a point and containing a fixed Y have no static certificate yet density rate <= 0.17γ; no pattern rate can beat γ) | CORE §95–§99 | Theorem 96.1 VERIFIED (notes/verify/thm96_1.md); 'no rate beats γ' holds only for density-only hypotheses and static certificates (float comparison) |
 | Frankl–Wilson makes the bottom strip effective (ε_0 ≈ 0.0088), except a vanishing top sliver | CORE §97 | FLOAT/HEUR |
 | Adaptive density / dependent random choice via links, traces, exclusions (links move (N,t) away from every closed region; Theorem 102.1: the static-certificate budget S_q = (q-3)δ + (7-q)ε depends only on (N,t,q)) | CORE §100–§104 | DEAD (HAND) |
@@ -60,7 +60,7 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 | Size-2 co-type static certificates for N > 2 (FABLE_C §3): not forced (pool + 3 confining members has m_2 = 0; 124 exact witnesses at (10,8,21)) and not steerable (double-counts the dump) | notes/FABLE_C.md | DEAD (HAND + EXACT) |
 | Σ_6 (six members whose uncovered-pair endpoints fit in a T-set) | notes/FABLE_C.md §2 | proved to imply CP, but it is CP with one inessential dump; dropped |
 | (Σ) on data: 0 of 2896 window families shape-free; 949 of 3083 forced sevens shape-free, 57 with no static certificate | notes/FABLE_C.md | EXACT / solver-certified |
-| Collinear-repair adaptive certificate: the pool finish survives misses <= 4ε/7 of Y per reply | notes/FABLE_C.md §5 | HAND + simulation |
+| Collinear-repair adaptive certificate: the pool finish survives misses <= 4ε/7 of Y per reply | notes/FABLE_C.md §5 | VERIFIED (backlog.md; exhaustive adaptive games) |
 | Kernel lemma; regularity reduction; c(N)·k cell bound; bounded-request game | CORE §34–35, §39, §45, Parts V–VII | DEAD |
 
 ## Petal side (Barrier F)
@@ -74,7 +74,7 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 | Theorem PS2 (pooled 𝒜 loses for δ < t/4) | PETAL §27 | VERIFIED (PS2 verifier: independent vertex enumeration confirms all 93; 17k games; at δ = t/4 with T even, X must be the class with the smaller hit number) |
 | Theorem PS3 (pooled 𝒜 loses for δ < t/2 - 1/6; closes all t >= 7/9) | PETAL §28 | VERIFIED (PS3 verifier: independent LP, 31k games). The limit δ* = t/2 - 1/6 holds within the window-and-seal model only; it says nothing about two-class petals, re-selection or adaptive trace release. |
 | Petal strip, forced-centre model: an adaptive request 7 saves only about δ/2; the adversary wins for δ in (3t/10, 1 - t) at t = 0.75, 0.76 | PETAL §31 | EXACT (zero-gap MIP; requester relaxed in her favour); with unforced centres still open |
-| Lemma PC (cross overlap <= 2 - 2c - t), Lemma YC, Theorem CR (absorbing-set play without disjoint regions); fixed two-class gap reduced to θ(t) < c < 1 - 5t/9 and to the one-class statement SL1 | PETAL §40 | HAND, verification pending |
+| Lemma PC (cross overlap <= 2 - 2c - t), Lemma YC, Theorem CR (absorbing-set play without disjoint regions); fixed two-class gap reduced to θ(t) < c < 1 - 5t/9 and to the one-class statement SL1 | PETAL §40 | VERIFIED (backlog.md; CR for fixed families; YC needs m_P(A) > 0) |
 | Theorem N adversary beats 2+2 | PETAL §12 | VERIFIED (W3) |
 | 12.3 (𝒜 loses to 4+3 when she knows the arenas) | PETAL 12.3 | GAP (W3): assumes the ground set is the two arenas; a leak outside them breaks it. Check whether DS / the 𝒜 kill inherits this, or whether AP's pool covers it |
 | 𝒜(t,δ), 𝒦₂ (c >= 0.5217) as obstructions | PETAL §20, §22 | DEAD |
