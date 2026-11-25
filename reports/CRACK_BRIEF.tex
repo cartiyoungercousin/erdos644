@@ -1,0 +1,212 @@
+\documentclass[11pt]{article}
+\usepackage[margin=2.3cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,enumitem}
+\usepackage[hidelinks]{hyperref}
+\newcommand{\st}[1]{\textsf{\small[#1]}}
+\newtheorem*{thm}{Theorem}
+\newtheorem*{lem}{Lemma}
+\newtheorem*{tgt}{Target}
+\setlist{itemsep=2pt,topsep=3pt}
+\title{Erd\H{o}s Problem \#644: where it must be cracked\\[2pt]
+\large A focused brief: the wall, three precise targets, and test families}
+\author{erdos644 project}
+\date{25 November 2026}
+\begin{document}
+\maketitle
+
+\noindent\textbf{Purpose.} This brief is for one more research agent. It replaces the earlier brief
+\texttt{OPEN\_QUESTION.md}, adding what six independent external reviews and our own latest work established. The goal is
+to \emph{crack} the problem: prove $f(k,7)=(3/4+o(1))k$, or construct a counterexample.
+
+Please do not send back reformulations; \S5 lists those that are already known. We want one of the three targets in
+\S4 proved or refuted, or a construction.
+
+Status tags: \st{VERIFIED} means a hand proof that passed an independent adversarial check; \st{EXACT} means exact
+computation; \st{HAND} means a hand proof, unchecked; \st{HEUR} means heuristic.
+
+\section{The problem}
+Let $H$ be a family of $k$-sets on $V$, $|V|=n$, with transversal number $\tau$. $H$ has property $(7,2)$ if every at most 7
+members have a transversal of size at most 2. A \emph{good seven} is 7 members (repeats allowed) with no 2-point
+transversal. Put $f(k,7)=\max\tau$ over $k$-uniform $(7,2)$ families.
+\begin{itemize}
+\item Known: $f(k,7)\le\lceil7k/8\rceil$ and $f(4m,7)\ge3m+1$ for $m\ge10$ (Fon-Der-Flaass, Kostochka, Woodall 1999).
+\item Erd\H{o}s asked whether $f(k,7)=(3/4+o(1))k$.
+\item Working exact conjecture: $f(k,7)=\lfloor(3k+5)/4\rfloor$ for $k\ge9$.
+\item No $(7,2)$ family with $\tau-3k/4>5/4$ is known \st{EXACT data, $k\le20$}.
+\end{itemize}
+
+\noindent\textbf{Co-edge form} (used throughout). Put $T=\tau-1$, $r=n-k-T$ (the covering radius), $s=n-7k/4$ and
+$e=\tau-3k/4=s-r+1$ (the excess). The co-edges $\mathcal C=\{V\setminus B\}$ have size $n-k=T+r$.
+\begin{itemize}
+\item $\tau\ge T+1$ $\iff$ every $T$-set lies in a co-edge ($\mathcal C$ is \emph{$T$-covering}).
+\item Seven members form a good seven $\iff$ their seven co-edges cover all pairs of $V$.
+\item A \emph{Fano certificate} is seven co-edges $K_1,\dots,K_7$ indexed by the points of the Fano plane with
+$K_a\cup K_b\cup K_c=V$ for every line $abc$. A Fano certificate is a good seven, at every $n$.
+\item \st{VERIFIED, exact LP}: for $n<11k/6$ every good seven is a Fano certificate.
+\item \st{EXACT data}: for $n\ge2k$ there are families at record $\tau$ whose only good sevens are non-Fano (``Fano minus a
+line'' types).
+\end{itemize}
+
+\noindent\textbf{Pencils.} A \emph{pencil} is three members with empty common intersection. Its weight is
+$|x_1\triangle x_2\triangle x_3|$.
+
+\section{What is proved}
+\begin{center}\small
+\begin{tabular}{p{0.24\textwidth}p{0.56\textwidth}l}
+\toprule
+Lemma P1 & A pencil of weight $\le4T-3k-6$ gives a Fano certificate. Holds at every $n$. & \st{VERIFIED}\\
+Theorem RA (rich) & $\tau^*_b\le7/3-\eta$ and $\tau>(k+1)/2+49/(3\eta)$ $\Rightarrow$ not $(7,2)$. Here $\tau^*_b$ is the minimum weight $y(V)$ with every transversal of weight $\ge1$. & \st{VERIFIED}\\
+Theorem NC (block) & If every $(k+d)$-subset of some $W$, $|W|=w\ge k+d+2$, contains a member, and $\tau>(k+1)/2+\max(0,2k+2d+3-w)$, then not $(7,2)$. & \st{VERIFIED}\\
+NC-P (partial block) & A partly complete block whose own $\tau$ is well below $3k/4$ already forces a seven. & \st{HAND}\\
+Theorems D, $9'$ & Coset/linear-layer families are closed in the Fano range with few classes. & \st{VERIFIED}\\
+Pencil bound & Covering with $4T\ge2k+5r+3$, $3r\le2k-2$ $\Rightarrow$ a pencil of weight $\le\lfloor3r/2\rfloor+1$. & \st{VERIFIED}\\
+\textbf{Slope $3/11$} & Every $(7,2)$ family with $n\le2k$ has $e\le\tfrac3{11}s+\tfrac{21}{11}$ (\st{HAND} up to $n\le(8k+11)/3$). & \st{VERIFIED}\\
+\textbf{Slope $1/5$} & Via Frankl--Wilson: $e\le s/5+o(k)$ for $n\le1.794k$. & \st{VERIFIED}\\
+Reduction & The conjecture $\iff$ every non-rich family with no large near-complete block and $\tau\ge(3/4+\varepsilon)k+1$ has a good seven. & derived\\
+Large $n$ & Adding a private point to every member keeps $(7,2)$ and $\tau$. So $n\ge\nu_0k$ is as hard as everything. & \st{HAND}\\
+Small values & $f(6,7)=5$, $f(7,7)=6$; two-cell profile families reach exactly $\lfloor(3k+5)/4\rfloor$ for $9\le k\le20$. & \st{EXACT}\\
+\bottomrule
+\end{tabular}\end{center}
+
+\section{The wall (what everything runs into)}
+Six independent external reviews and about a dozen internal attacks all stop at the \emph{same} missing statement:
+\begin{quote}
+\emph{Covering must be turned into a coordinated choice of seven members, or else a stability alternative must land the
+family in a closed region} (a light pencil, a near-complete block, a rich family, or a coset layer).
+\end{quote}
+The pieces of this are established:
+\begin{enumerate}
+\item \textbf{Pencils are not enough} \st{HEUR, exact binomial margins}. Take random unions of about $n^3$ cosets of a random
+linear code at covering codimension. They are covering, thin and block-free, far from every coset, and have every triple
+sum heavy. Yet they have abundant good sevens. So every argument that only forces light pencils stops near
+$e\le0.18\,s$.
+\item \textbf{Static finishes are not enough} (Theorem O, \st{HAND + exact certificate}). For $\nu=n/k>2+t$ an explicit
+two-cluster adversary defeats every bounded combination of covering lemmas with every static ``light configuration
+$\Rightarrow$ seven'' lemma (P1, HUB and all 715 seven classes).
+\begin{itemize}
+\item Its pencils have profile $\{ck,o(k),o(k)\}$ with $c\in(1/2,9/16]$: two members share $ck$ points, and the third meets each in $o(k)$ ``glue'' points.
+\item Consequence: these tools cannot beat $7/8$ for $\nu\ge23/8$.
+\item What is needed: \emph{adaptive} finishing, where later requests depend on where earlier replies actually landed.
+\end{itemize}
+\item \textbf{Structure theorems fail at this density} \st{HAND}. The Fano pattern has true complexity 2, so any natural
+obstruction is quadratic. Full quadric level sets nevertheless acquire sevens once $4n-7k\ge128$. There is no pseudorandom
+majorant for transference. Coset-based inverse statements are vacuous or false.
+\item \textbf{Random colourings are not enough} \st{HAND}. A random Fano colouring with the union bound gives only slope
+$3/7$, and bounds that use only marginals cannot beat it.
+\end{enumerate}
+
+\section{Three precise targets}
+
+\subsection*{Target 1 (core, $n<11k/6$ and beyond): the Fano-repair dichotomy}
+An external review supplied an adaptive finishing criterion, which we have checked for plausibility.
+\begin{thm}[weighted Fano repair \st{HAND}]
+Fix a pool $Y\subseteq V$ with $|Y|=c-T$ ($c=n-k$), and put $X=V\setminus Y$, $m=|X|=k+T$. Play 7 adaptive request
+rounds, indexed by the Fano points in some order. Let the reply in round $i$ be a co-edge $K_i$ with omission set
+$M_i=Y\setminus K_i$.
+\begin{itemize}
+\item \emph{Hypothesis.} Caps $\gamma_{ab}$ are known in advance, valid for every history, with
+$|M_a\cap M_b|\le\gamma_{ab}$. For each line $\lambda$ let $(a_\lambda,b_\lambda)$ be its two earlier points.
+\item \emph{Conclusion.} If $Q=\sum_\lambda\gamma_{a_\lambda b_\lambda}\le4T-3k$ (first order; an exact integral version
+exists), the requester obtains a Fano certificate.
+\item \emph{Strategy.} Round $i$ requests its share of $X$ together with $\bigcup_{\lambda:\,i_\lambda=i}(M_{a_\lambda}\cap
+M_{b_\lambda})$.
+\item \emph{Corollaries.} A random order gives $Q\le\frac13\sum_{a<b}\gamma_{ab}$. Uniform caps $\eta\le4\varepsilon k/7$
+recover the known near-pool repair.
+\end{itemize}
+\end{thm}
+\begin{tgt}[1]
+For every $\varepsilon>0$ and large $k$, every $T$-covering co-edge family with $T\ge(3/4+\varepsilon)k$ satisfies one of:
+\begin{enumerate}[label=(\roman*)]
+\item it admits a pool $Y$ and an adaptive request scheme whose pairwise omission caps satisfy the budget above;
+\item it contains a pencil of weight $\le4T-3k-6$ (then P1 finishes);
+\item it contains a near-complete block covered by NC or NC-P;
+\item it is rich (then RA finishes);
+\item it contains a coset layer covered by Theorems D and $9'$.
+\end{enumerate}
+\end{tgt}
+\noindent\emph{Why this is the right target.} It is genuinely adaptive, so Theorem O does not apply. Every branch ends in
+a proved finish. The hard case is large aggregate overlap that is \emph{not} a single common core; the earlier attempt to
+infer a common core from the overlap was refuted. \emph{Litmus test:} any proof must find sevens in the random coset
+unions of \S3.1, which have no light pencil, no block and no coset structure. So in those families branch (i) must
+fire.
+
+\subsection*{Target 2 (global, all $n$): the multi-row shadow-transfer lemma}
+\begin{thm}[private shadows \st{HAND}, from an external review; checked by us]
+Let $H$ be a counterexample of minimum total size $\sum|B|$ among families of nonempty sets of size $\le k$ with $(7,2)$
+and $\tau>T$ (any $n$). Then:
+\begin{itemize}
+\item $\tau=T+1$;
+\item every member $B$ has a private $T$-set $S_B$ disjoint from $B$ that hits all other members;
+\item for every $z\in B$, the members avoiding $z$ have $S_B$ as a minimum transversal, with witnesses $C_{z,s}$ satisfying
+$C_{z,s}\cap S_B=\{s\}$;
+\item the shadows $E_{z,s}=C_{z,s}\setminus S_B$, for at least $T-2$ columns $s$, form a $(7,2)$ family of nonempty sets of
+size $\le k-1$.
+\end{itemize}
+\end{thm}
+\begin{tgt}[2]
+Using all $k$ rows $z\in B$ together (they share the columns $S_B$ and the trace condition), show that small transversals
+of the row-shadow families combine into a transversal of $H$ of size $\le T$, or force a good seven among the lifted
+$C_{z,s}$.
+\end{tgt}
+\noindent\emph{Why this matters.} It is induction on uniformity in the unconfined problem. It sidesteps the Fano window,
+lifting and large $n$ simultaneously. A single row has no lower bound on its $\tau$, so the coupling across rows is the
+entire content.
+
+\subsection*{Target 3 (large $n$): adaptive play against Theorem O}
+\begin{itemize}
+\item \textbf{Question.} Exhibit an adaptive finishing strategy, of bounded depth with request sets depending on earlier
+replies, that defeats the two-cluster glue adversary of \S3.2. Better: show that, combined with P1, HUB and the pencil
+bound, it gives $e\le c\,k$ with $c<1/8$ for all $n$. That would be the first bound below $7k/8$.
+\item \textbf{A lead.} An unrefereed external manuscript (\emph{six-sevenths}) claims $f(k,7)\le6k/7+O(1)$ by adaptive
+request arguments. Its Lemmas 4.1--4.8 are machine-checked in Lean by us. Its Lemmas 2.5, 2.6 and Proposition 5.1, and the
+final assembly, are not yet checked. An internal test of adaptive play against Theorem O is running.
+\item \textbf{The non-Fano side ($n\ge2k$).} The sevens that occur are ``Fano minus a line''. Their analogue of P1 (the HUB
+lemma, \st{HAND}) is: a pencil with
+$\sum_i\max(0,d_{ij}+d_{il}-d_{jl}-(k-T))\le4T-3k$ gives a good seven of the relevant class at every $n$.
+\end{itemize}
+
+\section{Already known; please do not resend}
+\begin{itemize}
+\item Reformulations: the complement/co-edge form; good seven $=$ pair cover by 7 co-edges; the six-member kernel (six
+fixed members are completed by a member avoiding the union $D(F)$ of their 1- and 2-point transversals); the active graph
+of 2-point transversals; the ordered four-query Fano construction; completion-fibre counting.
+\item The fractional pair-cover LP has value $\le\binom n2/\binom T2<6$ \st{known}. It does not round to an integral seven:
+over-pooled families have integral cover number $\ge8$ at the threshold.
+\item Fano-incidence stability: any Fano certificate has $\le4s$ exceptional points and near-balanced line classes.
+\item Dead routes, each for a recorded reason:
+\begin{itemize}
+\item pencil-only methods (\S3.1);
+\item static finishes (\S3.2);
+\item random colourings with union or Janson bounds;
+\item coarse-threshold structure (false);
+\item coset or quadratic inverse theorems and transference (\S3.3);
+\item slice rank, Chevalley--Warning and MacWilliams;
+\item the topological rainbow criterion (connectivity out of reach);
+\item compression to $n\le2k$ via $\tau$-critical subfamilies;
+\item containers, regularity, entropy and dependent random choice, junta and spread lemmas;
+\item fractional relaxation with rounding, flag algebras, bounded-depth games aimed at exactly $3/4$, linear gluing, and
+density increment at density $e^{-\gamma k}$.
+\end{itemize}
+\end{itemize}
+
+\section{Test families (check every idea against these)}
+\begin{itemize}
+\item \textbf{Complete:} all $k$-subsets of $[n]$, with $\tau=n-k+1$. For example $K^{(4m)}_{7m-1}$ is $(7,2)$, which
+attains the one-anchor bound. Complete families attain $\lfloor(3k+5)/4\rfloor$ for $k\not\equiv0\pmod4$ \st{derived}.
+\item \textbf{FKW parity ($k=4m$):} the record families, with excess 1 and $r=1$. Example: $k=12$, $|V|=22$, $X\subset V$ with
+$|X|=12$, $H=\{A:|A\cap X|\ \text{odd}\}$, $\tau=10$. It is $(7,2)$ by exhaustive computation.
+\item \textbf{Random coset unions:} the pencil barrier of \S3.1. They are covering and have sevens, but no light pencils.
+\item \textbf{Two-cluster glue adversary:} the static-finish barrier of \S3.2.
+\item \textbf{Non-Fano-only profile families} ($n\ge2k$): e.g.\ $k=10$, cells of sizes $(10,13)$,
+$J=\{(1,9),(7,3)\}$, $\tau=9$.
+\end{itemize}
+
+\section{What we are asking for}
+One of the following, with status tags and exact checks of any construction ($\tau$ by ILP, seven-freeness by an
+independent exhaustive or SAT check):
+\begin{enumerate}[label=(\alph*)]
+\item a proof or refutation of Target 1, 2 or 3, or of a precise special case that the litmus tests show is non-trivial;
+\item a covering family with $\tau-3k/4$ growing (or merely $>5/4$ at some $k$) and no good seven;
+\item a reason why Targets 1--3 are all out of reach of known methods, naming the mechanism that is missing.
+\end{enumerate}
+\end{document}
