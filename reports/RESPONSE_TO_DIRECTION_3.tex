@@ -1,0 +1,210 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem,booktabs}
+\usepackage[hidelinks]{hyperref}
+\setlist{itemsep=1pt,topsep=2pt}
+\emergencystretch=2em
+\newcommand{\lvl}[1]{\textsf{\small[#1]}}
+\newcommand{\F}{\mathbb{F}_2}
+\title{Response to ``Guidance after the second phase''\\[2pt]\large Erd\H{o}s Problem \#644: Tasks A--D, and where the
+difficulty now sits}
+\author{erdos644 project}
+\date{25 November 2026}
+\begin{document}
+\maketitle
+
+\section*{Summary}
+\begin{itemize}
+\item \textbf{Task A (B for every linear layer).} B is proved by hand for every shift, under explicit size conditions. The
+genuine shift-0 case (Theorem S0) is closed for $4\mid k$ across the Fano range. Every shift with $r\le4\varepsilon k-7$ is
+closed by Theorem S1, at any codimension. The contraction of \S3 is carried out. What is still open is $r\ge4\varepsilon k$
+at high codimension, giant blocks of weight-$\ge3$ dual words, and $N>1.9385$.
+\item \textbf{Theorem NC} (near-complete blocks) is \lvl{VERIFIED}, with a half-point rounding fix and its coverage limits
+stated.
+\item \textbf{The $\gamma$ precheck settles Tasks C and D as designed.} Counting plus a density increment works only for dense
+families, $\gamma\lesssim4\varepsilon$. For sparse covering families the wall is the whole regime.
+\item \textbf{Task B / D3: outcome (iii)} at the sizes we can reach. Minimisers stay unstructured, and their normalised
+seven count stays at $1$. No Fano-range instance is reachable, so this is a hint, not a decision.
+\item \textbf{New results:}
+  \begin{itemize}
+  \item Theorem C1: $\tau\le(2n+k)/6+2$ for every $k$-uniform $(7,2)$-family.
+  \item Theorem C2: two-block families have a good seven.
+  \item The reduction of C to one statement, INV-P.
+  \item A counterexample ``wanted poster''.
+  \end{itemize}
+\item \textbf{The counterexample hunt found nothing.} Structured codes fail covering long before $\tau\approx3k/4$.
+\end{itemize}
+Corrections from the review of brief 2 are adopted:
+\begin{itemize}
+\item the range $1.852\le N<11/6$ is empty, so B1 already covers the whole Fano range;
+\item slack costs are now quoted in consistent units;
+\item a short dual word $h$ has $\langle h,B\rangle=0$ for every member, but $\operatorname{wt}(h)$ may be odd.
+\end{itemize}
+Level tags are as before; the record is \texttt{notes/LEDGER.md}.
+
+\section{Section 2 of the brief: one structure}
+The linear-layer form is adopted. Theorem NC is \lvl{VERIFIED} (\texttt{notes/verify/theorem\_NC.md}).
+\begin{itemize}
+\item \textbf{Statement.} Suppose every $(k+d)$-subset of $W$ contains a member, $|W|=w\ge k+d+2$, and
+\[\tau(H)>\tfrac{k+1}{2}+\max(0,\,2k+2d+3-w),\quad\text{i.e.}\quad\tau>\tfrac34k+2d-(w-\tfrac74k)+\tfrac72 .\]
+Then $H$ is not $(7,2)$, whatever members lie outside $W$.
+\item \textbf{Fixes and limits.}
+  \begin{itemize}
+  \item The corollary needs $\tau\ge\lceil(3/4+\varepsilon)k\rceil+1$; there is a half-point gap for odd $k$.
+  \item ``$(7,2)$'' must mean every subfamily of \emph{at most} 7 members.
+  \item There is no gap against RA at $\delta\approx7\varepsilon/3$ only when $d<(5\varepsilon/3-\eta'/2)k-3/2$.
+  \item NC never fires when $n<7k/4+d+3/2$.
+  \item Shift-0 layers are covered only when their block excess $d$ is small.
+  \end{itemize}
+\item \textbf{Testing.} 1\,800 adversarial instances with $k\le8$ ($\le16$ for symmetric families), 0 failures. The reviewer's
+must-fire and must-not-fire cases behave as required. NC does \emph{not} fire on the parity family on $7m+2$ points; its good
+sevens come from the coset machinery.
+\end{itemize}
+\textbf{Answer to ``does NC handle every shift-0 layer'':} no. With $W=V$ it needs $d=r<2\varepsilon k-3$. Theorem S0 below
+handles the rest.
+
+\section{Task A: B for every linear layer}
+\texttt{notes/PROGRAMME2\_B.md} \S8--\S9.
+\begin{itemize}
+\item \textbf{(a) Shifts} \lvl{HAND}. After evenising, a layer is either an ordinary coset family, or shift $0$ with $k$ even.
+In the Venn form the target is $0$ for every shift; the shift enters only through the $\Omega$'s. So $9'$, B1, F, F2, F$'''$
+and S$^+$ hold verbatim at shift $0$ with $\Omega=\emptyset$.
+\item \textbf{Theorem S0} \lvl{HAND; 319/319 sevens verified by a fresh checker}. Two applications of Lemma C give a Schur
+triangle $x_1+x_2+x_3=0$ with empty triple intersection. NC1 with $W=V$ then gives a Fano-type good seven. Counting forces the
+hypothesis for $4\mid k$ at all 39\,304 parameter triples with $k\le400$, with an asymptotic margin beyond that. So \textbf{B
+holds for every shift-0 layer with $4\mid k$, $\tau>3k/4$, $N<11/6$}. For $k\equiv2\pmod4$ the same holds for $N<1.7985$.
+\item \textbf{Theorem S1} \lvl{HAND, untested}. The same construction with $x_1+x_2+x_3$ equal to a minimum-weight $\Omega$
+gives B at every shift when $r\le4\varepsilon k-7$, at any codimension up to about $k/2$.
+\item \textbf{(b) Contraction} \lvl{HAND}.
+  \begin{itemize}
+  \item Take the $\Omega$'s first, then contract (Lemma P). In that order ``lost parity'' and ``blocks met by an $\Omega$''
+  never arise.
+  \item Odd pieces are dumped at $|Z_j|\le\dim D[S_j]$, at cost $4$ per point against $4n-7k$.
+  \item Weighted F1 (153/153 exact cases) and a new \textbf{Lemma F1$^+$}, which makes the $1/7$ per-point damping
+  rigorous (148/148).
+  \item Weighted F$'''$ needs a mixed-constant hypothesis when blocks have different weights; that hypothesis is open.
+  \item Bounded numbers of giant blocks are handled via F2. Routing giant blocks to S$^+$ is dead as stated. Giant blocks of
+  weight-$\ge3$ words are open.
+  \end{itemize}
+\item \textbf{Checks.}
+  \begin{itemize}
+  \item (i) is moot (the range is empty). For $N\ge11/6$, $\Omega$'s with empty common intersection reach $N<1.909$, and
+  S1 reaches $1.9385$. Nothing is proved above.
+  \item (ii), codimension above $0.09k$ with no short dual words: open. ``Such families do not exist'' is false. What is
+  missing is a bound on the number of dual words of medium weight.
+  \end{itemize}
+\item \textbf{(c) Verification.} B1, F and S0 constructions are verified exactly per instance. An independent proof
+verification of B1 and the F-theorems is not yet done.
+\end{itemize}
+
+\section{Section 4: stability, and C}
+\texttt{notes/PROGRAMME2\_C.md}.
+\begin{itemize}
+\item The brief's Lemma 2 (local stability) is confirmed.
+\item \textbf{Linear gluing is dead} \lvl{HAND}. Sets $\{q=1\}$ with $\deg q\le2$ contain no Fano plane, yet look random to
+linear Fourier analysis. So a BLR-type argument from seven-freeness alone cannot force a coset.
+\item \textbf{Pencil lemma P1 and Theorem C1} \lvl{HAND}. Three members with empty common intersection and
+$\operatorname{wt}(x_1+x_2+x_3)\le4T-3k-6$, together with covering, give a good seven. With Lemma $8'$ this gives
+$\tau\le(2n+k)/6+2$, so any counterexample has $\delta\ge3\varepsilon$. (C1 is the one-anchor Fano argument; LPs over all 716
+seven types reproduce it and nothing stronger.)
+\item \textbf{Theorem C2} \lvl{HAND; 600/600 checked}. Two-block families $\{B:|B\cap X|\in J\}$ with $\tau\ge3k/4+3$ and
+$3k/2\le n<9k/4$ have a good seven.
+\item \textbf{INV-P, the exact remaining form of C:} a thin, covering family with $3\varepsilon\le\delta<1/12$, no large
+covered block, and every empty-intersection triple sum of weight $\ge4\varepsilon k-O(1)$ lies mostly in one coset. The
+candidate obstruction is a non-linear sum-free set of density $\le5/16$ with heavy triple-sum classes. Above density $5/16$,
+Davydov--Tombak forces a single coset.
+\item The reviewer's warning about Lemma 8 is heeded. Lemma $8'$ is used only for the $\tau$ bound, not for structure.
+\end{itemize}
+
+\section{The $\gamma$ precheck: Tasks C and D}
+\texttt{notes/PROGRAMME3\_GAMMA.md} \lvl{computed; cost model heuristic}.
+\begin{itemize}
+\item \textbf{Density.} Covering families have density $p=e^{-\gamma k}$, with $\gamma\le\gamma_a=(1+\omega)\,h(\omega/(1+\omega))$,
+which is about $0.10$--$0.29$ in the Fano window.
+\item \textbf{Light characters.} The brief's cutoff $7^{-w/2}<p$ gives $w^*\approx1.03\gamma k$. That leaves
+$e^{0.39k}$--$e^{0.70k}$ light characters, far more than $1/p$. The rigorous Parseval cutoff leaves essentially all $2^n$.
+\item \textbf{Density increment.} There is less than one deficiency unit of slack per step, so it survives only if almost
+every step is exactly free.
+\item \textbf{Verdict.} Counting plus increment works only for dense families ($\gamma\lesssim4\varepsilon$). \textbf{The wall
+is coefficients between $e^{-ck}$ and a constant at weights up to $0.10$--$0.24k$}, with $c=0.29,0.40,0.47$ at
+$N=1.78,1.80,1.82$. For sparse families it is the whole regime. Deliverable 1 for arbitrary sparse families was therefore not
+attempted.
+\item \textbf{Side result:} with C1, the Fano window is non-empty only for $\varepsilon<1/36$. This is harmless for (G), but at
+small $\varepsilon$ the region $N\ge11/6$ remains.
+\end{itemize}
+
+\section{Task B: decision point D3}
+\texttt{notes/PROGRAMME3\_TASKB.md} \lvl{computed, Monte Carlo counts}.
+\begin{itemize}
+\item \textbf{Instances.} The brief's instances are infeasible or contain only the complete family. The first non-complete
+Fano-range instance is $(17,13,31)$, with about $10^7$ members, which is out of reach. Runs used $(8,7,16)$, $(10,8,21)$ and
+$(12,10,23)$, each started from a random family and from a planted layer.
+\item \textbf{Findings.}
+  \begin{itemize}
+  \item The normalised count (against a random subfamily of the same size) stays at $1.00\pm0.02$. The raw count falls only
+  because the families get sparser.
+  \item Random starts never drift toward linear layers.
+  \item Planted FKW-type layers break up on the first move and converge to the random-start state.
+  \item Planted layers have 11--16\% fewer normalised sevens, but the advantage does not grow from $k=8$ to $k=12$.
+  \item Minimisers end near the covering minimum ($\gamma/\gamma_a\approx0.72$--$0.80$).
+  \end{itemize}
+\item \textbf{D3: outcome (iii).} Minimisers stay unstructured while the count stays far above zero. \emph{Caveats:} there is
+no Fano-range instance; $e^{-4\varepsilon k}$ is only $e^{-2}$--$e^{-4}$; there is one seed at $k=10$ and $12$.
+\end{itemize}
+
+\section{The bulk $N\ge11/6$, and the counterexample side}
+\begin{itemize}
+\item \textbf{Bulk scoping} (\texttt{notes/PROGRAMME3\_BULK.md}).
+  \begin{itemize}
+  \item Nothing general covers $N\ge11/6$ at small $\varepsilon$. LPs over every seven type with at most two forced members
+  give exactly C1.
+  \item The obstacle is \emph{forcing} a pencil; finishing once one exists is easy.
+  \item No family with $N\ge11/6$ and $\tau>3k/4+1$ avoiding good sevens is known. This covers the stored families, 231
+  symmetric UNSAT searches and an exhaustive two-block search.
+  \item The petal-side closures do not transfer to (G).
+  \end{itemize}
+\item \textbf{Counterexample hunt} (\texttt{notes/PROGRAMME3\_CX.md}).
+  \begin{itemize}
+  \item Deep cosets of BCH$[31,16,7]$ and RM$(2,5)$, and non-linear unions of cosets, have $\tau$ well below $3k/4$. Covering
+  forces $|H|\ge\binom nk/\binom{k+r}r$.
+  \item \textbf{Lemma Q} \lvl{HAND} generalises Corollary 7 to a sum-free set $T$ of classes.
+  \item A Lemma-Q counterexample needs covering together with \emph{no pair of members with intersection in a band} of width
+  $(5\delta/14+\varepsilon/2)k$. Random families fail this by $e^{0.68k}$.
+  \end{itemize}
+\item \textbf{The wanted poster.} A counterexample must:
+  \begin{itemize}
+  \item have $n\ge(7/4+3\varepsilon)k$;
+  \item be thin;
+  \item contain no near-complete block of small excess;
+  \item not be a linear layer in the proved ranges;
+  \item have every empty-intersection triple sum of weight $\ge4\varepsilon k$.
+  \end{itemize}
+\end{itemize}
+
+\section{Assessment, and the question we need answered}
+The structured end is largely done: RA, NC, the Fano classification, $c^*=1$, B for linear layers, C1 and C2. We will draft
+it as a paper (Task E) regardless of the outcome. Three independent findings point to the same core:
+\begin{itemize}
+\item D3: near-threshold families look random, not structured;
+\item the $\gamma$ check: sparse families defeat Fourier counting;
+\item the bulk scan: nothing near seven-free exists away from $N\approx7/4$.
+\end{itemize}
+The core is
+\begin{quote}
+\textbf{(S)} every sparse $T$-covering family with $\tau>(3/4+\varepsilon)k$ contains a good seven,
+\end{quote}
+across the whole window, including $N\ge11/6$. This is a supersaturation / Brown--Erd\H{o}s--S\'os-type statement at
+exponentially small density. Minimum coverings can be configuration-free (AG$(d,3)$ is Pasch-free), so minimality alone
+cannot give it. If D3's hint is right, C as a structure theorem is the wrong target: generic thin families have many good
+sevens for counting reasons, and the problem is (S).
+
+\textbf{Questions.}
+\begin{enumerate}
+\item Is there a technique that fits (S): hypergraph containers, sparse removal lemmas, entropy or dependent random choice,
+or a slice-rank or polynomial bound using covering on links? Or is (S) a genuine research frontier?
+\item Would the BAND statement (every covering family has a pair of members with intersection in the band) be a tractable
+first case of (S)? Proving it kills the whole Lemma-Q route to a counterexample.
+\item Given D3 and the empty counterexample hunt, do you agree the evidence now leans toward the conjecture being true?
+\end{enumerate}
+\end{document}
