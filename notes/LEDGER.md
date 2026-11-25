@@ -116,6 +116,12 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
   - Exact tables: ρ >= r + 2 only when τ <= 2. (7,14) is excluded for k >= 36; residue-class targets were corrected.
 - Task 3 (notes/PROGRAMME2_TASK3.md): Proposition 9 as literally stated is FALSE (size parity; counterexample by hand + SAT). Theorem 9′, with correct parity |Ω_i| ≡ k (mod 2) and size hypotheses, is proved by hand: the 7×7 F₂ class system is always solvable, and size residues are repaired by same-class pairs. Proof construction exact on 10,300 instances; with parity-correct Ω's, a good seven existed in 284/284 ground-truth instances (conjecture: parity alone suffices). [HAND + EXACT], not independently verified.
 
+- Piece B, many classes (notes/PROGRAMME2_B.md, compute/programme2/B/):
+  - Coset families have NO perfect pencil (the three membership conditions sum to 0 = α), so Theorem R never applies to them, at any dual distance [HAND]. S⁺ applies with m = c; its trigger is the primal class count, not the dual distance.
+  - **Theorem B1** [HAND, not independently verified]: for N < 1.852 every covering coset family has a Fano-type good seven once codim(C_ev) − 1 ≤ min((k − 5r − 41)/15, (r + 4εk − 11)/5), for every column structure. It replaces 9′'s c ≤ 2^r. 496/496 constructions verified exactly, including 82 covering families outside 9′'s H2 [EXACT per instance].
+  - OPEN: codimension between B1's bound and about 0.43k. B1m covers random columns up to e ≈ 2.8m, conditional on (SPAN) [EXACT per instance]. Counting via MacWilliams is exact, but the error is governed by the dual's low-weight structure (coloops, series pairs), not by c. Two rigorous pieces are missing (B §5.5).
+  - Task 3's conjecture ((H0)+(H1)+V=∪H suffice) is FALSE: two τ = 2 instances [EXACT, SAT]. No counterexample to B.
+
 ## Open
 - LIFT (G2 / far replies): transfer confined results to general families (anchor-keeping certificates, or show far replies with large outside overlap lose). Needed for the full solve.
 - Record path: exact certification of R1's sparsest-anchor argument at t = 17/20 (anchor-keeping, transfers) would give f(k,7) <= (17/20 + o(1))k (FRONTIER §4–5).
