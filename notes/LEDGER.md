@@ -33,8 +33,8 @@ A claim moves to VERIFIED only through the gate: a PASS report from a fresh-cont
 | Theorem W (window-selected greedy rules lose) | CORE §47 | VERIFIED (V2; finite k needs 4 \| k; selectors reading \|S\| are outside W; threshold corollary holds for upward thresholds only) |
 | Window lower end: 3t - 1/2 < N <= 5t - 2 closed by a fixed class-(T) plan when omega <= 4·eps | CORE 21.2 | GAP (V4): it assumes zero base waste for every adversary, with no steering lemma; static Theorem T tolerates only about 2ε of deficit. So the open window starts at 3t - 1/2, not 5t - 2. |
 | Bottom strip 3t - 1/2 < N <= 5t - 2 closed for ε <= ε_0 (ineffective): a pair with overlap in [N - 2t, 3t - 2] gives a good seven; Frankl–Rödl forces such a pair because T-covering families are dense (e^{-O(ε ln 1/ε) n}) | CORE §90–§94 | VERIFIED (bottom-strip verifier; Frankl–Rödl checked against arXiv 1402.6294, α = 3/7, η = 1/14, δ absolute) |
-| Theorem R (uniformly random / 6-wise independent selectors over heads of size ω lose unless R >= e^{(1.19-o(1))k} classes; Chebyshev) | CORE §55–§59 | HAND, verification pending |
-| Theorem H (> 2/3 of the lines over one kernel present gives a good seven; W is a special case) | CORE §55–§59 | HAND, verification pending |
+| Theorem R (uniformly random / 6-wise independent selectors over heads of size ω lose unless R >= e^{(1.19-o(1))k} classes; Chebyshev) | CORE §55–§59 | VERIFIED (R/H verifier; the exponent is 1.183 at t -> 3/4, 1.1925 at t = 0.76, 1.259 at 5/6) |
+| Theorem H (> 2/3 of the lines over one kernel present gives a good seven; W is a special case) | CORE §55–§59 | VERIFIED (R/H verifier; 2/3 is sharp: the Kleitman set; §58.1 wording fix: 'J has ω points outside the window W') |
 | Hash-like selectors: 805/805 trials have a good seven (the 7 earlier misses were search failures) | CORE §56 | EXACT |
 | (8,6,15) family: τ = 7; good-seven question UNDECIDED; at ε = 0, irrelevant to CP | CORE §55 | EXACT (τ) |
 | Literal SPOIL false | CORE §40 | EXACT |
