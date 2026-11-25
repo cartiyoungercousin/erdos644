@@ -1,0 +1,724 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem,booktabs}
+\usepackage[hyphens]{url}
+\usepackage[hidelinks]{hyperref}
+\setlist{itemsep=1pt,topsep=3pt}
+\emergencystretch=2em
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{question}[theorem]{Question}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\st}[1]{\textsf{\small[#1]}}
+\newcommand{\F}{\mathbb{F}_2}
+\newcommand{\wt}{\operatorname{wt}}
+\newcommand{\codim}{\operatorname{codim}}
+\newcommand{\binomV}[1]{\tbinom{V}{#1}}
+\DeclareMathOperator{\ANTI}{ANTI}
+
+\title{Transversals of uniform families with property $(7,2)$:\\[3pt]
+\large an exact classification, barrier results, and a reduction\\ for Erd\H{o}s Problem \#644 \\[4pt]
+\normalsize\textsc{draft}}
+\author{erdos644 project}
+\date{25 November 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent Let $f(k,7)$ be the largest transversal number of a $k$-uniform family in which every seven members
+have a transversal of at most two points. Erd\H{o}s asked whether $f(k,7)=(3/4+o(1))k$; the best bounds,
+due to Fon-Der-Flaass, Kostochka and Woodall, are $\tfrac34k+O(1)\le f(k,7)\le\lceil 7k/8\rceil$.
+We do \textbf{not} resolve the problem. We prove: (i)~if the members span fewer than $11k/6$ points, every seven
+members without a 2-point transversal are of ``Fano type'' (computer-assisted, exact; $11/6$ is optimal for the linear
+relaxation used); (ii)~a pencil-sum identity which explains the FKW parity construction and shows that, in the Fano
+range, parity obstructions cannot certify $\tau>3k/4+3/2$ for covering coset families; (iii)~families that are
+fractionally rich, or contain a large block with small covering excess, or (in the Fano range) are covering coset
+families with few point classes, are not $(7,2)$ once $\tau>(3/4+\varepsilon)k$ and $k$ is large; (iv)~$f(6,7)=5$ and $f(7,7)=6$
+(computer-assisted). As a consequence, Erd\H{o}s's question is equivalent to a single statement (S) about thin
+families without large near-complete blocks, which we split into a concrete Fano-range part and a part for which no
+framework exists. We state the open problems that remain, with their exact implications. Every result carries a
+status tag recording how it was checked; results checked only by their authors are kept separate.
+\end{abstract}
+
+\paragraph{Status tags.} \st{LEAN}: machine-checked in Lean~4 (standard axioms only). \st{VERIFIED}: hand proof
+that passed an independent, adversarial re-derivation together with computer tests. \st{EXACT}: exhaustive or exact
+rational computation, with independently checked certificates where stated. \st{DERIVED}: a short consequence of
+\st{VERIFIED}/\st{LEAN} results, written out in this paper and not yet independently re-checked.
+\st{HAND}: hand proof by the project, \emph{not independently verified}. \st{FLOAT}: floating-point computation.
+Only \st{LEAN}, \st{VERIFIED}, \st{EXACT} and \st{DERIVED} results are given theorem status; \st{HAND} results are
+collected in Section~\ref{sec:hand}.
+
+\section{Introduction}\label{sec:intro}
+
+For a finite family $H$ of sets, $\tau(H)$ is the least size of a set meeting every member. $H$ has
+\emph{property $(p,2)$} if every subfamily of \emph{at most} $p$ members (repeats allowed) has a transversal of at most
+two points. (For families with at least $p$ members this agrees with ``every $p$ distinct members''.) Let $f(k,p)$ be
+the largest $\tau$ of a $k$-uniform $(p,2)$-family. For $p=3,4,5,6$ the values $2k,\lfloor3k/2\rfloor,\lfloor5k/4\rfloor,k$
+are reported in~\cite{EP} from~\cite{EFKT}. For $p=7$, Fon-Der-Flaass, Kostochka and Woodall~\cite{FKW} proved
+\[
+f(4m,7)\ \ge\ 3m+1\quad(m\ge10),\qquad\qquad f(k,7)\ \le\ \lceil 7k/8\rceil .
+\]
+Erd\H{o}s Problem \#644~\cite{EP} asks whether $f(k,7)=(3/4+o(1))k$. Neither direction is settled here.
+
+A seven members with no transversal of size $\le2$ is called a \emph{good seven}; $H$ is $(7,2)$ iff it has none.
+Throughout, $V=\bigcup H$, $n=|V|$, $N=n/k$.
+
+\paragraph{Results.}
+\begin{enumerate}[leftmargin=*]
+\item \emph{Classification} (Theorem~\ref{thm:class}) \st{VERIFIED, EXACT}. If seven sets of size $\ge k$ have union
+of size $<11k/6$ and no 2-point transversal, they are of Fano type (Definition~\ref{def:fanoX}). The constant $11/6$ is
+optimal for the linear relaxation that the proof uses.
+\item \emph{Pencil sums and the parity barrier} (Section~\ref{sec:linear}) \st{VERIFIED}. An identity for the seven
+``pencil sums'' of a Fano-type seven explains why the FKW parity family is $(7,2)$, and, combined with Theorem~D,
+shows that this parity mechanism cannot give $\tau>3k/4+3/2$ in the Fano range.
+\item \emph{Structured families lose} \st{VERIFIED}: rich families (Theorem~RA), families with a near-complete block of
+small excess (Theorem~NC), and, in the Fano range, covering coset families with few point classes (Theorems~D and~$9'$).
+\item \emph{Exact values} (Section~\ref{sec:small}) \st{EXACT, computer-assisted}: $f(6,7)=5$, $f(7,7)=6$.
+\item \emph{Reduction} (Proposition~\ref{prop:S}) \st{DERIVED}: the problem is equivalent to Statement~(S), which we
+split into (S$_<$) (for $n<11k/6$) and (S$_\ge$).
+\end{enumerate}
+Section~\ref{sec:score} records the proven region in three natural parameters; Section~\ref{sec:hand} lists results
+that are not independently verified; Section~\ref{sec:open} states the open problems.
+
+\section{Preliminaries}\label{sec:prelim}
+
+\begin{lemma}[padding]\label{lem:pad}
+Let $f_{\le}(k,7)$ be the largest $\tau$ of a $(7,2)$-family of nonempty sets of size at most $k$. Then
+$f_\le(k,7)=f(k,7)$. \st{VERIFIED, LEAN}
+\end{lemma}
+\begin{proof}
+Add $k-|B|$ new private points to each member $B$. Original members are subsets of padded ones, so every transversal
+of $\le 7$ original members is one of the padded members, and $(7,2)$ survives. In a transversal of the padded family,
+replace each private point of $B'$ by a point of $B$; this gives a transversal of the original family that is no
+larger. So $\tau$ is unchanged.
+\end{proof}
+
+\noindent\textbf{Statement (G).} \emph{For every $\varepsilon>0$ there is $k_0$ such that for $k\ge k_0$ every finite
+family of nonempty sets of size at most $k$ with $\tau>\lceil(3/4+\varepsilon)k\rceil$ has a good seven.} By
+Lemma~\ref{lem:pad}, (G) is equivalent to $f(k,7)\le(3/4+o(1))k$. Note that padding changes $n$, so (G) concerns
+$k$-uniform families with every value of $N$.
+
+\paragraph{Fano colourings.}
+Let $\Pi$ be the Fano plane. A \emph{colouring} is a map $\chi:V\to\Pi$. For a line $\ell$ put
+$L_\ell=\chi^{-1}(\ell)$ (points whose colour lies on $\ell$) and $R_\ell=V\setminus L_\ell$.
+
+\begin{definition}\label{def:fanoX}
+Seven sets $B_\ell$ indexed by the lines of $\Pi$ form a \emph{Fano-type seven} if $B_\ell\subseteq R_\ell$ for all
+$\ell$, for some colouring $\chi$. Equivalently, with $I_x=\{\ell:x\notin B_\ell\}$ (the \emph{co-type} of $x$),
+every $I_x$ contains the pencil $\{\ell:\ell\ni c\}$ of some point $c$ (colour $x$ by $c$).
+\end{definition}
+
+\begin{lemma}[colouring criterion]\label{lem:col}
+A Fano-type seven has no transversal of size $\le2$. Hence if for some colouring no $L_\ell$ is a transversal of $H$,
+then $H$ is not $(7,2)$. \st{VERIFIED, LEAN}
+\end{lemma}
+\begin{proof}
+For $x,y$ with colours $p,q$ choose a line $\ell\ni p,q$; then $x,y\in L_\ell$ and $B_\ell\subseteq R_\ell$ misses
+both. For the second claim, pick $B_\ell\in H$ inside $R_\ell$ (it exists since $L_\ell$ is not a transversal).
+\end{proof}
+
+A weight $y:V\to\mathbb R_{\ge0}$ is \emph{feasible} if $y(M)\ge1$ for every transversal $M$; then $y(L)<1$ implies that
+$L$ is not a transversal. Let $\tau^*_b(H)=\min\{y(V):y\text{ feasible}\}$. Call $H$ \emph{rich} if
+$\tau^*_b\le7/3-\eta$ (for a fixed $\eta>0$) and \emph{thin} otherwise.
+
+\begin{theorem}[weighted static criterion]\label{thm:3H}
+Let $y$ be feasible, $A\subseteq V$, $a'=\max_{V\setminus A}y$, $\Lambda=y(V\setminus A)$. Suppose there are
+$\pi:A\to\Pi$ and $c\in\mathbb R^\Pi_{\ge0}$ with $\sum_pc_p=\Lambda$ and $y(\pi^{-1}(\ell))+\sum_{p\in\ell}c_p+3a'<1$
+for every line $\ell$. Then $H$ is not $(7,2)$. \st{VERIFIED}
+\end{theorem}
+\begin{proof}
+Colour $A$ by $\pi$. Feed the points of $V\setminus A$ in any order into the class of $p_1$ until its load reaches
+$c_{p_1}$, then into $p_2$, and so on. Each load ends $\le c_p+a'$ (the last class takes only a remainder). So
+$y(L_\ell)<1$ for every $\ell$, and Lemma~\ref{lem:col} applies.
+\end{proof}
+With $A=\emptyset$, $c_p=y(V)/7$: if $y(V)+7\max y<7/3$ then $H$ is not $(7,2)$; with $y\equiv1/\tau$ this gives
+$\tau\le3(n+7)/7$ for every $(7,2)$-family \st{VERIFIED}.
+
+\begin{theorem}[one-anchor bound]\label{thm:A}
+A $k$-uniform $(7,2)$-family on $n$ points has $\tau\le\lceil(n-k)/3\rceil+2\lceil k/4\rceil$. \st{LEAN}
+\end{theorem}
+\begin{proof}
+Let $T=\lceil(n-k)/3\rceil+2\lceil k/4\rceil$ and suppose $\tau>T$. Fix a member $A$, split it into $a_1,\dots,a_4$
+of sizes $\le\lceil k/4\rceil$ and $V\setminus A$ into $D_1,D_2,D_3$ of sizes $\le\lceil(n-k)/3\rceil$. The six sets
+$D_1\cup a_1\cup a_2$, $D_1\cup a_3\cup a_4$, $D_2\cup a_1\cup a_3$, $D_2\cup a_2\cup a_4$, $D_3\cup a_1\cup a_4$,
+$D_3\cup a_2\cup a_3$ have size $\le T$, so each is missed by some member $C_1,\dots,C_6$. The co-types (in
+$\{A,C_1,\dots,C_6\}$) are $\{1,3,5\},\{1,4,6\},\{2,3,6\},\{2,4,5\}$ on $a_1,\dots,a_4$ and $\{A,1,2\},\{A,3,4\},
+\{A,5,6\}$ on $D_1,D_2,D_3$: these are the seven lines of a Fano plane, pairwise intersecting. So no two points meet all
+seven members.
+\end{proof}
+The bound is attained by $K^{(4m)}_{7m-1}$ and by the FKW family. (Formalised as \texttt{theoremA} in
+\texttt{Lean644/TheoremA.lean}.)
+
+\section{The exact classification}\label{sec:class}
+
+For seven sets $B_1,\dots,B_7$, a pair $\{x,y\}$ ($x=y$ allowed) is a transversal iff $I_x\cap I_y=\emptyset$. So the
+seven have no 2-point transversal iff the co-types form an \emph{intersecting} family. In this language,
+Definition~\ref{def:fanoX} says: for some Fano plane $P$ on the index set $[7]$, every $I_x$ contains a line of $P$.
+
+\begin{theorem}\label{thm:class}
+Let $B_1,\dots,B_7$ (repeats allowed) each have at least $k$ points, $|\bigcup B_i|<11k/6$, and no transversal of
+size $\le2$. Then $B_1,\dots,B_7$ form a Fano-type seven. \st{VERIFIED, EXACT; computer-assisted}
+\end{theorem}
+\begin{proof}
+For a family $M$ of subsets of $[7]$ let
+$\mathrm{LP}(M)=\min\{\sum_{F\in M}m_F:\ m\ge0,\ \sum_{F\in M,\,F\not\ni i}m_F\ge1\ (i\in[7])\}$.
+The co-type support $S=\{I_x:x\in\bigcup B_i\}$ is intersecting, so $S\subseteq M$ for some maximal intersecting family
+$M$. The masses $m_F=|\{x\in\bigcup B_i:I_x=F\}|/k$ are feasible for $\mathrm{LP}(M)$, since
+$\sum_{F\not\ni i}m_F=|B_i|/k\ge1$, with value $|\bigcup B_i|/k<11/6$. For a Fano plane $P$ the up-set $U_P$ generated
+by its lines is maximal intersecting (two lines meet; since the Fano plane is not 2-colourable, exactly one of $G$ and
+$[7]\setminus G$ contains a line). If $S\subseteq U_P$ for some $P$ we are done. Otherwise $M\ne U_P$ for all $P$,
+and it suffices that $\mathrm{LP}(M)\ge11/6$ for every maximal intersecting $M$ other than the $30$ families $U_P$.
+
+\emph{Computation.} Maximal intersecting families on $[7]$ are the self-dual up-sets of $2^{[7]}$. All were
+enumerated: $1\,422\,564$, matching OEIS A001206~\cite{OEIS}, in $716$ classes under $S_7$ (the orbit--stabiliser sum
+equals the total). Each class LP was solved and re-certified by a rational primal and a rational dual, both checked
+exactly, with equal objectives. The dictator class is infeasible; the Fano class has value $7/4$; every other class
+has value $\ge11/6$, four classes have value exactly $11/6$ (dual
+$(\tfrac16,\tfrac16,\tfrac16,\tfrac13,\tfrac13,\tfrac13,\tfrac13)$), and the next value is $15/8$. An independent
+counterexample-guided SAT search (43 exact dual certificates, then UNSAT) confirms the bound.
+\end{proof}
+
+\begin{remark}[what ``sharp'' means here]
+The constant $11/6$ is optimal \emph{for the linear relaxation}: four classes attain $\mathrm{LP}(M)=11/6$, and adding a
+small mass on a line-free co-type of such a class gives feasible non-Fano mass patterns of total mass arbitrarily
+close to $11/6$. We do not claim more (for instance, that non-Fano good sevens of $k$-uniform families with union close
+to $11k/6$ exist for every $k$). Trust: the enumeration is checked against the known count; the SAT confirmation rests
+on an unchecked UNSAT answer.
+\end{remark}
+
+\begin{corollary}\label{cor:fanorange}
+If $H$ has sets of size $\ge k$ and $n<11k/6$, then $H$ is $(7,2)$ iff it has no Fano-type seven, i.e.\ iff for every
+colouring some $L_\ell$ is a transversal. \st{VERIFIED}
+\end{corollary}
+We call $n<11k/6$ (i.e.\ $N<11/6$) the \emph{Fano range}.
+
+\section{Linear structure, the FKW family, and the parity barrier}\label{sec:linear}
+
+Identify subsets of $V$ with vectors of $\F^V$; $+$ is symmetric difference and $\wt$ is size.
+
+\begin{lemma}[pencil-sum identity; Lemma~5 of the project notes]\label{lem:pencil}
+For a Fano-type seven $B_\ell\subseteq R_\ell$ let $s_p=\sum_{\ell\ni p}B_\ell$ ($p\in\Pi$) and
+$j_x=|\{\ell:x\in B_\ell\}|$. Then
+\[
+\sum_{p\in\Pi}\wt(s_p)=\sum_{x}j_x(4-j_x)\ \le\ 3\Big(4\big|\textstyle\bigcup_\ell B_\ell\big|-\sum_\ell|B_\ell|\Big).
+\]
+If the right side is $0$, then $\{\emptyset\}\cup\{B_\ell\}$ is a linear subspace of dimension $3$. \st{VERIFIED}
+\end{lemma}
+\begin{proof}
+Let $J_x=\{\ell:x\in B_\ell\}$ and $c=\chi(x)$. $J_x$ avoids the three lines through $c$, so $j_x\le4$, and $x\in s_p$
+iff an odd number of lines of $J_x$ pass through $p$. Count such $p$: one line gives $3$; two lines give $4$; three
+lines avoiding $c$ are not concurrent (the pencil of any $q\ne c$ contains the line $qc$), so they form a triangle with
+$3$ odd points; the four lines avoiding $c$ cover every point other than $c$ exactly twice, giving $0$. So the count is
+$j(4-j)$, and $j(4-j)\le3(4-j)$ for $1\le j\le4$; summing over $x\in\bigcup B_\ell$ gives the inequality, since
+$\sum_x(4-j_x)=4|\bigcup B_\ell|-\sum_\ell|B_\ell|$. If all $s_p=0$, index lines by $(\F^3)^*\setminus0$: the pencils
+are the triples $\{u,v,u+v\}$, so $u\mapsto B_u$ ($B_0=\emptyset$) is linear, and injective since no $B_\ell$ is empty.
+\end{proof}
+
+A \emph{coset family} is $H\subseteq a+C$ with $C\le\F^V$ linear and $a\notin C$. Let $\rho_{\rm par}$ be the least
+weight in $a+C$ that is $\equiv k\pmod2$.
+
+\begin{corollary}[coset obstruction]\label{cor:7}
+A $k$-uniform coset family on $n$ points with $7\rho_{\rm par}>3(4n-7k)$ has no Fano-type seven. If also
+$n<11k/6$, it is $(7,2)$. \st{VERIFIED}
+\end{corollary}
+\begin{proof}
+Each $s_p$ is a sum of three members, so $s_p\in a+C$ with $\wt(s_p)\equiv3k\equiv k$, and $s_p\neq0$; hence
+$\wt(s_p)\ge\rho_{\rm par}$ and $7\rho_{\rm par}\le\sum_p\wt(s_p)\le3(4n-7k)$. The second claim is
+Corollary~\ref{cor:fanorange}.
+\end{proof}
+
+\paragraph{The FKW family in three lines} \st{VERIFIED}. Let $|V|=7m+1$, $V=X\sqcup Y$ with $|X|=4m$, and let $H$ be
+the $4m$-subsets $B$ with $|B\cap X|$ odd (so $|B\cap Y|$ is odd too). (1)~$H$ lies in the coset ``odd on $X$, odd on
+$Y$'', whose least weight is $\rho_{\rm par}=2$. (2)~$4n-7k=4$ and $7\cdot2>12$, so there is no Fano-type seven.
+(3)~$N=7/4+1/(4m)<11/6$ for $m\ge4$, so $H$ is $(7,2)$. Finally $\tau(H)=3m+1$: the complement of a $4m$-set that is
+even on $X$ meets every member, and every $(4m+1)$-set meets both $X$ and $Y$ and so contains a member (drop a
+$Y$-point or an $X$-point to make the $X$-part odd). This recovers the FKW lower bound for $m\ge4$.
+
+\paragraph{No perfect pencil.} In a coset family, $\wt(x_1+x_2+x_3)\ge\rho_{\rm par}\ge1$ for any three members, so
+the zero-slack configurations of Lemma~\ref{lem:pencil} never occur. This is what lets parity families survive at
+$4n-7k=O(1)$; Corollary~\ref{cor:barrier} below shows it cannot do more.
+
+\section{Rich families}\label{sec:rich}
+
+\begin{lemma}[Lemma A0]\label{lem:A0}
+If $H$ is a nonempty family of sets of size at most $k$ and every three members (repeats allowed) share a point, then
+$\tau(H)\le(k+1)/2$. \st{VERIFIED, LEAN}
+\end{lemma}
+\begin{proof}
+Fix $B_1$. For any $B_2$, $B_1\cap B_2$ meets every member, so $|B_1\cap B_2|\ge\tau$. Hence every
+$(|B_1|-\tau+1)$-subset of $B_1$ meets every $B_1\cap B_2$, so it is a transversal, and $\tau\le k-\tau+1$.
+\end{proof}
+This is one step beyond Nagy--Patk\'os~\cite{NP}, Prop.~2.2 ($r=3$), using the ``intersection minus points is a cover''
+step of Bishnoi--Das--Morris--Szab\'o~\cite{BDMS}, Thm.~1.7; it is tight for $K^{(k)}_{\lceil3k/2\rceil-1}$. We found no
+source stating it for non-partite families.
+
+\begin{theorem}[Theorem RA]\label{thm:RA}
+Let $0<\eta$, and let $H$ be a family of nonempty sets of size at most $k$ with $\tau^*_b(H)\le7/3-\eta$ and
+$\tau(H)>(k+1)/2+49/(3\eta)$. Then $H$ is not $(7,2)$. \st{VERIFIED}
+\end{theorem}
+\begin{proof}
+Take an optimal $y$, put $\theta=\eta/7$, $A=\{y\ge\theta\}$, $\Lambda=y(V\setminus A)$, $a'=\max_{V\setminus A}y<\theta$.
+Then $|A|\le y(V)/\theta<49/(3\eta)$ and $y(V)+7a'<7/3$. Since $\tau^*_b\ge1$, $\eta\le4/3$ and $a'<1/3$. Label $\Pi$
+so that the lines through a point $0$ are $\{0\}\cup Q_s$ ($s=1,2,3$); every line avoiding $0$ takes one point of each
+pair $Q_s$.
+
+\emph{Case $\Lambda+3a'\ge2$.} Apply Theorem~\ref{thm:3H} with $\pi\equiv0$, $c_q=\beta:=(1-3a')/3-\sigma$ for $q\ne0$
+and $c_0=\Lambda-6\beta\ge3a'+6\sigma\ge0$, with $\sigma>0$ small. A line avoiding $0$ has mass $3\beta+3a'=1-3\sigma$.
+A line through $0$ has mass $y(A)+c_0+2\beta+3a'=y(V)-4/3+7a'+4\sigma<1$.
+
+\emph{Case $\Lambda+3a'<2$.} Let $H_A$ be the members disjoint from $A$. A transversal of $H_A$ together with $A$ is one
+of $H$, so $\tau(H_A)>(k+1)/2$, and by Lemma~\ref{lem:A0} some $G_1,G_2,G_3\in H_A$ have empty common intersection.
+Colour $A$ by $0$; put each $v\notin A$ into a class $X_s$ with $v\notin G_s$; split $X_s$ into two parts of $y$-mass
+differing by at most $a'$ and colour them by the two points of $Q_s$. A line through $0$ has $L_\ell=A\cup X_s$, which
+$G_s$ avoids. A line avoiding $0$ has mass $\le(\Lambda+3a')/2<1$. Lemma~\ref{lem:col} finishes in both cases.
+\end{proof}
+Only richness and $\tau>k/2+O(1/\eta)$ are used. Richness cannot be weakened to $\tau^*_b<7/3$ at finite $k$:
+$K^{(6)}_{10}$ is $(7,2)$ with $\tau=5$ and $\tau^*_b=2$ \st{EXACT}.
+
+\section{Near-complete blocks}\label{sec:NC}
+
+$H$ is \emph{$(W,d)$-complete} if every $(k+d)$-subset of $W$ contains a member; $w=|W|$, and $d\ge0$ is the
+\emph{block excess}.
+
+\begin{lemma}[NC1]\label{lem:NC1}
+Let $H$ be $(W,d)$-complete and let $G_1,G_2,G_3\in H$ (repeats allowed) have empty common intersection and
+$|W\cap(G_1\cup G_2\cup G_3)|\le2(w-k-d)-3$. Then $H$ is not $(7,2)$. \st{VERIFIED}
+\end{lemma}
+\begin{proof}
+Colour $V\setminus\bigcup G_s$ by $0$; put each $v\in\bigcup G_s$ into some $X_s$ with $v\notin G_s$; split
+$X_s\cap W$ into halves of sizes differing by at most $1$ (add $X_s\setminus W$ to either) and colour them by $Q_s$.
+Lines through $0$ are avoided by $G_s$. A line avoiding $0$ has $|L_\ell\cap W|\le(|W\cap\bigcup G_s|+3)/2\le w-k-d$,
+so $W\setminus L_\ell$ has $\ge k+d$ points and contains a member. Apply Lemma~\ref{lem:col}.
+\end{proof}
+
+\begin{theorem}[Theorem NC]\label{thm:NC}
+Let $H$ consist of nonempty sets of size at most $k$ and be $(W,d)$-complete with $w\ge k+d+2$. Put
+$a=\max(0,\,2k+2d+3-w)$. If $\tau(H)>(k+1)/2+a$, then $H$ is not $(7,2)$. \st{VERIFIED}
+\end{theorem}
+\begin{proof}
+Take $A\subseteq W$ with $|A|=a$ (possible since $w\ge k+d+2$). Then $\tau(H_A)\ge\tau-a>(k+1)/2$, so
+Lemma~\ref{lem:A0} gives a triple in $H_A$ with empty intersection. Its $W$-trace lies in $W\setminus A$, of size
+$w-a\le2(w-k-d)-3$. Apply Lemma~\ref{lem:NC1} to $H$ (the triple, not the covering, comes from $H_A$).
+\end{proof}
+
+\begin{corollary}\label{cor:NC}
+Let $T=\lceil(3/4+\varepsilon)k\rceil$. If $\tau\ge T+1$ and $H$ is $(W,d)$-complete with
+$w\ge(7/4-\varepsilon)k+2d+3$ (and $\varepsilon\le3/4$), then $H$ is not $(7,2)$. \st{VERIFIED}
+\end{corollary}
+\begin{proof}
+$\tau\ge(3/4+\varepsilon)k+1>(k+1)/2+(2k+2d+3-w)$ iff $w>(7/4-\varepsilon)k+2d+5/2$.
+\end{proof}
+
+\paragraph{Range of NC: small block excess only.} With $n=(7/4+\delta)k$ and $w\le n$, Corollary~\ref{cor:NC}
+requires $d\le\big(w-(7/4-\varepsilon)k-3\big)/2\le\big((\delta+\varepsilon)k-3\big)/2$. Blocks with larger excess are
+not covered, nor is any $k$-uniform family with $n<7k/4+d+3/2$ (three $k$-sets with empty common intersection have
+union $\ge3k/2$, which defeats the trace condition of NC1). The ``$+1$'' in $\tau\ge T+1$ is needed: with only
+$\tau>(3/4+\varepsilon)k$ there is a half-point rounding gap for odd $k$ (e.g.\ $K^{(5)}_{10}$, $K^{(9)}_{17}$, which
+are not counterexamples). The \emph{seam example}: for $4\mid k$, the $k$-subsets of a $7k/4$-set $W=W_1\sqcup W_2$
+($0<|W_i|\le k$) that are odd on $W_1$ form a $(7,2)$-family with $\tau=3k/4$ that is both a coset family and
+$(W,1)$-complete \st{VERIFIED}; the two structures meet only at $\varepsilon=0$.
+
+\paragraph{NC with $W=V$.} A $k$-uniform family is $(V,r)$-complete with $r=n-k-\tau+1$ (every $(n-\tau+1)$-set contains a
+member), and $r\ge0$ since $\tau\le n-k+1$. For $\tau\ge3$ we have $n\ge k+r+2$, and Theorem~\ref{thm:NC} with
+$W=V$, $d=r$ has $a=\max(0,n-2\tau+5)$; if $a>0$ its conclusion fails only when $3\tau\le n+(k+11)/2$, and if $a=0$
+only when $\tau\le(k+1)/2$. Therefore
+\begin{equation}\label{eq:NCV}
+\tau\ \le\ \frac{2n+k+11}{6}\qquad\text{for every $k$-uniform $(7,2)$-family on $n$ points}\quad\st{DERIVED}.
+\end{equation}
+This is Theorem~\ref{thm:A} with a slightly better constant (the same observation appears in the project notes); it is used in Section~\ref{sec:score}.
+
+\section{Coset families}\label{sec:coset}
+
+Write $D=a+C=\{x\subseteq V:\sum_{i\in x}h_i=\mathbf s\}$ with columns $h_i\in\F^M$ and $\mathbf s\ne0$, and
+$H=D\cap\binomV k$. Let $r$ be least such that every $(k+r)$-subset of $V$ contains a member (\emph{covering at level
+$w=k+r$}), and $T=n-w$; then $\tau(H)=T+1$. Let $E=\mathrm{span}\{h_i+h_j\}$, $e=\dim E$, and let $\rho$ be the least
+weight in $D$.
+
+The name ``$c^*=1$'' refers to the constant in $\rho_{\rm par}\le r+c^*$.
+\begin{theorem}[Theorem D, ``$c^*=1$'']\label{thm:D}
+If $n\ge2e+1$ and $e\le\min(w,T)$, then $\rho\le r+1$, and $\rho\le r$ when $w$ is even. The same holds for
+$\rho_{\rm par}$. The hypotheses hold whenever $\dim C\ge k+r>T$. \st{VERIFIED}
+\end{theorem}
+\begin{proof}
+\emph{(A) For $0\ne c\in C$: $\rho\le r+|\wt(c)-w|$.} If $\wt c\ge w$, take a member $x$ inside a $w$-subset of $c$;
+then $x+c\in D$ has weight $\wt c-k$. If $\wt c\le w$, take a member $x$ inside a $w$-superset of $c$; then
+$|x\cap c|\ge k+\wt c-w$ and $\wt(x+c)\le2w-k-\wt c$.
+
+\emph{(B) If $n\ge2e+1$, there are $e$ disjoint pairs $\{i_t,j_t\}$ with $\{h_{i_t}+h_{j_t}\}$ a basis of $E$.} Take a
+maximal family of $t<e$ disjoint pairs with independent labels, spanning $F$. All unmatched columns lie in one coset
+$h_u+F$ (else add a pair), and there are $n-2t\ge3$ of them. Some matched pair $(i,j)$ has $h_i,h_j\notin h_u+F$ (else
+all columns lie in $h_u+F$ and $E\subseteq F$). Write $F=F'\oplus\langle h_i+h_j\rangle$. For three unmatched $u_1,u_2,u_3$,
+the $\langle h_i+h_j\rangle$-coefficients of $h_{u_a}+h_{u_b}\in F$ add up, so some pair $u,u'$ has $h_u+h_{u'}\in F'$.
+Replacing $(i,j)$ by $(i,u),(j,u')$ gives labels spanning $F+\langle h_i+h_u\rangle$, of dimension $t+1$ since
+$h_i+h_u\notin F$: a contradiction.
+
+\emph{(C) If moreover $e\le w\le n-e$, the sums $\sum_{i\in Q}h_i$ over $w$-sets $Q$ fill $wh_1+E$:} take one endpoint
+of each pair plus $w-e$ unmatched positions, and swap endpoints.
+
+\emph{(D)} Here $e\le w$ and $e\le T=n-w$. If $w$ is even, some $w$-set has sum $0$, i.e.\ is a codeword of weight
+$w$, and (A) gives $\rho\le r$. If $w$ is odd, some $w$-set $Q$ has sum $h_1$, so $Q\triangle\{1\}$ is a codeword of
+weight $w\pm1$, and $\rho\le r+1$. For $\rho_{\rm par}$ append a parity row to the columns; $E$ is unchanged. Finally,
+if $\dim C\ge w>T$ then $e\le\operatorname{rank}(h)=n-\dim C\le T<w$ and $2e\le2T<n$.
+\end{proof}
+
+\begin{corollary}[counting]\label{cor:count}
+$|C|\ge|H|\ge\binom nw/\binom{n-k}r$, so $\dim C\ge w$ whenever $\binom nw>2^{w-1}\binom{n-k}r$. This holds for all
+$k$ when $T\ge\lceil3k/4\rceil$ and $n<11k/6$: by exact integer check for $k\le199$ ($10\,098$ triples), and for
+$k\ge20$ from the entropy bound
+$g(\omega,t)=Nh(\tfrac{1+\omega}N)-(t+\omega)h(\tfrac\omega{t+\omega})-(1+\omega)\ge0.315$ on $N<11/6$, $t\ge3/4$
+(with $\omega=r/k$, $t=T/k$, $h$ the binary entropy), together with $\log_2\binom nw\ge nh(w/n)-\log_2(n+1)$. At $t=3/4$
+the asymptotic counting condition holds for $N<1.938$. \st{VERIFIED; the minimum $0.315$ and the threshold $1.938$ are
+numerical minimisations of an explicit function, recomputed independently}
+\end{corollary}
+
+So, for $T\ge\lceil 3k/4\rceil$: in the Fano range every covering coset family has $\rho_{\rm par}\le r+1$, and at
+$t=3/4$ the same holds for $N<1.938$ and $k$ large.
+
+\begin{corollary}[the parity barrier]\label{cor:barrier}
+Let $H$ be a covering coset family as above with $T\ge3k/4$ and $\dim C\ge k+r>T$ (e.g.\ $n<11k/6$, by
+Corollary~\ref{cor:count}). If the obstruction of Corollary~\ref{cor:7} applies to $H$, then $r\le1$, $4T-3k\le2$, and
+$\tau(H)\le3k/4+3/2$. \st{DERIVED}
+\end{corollary}
+\begin{proof}
+$4n-7k=4r+(4T-3k)$. Corollary~\ref{cor:7} needs $7\rho_{\rm par}>12r+3(4T-3k)$, and Theorem~\ref{thm:D} gives
+$\rho_{\rm par}\le r+1$. So $3(4T-3k)<7-5r$, which forces $r\le1$ and $4T-3k\le2$.
+\end{proof}
+In the Fano range the FKW mechanism ($r=1$, $\rho=2$, $4T=3k$) is therefore at its limit: covering coset families
+with larger $\tau$ must contain Fano-type sevens. Theorem~$9'$ constructs them when the point classes are few.
+
+\paragraph{Setting for Theorem $9'$.} Let $Q=\F^V/C$ and $[x]\in Q$ the class of a point; $\alpha=[a]$. The points of
+one class form a \emph{cell}; any two points of a cell form a weight-$2$ codeword, so $[S]=\sum_g(|S\cap V_g|\bmod2)\,g$.
+Let $\Omega_1,\Omega_2,\Omega_3\in a+C$ be pairwise disjoint, $w_i=|\Omega_i|$, $W=\sum w_i$, $\Delta=\max w_i-\min w_i$,
+$V'=V\setminus\bigcup\Omega_i$, $s=4n-7k-W$, $f=\mathbf 1[s\equiv2\ (4)]$, $u=(s-2f)/4$, and let $c$ be the number of
+classes met by $V'$.
+
+\begin{theorem}[Theorem $9'$]\label{thm:9}
+Assume (H0) $W\le4n-7k$; (H1) $w_i\equiv k\pmod2$; (H2) $k\ge W+2\Delta+4c+6$; (H3) some class $g^*$ has
+$|V'_{g^*}|\ge u+2f+7$; (H4$'$) at most $u$ classes occur exactly once in $V'$. Then $H$ contains seven distinct
+members forming a Fano-type seven. \st{VERIFIED}
+\end{theorem}
+\begin{proof}
+By (H1), $s\equiv k-W\equiv0$ or $2\pmod 4$, so $u\in\mathbb Z_{\ge0}$; (H2) gives $W<k\le n$, so $V'
+e\emptyset$ and $c\ge1$. Fano points $1,\dots,7$, lines
+$124,235,346,457,156,267,137$. The triangles $T_1=\{124,156,267\}$, $T_2=\{124,137,346\}$, $T_3=\{124,235,457\}$ lie in
+$\ANTI(q_i)=\{\ell:q_i\notin\ell\}$ for $q_i=3,5,6$; line $124$ lies in all three, every other line in exactly one.
+$T^*=\{124,235,346\}\subseteq\ANTI(7)$.
+
+\emph{Removal.} Let $Z\subseteq V'$ consist of the points of classes occurring once in $V'$ (at most $u$, by (H4$'$))
+and further points of $g^*$, $|Z|=u$; if $f=1$ remove also a pair $F\subseteq V'_{g^*}$. Let $V''$ be the rest; no class
+occurs exactly once in $V''$ and $|V''_{g^*}|\ge7$ by (H3).
+
+\emph{Sizes.} Put $e_\ell=\sum_{i:\ell\in T_i}w_i+2f\mathbf 1[\ell\in T^*]$, $t_\ell=k-e_\ell$ and
+$m_p=\tfrac14\sum_\ell t_\ell-\tfrac12\sum_{\ell\ni p}t_\ell$; since every line $\ell'\ne\ell$ has two points off $\ell$,
+this solves $\sum_{p\notin\ell}m_p=t_\ell$. Each $t_\ell$ is even (by (H1), as each line lies in an odd number of
+$T_i$), and $\sum_\ell t_\ell=7k-3W-6f\equiv3(k-W-2f)\equiv0\pmod4$, so $m_p\in\mathbb Z$. A direct computation of the
+seven values gives $4m_p\ge k-W-2\Delta-6f\ge4c$ by (H2), and $\sum_pm_p=(7k-3W-6f)/4=n-W-u-2f=|V''|$.
+
+\emph{Partition.} The line-complement matrix $(\mathbf 1[p\notin\ell])$ over $\F$ has rank $3$ and kernel the Hamming
+code $\mathcal H$ spanned by the lines; since all $t_\ell$ are even, $(m_p\bmod2)_p\in\mathcal H$. For each class $g$
+choose $\pi_g\in\mathcal H$: $0$ if $|V''_g|$ is even; a line if $|V''_g|$ is odd and $g\ne g^*$ (then $|V''_g|\ge3$);
+and $\pi_{g^*}=(m\bmod2)+\sum_{g\ne g^*}\pi_g$, whose weight is $\le7\le|V''_{g^*}|$ and has the parity of
+$|V''_{g^*}|$ (since $\sum_pm_p=|V''|$). Put one point of $V''_g$ into $Y_p$ for each $p\in\pi_g$; each $Y_p$ receives at
+most $c\le m_p$ such points, with the parity of $m_p$. Every cell now has an even remainder, and the total remainder
+equals $\sum_p(m_p-\text{load}_p)$, so same-class pairs fill each $Y_p$ to size exactly $m_p$. Then
+$[Y_p]=\sum_g\pi_g(p)\,g$, and $[\bigcup_{p\notin\ell}Y_p]=\sum_g|\pi_g\setminus\ell|\,g=0$ because $\pi_g\in\mathcal H$.
+
+\emph{The seven.} Set $B_\ell=\bigcup_{p\notin\ell}Y_p\cup\bigcup_{i:\ell\in T_i}\Omega_i\cup(F\text{ if }\ell\in T^*)$.
+Then $|B_\ell|=t_\ell+e_\ell=k$ and $[B_\ell]=\alpha$ (an odd number of $\Omega$'s, and $[F]=0$), so $B_\ell\in H$.
+Colour $Y_p$ by $p$, $\Omega_i$ by $q_i$, and $F\cup Z$ by $7$: then $B_\ell\subseteq R_\ell$, and
+Lemma~\ref{lem:col} applies. For $\ell\ne\ell'$ and $p\in\ell'\setminus\ell$, the nonempty set $Y_p$ lies in $B_\ell$
+but not in $B_{\ell'}$, so the seven members are distinct.
+\end{proof}
+
+\noindent\textbf{Inputs and limits.} Applying Theorem~\ref{thm:D} on $V$, $V\setminus\Omega_1$ and
+$V\setminus(\Omega_1\cup\Omega_2)$ gives three disjoint parity-correct $\Omega_i$ of weight $\le r+1$, so
+$W\le3r+3\le4n-7k$; the counting survives the two shrinks for $N<1.852$ at $t=3/4$, which contains the Fano range
+\st{VERIFIED; numerical threshold}. But (H2)--(H4$'$) hold only when $V'$ has few classes, i.e.\ codimension
+$O(\log k)$. So Theorems~D and~$9'$ settle covering coset families in the Fano range \emph{with few classes}; the
+general many-class case is only covered by the \st{HAND} result B1 (Section~\ref{sec:hand}).
+
+\begin{remark}[(H1) is needed]\label{rem:9false}
+On $V=X\sqcup Y\sqcup\{z_1,z_2\}$ with $|X|=|Y|=5$, $k=5$ and $a+C=\{S:|S\cap X|,|S\cap Y|\text{ odd}\}$, every member
+contains exactly one $z_j$, so $\tau\le2$; yet $\Omega_i=\{x_i,y_i\}$ are disjoint elements of $a+C$ with
+$W=6\le4n-7k=13$. \st{VERIFIED}
+\end{remark}
+
+\section{Exact small values}\label{sec:small}
+
+\begin{theorem}\label{thm:small}
+$f(6,7)=5$ and $f(7,7)=6$. \st{EXACT, computer-assisted; see the hypotheses below}
+\end{theorem}
+\paragraph{Lower bounds} \st{VERIFIED, by hand}. $K^{(k)}_n$ is $(7,2)$ iff no seven $(n-k)$-sets cover all pairs of
+$[n]$, and $\tau(K^{(k)}_n)=n-k+1$. Every pair covering of $[v]$ by $b$-sets has at least
+$\lceil\frac vb\lceil\frac{v-1}{b-1}\rceil\rceil$ blocks~\cite{Sch} (each point lies in $\ge\lceil(v-1)/(b-1)\rceil$
+blocks; count incidences). This gives $\ge\lceil\frac{10}4\cdot3\rceil=8$ for $(v,b)=(10,4)$ and
+$\ge\lceil\frac{12}5\cdot3\rceil=8$ for $(12,5)$, so $K^{(6)}_{10}$ ($\tau=5$) and $K^{(7)}_{12}$ ($\tau=6$) are $(7,2)$.
+
+\paragraph{Upper bounds} \st{EXACT, resting on the VERIFIED confinement reduction}. Consider the game in which a requester
+names sets $S_1,S_2,\dots$ of size $\le T$ adaptively and the family must answer each with a member disjoint from it
+(possible whenever $\tau>T$); she wins if seven of the answers form a good seven. A winning strategy proves
+$f(k,7)\le T$ \st{LEAN for the game equivalence}. At $(k,T)=(6,5)$ and $(7,6)$ an exhaustive search produced strategies
+with eight requests: after four answers she selects three with empty common intersection as \emph{anchors} and plays
+four further requests confined to the union of the anchors; the final seven consists of the three anchors and the four
+last answers. The strategy trees ($88$ and $207$ requester nodes) were replayed by an independent checker that shares
+no code with the search; tampered certificates are rejected. The ingredients and their status:
+\begin{itemize}[leftmargin=*]
+\item \emph{Confinement (anchor lemma and padding transfer)} \st{VERIFIED}: if three answers have empty common
+intersection, a 2-point transversal of a seven containing them lies in their union $U$, and an answer may be replaced
+by a $k$-subset of $U\setminus S$ containing its trace (if the seven enlarged answers have no 2-point
+transversal, neither have the real ones). This reduction is verified
+\emph{for strategies that keep the anchors among the final seven}; the certified strategies do so by construction (as described in the source notes).
+Confined results that discard anchors would need a further lift that is open; none is used here.
+\item The checker additionally uses three elementary facts proved by hand in the source notes: points of equal type
+are interchangeable; points outside the anchors and fresh points never matter in the confined game; maximal answers
+suffice there. The second and third are the confinement statement above.
+\end{itemize}
+Also $f(8,7)\in\{6,7\}$: the lower bound from $f(7,7)$ by adding a private point to each member, the upper bound is
+$\lceil 7\cdot8/8\rceil$~\cite{FKW}.
+
+\section{A scoreboard}\label{sec:score}
+
+For a $k$-uniform family on $n$ points put
+\[
+r=n-k-\tau+1,\qquad s=n-\tfrac74k,\qquad e=\tau-\tfrac34k ;
+\]
+$r$ is the covering radius (every $(k+r)$-set contains a member, and $r$ is least with this property).
+Then $e=s-r+1$. The question is whether $e=o(k)$ for $(7,2)$-families. Proven upper bounds on $e$, for every
+$k$-uniform $(7,2)$-family:
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+bound & source & status\\
+\midrule
+$e\le s/3+11/6$ & Theorem NC with $W=V$, \eqref{eq:NCV} & \st{DERIVED from VERIFIED}\\
+$e\le s/3+13/6$ & one-anchor bound, Theorem~\ref{thm:A} & \st{LEAN}\\
+$e\le s/3+2$ & Theorem C1 (Section~\ref{sec:hand}), a different proof & \st{HAND}\\
+$e\le 3s/7+3$ & Theorem~\ref{thm:3H} with uniform weights & \st{VERIFIED}\\
+$e\le k/8+1$ & Fon-Der-Flaass--Kostochka--Woodall~\cite{FKW} & published\\
+\bottomrule
+\end{tabular}
+\end{center}
+So a counterexample with $e\ge\varepsilon k$ needs $s\ge3\varepsilon k-O(1)$, i.e.\ $n\ge(7/4+3\varepsilon)k-O(1)$;
+in particular the Fano range $n<11k/6$ (i.e.\ $s<k/12$) is relevant only for $\varepsilon<1/36+O(1/k)$. The two lines
+$e=s/3$ and $e=k/8$ cross at $s=3k/8$ ($N=17/8$). Reference points: complete families $K^{(k)}_n$ have $r=0$, $e=s+1$;
+the FKW family has $s=r=e=1$. A computer-assisted improvement of the $k/8$ bound is in progress and is not reported
+here.
+
+In these coordinates the structured results read: Theorem~D gives $\rho_{\rm par}\le r+1$ for covering coset families
+(for $N<1.938$ at $t=3/4$); Corollary~\ref{cor:barrier} says the parity obstruction certifies $(7,2)$ only for $r\le1$,
+$e\le3/2$; Theorem NC covers blocks of excess $d\lesssim(w-\tfrac74k+\varepsilon k)/2$.
+
+\section{Results not independently verified}\label{sec:hand}
+
+The following are \st{HAND}: proofs by the project, with exact per-instance checks of the constructions where stated,
+but \textbf{not independently verified}. No result tagged \st{LEAN}, \st{VERIFIED}, \st{EXACT} or \st{DERIVED} depends on them. Notation as in
+Section~\ref{sec:coset}; $T=\tau-1$, $T=(3/4+\varepsilon)k$, $\varepsilon k\to\infty$.
+\begin{itemize}[leftmargin=*]
+\item \textbf{Lemma P1.} If $H$ has sets of size $\le k$, every $(n-T)$-set contains a member, and three members
+$x_1,x_2,x_3$ with $x_1\cap x_2\cap x_3=\emptyset$ have $\wt(x_1+x_2+x_3)\le4T-3k-6$, then $H$ has a Fano-type seven.
+\emph{Sketch:} colour by the triangle as in Lemma~\ref{lem:NC1} with $W=V$ and split evenly.
+\item \textbf{Theorem C1.} A seven-free $k$-uniform family has $\wt(x_1+x_2+x_3)\ge4T-3k-5$ for every such
+triple (robust pencil-freeness), while covering gives a triple of weight $\le2r+1$ (Lemma 8$'$: a pair at distance
+in $[k-1,k+2r]$, then a third member chosen inside or around their symmetric difference); hence
+$\tau\le(2n+k)/6+2$. \emph{The bound itself also follows, with constant $11/6$, from \eqref{eq:NCV}}; the new content of
+C1 is the robust pencil-freeness.
+\item \textbf{Theorem C2.} Two-block families $\{B\in\binomV k:|B\cap X|\in J\}$ with $3k/2\le n<9k/4$ and
+$\tau\ge3k/4+3$ have a good seven. \emph{Sketch:} either some $j\in J$ admits a light triple and P1 applies, or $J$ has
+a gap giving a large hole. (600/600 constructions checked exactly.)
+\item \textbf{Lemma Q.} Let $\sigma:\F^V\to Q$ be linear, $\mathcal T\subseteq Q$ with $\sigma(B)\in\mathcal T$ for every
+member, and $W_\sigma=\min\{\wt(y):\sigma(y)\in\mathcal T+\mathcal T+\mathcal T\}$. If $7W_\sigma>3(4n-7k)$, there is
+no Fano-type seven. \emph{Sketch:} as Corollary~\ref{cor:7}, each pencil sum has class in $\mathcal T+\mathcal T+\mathcal T$.
+\item \textbf{Theorem B1.} For $N<11/6$ every covering coset family has a Fano-type seven once
+$\codim(C_{\rm ev})-1\le\min\big((k-5r-41)/15,\,(r+4\varepsilon k-11)/5\big)$, with no condition on the number of classes.
+\emph{Sketch:} solve the class constraints of the partition step of Theorem~$9'$ globally, using four disjoint bases
+found by matroid union. (496/496 constructions checked exactly.)
+\item \textbf{Theorem S0.} A shift-$0$ layer $C_0\cap\binomV k$ ($C_0$ even, $4\mid k$) with $\tau>3k/4$ and $n<11k/6$
+has a Fano-type seven ($k\equiv2\pmod 4$: for $N<1.7985$). \emph{Sketch:} the sum-filling step of Theorem~D twice gives
+a Schur triangle $x_1+x_2+x_3=0$ with empty triple intersection and union $3k/2$; Lemma~\ref{lem:NC1} with $W=V$,
+$d=r$ finishes. (319/319 sevens checked.)
+\item \textbf{Theorem S1.} The same construction with $x_1+x_2+x_3=\Omega$, $\wt\Omega=\rho_{\rm par}$, gives a
+Fano-type seven at every shift when $r\le4\varepsilon k-7$, at codimension up to about $k/2$. (Not tested.)
+\end{itemize}
+
+\section{Open problems}\label{sec:open}
+
+\subsection{The reduction and Statement (S)}
+
+\noindent\textbf{Statement (S).} \emph{For some fixed $\eta\in(0,4/3]$ and every $\varepsilon>0$ there is $k_0$ such that
+for $k\ge k_0$: every $k$-uniform family $H$ with $\tau(H)\ge(3/4+\varepsilon)k+1$ and $\tau^*_b(H)>7/3-\eta$ which
+contains no $(W,d)$-complete block with $|W|\ge(7/4-\varepsilon)k+2d+3$ has a good seven.}
+
+\begin{proposition}[reduction]\label{prop:S}
+(G) holds iff (S) holds. \st{DERIVED from Lemma~\ref{lem:pad}, Theorem~\ref{thm:RA}, Corollary~\ref{cor:NC}}
+\end{proposition}
+\begin{proof}
+(G)$\Rightarrow$(S): $\tau\ge(3/4+\varepsilon)k+1>\lceil(3/4+\varepsilon)k\rceil$. Conversely let $\varepsilon\le3/4$
+(the statement is monotone in $\varepsilon$) and let $H$ be as in (G): sets of size $\le k$,
+$\tau\ge T+1$, $T=\lceil(3/4+\varepsilon)k\rceil$. Pad it to a $k$-uniform $H'$ (Lemma~\ref{lem:pad}); $\tau$ is
+unchanged, and a good seven of $H'$ restricts to one of $H$ (subsets of members inherit the absence of 2-point
+transversals). Now $\tau(H')\ge(3/4+\varepsilon)k+1$. (i)~If $\tau^*_b(H')\le7/3-\eta$: Theorem~\ref{thm:RA} applies
+once $(1/4+\varepsilon)k+1/2>49/(3\eta)$. (ii)~If $H'$ has a $(W,d)$-complete block with $|W|\ge(7/4-\varepsilon)k+2d+3$:
+Corollary~\ref{cor:NC} applies; its hypothesis $\tau\ge T+1$ is exactly what (G) provides, and $w\ge k+d+2$ holds since
+$\varepsilon\le3/4$. (iii)~Otherwise (S) applies to $H'$.
+\end{proof}
+
+Every step uses only results tagged \st{VERIFIED} or \st{LEAN}, but the reduction itself has not been independently
+re-checked. (S) is \emph{not} a single homogeneous statement. Split it by $n=|\bigcup H|$:
+\begin{itemize}[leftmargin=*]
+\item \textbf{(S$_<$)}: (S) for families with $n<11k/6$. Here good sevens are Fano-type (Corollary~\ref{cor:fanorange}),
+and the question is concrete: \emph{find a colouring $\chi:V\to\Pi$ such that every $R_\ell$ contains a member.}
+By~\eqref{eq:NCV} this range is non-empty only for $\varepsilon<1/36+O(1/k)$.
+\item \textbf{(S$_\ge$)}: (S) for $n\ge11k/6$. There is no framework. Good sevens need not be of Fano type, and $708$
+of the $715$ feasible types of Theorem~\ref{thm:class} are available by $N=9/4$. Linear programs over all
+716 seven types with at most two forced (``anchor'') members reproduce exactly the one-anchor bound
+$\tau\le(2n+k)/6+O(1)$ throughout $11/6\le N\le9/4$, with the Fano type always optimal \st{FLOAT}: the obstacle is forcing a pencil, not finishing.
+For $\varepsilon>1/36$ and $k$ large the whole problem lies here.
+\end{itemize}
+
+\paragraph{What lies inside (S) and is only partly handled.} The reduction removes only rich families and blocks of
+small excess. The following classes are \emph{inside} (S); the results above settle parts of them, not all.
+\begin{enumerate}[leftmargin=*]
+\item \emph{Linear layers (coset families and shift-$0$ layers).} \st{VERIFIED}: Theorem~D ($\rho_{\rm par}\le r+1$, for
+$N<11/6$ and, at $t=3/4$, asymptotically for $N<1.938$) and Theorem~$9'$ (good sevens when the point classes are few).
+\st{HAND only}: B1 (many classes, codimension $\lesssim\min((k-5r)/15,(r+4\varepsilon k)/5)$), S0 (shift $0$), S1
+($r\le4\varepsilon k-7$). \textbf{Open:} $r\ge4\varepsilon k$ at codimension above B1's bound; layers containing giant
+blocks of dual words of weight $\ge3$; shift $0$ with $k\equiv2\pmod 4$ near the top of the Fano window; and
+$N$ above about $1.9385$, where no construction of a good seven for coset families is known (Theorem~D alone reaches
+$1.938$ at $t=3/4$, S1 about $1.9385$).
+\item \emph{Near-complete blocks with large excess}: $(W,d)$-complete blocks with $d>(w-(7/4-\varepsilon)k-3)/2$, and
+every $k$-uniform family with $n<7k/4+d+3/2$. Theorem NC does not cover them.
+\item \emph{Everything else}: thin families with no block and no linear structure. Computations at small $k$
+(minimising the number of good sevens among covering families at $(k,T,n)=(8,7,16),(10,8,21),(12,10,23)$) find
+unstructured minimisers with normalised seven count $1.00\pm0.02$, and no known family with $N\ge11/6$ and
+$\tau>3k/4+1$ avoids good sevens. This is a hint that (S) is a supersaturation statement for sparse families
+(covering families have density $e^{-\gamma k}$ with $\gamma\approx0.10$--$0.29$ in the Fano window), not a decision;
+no Fano-range instance with $\varepsilon k$ large is within computational reach.
+\end{enumerate}
+
+\subsection{Light triples}
+
+\begin{question}[LT]
+Must every $k$-uniform family with $n<11k/6$ and $\tau\ge(3/4+\varepsilon)k+1$ contain three members with $\wt(x_1+x_2+x_3)\le(12n-21k)/7$?
+\end{question}
+\begin{proposition}\label{prop:LT}
+A family as in (LT) with \emph{no} such triple is $(7,2)$. \st{DERIVED}
+\end{proposition}
+\begin{proof}
+This is the case $\sigma=\mathrm{id}$, $\mathcal T=H$ of Lemma~Q, and in this case the proof needs only
+Lemma~\ref{lem:pencil}: each pencil sum $s_p$ of a Fano-type seven is a sum of three members (repeats allowed; a
+repeated triple has weight $k>(12n-21k)/7$ since $n<7k/3$), so $\sum_p\wt(s_p)>3(4n-7k)$, contradicting
+Lemma~\ref{lem:pencil}. So there is no Fano-type seven, and Corollary~\ref{cor:fanorange} applies.
+\end{proof}
+So a sequence of covering families with no light triple would be a counterexample (with $\varepsilon<1/36$). A YES
+answer rules out only counterexamples certified by Lemma~Q (for any $\sigma$, since a light triple gives
+$W_\sigma\le(12n-21k)/7$); it does not imply (S$_<$). Covering forces pairs with every intersection size in windows of
+length $r$, and a pair with $|x_1\cap x_2|$ in the band $[(k-r)/2,(k-r)/2+(5\delta/14+\varepsilon/2)k]$ yields a light
+triple \st{HAND}; this band question (BAND) is the cleanest sufficient condition we know.
+
+\subsection{Pairs at controlled distance}
+
+\begin{question}[PEN$(\eta)$]
+Is there an absolute $C$ such that every $k$-uniform family on $n\ge3k/2+r+C$ points in which every $(k+r)$-set
+contains a member has two members with $k+(1-\eta)r-C\le|x_1\triangle x_2|\le k+(1+\eta)r+C$?
+\end{question}
+PEN$(1)$ holds: the first step of Lemma~8 gives a pair with $|x_1\triangle x_2|\in[k-1,k+2r]$ \st{VERIFIED}.
+\begin{proposition}\label{prop:PEN}
+PEN$(\eta)$ for some $\eta<1$ implies $e\le\frac{1+\eta}{5+\eta}\,s+O(1)$ for every $k$-uniform $(7,2)$-family.
+\st{HAND: uses Lemma P1; arithmetic re-derived here}
+\end{proposition}
+\begin{proof}
+Let $d=|x_1\triangle x_2|$. If $d\le k+r$, extend $x_1\triangle x_2$ by $k+r-d$ points outside $x_1\cup x_2$ to a
+$(k+r)$-set (there are $n-k-d/2\ge k+r-d$ such points, as $n\ge3k/2+r+C$); a member $x_3$ inside it misses $x_1\cap x_2$ and has $\wt(x_1+x_2+x_3)\le k-d+2r\le(1+\eta)r+C$. If
+$d\ge k+r$, take $x_3$ inside a $(k+r)$-subset of $x_1\triangle x_2$; then $\wt=d-k\le(1+\eta)r+C$. If the family is
+seven-free, Lemma~P1 gives $(1+\eta)r+C\ge4T-3k-5$ with $T=\tau-1$. Substituting $4T-3k=4e-4$ and $r=s-e+1$:
+$(5+\eta)e\le(1+\eta)s+10+\eta+C$.
+\end{proof}
+At $\eta=1$ this recovers $e\le s/3+O(1)$; at $\eta\to0$ it would give $e\le s/5+O(1)$. A family violating
+PEN$(\eta)$ is only a construction target, not a counterexample.
+
+\subsection{An exact conjecture}
+
+\begin{conjecture}[working hypothesis, proposed by a reviewer]\label{conj:2}
+$f(k,7)=\lfloor(3k+5)/4\rfloor$ for $k\ge9$.
+\end{conjecture}
+
+\paragraph{Consistency.} The formula gives $5,6$ at $k=6,7$, matching Theorem~\ref{thm:small} (outside its stated range),
+$5$ at $k=5$, and $7$ at $k=8$, inside $f(8,7)\in\{6,7\}$. It is the larger of the two known constructions:
+\begin{itemize}[leftmargin=*]
+\item \emph{Complete families} \st{DERIVED}. If $3k/2\le n<11k/6$ and $7\lfloor(2n-3k)/2\rfloor<n$, then $K^{(k)}_n$
+is $(7,2)$. Indeed a Fano-type seven of $k$-sets needs a colouring with $|L_\ell|\le n-k$ for all $\ell$; summing over
+the three lines through $p$ gives $2|\chi^{-1}(p)|+n\le3(n-k)$, so $|\chi^{-1}(p)|\le\lfloor(2n-3k)/2\rfloor$ and
+$n\le7\lfloor(2n-3k)/2\rfloor$; then apply Corollary~\ref{cor:fanorange}. For $k=4m+j$ the largest admissible $n$ is
+$7m-1,\,7m+2,\,7m+3,\,7m+5$ ($j=0,1,2,3$), giving $\tau=n-k+1=3m,\,3m+2,\,3m+2,\,3m+3$. For $j\ne0$ this equals
+$\lfloor(3k+5)/4\rfloor$; the values agree with an exact ILP table of the largest $(7,2)$ complete family for
+$k\le16$ \st{EXACT, single solver}.
+\item \emph{Parity families}: for $k=4m$, the FKW family gives $3m+1=\lfloor(3k+5)/4\rfloor$ (\S\ref{sec:linear}, for
+$m\ge4$; for $m=3$, $N=11/6$ exactly and the claim rests on an exact solver computation; for $m=2$ the family on $15$
+points is \emph{not} $(7,2)$). The parity family on $7m+2$ points, which would exceed the formula, has a good seven
+(constructions checked exactly for $m\le10$).
+\end{itemize}
+Hence $f(k,7)\ge\lfloor(3k+5)/4\rfloor$ for all $k\ge9$ with $k\ne12$, and for $k=12$ subject to the solver
+computation. At $k=9$ the formula equals the FKW upper bound $\lceil63/8\rceil=8$, so $f(9,7)=8$ \st{DERIVED}; similarly
+$f(5,7)=5$. The conjecture asserts that nothing beats these two constructions. For $k\ge10$ no upper bound better than
+$\lceil7k/8\rceil$ is known; the exact values of Theorem~\ref{thm:small} agree with the formula but concern $T=k-1$,
+not a ratio near $3/4$.
+
+\clearpage
+\section{Exact small-\texorpdfstring{$k$}{k} data}\label{sec:tables}
+
+\noindent Table~\ref{tab:placeholder} will record exact values for small structured families. It is a placeholder.
+
+\begin{center}\small
+\refstepcounter{table}\label{tab:placeholder}
+\textbf{PLACEHOLDER --- Table \thetable: two-cell / three-cell profile families, largest $\tau$ for $k=8,\dots,20$ ---
+independent re-computation in progress; no numbers are reported yet.}\par\smallskip
+\begin{tabular}{@{}l*{13}{c}@{}}
+\toprule
+$k$ & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 & 20\\
+\midrule
+two-cell profile families, largest $\tau$ & -- & -- & -- & -- & -- & -- & -- & -- & -- & -- & -- & -- & --\\
+three-cell profile families, largest $\tau$ & -- & -- & -- & -- & -- & -- & -- & -- & -- & -- & -- & -- & --\\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\parbox{0.92\textwidth}{\small Profile families: $(7,2)$-families whose membership depends only on the sizes of the
+traces on a fixed partition of $V$ into two (resp.\ three) cells. Entries ``--'' are to be filled from an independent
+exact re-computation.}
+\end{center}
+
+\section{Routes that do not work}\label{sec:dead}
+
+Several general methods were examined and found not to reach $3k/4$ in the relevant range; in each case an explicit
+obstruction is recorded (mostly hand arguments, most of them not independently verified): bounded-request games; junta approximation and spread lemmas (the families are less than
+$2.28$-spread); fractional relaxation plus rounding; hypergraph containers with supersaturation; flag algebras and SDP
+on the limit object; the entropy method; covering-design stability; linear-Fourier/BLR gluing of local affine sevens
+(quadratic level sets contain no Fano plane yet look random); and Fourier counting with density increment for sparse
+families. Details are in the companion report \path{reports/FAILED_ROUTES.pdf}.
+
+\paragraph{Sources.} Proofs and verification reports are in the project repository: classification
+(\path{notes/verify/programme2_task0.md}), RA (\path{notes/verify/theorem_RA.md}), NC
+(\path{notes/verify/theorem_NC.md}), D and $9'$ (\path{notes/verify/theorems_9prime_D.md}), small values
+(\path{notes/verify/small_values.md}, \path{notes/verify/TWIN13_16A.md}), Lean (\path{Lean644/}), status
+ledger (\path{notes/LEDGER.md}).
+
+\begin{thebibliography}{9}\small\raggedright
+\bibitem{BDMS} A.~Bishnoi, S.~Das, P.~Morris, T.~Szab\'o, Ryser's conjecture for $t$-intersecting hypergraphs,
+arXiv:2001.04132.
+\bibitem{EP} Erd\H{o}s Problems website, Problem \#644, \url{https://www.erdosproblems.com/644}.
+\bibitem{EFKT} P.~Erd\H{o}s, D.~Fon-Der-Flaass, A.~V.~Kostochka, Zs.~Tuza, Small transversals in uniform
+hypergraphs, \emph{Siberian Adv.\ Math.}\ 2 (1992) 82--88. [cite?: not seen by us; values as reported in~\cite{EP}]
+\bibitem{FKW} D.~G.~Fon-Der-Flaass, A.~V.~Kostochka, D.~R.~Woodall, Transversals in uniform hypergraphs with property
+$(7,2)$, \emph{Discrete Math.}\ 207 (1999) 277--284.
+\bibitem{NP} D.~T.~Nagy, B.~Patk\'os, Triangles in intersecting families, arXiv:2201.02452.
+\bibitem{OEIS} OEIS Foundation, Sequence A001206 (self-dual monotone Boolean functions; maximal intersecting
+families), \url{https://oeis.org/A001206}.
+\bibitem{Sch} J.~Sch\"onheim, On coverings, \emph{Pacific J.\ Math.}\ 14 (1964) 1405--1411.
+\end{thebibliography}
+\end{document}
