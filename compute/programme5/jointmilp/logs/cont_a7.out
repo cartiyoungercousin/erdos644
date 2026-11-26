@@ -1,0 +1,44 @@
+alpha=7 t=11.998: 626 refuted states loaded
+round 0: 12 uncovered R1, e.g. [np.float64(6.0), np.float64(5.0), np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(0.002), np.float64(0.0)]
+  refuted by 28 new state(s) (11s)
+round 1: 12 uncovered R1, e.g. [np.float64(1.998), np.float64(1.0), np.float64(7.0), np.float64(0.0), np.float64(0.0), np.float64(0.002), np.float64(0.0)]
+  refuted by 32 new state(s) (17s)
+round 2: 12 uncovered R1, e.g. [np.float64(1.0), np.float64(1.0), np.float64(0.0), np.float64(7.0), np.float64(0.0), np.float64(0.0), np.float64(0.0)]
+  refuted by 35 new state(s) (23s)
+round 3: 12 uncovered R1, e.g. [np.float64(0.0), np.float64(5.0), np.float64(0.0), np.float64(6.0), np.float64(0.0), np.float64(0.002), np.float64(0.0)]
+  refuted by 33 new state(s) (36s)
+round 4: 11 uncovered R1, e.g. [np.float64(1.0), np.float64(2.0), np.float64(7.0), np.float64(0.0), np.float64(0.0), np.float64(0.002), np.float64(1.002)]
+  refuted by 34 new state(s) (44s)
+round 5: 11 uncovered R1, e.g. [np.float64(1.0), np.float64(0.998), np.float64(7.0), np.float64(2.0), np.float64(0.0), np.float64(0.002), np.float64(0.0)]
+  refuted by 32 new state(s) (66s)
+round 6: 12 uncovered R1, e.g. [np.float64(1.0), np.float64(1.0), np.float64(0.0), np.float64(7.0), np.float64(0.0), np.float64(0.002), np.float64(0.0)]
+  refuted by 40 new state(s) (81s)
+round 7: 10 uncovered R1, e.g. [np.float64(0.0), np.float64(1.0), np.float64(2.0), np.float64(7.0), np.float64(0.0), np.float64(1.0), np.float64(0.0)]
+  refuted by 25 new state(s) (91s)
+round 8: 11 uncovered R1, e.g. [np.float64(0.0), np.float64(4.9167), np.float64(7.0), np.float64(0.0001), np.float64(0.0), np.float64(0.002), np.float64(0.0)]
+  refuted by 30 new state(s) (112s)
+round 9: 12 uncovered R1, e.g. [np.float64(0.0), np.float64(5.0), np.float64(6.9979), np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(0.0)]
+  refuted by 36 new state(s) (124s)
+round 10: 12 uncovered R1, e.g. [np.float64(0.0), np.float64(0.0), np.float64(4.25), np.float64(7.0), np.float64(0.0), np.float64(0.002), np.float64(0.0)]
+  refuted by 35 new state(s) (140s)
+round 11: 12 uncovered R1, e.g. [np.float64(0.0001), np.float64(1.0), np.float64(7.0), np.float64(2.0), np.float64(0.0), np.float64(1.0), np.float64(0.0)]
+  refuted by 30 new state(s) (147s)
+round 12: 12 uncovered R1, e.g. [np.float64(0.0), np.float64(0.0021), np.float64(4.996), np.float64(6.9979), np.float64(0.0), np.float64(0.002), np.float64(0.0)]
+  refuted by 41 new state(s) (182s)
+round 13: 12 uncovered R1, e.g. [np.float64(1.0), np.float64(1.0), np.float64(7.0), np.float64(1.0), np.float64(0.0), np.float64(1.0), np.float64(0.0)]
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  refuted by 35 new state(s) (198s)
+round 14: 12 uncovered R1, e.g. [np.float64(0.002), np.float64(4.6667), np.float64(0.0), np.float64(7.0), np.float64(0.0), np.float64(0.0), np.float64(0.0)]
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  refuted by 29 new state(s) (207s)
+round 15: 12 uncovered R1, e.g. [np.float64(1.0), np.float64(2.0), np.float64(7.0), np.float64(0.3333), np.float64(0.0), np.float64(0.002), np.float64(1.002)]
+  refuted by 47 new state(s) (227s)
+round 16: 11 uncovered R1, e.g. [np.float64(1.0), np.float64(2.0833), np.float64(7.0), np.float64(0.0001), np.float64(0.0), np.float64(0.002), np.float64(0.0)]
+  refuted by 35 new state(s) (245s)

@@ -1,0 +1,11 @@
+alpha=7 beta=7 t=11.998 grid h=1: 11616 first requests
+5674 candidate M1 states (47s); every request avoided by its own candidates: True
+already refuted by checkpoint: 11589 requests; left 27
+batch of 12 done: {'ADV': 12}; requests left 15; 51s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+batch of 12 done: {'ADV': 24}; requests left 3; 56s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+batch of 2 done: {'ADV': 26}; requests left 1; 58s
+phase 2: voluntary-drop candidates for 1 uncovered requests
+  5 new candidate states
