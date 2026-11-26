@@ -2,6 +2,8 @@
 
 These are research logs written as the work progressed. They contain dead ends and corrections as well as results. **The authoritative status of any claim is the one in [`LEDGER.md`](LEDGER.md)**, which supersedes older notes where they disagree.
 
+The research phase has concluded; the final summary of what is certain, what is only hand-checked and what is open is [`reports/FINAL_SUMMARY.md`](../reports/FINAL_SUMMARY.md).
+
 ## Authoritative
 
 | File | Content |

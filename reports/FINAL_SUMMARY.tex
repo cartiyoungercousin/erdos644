@@ -1,0 +1,166 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage[T1]{fontenc}
+\usepackage[hyphens]{url}
+\usepackage[hidelinks]{hyperref}
+\setlist{itemsep=2pt,topsep=3pt,leftmargin=*}
+\emergencystretch=3em
+\newcommand{\st}[1]{\textsf{\small[#1]}}
+\newcommand{\f}[1]{\path{#1}}
+\title{Erd\H{o}s Problem \#644: final summary of the research phase}
+\author{erdos644 project}
+\date{26 November 2026}
+
+\begin{document}
+\maketitle
+
+\noindent This is the compact version of Sections 1--4 of \f{reports/FINAL_SUMMARY.md}, which is the authoritative
+entry point (dead routes and verification instructions are there). Statuses follow \f{notes/LEDGER.md}.
+
+\paragraph{Notation.} $H$ is a family of sets and $\tau(H)$ its transversal number. $H$ is \emph{$(7,2)$} if every
+subfamily of at most seven members has a transversal of at most two points; $f(k,7)$ is the largest $\tau$ of a
+$k$-uniform $(7,2)$-family. A \emph{good seven} is seven members with no 2-point transversal. For a $k$-uniform family
+on $n$ points: $s=n-\tfrac74k$, $e=\tau-\tfrac34k$, $T=\tau-1$, and $r=n-k-T$ (every $(k+r)$-set contains a member).
+A \emph{pencil} is three members with empty common intersection; its weight is $|x_1\triangle x_2\triangle x_3|$.
+
+\paragraph{Status tags.} \st{LEAN}: machine-checked in Lean~4/Mathlib, standard axioms, no \texttt{sorry}.
+\st{VERIFIED}: hand proof that passed an independent, fresh-context adversarial check (report in \f{notes/verify/}).
+\st{EXACT}: exact or exhaustive computation, certificates re-checked by separate code where stated.
+\st{HAND}: hand proof by the project, \emph{not} independently checked.
+
+\section{Status}
+
+\textbf{Erd\H{o}s \#644 is not solved.} We do not decide whether $f(k,7)=(3/4+o(1))k$, and we give no bound on
+$f(k,7)$ better than the published $\lceil7k/8\rceil$ of Fon-Der-Flaass, Kostochka and Woodall (FKW, 1999). What we did
+achieve is a set of verified upper bounds on $\tau$ in terms of the ground-set size~$n$. Every $k$-uniform
+$(7,2)$-family on $n\le2k$ points satisfies $e\le\frac3{11}s+\frac{21}{11}$ (slope $3/11$, previously $1/3$), and near
+$n=7k/4$ the slope is $1/5+o(1)$ (Frankl--Wilson). These bounds do not bound $f(k,7)$ by themselves, since padding with
+private points makes $n$ arbitrarily large. Around them we have an exact classification of good sevens below $11k/6$
+(all are of Fano type), theorems excluding several structured classes of counterexamples (rich families, near-complete
+blocks, coset families with few classes), the exact values $f(6,7)=5$ and $f(7,7)=6$, and about 20 Lean-checked lemmas.
+We also located the barrier. Arguments that use seven-freeness only through pencils cannot get below slope about
+$0.18$, and what remains is a 7-term supersaturation question for exponentially sparse covering families.
+
+\section{Certain results (LEAN, VERIFIED, EXACT only)}
+
+``PAPER'' is \f{reports/PAPER.tex}. Each item gives the statement, the proof location and the check.
+
+\begin{enumerate}
+\item \textbf{Main bound, slope $3/11$} \st{VERIFIED}. Every $k$-uniform $(7,2)$-family on $n\le2k$ points has
+$\tau\le(3n+3k+21)/11$, for every $k\ge1$. The Fano classification is not used.
+\emph{Proof:} PAPER Thm~9.5. \emph{Check:} \f{notes/verify/PEN_P1.md}~(C), own code in \f{compute/verify_pen/}.
+\item \textbf{Pencil bound PEN$(1/2)$} \st{VERIFIED with fixes}. If $H$ is $k$-uniform and $(k+r)$-covering on $n$
+points, $T=n-k-r$, $4T\ge2k+5r+3$ and $3r\le2k-2$, then $H$ has a pencil of weight $\le\lfloor3r/2\rfloor+1$. The size
+conditions are needed: there is a SAT witness at $(n,k,r)=(12,6,3)$, re-checked by brute force. \emph{Proof:} PAPER
+Thm~9.4. \emph{Check:} \f{notes/verify/PEN_P1.md}~(A).
+\item \textbf{Lemma P1, every $n$} \st{VERIFIED}. If $H$ has members of size $\le k$, $T<\tau(H)$, and some pencil has
+weight $\le4T-3k-6$, then $H$ has a Fano-type good seven. \emph{Proof:} PAPER Lemma~9.1. \emph{Check:}
+\f{notes/verify/PEN_P1.md}~(B).
+\item \textbf{Frankl--Wilson pencils, slope $1/5$} \st{VERIFIED with fixes}. If $r\le(c_0(\nu)-o(1))k$ ($\nu=n/k$;
+$c_0=0.02976,\,0.04009,\,0.05979$ at $\nu=7/4,\,11/6,\,2$), a covering family has a pencil of weight $\le r+2g$, with
+$g$ the largest prime gap up to $k$. Hence $e\le\max\big(\frac{s+2g+10}5,\ s+1-(c_0-o(1))k\big)$, so $e\le s/5+o(k)$ for
+$n\le1.79406k$; a counterexample with $e=\varepsilon k$, $\varepsilon\le0.00881$, has $n\ge(7/4+5\varepsilon-o(1))k$.
+\emph{Proof:} PAPER Thm~9.6. \emph{Check:} \f{notes/verify/PEN_FW.md} (numerical roots recomputed independently).
+\item \textbf{Fano classification below $11k/6$} \st{VERIFIED, EXACT; computer-assisted}. Seven sets of size $\ge k$
+with union of size $<11k/6$ and no transversal of size $\le2$ form a Fano-type seven. All $1\,422\,564$ maximal
+intersecting families on $[7]$ (716 classes) were enumerated, with one LP per class certified by an exact rational
+primal and dual; $11/6$ is sharp for this relaxation. \emph{Proof:} PAPER Thm~3.1. \emph{Check:}
+\f{notes/verify/programme2_task0.md} (two independent methods).
+\item \textbf{Pencil-sum identity} \st{VERIFIED}. For a Fano-type seven $B_\ell\subseteq R_\ell$, with
+$s_p=\sum_{\ell\ni p}B_\ell$ and $j_x=|\{\ell:x\in B_\ell\}|$:
+$\sum_p\mathrm{wt}(s_p)=\sum_xj_x(4-j_x)\le3\big(4|\bigcup B_\ell|-\sum|B_\ell|\big)$, with a $3$-dimensional subspace
+when the right side is $0$. It yields the coset obstruction and a three-line proof that the FKW parity family is
+$(7,2)$. \emph{Proof:} PAPER Lemma~4.1, Cor.~4.2. \emph{Check:} \f{notes/verify/programme2_task0.md}.
+\item \textbf{Theorem RA} \st{VERIFIED}. If $H$ has nonempty sets of size $\le k$, $\tau^*_b(H)\le7/3-\eta$ and
+$\tau(H)>(k+1)/2+49/(3\eta)$, then $H$ is not $(7,2)$. It uses Lemma~A0 \st{VERIFIED, LEAN}: if every three members
+share a point, then $\tau\le(k+1)/2$. \emph{Proof:} PAPER Thm~5.2. \emph{Check:} \f{notes/verify/theorem_RA.md}.
+\item \textbf{Theorem NC} \st{VERIFIED}. If $H$ is $(W,d)$-complete (every $(k+d)$-subset of $W$ contains a member),
+$w=|W|\ge k+d+2$ and $\tau(H)>(k+1)/2+\max(0,2k+2d+3-w)$, then $H$ is not $(7,2)$. In the corollary for
+$\tau\ge\lceil(3/4+\varepsilon)k\rceil+1$, the ``$+1$'' closes a rounding gap for odd~$k$. \emph{Proof:} PAPER \S6.
+\emph{Check:} \f{notes/verify/theorem_NC.md}.
+\item \textbf{Theorem D} \st{VERIFIED}. Let $H$ be a coset family covering at level $w=k+r$, with $T=n-w$ and
+$e=\dim\mathrm{span}\{h_i+h_j\}$. If $n\ge2e+1$ and $e\le\min(w,T)$, then $\rho\le r+1$ (and $\rho\le r$ for even $w$),
+and the same holds for $\rho_{\rm par}$. The hypotheses hold when $\dim C\ge k+r>T$, which by counting is the case for
+all $N<11/6$. \emph{Proof:} PAPER Thm~7.1. \emph{Check:} \f{notes/verify/theorems_9prime_D.md}.
+\item \textbf{Theorem $9'$} \st{VERIFIED}. A coset family with three disjoint parity-correct $\Omega_i\in a+C$ of total
+weight $\le4n-7k$ that satisfies the few-classes hypotheses (H2)--(H4$'$) contains a Fano-type seven. (Recorded gap:
+D and $9'$ together do not close general coset families.) \emph{Proof:} PAPER Thm~7.4. \emph{Check:}
+\f{notes/verify/theorems_9prime_D.md}.
+\item \textbf{$f(6,7)=5$, $f(7,7)=6$} \st{EXACT, on the VERIFIED confinement reduction}. The lower bounds are by hand
+(Schönheim). The upper bounds come from exhaustive anchor-keeping strategy trees (88 and 207 requester nodes) replayed
+by an independent checker. \emph{Proof:} PAPER Thm~8.1. \emph{Check:} \f{notes/verify/small_values.md}.
+\item \textbf{Two-cell profile table, $k=8..20$} \st{EXACT for the upper bound}. For $T=\lfloor(3k+5)/4\rfloor$ and
+$n\in[k+T,\lfloor2.4k\rfloor]$, no one- or two-cell profile family is $(7,2)$ with $\tau>T$. This covers 1904 UNSAT
+instances, each with a certificate re-checked by independent plain-Python code. Attainment of the maximum is
+solver-only. \emph{Source:} \f{notes/PROGRAMME4_CELLS.md}~\S3 (not yet in the ledger).
+\item \textbf{Lean} \st{LEAN}. About 20 lemmas are machine-checked: the request principle, padding and the minimal-frame
+lemmas, the one-anchor bound $\tau\le\lceil(n-k)/3\rceil+2\lceil k/4\rceil$, the Fano criterion and Fano blocks, the
+flat 7-tuple lemma, the colouring criterion and Lemma~A0, the anchor and petal reductions, the waste adversary, and
+Lemmas~4.1--4.8 of the external $6/7$ manuscript. The $6/7$ theorem itself is \emph{not} formalised.
+\item \textbf{Confined-game results} \st{VERIFIED, conditional}. The crowded region, the bottom strip and the petal
+side are closed, and Theorems S, S$^+$, W, H and R exclude structured counterexamples for families confined to three
+anchors. They do not bound $f(k,7)$ while the lift G2 (``far replies'') is open.
+\end{enumerate}
+
+\noindent\textbf{Scoreboard.} The proven bounds are: $e\le s/5+o(k)$ for $n\le1.794k$ \st{VERIFIED};
+$e\le3s/11+21/11$ for $n\le2k$ \st{VERIFIED}; $e\le s/3+13/6$ for all $n$ \st{LEAN}; and $e\le k/8+1$ for all~$n$
+(FKW).
+
+\section{Supported but not independently verified (HAND)}
+
+None of the following has passed a fresh-context verifier, and nothing in Section~2 depends on them.
+\begin{itemize}
+\item \textbf{$3/11$ up to $n\le(8k+11)/3$}: a two-stage dump weakens the size condition to $4T\ge2k+3r+3$
+(\f{notes/PROGRAMME5_BULK.md}).
+\item \textbf{NC-P}: a block $(W,d)$ with $4(w-k-d)\ge2k+5d+3$, $3d\le2k-2$ and $d\le(8e-22)/3$ forces a Fano-type
+seven (\f{notes/PROGRAMME5_COMPRESS.md}).
+\item \textbf{HUB}: an $n$-independent non-Fano (``Fano minus a line'') analogue of P1
+(\f{notes/PROGRAMME5_BULK.md}~\S3.2).
+\item \textbf{P1$'$}: every pencil of a $(7,2)$-family has weight $\ge4T-3k-2$ (\f{notes/PROGRAMME4_P1.md}).
+\item \textbf{Theorem QK}: if $\deg q\le2$ and $4n-7k\ge128$, a full quadric level set has a Fano seven or
+$\tau\le26$ (\f{notes/PROGRAMME5_QUAD.md}).
+\item \textbf{Theorem O}: a two-cluster adversary caps the project's static lemmas at $\varepsilon\ge1/8$ for
+$\nu\ge23/8$ (\f{notes/PROGRAMME5_BEAT78.md}).
+\item \textbf{Theorem P}: in the critical bridge configuration, hub-complete first requests fail at every depth below
+$6/7$ (\f{notes/PROGRAMME5_BELOW67.md}).
+\item \textbf{The depth-3 spectrum game is capped at exactly $6/7$}: its value is $\varepsilon^*=3/28$ for every
+$\nu\ge3$ (hand proof and grid computation, \f{notes/PROGRAMME5_ADAPT.md}~\S2).
+\item \textbf{Matroid dictionary}: $\tau(H)$ is the critical number of $U_H$, and $H$ has a Fano-type seven iff $U_H$
+contains a PG$(2,2)$ (\f{notes/PROGRAMME4_TOPO.md}).
+\item \textbf{(LT) $=$ yes}: the identity is VERIFIED (\f{notes/verify/PEN_P1.md}~(D)); the yes-answer combines it
+with PEN$(1/2)$ (PAPER Remark~9.7) and has not been re-checked separately.
+\item \textbf{Hand check of the external $6/7$ manuscript}, which is \emph{not our result} and is credited to its
+authors. The manuscript is unrefereed and claims $f(k,7)\le\lceil6k/7\rceil$ for $k\ge7$. We checked its non-Lean parts
+by hand and found no gap; an independent referee is pending (\f{notes/PROGRAMME5_ADAPT.md}~\S3).
+\item \textbf{$f(8,7)=7$}: an explicit 8-uniform family on 15 points with $\tau=7$, shown to be $(7,2)$ against all 68
+classes of seven-block pair-coverings of $K_{15}$. The computation is exact but has not been re-checked by an
+independent verifier (\f{notes/PROGRAMME4_LADDER.md}).
+\item Also HAND: Theorems B1, S0, S1, C1, C2 and 2P, and Lemma~Q (PAPER \S10).
+\end{itemize}
+
+\section{The open frontier}
+
+\begin{itemize}
+\item \textbf{Q1 (below $11k/6$).} For fixed $\varepsilon>0$ and large $k$: must a $(k+r)$-covering $k$-uniform
+family on $n<11k/6$ points with $\tau\ge(3/4+\varepsilon)k+1$ contain a Fano-type seven? Equivalent forms ask for a
+Fano plane in the pencil 3-graph, or for a PG$(2,2)$ in $U_H$. One may assume thinness, no near-complete block, every
+pencil of weight $\ge4T-3k-5$, and $e\le3s/11+O(1)$ (\f{reports/OPEN_QUESTION.md}).
+\item \textbf{Q2 ($n\ge2k$).} The same question, but good sevens need not be of Fano type. Large $n$ is equivalent to
+the whole problem, and no compression to $n\le2k$ is known.
+\item \textbf{Pencils versus sevens} \st{heuristic}. Random unions of about $n^3$ cosets of a random code are covering,
+thin and block-free, and every pencil in them has weight $\ge\lambda r$ for $\lambda<\lambda^*\approx0.83$--$0.90$.
+Yet they contain many good sevens. So pencil-only arguments stop near $\tau\le\frac34k+0.18s$; PEN$(\eta)$ for
+$\eta<1/2$ is open beyond $r\le c_0k$. Slope~$0$ needs 7-term supersaturation in exponentially sparse families
+(PAPER \S11).
+\item \textbf{The bridge configuration below $6/7$.} Two near-disjoint members joined by a bridge member with feet
+$\approx3k/7$ and $5k/14$ is where every known closure stops at $6/7$. Two leads remain open: forcing answer traces
+into the spectrum gaps (\f{notes/PROGRAMME5_SPECTRUM.md}; the joint MILP of \f{notes/PROGRAMME5_BRIDGE.md} did not
+finish) and closures that drop one of the three members. Seed families built on this shape reach only $\tau=4$ at
+$k=14$: they are killed by the ``$2\times2$ grid six''.
+\item \textbf{Lifting (G2)} of the confined-game results, and a \textbf{certified bound below $7/8$}: at $t=43/50$
+three small pockets remain uncovered, so no such bound is claimed (\f{notes/RECORD.md}).
+\end{itemize}
+
+\end{document}
