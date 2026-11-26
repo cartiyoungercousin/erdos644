@@ -1,0 +1,11 @@
+   it 0 |U|=20.0010 R2={}
+   it 1 |U|=15.0040 R2={'X1': np.float64(4.997), 'Y1': np.float64(0.001), 'A1': np.float64(6.5), 'A0': np.float64(0.5)}
+   it 2 |U|=18.0427 R2={'X1': np.float64(5.5), 'X0': np.float64(0.5), 'Y1': np.float64(0.001), 'A0': np.float64(0.5), 'B0': np.float64(1.458)}
+   it 3 |U|=16.3343 R2={'X1': np.float64(5.5), 'X0': np.float64(0.5), 'Y1': np.float64(0.001), 'A1': np.float64(2.208), 'B0': np.float64(1.458), 'Ep0': np.float64(0.997)}
+   it 4 |U|=17.0813 R2={'X1': np.float64(5.5), 'X0': np.float64(0.5), 'Y1': np.float64(0.001), 'A1': np.float64(0.58), 'A0': np.float64(0.339), 'B0': np.float64(2.0), 'Fd0': np.float64(0.542), 'Gd0': np.float64(0.202)}
+   it 5 |U|=16.8343 R2={'X1': np.float64(1.75), 'X0': np.float64(0.5), 'Y1': np.float64(0.001), 'A1': np.float64(6.5), 'A0': np.float64(0.5), 'B0': np.float64(0.917), 'Fd0': np.float64(0.378)}
+   it 6 |U|=15.2927 R2={'X1': np.float64(5.5), 'X0': np.float64(0.5), 'Y1': np.float64(0.001), 'A1': np.float64(2.208), 'A0': np.float64(0.5), 'B0': np.float64(2.0), 'Fd0': np.float64(1.0), 'Gd0': np.float64(0.042)}
+   it 7 |U|=14.7510 R2={'X1': np.float64(5.5), 'X0': np.float64(0.5), 'Y1': np.float64(0.001), 'A1': np.float64(2.75), 'A0': np.float64(0.5), 'B0': np.float64(2.0), 'Fd0': np.float64(0.542), 'Gd0': np.float64(0.042)}
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+   it 8 |U|=14.5873 R2={'X1': np.float64(5.5), 'X0': np.float64(0.5), 'Y1': np.float64(0.001), 'A1': np.float64(2.75), 'B0': np.float64(2.664), 'Fd0': np.float64(0.336)}
+[5.5, 0.001, 6.5, 0.0, 0.0, 0.0, 0.0, 1.999] ADV it 9 11s patterns 78

@@ -1,0 +1,13 @@
+   it 0 |U|=20.0010 R2={}
+   it 1 |U|=19.7510 R2={'X1': np.float64(5.75), 'X0': np.float64(0.25), 'Y1': np.float64(0.001), 'A0': np.float64(0.25)}
+   it 2 |U|=19.7510 R2={'X0': np.float64(0.25), 'Y1': np.float64(0.001), 'A1': np.float64(6.75), 'A0': np.float64(0.25)}
+   it 3 |U|=19.4177 R2={'X1': np.float64(0.75), 'X0': np.float64(0.25), 'Y1': np.float64(0.001), 'A1': np.float64(6.75), 'B0': np.float64(0.333), 'Fd0': np.float64(0.611)}
+   it 4 |U|=16.7510 R2={'X1': np.float64(5.75), 'X0': np.float64(0.25), 'Y1': np.float64(0.001), 'A1': np.float64(3.0), 'A0': np.float64(0.25)}
+   it 5 |U|=15.5010 R2={'X1': np.float64(5.75), 'X0': np.float64(0.25), 'Y1': np.float64(0.001), 'A1': np.float64(1.75), 'B0': np.float64(2.75), 'Gd0': np.float64(1.25)}
+   it 6 |U|=19.4177 R2={'X1': np.float64(5.75), 'X0': np.float64(0.249), 'Y1': np.float64(0.001), 'A1': np.float64(4.333), 'A0': np.float64(0.25), 'B0': np.float64(0.333), 'Ep0': np.float64(0.081), 'Fd0': np.float64(1.0)}
+   it 7 |U|=15.0010 R2={'X1': np.float64(5.75), 'X0': np.float64(0.25), 'Y1': np.float64(0.001), 'Y0': np.float64(0.542), 'A1': np.float64(2.0), 'A0': np.float64(0.25), 'B0': np.float64(2.75), 'Fd0': np.float64(0.25)}
+   it 8 |U|=18.6677 R2={'X1': np.float64(0.75), 'X0': np.float64(0.25), 'Y1': np.float64(0.001), 'A1': np.float64(6.75), 'A0': np.float64(0.25), 'B0': np.float64(0.333), 'Fd0': np.float64(0.611)}
+   it 9 |U|=15.8343 R2={'X1': np.float64(5.75), 'X0': np.float64(0.25), 'Y1': np.float64(0.001), 'Y0': np.float64(0.623), 'A1': np.float64(0.625), 'A0': np.float64(0.25), 'B0': np.float64(3.25)}
+   it 10 |U|=15.0040 R2={'X1': np.float64(4.414), 'X0': np.float64(0.25), 'Y1': np.float64(0.001), 'A1': np.float64(6.75), 'A0': np.float64(0.25), 'B0': np.float64(0.333)}
+   it 11 |U|=15.5853 R2={'X1': np.float64(5.75), 'X0': np.float64(0.25), 'Y1': np.float64(0.001), 'A1': np.float64(2.707), 'A0': np.float64(0.25), 'B0': np.float64(1.458)}
+[5.75, 0.001, 6.75, 0.0, 0.0, 0.0, 0.0, 1.499] ADV it 12 8s patterns 96

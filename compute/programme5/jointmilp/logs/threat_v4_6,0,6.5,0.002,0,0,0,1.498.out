@@ -1,0 +1,31 @@
+   it 0 |U|=18.0020 R2={}
+   it 1 |U|=18.0020 R2={'A1': np.float64(6.5), 'A0': np.float64(0.5), 'B1': np.float64(0.002)}
+   it 2 |U|=17.5020 R2={'X1': np.float64(6.0), 'A0': np.float64(0.5), 'B1': np.float64(0.002)}
+   it 3 |U|=12.4980 R2={'X1': np.float64(6.0), 'Y0': np.float64(5.0), 'A1': np.float64(0.502), 'B1': np.float64(0.002)}
+   it 4 |U|=12.4960 R2={'X1': np.float64(6.0), 'A1': np.float64(5.504), 'A0': np.float64(0.002), 'B1': np.float64(0.002)}
+   it 5 |U|=14.5020 R2={'X1': np.float64(6.0), 'Y0': np.float64(0.5), 'A1': np.float64(3.0), 'A0': np.float64(0.5), 'B1': np.float64(0.001), 'Ep0': np.float64(1.256)}
+   it 6 |U|=14.4980 R2={'X1': np.float64(6.0), 'Y0': np.float64(0.5), 'A1': np.float64(3.0), 'A0': np.float64(0.004), 'B1': np.float64(0.002), 'Gd0': np.float64(2.0)}
+   it 7 |U|=13.5060 R2={'X1': np.float64(0.831), 'Y0': np.float64(3.665), 'A1': np.float64(6.5), 'A0': np.float64(0.5), 'B1': np.float64(0.002), 'Gd0': np.float64(0.5)}
+   it 8 |U|=13.0060 R2={'X1': np.float64(4.996), 'A1': np.float64(6.5), 'A0': np.float64(0.5), 'B1': np.float64(0.002)}
+   it 9 |U|=12.4980 R2={'X1': np.float64(6.0), 'Y0': np.float64(3.837), 'A1': np.float64(1.667), 'B1': np.float64(0.002)}
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+   it 10 |U|=16.3283 R2={'X1': np.float64(6.0), 'Y0': np.float64(0.508), 'A1': np.float64(0.666), 'A0': np.float64(0.5), 'B1': np.float64(0.002), 'Ep0': np.float64(0.825), 'Fd0': np.float64(0.589)}
+   it 11 |U|=13.6250 R2={'X1': np.float64(1.373), 'Y0': np.float64(3.004), 'A1': np.float64(6.5), 'A0': np.float64(0.5), 'B1': np.float64(0.002)}
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+   it 12 |U|=15.5477 R2={'X1': np.float64(1.913), 'Y0': np.float64(0.542), 'A1': np.float64(6.5), 'A0': np.float64(0.5), 'B1': np.float64(0.002), 'Ep0': np.float64(1.829)}
+   it 13 |U|=17.0853 R2={'X1': np.float64(6.0), 'Y0': np.float64(0.5), 'A1': np.float64(0.082), 'B1': np.float64(0.002), 'Ep0': np.float64(2.5), 'Fd0': np.float64(0.081), 'Gd0': np.float64(1.501)}
+   it 14 |U|=12.2480 R2={'X1': np.float64(6.0), 'Y0': np.float64(3.004), 'A1': np.float64(2.75), 'A0': np.float64(0.0), 'B1': np.float64(0.002)}
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+   it 15 |U|=12.3403 R2={'X1': np.float64(6.0), 'Y0': np.float64(1.248), 'A1': np.float64(4.414), 'B1': np.float64(0.002), 'Ep0': np.float64(0.085), 'Fd0': np.float64(0.249)}
+   it 16 |U|=14.7520 R2={'X1': np.float64(6.0), 'Y0': np.float64(1.25), 'A1': np.float64(1.667), 'A0': np.float64(0.333), 'B1': np.float64(0.002), 'B0': np.float64(0.412), 'Ep0': np.float64(0.083), 'Fd0': np.float64(0.337), 'Gd0': np.float64(1.914)}
+   it 17 |U|=12.4970 R2={'X1': np.float64(6.0), 'Y0': np.float64(1.09), 'A1': np.float64(4.414), 'A0': np.float64(0.001), 'B1': np.float64(0.002), 'Ep0': np.float64(0.243)}
+   it 18 |U|=12.3373 R2={'X1': np.float64(6.0), 'Y0': np.float64(1.25), 'A1': np.float64(4.414), 'A0': np.float64(0.001), 'B1': np.float64(0.002), 'B0': np.float64(0.248), 'Ep0': np.float64(0.083)}
+   it 19 |U|=12.0913 R2={'X1': np.float64(6.0), 'Y0': np.float64(1.25), 'A1': np.float64(4.661), 'A0': np.float64(0.0), 'B1': np.float64(0.002), 'Ep0': np.float64(0.085)}
+   it 20 |U|=12.0903 R2={'X1': np.float64(6.0), 'Y0': np.float64(1.25), 'A1': np.float64(4.662), 'B1': np.float64(0.002), 'Ep0': np.float64(0.083), 'Gd0': np.float64(0.001)}
+   it 21 |U|=12.0913 R2={'X1': np.float64(6.0), 'Y0': np.float64(1.248), 'A1': np.float64(4.663), 'A0': np.float64(0.0), 'B1': np.float64(0.002), 'Ep0': np.float64(0.085)}
+   it 22 |U|=12.2897 R2={'X1': np.float64(6.0), 'Y0': np.float64(3.004), 'A1': np.float64(2.208), 'A0': np.float64(0.5), 'B1': np.float64(0.002)}
+   it 23 |U|=12.1647 R2={'X1': np.float64(6.0), 'Y0': np.float64(3.004), 'A1': np.float64(2.5), 'A0': np.float64(0.333), 'B1': np.float64(0.002)}
+   it 24 |U|=13.0813 R2={'X1': np.float64(6.0), 'Y0': np.float64(2.712), 'A1': np.float64(2.208), 'A0': np.float64(0.0), 'B1': np.float64(0.002), 'B0': np.float64(0.037), 'Fd0': np.float64(0.249)}
+[6.0, 0.0, 6.5, 0.002, 0.0, 0.0, 0.0, 1.498] ADV it 25 91s patterns 175

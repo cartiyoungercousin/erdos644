@@ -1,0 +1,174 @@
+alpha=7 t=11.998 mode cont3000: 4417 ADV states loaded
+  855 Pareto-minimal states
+round 0: 11 escaping R1, e.g. [1.0021, 3.5021, 4.9167, 2.5167, 0.0, 0.0, 0.0]
+  round 0: 11/11 escaping requests refuted (55s)
+round 1: 10 escaping R1, e.g. [2.5021, 3.5001, 3.5, 1.0, 0.0, 0.0, 0.8499]
+  round 1: 10/10 escaping requests refuted (83s)
+round 2: 10 escaping R1, e.g. [4.0001, 3.0, 4.4167, 0.25, 0.0, 0.0, 0.0]
+  round 2: 10/10 escaping requests refuted (201s)
+round 3: 10 escaping R1, e.g. [5.6001, 1.0021, 3.5, 1.4187, 0.0, 0.0, 0.0]
+  round 3: 10/10 escaping requests refuted (238s)
+round 4: 11 escaping R1, e.g. [4.0, 3.5, 2.5, np.float64(1.25), 0.0, 0.0, 0.0]
+  round 4: 11/11 escaping requests refuted (281s)
+round 5: 9 escaping R1, e.g. [5.6001, 2.0, np.float64(2.0), 1.5, 0.0, 0.0, 0.8499]
+  round 5: 9/9 escaping requests refuted (315s)
+round 6: 11 escaping R1, e.g. [2.1001, 2.0021, 3.752, 4.0041, 0.0, 0.0, 0.0]
+  round 6: 11/11 escaping requests refuted (608s)
+round 7: 7 escaping R1, e.g. [2.5021, np.float64(4.0021), np.float64(0.9935), np.float64(4.5), 0.0, 0.0, 0.0]
+  round 7: 7/7 escaping requests refuted (628s)
+round 8: 10 escaping R1, e.g. [2.25, np.float64(4.0021), np.float64(1.4935), 4.25, 0.0, 0.0, 0.0]
+  round 8: 10/10 escaping requests refuted (650s)
+round 9: 10 escaping R1, e.g. [5.6001, np.float64(1.0021), 4.1, np.float64(1.25), 0.0, 0.0, 0.0]
+  round 9: 10/10 escaping requests refuted (673s)
+round 10: 9 escaping R1, e.g. [1.5021, np.float64(4.5), 0.6, 5.3333, 0.0, 0.0, 0.0]
+  round 10: 9/9 escaping requests refuted (695s)
+round 11: 11 escaping R1, e.g. [np.float64(2.0021), np.float64(4.5022), 0.0, 5.4167, 0.0, 0.0, 0.0]
+  round 11: 11/11 escaping requests refuted (719s)
+round 12: 7 escaping R1, e.g. [5.6001, 0.6021, np.float64(4.5001), np.float64(1.25), 0.0, 0.0, 0.0]
+  round 12: 7/7 escaping requests refuted (751s)
+round 13: 10 escaping R1, e.g. [5.9802, 0.0, np.float64(6.0022), 0.0, 0.0, 0.0, 0.0]
+  round 13: 10/10 escaping requests refuted (781s)
+round 14: 7 escaping R1, e.g. [5.9802, 0.0, np.float64(6.0022), 0.0, 0.0, 0.0, 0.0]
+  round 14: 7/7 escaping requests refuted (809s)
+round 15: 9 escaping R1, e.g. [5.6001, 2.1667, 3.25, 0.9187, 0.0, 0.0, 0.0]
+  round 15: 9/9 escaping requests refuted (838s)
+round 16: 12 escaping R1, e.g. [5.6001, 1.0, 4.4167, 0.9187, 0.0, 0.0, 0.0]
+  round 16: 12/12 escaping requests refuted (856s)
+round 17: 11 escaping R1, e.g. [1.5021, np.float64(4.5021), 1.0334, np.float64(4.9167), 0.0, 0.0, 0.0]
+  round 17: 11/11 escaping requests refuted (876s)
+round 18: 11 escaping R1, e.g. [5.9802, 0.0, np.float64(6.0067), 0.0, 0.0, 0.0, 0.0]
+  round 18: 11/11 escaping requests refuted (901s)
+round 19: 12 escaping R1, e.g. [5.6001, 0.5021, 5.0854, np.float64(0.8), 0.0, 0.0, 0.0]
+  round 19: 12/12 escaping requests refuted (917s)
+round 20: 9 escaping R1, e.g. [0.35, np.float64(4.8501), np.float64(0.03), 6.7667, 0.0, 0.0, 0.0]
+  round 20: 9/9 escaping requests refuted (932s)
+round 21: 8 escaping R1, e.g. [5.9167, 3.0021, np.float64(2.5001), np.float64(0.55), 0.0, 0.0, 0.0]
+  round 21: 8/8 escaping requests refuted (949s)
+round 22: 8 escaping R1, e.g. [5.9802, 0.0, np.float64(6.0068), 0.0, 0.0, 0.0, 0.0]
+  round 22: 8/8 escaping requests refuted (964s)
+round 23: 10 escaping R1, e.g. [5.6001, 1.5021, np.float64(4.0001), np.float64(0.8), 0.0, 0.0, 0.0]
+  round 23: 10/10 escaping requests refuted (984s)
+round 24: 12 escaping R1, e.g. [np.float64(3.0021), np.float64(4.0021), np.float64(1.4935), 3.5001, 0.0, 0.0, 0.0]
+  round 24: 12/12 escaping requests refuted (1002s)
+round 25: 9 escaping R1, e.g. [5.6001, 0.3, np.float64(5.502), np.float64(0.55), 0.0, 0.0, 0.0]
+  round 25: 9/9 escaping requests refuted (1029s)
+round 26: 9 escaping R1, e.g. [5.6001, np.float64(1.3999), np.float64(4.5001), np.float64(0.45), 0.0, 0.0, 0.0]
+  round 26: 9/9 escaping requests refuted (1051s)
+round 27: 9 escaping R1, e.g. [np.float64(2.0021), np.float64(4.5021), np.float64(1.5634), np.float64(3.9146), 0.0, 0.0, 0.0]
+  round 27: 9/9 escaping requests refuted (1070s)
+round 28: 8 escaping R1, e.g. [5.9802, 0.0, np.float64(6.0068), 0.0, 0.0, 0.0, 0.0]
+  round 28: 8/8 escaping requests refuted (1085s)
+round 29: 7 escaping R1, e.g. [5.6001, 1.0, 4.8333, np.float64(0.55), 0.0, 0.0, 0.0]
+  round 29: 7/7 escaping requests refuted (1102s)
+round 30: 9 escaping R1, e.g. [1.5, np.float64(4.5021), np.float64(1.4935), np.float64(4.5001), 0.0, 0.0, 0.0]
+  round 30: 9/9 escaping requests refuted (1129s)
+round 31: 9 escaping R1, e.g. [5.6001, 2.0021, np.float64(3.5001), np.float64(0.748), 0.0, 0.0, 0.0]
+  round 31: 9/9 escaping requests refuted (1152s)
+round 32: 9 escaping R1, e.g. [5.6001, np.float64(0.55), np.float64(5.3354), 0.5, 0.0, 0.0, 0.0]
+  round 32: 9/9 escaping requests refuted (1168s)
+round 33: 8 escaping R1, e.g. [np.float64(5.5021), 3.0, np.float64(2.0634), 1.4187, 0.0, 0.0, 0.0]
+  round 33: 8/8 escaping requests refuted (1187s)
+round 34: 10 escaping R1, e.g. [4.0, 4.1022, np.float64(1.5634), np.float64(2.25), 0.0, 0.0, 0.0]
+  round 34: 10/10 escaping requests refuted (1206s)
+round 35: 7 escaping R1, e.g. [5.6001, 2.6022, 3.752, np.float64(0.03), 0.0, 0.0, 0.0]
+  round 35: 7/7 escaping requests refuted (1229s)
+round 36: 9 escaping R1, e.g. [np.float64(3.5021), 4.5, np.float64(1.2335), np.float64(2.75), 0.0, 0.0, 0.0]
+  round 36: 9/9 escaping requests refuted (1251s)
+round 37: 8 escaping R1, e.g. [np.float64(5.0), np.float64(4.5022), np.float64(1.4935), 1.0, 0.0, 0.0, 0.0]
+  round 37: 8/8 escaping requests refuted (1267s)
+round 38: 10 escaping R1, e.g. [5.9167, np.float64(4.2521), np.float64(1.5634), np.float64(0.25), 0.0, 0.0, 0.0]
+  round 38: 10/10 escaping requests refuted (1290s)
+round 39: 9 escaping R1, e.g. [np.float64(0.0003), 4.98, np.float64(0.0004), 6.998, 0.0, 0.0, 0.0]
+  round 39: 9/9 escaping requests refuted (1306s)
+round 40: 10 escaping R1, e.g. [np.float64(3.5021), np.float64(4.75), np.float64(1.6834), 2.002, 0.0, 0.0, 0.0]
+  round 40: 10/10 escaping requests refuted (1321s)
+round 41: 8 escaping R1, e.g. [5.6001, 1.7521, np.float64(4.002), 0.5355, 0.0, 0.0, 0.0]
+  round 41: 8/8 escaping requests refuted (1333s)
+round 42: 9 escaping R1, e.g. [np.float64(0.0004), 4.98, np.float64(0.0004), 6.998, 0.0, 0.0, 0.0]
+  round 42: 9/9 escaping requests refuted (1348s)
+round 43: 9 escaping R1, e.g. [np.float64(0.0004), 4.98, np.float64(0.0004), 6.998, 0.0, 0.0, 0.0]
+  round 43: 9/9 escaping requests refuted (1366s)
+round 44: 9 escaping R1, e.g. [5.9167, 3.0021, 2.998, np.float64(0.0601), 0.0, 0.0, 0.0]
+  round 44: 9/9 escaping requests refuted (1391s)
+round 45: 10 escaping R1, e.g. [5.9802, 0.0, np.float64(6.007), 0.0, 0.0, 0.0, 0.0]
+  round 45: 10/10 escaping requests refuted (1416s)
+round 46: 9 escaping R1, e.g. [np.float64(3.5021), np.float64(4.75), np.float64(1.2335), np.float64(2.502), 0.0, 0.0, 0.0]
+  round 46: 9/9 escaping requests refuted (1445s)
+round 47: 9 escaping R1, e.g. [4.0, np.float64(4.0021), np.float64(1.2335), np.float64(2.752), 0.0, 0.0, 0.0]
+  round 47: 9/9 escaping requests refuted (1473s)
+round 48: 8 escaping R1, e.g. [np.float64(4.1001), np.float64(4.75), np.float64(1.1134), 2.0167, 0.0, 0.0, 0.0]
+  round 48: 8/8 escaping requests refuted (1492s)
+round 49: 9 escaping R1, e.g. [np.float64(4.1001), np.float64(4.6022), 1.0, np.float64(2.2667), 0.0, 0.0, 0.0]
+  round 49: 9/9 escaping requests refuted (1515s)
+round 50: 10 escaping R1, e.g. [np.float64(3.7521), np.float64(4.6022), 1.1, np.float64(2.5167), 0.0, 0.0, 0.0]
+  round 50: 10/10 escaping requests refuted (1555s)
+round 51: 7 escaping R1, e.g. [5.6001, np.float64(2.0021), 3.752, np.float64(0.55), 0.0, 0.0, 0.0]
+  round 51: 7/7 escaping requests refuted (1584s)
+round 52: 9 escaping R1, e.g. [np.float64(5.8501), np.float64(2.2521), np.float64(3.5001), np.float64(0.25), 0.0, 0.0, 0.0]
+  round 52: 9/9 escaping requests refuted (1609s)
+round 53: 6 escaping R1, e.g. [5.9802, 0.0, np.float64(6.0071), 0.0, 0.0, 0.0, 0.0]
+  round 53: 6/6 escaping requests refuted (1633s)
+round 54: 12 escaping R1, e.g. [5.9167, np.float64(4.5021), np.float64(1.2335), 0.3334, 0.0, 0.0, 0.0]
+  round 54: 12/12 escaping requests refuted (1652s)
+round 55: 8 escaping R1, e.g. [5.6001, 2.6022, np.float64(3.25), 0.5, 0.0, 0.0, 0.0]
+  round 55: 8/8 escaping requests refuted (1682s)
+round 56: 7 escaping R1, e.g. [5.9501, np.float64(2.2521), np.float64(3.5001), np.float64(0.25), 0.0, 0.0, 0.0]
+  round 56: 7/7 escaping requests refuted (1696s)
+round 57: 6 escaping R1, e.g. [5.9167, 3.0021, np.float64(3.028), np.float64(0.0501), 0.0, 0.0, 0.0]
+  round 57: 6/6 escaping requests refuted (1719s)
+round 58: 9 escaping R1, e.g. [5.9167, np.float64(4.6022), 1.1834, np.float64(0.28), 0.0, 0.0, 0.0]
+  round 58: 9/9 escaping requests refuted (1748s)
+round 59: 7 escaping R1, e.g. [5.9167, np.float64(4.7022), np.float64(1.0934), np.float64(0.28), 0.0, 0.0, 0.0]
+  round 59: 7/7 escaping requests refuted (1775s)
+round 60: 8 escaping R1, e.g. [5.6001, np.float64(2.2521), np.float64(3.5001), np.float64(0.55), 0.0, 0.0, 0.0]
+  round 60: 8/8 escaping requests refuted (1798s)
+round 61: 9 escaping R1, e.g. [np.float64(0.0004), 4.98, np.float64(0.0005), 6.998, 0.0, 0.0, 0.0]
+  round 61: 9/9 escaping requests refuted (1827s)
+round 62: 11 escaping R1, e.g. [np.float64(0.0004), 4.98, np.float64(0.0005), 6.998, 0.0, 0.0, 0.0]
+  round 62: 11/11 escaping requests refuted (1851s)
+round 63: 9 escaping R1, e.g. [5.6001, 0.2521, np.float64(5.752), np.float64(0.38), 0.0, 0.0, 0.0]
+  round 63: 9/9 escaping requests refuted (1874s)
+round 64: 8 escaping R1, e.g. [np.float64(5.8501), np.float64(2.0021), np.float64(3.7501), np.float64(0.25), 0.0, 0.0, 0.0]
+  round 64: 8/8 escaping requests refuted (1893s)
+round 65: 9 escaping R1, e.g. [np.float64(0.0005), 4.98, np.float64(0.0006), 6.998, 0.0, 0.0, 0.0]
+  round 65: 9/9 escaping requests refuted (1923s)
+round 66: 7 escaping R1, e.g. [np.float64(0.0005), 4.98, np.float64(0.0006), 6.998, 0.0, 0.0, 0.0]
+  round 66: 7/7 escaping requests refuted (1940s)
+round 67: 10 escaping R1, e.g. [5.9501, np.float64(2.0021), np.float64(3.7501), np.float64(0.25), 0.0, 0.0, 0.0]
+  round 67: 10/10 escaping requests refuted (1955s)
+round 68: 8 escaping R1, e.g. [np.float64(0.0005), 4.98, np.float64(0.0006), 6.998, 0.0, 0.0, 0.0]
+  round 68: 8/8 escaping requests refuted (1973s)
+round 69: 10 escaping R1, e.g. [5.9167, np.float64(3.5022), 2.4167, np.float64(0.1601), 0.0, 0.0, 0.0]
+  round 69: 10/10 escaping requests refuted (1997s)
+round 70: 11 escaping R1, e.g. [5.6001, np.float64(1.6666), np.float64(4.252), 0.4167, 0.0, 0.0, 0.0]
+  round 70: 11/11 escaping requests refuted (2022s)
+round 71: 10 escaping R1, e.g. [np.float64(0.0005), 4.98, np.float64(0.0006), 6.998, 0.0, 0.0, 0.0]
+alpha=7 t=11.998 mode cont3000: 5063 ADV states loaded
+  561 Pareto-minimal states
+round 0: 10 escaping R1, e.g. [5.9167, 4.0021, 2.0634, 0.0025, 0.0, 0.0, 0.0]
+  round 0: 10/10 escaping requests refuted (433s)
+round 1: 6 escaping R1, e.g. [np.float64(5.9993), 4.5022, 1.3335, 0.1601, 0.0, 0.0, 0.0]
+alpha=7 t=11.998 mode cont3000: 5076 ADV states loaded
+  457 Pareto-minimal states
+round 0: 9 escaping R1, e.g. [5.9993, 0.5, 5.498, 0.0002, 0.0, 0.0, 0.0]
+alpha=7 t=11.998 mode cont3000: 5077 ADV states loaded
+  457 Pareto-minimal states
+round 0: 10 escaping R1, e.g. [5.9901, 3.7522, 2.0, 0.25, 0.0, 0.0, 0.0]
+  round 0: 10/10 escaping requests refuted (732s)
+round 1: 10 escaping R1, e.g. [np.float64(5.9997), 4.5022, 1.3335, 0.1601, 0.0, 0.0, 0.0]
+alpha=7 t=11.998 mode cont3000: 5087 ADV states loaded
+  460 Pareto-minimal states
+round 0: 10 escaping R1, e.g. [5.9997, 4.5022, 1.3335, 0.1601, 0.0, 0.0, 0.0]
+  round 0: 10/10 escaping requests refuted (376s)
+round 1: 9 escaping R1, e.g. [5.9951, 3.2521, 2.5001, 0.25, 0.0, 0.0, 0.0]
+  round 1: 9/9 escaping requests refuted (728s)
+round 2: 12 escaping R1, e.g. [np.float64(5.9951), 2.7521, 3.0, np.float64(0.25), 0.0, 0.0, 0.0]
+alpha=7 t=11.998 mode cont3000: 5106 ADV states loaded
+  458 Pareto-minimal states
+round 0: 13 escaping R1, e.g. [5.9951, 2.7521, 3.0, 0.25, 0.0, 0.0, 0.0]
+  round 0: 13/13 escaping requests refuted (201s)
+round 1: 11 escaping R1, e.g. [5.9997, 4.5022, 1.3335, 0.1601, 0.0, 0.0, 0.0]
+  round 1: 11/11 escaping requests refuted (443s)
+round 2: 9 escaping R1, e.g. [np.float64(6.0), 0.0, np.float64(5.9582), np.float64(0.0), 0.0, 0.0, 0.0]
+  round 2: 9/9 escaping requests refuted (828s)
+round 3: 11 escaping R1, e.g. [np.float64(6.0), 0.0, np.float64(5.9582), 0.0, 0.0, 0.0, 0.0]

@@ -1,0 +1,6 @@
+alpha=7 t=11.998 mode cont3000: 5076 ADV states loaded
+  457 Pareto-minimal states
+round 0: 9 escaping R1, e.g. [5.9993, 0.5, 5.498, 0.0002, 0.0, 0.0, 0.0]
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();

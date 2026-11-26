@@ -37,7 +37,7 @@ def rand_r2(sz, o1):
 
 
 if __name__ == '__main__':
-    fn = os.path.join(HERE, 'logs', 'cover_a%g_d%g.jsonl' % (AL, DE))
+    fn = os.path.join(HERE, 'logs', os.environ.get('CERT', 'cover_v3_a%g_d%g.jsonl') % (AL, DE))
     sts = [json.loads(l) for l in open(fn)]
     sts = [d for d in sts if d['res'] == 'ADV']
     random.shuffle(sts); bad = 0; tot = 0

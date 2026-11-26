@@ -19,6 +19,7 @@ L = ['X', 'Y', 'A', 'B']
 MEM = {'E': ['X', 'Y', 'Ep'], 'F': ['X', 'B', 'Fd'], 'G': ['Y', 'A', 'Gd'], 'K': ['A', 'B']}
 BIC = [('X', 'A'), ('Y', 'B')]
 BIG = 40.0
+MASTER_ENGINE = 'hybrid'   # scipy-HiGHS reported a feasible master infeasible (logs/dbg); SCIP is used for masters
 
 
 def sizes(al):
@@ -37,11 +38,12 @@ class Model:
         for k, a in e.items():
             if k != 'c' and a != 0: s.ri.append(r); s.ci.append(k); s.va.append(a)
         s.lo.append(lo - c); s.hi.append(hi - c)
-    def solve(s, obj, tl=120, gap=1e-9):
+    def solve(s, obj, tl=120, gap=1e-9, engine='highs'):
         n = len(s.lb); A = coo_matrix((s.va, (s.ri, s.ci)), shape=(len(s.lo), n)).tocsr()
         c = np.zeros(n)
         for k, a in obj.items():
             if k != 'c': c[k] += a
+        if engine == 'scip': return s.solve_ortools(c, tl)
         r = None
         for pre in (True, False):          # HiGHS occasionally reports a solve error with presolve; retry without
             r = milp(c, constraints=LinearConstraint(A, s.lo, s.hi), integrality=np.array(s.it),
@@ -132,7 +134,7 @@ TYPES = [(c, b1, b2) for c in L for b1 in (0, 1) for b2 in (0, 1)]
 
 
 # ---------------------------------------------------------------- stage 2: his exact best answer to R2
-def oracle2(S, m1, o1, r2, r2O, t, spec, eps=1e-3, margin=0.0):
+def oracle2(S, m1, o1, r2, r2O, t, spec, eps=1e-3, margin=0.0, engine_first='highs'):
     """max |U| over legal M2 avoiding R2.  r2: dict (cell,b)->amount, r2O: amount of M1's outside points requested.
     margin > 0: traces must keep distance margin from every gap endpoint (robust answers).  Returns (U, M2, mO1)."""
     sz = refined(S, m1, o1)
@@ -155,10 +157,18 @@ def oracle2(S, m1, o1, r2, r2O, t, spec, eps=1e-3, margin=0.0):
     for P, Q in UNC: part[P].append(Q); part[Q].append(P)
     for T in TYPES:
         m.row(ex((1, u[T]), *[(-1, e[Q]) for Q in part[T]]), -np.inf, 0)
-    res = m.solve(ex(*[(-1, z[T]) for T in TYPES]), 150)
-    if res.status != 0: return None
-    x = res.x
-    return -res.fun, {k: max(0.0, val(x, e_)) for k, e_ in mm.items()}, max(0.0, val(x, w))
+    obj = ex(*[(-1, z[T]) for T in TYPES])
+    for eng in ((engine_first, 'scip') if engine_first != 'scip' else ('scip',)):
+        res = m.solve(obj, 150, engine=eng)
+        if res.status != 0 or res.x is None: continue
+        x = res.x
+        m2 = {k: min(max(0.0, val(x, e_)), max(0.0, sz[k] - r2.get(k, 0.0))) for k, e_ in mm.items()}
+        wv = min(max(0.0, val(x, w)), max(0.0, o1 - r2O))
+        trs_v = [sum(m2[(c, b)] for c in cs for b in (0, 1)) for cs in MEM.values()]
+        trs_v.append(sum(m2[(c, 1)] for c in C7) + wv)
+        ok = all(in_spec(v, sp, 1e-6) for v in trs_v) and sum(m2.values()) + wv <= 14 + 1e-6
+        if ok: return U_of(S, m1, o1, m2), m2, wv          # value recomputed exactly from the answer
+    return None
 
 
 def oracle2_robust(S, m1, o1, r2, r2O, t, spec, eps=1e-3, need=0.5):
@@ -273,20 +283,26 @@ def master2(S, m1, o1, pats, t, spec, epsm=1e-6, tl=120, fix=None):
             if e[Pp] is None or e[Q] is None: continue
             m.row(ex((1, u[Pp]), (-1, e[Q])), 0); m.row(ex((1, u[Q]), (-1, e[Pp])), 0)
         m.row(ex(*[(1, z[T]) for T in z], *[(-14, y) for y in ys]), -np.inf, t)
-    res = m.solve({}, tl)
-    if res.status == 2: return None             # infeasible
+    if MASTER_ENGINE == 'hybrid':              # HiGHS proposes R2 quickly; any infeasibility claim is re-proved by SCIP
+        res = m.solve({}, tl, engine='highs')
+        if res.status != 0 or res.x is None: res = m.solve({}, tl, engine='scip')
+    else:
+        res = m.solve({}, tl, engine=MASTER_ENGINE)
+    if res.status == 2: return None             # infeasible (proved by SCIP)
     if res.status != 0: return 'TIMEOUT'
     x = res.x
     return {k: max(0.0, val(x, e_)) for k, e_ in r.items()}, max(0.0, val(x, rO))
 
 
-def stage2(S, m1, o1, t, spec, maxit=300, log=None, robust=True, pool=None, tl=120):
+def stage2(S, m1, o1, t, spec, maxit=300, log=None, robust=True, pool=None, tl=120, init=None, wall=None):
     """CEGAR: 'ADV' (her master infeasible: certificate = pattern list), 'REQ' (R2 closes vs his exact best), or '?'.
     pool: list of relative patterns used as initial cuts.  Returns (verdict, info, iterations, new relative patterns)"""
     sz = refined(S, m1, o1)
-    pats = [realize(rp, sz, o1) for rp in (pool or [])]
+    pats = [realize(rp, sz, o1) for rp in (pool or [])] + list(init or [])
     newrel = []
+    import time as _t; _t0 = _t.time()
     for it in range(maxit):
+        if wall and _t.time() - _t0 > wall: return '?', pats, it, newrel
         sol = master2(S, m1, o1, pats, t, spec, tl=tl)
         if sol is None: return 'ADV', pats, it, newrel
         if sol == 'TIMEOUT': return '?', pats, it, newrel
@@ -294,13 +310,24 @@ def stage2(S, m1, o1, t, spec, maxit=300, log=None, robust=True, pool=None, tl=1
         o = oracle2(S, m1, o1, r2, r2O, t, spec)
         if o is None: o = oracle2(S, m1, o1, r2, r2O, t, spec, eps=1e-4)
         if o is None: return 'ORACLE_FAIL', (r2, r2O, (None,)), it, newrel
-        if o[0] <= t + 1e-6: return 'REQ', (r2, r2O, o), it, newrel
+        if o[0] <= t + 1e-6:                      # confirm a closure with the SCIP oracle before reporting it
+            o_s = oracle2(S, m1, o1, r2, r2O, t, spec, engine_first='scip')
+            if o_s is None or o_s[0] <= t + 1e-6: return 'REQ', (r2, r2O, o), it, newrel
+            o = o_s
         cand = [(o[1], o[2])]
         if robust:
-            for nd in (0.5, 3.0):
+            for nd in (0.001, 0.5, 3.0):          # 0.001: keep a trace margin even when his |U| slack is tiny
                 o2 = oracle2_robust(S, m1, o1, r2, r2O, t, spec, need=nd)
                 if o2 is not None and o2[0] > t + 1e-6: cand.append((o2[1], o2[2]))
-        for P, PO in cand:
+        ext = []
+        for P, PO in cand:                      # saturated variants: a cell he takes completely becomes 'all of it
+            for live_only in (True, False):     # that R2 leaves', so the pattern adapts along families of R2
+                Q = dict(P)
+                for k in sz:
+                    if (k[0] in L or not live_only) and P.get(k, 0) > 1e-9 and P[k] >= sz[k] - r2.get(k, 0.0) - 1e-7: Q[k] = sz[k]
+                QO = o1 if (not live_only and PO > 1e-9 and PO >= o1 - r2O - 1e-7) else PO
+                if Q != P or QO != PO: ext.append((Q, QO))
+        for P, PO in cand + ext:
             pats.append((P, PO)); newrel.append(relativize(P, PO, sz, o1))
         if log: log('   it %d |U|=%.4f R2=%s' % (it, o[0], {('%s%d' % k): round(v, 3) for k, v in r2.items() if v > 1e-6}))
     return '?', pats, maxit, newrel

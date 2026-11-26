@@ -1,0 +1,131 @@
+alpha=7 t=11.998 mode cont400: 3678 ADV states loaded
+  2738 Pareto-minimal states
+round 0: 12 escaping R1, e.g. [5.5, 1.5, 2.5, 1.0, 0.0, 0.0, 1.0]
+  tier 1: 12 uncovered requests, 63 canonical candidate states
+  tier1 batch: 17 decided (16 ADV); requests left 0 / 12; 32s
+round 1: 10 escaping R1, e.g. [1.0, 4.5, 5.9167, 0.0, 0.0, 0.0, 0.0]
+  tier 1: 10 uncovered requests, 51 canonical candidate states
+  tier1 batch: 15 decided (12 ADV); requests left 2 / 10; 69s
+  tier1 batch: 6 decided (4 ADV); requests left 0 / 10; 89s
+round 2: 8 escaping R1, e.g. [np.float64(1.5), 4.5, 3.5, 1.0, 0.0, 0.0, 0.0]
+  tier 1: 8 uncovered requests, 38 canonical candidate states
+  tier1 batch: 15 decided (14 ADV); requests left 1 / 8; 98s
+  tier1 batch: 3 decided (2 ADV); requests left 0 / 8; 98s
+round 3: 13 escaping R1, e.g. [4.0, 0.0, 2.0, 4.0, 0.0, 0.0, 0.0]
+  tier 1: 13 uncovered requests, 60 canonical candidate states
+  tier1 batch: 20 decided (18 ADV); requests left 0 / 13; 256s
+round 4: 6 escaping R1, e.g. [5.5, 1.5, np.float64(0.9334), 2.5, 0.0, 0.002, 0.0]
+  tier 1: 6 uncovered requests, 23 canonical candidate states
+  tier1 batch: 14 decided (13 ADV); requests left 0 / 6; 297s
+round 5: 11 escaping R1, e.g. [np.float64(4.75), 1.0, 4.0833, 1.4187, 0.0, 0.0, 0.0]
+  tier 1: 11 uncovered requests, 46 canonical candidate states
+  tier1 batch: 19 decided (18 ADV); requests left 2 / 11; 332s
+  tier1 batch: 7 decided (7 ADV); requests left 0 / 11; 333s
+round 6: 10 escaping R1, e.g. [3.5, 1.5, np.float64(4.5833), 1.0, 0.0, np.float64(0.9979), 0.0]
+  tier 1: 10 uncovered requests, 46 canonical candidate states
+  tier1 batch: 17 decided (16 ADV); requests left 1 / 10; 344s
+  tier1 batch: 3 decided (1 ADV); requests left 0 / 10; 361s
+round 7: 11 escaping R1, e.g. [3.5, np.float64(2.0), 2.0, 3.5, 0.0, 0.0, 0.0]
+  tier 1: 11 uncovered requests, 51 canonical candidate states
+  tier1 batch: 19 decided (18 ADV); requests left 1 / 11; 397s
+  tier1 batch: 3 decided (3 ADV); requests left 0 / 11; 398s
+round 8: 11 escaping R1, e.g. [np.float64(2.0), 4.75, 4.5, np.float64(0.1), 0.0, 0.5, 0.0]
+  tier 1: 11 uncovered requests, 51 canonical candidate states
+  tier1 batch: 21 decided (20 ADV); requests left 1 / 11; 420s
+  tier1 batch: 3 decided (3 ADV); requests left 0 / 11; 432s
+round 9: 8 escaping R1, e.g. [np.float64(0.502), 4.998, 2.5, 3.5, 0.0, 0.0, 0.0]
+  tier 1: 8 uncovered requests, 38 canonical candidate states
+  tier1 batch: 18 decided (16 ADV); requests left 0 / 8; 468s
+round 10: 9 escaping R1, e.g. [np.float64(1.5001), 4.5, 1.5, 3.5, 0.0, 0.0, 0.0]
+  tier 1: 9 uncovered requests, 40 canonical candidate states
+  tier1 batch: 18 decided (17 ADV); requests left 1 / 9; 484s
+  tier1 batch: 2 decided (1 ADV); requests left 0 / 9; 495s
+round 11: 12 escaping R1, e.g. [np.float64(5.5), np.float64(1.0), 3.0, np.float64(1.0), 0.0, 0.0, 0.0]
+  tier 1: 12 uncovered requests, 52 canonical candidate states
+  tier1 batch: 20 decided (18 ADV); requests left 2 / 12; 519s
+  tier1 batch: 6 decided (4 ADV); requests left 0 / 12; 530s
+round 12: 10 escaping R1, e.g. [2.5, np.float64(1.0), 1.5, np.float64(6.25), 0.0, 0.0, 0.0]
+  tier 1: 10 uncovered requests, 50 canonical candidate states
+  tier1 batch: 19 decided (16 ADV); requests left 1 / 10; 568s
+  tier1 batch: 2 decided (1 ADV); requests left 0 / 10; 573s
+round 13: 9 escaping R1, e.g. [1.9999, 2.5, 4.0, 3.498, 0.0, 0.0, 0.0]
+  tier 1: 9 uncovered requests, 46 canonical candidate states
+  tier1 batch: 19 decided (19 ADV); requests left 0 / 9; 604s
+round 14: 10 escaping R1, e.g. [np.float64(2.0), 4.75, 2.5, 1.0, 0.0, 0.0, 1.002]
+  tier 1: 10 uncovered requests, 43 canonical candidate states
+  tier1 batch: 18 decided (16 ADV); requests left 1 / 10; 620s
+  tier1 batch: 3 decided (1 ADV); requests left 0 / 10; 623s
+round 15: 9 escaping R1, e.g. [1.0, 0.75, np.float64(5.0), 4.75, 0.0, 0.0, 0.0]
+  tier 1: 9 uncovered requests, 44 canonical candidate states
+  tier1 batch: 19 decided (16 ADV); requests left 0 / 9; 647s
+round 16: 8 escaping R1, e.g. [1.5, 4.75, 3.25, np.float64(1.5), 0.0, 0.0, np.float64(0.8979)]
+  tier 1: 8 uncovered requests, 36 canonical candidate states
+  tier1 batch: 18 decided (16 ADV); requests left 2 / 8; 657s
+  tier1 batch: 6 decided (5 ADV); requests left 0 / 8; 680s
+round 17: 11 escaping R1, e.g. [3.498, np.float64(4.5), np.float64(0.6), 2.5, 0.0, 0.0, 0.0]
+  tier 1: 11 uncovered requests, 44 canonical candidate states
+  tier1 batch: 20 decided (20 ADV); requests left 0 / 11; 717s
+round 18: 9 escaping R1, e.g. [1.5, 4.5, 2.5, 2.5833, 0.0, 0.002, np.float64(0.8979)]
+  tier 1: 9 uncovered requests, 42 canonical candidate states
+  tier1 batch: 18 decided (18 ADV); requests left 0 / 9; 730s
+round 19: 9 escaping R1, e.g. [np.float64(2.0001), np.float64(4.0001), np.float64(0.5), np.float64(4.0), 0.0, np.float64(1.0), 0.0]
+  tier 1: 9 uncovered requests, 43 canonical candidate states
+  tier1 batch: 19 decided (16 ADV); requests left 1 / 9; 743s
+  tier1 batch: 3 decided (1 ADV); requests left 0 / 9; 748s
+round 20: 10 escaping R1, e.g. [np.float64(4.0), np.float64(1.5), 3.0, 1.5, 0.0, np.float64(0.9979), 0.0]
+  tier 1: 10 uncovered requests, 53 canonical candidate states
+  tier1 batch: 18 decided (13 ADV); requests left 0 / 10; 761s
+round 21: 10 escaping R1, e.g. [3.5, np.float64(2.5), np.float64(2.0), 3.5041, 0.0, 0.0, 0.0]
+  tier 1: 10 uncovered requests, 45 canonical candidate states
+  tier1 batch: 19 decided (14 ADV); requests left 1 / 10; 773s
+  tier1 batch: 2 decided (1 ADV); requests left 0 / 10; 776s
+round 22: 11 escaping R1, e.g. [5.0, 0.75, 1.5, 3.5041, 0.0, 0.0, 0.0]
+  tier 1: 11 uncovered requests, 59 canonical candidate states
+  tier1 batch: 20 decided (18 ADV); requests left 0 / 11; 806s
+round 23: 11 escaping R1, e.g. [3.5, np.float64(2.25), np.float64(4.0), np.float64(1.4167), 0.0, 0.0, 0.0]
+  tier 1: 11 uncovered requests, 45 canonical candidate states
+  tier1 batch: 19 decided (15 ADV); requests left 1 / 11; 832s
+  tier1 batch: 3 decided (3 ADV); requests left 0 / 11; 839s
+round 24: 10 escaping R1, e.g. [np.float64(4.5), np.float64(0.5), 4.0, np.float64(1.9187), 0.0, 0.0, 1.0]
+  tier 1: 10 uncovered requests, 49 canonical candidate states
+  tier1 batch: 19 decided (13 ADV); requests left 0 / 10; 866s
+round 25: 13 escaping R1, e.g. [3.5, 4.5, np.float64(1.1), 1.998, 0.0, 0.0, 0.0]
+  tier 1: 13 uncovered requests, 62 canonical candidate states
+  tier1 batch: 22 decided (17 ADV); requests left 2 / 13; 889s
+  tier1 batch: 7 decided (5 ADV); requests left 0 / 13; 895s
+round 26: 12 escaping R1, e.g. [np.float64(5.5001), np.float64(1.0), np.float64(2.0), 2.5, 0.0, np.float64(0.5813), 0.0]
+  tier 1: 12 uncovered requests, 60 canonical candidate states
+  tier1 batch: 20 decided (13 ADV); requests left 3 / 12; 920s
+  tier1 batch: 5 decided (3 ADV); requests left 0 / 12; 924s
+round 27: 13 escaping R1, e.g. [3.5, np.float64(2.502), np.float64(2.5), 2.5, 0.0, 0.0, np.float64(0.8979)]
+  tier 1: 13 uncovered requests, 59 canonical candidate states
+  tier1 batch: 22 decided (21 ADV); requests left 1 / 13; 948s
+  tier1 batch: 3 decided (1 ADV); requests left 0 / 13; 948s
+round 28: 13 escaping R1, e.g. [3.0, np.float64(4.0001), np.float64(2.5), np.float64(1.0), 0.0, 0.0, 1.002]
+  tier 1: 13 uncovered requests, 55 canonical candidate states
+  tier1 batch: 22 decided (18 ADV); requests left 2 / 13; 966s
+  tier1 batch: 4 decided (4 ADV); requests left 0 / 13; 970s
+round 29: 10 escaping R1, e.g. [2.5, 3.5, np.float64(2.5), 2.5, 0.0, np.float64(0.5833), 0.0]
+  tier 1: 10 uncovered requests, 45 canonical candidate states
+  tier1 batch: 20 decided (20 ADV); requests left 0 / 10; 986s
+round 30: 11 escaping R1, e.g. [2.5, np.float64(1.5021), 4.0, np.float64(3.5041), 0.0, 0.0, 0.0]
+  tier 1: 11 uncovered requests, 54 canonical candidate states
+  tier1 batch: 21 decided (20 ADV); requests left 1 / 11; 1002s
+  tier1 batch: 5 decided (5 ADV); requests left 0 / 11; 1006s
+round 31: 11 escaping R1, e.g. [5.0, 3.0, np.float64(1.6834), np.float64(2.0), 0.0, 0.0, 0.0]
+  tier 1: 11 uncovered requests, 45 canonical candidate states
+  tier1 batch: 17 decided (10 ADV); requests left 3 / 11; 1098s
+  tier1 batch: 3 decided (3 ADV); requests left 0 / 11; 1110s
+round 32: 10 escaping R1, e.g. [np.float64(1.5021), np.float64(4.5), np.float64(2.6), np.float64(3.0834), 0.0, 0.0, 0.0]
+  tier 1: 10 uncovered requests, 37 canonical candidate states
+  tier1 batch: 17 decided (15 ADV); requests left 2 / 10; 1127s
+  tier1 batch: 5 decided (3 ADV); requests left 0 / 10; 1141s
+round 33: 8 escaping R1, e.g. [np.float64(2.25), 4.5, 3.0, np.float64(1.5), 0.0, 0.0, 0.0]
+  tier 1: 8 uncovered requests, 36 canonical candidate states
+  tier1 batch: 17 decided (14 ADV); requests left 0 / 8; 1163s
+round 34: 12 escaping R1, e.g. [2.5, np.float64(1.5), 6.0, np.float64(1.5), 0.0, 0.0, 0.0]
+  tier 1: 12 uncovered requests, 60 canonical candidate states
+  tier1 batch: 22 decided (18 ADV); requests left 1 / 12; 1178s
+  tier1 batch: 3 decided (1 ADV); requests left 0 / 12; 1182s
+round 35: 10 escaping R1, e.g. [np.float64(2.5), np.float64(3.5001), np.float64(3.65), np.float64(1.5), 0.0, np.float64(0.5833), 0.0]
+  tier 1: 10 uncovered requests, 49 canonical candidate states

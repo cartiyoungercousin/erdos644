@@ -1,0 +1,15 @@
+alpha=7 t=11.998 mode cont3000: 5087 ADV states loaded
+  460 Pareto-minimal states
+round 0: 10 escaping R1, e.g. [5.9997, 4.5022, 1.3335, 0.1601, 0.0, 0.0, 0.0]
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  round 0: 10/10 escaping requests refuted (376s)
+round 1: 9 escaping R1, e.g. [5.9951, 3.2521, 2.5001, 0.25, 0.0, 0.0, 0.0]
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  round 1: 9/9 escaping requests refuted (728s)
+round 2: 12 escaping R1, e.g. [np.float64(5.9951), 2.7521, 3.0, np.float64(0.25), 0.0, 0.0, 0.0]
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();

@@ -1,0 +1,103 @@
+alpha=7 t=11.998 mode grid0.5: 1229 ADV states loaded
+grid h=0.5: 113111 maximal first requests; 103540 already avoided by ADV states
+  batch 1: 60 states decided; requests left 9511 / 113111; 64s
+  batch 2: 60 states decided; requests left 9444 / 113111; 71s
+alpha=7 t=11.998 mode grid0.5: 1410 ADV states loaded
+grid h=0.5: 113111 maximal first requests; 103730 already avoided by ADV states
+  tier 1: 9381 uncovered requests, 10986 canonical candidate states
+  tier1 batch: 30 decided (30 ADV); requests left 8307 / 113111; 49s
+  tier1 batch: 30 decided (30 ADV); requests left 7336 / 113111; 55s
+  tier1 batch: 30 decided (30 ADV); requests left 6942 / 113111; 61s
+  tier1 batch: 30 decided (30 ADV); requests left 6549 / 113111; 67s
+  tier1 batch: 30 decided (30 ADV); requests left 6218 / 113111; 73s
+  tier1 batch: 30 decided (30 ADV); requests left 5911 / 113111; 81s
+  tier1 batch: 30 decided (30 ADV); requests left 5732 / 113111; 88s
+  tier1 batch: 30 decided (30 ADV); requests left 5482 / 113111; 95s
+  tier1 batch: 30 decided (30 ADV); requests left 5277 / 113111; 99s
+  tier1 batch: 30 decided (30 ADV); requests left 5114 / 113111; 105s
+  tier1 batch: 30 decided (30 ADV); requests left 4920 / 113111; 111s
+  tier1 batch: 30 decided (30 ADV); requests left 4753 / 113111; 115s
+  tier1 batch: 30 decided (30 ADV); requests left 4613 / 113111; 120s
+  tier1 batch: 30 decided (30 ADV); requests left 4455 / 113111; 124s
+alpha=7 t=11.998 mode grid0.5: 1850 ADV states loaded
+grid h=0.5: 113111 maximal first requests; 108764 already avoided by ADV states
+  tier 1: 4347 uncovered requests, 4819 canonical candidate states
+  tier1 batch: 28 decided (28 ADV); requests left 4207 / 113111; 36s
+  tier1 batch: 28 decided (28 ADV); requests left 4105 / 113111; 40s
+  tier1 batch: 28 decided (28 ADV); requests left 3999 / 113111; 45s
+  tier1 batch: 28 decided (28 ADV); requests left 3916 / 113111; 51s
+  tier1 batch: 28 decided (28 ADV); requests left 3828 / 113111; 56s
+  tier1 batch: 28 decided (28 ADV); requests left 3734 / 113111; 61s
+  tier1 batch: 28 decided (28 ADV); requests left 3633 / 113111; 65s
+  tier1 batch: 28 decided (28 ADV); requests left 3539 / 113111; 70s
+  tier1 batch: 28 decided (28 ADV); requests left 3439 / 113111; 74s
+  tier1 batch: 28 decided (28 ADV); requests left 3352 / 113111; 80s
+  tier1 batch: 28 decided (28 ADV); requests left 3271 / 113111; 84s
+  tier1 batch: 28 decided (28 ADV); requests left 3191 / 113111; 91s
+  tier1 batch: 28 decided (28 ADV); requests left 3131 / 113111; 102s
+  tier1 batch: 28 decided (28 ADV); requests left 3072 / 113111; 106s
+  tier1 batch: 28 decided (28 ADV); requests left 3018 / 113111; 110s
+  tier1 batch: 28 decided (28 ADV); requests left 2974 / 113111; 114s
+  tier1 batch: 28 decided (28 ADV); requests left 2924 / 113111; 117s
+  tier1 batch: 28 decided (28 ADV); requests left 2890 / 113111; 121s
+  tier1 batch: 28 decided (28 ADV); requests left 2856 / 113111; 127s
+  tier1 batch: 28 decided (28 ADV); requests left 2823 / 113111; 129s
+  tier1 batch: 28 decided (28 ADV); requests left 2795 / 113111; 131s
+  tier1 batch: 28 decided (28 ADV); requests left 2767 / 113111; 139s
+  tier1 batch: 28 decided (28 ADV); requests left 2739 / 113111; 147s
+  tier1 batch: 28 decided (28 ADV); requests left 2711 / 113111; 157s
+  tier1 batch: 28 decided (28 ADV); requests left 2683 / 113111; 161s
+  tier1 batch: 28 decided (28 ADV); requests left 2655 / 113111; 166s
+  tier1 batch: 28 decided (28 ADV); requests left 2627 / 113111; 168s
+  tier1 batch: 28 decided (28 ADV); requests left 2599 / 113111; 171s
+  tier1 batch: 28 decided (28 ADV); requests left 2571 / 113111; 178s
+  tier1 batch: 28 decided (28 ADV); requests left 2543 / 113111; 186s
+  tier1 batch: 28 decided (28 ADV); requests left 2515 / 113111; 195s
+  tier1 batch: 28 decided (28 ADV); requests left 2487 / 113111; 197s
+  tier1 batch: 28 decided (28 ADV); requests left 2459 / 113111; 204s
+  tier1 batch: 28 decided (28 ADV); requests left 2431 / 113111; 209s
+  tier1 batch: 28 decided (28 ADV); requests left 2403 / 113111; 212s
+  tier1 batch: 28 decided (28 ADV); requests left 2375 / 113111; 215s
+  tier1 batch: 28 decided (28 ADV); requests left 2347 / 113111; 217s
+  tier1 batch: 28 decided (28 ADV); requests left 2319 / 113111; 222s
+  tier1 batch: 28 decided (28 ADV); requests left 2291 / 113111; 226s
+alpha=7 t=11.998 mode grid0.5: 2965 ADV states loaded
+grid h=0.5: 113111 maximal first requests; 110843 already avoided by ADV states
+  tier 1: 2268 uncovered requests, 2269 canonical candidate states
+  tier1 batch: 30 decided (30 ADV); requests left 2238 / 113111; 34s
+  tier1 batch: 30 decided (30 ADV); requests left 2208 / 113111; 40s
+  tier1 batch: 30 decided (30 ADV); requests left 2178 / 113111; 43s
+  tier1 batch: 30 decided (30 ADV); requests left 2148 / 113111; 46s
+  tier1 batch: 30 decided (30 ADV); requests left 2118 / 113111; 50s
+  tier1 batch: 30 decided (30 ADV); requests left 2088 / 113111; 56s
+  tier1 batch: 30 decided (30 ADV); requests left 2058 / 113111; 62s
+  tier1 batch: 30 decided (30 ADV); requests left 2028 / 113111; 68s
+  tier1 batch: 30 decided (30 ADV); requests left 1998 / 113111; 74s
+  tier1 batch: 30 decided (30 ADV); requests left 1968 / 113111; 79s
+  tier1 batch: 30 decided (30 ADV); requests left 1938 / 113111; 88s
+  tier1 batch: 30 decided (30 ADV); requests left 1908 / 113111; 92s
+  tier1 batch: 30 decided (30 ADV); requests left 1878 / 113111; 97s
+  tier1 batch: 30 decided (30 ADV); requests left 1848 / 113111; 102s
+  tier1 batch: 30 decided (30 ADV); requests left 1818 / 113111; 106s
+  tier1 batch: 30 decided (30 ADV); requests left 1788 / 113111; 112s
+  tier1 batch: 30 decided (30 ADV); requests left 1758 / 113111; 116s
+  tier1 batch: 30 decided (30 ADV); requests left 1728 / 113111; 121s
+  tier1 batch: 30 decided (30 ADV); requests left 1698 / 113111; 125s
+alpha=7 t=11.998 mode grid0.5: 3559 ADV states loaded
+grid h=0.5: 113111 maximal first requests; 111437 already avoided by ADV states
+  tier 1: 1674 uncovered requests, 6519 canonical candidate states
+  tier1 batch: 30 decided (29 ADV); requests left 727 / 113111; 51s
+  tier1 batch: 30 decided (27 ADV); requests left 277 / 113111; 65s
+alpha=7 t=11.998 mode grid0.5: 3639 ADV states loaded
+grid h=0.5: 113111 maximal first requests; 113066 already avoided by ADV states
+  tier 1: 45 uncovered requests, 173 canonical candidate states
+  tier1 batch: 22 decided (20 ADV); requests left 7 / 113111; 391s
+  tier1 batch: 15 decided (11 ADV); requests left 2 / 113111; 735s
+  tier1 batch: 6 decided (3 ADV); requests left 1 / 113111; 761s
+  tier 2: 1 uncovered requests, 8 candidate states (canon+box+vol)
+  tier2 batch: 7 decided (0 ADV); requests left 1 / 113111; 1202s
+FINAL grid h=0.5: unrefuted 1 of 113111
+  UNREFUTED R1 [np.float64(0.0), np.float64(5.0), np.float64(0.0), np.float64(6.998), np.float64(0.0), np.float64(0.0), np.float64(0.0)]
+alpha=7 t=11.998 mode grid0.5: 3678 ADV states loaded
+grid h=0.5: 113111 maximal first requests; 113111 already avoided by ADV states
+FINAL grid h=0.5: unrefuted 0 of 113111

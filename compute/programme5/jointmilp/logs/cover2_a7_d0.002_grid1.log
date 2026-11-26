@@ -1,0 +1,3 @@
+alpha=7 t=11.998 mode grid1: 3678 ADV states loaded
+grid h=1: 11616 maximal first requests; 11616 already avoided by ADV states
+FINAL grid h=1: unrefuted 0 of 11616

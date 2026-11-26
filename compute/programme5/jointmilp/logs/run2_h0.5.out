@@ -1,0 +1,115 @@
+alpha=7 t=11.998 mode grid0.5: 1850 ADV states loaded
+grid h=0.5: 113111 maximal first requests; 108764 already avoided by ADV states
+  tier 1: 4347 uncovered requests, 4819 canonical candidate states
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  tier1 batch: 28 decided (28 ADV); requests left 4207 / 113111; 36s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  tier1 batch: 28 decided (28 ADV); requests left 4105 / 113111; 40s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  tier1 batch: 28 decided (28 ADV); requests left 3999 / 113111; 45s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  tier1 batch: 28 decided (28 ADV); requests left 3916 / 113111; 51s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  tier1 batch: 28 decided (28 ADV); requests left 3828 / 113111; 56s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  tier1 batch: 28 decided (28 ADV); requests left 3734 / 113111; 61s
+  tier1 batch: 28 decided (28 ADV); requests left 3633 / 113111; 65s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  tier1 batch: 28 decided (28 ADV); requests left 3539 / 113111; 70s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  tier1 batch: 28 decided (28 ADV); requests left 3439 / 113111; 74s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  tier1 batch: 28 decided (28 ADV); requests left 3352 / 113111; 80s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  tier1 batch: 28 decided (28 ADV); requests left 3271 / 113111; 84s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  tier1 batch: 28 decided (28 ADV); requests left 3191 / 113111; 91s
+  tier1 batch: 28 decided (28 ADV); requests left 3131 / 113111; 102s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  tier1 batch: 28 decided (28 ADV); requests left 3072 / 113111; 106s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  tier1 batch: 28 decided (28 ADV); requests left 3018 / 113111; 110s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  tier1 batch: 28 decided (28 ADV); requests left 2974 / 113111; 114s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  tier1 batch: 28 decided (28 ADV); requests left 2924 / 113111; 117s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  tier1 batch: 28 decided (28 ADV); requests left 2890 / 113111; 121s
+  tier1 batch: 28 decided (28 ADV); requests left 2856 / 113111; 127s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  tier1 batch: 28 decided (28 ADV); requests left 2823 / 113111; 129s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  tier1 batch: 28 decided (28 ADV); requests left 2795 / 113111; 131s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  tier1 batch: 28 decided (28 ADV); requests left 2767 / 113111; 139s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  tier1 batch: 28 decided (28 ADV); requests left 2739 / 113111; 147s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  tier1 batch: 28 decided (28 ADV); requests left 2711 / 113111; 157s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  tier1 batch: 28 decided (28 ADV); requests left 2683 / 113111; 161s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  tier1 batch: 28 decided (28 ADV); requests left 2655 / 113111; 166s
+  tier1 batch: 28 decided (28 ADV); requests left 2627 / 113111; 168s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  tier1 batch: 28 decided (28 ADV); requests left 2599 / 113111; 171s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  tier1 batch: 28 decided (28 ADV); requests left 2571 / 113111; 178s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  tier1 batch: 28 decided (28 ADV); requests left 2543 / 113111; 186s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  tier1 batch: 28 decided (28 ADV); requests left 2515 / 113111; 195s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  tier1 batch: 28 decided (28 ADV); requests left 2487 / 113111; 197s
+  tier1 batch: 28 decided (28 ADV); requests left 2459 / 113111; 204s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  tier1 batch: 28 decided (28 ADV); requests left 2431 / 113111; 209s
+  tier1 batch: 28 decided (28 ADV); requests left 2403 / 113111; 212s
+  tier1 batch: 28 decided (28 ADV); requests left 2375 / 113111; 215s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  tier1 batch: 28 decided (28 ADV); requests left 2347 / 113111; 217s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  tier1 batch: 28 decided (28 ADV); requests left 2319 / 113111; 222s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+  tier1 batch: 28 decided (28 ADV); requests left 2291 / 113111; 226s
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
