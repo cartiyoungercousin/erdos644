@@ -1,0 +1,118 @@
+candidates 70
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+[15s] {'A': 6.667, 'X': 3, 'B': 1, 'Y': 0.998, 'EpK': 0.333} -> INVULNERABLE ADV
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+[17s] {'A': 6.667, 'X': 2.667, 'B': 1, 'Y': 1.331, 'EpK': 0.333} -> INVULNERABLE ADV
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+[20s] {'A': 6.667, 'X': 3, 'B': 1, 'Y': 1.331} -> INVULNERABLE ADV
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+[25s] {'A': 6.667, 'X': 3, 'B': 0.667, 'Y': 1.331, 'EpK': 0.333} -> INVULNERABLE ADV
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+[27s] {'A': 6.333, 'X': 3, 'B': 1, 'Y': 1.331, 'EpK': 0.333} -> INVULNERABLE ADV
+[28s] {'Y': 4.998, 'B': 6.667, 'EpK': 0.333} -> INVULNERABLE ADV
+[28s] {'X': 6, 'A': 5.998} -> INVULNERABLE REQ
+[35s] {'Y': 5, 'B': 6.998} -> INVULNERABLE REQ
+[35s] {'EpK': 0.333, 'A': 3.333, 'B': 7.0, 'X': 1.331} -> INVULNERABLE ADV
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+[36s] {'X': 1.667, 'B': 7.0, 'Gd': 2.333, 'Fd': 0.667, 'A': 0.331} -> INVULNERABLE ADV
+[37s] {'EpK': 0.333, 'Y': 3.0, 'Fd': 0.667, 'X': 6.0, 'A': 1.998} -> INVULNERABLE ADV
+[40s] {'B': 3.667, 'A': 5.667, 'Gd': 2.333, 'Fd': 0.331} -> INVULNERABLE ADV
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+[43s] {'EpK': 0.333, 'Ep': 2.667, 'Fd': 0.667, 'Gd': 2.333, 'B': 5.998} -> INVULNERABLE ADV
+[44s] {'EpK': 0.333, 'Y': 5.0, 'A': 6.665} -> INVULNERABLE ADV
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+[47s] {'EpK': 0.333, 'Fd': 0.667, 'X': 6.0, 'Ep': 1.333, 'Y': 3.333, 'A': 0.331} -> INVULNERABLE ADV
+[49s] {'EpK': 0.333, 'Gd': 2.333, 'A': 6.0, 'B': 3.331} -> INVULNERABLE ADV
+[56s] {'EpK': 0.333, 'Gd': 2.333, 'Ep': 2.667, 'B': 6.0, 'Fd': 0.665} -> INVULNERABLE ADV
+[61s] {'EpK': 0.333, 'Y': 5.0, 'X': 6.0, 'Fd': 0.333, 'Ep': 0.331} -> INVULNERABLE ADV
+[62s] {'EpK': 0.333, 'Gd': 0.333, 'Fd': 1.0, 'X': 5.0, 'Y': 1.0, 'B': 4.331} -> INVULNERABLE ADV
+[64s] {'X': 4.998, 'A': 6.667, 'EpK': 0.333} -> INFEASIBLE 
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+[67s] {'EpK': 0.333, 'A': 6.0, 'Fd': 0.667, 'Ep': 2.667, 'X': 2.331} -> INVULNERABLE ADV
+[70s] {'Y': 5, 'B': 6.665, 'EpK': 0.333} -> INFEASIBLE 
+[74s] {'EpK': 0.333, 'Y': 2.333, 'Gd': 2.0, 'Ep': 2.667, 'B': 4.665} -> INVULNERABLE REQ
+[75s] {'EpK': 0.333, 'X': 6.0, 'Gd': 2.333, 'B': 3.0, 'Ep': 0.331} -> INVULNERABLE ADV
+[76s] {'X': 6.0, 'Gd': 2.333, 'Ep': 2.0, 'Fd': 1.0, 'B': 0.665} -> INVULNERABLE ADV
+[79s] {'A': 2.0, 'B': 7.0, 'X': 2.998} -> INVULNERABLE ADV
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+[83s] {'EpK': 0.333, 'Ep': 2.667, 'Fd': 0.667, 'Y': 2.333, 'A': 0.667, 'X': 5.331} -> INVULNERABLE ADV
+[83s] {'EpK': 0.333, 'X': 0.333, 'Y': 5.0, 'Gd': 2.333, 'Ep': 2.667, 'B': 1.331} -> INVULNERABLE ADV
+[83s] {'EpK': 0.333, 'Gd': 0.333, 'A': 3.333, 'Fd': 0.667, 'Ep': 2.667, 'Y': 3.333, 'X': 1.331} -> INVULNERABLE ADV
+[83s] {'Ep': 2.667, 'Y': 1.333, 'B': 1.667, 'Fd': 1.0, 'A': 5.331} -> INVULNERABLE ADV
+[86s] {'Y': 4.665, 'B': 7, 'EpK': 0.333} -> INVULNERABLE ADV
+[89s] {'EpK': 0.333, 'Fd': 0.333, 'A': 6.667, 'Gd': 2.333, 'Ep': 2.331} -> INVULNERABLE ADV
+[91s] {'X': 3.333, 'EpK': 0.333, 'Ep': 2.667, 'Gd': 2.0, 'B': 3.665} -> INVULNERABLE ADV
+[92s] {'EpK': 0.333, 'X': 6.0, 'Ep': 2.333, 'B': 3.331} -> INVULNERABLE ADV
+[92s] {'Ep': 2.667, 'A': 2.333, 'X': 1.667, 'Y': 4.0, 'EpK': 0.333, 'B': 0.998} -> INVULNERABLE ADV
+[93s] {'A': 0.667, 'B': 7.0, 'Gd': 1.0, 'Y': 3.331} -> INVULNERABLE ADV
+[95s] {'EpK': 0.333, 'A': 4.667, 'Fd': 1.0, 'Ep': 2.667, 'X': 3.331} -> INVULNERABLE ADV
+[96s] {'EpK': 0.333, 'Ep': 0.333, 'A': 6.667, 'B': 4.665} -> INVULNERABLE ADV
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+[98s] {'EpK': 0.333, 'B': 7.0, 'A': 4.665} -> INVULNERABLE ADV
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+[99s] {'X': 1.0, 'Ep': 2.667, 'Y': 1.667, 'Gd': 2.333, 'Fd': 0.333, 'A': 3.998} -> INVULNERABLE ADV
+[103s] {'EpK': 0.333, 'B': 7.0, 'X': 3.667, 'Fd': 0.998} -> INVULNERABLE ADV
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+[103s] {'EpK': 0.333, 'X': 6.0, 'A': 0.333, 'Gd': 2.333, 'B': 2.998} -> INVULNERABLE ADV
+[106s] {'A': 6.667, 'B': 5.331} -> INVULNERABLE ADV
+[106s] {'Ep': 2.667, 'B': 6.667, 'Gd': 2.333, 'Y': 0.331} -> INVULNERABLE ADV
+[107s] {'EpK': 0.333, 'Gd': 0.667, 'Y': 5.0, 'Ep': 0.667, 'A': 1.0, 'X': 4.331} -> INVULNERABLE ADV
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+[107s] {'EpK': 0.333, 'Fd': 0.333, 'B': 7.0, 'A': 4.331} -> INVULNERABLE ADV
+[113s] {'EpK': 0.333, 'Y': 5.0, 'Fd': 1.0, 'A': 5.665} -> INVULNERABLE ADV
+[114s] {'Ep': 1.0, 'Gd': 1.667, 'Fd': 1.0, 'B': 0.333, 'X': 6.0, 'Y': 0.333, 'A': 0.333} -> INVULNERABLE ADV
+[116s] {'B': 5.0, 'X': 2.667, 'Fd': 1.0, 'Y': 3.331} -> INVULNERABLE ADV
+[116s] {'B': 5.667, 'X': 6.0, 'Fd': 0.331} -> INVULNERABLE ADV
+[118s] {'EpK': 0.333, 'Ep': 0.333, 'Gd': 2.333, 'X': 6.0, 'Fd': 1.0, 'Y': 1.333, 'B': 0.665} -> INVULNERABLE ADV
+[119s] {'Ep': 2.667, 'Y': 5.0, 'A': 4.331} -> INVULNERABLE ADV
+[120s] {'Fd': 0.333, 'B': 7.0, 'Ep': 2.667, 'Y': 1.998} -> INVULNERABLE ADV
+[121s] {'Gd': 2.333, 'B': 4.667, 'X': 4.998} -> INVULNERABLE ADV
+[126s] {'Fd': 0.333, 'X': 4.0, 'Gd': 1.0, 'Ep': 2.667, 'A': 3.0, 'Y': 0.998} -> INVULNERABLE ADV
+[127s] {'EpK': 0.333, 'X': 4.333, 'Y': 5.0, 'A': 2.331} -> INVULNERABLE ADV
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+[130s] {'EpK': 0.333, 'Y': 2.667, 'Fd': 1.0, 'Ep': 1.333, 'Gd': 2.333, 'X': 4.331} -> INVULNERABLE ADV
+[131s] {'EpK': 0.333, 'Gd': 2.333, 'B': 7.0, 'Y': 2.331} -> INVULNERABLE ADV
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+[132s] {'EpK': 0.333, 'Ep': 1.667, 'B': 7.0, 'A': 2.0, 'Gd': 0.998} -> INVULNERABLE ADV
+[133s] {'EpK': 0.333, 'B': 7.0, 'Ep': 2.667, 'A': 1.998} -> INVULNERABLE ADV
+[141s] {'EpK': 0.333, 'A': 6.667, 'Y': 4.998} -> INVULNERABLE ADV
+[144s] {'EpK': 0.333, 'Ep': 0.333, 'Y': 5.0, 'X': 3.667, 'B': 2.665} -> INVULNERABLE ADV
+[145s] {'X': 5.667, 'A': 5.998, 'EpK': 0.333} -> INVULNERABLE ADV
+[153s] {'EpK': 0.333, 'X': 3.333, 'Fd': 1.0, 'B': 0.333, 'Gd': 2.333, 'A': 4.665} -> INVULNERABLE ADV
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+[181s] {'A': 6.667, 'X': 5.331} -> INVULNERABLE ADV
+[203s] {'X': 6, 'A': 5.665, 'EpK': 0.333} -> INVULNERABLE ADV
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+[214s] {'X': 5.331, 'A': 6.667} -> INVULNERABLE ADV
+[217s] {'Y': 4.998, 'B': 7} -> INVULNERABLE ADV
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+[298s] {'X': 5.331, 'A': 6.333, 'EpK': 0.333} -> INVULNERABLE ?
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+[415s] {'Y': 4.667, 'B': 6.998, 'EpK': 0.333} -> INVULNERABLE ?
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+done

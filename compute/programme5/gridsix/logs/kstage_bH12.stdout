@@ -1,0 +1,3 @@
+families ['XAH', 'YBH', 'XA', 'YB'] t 11.998 fixK None box (a lo,hi, e lo,hi) (6.95, 7.002, 0.24, 0.34)
+it 0: adversary INFEASIBLE; plans {'XAH': 0, 'YBH': 0, 'XA': 0, 'YB': 0} (0s)
+RESULT INFEASIBLE

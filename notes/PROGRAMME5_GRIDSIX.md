@@ -6,6 +6,9 @@ t = 12 − δ, δ = .002 unless stated, i.e. t = .85700). Code and logs: `comput
 here is independently verified.
 
 ## 0. Headline (pre-registered form)
+> **Superseded by §9 (round 2, partial).** K_e below is broken by requests that contain the hub; see §9.5 for the
+> current status.
+
 **STILL 6/7: the adversary avoids grid sixes by moving K's spare mass onto E′ and keeping a 0⁺ "hub" of K∩E′ in
 his answers.** The certificate behind this is only partial: §4–§5 say how far it goes.
 - **The old adversary line is broken** [computed exact, §3]. The joint MILP's K = A₇ ∪ B₇ loses as follows:
@@ -147,3 +150,65 @@ jm gets only E′∖K, and the K∩E′ points are left out of his answers.
 - `kstar_map.py`, `kstar_cover.py`, `kstar_resid.py`, `ascan.py`, `depth2.py`, `run_depth2.py`.
 - Main logs: `states_static.jsonl`, `stage1*_*.json` (plans), `kstar_states.jsonl`, `kstar_resid*.jsonl`,
   `ascan*.jsonl`, `recheck_e*.jsonl`.
+
+## 9. Round 2 (bottleneck attack on K_e) — PARTIAL, wound down mid-run
+
+### 9.1 K_e = A(20/3) ∪ B(7) ∪ (E′∩K)(1/3) is broken [computed exact; independently re-checked]
+- `screen_ke.py` ran 70 first requests against K_e: exact stage-1, then a sound jm check.
+- Two requests that contain the hub E′∩K in full close statically against every legal M1:
+  - R1 = X₄.₉₉₈ ∪ A ∪ (E′∩K): 28 plans; `verify_stage1g`: 0 coverage violations, worst plan ≤ t − .026;
+  - R1 = Y₅ ∪ B₆.₆₆₅ ∪ (E′∩K): 46 plans; worst plan ≤ t − .018.
+  - Certificates: `logs/kec_*.json`.
+- The other 68 requests are refuted, or statically invulnerable with an uncertified jm REQ
+  (`logs/screen_ke1.jsonl`). So requesting the hub removes it from M1, and the line of §0 does not survive.
+
+### 9.2 K-level CEGAR over every forced K (`kstage.py`) [computed exact per finished box; NOT re-verified]
+- Range: a ∈ (6 − δ, 6.083] ∪ [20/3, 7 + δ], kb ∈ (7 − δ, 7 + δ], spare split freely between E′ and outside.
+- Families of her second request: X∪A∪hub∪K-outside, Y∪B∪hub∪K-outside, X∪A, Y∪B.
+- Finished boxes:
+
+  | box (a, e = |K∩E′|) | result |
+  |---|---|
+  | a ∈ [5.998, 6.0835], e ∈ [0, .35] | INFEASIBLE: every K closes |
+  | a ∈ [5.998, 6.0835], e ∈ [.35, .70] | INFEASIBLE: every K closes |
+  | three high boxes (bH9, bH11, bH12) | empty (infeasible at iteration 0) |
+
+- Unfinished at wind-down:
+  - middle band, e ∈ [.70, 1.01]: margin μ = .004 at it 15;
+  - high band, a ∈ [6.667, 7.002] × e ∈ {[0, .12], [.12, .24], [.24, .34]}: 9 boxes;
+  - μ was falling everywhere, to .004 in bH7, bH8, bH10;
+  - no box returned "K SURVIVES"; logs `logs/kstage_b*.out`.
+- Not re-verified: a K-level verifier (grid over K × M1) still has to be written.
+
+### 9.3 Partial ascan outcomes (round 1, recorded at wind-down)
+Spare on E′ means the line K = A_a ∪ B₇ ∪ (E′∩K); all values are [computed exact] per run.
+- a = 6.0:
+  - spare outside: X∪A and A∪X₃∪B₁∪Y close;
+  - spare on E′: A∪X₃∪B₁∪Y is refuted (ADV);
+  - spare on E′: X∪A and Y∪B are statically invulnerable, but the jm verdict is REQ in the restricted model, so
+    not certified.
+- a = 6.083: spare outside, X∪A and A∪X₃∪B₁∪Y close; spare on E′, A∪X₃∪B₁∪Y is ADV and X∪A is
+  REQ (uncertified); Y∪B did not finish.
+- a = 6.75 / 6.9 / 7.0: as in §3–§4. At 6.9 the spare-E′ Y∪B run did not finish.
+- These spare-on-E′ escapes do not use the hub-containing requests of §9.1. §9.2 is the test that does.
+
+### 9.4 Conditional S-game (`sgame_cond.py`): no output before the stop.
+
+### 9.5 Status and how to resume
+- Headline unchanged in form: **STILL 6/7 is no longer supported by an adversary line.**
+  - The last explicit line (K_e) is broken.
+  - Every K in the middle band with |K∩E′| ≤ .7 closes.
+  - The rest of the K range is open, with margins falling.
+  - No certified new cap yet.
+- Resume, step 1: rerun the unfinished boxes, e.g.
+  `py -3.14 kstage.py bH1 XAH,YBH,XA,YB 0.002 6.6666,6.75,0,0.12`. The boxes are listed at the top of each
+  `logs/kstage_b*.out`; drop more boxes if needed.
+- Step 2: write `verify_kstage.py` (grid over K × M1 against the saved plans `logs/kstage_*.json`; INFEASIBLE runs
+  dump them).
+- Step 3: if every box is INFEASIBLE, handle the critical window (make X, Y variables in `kstage.py`). Then run
+  `py -3.14 sgame_cond.py 168 3 0.0 0.855 0.8572 5` (conditional S-game: critical triples marked closed) and
+  replace the condition by the proved move.
+- Step 4: if some box SURVIVES, read its K and M1 from the log. That is the adversary's line; state the lemma
+  needed to beat it.
+- `stage2g.py` (depth-2 drop-frame test for a fixed M1, R2) is written and has not been run.
+- Nothing committed.

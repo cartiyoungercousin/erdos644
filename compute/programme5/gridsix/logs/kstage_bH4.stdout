@@ -1,0 +1,4 @@
+families ['XAH', 'YBH', 'XA', 'YB'] t 11.998 fixK None box (a lo,hi, e lo,hi) (6.75, 6.85, 0.0, 0.12)
+it 0: K=(a 6.7500, kb 6.9980, e 0.0000, o 0.2520) mu 3.0000 escaped [] (4s)
+it 5: K=(a 6.7500, kb 7.0020, e 0.1200, o 0.1280) mu 0.5516 escaped [] (95s)
+it 10: K=(a 6.7500, kb 6.9980, e 0.0000, o 0.2520) mu 0.0407 escaped [] (204s)

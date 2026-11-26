@@ -1,0 +1,5 @@
+families ['XAH', 'YBH', 'XA', 'YB'] t 11.998 fixK None box (a lo,hi, e lo,hi) (5.998, 6.0835, 0.35, 0.7)
+it 0: K=(a 5.9980, kb 6.9980, e 0.3500, o 0.6540) mu 3.0000 escaped [] (5s)
+it 5: K=(a 6.0000, kb 7.0020, e 0.7000, o 0.2980) mu 0.0040 escaped [] (93s)
+it 7: adversary INFEASIBLE; plans {'XAH': 18, 'YBH': 17, 'XA': 23, 'YB': 29} (111s)
+RESULT INFEASIBLE
