@@ -1,0 +1,4 @@
+group psl3_4: order 20160 on 21 points; c=10 (k=11), T=9 (tau target 10), r=1
+c-set orbits: 45 (sizes min 336 max 20160), 6.1s
+T-set orbits: 35, 12.2s
+covering clauses built: 35, mean length 5.9, 12.2s

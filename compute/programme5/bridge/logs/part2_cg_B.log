@@ -1,0 +1,9 @@
+k=14 n=31 |R1|=14 |R2|=14 |P|=3 shape=seed spec=False start=efg seed=7 record=11 spectrum=[0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+start E,F,G profiles: [(6, 5, 3), (14, 0, 0), (0, 14, 0)] |EF|,|EG|,|FG| = 6 5 0
+[0s] it=1 NEW BEST tau=2 |H|=3 types={'E': 1, 'C1': 1, 'C2': 1}
+[0s] it=8 NEW BEST tau=3 |H|=10 types={'E': 4, 'C1': 1, 'C2': 1, 'K': 4}
+[2s] it=28 NEW BEST tau=4 |H|=30 types={'E': 11, 'C1': 1, 'C2': 1, 'K': 17}
+[249s] it=50 tau=4 |H|=43 cuts=0 unknown=768
+[4231s] it=52 final |H|=43 cuts=0 budget-unknown rejections=981
+DONE best tau=4 |H|=44 record=11 gap=7
+(stopped by its author at the wall-time limit; best seven-free tau so far = 4, see part2_best_cg_B.json)

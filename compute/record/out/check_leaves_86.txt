@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "~\lean644\compute\record\check_leaves.py", line 31, in <module>
+    leaves = set(p for p, _ in jobs if p not in dict(bad))
+  File "~\lean644\compute\record\check_leaves.py", line 31, in <genexpr>
+    leaves = set(p for p, _ in jobs if p not in dict(bad))
+                       ^^^^
+ValueError: too many values to unpack (expected 2, got 4)

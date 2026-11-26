@@ -1,0 +1,1 @@
+{"T": 0.76, "N": 1.8, "m": 8, "leaves": 64, "distinct_full_request_patterns": 20, "winning_discard_sets": {"(5,)": 64}, "pattern_depends_on_bits_of_replies": {"reply2_request": [], "reply3_request": [], "reply4_request": [2, 3], "reply5_request": [2, 3, 4], "reply6_request": [2, 3, 4, 5], "reply7_request": [2, 3, 4, 5, 6]}, "single_common_discard": [5]}

@@ -1,0 +1,12 @@
+k=10 T=8 (T/k=0.8000): anchored shapes evaluated on demand (fast engine)
+  anchor selection among J=3 replies (m = 7 requests): ADVERSARY can keep every triple of replies losing   states=2 [2.2s]
+    shapes evaluated so far: 4 (R: 0); anchored-game time 2s; engine nodes 156977, table 416+156561, resets 0/0
+  anchor selection among J=4 replies (m = 8 requests): ADVERSARY can keep every triple of replies losing   states=17 [630.1s]
+    shapes evaluated so far: 17 (R: 3); anchored-game time 632s; engine nodes 1089594, table 1871+1087723, resets 0/0
+  anchor selection among J=5 replies (m = 9 requests): ADVERSARY can keep every triple of replies losing   states=1011 [1888.1s]
+    shapes evaluated so far: 57 (R: 15); anchored-game time 2517s; engine nodes 2471259, table 4504+2466755, resets 0/0
+  anchor selection among J=6 replies (m = 10 requests): ADVERSARY can keep every triple of replies losing   states=319374 [7860.3s]
+    shapes evaluated so far: 87 (R: 31); anchored-game time 2570s; engine nodes 2570121, table 5062+2565059, resets 0/0
+  shapes found losing for her: (5,5,2) (6,4,2) (7,3,2) (8,2,2) (5,5,3) (5,3,2) (5,4,4) (6,3,2) (5,4,3) (6,4,3) (5,4,2) (6,3,3) (4,4,4) (7,3,3) (6,2,2) (5,3,3) (4,4,3) (6,3,1) (7,2,2) (7,2,1) (5,4,1) (6,4,1) (4,4,2) (5,5,1) (6,4,0) (5,5,0) (5,4,0) (7,3,1) (5,2,2) (5,3,1) (8,2,1) (5,2,1) (5,3,0) (5,2,0) (8,2,0) (7,3,0) (6,3,0) (5,1,1) (5,1,0) (7,0,0) (4,4,1) (7,1,0) (6,2,1) (6,2,0) (7,1,1) (7,2,0) (4,4,0) (6,1,0) (6,1,1) (8,1,1) (9,1,1) (9,1,0) (8,1,0) (10,0,0) (8,0,0) (9,0,0)
+  shapes found winning for her: (5,5,5) (5,5,4) (6,4,4) (4,3,3) (4,3,2) (4,3,1) (4,3,0) (3,3,3) (4,2,2) (3,3,2) (4,2,1) (3,3,1) (4,2,0) (3,3,0) (3,2,2) (3,2,1) (3,2,0) (3,1,1) (5,0,0) (2,2,2) (3,1,0) (4,1,1) (4,1,0) (6,0,0) (2,2,1) (2,1,1) (2,1,0) (2,2,0) (3,0,0) (2,0,0) (4,0,0)
+  total 10380.8s

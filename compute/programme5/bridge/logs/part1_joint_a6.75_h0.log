@@ -1,0 +1,10 @@
+alpha=6.75 beta=7.25 cells {'X': 6, 'Y': 5, 'A': 6.75, 'B': 7.25, 'Ep': 3, 'Fd': 0.75, 'Gd': 2.25}; grid h=0 (0 = continuous requests)
+it 0  tau*=0.0000  kill1 25.000 vs min 11.000  kill2 25.000 vs min 36.000  cuts 1/0  0s
+it 1  tau*=0.0000  kill1 11.000 vs min 11.000  kill2 25.000 vs min 36.000  cuts 1/0  0s
+CONVERGED: tau* = 0.00000 (12 = 6/7 boundary)
+R1 {'X': np.float64(0.0), 'Y': np.float64(0.0), 'A': np.float64(0.0), 'B': np.float64(0.0), 'Ep': np.float64(0.0), 'Fd': np.float64(0.0), 'Gd': np.float64(0.0)}
+M1 {'X': np.float64(1.0833), 'Y': np.float64(5.0), 'A': np.float64(0.6667), 'B': np.float64(7.25), 'Ep': np.float64(0.0), 'Fd': np.float64(0.0), 'Gd': np.float64(0.0)} o1 0.0
+R2 {} r2O 0.0
+M2 {} w 0.0
+R3 types {}
+all types {'X110': np.float64(4.9167), 'X010': np.float64(1.0833), 'Y010': np.float64(5.0), 'A110': np.float64(6.0833), 'A010': np.float64(0.6667), 'B010': np.float64(7.25)}

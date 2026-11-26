@@ -1,0 +1,14 @@
+PSL(2,31) order 14880
+level 4: 8 orbits (sizes sum 35960 = C(32,4) ok) 0.001s
+level 5: 15 orbits (sizes sum 201376 = C(32,5) ok) 0.006s
+level 6: 83 orbits (sizes sum 906192 = C(32,6) ok) 0.035s
+level 7: 233 orbits (sizes sum 3365856 = C(32,7) ok) 0.118s
+level 8: 769 orbits (sizes sum 10518300 = C(32,8) ok) 0.565s
+level 9: 1893 orbits (sizes sum 28048800 = C(32,9) ok) 2.8s
+level 10: 4490 orbits (sizes sum 64512240 = C(32,10) ok) 14.091s
+level 11: 8683 orbits (sizes sum 129024480 = C(32,11) ok) 47.695s
+level 12: 15444 orbits (sizes sum 225792840 = C(32,12) ok) 129.342s
+level 13: 23373 orbits (sizes sum 347373600 = C(32,13) ok) 324.773s
+level 14: 32054 orbits (sizes sum 471435600 = C(32,14) ok) 725.944s
+level 15: 38039 orbits (sizes sum 565722720 = C(32,15) ok) 1308.871s
+level 16: 40843 orbits (sizes sum 601080390 = C(32,16) ok) 2169.82s

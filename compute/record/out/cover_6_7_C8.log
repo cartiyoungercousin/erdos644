@@ -1,0 +1,622 @@
+[      4s] 0000       static                                      1.8s
+[      5s] 0007       static                                      2.2s
+[      5s] 0013       static                                      2.2s
+[      5s] 0003       static                                      2.2s
+[      5s] 0011       static                                      2.3s
+[      5s] 0022       outside                                     0.0s
+[      5s] 0010       static                                      2.3s
+[      5s] 0012       static                                      2.3s
+[      5s] 0015       static                                      2.3s
+[      5s] 0026       outside                                     0.0s
+[      5s] 0014       static                                      2.3s
+[      5s] 0016       static                                      0.5s
+[      5s] 0001       static                                      2.3s
+[      5s] 0002       static                                      2.3s
+[      5s] 0005       static                                      2.4s
+[      5s] 0006       static                                      2.4s
+[      5s] 0004       static                                      2.4s
+[      5s] 0017       static                                      0.5s
+[      5s] 0023       static                                      0.6s
+[      5s] 0040       outside                                     0.0s
+[      5s] 0041       outside                                     0.0s
+[      5s] 0020       static                                      0.7s
+[      5s] 0025       static                                      0.7s
+[      5s] 0044       outside                                     0.0s
+[      5s] 0045       outside                                     0.0s
+[      5s] 0046       outside                                     0.0s
+[      5s] 0024       static                                      0.7s
+[      5s] 0047       outside                                     0.0s
+[      5s] 0051       outside                                     0.0s
+[      5s] 0050       outside                                     0.0s
+[      5s] 0021       static                                      0.7s
+[      5s] 0054       outside                                     0.0s
+[      5s] 0055       outside                                     0.0s
+[      5s] 0056       outside                                     0.0s
+[      5s] 0057       outside                                     0.0s
+[      6s] 0034       static                                      0.6s
+[      6s] 0030       static                                      0.7s
+[      6s] 0062       outside                                     0.0s
+[      6s] 0036       static                                      0.7s
+[      6s] 0064       outside                                     0.0s
+[      6s] 0033       static                                      0.8s
+[      6s] 0066       outside                                     0.0s
+[      6s] 0027       static                                      0.8s
+[      6s] 0032       static                                      0.8s
+[      6s] 0035       static                                      0.7s
+[      6s] 0031       static                                      0.8s
+[      6s] 0037       static                                      0.6s
+[      6s] 0042       static                                      0.6s
+[      6s] 0043       static                                      0.7s
+[      6s] 0052       static                                      0.7s
+[      6s] 0053       static                                      0.7s
+[      6s] 0061       static                                      0.7s
+[      6s] 0060       static                                      0.7s
+[      6s] 0070       static                                      0.7s
+[      6s] 0071       static                                      0.7s
+[      6s] 0067       static                                      0.7s
+[      6s] 0065       static                                      0.7s
+[      6s] 0063       static                                      0.7s
+[      6s] 0072       static                                      0.7s
+[      6s] 0073       static                                      0.8s
+[      6s] 0074       static                                      0.6s
+[      6s] 0075       static                                      0.5s
+[      7s] 0076       static                                      0.5s
+[      7s] 0077       static                                      0.6s
+[      7s] 0100       static                                      0.7s
+[      7s] 0102       static                                      0.7s
+[      7s] 0103       static                                      0.7s
+[      7s] 0101       static                                      0.8s
+[      7s] 0107       static                                      0.7s
+[      7s] 0105       static                                      0.7s
+[      7s] 0104       static                                      0.8s
+[      7s] 0106       static                                      0.8s
+[      8s] 0122       static                                      0.7s
+[      8s] 0120       static                                      0.8s
+[      8s] 0121       static                                      0.8s
+[      8s] 0123       static                                      0.8s
+[      8s] 0124       static                                      0.8s
+[      8s] 0125       static                                      0.8s
+[      8s] 0126       static                                      0.8s
+[      8s] 0127       static                                      0.8s
+[     54s] 0132       plan:D0[19, 5, 1]#0                        46.6s
+[     55s] 0117       plan:D0[20, 2, 2]#1                        47.8s
+[     56s] 0114       plan:D0[19, 1, 1]#0                        49.4s
+[     56s] 0140       outside                                     0.0s
+[     56s] 0141       outside                                     0.0s
+[     56s] 0112       plan:D0[19, 2, 1]#0                        49.8s
+[     56s] 0110       plan:D0[19, 1, 1]#0                        50.1s
+[     56s] 0144       outside                                     0.0s
+[     56s] 0145       outside                                     0.0s
+[     56s] 0146       outside                                     0.0s
+[     56s] 0147       outside                                     0.0s
+[     56s] 0150       outside                                     0.0s
+[     56s] 0151       outside                                     0.0s
+[     57s] 0142       static                                      0.6s
+[     57s] 0143       static                                      0.7s
+[     57s] 0154       outside                                     0.0s
+[     57s] 0155       outside                                     0.0s
+[     57s] 0156       outside                                     0.0s
+[     57s] 0157       outside                                     0.0s
+[     57s] 0133       plan:D0[20, 5, 1]#1                        49.3s
+[     58s] 0134       plan:D0[19, 3, 2]#0                        49.0s
+[     58s] 0160       static                                      0.7s
+[     58s] 0161       static                                      0.6s
+[     58s] 0131       plan:D0[20, 3, 1]#1                        50.1s
+[     58s] 0162       static                                      0.7s
+[     58s] 0163       static                                      0.7s
+[     58s] 0164       static                                      0.6s
+[     59s] 0165       static                                      0.7s
+[     59s] 0166       static                                      0.7s
+[     59s] 0167       static                                      0.7s
+[     60s] 0130       plan:D0[19, 3, 1]#0                        51.8s
+[     63s] 0116       plan:D0[19, 2, 2]#0                        55.7s
+[     68s] 0115       plan:D0[20, 1, 1]#0                        61.5s
+[     74s] 0135       plan:D0[19, 3, 2]#1                        65.1s
+[     77s] 0111       plan:D0[20, 1, 1]#0                        70.8s
+[     77s] 0200       outside                                     0.0s
+[     78s] 0201       static                                      0.6s
+[     78s] 0202       outside                                     0.0s
+[     78s] 0203       outside                                     0.0s
+[     78s] 0204       outside                                     0.0s
+[     78s] 0205       static                                      0.6s
+[     78s] 0206       outside                                     0.0s
+[     78s] 0207       outside                                     0.0s
+[     79s] 0210       static                                      0.8s
+[     80s] 0211       static                                      0.6s
+[     80s] 0212       static                                      0.7s
+[     81s] 0213       static                                      0.7s
+[     82s] 0214       static                                      0.7s
+[     83s] 0215       static                                      0.7s
+[     83s] 0216       static                                      0.7s
+[     84s] 0217       static                                      0.7s
+[     84s] 0220       outside                                     0.0s
+[     84s] 0221       outside                                     0.0s
+[     84s] 0222       outside                                     0.0s
+[     84s] 0223       outside                                     0.0s
+[     84s] 0224       outside                                     0.0s
+[     84s] 0225       outside                                     0.0s
+[     84s] 0226       outside                                     0.0s
+[     84s] 0227       outside                                     0.0s
+[     85s] 0230       static                                      0.6s
+[     85s] 0231       static                                      0.8s
+[     85s] 0232       outside                                     0.0s
+[     86s] 0233       static                                      0.7s
+[     87s] 0234       static                                      0.6s
+[     87s] 0235       static                                      0.7s
+[     87s] 0236       outside                                     0.0s
+[     88s] 0237       static                                      0.7s
+[     88s] 0240       outside                                     0.0s
+[     89s] 0241       static                                      0.7s
+[     89s] 0242       outside                                     0.0s
+[     89s] 0243       outside                                     0.0s
+[     89s] 0244       outside                                     0.0s
+[     89s] 0245       static                                      0.7s
+[     89s] 0246       outside                                     0.0s
+[     89s] 0247       outside                                     0.0s
+[     90s] 0250       static                                      0.7s
+[     91s] 0251       static                                      0.7s
+[     91s] 0252       static                                      0.7s
+[     92s] 0253       static                                      0.8s
+[     93s] 0254       static                                      0.7s
+[     94s] 0255       static                                      0.7s
+[     94s] 0256       static                                      0.7s
+[     95s] 0257       static                                      0.7s
+[     95s] 0260       outside                                     0.0s
+[     95s] 0261       outside                                     0.0s
+[     95s] 0262       outside                                     0.0s
+[     95s] 0263       outside                                     0.0s
+[     95s] 0264       outside                                     0.0s
+[     95s] 0265       outside                                     0.0s
+[     95s] 0266       outside                                     0.0s
+[     95s] 0267       outside                                     0.0s
+[     96s] 0270       static                                      0.7s
+[     97s] 0271       static                                      0.8s
+[     97s] 0272       outside                                     0.0s
+[     97s] 0273       static                                      0.7s
+[     98s] 0136       plan:D0[19, 5, 2]#0                        43.1s
+[     98s] 0274       static                                      0.7s
+[     98s] 0276       outside                                     0.0s
+[     98s] 0275       static                                      0.6s
+[     99s] 0277       static                                      0.7s
+[     99s] 0300       static                                      0.9s
+[     99s] 0301       static                                      0.8s
+[    100s] 0302       static                                      0.6s
+[    100s] 0153       plan:D0[20, 3, 3]#1                        43.7s
+[    100s] 0303       static                                      1.1s
+[    101s] 0304       static                                      1.0s
+[    101s] 0305       static                                      0.8s
+[    101s] 0306       static                                      0.8s
+[    101s] 0307       static                                      0.7s
+[    102s] 0152       plan:D0[19, 3, 3]#0                        45.4s
+[    102s] 0171       plan:D0[20, 3, 3]#1                        43.7s
+[    104s] 0172       plan:D0[19, 5, 3]#0                        45.0s
+[    104s] 0113       plan:D0[20, 3, 1]#1                        97.7s
+[    105s] 0174       plan:D0[19, 4, 4]#0                        45.0s
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+[    112s] 0170       plan:D0[19, 3, 3]#0                        53.1s
+[    113s] 0320       static                                      1.0s
+[    113s] 0176       plan:D0[19, 5, 5]#0                        44.7s
+[    113s] 0321       static                                      0.9s
+[    114s] 0322       static                                      0.8s
+[    114s] 0323       static                                      0.9s
+[    114s] 0324       static                                      0.8s
+[    115s] 0325       static                                      0.7s
+[    115s] 0326       static                                      0.8s
+[    116s] 0327       static                                      0.8s
+[    116s] 0137       plan:D0[20, 4, 2]#1                        61.7s
+[    121s] 0173       split  ['local#1: adversary point (value 0.875000)', 'local#2: adversary point (value 0.875000)']
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+[    146s] 0312       plan:D0[19, 7, 1]#0                        44.7s
+[    147s] 0310       plan:D0[19, 6, 1]#0                        45.5s
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+[    150s] 0175       plan:D0[21, 4, 4]#0                        86.9s
+[    150s] 0314       plan:D0[19, 6, 2]#0                        47.4s
+[    151s] 0316       plan:D0[19, 7, 2]#0                        46.4s
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+[    151s] 0340       static                                      0.7s
+[    152s] 0341       static                                      0.8s
+[    153s] 0342       static                                      1.0s
+[    154s] 0317       split  ['local#1: adversary point (value 0.863095)', 'local#2: plan invalid on box: V:PG:ge0']
+[    154s] 0343       static                                      0.8s
+[    155s] 0344       static                                      0.8s
+[    155s] 0345       static                                      0.8s
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+[    155s] 0346       static                                      0.8s
+[    155s] 0347       static                                      0.8s
+[    159s] 0331       split  ['local#2: plan invalid on box: V:PF:ge0', 'local#3: plan invalid on box: V:PG:ge0']
+[    159s] 0177       split  ['local#2: plan invalid on box: V:PF:ge0', 'local#3: plan invalid on box: V:PG:ge0']
+[    161s] 0330       plan:D0[19, 9, 1]#0                        45.8s
+[    164s] 0311       plan:D0[19, 6, 1]#1                        62.4s
+[    165s] 0332       plan:D0[19, 10, 1]#0                       49.0s
+[    167s] 0315       split  ['local#1: adversary point (value 0.875000)', 'local#2: adversary point (value 0.875000)']
+[    170s] 0313       split  ['local#1: adversary point (value 0.875000)', 'local#2: adversary point (value 0.875000)']
+[    171s] 0360       static                                      0.7s
+[    172s] 0361       static                                      0.9s
+[    173s] 0362       static                                      0.7s
+[    173s] 0363       static                                      0.9s
+[    174s] 0364       static                                      0.7s
+[    175s] 0365       static                                      0.7s
+[    176s] 0366       static                                      1.0s
+[    177s] 0367       static                                      0.9s
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+[    188s] 0334       plan:D0[19, 9, 2]#0                        41.5s
+[    191s] 0336       plan:D0[19, 10, 2]#0                       41.7s
+[    197s] 0351       split  ['local#1: adversary point (value 0.857887)', 'local#2: plan invalid on box: V:PG:ge0']
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+[    199s] 0352       plan:D0[19, 7, 3]#0                        39.8s
+[    200s] 0350       plan:D0[19, 6, 3]#0                        44.1s
+[    212s] 0354       plan:D0[19, 6, 5]#0                        51.3s
+Running HiGHS 1.16.0 (git hash: f3f113d): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+[    214s] 0357       split  ['local#1: adversary point (value 0.863095)', 'local#2: plan invalid on box: V:PG:ge0']
+[    216s] 0356       plan:D0[19, 7, 5]#0                        50.6s
+[    216s] 0400       outside                                     0.0s
+[    216s] 0401       outside                                     0.0s
+[    216s] 0402       outside                                     0.0s
+[    216s] 0370       plan:D0[19, 9, 3]#0                        39.3s
+[    216s] 0403       outside                                     0.0s
+[    216s] 0404       outside                                     0.0s
+[    216s] 0405       outside                                     0.0s
+[    216s] 0407       outside                                     0.0s
+[    216s] 0406       outside                                     0.0s
+[    216s] 0410       outside                                     0.0s
+[    216s] 0411       outside                                     0.0s
+[    216s] 0412       outside                                     0.0s
+[    216s] 0413       outside                                     0.0s
+[    216s] 0414       outside                                     0.0s
+[    216s] 0415       outside                                     0.0s
+[    216s] 0416       outside                                     0.0s
+[    216s] 0417       outside                                     0.0s
+[    216s] 0420       outside                                     0.0s
+[    216s] 0421       outside                                     0.0s
+[    216s] 0422       outside                                     0.0s
+[    216s] 0424       outside                                     0.0s
+[    216s] 0425       outside                                     0.0s
+[    216s] 0426       outside                                     0.0s
+[    216s] 0427       outside                                     0.0s
+[    216s] 0430       outside                                     0.0s
+[    216s] 0431       outside                                     0.0s
+[    217s] 0423       static                                      0.6s
+[    217s] 0432       static                                      0.7s
+[    217s] 0434       outside                                     0.0s
+[    217s] 0435       outside                                     0.0s
+[    217s] 0436       outside                                     0.0s
+[    217s] 0437       outside                                     0.0s
+[    217s] 0440       outside                                     0.0s
+[    217s] 0441       outside                                     0.0s
+[    217s] 0442       outside                                     0.0s
+[    217s] 0443       outside                                     0.0s
+[    217s] 0444       outside                                     0.0s
+[    217s] 0445       outside                                     0.0s
+[    217s] 0446       outside                                     0.0s
+[    217s] 0447       outside                                     0.0s
+[    217s] 0450       outside                                     0.0s
+[    217s] 0451       outside                                     0.0s
+[    217s] 0452       outside                                     0.0s
+[    217s] 0453       outside                                     0.0s
+[    217s] 0454       outside                                     0.0s
+[    217s] 0455       outside                                     0.0s
+[    217s] 0456       outside                                     0.0s
+[    217s] 0457       outside                                     0.0s
+[    217s] 0460       outside                                     0.0s
+[    217s] 0461       outside                                     0.0s
+[    217s] 0462       outside                                     0.0s
+[    217s] 0463       outside                                     0.0s
+[    217s] 0464       outside                                     0.0s
+[    217s] 0465       outside                                     0.0s
+[    217s] 0466       outside                                     0.0s
+[    217s] 0467       outside                                     0.0s
+[    217s] 0470       outside                                     0.0s
+[    217s] 0471       outside                                     0.0s
+[    217s] 0472       outside                                     0.0s
+[    217s] 0473       outside                                     0.0s
+[    217s] 0474       outside                                     0.0s
+[    217s] 0475       outside                                     0.0s
+[    217s] 0476       outside                                     0.0s
+[    217s] 0477       outside                                     0.0s
+[    217s] 0500       outside                                     0.0s
+[    217s] 0501       outside                                     0.0s
+[    217s] 0502       outside                                     0.0s
+[    217s] 0503       outside                                     0.0s
+[    217s] 0504       outside                                     0.0s
+[    217s] 0505       outside                                     0.0s
+[    217s] 0506       outside                                     0.0s
+[    217s] 0507       outside                                     0.0s
+[    217s] 0510       outside                                     0.0s
+[    217s] 0511       outside                                     0.0s
+[    217s] 0512       outside                                     0.0s
+[    217s] 0513       outside                                     0.0s
+[    217s] 0514       outside                                     0.0s
+[    217s] 0515       outside                                     0.0s
+[    217s] 0516       outside                                     0.0s
+[    217s] 0517       outside                                     0.0s
+[    217s] 0520       outside                                     0.0s
+[    217s] 0521       outside                                     0.0s
+[    217s] 0433       static                                      0.7s
+[    218s] 0522       static                                      0.8s
+[    218s] 0524       outside                                     0.0s
+[    218s] 0525       outside                                     0.0s
+[    218s] 0526       outside                                     0.0s
+[    218s] 0527       outside                                     0.0s
+[    218s] 0530       outside                                     0.0s
+[    218s] 0531       outside                                     0.0s
+[    218s] 0523       static                                      0.7s
+[    218s] 0333       split  ['local#1: adversary point (value 0.875000)', 'local#2: adversary point (value 0.868304)']
+[    218s] 0534       outside                                     0.0s
+[    218s] 0535       outside                                     0.0s
+[    218s] 0536       outside                                     0.0s
+[    218s] 0537       outside                                     0.0s
+[    218s] 0540       outside                                     0.0s
+[    218s] 0541       outside                                     0.0s
+[    218s] 0542       outside                                     0.0s
+[    218s] 0543       outside                                     0.0s
+[    218s] 0544       outside                                     0.0s
+[    218s] 0545       outside                                     0.0s
+[    218s] 0546       outside                                     0.0s
+[    218s] 0547       outside                                     0.0s
+[    218s] 0550       outside                                     0.0s
+[    218s] 0551       outside                                     0.0s
+[    218s] 0552       outside                                     0.0s
+[    218s] 0553       outside                                     0.0s
+[    218s] 0554       outside                                     0.0s
+[    218s] 0555       outside                                     0.0s
+[    218s] 0556       outside                                     0.0s
+[    218s] 0557       outside                                     0.0s
+[    218s] 0560       outside                                     0.0s
+[    218s] 0561       outside                                     0.0s
+[    218s] 0562       outside                                     0.0s
+[    218s] 0563       outside                                     0.0s
+[    218s] 0564       outside                                     0.0s
+[    218s] 0565       outside                                     0.0s
+[    218s] 0566       outside                                     0.0s
+[    218s] 0567       outside                                     0.0s
+[    218s] 0570       outside                                     0.0s
+[    218s] 0571       outside                                     0.0s
+[    218s] 0572       outside                                     0.0s
+[    218s] 0573       outside                                     0.0s
+[    218s] 0574       outside                                     0.0s
+[    218s] 0575       outside                                     0.0s
+[    218s] 0576       outside                                     0.0s
+[    218s] 0577       outside                                     0.0s
+[    218s] 0600       outside                                     0.0s
+[    219s] 0601       static                                      0.7s
+[    219s] 0602       outside                                     0.0s
+[    219s] 0603       outside                                     0.0s
+[    219s] 0604       outside                                     0.0s
+[    219s] 0605       outside                                     0.0s
+[    219s] 0606       outside                                     0.0s
+[    219s] 0607       outside                                     0.0s
+[    220s] 0610       static                                      0.6s
+[    220s] 0611       static                                      0.7s
+[    221s] 0612       static                                      0.5s
+[    222s] 0613       static                                      0.7s
+[    222s] 0614       static                                      0.6s
+[    223s] 0615       static                                      0.7s
+[    224s] 0616       static                                      0.8s
+[    224s] 0617       static                                      0.7s
+[    226s] 0620       outside                                     0.0s
+[    226s] 0621       outside                                     0.0s
+[    226s] 0372       plan:D0[19, 10, 3]#0                       34.0s
+[    226s] 0623       outside                                     0.3s
+[    226s] 0624       outside                                     0.0s
+[    226s] 0622       outside                                     1.2s
+[    226s] 0625       outside                                     0.0s
+[    226s] 0626       outside                                     0.0s
+[    226s] 0627       outside                                     0.0s
+[    226s] 0371       split  ['local#1: adversary point (value 0.863095)', 'local#2: plan invalid on box: V:PG:ge0']
+[    226s] 0632       outside                                     0.0s
+[    227s] 0630       static                                      0.9s
+[    227s] 0631       static                                      1.1s
+[    227s] 0633       static                                      1.0s
+[    227s] 0636       outside                                     0.0s
+[    227s] 0634       static                                      0.8s
+[    227s] 0640       outside                                     0.0s
+[    227s] 0641       outside                                     0.0s
+[    227s] 0642       outside                                     0.0s
+[    227s] 0643       outside                                     0.0s
+[    227s] 0644       outside                                     0.0s
+[    227s] 0645       outside                                     0.0s
+[    227s] 0646       outside                                     0.0s
+[    227s] 0635       static                                      0.6s
+[    227s] 0647       outside                                     0.0s
+[    227s] 0650       outside                                     0.0s
+[    227s] 0651       outside                                     0.0s
+Process SpawnPoolWorker-4:
+Traceback (most recent call last):
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\pool.py", line 131, in worker
+    put((job, i, result))
+    ~~~^^^^^^^^^^^^^^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\queues.py", line 394, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\connection.py", line 210, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\connection.py", line 299, in _send_bytes
+    ov, err = _winapi.WriteFile(self._handle, buf, overlapped=True)
+              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+BrokenPipeError: [WinError 232] The pipe is being closed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\process.py", line 320, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\pool.py", line 136, in worker
+    put((job, i, (False, wrapped)))
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\queues.py", line 394, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\connection.py", line 210, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\connection.py", line 299, in _send_bytes
+    ov, err = _winapi.WriteFile(self._handle, buf, overlapped=True)
+              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+BrokenPipeError: [WinError 232] The pipe is being closed
+Process SpawnPoolWorker-9:
+Traceback (most recent call last):
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\pool.py", line 131, in worker
+    put((job, i, result))
+    ~~~^^^^^^^^^^^^^^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\queues.py", line 394, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\connection.py", line 210, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\connection.py", line 299, in _send_bytes
+    ov, err = _winapi.WriteFile(self._handle, buf, overlapped=True)
+              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+BrokenPipeError: [WinError 232] The pipe is being closed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\process.py", line 320, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\pool.py", line 136, in worker
+    put((job, i, (False, wrapped)))
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\queues.py", line 394, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\connection.py", line 210, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\connection.py", line 299, in _send_bytes
+    ov, err = _winapi.WriteFile(self._handle, buf, overlapped=True)
+              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+BrokenPipeError: [WinError 232] The pipe is being closed
+Process SpawnPoolWorker-8:
+Traceback (most recent call last):
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\pool.py", line 131, in worker
+    put((job, i, result))
+    ~~~^^^^^^^^^^^^^^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\queues.py", line 394, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\connection.py", line 210, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\connection.py", line 299, in _send_bytes
+    ov, err = _winapi.WriteFile(self._handle, buf, overlapped=True)
+              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+BrokenPipeError: [WinError 232] The pipe is being closed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\process.py", line 320, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\pool.py", line 136, in worker
+    put((job, i, (False, wrapped)))
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\queues.py", line 394, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\connection.py", line 210, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\connection.py", line 299, in _send_bytes
+    ov, err = _winapi.WriteFile(self._handle, buf, overlapped=True)
+              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+BrokenPipeError: [WinError 232] The pipe is being closed
+Process SpawnPoolWorker-1:
+Traceback (most recent call last):
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\pool.py", line 131, in worker
+    put((job, i, result))
+    ~~~^^^^^^^^^^^^^^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\queues.py", line 394, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\connection.py", line 210, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\connection.py", line 299, in _send_bytes
+    ov, err = _winapi.WriteFile(self._handle, buf, overlapped=True)
+              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+BrokenPipeError: [WinError 232] The pipe is being closed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\process.py", line 320, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\pool.py", line 136, in worker
+    put((job, i, (False, wrapped)))
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\queues.py", line 394, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\connection.py", line 210, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\connection.py", line 299, in _send_bytes
+    ov, err = _winapi.WriteFile(self._handle, buf, overlapped=True)
+              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+BrokenPipeError: [WinError 232] The pipe is being closed
+Process SpawnPoolWorker-5:
+Traceback (most recent call last):
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\pool.py", line 131, in worker
+    put((job, i, result))
+    ~~~^^^^^^^^^^^^^^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\queues.py", line 394, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\connection.py", line 210, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\connection.py", line 299, in _send_bytes
+    ov, err = _winapi.WriteFile(self._handle, buf, overlapped=True)
+              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+BrokenPipeError: [WinError 232] The pipe is being closed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\process.py", line 320, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\pool.py", line 136, in worker
+    put((job, i, (False, wrapped)))
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\queues.py", line 394, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\connection.py", line 210, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\connection.py", line 299, in _send_bytes
+    ov, err = _winapi.WriteFile(self._handle, buf, overlapped=True)
+              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+BrokenPipeError: [WinError 232] The pipe is being closed

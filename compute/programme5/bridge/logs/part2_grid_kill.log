@@ -1,0 +1,15 @@
+k=14 n=31 |A|=|A'|=7 |C|=|C'|=7 |L|=0 |Q|=0 E-feet (6,5,3)
+  pairwise intersections: {('E', 'F'): 6, ('E', 'G'): 5, ('E', 'K_AC'): 0, ('E', "K_AC'"): 5, ('E', "K_A'C"): 6, ('E', "K_A'C'"): 11, ('F', 'G'): 0, ('F', 'K_AC'): 7, ('F', "K_AC'"): 7, ('F', "K_A'C"): 7, ('F', "K_A'C'"): 7, ('G', 'K_AC'): 7, ('G', "K_AC'"): 7, ('G', "K_A'C"): 7, ('G', "K_A'C'"): 7, ('K_AC', "K_AC'"): 7, ('K_AC', "K_A'C"): 7, ('K_AC', "K_A'C'"): 0, ("K_AC'", "K_A'C"): 0, ("K_AC'", "K_A'C'"): 7, ("K_A'C", "K_A'C'"): 7}
+  all in spectrum: True  K G-trace/k = 0.5  record tau = 11
+  {F,G,4K} good six (brute force): True ; {E,F,G,4K} good seven: True ; {F,G,3K} (any 3 of the K) good: False
+  co-types (members 0=F,1=G,2=K_AC,3=K_AC',4=K_A'C,5=K_A'C' missing the point): {'A': {'145': 7}, "A'": {'123': 7}, 'C': {'035': 7}, "C'": {'024': 7}, 'Epriv': {'012345': 3}}
+k=28 n=62 |A|=|A'|=14 |C|=|C'|=14 |L|=0 |Q|=0 E-feet (12,10,6)
+  pairwise intersections: {('E', 'F'): 12, ('E', 'G'): 10, ('E', 'K_AC'): 0, ('E', "K_AC'"): 10, ('E', "K_A'C"): 12, ('E', "K_A'C'"): 22, ('F', 'G'): 0, ('F', 'K_AC'): 14, ('F', "K_AC'"): 14, ('F', "K_A'C"): 14, ('F', "K_A'C'"): 14, ('G', 'K_AC'): 14, ('G', "K_AC'"): 14, ('G', "K_A'C"): 14, ('G', "K_A'C'"): 14, ('K_AC', "K_AC'"): 14, ('K_AC', "K_A'C"): 14, ('K_AC', "K_A'C'"): 0, ("K_AC'", "K_A'C"): 0, ("K_AC'", "K_A'C'"): 14, ("K_A'C", "K_A'C'"): 14}
+  all in spectrum: True  K G-trace/k = 0.5  record tau = 22
+  {F,G,4K} good six (brute force): True ; {E,F,G,4K} good seven: True ; {F,G,3K} (any 3 of the K) good: False
+  co-types (members 0=F,1=G,2=K_AC,3=K_AC',4=K_A'C,5=K_A'C' missing the point): {'A': {'145': 14}, "A'": {'123': 14}, 'C': {'035': 14}, "C'": {'024': 14}, 'Epriv': {'012345': 6}}
+k=42 n=94 |A|=|A'|=21 |C|=|C'|=20 |L|=2 |Q|=1 E-feet (18,15,9)
+  pairwise intersections: {('E', 'F'): 18, ('E', 'G'): 15, ('E', 'K_AC'): 0, ('E', "K_AC'"): 15, ('E', "K_A'C"): 18, ('E', "K_A'C'"): 33, ('F', 'G'): 0, ('F', 'K_AC'): 21, ('F', "K_AC'"): 21, ('F', "K_A'C"): 21, ('F', "K_A'C'"): 21, ('G', 'K_AC'): 20, ('G', "K_AC'"): 20, ('G', "K_A'C"): 20, ('G', "K_A'C'"): 20, ('K_AC', "K_AC'"): 22, ('K_AC', "K_A'C"): 21, ('K_AC', "K_A'C'"): 1, ("K_AC'", "K_A'C"): 1, ("K_AC'", "K_A'C'"): 21, ("K_A'C", "K_A'C'"): 22}
+  all in spectrum: True  K G-trace/k = 0.4762  record tau = 32
+  {F,G,4K} good six (brute force): True ; {E,F,G,4K} good seven: True ; {F,G,3K} (any 3 of the K) good: False
+  co-types (members 0=F,1=G,2=K_AC,3=K_AC',4=K_A'C,5=K_A'C' missing the point): {'A': {'145': 21}, "A'": {'123': 21}, 'C': {'035': 20}, "C'": {'024': 20}, 'L': {'02345': 2}, 'Q': {'01': 1}, 'Epriv': {'012345': 9}}

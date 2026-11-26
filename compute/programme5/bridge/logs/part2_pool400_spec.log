@@ -1,0 +1,5 @@
+k=14 n=31 sizes=14,14,3 spec=True spectrum=[0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13] pool=400 strat=maxdeg seed=3 w=1 record=11
+seed E,F,G profiles [(6, 5, 3), (14, 0, 0), (0, 14, 0)] |EF|,|EG|,|FG| 6 5 0
+[0s] pool |H|=400 (tried 2445) types={'E': 5, 'C1': 179, 'C2': 167, 'K': 49}
+tau(pool) = 4  [computed exact]
+(stopped by its author at the wall-time limit: the first full good-seven SAT on the 400-member pool did not finish in ~65 min; verdict on the pool UNDECIDED)

@@ -1,0 +1,3 @@
+family 2352 sets of size 7 on n=15, m=7, solver cd15
+vars 1900 clauses 32351 build 0.0s
+killed after ~80 min, no answer (CaDiCaL point-level model)

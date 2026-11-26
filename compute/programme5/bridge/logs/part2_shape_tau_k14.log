@@ -1,0 +1,19 @@
+k=14 record=11
+  w=1 types=C1+C2+E+K (|R1|,|R2|,|P|)=(15, 15, 1) n=31: tau(full shape)=14
+  w=1 types=C1+C2+E+K (|R1|,|R2|,|P|)=(14, 14, 3) n=31: tau(full shape)=13
+w=1 types=C1+C2+E+K: max tau(full shape) over n in [1.75k,2.5k] = 19 at (12, 23, 0)
+  w=1 types=C1+C2+E (|R1|,|R2|,|P|)=(15, 15, 1) n=31: tau(full shape)=8
+  w=1 types=C1+C2+E (|R1|,|R2|,|P|)=(14, 14, 3) n=31: tau(full shape)=8
+w=1 types=C1+C2+E: max tau(full shape) over n in [1.75k,2.5k] = 13 at (12, 23, 0)
+  w=1 types=C1+C2+K (|R1|,|R2|,|P|)=(15, 15, 1) n=31: tau(full shape)=14
+  w=1 types=C1+C2+K (|R1|,|R2|,|P|)=(14, 14, 3) n=31: tau(full shape)=12
+w=1 types=C1+C2+K: max tau(full shape) over n in [1.75k,2.5k] = 19 at (12, 23, 0)
+  w=2 types=C1+C2+E+K (|R1|,|R2|,|P|)=(15, 15, 1) n=31: tau(full shape)=15
+  w=2 types=C1+C2+E+K (|R1|,|R2|,|P|)=(14, 14, 3) n=31: tau(full shape)=14
+w=2 types=C1+C2+E+K: max tau(full shape) over n in [1.75k,2.5k] = 20 at (12, 23, 0)
+  w=2 types=C1+C2+E (|R1|,|R2|,|P|)=(15, 15, 1) n=31: tau(full shape)=9
+  w=2 types=C1+C2+E (|R1|,|R2|,|P|)=(14, 14, 3) n=31: tau(full shape)=9
+w=2 types=C1+C2+E: max tau(full shape) over n in [1.75k,2.5k] = 13 at (12, 23, 0)
+  w=2 types=C1+C2+K (|R1|,|R2|,|P|)=(15, 15, 1) n=31: tau(full shape)=15
+  w=2 types=C1+C2+K (|R1|,|R2|,|P|)=(14, 14, 3) n=31: tau(full shape)=13
+w=2 types=C1+C2+K: max tau(full shape) over n in [1.75k,2.5k] = 20 at (12, 23, 0)

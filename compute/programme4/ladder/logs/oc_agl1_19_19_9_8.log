@@ -1,0 +1,8 @@
+group agl1_19: order 342 on 19 points; c=9 (k=10), T=8 (tau target 9), r=1
+c-set orbits: 280 (sizes min 38 max 342), 0.3s
+T-set orbits: 228, 0.4s
+covering clauses built: 228, mean length 10.6, 0.4s
+iter 1: family 56 orbits (19152 co-edges), seven over 7 orbits, inner 185.9s, total 187s
+iter 2: family 54 orbits (18468 co-edges), seven over 6 orbits, inner 25.3s, total 212s
+iter 3: family 53 orbits (18126 co-edges), seven over 7 orbits, inner 39.0s, total 251s
+iter 4: family 54 orbits (18468 co-edges), seven over 7 orbits, inner 62.1s, total 313s

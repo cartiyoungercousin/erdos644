@@ -1,0 +1,3 @@
+PSL(2,31) order 14880; c=16 (k=16), T=13 (tau target 14); c-orbits 40843; T-orbits 23373
+covering clauses 23373, mean length 940.7, 19s
+iter 1: minimal covering family 340 orbits (5049280 co-edges): heuristic found no good seven in 300 tries (4s) -> CANDIDATE, needs exact check

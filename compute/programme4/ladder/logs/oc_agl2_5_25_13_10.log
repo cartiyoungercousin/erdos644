@@ -1,0 +1,7 @@
+group agl2_5: order 12000 on 25 points; c=13 (k=12), T=10 (tau target 11), r=3
+c-set orbits: 492 (sizes min 500 max 12000), 60.1s
+T-set orbits: 319, 95.0s
+covering clauses built: 319, mean length 232.4, 95.3s
+iter 1: family 11 orbits (97200 co-edges), seven over 5 orbits, inner 0.1s, total 96s
+iter 2: family 11 orbits (96600 co-edges), seven over 5 orbits, inner 0.0s, total 96s
+iter 3: family 11 orbits (102000 co-edges), seven over 6 orbits, inner 0.0s, total 96s

@@ -1,0 +1,6 @@
+k=14 n=31 |R1|=15 |R2|=15 |P|=1 shape=seed spec=True start=efg seed=7 record=11 spectrum=[0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+start E,F,G profiles: [(7, 6, 1), (14, 0, 0), (0, 14, 0)] |EF|,|EG|,|FG| = 6 5 0
+[0s] it=1 NEW BEST tau=2 |H|=3 types={'K': 1, 'C1': 1, 'C2': 1}
+[0s] it=6 NEW BEST tau=3 |H|=8 types={'K': 6, 'C1': 1, 'C2': 1}
+[2s] it=32 NEW BEST tau=4 |H|=34 types={'K': 32, 'C1': 1, 'C2': 1}
+(run stopped by its author after ~2 min to free a core for part2_local7)
