@@ -1,0 +1,47 @@
+class B: t=11.75/14, 3815 first requests on grid 1, sample 16
+  R1 (0.0, 2.0, 0.75, 3.0, 6.0): SPOILED by K excl {'X': 0.0, 'Y': 0.0, 'E': 2.25, 'F': 0.0, 'G': 3.0} (answer #1; all 154 structured R2 refuted)
+  R1 (5.0, 0.0, 1.0, 0.0, 5.75): SPOILED by K excl {'X': 0.0, 'Y': 0.0, 'E': 2.0, 'F': 0.25, 'G': 3.0} (answer #2; all 216 structured R2 refuted)
+  R1 (3.0, 0.75, 1.0, 1.0, 6.0): SPOILED by K excl {'X': 0.0, 'Y': 0.0, 'E': 2.0, 'F': 0.25, 'G': 3.0} (answer #1; all 272 structured R2 refuted)
+  R1 (1.0, 1.75, 2.0, 1.0, 6.0): SPOILED by K excl {'X': 0.0, 'Y': 0.0, 'E': 1.0, 'F': 1.25, 'G': 3.0} (answer #1; all 300 structured R2 refuted)
+  R1 (0.0, 4.75, 0.0, 3.0, 4.0): SPOILED by K excl {'X': 0.0, 'Y': 0.0, 'E': 3.0, 'F': 0.0, 'G': 2.25} (answer #1; all 360 structured R2 refuted)
+  R1 (0.0, 4.0, 0.0, 4.0, 3.75): SPOILED by K excl {'X': 0.0, 'Y': 0.0, 'E': 3.0, 'F': 0.0, 'G': 2.25} (answer #1; all 418 structured R2 refuted)
+  R1 (3.0, 5.0, 0.75, 3.0, 0.0): SPOILED by K excl {'X': 0.0, 'Y': 0.0, 'E': 2.25, 'F': 0.0, 'G': 3.0} (answer #1; all 192 structured R2 refuted)
+  R1 (1.75, 5.0, 0.0, 4.0, 1.0): SPOILED by K excl {'X': 0.0, 'Y': 0.0, 'E': 3.0, 'F': 0.0, 'G': 2.25} (answer #1; all 179 structured R2 refuted)
+  R1 (2.0, 2.0, 1.75, 0.0, 6.0): SPOILED by K excl {'X': 0.0, 'Y': 0.0, 'E': 1.25, 'F': 1.0, 'G': 3.0} (answer #1; all 290 structured R2 refuted)
+  R1 (5.0, 2.75, 3.0, 1.0, 0.0): SPOILED by K excl {'X': 0.0, 'Y': 0.0, 'E': 0.0, 'F': 0.0, 'G': 5.25} (answer #1; all 741 structured R2 refuted)
+  R1 (1.0, 0.0, 1.75, 8.0, 1.0): SPOILED by K excl {'X': 0.0, 'Y': 0.0, 'E': 1.25, 'F': 0.0, 'G': 4.0} (answer #1; all 157 structured R2 refuted)
+  R1 (4.0, 4.0, 1.0, 2.0, 0.75): SPOILED by K excl {'X': 0.0, 'Y': 0.0, 'E': 2.0, 'F': 0.0, 'G': 3.25} (answer #1; all 900 structured R2 refuted)
+  R1 (2.0, 4.0, 2.75, 2.0, 1.0): SPOILED by K excl {'X': 0.0, 'Y': 0.0, 'E': 0.25, 'F': 0.0, 'G': 5.0} (answer #1; all 845 structured R2 refuted)
+  R1 (4.0, 4.0, 0.0, 2.0, 1.75): SPOILED by K excl {'X': 0.0, 'Y': 0.0, 'E': 3.0, 'F': 0.0, 'G': 2.25} (answer #1; all 900 structured R2 refuted)
+  R1 (4.75, 2.0, 2.0, 2.0, 1.0): SPOILED by K excl {'X': 0.0, 'Y': 0.0, 'E': 1.0, 'F': 0.0, 'G': 4.25} (answer #1; all 848 structured R2 refuted)
+  R1 (2.0, 3.0, 1.0, 5.75, 0.0): SPOILED by K excl {'X': 0.0, 'Y': 0.0, 'E': 2.0, 'F': 0.0, 'G': 3.25} (answer #1; all 905 structured R2 refuted)
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+spoiled 16 / 16, candidates []  (46s)
