@@ -1,0 +1,7 @@
+it 0: M1 {'X': 0.0, 'Y': 0.0, 'A': 0.0, 'B': 0.0, 'Ep': 0.0, 'Fd': 0.0, 'Gd': 0.0} o=14.000 margin 3.0000 | static {'FGKM1': 4.667, 'EGKM1': 0.0, 'EFKM1': 0.0, 'EFGM1': 4.667, 'EFGKM1': 0.0}
+it 1: M1 {'X': 3.75, 'Y': 0.252, 'A': 5.6011, 'B': 0.0, 'Ep': 1.6206, 'Fd': 0.0, 'Gd': 2.2276} o=0.549 margin 3.0000 | static {'FGKM1': 12.304, 'EGKM1': 13.075, 'EFKM1': 11.165, 'EFGM1': 12.771, 'EFGKM1': 12.001}
+it 2: M1 {'X': 5.8947, 'Y': 0.252, 'A': 1.61, 'B': 0.0, 'Ep': 2.0256, 'Fd': 0.0459, 'Gd': 1.888} o=2.284 margin 3.0000 | static {'FGKM1': 10.861, 'EGKM1': 12.204, 'EFKM1': 12.043, 'EFGM1': 12.971, 'EFGKM1': 12.645}
+it 3: M1 {'X': 6.0, 'Y': 0.252, 'A': 5.0, 'B': 0.0, 'Ep': 1.3333, 'Fd': 0.0, 'Gd': 1.4147} o=0.000 margin 1.7308 | static {'FGKM1': 11.945, 'EGKM1': 12.875, 'EFKM1': 11.724, 'EFGM1': 13.0, 'EFGKM1': 12.75}
+it 4: M1 {'X': 5.5466, 'Y': 0.252, 'A': 3.56, 'B': 0.0, 'Ep': 2.3914, 'Fd': 0.0, 'Gd': 2.25} o=0.000 margin 1.1749 | static {'FGKM1': 12.022, 'EGKM1': 12.423, 'EFKM1': 12.048, 'EFGM1': 12.774, 'EFGKM1': 12.297}
+   statically invulnerable M1; E-frame stage2: ADV
+RESULT ADV plans 9

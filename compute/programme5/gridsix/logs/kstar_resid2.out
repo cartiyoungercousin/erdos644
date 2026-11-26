@@ -1,0 +1,47 @@
+[10s] R1 [3.0, 4.0, 4.998, 0.0, 0.0, 0.0, 0.0] -> INVULNERABLE ADV ; left 868
+[10s] R1 [3.0, 1.998, 0.0, 7.0, 0.0, 0.0, 0.0] -> INVULNERABLE ADV ; left 864
+[11s] R1 [3.0, 3.0, 5.998, 0.0, 0.0, 0.0, 0.0] -> INVULNERABLE ADV ; left 860
+[12s] R1 [3.0, 3.0, 4.998, 1.0, 0.0, 0.0, 0.0] -> INVULNERABLE ADV ; left 859
+[17s] R1 [3.0, 1.331333, 6.666667, 1.0, 0.0, 0.0, 0.0] -> INFEASIBLE  ; left 858
+[18s] R1 [3.0, 2.331333, 6.666667, 0.0, 0.0, 0.0, 0.0] -> INVULNERABLE ADV ; left 782
+[20s] R1 [3.0, 2.998, 5.0, 1.0, 0.0, 0.0, 0.0] -> INVULNERABLE ADV ; left 777
+[24s] R1 [3.0, 2.998, 6.0, 0.0, 0.0, 0.0, 0.0] -> INVULNERABLE ADV ; left 776
+[25s] R1 [0.0, 1.0, 6.666667, 3.331333, 1.0, 0.0, 0.0] -> INVULNERABLE ADV ; left 754
+[25s] R1 [0.0, 1.0, 6.666667, 3.331333, 0.0, 1.0, 0.0] -> INVULNERABLE ADV ; left 741
+[28s] R1 [3.0, 1.331333, 6.666667, 0.0, 0.0, 0.0, 1.0] -> INVULNERABLE ADV ; left 740
+[29s] R1 [3.0, 4.998, 1.0, 3.0, 0.0, 0.0, 0.0] -> INVULNERABLE ADV ; left 739
+[29s] R1 [3.0, 2.0, 6.666667, 0.331333, 0.0, 0.0, 0.0] -> INFEASIBLE  ; left 738
+[30s] R1 [3.0, 1.331333, 6.666667, 0.0, 0.0, 1.0, 0.0] -> INVULNERABLE ADV ; left 737
+[31s] R1 [6.0, 0.998, 4.0, 0.0, 0.0, 1.0, 0.0] -> INVULNERABLE ADV ; left 706
+[31s] R1 [0.0, 1.0, 6.666667, 2.331333, 1.0, 1.0, 0.0] -> INVULNERABLE ADV ; left 672
+[33s] R1 [0.0, 1.0, 6.666667, 3.331333, 0.0, 0.0, 1.0] -> INVULNERABLE ADV ; left 669
+[36s] R1 [0.0, 2.0, 6.666667, 0.331333, 1.0, 1.0, 1.0] -> INVULNERABLE ADV ; left 668
+[36s] R1 [0.0, 1.331333, 6.666667, 4.0, 0.0, 0.0, 0.0] -> INVULNERABLE ADV ; left 667
+[40s] R1 [3.0, 4.0, 3.998, 1.0, 0.0, 0.0, 0.0] -> INVULNERABLE ADV ; left 664
+[41s] R1 [3.0, 3.998, 5.0, 0.0, 0.0, 0.0, 0.0] -> INVULNERABLE ADV ; left 662
+[41s] R1 [0.0, 1.0, 6.666667, 0.331333, 3.0, 1.0, 0.0] -> INVULNERABLE ADV ; left 655
+[42s] R1 [3.0, 4.998, 2.0, 2.0, 0.0, 0.0, 0.0] -> INVULNERABLE ADV ; left 654
+[45s] R1 [0.0, 1.331333, 6.666667, 1.0, 3.0, 0.0, 0.0] -> INFEASIBLE  ; left 653
+[49s] R1 [0.0, 2.0, 6.666667, 0.331333, 3.0, 0.0, 0.0] -> INVULNERABLE ADV ; left 652
+[49s] R1 [0.0, 3.0, 6.0, 2.998, 0.0, 0.0, 0.0] -> INVULNERABLE ADV ; left 651
+[50s] R1 [5.0, 4.998, 1.0, 1.0, 0.0, 0.0, 0.0] -> INVULNERABLE REQ ; left 650
+[51s] R1 [5.998, 2.0, 3.0, 1.0, 0.0, 0.0, 0.0] -> INVULNERABLE ADV ; left 641
+[55s] R1 [0.0, 1.0, 6.666667, 0.331333, 3.0, 0.0, 1.0] -> INVULNERABLE ADV ; left 634
+[55s] R1 [5.0, 3.0, 2.998, 1.0, 0.0, 0.0, 0.0] -> INVULNERABLE ADV ; left 633
+[57s] R1 [6.0, 0.998, 4.0, 0.0, 1.0, 0.0, 0.0] -> INVULNERABLE ADV ; left 632
+[59s] R1 [5.0, 4.998, 2.0, 0.0, 0.0, 0.0, 0.0] -> INVULNERABLE ADV ; left 631
+[61s] R1 [6.0, 0.998, 3.0, 1.0, 0.0, 0.0, 1.0] -> INVULNERABLE ADV ; left 628
+[61s] R1 [5.0, 3.998, 2.0, 1.0, 0.0, 0.0, 0.0] -> INVULNERABLE ADV ; left 607
+[61s] R1 [0.0, 3.0, 2.0, 6.998, 0.0, 0.0, 0.0] -> INVULNERABLE ADV ; left 599
+[62s] R1 [0.0, 3.0, 1.998, 7.0, 0.0, 0.0, 0.0] -> INVULNERABLE ADV ; left 598
+[62s] R1 [0.0, 3.998, 6.0, 2.0, 0.0, 0.0, 0.0] -> INVULNERABLE ADV ; left 595
+[64s] R1 [5.331333, 0.0, 6.666667, 0.0, 0.0, 0.0, 0.0] -> INFEASIBLE  ; left 594
+[65s] R1 [0.0, 3.998, 3.0, 5.0, 0.0, 0.0, 0.0] -> INVULNERABLE ADV ; left 593
+[66s] R1 [0.0, 3.0, 5.998, 3.0, 0.0, 0.0, 0.0] -> INVULNERABLE ADV ; left 584
+[73s] R1 [0.0, 3.331333, 6.666667, 1.0, 0.0, 0.0, 1.0] -> INVULNERABLE ADV ; left 576
+[76s] R1 [0.0, 2.998, 2.0, 7.0, 0.0, 0.0, 0.0] -> INVULNERABLE ADV ; left 566
+[76s] R1 [0.0, 3.331333, 6.666667, 1.0, 0.0, 1.0, 0.0] -> INVULNERABLE ADV ; left 565
+[77s] R1 [3.0, 1.331333, 6.666667, 0.0, 1.0, 0.0, 0.0] -> INFEASIBLE  ; left 564
+[78s] R1 [0.0, 3.331333, 6.666667, 1.0, 1.0, 0.0, 0.0] -> INFEASIBLE  ; left 563
+[79s] R1 [0.0, 4.0, 0.998, 7.0, 0.0, 0.0, 0.0] -> INVULNERABLE ADV ; left 560
+[79s] R1 [0.0, 3.998, 0.0, 7.0, 0.0, 1.0, 0.0] -> INVULNERABLE ADV ; left 552

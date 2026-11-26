@@ -1,0 +1,37 @@
+states 5139 requests 113111
+covered by all ADV states: 113111
+frames ['FGKM1'] : invulnerable states 5092 ; requests still refuted 113103 of 113111
+frames ['EGKM1'] : invulnerable states 4797 ; requests still refuted 111427 of 113111
+frames ['EFKM1'] : invulnerable states 5004 ; requests still refuted 112838 of 113111
+frames ['EFGM1'] : invulnerable states 4690 ; requests still refuted 112713 of 113111
+frames ['FGKM1', 'EGKM1', 'EFKM1', 'EFGM1'] : invulnerable states 4286 ; requests still refuted 110756 of 113111
+   unrefuted R1 {'X': np.float64(0.0), 'Y': np.float64(0.498), 'A': np.float64(7.0), 'B': np.float64(0.5), 'Ep': np.float64(1.5), 'Fd': np.float64(0.5), 'Gd': np.float64(2.0)}
+   unrefuted R1 {'X': np.float64(0.0), 'Y': np.float64(0.498), 'A': np.float64(7.0), 'B': np.float64(1.0), 'Ep': np.float64(1.5), 'Fd': np.float64(0.0), 'Gd': np.float64(2.0)}
+   unrefuted R1 {'X': np.float64(0.0), 'Y': np.float64(0.498), 'A': np.float64(7.0), 'B': np.float64(1.5), 'Ep': np.float64(0.0), 'Fd': np.float64(1.0), 'Gd': np.float64(2.0)}
+   unrefuted R1 {'X': np.float64(0.0), 'Y': np.float64(0.498), 'A': np.float64(7.0), 'B': np.float64(2.0), 'Ep': np.float64(0.0), 'Fd': np.float64(0.5), 'Gd': np.float64(2.0)}
+   unrefuted R1 {'X': np.float64(0.0), 'Y': np.float64(0.498), 'A': np.float64(7.0), 'B': np.float64(2.5), 'Ep': np.float64(0.0), 'Fd': np.float64(0.0), 'Gd': np.float64(2.0)}
+   unrefuted R1 {'X': np.float64(0.0), 'Y': np.float64(0.5), 'A': np.float64(7.0), 'B': np.float64(0.498), 'Ep': np.float64(1.5), 'Fd': np.float64(0.5), 'Gd': np.float64(2.0)}
+   unrefuted R1 {'X': np.float64(0.0), 'Y': np.float64(0.5), 'A': np.float64(7.0), 'B': np.float64(0.5), 'Ep': np.float64(0.0), 'Fd': np.float64(0.0), 'Gd': np.float64(2.0)}
+   unrefuted R1 {'X': np.float64(0.0), 'Y': np.float64(0.5), 'A': np.float64(7.0), 'B': np.float64(0.5), 'Ep': np.float64(0.0), 'Fd': np.float64(0.5), 'Gd': np.float64(2.0)}
+   unrefuted R1 {'X': np.float64(0.0), 'Y': np.float64(0.5), 'A': np.float64(7.0), 'B': np.float64(0.5), 'Ep': np.float64(0.0), 'Fd': np.float64(1.0), 'Gd': np.float64(2.0)}
+   unrefuted R1 {'X': np.float64(0.0), 'Y': np.float64(0.5), 'A': np.float64(7.0), 'B': np.float64(0.5), 'Ep': np.float64(1.5), 'Fd': np.float64(0.0), 'Gd': np.float64(2.0)}
+   unrefuted R1 {'X': np.float64(0.0), 'Y': np.float64(0.5), 'A': np.float64(7.0), 'B': np.float64(0.998), 'Ep': np.float64(1.5), 'Fd': np.float64(0.0), 'Gd': np.float64(2.0)}
+   unrefuted R1 {'X': np.float64(0.0), 'Y': np.float64(0.5), 'A': np.float64(7.0), 'B': np.float64(1.0), 'Ep': np.float64(0.0), 'Fd': np.float64(0.0), 'Gd': np.float64(2.0)}
+   unrefuted R1 {'X': np.float64(0.0), 'Y': np.float64(0.5), 'A': np.float64(7.0), 'B': np.float64(1.0), 'Ep': np.float64(0.0), 'Fd': np.float64(0.5), 'Gd': np.float64(2.0)}
+   unrefuted R1 {'X': np.float64(0.0), 'Y': np.float64(0.5), 'A': np.float64(7.0), 'B': np.float64(1.0), 'Ep': np.float64(0.0), 'Fd': np.float64(1.0), 'Gd': np.float64(2.0)}
+   unrefuted R1 {'X': np.float64(0.0), 'Y': np.float64(0.5), 'A': np.float64(7.0), 'B': np.float64(1.498), 'Ep': np.float64(0.0), 'Fd': np.float64(1.0), 'Gd': np.float64(2.0)}
+   unrefuted R1 {'X': np.float64(0.0), 'Y': np.float64(0.5), 'A': np.float64(7.0), 'B': np.float64(1.5), 'Ep': np.float64(0.0), 'Fd': np.float64(0.0), 'Gd': np.float64(2.0)}
+   unrefuted R1 {'X': np.float64(0.0), 'Y': np.float64(0.5), 'A': np.float64(7.0), 'B': np.float64(1.5), 'Ep': np.float64(0.0), 'Fd': np.float64(0.5), 'Gd': np.float64(2.0)}
+   unrefuted R1 {'X': np.float64(0.0), 'Y': np.float64(0.5), 'A': np.float64(7.0), 'B': np.float64(1.998), 'Ep': np.float64(0.0), 'Fd': np.float64(0.5), 'Gd': np.float64(2.0)}
+   unrefuted R1 {'X': np.float64(0.0), 'Y': np.float64(0.5), 'A': np.float64(7.0), 'B': np.float64(2.0), 'Ep': np.float64(0.0), 'Fd': np.float64(0.0), 'Gd': np.float64(2.0)}
+   unrefuted R1 {'X': np.float64(0.0), 'Y': np.float64(0.5), 'A': np.float64(7.0), 'B': np.float64(2.498), 'Ep': np.float64(0.0), 'Fd': np.float64(0.0), 'Gd': np.float64(2.0)}
+most vulnerable [3.5, 1.498, 0.0, 3.75, 0.002, 0.0, 0.0, 5.25] {'EFGKM1': 11.999, 'FGKM1': 11.834, 'EGKM1': 9.667, 'EFKM1': 12.25, 'EFGM1': 12.375}
+most vulnerable [2.5, 2.498, 0.0, 3.583, 0.002, 0.0, 0.0, 5.417] {'EFGKM1': 11.999, 'FGKM1': 11.056, 'EGKM1': 9.667, 'EFKM1': 12.194, 'EFGM1': 12.0}
+most vulnerable [0.5, 4.498, 0.0, 6.083, 0.002, 0.083, 0.502, 2.331] {'EFGKM1': 11.999, 'FGKM1': 11.75, 'EGKM1': 9.834, 'EFKM1': 13.083, 'EFGM1': 12.167}
+most vulnerable [5.0, 0.0, 2.083, 1.667, 0.0, 0.0, 0.0, 5.25] {'EFGKM1': 12.0, 'FGKM1': 12.223, 'EGKM1': 9.917, 'EFKM1': 12.25, 'EFGM1': 11.667}
+most vulnerable [5.0, 0.0, 0.25, 3.5, 0.0, 0.0, 0.0, 5.25] {'EFGKM1': 12.0, 'FGKM1': 12.834, 'EGKM1': 9.917, 'EFKM1': 12.25, 'EFGM1': 12.25}
+most vulnerable [2.0, 3.0, 3.75, 0.0, 0.0, 0.0, 0.0, 5.25] {'EFGKM1': 12.5, 'FGKM1': 11.501, 'EGKM1': 12.25, 'EFKM1': 10.0, 'EFGM1': 12.75}
+most vulnerable [1.0, 4.0, 3.75, 0.0, 0.0, 0.0, 0.0, 5.25] {'EFGKM1': 12.5, 'FGKM1': 12.167, 'EGKM1': 12.25, 'EFKM1': 10.0, 'EFGM1': 13.251}
+most vulnerable [3.75, 0.5, 3.75, 0.0, 0.75, 0.0, 0.75, 4.5] {'EFGKM1': 12.125, 'FGKM1': 10.75, 'EGKM1': 12.0, 'EFKM1': 10.0, 'EFGM1': 11.876}
+most vulnerable [2.498, 2.0, 3.75, 0.0, 0.502, 0.0, 0.0, 5.25] {'EFGKM1': 12.249, 'FGKM1': 10.834, 'EGKM1': 12.25, 'EFKM1': 10.0, 'EFGM1': 11.833}
+most vulnerable [2.498, 2.0, 3.75, 0.0, 0.502, 0.0, 0.0, 5.25] {'EFGKM1': 12.249, 'FGKM1': 10.834, 'EGKM1': 12.25, 'EFKM1': 10.0, 'EFGM1': 11.833}
