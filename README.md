@@ -1,5 +1,7 @@
 # Erdős Problem #644: research toward a full resolution
 
+> **Status (26 November 2026): the research phase has concluded. The problem is not solved.** Verified contributions: every k-uniform (7,2)-family on n ≤ 2k points has τ ≤ (3n+3k+21)/11 (slope 3/11 in n − 7k/4, previously 1/3), and near n = 7k/4 (n ≤ 1.794k) the slope is 1/5 + o(1) via Frankl–Wilson; neither improves the published bound f(k,7) ≤ ⌈7k/8⌉. Start with [`reports/FINAL_SUMMARY.md`](reports/FINAL_SUMMARY.md).
+
 **Question.** Let $f(k,7)$ be the largest transversal number of a $k$-uniform family in which every at most seven members can be pierced by two points. Erdős asked whether $f(k,7) = (3/4 + o(1))\,k$.
 **Known before this project:** $f(k,7) \le \lceil 7k/8 \rceil$, and $f(4m,7) \ge 3m+1$ for $m \ge 10$ (Fon-Der-Flaass, Kostochka, Woodall, *Discrete Math.* 207, 1999). Problem page: <https://www.erdosproblems.com/644>.
 
@@ -9,6 +11,8 @@
 
 | If you want… | Read |
 |---|---|
+| **The final summary**: what is certain, what is only hand-checked, what is open | [`reports/FINAL_SUMMARY.md`](reports/FINAL_SUMMARY.md) ([PDF](reports/FINAL_SUMMARY.pdf)) |
+| The paper draft: main theorem (slope 3/11), classification, structured families, small values | [`reports/PAPER.pdf`](reports/PAPER.pdf) ([source](reports/PAPER.tex)) |
 | **The current progress report** (results, status tags, what remains: Statement (S)) | [`reports/PROGRESS.pdf`](reports/PROGRESS.pdf) ([source](reports/PROGRESS.tex)) |
 | An earlier summary (confined-game era) | [`reports/STATUS_REPORT.pdf`](reports/STATUS_REPORT.pdf) ([source](reports/STATUS_REPORT.tex)) |
 | The status of every individual claim | [`notes/LEDGER.md`](notes/LEDGER.md) |
