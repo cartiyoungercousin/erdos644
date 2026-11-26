@@ -1,0 +1,4 @@
+  iter 1: |S|=168 remove [53, 54, 55, 56, 57]
+  iter 2: |S|=163 remove []
+ADVERSARY survives
+S* = 163 [0-52,58-167]/168

@@ -1,0 +1,8 @@
+answers checked 10560, worst value 0.85417 at {'X': 0.0, 'Y': 0.16666666666666666, 'Z': 0.0, 'E': 0.375, 'F': 0.4583333333333333, 'G': 0.0}, t=0.85200 -> SPOILED
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();

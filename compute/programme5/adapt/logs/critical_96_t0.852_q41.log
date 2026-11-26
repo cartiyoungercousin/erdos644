@@ -1,0 +1,4 @@
+S* = [0-27,34-43,46-95]/96
+q=41/96 box (34, 35): 67 surviving answers
+  answer (22,35)/96: candidate closure U={'X': 0.0, 'Y': 0.0, 'Z': np.float64(0.3646), 'E': 0.3333, 'F': 0.0833, 'G': np.float64(0.0708)}
+  answer (21,35)/96: candidate closure U={'X': 0.0, 'Y': 0.0417, 'Z': np.float64(0.3646), 'E': 0.3333, 'F': 0.0417, 'G': np.float64(0.0708)}
