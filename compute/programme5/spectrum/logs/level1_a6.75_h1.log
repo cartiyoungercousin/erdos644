@@ -1,0 +1,9 @@
+alpha=6.75 beta=7.25 t=11.98 (units k/14), grid 1: 5432 requests
+max excess of min eff over t: 1.2500 at R(X,Y,A,B,Ep,Fd,Gd)=(np.float64(2.0), np.float64(0.73), np.float64(2.0), 7.25, 0, 0.0, 0.0); requests with excess > 0: 141
+among requests containing all of X or all of Y: max excess 0.2700 at (np.float64(6.0), np.float64(0.98), np.float64(2.0), np.float64(3.0), 0, 0.0, 0.0); with excess > 0: 21
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();

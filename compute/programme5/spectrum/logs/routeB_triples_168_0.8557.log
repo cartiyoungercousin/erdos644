@@ -1,0 +1,10 @@
+G=168 t=0.85570: ADVERSARY, S* = [0-45,60-73,80-167]/168
+critical triple (X,Y,Z)=(72,60,0)/168 closes: False
+  alpha=72/168 beta=96/168: {'FGK': False, 'EGK': False, 'EFK': False}
+  alpha=73/168 beta=95/168: {'FGK': False, 'EGK': False, 'EFK': False}
+  alpha=80/168 beta=88/168: {'FGK': False, 'EGK': False, 'EFK': False}
+  alpha=81/168 beta=87/168: {'FGK': False, 'EGK': False, 'EFK': False}
+  alpha=82/168 beta=86/168: {'FGK': False, 'EGK': False, 'EFK': False}
+  alpha=83/168 beta=85/168: {'FGK': False, 'EGK': False, 'EFK': False}
+  alpha=84/168 beta=84/168: {'FGK': False, 'EGK': False, 'EFK': False}
+legal Theorem-P K: 7; with some closing drop-triple: 0
