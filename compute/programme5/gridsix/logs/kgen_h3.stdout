@@ -1,0 +1,6 @@
+R0 A families ['XAH', 'YBH', 'XA', 'YB'] box (q lo,hi, y lo,hi, z lo,hi) (6.0833, 6.0834, 5.0, 5.0, 0.0, 0.5) t 11.97 krange hand
+it 0: triple (6.0833, 5.0, 0.0) K {'EK': 0.363, 'FK': 6.97, 'GK': 6.667} mu 3.0000 | K-closed by ['EFGK'] (18s)
+it 5: triple (6.0834, 5.0, 0.0) K {'FK': 6.97, 'GK': 7.03} mu 1.1434 | escaped [] (223s)
+it 10: triple (6.0834, 5.0, 0.3633) K {'FK': 6.97, 'GK': 7.03} mu 1.1434 | escaped ['XA'] (639s)
+it 15: triple (6.0834, 5.0, 0.5) K {'FK': 6.97, 'GK': 7.03} mu 1.1434 | escaped [] (1060s)
+it 20: triple (6.0834, 5.0, 0.0) K {'FK': 6.97, 'GK': 7.03} mu 1.1434 | escaped [] (1831s)

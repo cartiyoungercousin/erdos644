@@ -1,0 +1,12 @@
+R0 A families [] box (q lo,hi, y lo,hi, z lo,hi) (6.0, 6.0834, 5.0, 5.0834, 0.0, 0.97) t 11.97 krange comp
+it 0: triple (6.0, 5.0, 0.0) K {'K': 14.0} mu 3.0000 | K-closed by ['EFGK', 'FGK', 'EGK', 'EFK'] (10s)
+it 5: triple (6.0, 5.0, 0.0) K {'FK': 5.0, 'GK': 9.0} mu 3.0000 | K-closed by ['EFGK'] (147s)
+it 10: triple (6.0, 5.0573, 0.9127) K {'EK': 0.778, 'FK': 7.087, 'GK': 3.231, 'K': 2.904} mu 1.1164 | K-closed by ['EFGK', 'EGK'] (246s)
+it 15: triple (6.0834, 5.0834, 0.8032) K {'EK': 0.078, 'FK': 6.667, 'GK': 7.255, 'K': 0.0} mu 0.3801 | K-closed by ['EFGK'] (340s)
+it 20: triple (6.0, 5.0834, 0.1999) K {'FK': 7.113, 'GK': 0.323, 'K': 6.564} mu 0.2268 | K-closed by ['EFGK', 'EGK'] (435s)
+it 25: triple (6.0, 5.0806, 0.8894) K {'EK': 2.478, 'FK': 7.111, 'GK': 1.522, 'K': 2.889} mu 0.2213 | K-closed by ['EFGK', 'EGK'] (528s)
+it 30: triple (6.0, 5.0834, 0.4413) K {'EK': 2.827, 'FK': 6.986, 'GK': 0.042, 'K': 4.145} mu 0.0998 | K-closed by ['EFGK', 'EGK'] (627s)
+it 35: triple (6.0198, 5.0, 0.9502) K {'EK': 2.367, 'FK': 6.999, 'GK': 1.651, 'K': 2.983} mu 0.0286 | K-closed by ['EFGK', 'EGK'] (714s)
+it 40: triple (6.0, 5.0794, 0.2943) K {'EK': 2.921, 'FK': 6.892, 'GK': 0.072, 'K': 4.115} mu 0.0011 | K-closed by ['EFGK', 'EGK'] (795s)
+it 42: adversary INFEASIBLE; plans K 80, M1 {} (815s)
+RESULT INFEASIBLE

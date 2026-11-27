@@ -13,7 +13,7 @@ common fresh point of the later answers, which no request can contain) -- encode
 His joint MILP: (q, y, z) in the box, K, and one M1 per family, escaping every plan.  INFEASIBLE = every triple in
 the box closes against every K.
 usage: py kgen.py tag R0type fams qlo,qhi,ylo,yhi,zlo,zhi [delta]"""
-import sys, json, time, itertools
+import sys, os, json, time, itertools
 from ortools.linear_solver import pywraplp
 from cover import min_t
 import cover as _cv
@@ -43,6 +43,13 @@ R0TYPES = {
 FAMS = {'XAH': (['GK', 'EK', 'K'], 'EF'), 'YBH': (['FK', 'EK', 'K'], 'EG'), 'XA': (['GK'], 'EF'), 'YB': (['FK'], 'EG'),
         'XAY': (['GK', 'EGK', 'EK', 'K'], 'EF'), 'YBX': (['FK', 'EFK', 'EK', 'K'], 'EG'),
         'XAZ': (['GK', 'FGK', 'EK', 'K'], 'EF'), 'YBZ': (['FK', 'FGK', 'EK', 'K'], 'EG')}
+
+
+def enc1(a): return '%s|%d' % a
+
+
+def dec(x):
+    c, b = x.rsplit('|', 1); return (c, int(b))
 
 
 def inm(atom, m):
@@ -100,9 +107,22 @@ def band(sv, T_):
 
 
 class KGen:
-    def __init__(s, r0type, fams, box, t):
-        s.r0 = R0TYPES[r0type]; s.fams = fams; s.box = box; s.t = t
-        s.kplans = []; s.mplans = {f: [] for f in fams}
+    def __init__(s, r0type, fams, box, t, krange='all', plan_file=None):
+        s.r0 = R0TYPES[r0type]; s.fams = fams; s.box = box; s.t = t; s.krange = krange
+        s.kplans = []; s.mplans = {f: [] for f in fams}; s.pf = plan_file
+        if plan_file and os.path.exists(plan_file):          # resume: reload plans written so far
+            for line in open(plan_file):
+                d = json.loads(line); vec = {dec(a): v for a, v in d['vec'].items()}; need = [dec(a) for a in d['need']]
+                item = (d['frame'], d['r'], vec, need)
+                if d['lvl'] == 'K': s.kplans.append(item)
+                elif d['lvl'] in s.mplans: s.mplans[d['lvl']].append(item)
+        s.pfh = open(plan_file, 'a') if plan_file else None
+
+    def save(s, lvl, item):
+        if s.pfh:
+            fr, r, vec, need = item
+            s.pfh.write(json.dumps({'lvl': lvl, 'frame': fr, 'r': r, 'vec': {enc1(a): v for a, v in vec.items()},
+                                    'need': [enc1(a) for a in need]}) + chr(10)); s.pfh.flush()
 
     def model(s, tl=170, fix=None):
         sv = pywraplp.Solver.CreateSolver('SCIP'); t = s.t
@@ -120,6 +140,11 @@ class KGen:
         S['K'] = ko
         sv.Add(sum(k.values()) + ko == 14)
         for P in 'EFG': band(sv, sum(k[b] for b in BASE if P in b))
+        if s.krange == 'hand':        # E-frame-forced ranges (class A): |K&F'| > t - y, |K&G'| > t - q
+            sv.Add(k['F'] >= t - y + 1e-6); sv.Add(k['G'] >= t - q + 1e-6)
+        elif s.krange == 'comp':      # the complement: |K&F'| <= t - y or |K&G'| <= t - q
+            w = sv.BoolVar('comp')
+            sv.Add(k['F'] <= t - y + 80 * w); sv.Add(k['G'] <= t - q + 80 * (1 - w))
         mu = sv.NumVar(0, 3, 'mu')
         def esc(plans, size):
             for frame, r, vec, need in plans:
@@ -190,7 +215,7 @@ class KGen:
         kclose = []
         for fr, r in FR_K.items():
             p = best_plan(at, fr, r, s.poss_K(), t)
-            if p: s.kplans.append((fr, r, p[0], p[1])); added += 1; kclose.append(fr)
+            if p: s.kplans.append((fr, r, p[0], p[1])); s.save('K', s.kplans[-1]); added += 1; kclose.append(fr)
         if kclose: return added, 'K-closed by %s' % kclose
         escaped = []
         for f in s.fams:
@@ -199,7 +224,7 @@ class KGen:
             atm = matoms(S, m1, o1); got = 0
             for fr, r in FR_M.items():
                 p = best_plan(atm, fr, r, s.poss_M(f), t)
-                if p: s.mplans[f].append((fr, r, p[0], p[1])); added += 1; got += 1
+                if p: s.mplans[f].append((fr, r, p[0], p[1])); s.save(f, s.mplans[f][-1]); added += 1; got += 1
             if not got: escaped.append(f)
         return added, 'escaped %s' % escaped
 
@@ -231,11 +256,13 @@ class KGen:
 if __name__ == '__main__':
     tag, r0type, fams, box = sys.argv[1], sys.argv[2], sys.argv[3].split(','), tuple(float(x) for x in sys.argv[4].split(','))
     delta = float(sys.argv[5]) if len(sys.argv) > 5 else 0.002
-    lf = open('logs/kgen_%s.out' % tag, 'w')
+    lf = open('logs/kgen_%s.out' % tag, 'a')
     def log(*a):
         m = ' '.join(map(str, a)); print(m, flush=True); lf.write(m + '\n'); lf.flush()
-    log('R0', r0type, 'families', fams, 'box (q lo,hi, y lo,hi, z lo,hi)', box, 't', 12 - delta)
-    g = KGen(r0type, fams, box, 12 - delta)
+    kr = os.environ.get('KRANGE', 'all')
+    fams = [f for f in fams if f in FAMS]
+    log('R0', r0type, 'families', fams, 'box (q lo,hi, y lo,hi, z lo,hi)', box, 't', 12 - delta, 'krange', kr)
+    g = KGen(r0type, fams, box, 12 - delta, krange=kr, plan_file='logs/kgen_%s.plans.jsonl' % tag)
     res, extra = g.run(log)
     log('RESULT', res)
     g.dump('logs/kgen_%s.json' % tag, res, extra)

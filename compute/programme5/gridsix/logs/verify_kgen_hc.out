@@ -1,0 +1,4 @@
+hc R0 A fams [] box (6.0, 6.0834, 5.0, 5.0834, 0.0, 0.97) t 11.97 krange comp
+  plans: K 80, M1 {}; coverage/dead violations 0
+  independent SCIP re-solve (margin 1e-6): INFEASIBLE 
+  VERDICT OK

@@ -369,3 +369,68 @@ Each row adds one conditional move to the unchanged S-game (G = 168, ν = 3): ev
 3. Once every survivor at q = 72, 73 is certified closed, replace the YMAX/QHI condition in `sgame_cond.py` by
    the certified set. Rerun at t = .855 and report t* ≤ .855.
 - Nothing committed.
+
+## 12. Round 5: certified closures at q = 72, 73 — PARTIAL (runs continuing in the background)
+
+### 12.0 Headline (pre-registered form)
+**STILL 6/7 (no certified t* yet).** No surviving answer has been shown to escape, but the closures of the
+q = 72, 73 survivors are not finished. §12.3 says what is certified, what is running, and how to finish.
+
+### 12.1 kgen upgrades
+- **K-range option** (env `KRANGE`):
+  - `hand` imposes the E-frame-forced ranges |K∩F′| > t − y and |K∩G′| > t − q;
+  - `comp` restricts K to the complement and uses K-level plans only.
+  - A `comp` certificate makes the `hand` runs rigorous without the hand lemma.
+- **Incremental plans**: every plan is appended to `logs/kgen_<tag>.plans.jsonl` and reloaded on restart (same
+  tag), so a resume does not start from scratch.
+- **Checker `verify_kgen.py`** (independent code). It checks:
+  - coverage of every plan on its support, and the dead-atom rule;
+  - a fresh SCIP model of the joint adversary (triple box, K, krange, one M1 per family with the applicability
+    and cap switches).
+- **Tie tolerance.** The checker counts a plan as closing when its largest request is ≤ t + 10⁻⁶ (in k/14):
+  - kgen's CEGAR uses 10⁻⁵; at margin 10⁻⁷ the checker finds only numerical ties.
+  - Example: at (6, 5.0077, 0.9623) with |K∩F′| = t − y exactly, the EFGK plan's value is t + 10⁻⁷, while a
+    fresh EGK+4 plan closes at 11.81.
+  - So certificates are at t + 10⁻⁶·k/14.
+
+### 12.2 Certified so far [computed exact; re-checked]
+- **hc**: K-level plans only (80 plans), box q ∈ [6, 6.0834], y ∈ [5, 5.0834], z ∈ [0, .97] ∩ class-A, t = 11.97.
+  Every K outside the hand ranges closes; `verify_kgen`: 0 violations, independent SCIP INFEASIBLE.
+  - So the hand ranges are no longer an assumption on the class-A part of the survivor set.
+- Earlier: §10.1 (limit triple, δ = .002), §11 / `verify_kstagew` (triple (6, 5, 0.5), δ = .002).
+  - These are at δ = .002, not at the S-game's t = .855; they show the mechanism but do not enter §12.4.
+
+### 12.3 Running at write-up (δ = .03, t = 11.97; 7 processes, plans saved incrementally)
+
+| tag | R0 | box (q; y; z) | families | progress |
+|---|---|---|---|---|
+| h1 | A, hand | 6; [5, 5.0834]; [0, .5] | 4 | it 15, μ 1.31, 214 plans |
+| h2 | A, hand | 6; [5, 5.0834]; [.5, .97] | 4 | it 20, μ .95, 246 plans |
+| h3 | A, hand | 6.0833; 5; [0, .5] | 4 | it 15, μ 1.14, 209 plans |
+| h4 | A, hand | 6.0833; 5; [.5, .887] | 4 | it 15, μ 2.17, 202 plans |
+| z1 | noZ | 6; [5, 5.0834]; [.8, 2] | 8 | it 35, μ .29, 212 plans |
+| z2 | noZ | 6; [5, 5.0834]; [2, 3.1667] | 8 | it 15, μ 1.16, 271 plans |
+| z3 | noZ | 6.0833; 5; [.8, 3.1667] | 8 | it 15, μ 1.55, 178 plans |
+
+- These boxes cover every q = 72, 73 survivor of §11.2 up to E↔F symmetry:
+  - q = 72: y ∈ {60, 61}, z ≤ 38;
+  - q = 73: y = 60, z ≤ 38.
+- Each box certifies only its part where its first request is valid: class A needs q + y + z ≤ t, noZ needs
+  q + y ≤ t.
+- In the noZ boxes some families escape at some K (XAH, XAY), but no K has escaped all eight so far.
+- Iterations take 1–3 min (seven SCIP jobs alongside other runs), and μ is still far from 0. Expect hours.
+
+### 12.4 Finishing
+1. Let the seven runs finish. If a run is stopped, restart it with the same command and tag: it reloads its plans.
+   The commands are in the first line of each `logs/kgen_<tag>.out`; KRANGE=hand for h1–h4.
+2. `py -3.14 verify_kgen.py <tag>` for each INFEASIBLE run.
+3. Write `logs/certs_t855.json` as a list of {tag, R0, box, t: 11.97} for the verified runs. Then
+   `py -3.14 sgame_cert.py 168 3 0.855 logs/certs_t855.json`. This marks exactly the certified grid triples and
+   all their permutations.
+   - Requester ⇒ **NEW CAP t* ≤ .855** (up to the 10⁻⁶ tie tolerance).
+   - Adversary ⇒ the S* it prints names the pair that still escapes.
+4. If a run reports SURVIVES, the K and M1 it prints are the adversary's answer at that triple. Add first-request
+   types (A_G, partY, partX exist in kgen) and rerun that box.
+- Nothing committed.
+- PIDs at write-up: h1 42892, h2 36472, h3 44196, h4 10136, z1 24300, z2 10376, z3 18472.
+- To stop them: `Stop-Process -Id <pid>`. The plans are already on disk.
