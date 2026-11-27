@@ -15,3 +15,4 @@ RESULT TIMEOUT
 R0 A families ['XAH', 'YBH', 'XA', 'YB'] box (q lo,hi, y lo,hi, z lo,hi) (6.0, 6.0, 5.0, 5.0834, 0.0, 0.5) t 11.97 krange hand
 it 0: adversary TIMEOUT -> retry as feasibility problem, time limit 1200s
 it 0: triple (6.0, 5.0568, 0.5) K {'EK': 0.0, 'FK': 6.956, 'GK': 7.044, 'K': 0.0} mu 0.0000 | escaped [] (666s)
+R0 A families ['XAH', 'YBH', 'XA', 'YB'] box (q lo,hi, y lo,hi, z lo,hi) (6.0, 6.0, 5.0, 5.0834, 0.0, 0.5) t 11.97 krange hand

@@ -466,3 +466,8 @@ and a restart with the §12.5 commands resumes them.
   - the class-A complement mode at t = 0.855 closes (§12).
 - **Conditional [computed, grid]:** t* ≤ .855 follows once every surviving answer at q = 72/168 and q = 73/168 is
   closed (§11). That closure was in progress when the work was stopped.
+- Update: the seven processes and the status waiter were found terminated, with no RESULT and not by this session's
+  commands (external stop).
+- Plans saved by then: h1 502, h2 462, h3 466, h4 526, z1 537, z2 487, z3 258.
+- All seven were restarted from those plans with the same commands. New PIDs: h1 21816, h2 38496, h3 14568,
+  h4 35664, z1 8508, z2 36448, z3 36520.

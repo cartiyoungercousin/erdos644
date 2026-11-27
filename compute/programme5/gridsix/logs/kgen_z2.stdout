@@ -15,3 +15,4 @@ R0 noZ families ['XAH', 'YBH', 'XA', 'YB', 'XAY', 'YBX', 'XAZ', 'YBZ'] box (q lo
 it 0: triple (6.0, 5.0, 2.6567) K {'FGK': 1.592, 'EK': 2.657, 'FK': 3.408, 'GK': 6.343, 'K': 0.0} mu 0.3088 | K-closed by ['EFGK'] (623s)
 it 5: adversary TIMEOUT -> retry as feasibility problem, time limit 1200s
 it 5: triple (6.0, 5.0696, 2.0) K {'FGK': 1.781, 'EK': 0.968, 'FK': 5.1, 'GK': 4.303, 'K': 1.849} mu 0.0000 | K-closed by ['EFGK'] (4012s)
+R0 noZ families ['XAH', 'YBH', 'XA', 'YB', 'XAY', 'YBX', 'XAZ', 'YBZ'] box (q lo,hi, y lo,hi, z lo,hi) (6.0, 6.0, 5.0, 5.0834, 2.0, 3.1667) t 11.97 krange all
