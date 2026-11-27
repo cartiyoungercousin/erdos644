@@ -1,0 +1,11 @@
+R0 A families ['XAH', 'YBH', 'XA', 'YB'] box (q lo,hi, y lo,hi, z lo,hi) (6.0833, 6.0834, 5.0, 5.0, 0.45, 0.887) t 11.97
+it 0: triple (6.0833, 5.0, 0.45) K {'EK': 2.917, 'FK': 3.75, 'GK': 3.75, 'K': 3.583} mu 3.0000 | K-closed by ['EFGK', 'FGK', 'EGK', 'EFK'] (11s)
+it 5: triple (6.0833, 5.0, 0.45) K {'EK': 1.038, 'FK': 3.75, 'GK': 8.55, 'K': 0.662} mu 3.0000 | K-closed by ['EFGK'] (91s)
+it 10: triple (6.0833, 5.0, 0.8867) K {'EK': 0.195, 'FK': 6.083, 'GK': 7.722} mu 0.1948 | K-closed by ['EFGK'] (196s)
+it 15: triple (6.0833, 5.0, 0.45) K {'FK': 7.03, 'GK': 3.272, 'K': 3.698} mu 0.0600 | K-closed by ['EFGK', 'EGK'] (282s)
+it 20: triple (6.0833, 5.0, 0.8867) K {'FK': 7.03, 'GK': 6.97} mu 0.0600 | K-closed by ['EGK'] (392s)
+it 25: triple (6.0833, 5.0, 0.5031) K {'EK': 2.871, 'FK': 7.03, 'GK': 3.043, 'K': 1.056} mu 0.0600 | K-closed by ['EFGK', 'EGK'] (556s)
+it 30: triple (6.0833, 5.0, 0.45) K {'EK': 0.593, 'FK': 7.03, 'GK': 5.321, 'K': 1.056} mu 0.0600 | K-closed by ['EFGK'] (729s)
+it 35: triple (6.0833, 5.0, 0.5031) K {'EK': 0.0, 'FK': 7.03, 'GK': 6.667, 'K': 0.303} mu 0.0600 | escaped [] (876s)
+it 40: triple (6.0833, 5.0, 0.6253) K {'EK': 2.917, 'FK': 7.03, 'GK': 1.051, 'K': 3.002} mu 0.0600 | K-closed by ['EFGK', 'EGK'] (1058s)
+it 45: triple (6.0833, 5.0, 0.5031) K {'EK': 0.325, 'FK': 7.03, 'GK': 6.083, 'K': 0.562} mu 0.0600 | escaped [] (1308s)

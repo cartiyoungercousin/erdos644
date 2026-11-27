@@ -6,12 +6,18 @@ import sys, os, numpy as np
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'adapt'))
 import sgame
 G = int(sys.argv[1]); nu = float(sys.argv[2]); zmax = float(sys.argv[3])
+import os as _os
+YMAX = float(_os.environ.get('YMAX', '-1'))   # if >= 0: mark every triple with q in the window, y <= YMAX, z <= zmax
 T3 = sgame.load_static(G); gm = sgame.Game(G, T3)
 orig = gm.closes
 def closes(S, t):
     CL, lem, Hv = orig(S, t)
     X, Y, Z = gm.X, gm.Y, gm.Z; e = sgame.EPS
     crit = (X > t / 2 + e) & (X <= min(3 - 3 * t, 9 / 7 - t) + e) & (Y > t - 0.5 + e) & (Y <= (2 - t - X) / 2 + e) & (Z <= zmax + e)
+    if YMAX >= 0:
+        QHI = float(_os.environ.get('QHI', '-1'))
+        qhi = (3 - 3 * t) if QHI == 0 else (QHI if QHI > 0 else min(3 - 3 * t, 9 / 7 - t))
+        crit = (X > t / 2 + e) & (X <= qhi + e) & (Y <= YMAX + e) & (Z <= zmax + e)
     return CL | gm.sym(crit), lem, Hv
 gm.closes = closes
 for t in np.linspace(float(sys.argv[4]), float(sys.argv[5]), int(sys.argv[6])):

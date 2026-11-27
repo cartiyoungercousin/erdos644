@@ -1,0 +1,5 @@
+R0 noZ families ['XAH', 'YBH', 'XA', 'YB', 'XAY', 'YBX', 'XAZ', 'YBZ'] box (q lo,hi, y lo,hi, z lo,hi) (6.0, 6.0, 5.0, 5.0, 2.0, 2.0) t 11.97
+it 0: triple (6.0, 5.0, 2.0) K {'FK': 2.03, 'GK': 2.03, 'K': 9.94} mu 3.0000 | K-closed by ['EFGK', 'FGK', 'EGK', 'EFK'] (9s)
+it 5: triple (6.0, 5.0, 2.0) K {'FGK': 2.0, 'EK': 0.912, 'FK': 1.059, 'GK': 7.0, 'K': 3.029} mu 3.0000 | K-closed by ['EFGK'] (136s)
+it 10: triple (6.0, 5.0, 2.0) K {'FGK': 2.0, 'EK': 0.611, 'FK': 5.03, 'GK': 6.359} mu 2.6002 | escaped ['XAH', 'XAY'] (547s)
+it 15: triple (6.0, 5.0, 2.0) K {'FGK': 2.0, 'EK': 0.611, 'FK': 5.03, 'GK': 6.359} mu 2.6002 | escaped ['XAH', 'XAZ', 'YBZ'] (1246s)

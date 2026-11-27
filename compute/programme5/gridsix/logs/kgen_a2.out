@@ -1,0 +1,7 @@
+R0 A families ['XAH', 'YBH', 'XA', 'YB'] box (q lo,hi, y lo,hi, z lo,hi) (6.0, 6.0, 5.0, 5.0834, 0.45, 0.97) t 11.97
+it 0: triple (6.0, 5.0, 0.45) K {'EK': 3.0, 'FK': 3.75, 'GK': 3.75, 'K': 3.5} mu 3.0000 | K-closed by ['EFGK', 'FGK', 'EGK', 'EFK'] (12s)
+it 5: triple (6.0, 5.0, 0.45) K {'FK': 6.97, 'GK': 7.03} mu 3.0000 | K-closed by ['EFGK'] (103s)
+it 10: triple (6.0, 5.0, 0.97) K {'EK': 3.0, 'FK': 0.583, 'GK': 8.03, 'K': 2.387} mu 1.9445 | K-closed by ['EFGK'] (208s)
+it 15: triple (6.0, 5.0, 0.97) K {'EK': 0.665, 'FK': 7.03, 'GK': 6.083, 'K': 0.222} mu 0.7607 | escaped [] (377s)
+it 20: triple (6.0, 5.0, 0.97) K {'EK': 0.665, 'FK': 7.03, 'GK': 6.083, 'K': 0.222} mu 0.7607 | escaped [] (724s)
+it 25: triple (6.0, 5.0, 0.97) K {'EK': 0.665, 'FK': 7.03, 'GK': 6.083, 'K': 0.222} mu 0.7607 | escaped [] (1127s)

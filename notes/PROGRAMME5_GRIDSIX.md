@@ -289,3 +289,83 @@ Spare on E′ means the line K = A_a ∪ B₇ ∪ (E′∩K); all values are [co
   2. Design non-class-A first requests for q + y + z > t and add them as families.
   3. Replace the condition in `sgame_cond.py` by the certified closure set and rescan t.
 - Nothing committed.
+
+## 11. Round 4: what the S-game actually needs, and the general CEGAR — PARTIAL (runs in progress at write-up)
+
+### 11.0 Headline (pre-registered form)
+**STILL 6/7 (no certified t*).** The adversary's surviving line at t = .855 is the old S* = [0-45, 60-73, 80-167]/168
+together with the critical pair q = 73/168.
+- A closure of all its surviving answers would give t* ≤ .855 [computed, grid; conditional].
+- It is not yet certified: §11.3 lists what is closed and what is open.
+
+### 11.1 Exactly which closures move the S-game [computed, grid; `sgame_cond.py`, env YMAX / QHI]
+Each row adds one conditional move to the unchanged S-game (G = 168, ν = 3): every triple with q in the stated set
+(any y, z) is declared closing.
+
+| q declared closing | t = .855 | .856 | .857 |
+|---|---|---|---|
+| (t/2, min(3−3t, 9/7−t)] (= {72}) | ADV, S* = [0-45,60-71,73,80-167] | ADV (same) | ADV (same) |
+| (t/2, 3−3t] (= {72, 73} at .855) | **requester**, S* = [144-167] | ADV (only 72 is in the window) | — |
+| (t/2, .47] or (t/2, 1/2] | **requester** | — | — |
+
+- So the cascade starts iff pair q = 73/168 = .4345, the top of S*'s middle band, also leaves S*. That happens
+  only for t ≤ (3 − 73/168)/3 = .8552.
+- Hence the best this programme can give within the range where S* is known (t ≥ .855) is **t* ≤ .855**,
+  *conditional* on closing every surviving answer at q = 72 and q = 73.
+
+### 11.2 The answers to close [computed, grid; `crit_answers2.py`, `logs/crit_survivors_t0.855.json`]
+- Best DUMP split, minimising the survivors not reachable by a class-A first request:
+  - q = 72: split (60, 61), 115 survivors;
+  - q = 73: split (60, 60), 78 survivors.
+- Up to the E↔F symmetry (y ↔ z), every survivor is (q, y, z) with y ∈ {60, 61}/168 (y = 61 only at q = 72) and
+  z ∈ [0, 38]/168.
+- In k/14 units: q ∈ {6, 6.083}, y ∈ {5, 5.083}, z ∈ [0, 3.17], t = 11.97.
+- Class-A covers z ≤ t − q − y (≤ .97); the rest (z up to 3.17) needs a first request without all of Z.
+
+### 11.3 `kgen.py`: general exact CEGAR
+- Features:
+  - variable triple box (q, y, z);
+  - a chosen first-request type R0 (classes A / A_G / noZ / partY / partYnoZ / partX);
+  - every K (amounts on every cell R0 leaves) and 8 R1 families;
+  - K-level static frames ({E,F,G,K}+3 and drop-one +4), which replace the hand-proved forced ranges;
+  - M1-level drop-one frames;
+  - the "dead atom" rule (an atom in every member of a frame pairs with a fresh common point of the later answers,
+    so it must be empty).
+- Status when stopped (δ = .03, t = 11.97; SCIP; no box finished, no SURVIVES found):
+
+  | run | box / point | R0 | stopped at |
+  |---|---|---|---|
+  | a1 | q = 6, y ∈ [5, 5.083], z ∈ [0, .45] | A | it 30, μ .23 |
+  | a2 | q = 6, y ∈ [5, 5.083], z ∈ [.45, .97] | A | it 25, μ .76 |
+  | a3 | q = 6.083, y = 5, z ∈ [0, .45] | A | it 35, μ .06 |
+  | a4 | q = 6.083, y = 5, z ∈ [.45, .887] | A | it 45, μ .06 |
+  | b1 | (6, 5, 2.0) | noZ, 8 families | it 15; XAH/XAZ/YBZ escape at some K, others close |
+  | b2 | (6, 5, 3.17) | noZ, 8 families | it 15; XAZ/YBZ escape at some K |
+  | sanity | (6, 5, 0⁺), δ = .002 | A (no hand ranges) | it 65, μ .004 |
+
+  - kgen is much slower than kstage (2–3 min per iteration): with no hand-proved K ranges, the K-level plans have
+    to carve out the whole K space.
+  - The plans found are lost (they are dumped only on exit). Resuming means rerunning from scratch. Add the hand
+    ranges as an option to speed it up.
+  - Resume commands:
+
+    `py -3.14 kgen.py a1 A XAH,YBH,XA,YB 6,6,5,5.0834,0,0.45 0.03` (likewise a2–a4, the boxes in the table), and
+
+    `py -3.14 kgen.py b1 noZ XAH,YBH,XA,YB,XAY,YBX,XAZ,YBZ 6,6,5,5,2,2 0.03`.
+- Caveat: kgen INFEASIBLE certifies only box ∩ {R0 valid}; the class-A boxes say nothing about z > t − q − y.
+- **Earlier exact results still stand**:
+  - §10.1: every K closes at the limit triple;
+  - `verify_kstage.py`, generalised (env QYZ), certifies the four kstage_w boxes at (6, 5, 0.5): independent SCIP
+    INFEASIBLE, 0 coverage violations, sampled worst ≤ t − .048 (`logs/verify_kstagew_*.out`).
+
+### 11.4 Resume
+1. Rerun the kgen boxes to completion (logs `logs/kgen_*.out`; certificates are dumped as `logs/kgen_*.json` on exit).
+   A kgen-specific independent checker is still to write: adapt `verify_kstage.py` to the 13-cell model and the
+   K-level plans.
+2. Cover z ∈ [0, 38]/168 completely:
+   - class-A boxes for z ≤ t − q − y;
+   - noZ / partY boxes beyond, adding R0 types if b1/b2 report SURVIVES (then read its K and M1 lines: they are
+     the adversary's line).
+3. Once every survivor at q = 72, 73 is certified closed, replace the YMAX/QHI condition in `sgame_cond.py` by
+   the certified set. Rerun at t = .855 and report t* ≤ .855.
+- Nothing committed.

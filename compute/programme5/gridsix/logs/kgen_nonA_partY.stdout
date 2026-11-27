@@ -1,0 +1,5 @@
+R0 partY families ['XAH', 'YBH', 'XA', 'YB', 'XAY', 'YBX'] box (q lo,hi, y lo,hi, z lo,hi) (6.083, 6.083, 6.0, 6.0, 0.001, 0.001) t 11.97
+it 0: triple (6.083, 6.0, 0.001) K {'K': 14.0} mu 3.0000 | K-closed by ['EFGK', 'FGK', 'EGK', 'EFK'] (8s)
+it 5: triple (6.083, 6.0, 0.001) K {'EK': 1.917, 'FK': 3.75, 'GK': 7.986, 'K': 0.347} mu 3.0000 | K-closed by ['EFGK'] (70s)
+it 10: triple (6.083, 6.0, 0.001) K {'EK': 1.917, 'FK': 6.858, 'GK': 5.225} mu 2.2655 | K-closed by ['EFGK'] (165s)
+it 15: triple (6.083, 6.0, 0.001) K {'EGK': 0.114, 'EK': 0.279, 'FK': 0.0, 'GK': 7.999, 'K': 5.608} mu 2.2260 | K-closed by ['EFGK'] (231s)

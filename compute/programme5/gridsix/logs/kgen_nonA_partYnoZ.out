@@ -1,0 +1,4 @@
+R0 partYnoZ families ['XAH', 'YBH', 'XA', 'YB', 'XAY', 'YBX'] box (q lo,hi, y lo,hi, z lo,hi) (6.083, 6.083, 6.0, 6.0, 0.001, 0.001) t 11.97
+it 0: triple (6.083, 6.0, 0.001) K {'K': 14.0} mu 3.0000 | K-closed by ['EFGK', 'FGK', 'EGK', 'EFK'] (9s)
+it 5: triple (6.083, 6.0, 0.001) K {'EGK': 0.113, 'FGK': 0.001, 'FK': 7.261, 'GK': 4.886, 'K': 1.739} mu 3.0000 | K-closed by ['EFGK'] (137s)
+it 10: triple (6.083, 6.0, 0.001) K {'EGK': 0.113, 'FGK': 0.001, 'FK': 5.887, 'GK': 7.999} mu 2.4528 | escaped ['XAH', 'YBH', 'YB', 'XAY', 'YBX'] (350s)
