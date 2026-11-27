@@ -22,6 +22,7 @@ SPEC = [(0.0, 45 / 12), (5.0, 73 / 12), (80 / 12, 14.0)]
 BASE = ['EF', 'EG', 'FG', 'E', 'F', 'G']
 CELLS = BASE + [b + 'K' for b in BASE] + ['K']
 TINY = 1e-6
+TL0 = float(os.environ.get('KGEN_TL0', '170')); TLMAX = float(os.environ.get('KGEN_TLMAX', '2720'))
 FR_M = {'FGKM': 3, 'EGKM': 3, 'EFKM': 3, 'EFGM': 3, 'EFGKM': 2}
 FR_K = {'EFGK': 3, 'FGK': 4, 'EGK': 4, 'EFK': 4}
 
@@ -124,7 +125,7 @@ class KGen:
             s.pfh.write(json.dumps({'lvl': lvl, 'frame': fr, 'r': r, 'vec': {enc1(a): v for a, v in vec.items()},
                                     'need': [enc1(a) for a in need]}) + chr(10)); s.pfh.flush()
 
-    def model(s, tl=170, fix=None):
+    def model(s, tl=170, fix=None, objective=True):
         sv = pywraplp.Solver.CreateSolver('SCIP'); t = s.t
         qlo, qhi, ylo, yhi, zlo, zhi = s.box
         q = sv.NumVar(qlo, qhi, 'q'); y = sv.NumVar(ylo, yhi, 'y'); z = sv.NumVar(zlo, zhi, 'z')
@@ -187,7 +188,8 @@ class KGen:
                     yy = sv.BoolVar(''); ys.append(yy); sv.Add(L >= t + 1e-5 + mu - 80 * (1 - yy))
                 sv.Add(sum(ys) >= 1)
             M[f] = (m, oo, app)
-        sv.Maximize(mu); sv.SetTimeLimit(int(tl * 1000))
+        if objective: sv.Maximize(mu)
+        sv.SetTimeLimit(int(tl * 1000))
         st = sv.Solve()
         if st == pywraplp.Solver.INFEASIBLE: return 'INFEASIBLE', None
         if st not in (pywraplp.Solver.OPTIMAL, pywraplp.Solver.FEASIBLE): return 'TIMEOUT', None
@@ -231,7 +233,14 @@ class KGen:
     def run(s, log, maxit=400):
         t0 = time.time()
         for it in range(maxit):
-            st, sol = s.model()
+            st, sol = s.model(tl=TL0)
+            tl = TL0
+            while st == 'TIMEOUT' and tl < TLMAX:     # retry: pure feasibility, doubling time limit; never exit on a timeout
+                tl *= 2
+                log('it %d: adversary TIMEOUT -> retry as feasibility problem, time limit %ds' % (it, tl))
+                st, sol = s.model(tl=tl, objective=False)
+            if st == 'TIMEOUT':
+                log('it %d: adversary TIMEOUT at the maximal limit %ds; continuing to retry' % (it, tl)); continue
             if st != 'OK':
                 log('it %d: adversary %s; plans K %d, M1 %s (%.0fs)' % (it, st, len(s.kplans), {f: len(p) for f, p in s.mplans.items()}, time.time() - t0))
                 return st, None

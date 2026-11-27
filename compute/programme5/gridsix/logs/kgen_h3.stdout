@@ -4,3 +4,12 @@ it 5: triple (6.0834, 5.0, 0.0) K {'FK': 6.97, 'GK': 7.03} mu 1.1434 | escaped [
 it 10: triple (6.0834, 5.0, 0.3633) K {'FK': 6.97, 'GK': 7.03} mu 1.1434 | escaped ['XA'] (639s)
 it 15: triple (6.0834, 5.0, 0.5) K {'FK': 6.97, 'GK': 7.03} mu 1.1434 | escaped [] (1060s)
 it 20: triple (6.0834, 5.0, 0.0) K {'FK': 6.97, 'GK': 7.03} mu 1.1434 | escaped [] (1831s)
+it 25: triple (6.0834, 5.0, 0.0) K {'EK': 0.281, 'FK': 6.97, 'GK': 6.749, 'K': 0.0} mu 0.8625 | escaped [] (2648s)
+it 30: triple (6.0834, 5.0, 0.0) K {'EK': 0.07, 'FK': 6.97, 'GK': 6.749, 'K': 0.211} mu 0.8625 | escaped [] (3706s)
+it 35: triple (6.0834, 5.0, 0.4825) K {'EK': 1.032, 'FK': 6.995, 'GK': 5.887, 'K': 0.086} mu 0.2910 | escaped [] (4906s)
+it 40: triple (6.0834, 5.0, 0.5) K {'EK': 0.0, 'FK': 6.97, 'GK': 6.667, 'K': 0.363} mu 0.3719 | escaped [] (5943s)
+it 45: triple (6.0833, 5.0, 0.4206) K {'EK': 0.138, 'FK': 7.03, 'GK': 6.667, 'K': 0.165} mu 0.0600 | escaped [] (7172s)
+it 46: adversary TIMEOUT; plans K 6, M1 {'XAH': 118, 'YBH': 85, 'XA': 114, 'YB': 108} (7341s)
+RESULT TIMEOUT
+R0 A families ['XAH', 'YBH', 'XA', 'YB'] box (q lo,hi, y lo,hi, z lo,hi) (6.0833, 6.0834, 5.0, 5.0, 0.0, 0.5) t 11.97 krange hand
+it 0: triple (6.0834, 5.0, 0.4465) K {'EK': 0.687, 'FK': 6.97, 'GK': 6.083, 'K': 0.259} mu 0.1967 | escaped [] (664s)

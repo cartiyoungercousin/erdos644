@@ -434,3 +434,20 @@ q = 72, 73 survivors are not finished. §12.3 says what is certified, what is ru
 - Nothing committed.
 - PIDs at write-up: h1 42892, h2 36472, h3 44196, h4 10136, z1 24300, z2 10376, z3 18472.
 - To stop them: `Stop-Process -Id <pid>`. The plans are already on disk.
+
+### 12.5 Restart after the timeouts (still PARTIAL)
+- Five boxes (h2, h3, z1, z2, z3), then h1 and h4, had ended with "adversary TIMEOUT": the old code exited when
+  SCIP found neither a point nor a proof within 170 s.
+- New behaviour (`kgen.py`): a timeout never ends the run.
+  - First attempt: env `KGEN_TL0` (now 600 s), with the margin objective.
+  - Then retries as a pure feasibility problem, doubling the time limit up to `KGEN_TLMAX` = 2720 s.
+  - Then continues with the next iteration.
+- All seven were restarted with the same tags, so their saved plans were reloaded (427–487 each, z3 216). They run
+  under KGEN_TL0 = 600, KRANGE = hand for h1–h4. At most 7 kgen processes, plus a status waiter.
+- `kstatus.py tags…` prints the last segment of each run.
+- Progress at write-up:
+  - plans h1 491, h2 447, h3 451, h4 509, z1 509, z2 463, z3 243;
+  - margins μ between 0 and 0.3 and falling;
+  - no RESULT yet, no SURVIVES.
+  - Each iteration now takes about 5–10 minutes, so expect several hours.
+- The finishing recipe is unchanged (§12.4): verify_kgen on each, then `logs/certs_t855.json`, then sgame_cert.

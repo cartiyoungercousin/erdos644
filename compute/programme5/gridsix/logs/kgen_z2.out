@@ -4,3 +4,12 @@ it 5: triple (6.0, 5.0, 2.3444) K {'FGK': 2.344, 'EK': 0.386, 'FK': 4.322, 'GK':
 it 10: triple (6.0, 5.0638, 2.0) K {'FGK': 1.998, 'EK': 1.773, 'FK': 5.094, 'GK': 5.135} mu 1.1635 | escaped ['XAY', 'YBZ'] (395s)
 it 15: triple (6.0, 5.0638, 2.0) K {'FGK': 2.0, 'EK': 1.773, 'FK': 5.094, 'GK': 5.133} mu 1.1635 | escaped ['XAH'] (905s)
 it 20: triple (6.0, 5.0638, 2.0) K {'FGK': 1.998, 'EK': 1.773, 'FK': 5.094, 'GK': 5.135} mu 1.1635 | escaped ['YBZ'] (1628s)
+it 25: triple (6.0, 5.0638, 2.0) K {'FGK': 1.848, 'EK': 1.773, 'FK': 5.094, 'GK': 5.286} mu 1.1635 | escaped ['YBZ'] (2469s)
+it 30: triple (6.0, 5.0834, 2.0) K {'FGK': 1.984, 'EK': 0.436, 'FK': 5.113, 'GK': 6.466} mu 0.4670 | escaped ['XAH', 'XA', 'XAY', 'XAZ'] (3565s)
+it 35: triple (6.0, 5.0834, 2.9466) K {'FGK': 2.947, 'FK': 4.167, 'GK': 5.97, 'K': 0.917} mu 0.5281 | escaped ['XAH', 'XAY'] (4487s)
+it 40: triple (6.0, 5.0, 3.1667) K {'FGK': 3.167, 'EK': 0.318, 'FK': 3.853, 'GK': 5.57, 'K': 1.092} mu 0.4970 | escaped ['XAY'] (5576s)
+it 45: triple (6.0, 5.0, 2.7877) K {'FGK': 2.03, 'EK': 0.615, 'FK': 0.0, 'GK': 6.212, 'K': 5.143} mu 0.1792 | K-closed by ['EFGK'] (6689s)
+it 47: adversary TIMEOUT; plans K 27, M1 {'XAH': 40, 'YBH': 57, 'XA': 63, 'YB': 59, 'XAY': 43, 'YBX': 58, 'XAZ': 49, 'YBZ': 46} (7138s)
+RESULT TIMEOUT
+R0 noZ families ['XAH', 'YBH', 'XA', 'YB', 'XAY', 'YBX', 'XAZ', 'YBZ'] box (q lo,hi, y lo,hi, z lo,hi) (6.0, 6.0, 5.0, 5.0834, 2.0, 3.1667) t 11.97 krange all
+it 0: triple (6.0, 5.0, 2.6567) K {'FGK': 1.592, 'EK': 2.657, 'FK': 3.408, 'GK': 6.343, 'K': 0.0} mu 0.3088 | K-closed by ['EFGK'] (623s)
