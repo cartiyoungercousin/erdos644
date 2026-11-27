@@ -11,3 +11,4 @@ notes/sources/
 # Large regenerable outputs (> 5 MB), kept locally only
 /compute/record/certs_43_50_C8/
 /compute/programme4/ladder/logs/orb_psl2_31.json
+__pycache__/
