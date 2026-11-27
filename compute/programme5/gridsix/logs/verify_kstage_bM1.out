@@ -1,0 +1,5 @@
+bM1 result INFEASIBLE box (5.998, 6.0835, 0.0, 0.35)
+  plans {'XAH': 17, 'YBH': 18, 'XA': 19, 'YB': 17} coverage violations 0
+  independent SCIP re-solve (margin 0): INFEASIBLE 
+  sampled: 90 K points; worst over K of (best family: worst M1 best plan - t) = -0.06112
+  VERDICT OK

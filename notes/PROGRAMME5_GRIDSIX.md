@@ -212,3 +212,80 @@ Spare on E′ means the line K = A_a ∪ B₇ ∪ (E′∩K); all values are [co
   needed to beat it.
 - `stage2g.py` (depth-2 drop-frame test for a fixed M1, R2) is written and has not been run.
 - Nothing committed.
+
+## 10. Round 3: K-level boxes finished, checker, conditional S-game — STILL 6/7
+
+### 10.0 Headline (pre-registered form)
+**STILL 6/7: the adversary avoids grid sixes by answering the critical DUMP away from the limit triple.**
+- Every K closes at the limit critical triple [computed exact, independently re-checked]; see §10.1.
+- But the S-game fixed point does not move even when the whole limit window is declared closed [computed, grid;
+  §10.3]. Its surviving DUMP answers fill a two-dimensional region, most of which is out of reach of class-A
+  first requests.
+- So no certified t* < 6/7.
+
+### 10.1 K-level CEGAR: no K survives at the limit triple [computed exact; re-checked]
+- Setup:
+  - triple cells X = 6, Y = 5, Z = 0⁺ (units k/14), t = 11.998;
+  - her class-A first request has its extra all on F′;
+  - K ranges over a ∈ (6 − δ, 6.083] ∪ [20/3, 7 + δ], kb ∈ (7 − δ, 7 + δ], with any split of the spare between E′
+    and outside points;
+  - second requests come from 4 relative families;
+  - finishes are static drop-one frames after M1.
+- Every box returned INFEASIBLE (SCIP):
+
+  | box (a; e = \|K∩E′\|) | plans | `verify_kstage.py` |
+  |---|---|---|
+  | [5.998, 6.0835]; [0, .35] (bM1) | 71 | OK: indep. SCIP INFEASIBLE, 90 K × 20 000 M1, worst ≤ t − .061 |
+  | [5.998, 6.0835]; [.35, .70] (bM2) | 87 | OK, worst ≤ t − .015 |
+  | [5.998, 6.0835]; [.70, 1.01] (bM3) | 159 | OK, worst ≤ t − .085 |
+  | [6.6666, 6.75]; [0, .34] (hA1) | 212 | OK, worst ≤ t − .088 |
+  | [6.75, 6.85]; [0, .34] (hA2) | 214 | OK, worst ≤ t − .049 |
+  | [6.85, 6.95]; [0, .34] (hA3) | 199 | OK, worst ≤ t − .035 |
+  | [6.95, 7.002]; [0, .34] (hA4) | 167 | OK, worst ≤ t − .066 |
+
+- What `verify_kstage.py` checks (code independent of `kstage.py`, `stage1g.py` and `cover.py`):
+  - plan coverage: 0 violations in every box;
+  - a fresh SCIP model with escape margin 0, stricter than the CEGAR's 10⁻⁵: INFEASIBLE in every box;
+  - a sampled grid of K × M1.
+- Hand-proved inputs:
+  - the forced ranges kb > t − y and a > t − q (E-frame, spectrum-free closures);
+  - kb ≤ 7 + δ (from her first request).
+- **So at the limit triple (q, y, z) = (3/7, 5/14, 0⁺), t = .85700, the class-A line closes for every K.**
+- Off the limit point (`kstage_w.py`: X, Y, Z as real cells, forced ranges in terms of q, y), triple (6, 5, 0.5):
+  all four K boxes are INFEASIBLE [computed exact, SCIP; not yet re-checked by `verify_kstage.py`, which assumes
+  the limit cells].
+  - Triples with q + y + z > t admit no class-A first request at all (the K range is empty there).
+
+### 10.2 Why that does not move the cap [computed, grid; `crit_answers.py`, `sgame_cond.py`]
+- At t = .855 and G = 168, take the critical pairs q = 69..73 /168.
+- For the DUMP split whose survivors have the least z, about 800 answers survive at each q:
+  y ∈ [60, 96]/168 and z ∈ [0, 25]/168, e.g. at q = 72 with (h1, h2) = (96, 25).
+- They include y > 1/2, and they include y + z > t − q, where X ∪ Y ∪ Z exceeds t.
+- Every split leaves survivors with y + z up to h1 + h2 ≥ 2 − t − q = .717 > t − q.
+- `sgame_cond.py 168 3 0.0`: the old S-game, with every critical-window triple at z = 0 marked closed. Result:
+  - ADVERSARY at t = .85500, .85555, .85610, .85665, with S* unchanged = [0-45, 60-73, 80-167]/168;
+  - requester at .85720, as before.
+
+### 10.3 The adversary's line, and the lemma a proof would need
+- **Line:** at a critical pair q (q ≈ 3/7, i.e. 69–73/168), answer the balanced DUMP with a medium/heavy
+  E∩G-trace y and a small F∩G-trace z.
+  - This works either with y + z > t − q, so that no request contains X ∪ Y ∪ Z (and our class-A closures do not
+    apply), or with z ≥ 0.5k/14 in the parts not yet certified.
+  - Everything else follows the old S-game: S* = [0, .268] ∪ [5/14, .435] ∪ [10/21, 1).
+- **Needed lemma (first order):** for every triple (q, y, z) with q in the critical window and (y, z) in the old
+  survivor set, so y ∈ [5/14, 4/7], z ∈ [0, .15], y + z ≤ 2 − t − q, a closure valid under spectrum S*.
+  - When q + y + z ≤ t: the K-level class-A closure of §10.1, extended over (y, z). It is numerically promising;
+    at z = 0.5k/14 all four boxes close.
+  - When q + y + z > t: a new first request that does not contain X ∪ Y ∪ Z (e.g. X ∪ Z + most of Y, or the
+    drop-one frames applied to a non-class-A first answer). Nothing here covers it.
+
+### 10.4 Files and resume
+- New code: `verify_kstage.py`, `kstage_w.py` (env `QYZ=q,y,z`), `crit_answers.py`, `sgame_cond.py`.
+- Logs: `logs/kstage_{bM1,bM2,bM3,hA1..hA4}.*`, `logs/verify_kstage_*.out`, `logs/kstagew_z*.out`,
+  `logs/crit_answers_t855.out`, `logs/sgame_cond_z0.out`.
+- Resume:
+  1. Extend `kstage_w.py` to treat (q, y, z) as box variables, as K already is: cover the survivor set with
+     q + y + z ≤ t.
+  2. Design non-class-A first requests for q + y + z > t and add them as families.
+  3. Replace the condition in `sgame_cond.py` by the certified closure set and rescan t.
+- Nothing committed.
