@@ -17,3 +17,4 @@ it 66: adversary TIMEOUT; plans K 53, M1 {'XAH': 49, 'YBH': 54, 'XA': 60, 'YB': 
 RESULT TIMEOUT
 R0 noZ families ['XAH', 'YBH', 'XA', 'YB', 'XAY', 'YBX', 'XAZ', 'YBZ'] box (q lo,hi, y lo,hi, z lo,hi) (6.0, 6.0, 5.0, 5.0834, 0.8, 2.0) t 11.97 krange all
 it 0: triple (6.0, 5.0316, 2.0) K {'FGK': 2.0, 'EK': 0.373, 'FK': 5.042, 'GK': 6.42, 'K': 0.165} mu 0.1038 | escaped ['XAH', 'XAY'] (692s)
+it 5: triple (6.0, 5.0834, 0.8294) K {'FGK': 0.621, 'EK': 0.144, 'FK': 6.284, 'GK': 6.952} mu 0.0181 | escaped ['XAY', 'YBZ'] (3933s)

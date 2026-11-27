@@ -13,3 +13,4 @@ it 46: adversary TIMEOUT; plans K 6, M1 {'XAH': 118, 'YBH': 85, 'XA': 114, 'YB':
 RESULT TIMEOUT
 R0 A families ['XAH', 'YBH', 'XA', 'YB'] box (q lo,hi, y lo,hi, z lo,hi) (6.0833, 6.0834, 5.0, 5.0, 0.0, 0.5) t 11.97 krange hand
 it 0: triple (6.0834, 5.0, 0.4465) K {'EK': 0.687, 'FK': 6.97, 'GK': 6.083, 'K': 0.259} mu 0.1967 | escaped [] (664s)
+it 5: triple (6.0834, 5.0, 0.1801) K {'EK': 0.0, 'FK': 6.97, 'GK': 6.764, 'K': 0.266} mu 0.2199 | escaped [] (3953s)

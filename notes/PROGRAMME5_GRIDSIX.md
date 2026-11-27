@@ -451,3 +451,18 @@ q = 72, 73 survivors are not finished. §12.3 says what is certified, what is ru
   - no RESULT yet, no SURVIVES.
   - Each iteration now takes about 5–10 minutes, so expect several hours.
 - The finishing recipe is unchanged (§12.4): verify_kgen on each, then `logs/certs_t855.json`, then sgame_cert.
+
+## 13. Wind-down (2026-11-27)
+
+The #644 work was stopped at the owner's request. All seven kgen boxes (h1–h4, z1–z3) were stopped mid-run. They had
+not converged, no K had escaped, and none had been verified. Their plans are saved in `logs/kgen_<tag>.plans.jsonl`,
+and a restart with the §12.5 commands resumes them.
+
+**Final state:**
+- **No certified bound below 6/7.**
+- **Certified [computed exact, re-checked with independent SCIP]:**
+  - every K closes at the limit triple (§10);
+  - the four boxes at triple (6, 5, 0.5) close (§11);
+  - the class-A complement mode at t = 0.855 closes (§12).
+- **Conditional [computed, grid]:** t* ≤ .855 follows once every surviving answer at q = 72/168 and q = 73/168 is
+  closed (§11). That closure was in progress when the work was stopped.

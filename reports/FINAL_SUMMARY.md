@@ -167,6 +167,13 @@ verifier has passed it**. Nothing in Section 2 depends on it.
   three-request MILP of `notes/PROGRAMME5_BRIDGE.md` Part 1 did not finish), and closures that drop E, F or G. On the
   counterexample side, seven-free spectrum-respecting seed families reach only τ = 4 at k = 14 (record 11): the seed
   is killed by the "2×2 grid six" (Part 2).
+  - *Follow-up* (`notes/PROGRAMME5_JOINTMILP.md`, `notes/PROGRAMME5_GRIDSIX.md`), stopped 2026-11-27.
+    - The joint MILP confirms the 6/7 cap on the k/14 and k/28 grids, with every refutation re-proved in SCIP.
+    - Closures that drop E break every adversary line we found at the limit triple. Every K closes there
+      [computed exact, re-checked].
+    - The adversary still escapes by answering away from the limit triple.
+    - A bound t* ≤ .855 would follow once an explicit list of surviving answers at q = 72/168 and 73/168 is
+      closed. That run did not finish. **No bound below 6/7 is certified.**
 - **Lifting (G2).** Transfer of the confined-game results to general families (anchor-keeping certificates, or a
   far-replies lemma). `notes/FRONTIER.md` §1.
 - **Record below 7/8.** The depth-1 sparsest-anchor game cannot reach 17/20; at t = 43/50 the exact cover leaves three
